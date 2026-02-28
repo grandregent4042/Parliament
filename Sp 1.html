@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scheduled & Tribal Areas — Constitutional Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#faf8f4;
+  --ink:#1a1510;
+  --muted:#8a7a60;
+  --border:#e0d8c8;
+  --card:#ffffff;
+  --card2:#f5f0e8;
+
+  --fifth:#1e6b3a;    /* green */
+  --fifth-lt:#e8f5ee;
+  --sixth:#1a4a8a;    /* blue */
+  --sixth-lt:#e8eef8;
+  --gold:#b87c10;
+  --gold-lt:#fdf3dc;
+  --red:#b01a1a;
+  --red-lt:#fdeaea;
+  --purple:#5a1a8a;
+  --purple-lt:#f2e8fd;
+  --teal:#0a6070;
+  --teal-lt:#e0f0f4;
+  --amber:#c85a10;
+}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* noise texture overlay */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+
+.wrap{
+  position:relative;z-index:1;
+  max-width:1340px;margin:0 auto;padding:0 24px 100px;
+}
+
+/* ── HEADER ── */
+.header{
+  text-align:center;padding:52px 20px 28px;
+  position:relative;
+}
+.hdr-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:4px;color:var(--gold);
+  text-transform:uppercase;margin-bottom:14px;
+  display:flex;align-items:center;justify-content:center;gap:12px;
+}
+.hdr-eyebrow::before,.hdr-eyebrow::after{content:'';width:50px;height:1px;background:var(--gold);opacity:.5;}
+h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,5vw,52px);
+  font-weight:700;line-height:1.1;
+  color:var(--ink);
+}
+h1 em{font-style:italic;color:var(--fifth);}
+h1 strong{color:var(--sixth);}
+.hdr-sub{
+  margin-top:10px;font-size:12px;color:var(--muted);
+  font-family:'JetBrains Mono',monospace;letter-spacing:1.5px;
+}
+.hdr-rule{
+  display:flex;align-items:center;gap:16px;margin:18px auto 0;max-width:400px;
+}
+.hdr-rule::before,.hdr-rule::after{content:'';flex:1;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold));}
+.hdr-rule::after{background:linear-gradient(90deg,var(--gold),transparent);}
+.hdr-rule-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);}
+
+/* ── SECTION LABELS ── */
+.sec{
+  font-family:'JetBrains Mono',monospace;font-size:9.5px;
+  letter-spacing:3.5px;color:var(--gold);text-transform:uppercase;
+  margin:36px 0 16px;display:flex;align-items:center;gap:14px;
+}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:960px){.g3{grid-template-columns:1fr 1fr;}.g4{grid-template-columns:1fr 1fr;}.g2x1{grid-template-columns:1fr;}}
+@media(max-width:600px){.g2,.g3,.g4,.g2x1{grid-template-columns:1fr;}}
+
+/* ── CARDS ── */
+.pc{
+  background:var(--card);border:1.5px solid var(--border);
+  border-radius:16px;padding:18px 20px;position:relative;overflow:hidden;
+}
+.pc::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3.5px;border-radius:16px 16px 0 0;
+}
+.pc.g::before{background:linear-gradient(90deg,var(--fifth),#2a9a5a);}
+.pc.b::before{background:linear-gradient(90deg,var(--sixth),#2a6acc);}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.r::before{background:var(--red);}
+.pc.pu::before{background:var(--purple);}
+.pc.t::before{background:var(--teal);}
+.pc.dark::before{background:var(--ink);}
+
+.pc-lbl{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;
+}
+.pc h3{
+  font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;
+  line-height:1.25;margin-bottom:12px;display:flex;align-items:center;gap:7px;
+}
+
+/* ── PILLS ── */
+.pill{
+  display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;
+  font-size:9.5px;font-weight:600;margin:2px;font-family:'JetBrains Mono',monospace;
+  letter-spacing:.3px;
+}
+.pill.g{background:var(--fifth-lt);color:var(--fifth);}
+.pill.b{background:var(--sixth-lt);color:var(--sixth);}
+.pill.gold{background:var(--gold-lt);color:var(--amber);}
+.pill.r{background:var(--red-lt);color:var(--red);}
+.pill.pu{background:var(--purple-lt);color:var(--purple);}
+.pill.t{background:var(--teal-lt);color:var(--teal);}
+.pill.dark{background:#ece8e0;color:var(--ink);}
+
+/* ── VLIST ── */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vi{
+  padding:9px 12px;border-radius:9px;background:var(--card2);
+  border:1px solid var(--border);font-size:11px;line-height:1.5;
+}
+.vi .vt{font-weight:700;margin-bottom:1px;font-size:11.5px;}
+.vi .vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:1px;}
+
+/* ── STAT BOX ── */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{
+  flex:1;padding:12px 10px;border-radius:10px;border:1.5px solid var(--border);
+  text-align:center;background:var(--card2);
+}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;line-height:1;
+}
+.stat-lbl{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10.5px;font-weight:600;margin-top:2px;}
+
+/* ── CHIPS ── */
+.chip{
+  display:inline-block;padding:4px 10px;border-radius:7px;font-size:10px;
+  font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;
+}
+.chip.ok{background:var(--fifth-lt);border-color:rgba(30,107,58,.25);color:var(--fifth);}
+.chip.na{background:var(--red-lt);border-color:rgba(176,26,26,.25);color:var(--red);}
+.chip.nu{background:var(--gold-lt);border-color:rgba(184,124,16,.25);color:var(--amber);}
+
+/* ── TABLE ── */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{
+  background:var(--ink);color:#fff;padding:9px 12px;text-align:left;
+  font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;
+}
+.ctable td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,.03);}
+.ctable td:first-child{font-weight:700;}
+
+/* ── FEAT GRID ── */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{
+  padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);
+}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:700;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:2px;}
+
+/* ── KEYSTONE ── */
+.keystone{
+  background:var(--ink);color:#f5e8c0;border-radius:18px;
+  padding:24px 30px;margin:24px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+}
+.ks-icon{font-size:38px;flex:0 0 auto;}
+.ks-title{font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;margin-bottom:6px;}
+.ks-sub{font-size:11.5px;color:#c8b880;line-height:1.65;}
+.ks-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kp{
+  padding:4px 12px;border-radius:20px;background:rgba(255,255,255,.1);
+  font-size:11px;font-family:'JetBrains Mono',monospace;
+}
+
+/* ── FLOW ROW ── */
+.flow-row{
+  display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:10px 0;
+}
+.fn{
+  padding:6px 13px;border-radius:8px;font-size:10.5px;font-weight:700;border:1.5px solid;
+}
+.farr{font-size:18px;color:var(--muted);}
+
+/* ── IC CHAIN ── */
+.ic{display:flex;align-items:center;flex-wrap:wrap;gap:0;margin:10px 0;padding:4px 0;}
+.ic-n{
+  padding:7px 12px;border-radius:8px;font-size:10px;font-weight:700;
+  white-space:nowrap;border:1.5px solid;
+}
+.ic-a{font-size:14px;color:var(--muted);margin:0 5px;flex:0 0 auto;}
+
+/* ── CALLOUT ── */
+.callout{
+  padding:11px 14px;border-radius:10px;
+  background:rgba(30,107,58,.06);border:1.5px solid rgba(30,107,58,.2);margin:8px 0;
+}
+.callout.blue{background:rgba(26,74,138,.06);border-color:rgba(26,74,138,.2);}
+.callout.gold{background:var(--gold-lt);border-color:rgba(184,124,16,.25);}
+.callout.red{background:var(--red-lt);border-color:rgba(176,26,26,.25);}
+.ct{font-size:11px;font-weight:700;color:var(--fifth);margin-bottom:3px;}
+.callout.blue .ct{color:var(--sixth);}
+.callout.gold .ct{color:var(--amber);}
+.callout.red .ct{color:var(--red);}
+.cb{font-size:10.5px;color:var(--muted);line-height:1.5;}
+
+/* ── TWO-TONE CARD ── */
+.split-card{
+  background:var(--card);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;
+  display:grid;grid-template-columns:1fr 1fr;margin-bottom:18px;
+}
+.split-half{padding:18px 20px;}
+.split-half.left{border-right:1px solid var(--border);}
+
+/* ── MAP SVG CARDS ── */
+.mc{
+  background:var(--card);border:1.5px solid var(--border);border-radius:20px;
+  overflow:hidden;position:relative;margin-bottom:24px;
+}
+.mc::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;border-radius:20px 20px 0 0;
+}
+.mc.m1::before{background:linear-gradient(90deg,var(--fifth),#2a9a5a,var(--teal));}
+.mc.m2::before{background:linear-gradient(90deg,var(--sixth),var(--purple),var(--teal));}
+.mc.m3::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--fifth));}
+.mc.m4::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.mc svg{display:block;width:100%;}
+
+/* ── PHASE ROW ── */
+.phase-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0 22px;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.pbox{padding:18px;border-radius:13px;border:2px solid;text-align:center;}
+.pnum{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;}
+.ptitle{font-size:12.5px;font-weight:700;margin:4px 0;}
+.psub{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:8px;}
+
+/* ── BADGE ── */
+.badge{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:4px 10px;border-radius:7px;font-size:10px;font-weight:700;
+  font-family:'JetBrains Mono',monospace;
+}
+.badge.g{background:var(--fifth-lt);color:var(--fifth);}
+.badge.b{background:var(--sixth-lt);color:var(--sixth);}
+
+/* ── BIG NUMBER ── */
+.bnum{
+  font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;line-height:1;
+}
+
+/* ── DIVIDER ── */
+.div-line{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:8px 0;}
+
+/* ── TAG ── */
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9.5px;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.tag.yes{background:#d4f0e0;color:#0d5c2e;}
+.tag.no{background:#fde0e0;color:#7a1010;}
+.tag.partial{background:#fdf0d0;color:#7a4c10;}
+
+/* ── ANIMATE ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+.au{animation:fadeUp .5s ease both;}
+.au:nth-child(1){animation-delay:.05s;}.au:nth-child(2){animation-delay:.1s;}
+.au:nth-child(3){animation-delay:.15s;}.au:nth-child(4){animation-delay:.2s;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ══ HEADER ══ -->
+<div class="header">
+  <div class="hdr-eyebrow">Indian Polity · Tribal Governance · UPSC</div>
+  <h1>Scheduled &amp; <em>Tribal</em> Areas<br><strong>Constitutional Architecture</strong></h1>
+  <div class="hdr-sub">Article 244 · Fifth Schedule · Sixth Schedule · Self-Governance</div>
+  <div class="hdr-rule"><div class="hdr-rule-dot"></div></div>
+</div>
+
+<!-- ══ SECTION 0: MASTER FLOW ══ -->
+<div class="sec">Master Flow — The Constitutional Story</div>
+
+<div class="mc m1 au">
+  <svg id="svgMaster" viewBox="0 0 1300 110" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- ══ SECTION 1: CONSTITUTIONAL BASE ══ -->
+<div class="sec">① Constitutional Base — The Foundation</div>
+
+<div class="g2 au" style="margin-bottom:18px;">
+  <div class="pc gold">
+    <div class="pc-lbl">Legal Anchor</div>
+    <h3>📜 Article 244 + Part X</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--fifth);">5th</div>
+        <div class="stat-sub">Schedule</div>
+        <div class="stat-lbl">MOST STATES</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--sixth);">6th</div>
+        <div class="stat-sub">Schedule</div>
+        <div class="stat-lbl">4 NE STATES</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">10</div>
+        <div class="stat-sub">States</div>
+        <div class="stat-lbl">SCHED. AREAS</div>
+      </div>
+    </div>
+    <div class="callout gold" style="margin-top:10px;">
+      <div class="ct">🎯 Core Purpose</div>
+      <div class="cb">Protect tribal interests — land, culture, identity & self-governance from exploitation and displacement.</div>
+    </div>
+  </div>
+
+  <div class="pc dark" style="background:rgba(26,21,16,.04);border-color:rgba(26,21,16,.12);">
+    <div class="pc-lbl">Two Mechanisms</div>
+    <h3>⚖️ The Dual Framework</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0;">
+      <div style="padding:14px;border-radius:11px;background:var(--fifth-lt);border:1.5px solid rgba(30,107,58,.2);text-align:center;">
+        <div style="font-size:24px;margin-bottom:6px;">🌿</div>
+        <div style="font-weight:700;font-size:13px;color:var(--fifth);">Fifth Schedule</div>
+        <div style="font-size:9.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:3px;">Governor Control Model</div>
+        <div style="font-size:10px;margin-top:6px;color:var(--fifth);font-weight:600;">Central India • Protection Focus</div>
+      </div>
+      <div style="padding:14px;border-radius:11px;background:var(--sixth-lt);border:1.5px solid rgba(26,74,138,.2);text-align:center;">
+        <div style="font-size:24px;margin-bottom:6px;">🏔️</div>
+        <div style="font-weight:700;font-size:13px;color:var(--sixth);">Sixth Schedule</div>
+        <div style="font-size:9.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:3px;">Autonomous Council Model</div>
+        <div style="font-size:10px;margin-top:6px;color:var(--sixth);font-weight:600;">North-East • Autonomy Focus</div>
+      </div>
+    </div>
+    <div class="ic" style="margin-top:10px;justify-content:center;">
+      <div class="ic-n" style="border-color:var(--amber);background:var(--gold-lt);color:var(--amber);">Tribal Population</div>
+      <div class="ic-a">→</div>
+      <div class="ic-n" style="border-color:var(--fifth);background:var(--fifth-lt);color:var(--fifth);">Special Status</div>
+      <div class="ic-a">→</div>
+      <div class="ic-n" style="border-color:var(--sixth);background:var(--sixth-lt);color:var(--sixth);">Self-Governance</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BIG COMPARISON SVG ══ -->
+<div class="mc m2 au">
+  <svg id="svgCompare" viewBox="0 0 1300 280" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- ══ SECTION 2: FIFTH SCHEDULE ══ -->
+<div class="sec">② Fifth Schedule — Governor Control Model</div>
+
+<!-- SVG mind map for 5th Schedule -->
+<div class="mc m1 au">
+  <svg id="svgFifth" viewBox="0 0 1300 310" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g3 au">
+  <!-- Scheduled Areas -->
+  <div class="pc g">
+    <div class="pc-lbl">Geographic Scope</div>
+    <h3>🗺️ Scheduled Areas (2024)</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;">
+      <span class="pill g">Andhra Pradesh</span>
+      <span class="pill g">Telangana</span>
+      <span class="pill g">Jharkhand</span>
+      <span class="pill g">Chhattisgarh</span>
+      <span class="pill g">Gujarat</span>
+      <span class="pill g">Himachal Pradesh</span>
+      <span class="pill g">Madhya Pradesh</span>
+      <span class="pill g">Maharashtra</span>
+      <span class="pill g">Odisha</span>
+      <span class="pill g">Rajasthan</span>
+    </div>
+    <div class="callout" style="background:rgba(30,107,58,.05);">
+      <div class="ct">❗ Who declares?</div>
+      <div class="cb"><strong>President</strong> — after consulting the Governor. Can declare, modify or rescind Scheduled Areas.</div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="chip na">❌ Excludes: Assam, Meghalaya, Tripura, Mizoram</span>
+    </div>
+  </div>
+
+  <!-- Governor Powers -->
+  <div class="pc gold">
+    <div class="pc-lbl">Key Authority</div>
+    <h3>👑 Governor's Powers</h3>
+    <div class="vlist">
+      <div class="vi">
+        <div class="vt">Modify / Stop Laws</div>
+        <div class="vs">State or Central laws — with modifications or exceptions</div>
+      </div>
+      <div class="vi">
+        <div class="vt">Regulations on Land</div>
+        <div class="vs">Restrict transfer of tribal land to non-tribals</div>
+      </div>
+      <div class="vi">
+        <div class="vt">Money-Lending Control</div>
+        <div class="vs">Regulate money-lenders operating in tribal areas</div>
+      </div>
+      <div class="vi">
+        <div class="vt">Annual Report</div>
+        <div class="vs">Must report to President on administration</div>
+      </div>
+    </div>
+    <div class="callout red" style="margin-top:10px;">
+      <div class="ct">⚠️ Important Limit</div>
+      <div class="cb">Union <strong>cannot take over</strong> administration under 5th Schedule directly.</div>
+    </div>
+  </div>
+
+  <!-- TAC -->
+  <div class="pc t">
+    <div class="pc-lbl">Advisory Body</div>
+    <h3>🧑‍🤝‍🧑 Tribes Advisory Council</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--teal);">20</div>
+        <div class="stat-sub">Max Members</div>
+        <div class="stat-lbl">UPPER LIMIT</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--sixth);">¾</div>
+        <div class="stat-sub">Must be ST</div>
+        <div class="stat-lbl">MLAs FROM TRIBES</div>
+      </div>
+    </div>
+    <div class="div-line" style="margin:10px 0;"></div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Mandatory Establishment</div><div class="vs">All states with Scheduled Areas must form TAC</div></div>
+      <div class="vi"><div class="vt">Advisory Role</div><div class="vs">Advises Governor on tribal welfare legislation</div></div>
+      <div class="vi"><div class="vt">Centre can Direct</div><div class="vs">Union Govt can give directions to states</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 3: SIXTH SCHEDULE ══ -->
+<div class="sec">③ Sixth Schedule — Autonomous Council Model</div>
+
+<!-- SVG for 6th Schedule ADC Powers -->
+<div class="mc m2 au">
+  <svg id="svgSixth" viewBox="0 0 1300 320" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2 au" style="margin-bottom:14px;">
+  <!-- ADC Structure -->
+  <div class="pc b">
+    <div class="pc-lbl">Structure</div>
+    <h3>🏢 Autonomous District Councils (ADCs)</h3>
+    <div style="display:flex;gap:8px;margin:8px 0 12px;flex-wrap:wrap;">
+      <span class="pill b">Assam</span>
+      <span class="pill b">Meghalaya</span>
+      <span class="pill b">Tripura</span>
+      <span class="pill b">Mizoram</span>
+    </div>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--sixth);">30</div>
+        <div class="stat-sub">Total Members</div>
+        <div class="stat-lbl">PER DISTRICT</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--fifth);">26</div>
+        <div class="stat-sub">Elected</div>
+        <div class="stat-lbl">5-YEAR TERM</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">4</div>
+        <div class="stat-sub">Nominated</div>
+        <div class="stat-lbl">BY GOVERNOR</div>
+      </div>
+    </div>
+    <div class="callout blue" style="margin-top:10px;">
+      <div class="ct">📌 What makes ADC special?</div>
+      <div class="cb">ADCs have <strong>legislative, judicial and administrative powers</strong> — a mini-legislature within the district.</div>
+    </div>
+  </div>
+
+  <!-- Law Application -->
+  <div class="pc pu">
+    <div class="pc-lbl">Law Application Rules</div>
+    <h3>⚖️ Who Applies Which Law?</h3>
+    <div class="vlist">
+      <div class="vi" style="background:rgba(26,74,138,.06);border-color:rgba(26,74,138,.2);">
+        <div class="vt" style="color:var(--sixth);">🏛 Assam</div>
+        <div class="vs">Governor decides for both Central & State laws</div>
+      </div>
+      <div class="vi" style="background:rgba(90,26,138,.06);border-color:rgba(90,26,138,.2);">
+        <div class="vt" style="color:var(--purple);">🏔 Meghalaya · Tripura · Mizoram</div>
+        <div class="vs">President → Central laws &nbsp;|&nbsp; Governor → State laws</div>
+      </div>
+    </div>
+    <div class="div-line" style="margin:12px 0;"></div>
+    <div class="pc-lbl" style="margin-bottom:6px;">Governor Can Also</div>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip na">❌ Suspend ADC laws</span>
+      <span class="chip nu">⚡ Public order concern</span>
+      <span class="chip na">🔒 National security</span>
+    </div>
+    <div class="callout blue" style="margin-top:10px;">
+      <div class="ct">📜 ADC legislative acts need Governor's assent</div>
+      <div class="cb">Village Courts set up by ADC are subject to High Court control.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ADC Powers Grid -->
+<div class="g4 au">
+  <div class="pc g" style="padding:14px;">
+    <div style="font-size:22px;margin-bottom:8px;">🧾</div>
+    <div style="font-weight:800;font-size:12.5px;color:var(--fifth);margin-bottom:6px;">Legislative Powers</div>
+    <div class="vlist">
+      <div class="vi" style="padding:7px 10px;"><div class="vt" style="font-size:10.5px;">Land &amp; Forests</div><div class="vs">Except reserved forests</div></div>
+      <div class="vi" style="padding:7px 10px;"><div class="vt" style="font-size:10.5px;">Water Management</div><div class="vs">Waterways, irrigation</div></div>
+      <div class="vi" style="padding:7px 10px;"><div class="vt" style="font-size:10.5px;">Shifting Cultivation</div><div class="vs">Jhum cultivation rules</div></div>
+    </div>
+  </div>
+  <div class="pc b" style="padding:14px;">
+    <div style="font-size:22px;margin-bottom:8px;">⚖️</div>
+    <div style="font-weight:800;font-size:12.5px;color:var(--sixth);margin-bottom:6px;">Judicial Powers</div>
+    <div class="vlist">
+      <div class="vi" style="padding:7px 10px;"><div class="vt" style="font-size:10.5px;">Village Courts</div><div class="vs">Tribal disputes, civil &amp; criminal</div></div>
+      <div class="vi" style="padding:7px 10px;"><div class="vt" style="font-size:10.5px;">Under HC Control</div><div class="vs">Subject to High Court</div></div>
+    </div>
+  </div>
+  <div class="pc t" style="padding:14px;">
+    <div style="font-size:22px;margin-bottom:8px;">🛠️</div>
+    <div style="font-weight:800;font-size:12.5px;color:var(--teal);margin-bottom:6px;">Administrative</div>
+    <div class="vlist">
+      <div class="vi" style="padding:7px 10px;"><div class="vt" style="font-size:10.5px;">Schools &amp; Dispensaries</div><div class="vs">Education &amp; health</div></div>
+      <div class="vi" style="padding:7px 10px;"><div class="vt" style="font-size:10.5px;">Markets &amp; Roads</div><div class="vs">Ferries, waterways</div></div>
+    </div>
+  </div>
+  <div class="pc gold" style="padding:14px;">
+    <div style="font-size:22px;margin-bottom:8px;">💰</div>
+    <div style="font-weight:800;font-size:12.5px;color:var(--amber);margin-bottom:6px;">Financial Powers</div>
+    <div class="vlist">
+      <div class="vi" style="padding:7px 10px;"><div class="vt" style="font-size:10.5px;">Land Revenue</div><div class="vs">Collect from tribals</div></div>
+      <div class="vi" style="padding:7px 10px;"><div class="vt" style="font-size:10.5px;">Local Taxes</div><div class="vs">Levy certain taxes</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 4: COMPARISON TABLE ══ -->
+<div class="sec">④ Side-by-Side Comparison — 5th vs 6th Schedule</div>
+
+<div class="pc dark au" style="background:rgba(26,21,16,.02);border-color:rgba(26,21,16,.1);margin-bottom:18px;">
+  <div class="pc-lbl" style="margin-bottom:10px;">Comparison Matrix</div>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th style="background:var(--ink);">DIMENSION</th>
+        <th style="background:var(--fifth);">🌿 FIFTH SCHEDULE</th>
+        <th style="background:var(--sixth);">🏔 SIXTH SCHEDULE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Coverage</td>
+        <td>Most states (10 with Scheduled Areas)</td>
+        <td>Only Assam, Meghalaya, Tripura, Mizoram</td>
+      </tr>
+      <tr>
+        <td>Key Body</td>
+        <td><span class="pill g">Tribes Advisory Council (TAC)</span></td>
+        <td><span class="pill b">Autonomous District Councils (ADC)</span></td>
+      </tr>
+      <tr>
+        <td>Who Declares Area</td>
+        <td>President (after consulting Governor)</td>
+        <td>Parliament by law</td>
+      </tr>
+      <tr>
+        <td>Primary Authority</td>
+        <td>Governor — controls laws, regulations</td>
+        <td>ADC — legislative + judicial + admin powers</td>
+      </tr>
+      <tr>
+        <td>Legislative Power</td>
+        <td><span class="tag partial">Governor modifies laws</span></td>
+        <td><span class="tag yes">ADC makes own laws</span></td>
+      </tr>
+      <tr>
+        <td>Judicial Power</td>
+        <td><span class="tag no">Not with tribal body</span></td>
+        <td><span class="tag yes">Village Courts by ADC</span></td>
+      </tr>
+      <tr>
+        <td>Model</td>
+        <td>🛡️ Protection / Paternalistic</td>
+        <td>🏛️ Autonomous / Democratic</td>
+      </tr>
+      <tr>
+        <td>Region</td>
+        <td>🟢 Central &amp; Peninsular India</td>
+        <td>🟢 North-East India</td>
+      </tr>
+      <tr>
+        <td>Union Can Take Over?</td>
+        <td><span class="tag no">❌ Not under 5th Sched.</span></td>
+        <td><span class="tag partial">Governor can suspend ADC</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ SECTION 5: PRELIMS ANCHOR POINTS ══ -->
+<div class="sec">⑤ Important Prelims Points &amp; Landmark Cases</div>
+
+<div class="mc m4 au">
+  <svg id="svgPrelims" viewBox="0 0 1300 200" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g3 au">
+  <div class="pc r">
+    <div class="pc-lbl">Landmark Case</div>
+    <h3>⚖️ Samatha Case (1997)</h3>
+    <div class="callout red">
+      <div class="ct">🏛️ Supreme Court Held:</div>
+      <div class="cb">Transfer of land in Scheduled Areas to private mining companies is <strong>invalid</strong>. Only govt can hold land in tribal areas for state purposes.</div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="chip na">❌ Private mining in SA</span>
+      <span class="chip ok">✅ Govt use allowed</span>
+    </div>
+  </div>
+
+  <div class="pc gold">
+    <div class="pc-lbl">Quick Recall</div>
+    <h3>🧠 Memory Anchors</h3>
+    <div class="vlist">
+      <div class="vi">
+        <div class="vt">5th Schedule → TAC</div>
+        <div class="vs">Tribes Advisory Council — max 20, ¾ ST MLAs</div>
+      </div>
+      <div class="vi">
+        <div class="vt">6th Schedule → ADC</div>
+        <div class="vs">Autonomous District &amp; Regional Councils</div>
+      </div>
+      <div class="vi">
+        <div class="vt">President Declares SA</div>
+        <div class="vs">After consulting Governor — 5th Sched. only</div>
+      </div>
+      <div class="vi">
+        <div class="vt">Governor's Assent Required</div>
+        <div class="vs">For all ADC legislative acts — 6th Sched.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc pu">
+    <div class="pc-lbl">Exam Traps</div>
+    <h3>🚨 Common Confusions</h3>
+    <div class="vlist">
+      <div class="vi" style="background:var(--red-lt);border-color:rgba(176,26,26,.2);">
+        <div class="vt" style="color:var(--red);">Union CANNOT take over 5th Sched.</div>
+        <div class="vs">Centre can give directions but NOT take admin control</div>
+      </div>
+      <div class="vi" style="background:var(--red-lt);border-color:rgba(176,26,26,.2);">
+        <div class="vt" style="color:var(--red);">ADC laws need Governor's assent</div>
+        <div class="vs">Not automatic — Governor can withhold/return</div>
+      </div>
+      <div class="vi" style="background:var(--red-lt);border-color:rgba(176,26,26,.2);">
+        <div class="vt" style="color:var(--red);">Reserved forests excluded from ADC</div>
+        <div class="vs">Only non-reserved forests under ADC power</div>
+      </div>
+      <div class="vi" style="background:var(--gold-lt);border-color:rgba(184,124,16,.2);">
+        <div class="vt" style="color:var(--amber);">Village Courts under HC supervision</div>
+        <div class="vs">Not fully autonomous — High Court has control</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 6: BIGGER PICTURE ══ -->
+<div class="sec">⑥ The Two Models — Bigger Picture</div>
+
+<div class="phase-row au">
+  <div class="pbox" style="border-color:var(--fifth);background:var(--fifth-lt);">
+    <div class="pnum" style="color:var(--fifth);">5th</div>
+    <div class="ptitle">Protection Model</div>
+    <div class="psub">Central &amp; Peninsular India</div>
+    <div style="font-size:28px;margin:8px 0;">🛡️</div>
+    <div style="font-size:10px;line-height:1.7;color:var(--muted);">Governor as guardian<br>TAC for advisory input<br>Presidential oversight<br>Land &amp; money-lending rules</div>
+    <span class="pill g" style="margin-top:8px;">Paternalistic Approach</span>
+  </div>
+  <div class="pbox" style="border-color:var(--gold);background:var(--gold-lt);text-align:center;">
+    <div class="pnum" style="color:var(--amber);">Art.</div>
+    <div class="ptitle">244 + Part X</div>
+    <div class="psub">The Constitutional Umbrella</div>
+    <div style="font-size:28px;margin:8px 0;">📜</div>
+    <div style="font-size:10px;line-height:1.7;color:var(--muted);">Both schedules rest<br>under this article.<br>Protects tribal identity,<br>land &amp; culture nationally.</div>
+    <span class="pill gold" style="margin-top:8px;">Connecting Bridge</span>
+  </div>
+  <div class="pbox" style="border-color:var(--sixth);background:var(--sixth-lt);">
+    <div class="pnum" style="color:var(--sixth);">6th</div>
+    <div class="ptitle">Autonomy Model</div>
+    <div class="psub">North-East India</div>
+    <div style="font-size:28px;margin:8px 0;">🏔️</div>
+    <div style="font-size:10px;line-height:1.7;color:var(--muted);">ADC with real powers<br>Legislature + judiciary<br>Financial independence<br>Mini-governance unit</div>
+    <span class="pill b" style="margin-top:8px;">Autonomous Approach</span>
+  </div>
+</div>
+
+<!-- ══ KEYSTONE ══ -->
+<div class="keystone au">
+  <div class="ks-icon">🏔️</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Core Connecting Idea</div>
+    <div class="ks-sub">India built <strong style="color:#f5d78a;">two constitutional models</strong> for tribal governance. The Fifth Schedule = <em>protection through Governor's oversight</em>. The Sixth Schedule = <em>autonomy through district councils</em>.<br>Both serve the same goal: <strong style="color:#f5d78a;">Protect tribal land, culture & identity from exploitation — while giving tribes a voice in their own governance.</strong></div>
+    <div class="ks-pills">
+      <span class="kp">🌿 5th → TAC</span>
+      <span class="kp">🏔 6th → ADC</span>
+      <span class="kp">👑 Governor's Role</span>
+      <span class="kp">⚖️ Samatha Case</span>
+      <span class="kp">🛡️ Protection + Autonomy</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function curved(svg,x1,y1,x2,y2,col,dash,w){
+  const mx=(x1+x2)/2;
+  const p=se('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,stroke:col||'#bbb','stroke-width':w||1.8,fill:'none','stroke-dasharray':dash?'5 4':'none',opacity:'0.65'});
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,tc,rx){
+  tc=tc||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.5'}));
+  let ty=y-(lines.length-1)*7.5-(sub?5:0)-(emoji?10:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'15',fill:tc});em.textContent=emoji;g.appendChild(em);ty+=18;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*14.5,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10.5','font-weight':'700','font-family':'DM Sans,sans-serif',fill:tc});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*14.5+2,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'JetBrains Mono,monospace',fill:tc==='#fff'?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.38)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+function label(svg,x,y,txt,col,fs,lspc){
+  const t=se('text',{x,y,'text-anchor':'middle','font-size':fs||9,'font-family':'JetBrains Mono,monospace',fill:col||'rgba(120,100,60,0.5)','letter-spacing':lspc||'2'});
+  t.textContent=txt;svg.appendChild(t);
+}
+
+// ── MASTER FLOW ──
+(()=>{
+  const svg=document.getElementById('svgMaster');
+  svg.appendChild(se('rect',{x:0,y:0,width:1300,height:110,fill:'rgba(250,246,240,0.6)'}));
+  const steps=[
+    {x:80, fill:'#b87c10', label:['Tribal Areas','Need Protection'], sub:'Historical Context', emoji:'🏔️'},
+    {x:230, fill:'#1a4a8a', label:['Article 244','+ Part X'], sub:'Constitutional Basis', emoji:'📜'},
+    {x:390, fill:'#1e6b3a', label:['Fifth Schedule','(Most States)'], sub:'10 Scheduled Areas', emoji:'🌿'},
+    {x:560, fill:'#1a4a8a', label:['Sixth Schedule','(4 NE States)'], sub:'ADC Autonomy', emoji:'🏔️'},
+    {x:730, fill:'#b87c10', label:['Governor','as Guardian'], sub:'5th Sched. model', emoji:'👑'},
+    {x:900, fill:'#5a1a8a', label:['District Councils','ADC Powers'], sub:'6th Sched. model', emoji:'🏛️'},
+    {x:1070, fill:'#0a6070', label:['Land & Culture','Protected'], sub:'Samatha Case 1997', emoji:'⚖️'},
+    {x:1230, fill:'#1e6b3a', label:['Tribal Self-','Governance'], sub:'The ultimate goal', emoji:'✅'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1) curved(svg,s.x+66,55,steps[i+1].x-66,55,'#b87c1055',false,1.8);
+  });
+  steps.forEach(s=>node(svg,s.x,55,128,64,s.fill,s.label,s.sub,s.emoji));
+  label(svg,650,18,'CONSTITUTIONAL STORY: TRIBAL PROTECTION → LEGAL FRAMEWORK → ADMINISTRATIVE MODELS → SELF-GOVERNANCE');
+})();
+
+// ── COMPARE SVG ──
+(()=>{
+  const svg=document.getElementById('svgCompare');
+  svg.appendChild(se('rect',{x:0,y:0,width:1300,height:280,fill:'rgba(250,246,240,0.4)'}));
+
+  // Center spine
+  svg.appendChild(se('line',{x1:650,y1:20,x2:650,y2:265,stroke:'rgba(200,180,140,0.3)','stroke-width':'2','stroke-dasharray':'6 4'}));
+  node(svg,650,40,200,46,'#1a1510',['5th vs 6th Schedule'],'Comparison','📊');
+
+  // LEFT: 5th Schedule nodes
+  const L=[
+    {x:120,y:100, fill:'#1e6b3a', label:['Most States'],    sub:'10 Scheduled Areas'},
+    {x:300,y:100, fill:'#1e6b3a', label:['TAC (Advisory)'], sub:'Max 20, ¾ ST MLAs'},
+    {x:120,y:180, fill:'#b87c10', label:['Governor Power'], sub:'Modify/stop laws'},
+    {x:300,y:180, fill:'#7a4010', label:['Protection Focus'],sub:'Land & money-lending'},
+    {x:200,y:248, fill:'#006040', label:['Union gives directions'],sub:'No takeover'},
+  ];
+  // RIGHT: 6th Schedule nodes
+  const R=[
+    {x:1000,y:100, fill:'#1a4a8a', label:['4 NE States'],     sub:'Assam,Mega,Tri,Mizo'},
+    {x:1180,y:100, fill:'#1a4a8a', label:['ADC (Autonomy)'],  sub:'30 members, 5 yr term'},
+    {x:1000,y:180, fill:'#5a1a8a', label:['Judicial Powers'],  sub:'Village Courts'},
+    {x:1180,y:180, fill:'#0a6070', label:['Finance Powers'],   sub:'Revenue + taxes'},
+    {x:1090,y:248, fill:'#003060', label:['Legislature + Admin'],sub:'Schools, roads, markets'},
+  ];
+
+  L.forEach(n=>{curved(svg,n.x+(n.x<400?80:-80),n.y,600,40,'#1e6b3a44',true,1.5);node(svg,n.x,n.y,165,46,n.fill,[n.label],n.sub,null);});
+  R.forEach(n=>{curved(svg,700,40,n.x+(n.x>900?-80:80),n.y,'#1a4a8a44',true,1.5);node(svg,n.x,n.y,165,46,n.fill,[n.label],n.sub,null);});
+
+  label(svg,280,268,'5TH SCHEDULE — PROTECTION MODEL','#1e6b3a66',8.5,'1.5');
+  label(svg,1020,268,'6TH SCHEDULE — AUTONOMY MODEL','#1a4a8a66',8.5,'1.5');
+})();
+
+// ── FIFTH SCHEDULE MINDMAP ──
+(()=>{
+  const svg=document.getElementById('svgFifth');
+  svg.appendChild(se('rect',{x:0,y:0,width:1300,height:310,fill:'rgba(248,252,248,0.5)'}));
+
+  // Central node
+  node(svg,650,130,220,58,'#1e6b3a',['Fifth Schedule'],'Art. 244 — Governor Control Model','🌿');
+
+  const branches=[
+    // LEFT branches
+    {x:110,y:60,  fill:'#1e6b3a', label:['President'],       sub:'Declares Sched. Area'},
+    {x:110,y:145, fill:'#c85a10', label:['Governor'],        sub:'Key authority'},
+    {x:110,y:230, fill:'#006040', label:['Annual Report'],   sub:'Governor → President'},
+    // BOTTOM LEFT
+    {x:310,y:270, fill:'#0a6070', label:['Modify/Stop Laws'], sub:'State & Central'},
+    {x:480,y:270, fill:'#7a4010', label:['Land Transfer'],   sub:'Restrict non-tribal'},
+    // BOTTOM RIGHT
+    {x:810,y:270, fill:'#b87c10', label:['Money-Lending'],   sub:'Regulate moneylenders'},
+    {x:970,y:270, fill:'#5a1a8a', label:['TAC Mandatory'],   sub:'States with SA'},
+    // RIGHT branches
+    {x:1185,y:60,  fill:'#1a4a8a', label:['20 Members'],     sub:'Max, 3/4th ST MLAs'},
+    {x:1185,y:145, fill:'#5a1a8a', label:['Advises Governor'],sub:'Tribal welfare laws'},
+    {x:1185,y:230, fill:'#b01a1a', label:['No Union Takeover'],sub:'Limit — 5th Sched.'},
+  ];
+
+  // Draw edges
+  const cx=650,cy=130;
+  branches.forEach(b=>{
+    const ex=b.x<cx?cx-110:cx+110;
+    const ey=b.y<cy?cy-20:(b.y>cy?cy+20:cy);
+    curved(svg,ex,ey,b.x+(b.x<cx?80:-80),b.y,'#1e6b3a44',true,1.5);
+    node(svg,b.x,b.y,160,46,b.fill,[b.label],b.sub,null);
+  });
+
+  label(svg,650,300,'FIFTH SCHEDULE — GOVERNOR AS GUARDIAN OF TRIBAL INTERESTS');
+})();
+
+// ── SIXTH SCHEDULE MINDMAP ──
+(()=>{
+  const svg=document.getElementById('svgSixth');
+  svg.appendChild(se('rect',{x:0,y:0,width:1300,height:320,fill:'rgba(244,246,252,0.5)'}));
+
+  node(svg,650,135,220,56,'#1a4a8a',['Sixth Schedule'],'ADC — Autonomous District Councils','🏔️');
+
+  const branches=[
+    {x:110,y:60,  fill:'#1a4a8a', label:['4 NE States'],    sub:'Assam·Mega·Tri·Mizo'},
+    {x:110,y:145, fill:'#0a6070', label:['30 Members'],      sub:'26 elected + 4 nominated'},
+    {x:110,y:230, fill:'#5a1a8a', label:['5-Year Term'],     sub:'Elected members'},
+
+    {x:310,y:285, fill:'#1e6b3a', label:['Land & Forests'],  sub:'Excl. reserved'},
+    {x:480,y:285, fill:'#006040', label:['Shifting Cultivation'],sub:'Jhum rules'},
+
+    {x:810,y:285, fill:'#1a4a8a', label:['Village Courts'],  sub:'Under HC control'},
+    {x:970,y:285, fill:'#b87c10', label:['Land Revenue'],    sub:'Collect & levy taxes'},
+
+    {x:1185,y:60,  fill:'#1a4a8a', label:['Assam: Governor'], sub:'All law decisions'},
+    {x:1185,y:145, fill:'#5a1a8a', label:['Others: Pres+Gov'],sub:'Central & State laws'},
+    {x:1185,y:230, fill:'#b01a1a', label:['Suspend ADC'],    sub:'Public order / security'},
+  ];
+
+  const cx=650,cy=135;
+  branches.forEach(b=>{
+    const ex=b.x<cx?cx-110:cx+110;
+    const ey=b.y<cy?cy-18:(b.y>cy?cy+18:cy);
+    curved(svg,ex,ey,b.x+(b.x<cx?80:-80),b.y,'#1a4a8a44',true,1.5);
+    node(svg,b.x,b.y,160,46,b.fill,[b.label],b.sub,null);
+  });
+
+  label(svg,650,312,'SIXTH SCHEDULE — ADC AS MINI-LEGISLATURE WITH REAL POWERS');
+})();
+
+// ── PRELIMS SVG ──
+(()=>{
+  const svg=document.getElementById('svgPrelims');
+  svg.appendChild(se('rect',{x:0,y:0,width:1300,height:200,fill:'rgba(252,246,244,0.5)'}));
+
+  node(svg,650,100,200,52,'#1a1510',['Prelims Anchors'],'Key Facts for Exam','⚡');
+
+  const pts=[
+    {x:100,y:60,  fill:'#1e6b3a', label:['5th → TAC'],      sub:'Advisory Council'},
+    {x:280,y:50,  fill:'#1a4a8a', label:['6th → ADC'],      sub:'District Councils'},
+    {x:460,y:60,  fill:'#b01a1a', label:['Samatha Case'],   sub:'No private mining SA'},
+    {x:840,y:60,  fill:'#5a1a8a', label:['ADC needs'],      sub:"Governor's assent"},
+    {x:1010,y:50, fill:'#0a6070', label:['HC controls'],    sub:'Village Courts'},
+    {x:1185,y:60, fill:'#b87c10', label:['President declares'],sub:'Sched. Area — 5th'},
+    {x:180,y:160, fill:'#7a4010', label:['Max 20 TAC'],     sub:'¾ must be ST MLAs'},
+    {x:460,y:165, fill:'#1e6b3a', label:['Governor reports'],sub:'Annual → President'},
+    {x:840,y:165, fill:'#1a4a8a', label:['No Union takeover'],sub:'5th Sched. limit'},
+    {x:1100,y:160, fill:'#5a1a8a', label:['Reserved forests'],sub:'Excluded from ADC'},
+  ];
+
+  pts.forEach(p=>{
+    const fromX=p.x<650?558:742;
+    const fromY=p.y<100?88:112;
+    curved(svg,fromX,fromY,p.x+(p.x<650?78:-78),p.y,p.x<650?'#1e6b3a44':'#1a4a8a44',true,1.3);
+    node(svg,p.x,p.y,148,44,p.fill,[p.label],p.sub,null);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Judicial Review — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#12100e;--paper:#f8f5ef;--gold:#b87c10;--gold-lt:#f5d78a;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf5;--card2:#f2ede0;--sky:#1a5878;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 900px 500px at 15% 10%, rgba(184,124,16,0.06) 0%, transparent 60%),
+  radial-gradient(ellipse 700px 700px at 85% 90%, rgba(26,58,138,0.05) 0%, transparent 60%);
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,52px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:14px auto 0;border-radius:4px;}
+
+/* SECTION LABELS */
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:36px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(184,124,16,0.12);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.amber::before{background:var(--amber);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:10px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* MAP CARDS */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--sky),var(--purple));}
+.map-card svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.pill.red{background:rgba(176,26,26,0.12);color:var(--red);}
+
+/* CHIPS */
+.chip{display:inline-block;padding:3px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.chip.ok{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.chip.warn{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+
+/* STAT BOX */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:8px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+
+/* FLOW */
+.flow-chain{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 0;}
+.fn{padding:8px 14px;border-radius:10px;font-size:11px;font-weight:700;border:1.5px solid;}
+.fa{font-size:20px;color:var(--muted);}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.kpills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kp{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;}
+
+/* IMPACT CHAIN */
+.impact-chain{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:6px 0;margin:8px 0;}
+.ic-node{padding:7px 12px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:14px;color:var(--muted);flex:0 0 auto;margin:0 4px;}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;margin:8px 0;}
+.callout-title{font-size:11px;font-weight:800;margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* COMPARISON TABLE */
+.cmp-table{width:100%;border-collapse:collapse;font-size:11px;margin-top:8px;}
+.cmp-table th{background:var(--ink);color:#fff;padding:7px 10px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-align:left;}
+.cmp-table td{padding:8px 10px;border-bottom:1px solid var(--border);line-height:1.5;}
+.cmp-table tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.cmp-table td:first-child{font-weight:700;color:var(--amber);font-size:10px;}
+
+/* BADGE */
+.badge{display:inline-block;padding:2px 8px;border-radius:5px;font-size:9px;font-weight:700;font-family:'DM Mono',monospace;}
+.badge.ok{background:#d4edda;color:#155724;}
+.badge.warn{background:#f8d7da;color:#721c24;}
+
+/* PHASE BOXES */
+.phase-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0 20px;}
+@media(max-width:900px){.phase-row{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;}
+.phase-title{font-size:12px;font-weight:800;margin:4px 0;}
+.phase-body{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:6px;line-height:1.6;}
+
+/* HIGH PROB BOX */
+.hotbox{background:linear-gradient(135deg,rgba(176,26,26,0.06),rgba(184,124,16,0.08));border:2px solid rgba(176,26,26,0.2);border-radius:16px;padding:18px;margin-bottom:20px;}
+.hotbox h3{font-family:'Playfair Display',serif;font-size:16px;color:var(--red);margin-bottom:12px;}
+.hot-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+@media(max-width:640px){.hot-grid{grid-template-columns:1fr;}}
+.hot-item{padding:9px 12px;border-radius:8px;background:rgba(255,255,255,0.7);border:1px solid rgba(176,26,26,0.1);font-size:11px;font-weight:700;}
+.hot-item::before{content:'🔥 ';}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Polity · Judiciary · UPSC Prelims</div>
+  <h1>Judicial Review → <em>Activism → PIL → Overreach → Restraint</em></h1>
+  <div class="header-sub">Concept Flow · Landmark Cases · PIL Scope · Comparative Judiciary</div>
+</div>
+
+<!-- ══ SECTION 0: MASTER FLOW ══ -->
+<div class="sec-label">Master Flow — The Big Picture</div>
+<div class="map-card mc1">
+  <svg id="svgMasterFlow" viewBox="0 0 1320 110" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 1: JUDICIAL REVIEW ══ -->
+<div class="sec-label">① Judicial Review — Foundation Concept</div>
+
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-label">Core Meaning</div>
+    <h3>⚖️ What Is Judicial Review?</h3>
+    <p style="font-size:11px;color:var(--muted);margin-bottom:10px;">Power of courts to check whether <strong>laws or executive actions violate the Constitution</strong>. Ensures Constitutional Supremacy.</p>
+    <div class="callout" style="background:rgba(184,124,16,0.07);border:1.5px solid rgba(184,124,16,0.2);">
+      <div class="callout-title" style="color:var(--gold);">📌 Key Facts</div>
+      <div class="callout-body">Not explicitly in Constitution — <strong>derived</strong> from Articles. Origin concept from USA. Part of <strong>Basic Structure</strong> doctrine.</div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="pill gold">Art. 13</span>
+      <span class="pill gold">Art. 32</span>
+      <span class="pill gold">Art. 131–136</span>
+      <span class="pill gold">Art. 143</span>
+      <span class="pill gold">Art. 226</span>
+      <span class="pill gold">Art. 227</span>
+    </div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">Landmark Cases Timeline</div>
+    <h3>📜 Evolution of Judicial Review</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">🔴 Golaknath (1967)</div>
+        <div class="vs">Parliament CANNOT amend Fundamental Rights</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🟡 24th Amendment (1971)</div>
+        <div class="vs">Parliament RESTORED power to amend FRs</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🟢 Kesavananda Bharati (1973)</div>
+        <div class="vs">Basic Structure doctrine — cannot destroy core</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🔵 I.R. Coelho (2007)</div>
+        <div class="vs">Ninth Schedule laws (after 1973) = reviewable</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Judicial Review Mind Map -->
+<div class="map-card mc2">
+  <svg id="svgJR" viewBox="0 0 1320 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 2: THE CONCEPT SPECTRUM ══ -->
+<div class="sec-label">② The Judicial Spectrum — From Review to Overreach</div>
+
+<div class="map-card mc3">
+  <svg id="svgSpectrum" viewBox="0 0 1320 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g4">
+  <div class="pc blue">
+    <div class="pc-label">Concept 1</div>
+    <h3>⚖️ Judicial Review</h3>
+    <p style="font-size:11px;color:var(--muted);">Strike down <strong>unconstitutional laws</strong> or executive acts. Power derived from Constitution.</p>
+    <div style="margin-top:8px;"><span class="chip neu">Foundational</span></div>
+  </div>
+
+  <div class="pc green">
+    <div class="pc-label">Concept 2</div>
+    <h3>🚀 Judicial Activism</h3>
+    <p style="font-size:11px;color:var(--muted);">Go <strong>beyond strict interpretation</strong> — actively protect rights. Fill governance gaps. Coined: Arthur Schlesinger Jr. (1947).</p>
+    <div style="margin-top:8px;"><span class="chip ok">Expansive</span></div>
+  </div>
+
+  <div class="pc amber">
+    <div class="pc-label">Concept 3</div>
+    <h3>🛑 Judicial Overreach</h3>
+    <p style="font-size:11px;color:var(--muted);">Courts <strong>enter domain</strong> of executive/legislature. Examples: Liquor ban near highways, censorship orders.</p>
+    <div style="margin-top:8px;"><span class="chip warn">Excessive</span></div>
+  </div>
+
+  <div class="pc teal">
+    <div class="pc-label">Concept 4</div>
+    <h3>🔒 Judicial Restraint</h3>
+    <p style="font-size:11px;color:var(--muted);">Avoid interference unless <strong>clear violation</strong>. Respects separation of powers. Does not interfere in policy.</p>
+    <div style="margin-top:8px;"><span class="chip ok">Balanced</span></div>
+  </div>
+</div>
+
+<!-- Concept Comparison Table -->
+<div class="pc gold" style="margin-bottom:20px;">
+  <div class="pc-label">Difference Table</div>
+  <h3>📊 All 4 Concepts at a Glance</h3>
+  <table class="cmp-table">
+    <tr>
+      <th>Concept</th>
+      <th>Core Meaning</th>
+      <th>Direction</th>
+      <th>Key Example</th>
+    </tr>
+    <tr>
+      <td>Judicial Review</td>
+      <td>Strike down unconstitutional laws</td>
+      <td><span class="badge ok">Corrective</span></td>
+      <td>Kesavananda Bharati</td>
+    </tr>
+    <tr>
+      <td>Judicial Activism</td>
+      <td>Expand interpretation for justice</td>
+      <td><span class="badge ok">Proactive</span></td>
+      <td>Vishaka Case (1997)</td>
+    </tr>
+    <tr>
+      <td>Judicial Restraint</td>
+      <td>Avoid interference, defer to Legislature</td>
+      <td><span class="badge ok">Conservative</span></td>
+      <td>Separation of powers</td>
+    </tr>
+    <tr>
+      <td>Judicial Overreach</td>
+      <td>Excessive interference in exec domain</td>
+      <td><span class="badge warn">Problematic</span></td>
+      <td>Highway liquor ban</td>
+    </tr>
+  </table>
+</div>
+
+<!-- Judicial Activism Detail -->
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">Judicial Activism</div>
+    <h3>🚀 Promoted In India By</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--green);">VRK</div>
+        <div class="stat-label" style="font-size:8px;">Justice V.R. Krishna Iyer</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--teal);">PNB</div>
+        <div class="stat-label" style="font-size:8px;">Justice P.N. Bhagwati</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">Purpose: Fill Governance Gaps</div><div class="vs">Step in where legislature fails</div></div>
+      <div class="vitem"><div class="vt">Purpose: Protect Weaker Sections</div><div class="vs">Bonded labour, women, environment</div></div>
+    </div>
+    <div class="callout" style="margin-top:8px;background:rgba(26,106,58,0.06);border:1.5px solid rgba(26,106,58,0.2);">
+      <div class="callout-title" style="color:var(--green);">⭐ Vishaka Case (1997)</div>
+      <div class="callout-body">Sexual harassment guidelines issued before POSH Act 2013 — classic Judicial Activism + Experimentalism</div>
+    </div>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-label">Judicial Experimentalism</div>
+    <h3>🧪 New Remedies &amp; Directions</h3>
+    <p style="font-size:11px;color:var(--muted);margin-bottom:10px;">When courts create new remedies, form committees, issue directions <em>until law is enacted</em> by Parliament.</p>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Create New Remedies</div><div class="vs">Beyond traditional relief</div></div>
+      <div class="vitem"><div class="vt">Form Committees</div><div class="vs">Monitor compliance, enforcement</div></div>
+      <div class="vitem"><div class="vt">Issue Continuing Directions</div><div class="vs">Until Parliament legislates</div></div>
+    </div>
+    <div class="callout" style="margin-top:8px;background:rgba(90,26,138,0.06);border:1.5px solid rgba(90,26,138,0.2);">
+      <div class="callout-title" style="color:var(--purple);">Example: Vishaka Guidelines → POSH Act 2013</div>
+      <div class="callout-body">Court-made rules governed workplace for 16 years before Parliament codified them</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 3: PIL ══ -->
+<div class="sec-label">③ Public Interest Litigation (PIL) — The People's Tool</div>
+
+<div class="map-card mc4">
+  <svg id="svgPIL" viewBox="0 0 1320 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc sky">
+    <div class="pc-label">PIL Basics</div>
+    <h3>📋 Key Facts</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Also Called: SAL</div><div class="vs">Social Action Litigation</div></div>
+      <div class="vitem"><div class="vt">Origin: USA (1960s)</div><div class="vs">India adopted: 1980s</div></div>
+      <div class="vitem"><div class="vt">Filed Under Art. 32</div><div class="vs">In Supreme Court</div></div>
+      <div class="vitem"><div class="vt">Filed Under Art. 226</div><div class="vs">In High Courts</div></div>
+      <div class="vitem"><div class="vt">Who Can File?</div><div class="vs">Any public-spirited citizen</div></div>
+    </div>
+  </div>
+
+  <div class="pc green">
+    <div class="pc-label">PIL Scope — Allowed Topics</div>
+    <h3>✅ What PIL Covers</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;">
+      <span class="chip ok">Bonded Labour</span>
+      <span class="chip ok">Women's Rights</span>
+      <span class="chip ok">Environmental Pollution</span>
+      <span class="chip ok">Food Adulteration</span>
+      <span class="chip ok">Child Abuse</span>
+      <span class="chip ok">Prison Conditions</span>
+      <span class="chip ok">Right to Education</span>
+      <span class="chip ok">Public Health</span>
+    </div>
+    <div class="callout" style="margin-top:10px;background:rgba(26,106,58,0.06);border:1.5px solid rgba(26,106,58,0.2);">
+      <div class="callout-title" style="color:var(--green);">Filed Against Whom?</div>
+      <div class="callout-body">✅ State/Central Govt · Municipal authorities<br>❌ NOT private individuals (generally)</div>
+    </div>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-label">PIL Exclusions</div>
+    <h3>❌ What PIL Does NOT Cover</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;">
+      <span class="chip warn">Landlord-Tenant</span>
+      <span class="chip warn">Service Matters</span>
+      <span class="chip warn">Pension/Gratuity</span>
+      <span class="chip warn">Admissions</span>
+      <span class="chip warn">Early Hearing</span>
+      <span class="chip warn">Private Disputes</span>
+    </div>
+    <div class="callout" style="margin-top:10px;background:rgba(176,26,26,0.06);border:1.5px solid rgba(176,26,26,0.2);">
+      <div class="callout-title" style="color:var(--red);">⚠️ PIL Misuse Risk</div>
+      <div class="callout-body">Used for personal vendettas, frivolous cases, political motives → Courts impose costs on misuse</div>
+    </div>
+  </div>
+</div>
+
+<!-- PIL Landmark Cases -->
+<div class="pc gold" style="margin-bottom:20px;">
+  <div class="pc-label">Important PIL Judgments</div>
+  <h3>⭐ Landmark PIL Cases</h3>
+  <div class="g2" style="margin-bottom:0;">
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">🔗 Bandhua Mukti Morcha (1983)</div>
+        <div class="vs">Bonded labour — pioneering PIL judgment</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🌿 MC Mehta (1987)</div>
+        <div class="vs">Absolute liability — environmental protection, Oleum gas leak</div>
+      </div>
+    </div>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">⚖️ PUCL (1997)</div>
+        <div class="vs">Right to legal aid — expanded right to life</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">👩 Vishaka (1997)</div>
+        <div class="vs">Sexual harassment at workplace guidelines</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 4: COMPARATIVE JUDICIARY ══ -->
+<div class="sec-label">④ India vs USA vs UK — Comparative Judiciary</div>
+
+<div class="map-card mc5">
+  <svg id="svgCompare" viewBox="0 0 1320 340" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="pc sky" style="margin-bottom:20px;">
+  <div class="pc-label">Comparative Table</div>
+  <h3>🌍 Judiciary — India, USA, UK</h3>
+  <table class="cmp-table">
+    <tr>
+      <th>Feature</th>
+      <th>🇮🇳 India</th>
+      <th>🇺🇸 USA</th>
+      <th>🇬🇧 UK</th>
+    </tr>
+    <tr>
+      <td>Structure</td>
+      <td>Integrated (single hierarchy)</td>
+      <td>Dual (federal + state)</td>
+      <td>Unitary</td>
+    </tr>
+    <tr>
+      <td>Advisory Jurisdiction</td>
+      <td><span class="badge ok">Yes — Art. 143</span></td>
+      <td><span class="badge warn">No</span></td>
+      <td><span class="badge warn">No</span></td>
+    </tr>
+    <tr>
+      <td>Judicial Review</td>
+      <td>Limited but strong</td>
+      <td>Very strong</td>
+      <td>Limited (Parliamentary sovereignty)</td>
+    </tr>
+    <tr>
+      <td>Tenure</td>
+      <td>Upto 65 yrs (SC) / 62 yrs (HC)</td>
+      <td>Life tenure</td>
+      <td>Up to 70 years</td>
+    </tr>
+    <tr>
+      <td>Appointment</td>
+      <td>President after consultation (collegium)</td>
+      <td>President + Senate confirmation</td>
+      <td>Crown on PM's advice</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ══ SECTION 5: ARTICLES AT A GLANCE ══ -->
+<div class="sec-label">⑤ Key Articles — Quick Reference</div>
+
+<div class="map-card mc1">
+  <svg id="svgArticles" viewBox="0 0 1320 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-label">Fundamental Rights Protection</div>
+    <h3>🔵 Art. 13 &amp; Art. 32</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Article 13</div><div class="vs">Laws inconsistent with FRs = void. Basis of Judicial Review.</div></div>
+      <div class="vitem"><div class="vt">Article 32</div><div class="vs">Right to move SC for FR enforcement. "Heart and Soul" of Constitution (Ambedkar). PIL filed here.</div></div>
+    </div>
+  </div>
+
+  <div class="pc teal">
+    <div class="pc-label">High Court Powers</div>
+    <h3>🟢 Art. 226 vs Art. 32</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Article 226 — HC</div><div class="vs">Broader than Art. 32 — can protect non-FRs too. PIL can be filed here.</div></div>
+      <div class="vitem"><div class="vt">Article 32 — SC</div><div class="vs">Only Fundamental Rights. Cannot be suspended except during emergency (Art. 359).</div></div>
+    </div>
+    <div class="callout" style="margin-top:8px;background:rgba(10,96,112,0.06);border:1.5px solid rgba(10,96,112,0.2);">
+      <div class="callout-title" style="color:var(--teal);">Art. 32 vs Art. 226</div>
+      <div class="callout-body">226 = Wider scope (legal rights too) | 32 = Only FRs | Both allow PIL</div>
+    </div>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-label">Advisory &amp; Appellate</div>
+    <h3>🟣 Art. 143 &amp; Appellate</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Article 143</div><div class="vs">President can seek SC advisory opinion. India unique — USA/UK don't have this.</div></div>
+      <div class="vitem"><div class="vt">Art. 131–136</div><div class="vs">Original &amp; appellate jurisdiction of Supreme Court</div></div>
+      <div class="vitem"><div class="vt">Art. 227</div><div class="vs">HC superintendence over subordinate courts</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 6: CONCEPT FLOW ══ -->
+<div class="sec-label">⑥ Final Concept Flow — How It All Connects</div>
+
+<div class="map-card mc2" style="padding:20px 24px 16px;">
+  <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:14px;">Connecting Flow</div>
+  <div class="flow-chain">
+    <div class="fn" style="border-color:var(--blue);background:rgba(26,58,138,0.08);color:var(--blue);">⚖️ Judicial Review</div>
+    <div class="fa">→</div>
+    <div class="fn" style="border-color:var(--gold);background:rgba(184,124,16,0.08);color:var(--gold);">Used actively</div>
+    <div class="fa">→</div>
+    <div class="fn" style="border-color:var(--green);background:rgba(26,106,58,0.08);color:var(--green);">🚀 Judicial Activism</div>
+    <div class="fa">→</div>
+    <div class="fn" style="border-color:var(--red);background:rgba(176,26,26,0.08);color:var(--red);">If too much</div>
+    <div class="fa">→</div>
+    <div class="fn" style="border-color:var(--amber);background:rgba(212,106,16,0.08);color:var(--amber);">🛑 Overreach</div>
+    <div class="fa">→</div>
+    <div class="fn" style="border-color:var(--teal);background:rgba(10,96,112,0.08);color:var(--teal);">Balanced → 🔒 Restraint</div>
+    <div class="fa">→</div>
+    <div class="fn" style="border-color:var(--sky);background:rgba(26,88,120,0.08);color:var(--sky);">Public uses → 📢 PIL</div>
+  </div>
+</div>
+
+<!-- ══ SECTION 7: HIGH PROBABILITY ══ -->
+<div class="sec-label">⑦ 🔥 High Probability Prelims Areas</div>
+
+<div class="hotbox">
+  <h3>🔥 High Probability Prelims Topics</h3>
+  <div class="hot-grid">
+    <div class="hot-item">Articles supporting Judicial Review (13, 32, 131–136, 143, 226, 227)</div>
+    <div class="hot-item">Basic Structure doctrine — Kesavananda Bharati 1973</div>
+    <div class="hot-item">Art. 32 vs Art. 226 differences (SC vs HC PIL)</div>
+    <div class="hot-item">PIL scope &amp; exclusions — what can/cannot be filed</div>
+    <div class="hot-item">323A/323B vs Judicial Review (L. Chandra Kumar link)</div>
+    <div class="hot-item">Vishaka Case 1997 — Judicial Activism landmark</div>
+    <div class="hot-item">Absolute liability — MC Mehta 1987 vs strict liability</div>
+    <div class="hot-item">Advisory jurisdiction — India (Art.143) vs USA (No) vs UK (No)</div>
+  </div>
+</div>
+
+<!-- ══ KEYSTONE ══ -->
+<div class="keystone">
+  <div class="keystone-icon">⚖️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">India's judiciary evolved from being a passive interpreter to an active guardian. <strong style="color:#f5d78a;">Judicial Review is the power; Activism is how it's used; Restraint is the balance; PIL is the public access tool.</strong><br>The debate between Activism and Overreach defines modern constitutional jurisprudence in India.</div>
+    <div class="kpills">
+      <span class="kp">⚖️ Basic Structure</span>
+      <span class="kp">📜 Kesavananda 1973</span>
+      <span class="kp">📢 PIL = Public Tool</span>
+      <span class="kp">🌍 India Unique: Art.143</span>
+      <span class="kp">🚀 Activism vs Restraint</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function curve(svg,x1,y1,x2,y2,color,dashed,w){
+  const mx=(x1+x2)/2;
+  const p=se('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,stroke:color||'#b87c1060','stroke-width':w||1.8,fill:'none','stroke-dasharray':dashed?'5 4':'none'});
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.25)','stroke-width':'1.5'}));
+  let ty=y-(lines.length-1)*7.5-(sub?5:0)-(emoji?9:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=17;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10.5','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.4)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+// ── MASTER FLOW ──
+(function(){
+  const svg=document.getElementById('svgMasterFlow');
+  const steps=[
+    {x:80,  label:'Judicial Review', sub:'Constitutional power', fill:'#1a3a8a', emoji:'⚖️'},
+    {x:270, label:'Judicial Activism', sub:'Active rights protection', fill:'#1a6a3a', emoji:'🚀'},
+    {x:460, label:'PIL Filed', sub:'Art. 32 / Art. 226', fill:'#0a6070', emoji:'📢'},
+    {x:650, label:'Judgment', sub:'Directions / guidelines', fill:'#5a1a8a', emoji:'📜'},
+    {x:840, label:'Too Much?', sub:'Overreach risk', fill:'#b01a1a', emoji:'⚠️'},
+    {x:1030,label:'Judicial Restraint', sub:'Balanced approach', fill:'#b87c10', emoji:'🔒'},
+    {x:1230,label:'Democracy Upheld', sub:'Separation of powers', fill:'#1a5878', emoji:'🏛️'},
+  ];
+  const bg=se('rect',{x:0,y:0,width:1320,height:110,fill:'rgba(250,246,240,0.5)'});
+  svg.appendChild(bg);
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const nx=steps[i+1].x;
+      const p=se('path',{d:`M${s.x+75},55 L${nx-75},55`,stroke:'#b87c1050','stroke-width':'2',fill:'none','marker-end':`url(#arr${i})`});
+      // arrowhead
+      let defs=svg.querySelector('defs');
+      if(!defs){defs=se('defs',{});svg.insertBefore(defs,svg.firstChild);}
+      const m=se('marker',{id:`arr${i}`,markerWidth:'8',markerHeight:'8',refX:'6',refY:'4',orient:'auto'});
+      m.appendChild(se('path',{d:'M0,1 L7,4 L0,7 z',fill:'#b87c10'}));
+      defs.appendChild(m);
+      svg.appendChild(p);
+    }
+  });
+  steps.forEach(s=>node(svg,s.x,55,148,68,s.fill,[s.label],s.sub,s.emoji));
+})();
+
+// ── JUDICIAL REVIEW MAP ──
+(function(){
+  const svg=document.getElementById('svgJR');
+  const bg=se('rect',{x:0,y:0,width:1320,height:200,fill:'rgba(248,245,240,0.3)'});
+  svg.appendChild(bg);
+
+  // Central node
+  node(svg,660,100,200,58,'#1a3a8a',['Judicial Review'],'Constitutional Power','⚖️');
+
+  // Left nodes
+  const left=[
+    {x:110,y:50,  fill:'#b87c10',label:['Art. 13'],    sub:'FR violation = void',       emoji:'📋'},
+    {x:110,y:120, fill:'#1a6a3a',label:['Art. 32'],    sub:'SC enforcement',            emoji:'🏛️'},
+    {x:110,y:175, fill:'#0a6070',label:['Art. 226'],   sub:'HC enforcement',            emoji:'🔵'},
+    {x:310,y:40,  fill:'#5a1a8a',label:['Kesavananda'], sub:'Basic Structure 1973',     emoji:'📜'},
+    {x:310,y:160, fill:'#b01a1a',label:['Golaknath'],  sub:'FR protection 1967',        emoji:'🔴'},
+  ];
+  const right=[
+    {x:1200,y:50,  fill:'#d46a10',label:['I.R. Coelho'], sub:'9th Schedule review 2007',emoji:'⚖️'},
+    {x:1200,y:120, fill:'#1a5878',label:['Art. 143'],   sub:'Advisory Jurisdiction',     emoji:'💬'},
+    {x:1200,y:175, fill:'#2a5a2a',label:['Art. 131-136'],sub:'Appellate powers',        emoji:'📑'},
+    {x:1000,y:40,  fill:'#7a1a7a',label:['24th Amend.'], sub:'Parliament restores 1971', emoji:'🔧'},
+    {x:1000,y:160, fill:'#1a6060',label:['Basic Structure'],sub:'Indestructible core',  emoji:'🏗️'},
+  ];
+
+  left.forEach(n=>{curve(svg,n.x+80,n.y,556,100,'#1a3a8a40',true,1.5);node(svg,n.x,n.y,155,42,n.fill,[n.label[0]],n.sub,n.emoji);});
+  right.forEach(n=>{curve(svg,764,100,n.x-80,n.y,'#b87c1040',true,1.5);node(svg,n.x,n.y,165,42,n.fill,[n.label[0]],n.sub,n.emoji);});
+})();
+
+// ── SPECTRUM ──
+(function(){
+  const svg=document.getElementById('svgSpectrum');
+  const bg=se('rect',{x:0,y:0,width:1320,height:180,fill:'rgba(248,245,240,0.3)'});
+  svg.appendChild(bg);
+
+  // Spectrum bar
+  const grad=se('linearGradient',{id:'specGrad',x1:'0%',y1:'0%',x2:'100%',y2:'0%'});
+  grad.appendChild(se('stop',{offset:'0%','stop-color':'#1a3a8a','stop-opacity':'0.3'}));
+  grad.appendChild(se('stop',{offset:'40%','stop-color':'#1a6a3a','stop-opacity':'0.3'}));
+  grad.appendChild(se('stop',{offset:'70%','stop-color':'#d46a10','stop-opacity':'0.3'}));
+  grad.appendChild(se('stop',{offset:'100%','stop-color':'#b01a1a','stop-opacity':'0.3'}));
+  let defs=se('defs',{});defs.appendChild(grad);svg.insertBefore(defs,svg.firstChild);
+
+  svg.appendChild(se('rect',{x:60,y:83,width:1200,height:14,rx:7,ry:7,fill:'url(#specGrad)',stroke:'rgba(180,160,120,0.3)','stroke-width':'1'}));
+
+  // Tick marks
+  [160,460,720,1060,1200].forEach((x,i)=>{
+    svg.appendChild(se('line',{x1:x,y1:83,x2:x,y2:97,stroke:'rgba(0,0,0,0.2)','stroke-width':'1.5'}));
+  });
+
+  const specLabels=[
+    {x:80,  text:'PASSIVE',    color:'rgba(26,58,138,0.4)'},
+    {x:660, text:'BALANCED',   color:'rgba(26,106,58,0.5)'},
+    {x:1240,text:'EXCESSIVE',  color:'rgba(176,26,26,0.4)'},
+  ];
+  specLabels.forEach(l=>{
+    const t=se('text',{x:l.x,y:75,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace','letter-spacing':'2',fill:l.color});
+    t.textContent=l.text;svg.appendChild(t);
+  });
+
+  const concepts=[
+    {x:160,  fill:'#1a3a8a',label:['Judicial','Review'],   sub:'Constitutional basis', emoji:'⚖️'},
+    {x:460,  fill:'#1a6a3a',label:['Judicial','Activism'],  sub:'Active protection',   emoji:'🚀'},
+    {x:720,  fill:'#0a6070',label:['Judicial','Restraint'], sub:'Self-limitation',     emoji:'🔒'},
+    {x:1060, fill:'#d46a10',label:['Judicial','Overreach'], sub:'Excessive entry',     emoji:'⚠️'},
+  ];
+
+  concepts.forEach((c,i)=>{
+    const isTop=i%2===0;
+    const cy=isTop?42:140;
+    svg.appendChild(se('line',{x1:c.x,y1:isTop?60:83,x2:c.x,y2:isTop?83:63,stroke:c.fill+'80','stroke-width':'1.5','stroke-dasharray':'3 2'}));
+    node(svg,c.x,cy,145,52,c.fill,c.label,c.sub,c.emoji);
+  });
+
+  const t=se('text',{x:660,y:170,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:'rgba(120,100,60,0.5)','letter-spacing':'2'});
+  t.textContent='THE JUDICIAL SPECTRUM: FROM REVIEW TO OVERREACH';
+  svg.appendChild(t);
+})();
+
+// ── PIL MAP ──
+(function(){
+  const svg=document.getElementById('svgPIL');
+  const bg=se('rect',{x:0,y:0,width:1320,height:220,fill:'rgba(248,245,240,0.3)'});
+  svg.appendChild(bg);
+
+  node(svg,660,110,200,58,'#1a5878',['Public Interest','Litigation (PIL)'],'Social Action Litigation','📢');
+
+  const nodes=[
+    // Left
+    {x:100,y:50,  fill:'#1a5878',label:['Art. 32'],     sub:'Supreme Court',          emoji:'🏛️'},
+    {x:100,y:130, fill:'#0a6070',label:['Art. 226'],    sub:'High Courts',             emoji:'⚖️'},
+    {x:100,y:200, fill:'#1a6a3a',label:['1960s USA'],   sub:'Origin',                  emoji:'🌍'},
+    {x:310,y:50,  fill:'#b87c10',label:['Bonded Labour'],sub:'Bandhua 1983',           emoji:'⛓️'},
+    {x:310,y:165, fill:'#5a1a8a',label:['Environment'], sub:'MC Mehta 1987',           emoji:'🌿'},
+    // Right
+    {x:1210,y:50, fill:'#d46a10',label:['Vishaka 1997'],sub:'Sexual harassment',       emoji:'👩'},
+    {x:1210,y:130,fill:'#1a3a8a',label:['PUCL 1997'],   sub:'Right to legal aid',     emoji:'⚖️'},
+    {x:1210,y:200,fill:'#b01a1a',label:['Exclusions'],  sub:'No private disputes',     emoji:'❌'},
+    {x:1000,y:50, fill:'#1a6060',label:['Women Rights'],sub:'Scope of PIL',            emoji:'👩‍⚖️'},
+    {x:1000,y:165,fill:'#7a1a4a',label:['Child Abuse'], sub:'Scope of PIL',            emoji:'🧒'},
+  ];
+
+  nodes.forEach(n=>{
+    const isLeft=n.x<660;
+    const fx=isLeft?558:762;
+    curve(svg,fx,110,isLeft?n.x+80:n.x-80,n.y,isLeft?'#1a587845':'#0a607045',true,1.5);
+    node(svg,n.x,n.y,168,46,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+})();
+
+// ── COMPARATIVE MAP ── 3-column top-down layout
+(function(){
+  const svg=document.getElementById('svgCompare');
+  svg.setAttribute('viewBox','0 0 1320 340');
+  const bg=se('rect',{x:0,y:0,width:1320,height:340,fill:'rgba(248,245,240,0.3)'});
+  svg.appendChild(bg);
+
+  // Title label
+  const title=se('text',{x:660,y:22,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'3',fill:'rgba(120,100,60,0.5)'});
+  title.textContent='THREE JUDICIAL SYSTEMS — FEATURE COMPARISON';
+  svg.appendChild(title);
+
+  // Column centres
+  const cols = [220, 660, 1100];
+
+  // Country header nodes (row 1)
+  const countries = [
+    {x:cols[0], fill:'#c2560c', label:['🇮🇳 India'],  sub:'Integrated · Collegium System'},
+    {x:cols[1], fill:'#1a3a8a', label:['🇺🇸 USA'],    sub:'Dual Courts · Presidential Appt.'},
+    {x:cols[2], fill:'#7a1a1a', label:['🇬🇧 UK'],     sub:'Unitary · Parliamentary Sovereignty'},
+  ];
+  countries.forEach(c=>node(svg,c.x,58,230,56,c.fill,[c.label[0]],c.sub,''));
+
+  // Feature rows — 5 features, each row at y = 130, 185, 240, 295
+  // Features: Structure, Advisory Juris., Judicial Review, Tenure, Appointment
+  const features = [
+    {
+      label:'Structure',
+      vals:[
+        {x:cols[0],fill:'#b87c10',text:'Integrated',    sub:'Single unified hierarchy'},
+        {x:cols[1],fill:'#1a3a8a',text:'Dual Courts',   sub:'Federal + State systems'},
+        {x:cols[2],fill:'#7a1a1a',text:'Unitary',       sub:'Supreme Court at top'},
+      ]
+    },
+    {
+      label:'Advisory Juris.',
+      vals:[
+        {x:cols[0],fill:'#1a6a3a',text:'✅ Art. 143',   sub:'President can seek SC opinion'},
+        {x:cols[1],fill:'#555',   text:'❌ None',        sub:'Courts avoid advisory role'},
+        {x:cols[2],fill:'#555',   text:'❌ None',        sub:'Not part of UK system'},
+      ]
+    },
+    {
+      label:'Judicial Review',
+      vals:[
+        {x:cols[0],fill:'#5a1a8a',text:'Strong (limited)',sub:'Basic Structure doctrine'},
+        {x:cols[1],fill:'#1a6a3a',text:'Very Strong',    sub:'Marbury v Madison 1803'},
+        {x:cols[2],fill:'#b01a1a',text:'Limited',        sub:'Parliament is supreme'},
+      ]
+    },
+    {
+      label:'Tenure',
+      vals:[
+        {x:cols[0],fill:'#0a6070',text:'65 / 62 yrs',   sub:'SC = 65 · HC = 62 retirement'},
+        {x:cols[1],fill:'#1a5878',text:'Life Tenure',    sub:'No retirement age'},
+        {x:cols[2],fill:'#7a4010',text:'Upto 70 yrs',   sub:'Retirement age set'},
+      ]
+    },
+    {
+      label:'Appointment',
+      vals:[
+        {x:cols[0],fill:'#2a5a2a',text:'Collegium + President', sub:'President after consultation'},
+        {x:cols[1],fill:'#3a2a6a',text:'President + Senate',    sub:'Senate confirmation needed'},
+        {x:cols[2],fill:'#5a1a3a',text:'Crown on PM advice',    sub:'Lord Chancellor involved'},
+      ]
+    },
+  ];
+
+  const rowY = [130, 185, 240, 295, 330];
+  // Actually recompute for 5 features in 340px height: start 110, gap 50
+  const startY = 118, gap = 52;
+
+  features.forEach((feat, fi) => {
+    const fy = startY + fi * gap;
+
+    // Row label on left margin
+    const rl=se('text',{x:20,y:fy,'text-anchor':'start','dominant-baseline':'middle','font-size':'8','font-family':'DM Mono,monospace','letter-spacing':'1.5',fill:'rgba(120,100,60,0.55)'});
+    rl.textContent=feat.label.toUpperCase();
+    svg.appendChild(rl);
+
+    // Horizontal guide line
+    svg.appendChild(se('line',{x1:80,y1:fy,x2:1300,y2:fy,stroke:'rgba(200,180,140,0.15)','stroke-width':'1','stroke-dasharray':'4 4'}));
+
+    feat.vals.forEach(v=>{
+      // Vertical connector from country header to this row (only first feature)
+      if(fi===0){
+        svg.appendChild(se('line',{x1:v.x,y1:86,x2:v.x,y2:fy-22,stroke:v.fill+'55','stroke-width':'1.5','stroke-dasharray':'3 3'}));
+      } else {
+        svg.appendChild(se('line',{x1:v.x,y1:fy-26,x2:v.x,y2:fy-22,stroke:v.fill+'40','stroke-width':'1','stroke-dasharray':'2 2'}));
+      }
+      node(svg,v.x,fy,205,42,v.fill,[v.text],v.sub,'');
+    });
+  });
+
+  // Column separators
+  [440, 880].forEach(x=>{
+    svg.appendChild(se('line',{x1:x,y1:32,x2:x,y2:328,stroke:'rgba(200,180,140,0.2)','stroke-width':'1','stroke-dasharray':'5 4'}));
+  });
+})();
+
+// ── ARTICLES MAP ──
+(function(){
+  const svg=document.getElementById('svgArticles');
+  const bg=se('rect',{x:0,y:0,width:1320,height:180,fill:'rgba(248,245,240,0.3)'});
+  svg.appendChild(bg);
+
+  const articles=[
+    {x:80,   fill:'#b87c10',label:['Art. 13'],    sub:'FR violation = void'},
+    {x:250,  fill:'#1a3a8a',label:['Art. 32'],    sub:'SC + PIL — "Heart & Soul"'},
+    {x:430,  fill:'#1a6a3a',label:['Art. 131-136'],sub:'SC Original + Appellate'},
+    {x:620,  fill:'#5a1a8a',label:['Art. 143'],   sub:'Presidential Advisory — UNIQUE'},
+    {x:820,  fill:'#0a6070',label:['Art. 226'],   sub:'HC powers — wider scope'},
+    {x:1010, fill:'#d46a10',label:['Art. 227'],   sub:'HC superintendence'},
+    {x:1200, fill:'#b01a1a',label:['Art. 323A/B'],sub:'Tribunals — L.Chandra Kumar'},
+  ];
+
+  // Connect in a gentle wave pattern
+  articles.forEach((a,i)=>{
+    if(i<articles.length-1){
+      const nx=articles[i+1].x;
+      const y1=i%2===0?80:100;
+      const y2=(i+1)%2===0?80:100;
+      svg.appendChild(se('path',{d:`M${a.x+82},${y1} C${(a.x+nx)/2},${y1} ${(a.x+nx)/2},${y2} ${nx-82},${y2}`,stroke:'#b87c1040','stroke-width':'1.5',fill:'none','stroke-dasharray':'5 3'}));
+    }
+    const y=i%2===0?80:100;
+    node(svg,a.x,y,158,52,a.fill,[a.label[0]],a.sub,'');
+  });
+
+  const t=se('text',{x:660,y:165,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:'rgba(120,100,60,0.45)','letter-spacing':'2'});
+  t.textContent='KEY ARTICLES — JUDICIAL REVIEW CONSTITUTIONAL FRAMEWORK';
+  svg.appendChild(t);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panchayati Raj — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0f0e0c;--paper:#f9f6f0;--gold:#b87c10;--gold-lt:#f5d78a;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf5;--card2:#f2ede0;--sky:#1a5878;--earth:#5a3a1a;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 800px 500px at 10% 5%, rgba(184,124,16,0.07) 0%,transparent 60%),
+  radial-gradient(ellipse 600px 600px at 90% 95%, rgba(26,58,138,0.05) 0%,transparent 60%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1420px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:48px 16px 22px;position:relative;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,52px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--amber);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:100px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--green),var(--blue));margin:16px auto 0;border-radius:4px;}
+
+/* SECTION LABELS */
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:34px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+.g1x2{display:grid;grid-template-columns:1fr 2fr;gap:18px;margin-bottom:20px;}
+@media(max-width:960px){.g3,.g4{grid-template-columns:1fr 1fr;}.g2x1,.g1x2{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g2x1,.g1x2{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.pc:hover{box-shadow:0 8px 32px rgba(184,124,16,0.12);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.earth::before{background:var(--earth);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* MAP CARDS */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--earth),var(--amber),var(--gold));}
+.map-card.mc6::before{background:linear-gradient(90deg,var(--sky),var(--blue),var(--purple));}
+.map-card svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,96,112,0.12);color:var(--teal);}
+.pill.red{background:rgba(176,26,26,0.12);color:var(--red);}
+.pill.sky{background:rgba(26,88,120,0.12);color:var(--sky);}
+.pill.earth{background:rgba(90,58,26,0.12);color:var(--earth);}
+
+/* STAT BOXES */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* CHIPS */
+.ps-chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.ok{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.25);color:var(--green);}
+.ps-chip.no{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.ps-chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+
+/* FEAT GRID */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.ctable td:nth-child(2){color:var(--blue);font-weight:700;}
+
+/* VERTICAL LIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* FLOW */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.flow-node{padding:6px 12px;border-radius:8px;font-size:11px;font-weight:700;border:1.5px solid;}
+.flow-arr{font-size:18px;color:var(--muted);}
+
+/* IMPACT CHAIN */
+.impact-chain{display:flex;align-items:center;flex-wrap:wrap;gap:0;padding:6px 0;margin:8px 0;}
+.ic-node{padding:7px 12px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:14px;color:var(--muted);flex:0 0 auto;margin:0 4px;}
+
+/* PHASE BOXES */
+.phase-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0;}
+@media(max-width:800px){.phase-row{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;}
+.phase-title{font-size:12px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'DM Mono',monospace;margin-bottom:8px;color:var(--muted);}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;background:rgba(26,106,58,0.06);border:1.5px solid rgba(26,106,58,0.2);margin:8px 0;}
+.callout-title{font-size:11px;font-weight:800;color:var(--green);margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* BADGE */
+.side-badge{position:absolute;top:12px;right:14px;padding:3px 9px;border-radius:6px;font-size:9px;font-weight:700;font-family:'DM Mono',monospace;}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:28px;margin:10px 0;}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--amber),var(--gold),var(--green));border-radius:2px;}
+.tl-item{position:relative;margin-bottom:14px;}
+.tl-item::before{content:'';position:absolute;left:-22px;top:9px;width:12px;height:12px;border-radius:50%;border:2.5px solid var(--amber);background:var(--card);}
+.tl-item.green::before{border-color:var(--green);}
+.tl-item.blue::before{border-color:var(--blue);}
+.tl-item.purple::before{border-color:var(--purple);}
+.tl-item.gold::before{border-color:var(--gold);background:var(--gold);}
+.tl-year{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;color:var(--amber);margin-bottom:2px;}
+.tl-item.green .tl-year{color:var(--green);}
+.tl-item.blue .tl-year{color:var(--blue);}
+.tl-title{font-size:12px;font-weight:800;margin-bottom:2px;}
+.tl-sub{font-size:10px;color:var(--muted);}
+
+/* DIVIDER */
+.div-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:10px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Polity · Rural Governance · UPSC</div>
+  <h1>Panchayati Raj — <em>Mind Map</em></h1>
+  <div class="header-sub">Idea → Experiments → Committees → 73rd Amendment → Real Devolution</div>
+</div>
+
+<!-- SECTION 0: MASTER FLOW -->
+<div class="sec-label">Master Flow — The Connected Story</div>
+<div class="map-card mc1">
+  <svg id="svgMasterFlow" viewBox="0 0 1380 120" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- SECTION 1: WHAT IS PANCHAYATI RAJ -->
+<div class="sec-label">① What is Panchayati Raj?</div>
+<div class="map-card mc2">
+  <svg id="svgWhat" viewBox="0 0 1380 250" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-label">Core Definition</div>
+    <h3>🏘️ Rural Local Self-Government</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">73rd</div>
+        <div class="stat-sub">Amendment</div>
+        <div class="stat-label">1992 · EFF. 1993</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--green);">29</div>
+        <div class="stat-sub">Subjects</div>
+        <div class="stat-label">11TH SCHEDULE</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">3</div>
+        <div class="stat-sub">Tiers</div>
+        <div class="stat-label">GRAM→BLOCK→DIST</div>
+      </div>
+    </div>
+    <div class="impact-chain" style="margin-top:12px;">
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,106,16,0.08);color:var(--amber);">Centre/State</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--gold);background:rgba(184,124,16,0.08);color:var(--gold);">Decentralise</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.08);color:var(--green);">Village Level</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.08);color:var(--blue);">People Rule</div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Guiding Principles</div>
+    <h3>⚖️ Foundational Ideas</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">🏡</div><div class="ft">Rule by Five</div><div class="fs">Root: "Panch" = Five</div></div>
+      <div class="feat"><div class="fi">📍</div><div class="ft">Subsidiarity</div><div class="fs">Lowest possible level decides</div></div>
+      <div class="feat"><div class="fi">🗳️</div><div class="ft">Democratic Decentralisation</div><div class="fs">Power to the people</div></div>
+      <div class="feat"><div class="fi">🤝</div><div class="ft">People's Participation</div><div class="fs">PRI = development instrument</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;background:rgba(26,58,138,0.06);border-radius:8px;border:1px dashed var(--blue);">
+      <span style="font-size:10px;font-weight:800;color:var(--blue);">📜 Art. 40 (DPSP): State shall organise village panchayats · Local Govt = State Subject (7th Schedule)</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: HISTORICAL FLOW -->
+<div class="sec-label">② Historical Flow — From Ancient to Modern</div>
+<div class="map-card mc5">
+  <svg id="svgHistory" viewBox="0 0 1380 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc earth">
+    <div class="pc-label">Ancient & British Period</div>
+    <h3>🏺 Deep Roots, Weakened Autonomy</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">ANCIENT INDIA</div>
+        <div class="tl-title">Village Self-Rule</div>
+        <div class="tl-sub">Informal panchayats governed local affairs</div>
+      </div>
+      <div class="tl-item green">
+        <div class="tl-year">1870 · MAYO</div>
+        <div class="tl-title">Mayo's Resolution</div>
+        <div class="tl-sub">Financial decentralisation initiated</div>
+      </div>
+      <div class="tl-item blue">
+        <div class="tl-year">1882 · RIPON</div>
+        <div class="tl-title">Lord Ripon — Father of LSG</div>
+        <div class="tl-sub">First systematic local self-government</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1907</div>
+        <div class="tl-title">Royal Commission on Decentralisation</div>
+        <div class="tl-sub">Recognised village panchayats formally</div>
+      </div>
+      <div class="tl-item purple">
+        <div class="tl-year">1919 · MONTAGU-CHELMSFORD</div>
+        <div class="tl-title">Local Govt → Provinces</div>
+        <div class="tl-sub">Transferred to provincial list — but autonomy weakened</div>
+      </div>
+    </div>
+    <span class="ps-chip no" style="margin-top:4px;">⚠️ Overall autonomy weakened under British</span>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">Post-Independence</div>
+    <h3>🇮🇳 Constitutional Foundation & Committees</h3>
+    <div class="timeline">
+      <div class="tl-item gold">
+        <div class="tl-year">1950 · CONSTITUTION</div>
+        <div class="tl-title">Article 40 — DPSP</div>
+        <div class="tl-sub">State shall organise village panchayats</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1952</div>
+        <div class="tl-title">Community Development Programme</div>
+        <div class="tl-sub">Top-down rural development — largely failed</div>
+      </div>
+      <div class="tl-item green">
+        <div class="tl-year">1957 · BALWANT RAI MEHTA</div>
+        <div class="tl-title">First Major Committee</div>
+        <div class="tl-sub">3-tier system recommended · Rajasthan first (1959)</div>
+      </div>
+      <div class="tl-item blue">
+        <div class="tl-year">1977 · ASHOK MEHTA</div>
+        <div class="tl-title">2-Tier Recommendation</div>
+        <div class="tl-sub">Constitutional status demanded · Not implemented</div>
+      </div>
+      <div class="tl-item gold">
+        <div class="tl-year">1992 · 73rd AMENDMENT</div>
+        <div class="tl-title">Constitutional Status!</div>
+        <div class="tl-sub">Part IX · Articles 243–243O · Eff. 24 Apr 1993</div>
+      </div>
+    </div>
+    <span class="ps-chip ok" style="margin-top:4px;">✅ 24 April = National Panchayati Raj Day</span>
+  </div>
+</div>
+
+<!-- SECTION 3: COMMITTEES DEEP DIVE -->
+<div class="sec-label">③ Committees — Balwant Rai vs Ashok Mehta</div>
+<div class="map-card mc3">
+  <svg id="svgCommittees" viewBox="0 0 1380 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc amber">
+    <div class="pc-label">Balwant Rai Mehta Committee · 1957</div>
+    <h3>🏗️ The 3-Tier Blueprint</h3>
+    <div style="padding:10px 14px;border-radius:10px;background:rgba(212,106,16,0.07);border:1.5px solid rgba(212,106,16,0.2);margin-bottom:12px;">
+      <div style="font-size:10px;font-weight:800;color:var(--amber);margin-bottom:4px;">CONTEXT: Examined CDP (1952) & NES (1953)</div>
+      <div style="font-size:10px;color:var(--muted);">Community Development Programme failed → needed democratic local bodies</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🏘️ Gram Panchayat (Village)</div><div class="vs">Direct election · Basic unit</div></div>
+      <div class="vitem"><div class="vt">🏙️ Panchayat Samiti (Block)</div><div class="vs">Indirect election · Intermediate tier</div></div>
+      <div class="vitem"><div class="vt">🏛️ Zila Parishad (District)</div><div class="vs">Indirect election · Top tier</div></div>
+      <div class="vitem"><div class="vt">📐 District Planning Focus</div><div class="vs">Zila Parishad to lead planning</div></div>
+    </div>
+    <div class="callout" style="margin-top:10px;background:rgba(212,106,16,0.05);border-color:rgba(212,106,16,0.2);">
+      <div class="callout-title" style="color:var(--amber);">🏆 First Implemented in Rajasthan</div>
+      <div class="callout-body">Nagaur, 2 October 1959 — Nehru inaugurated PR system</div>
+    </div>
+    <span class="ps-chip ok" style="margin-top:8px;">✅ IMPLEMENTED</span>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-label">Ashok Mehta Committee · 1977</div>
+    <h3>🔄 The 2-Tier Reformulation</h3>
+    <div style="padding:10px 14px;border-radius:10px;background:rgba(90,26,138,0.07);border:1.5px solid rgba(90,26,138,0.2);margin-bottom:12px;">
+      <div style="font-size:10px;font-weight:800;color:var(--purple);margin-bottom:4px;">CONTEXT: Janata Party Govt · Post-Emergency</div>
+      <div style="font-size:10px;color:var(--muted);">Reviewed PR failures → wanted stronger, leaner structure</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🏛️ Zila Parishad (District) = Key Unit</div><div class="vs">District as primary planning unit</div></div>
+      <div class="vitem"><div class="vt">🏘️ Mandal Panchayat (Cluster)</div><div class="vs">Group of villages · Stronger base</div></div>
+      <div class="vitem"><div class="vt">🎭 Political Party Participation</div><div class="vs">Formal party involvement allowed</div></div>
+      <div class="vitem"><div class="vt">⚖️ Reservation SC/ST</div><div class="vs">Proportional seats mandated</div></div>
+      <div class="vitem"><div class="vt">📜 Constitutional Status Demanded</div><div class="vs">Major ask — came true in 1992</div></div>
+      <div class="vitem"><div class="vt">💰 Mandatory Taxation Powers</div><div class="vs">Financial autonomy for PRIs</div></div>
+      <div class="vitem"><div class="vt">🔍 Social Audit</div><div class="vs">Accountability mechanism proposed</div></div>
+    </div>
+    <span class="ps-chip no" style="margin-top:8px;">❌ NOT IMPLEMENTED · Janata Govt fell</span>
+  </div>
+</div>
+
+<!-- SECTION 4: 73rd AMENDMENT -->
+<div class="sec-label">④ 73rd Constitutional Amendment — Core UPSC Area</div>
+<div class="map-card mc4">
+  <svg id="svg73rd" viewBox="0 0 1380 260" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-label">Constitutional Additions</div>
+    <h3>📜 Part IX Framework</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Articles 243–243O</div><div class="vs">New Part IX added to Constitution</div></div>
+      <div class="vitem"><div class="vt">11th Schedule</div><div class="vs">29 subjects for PRIs</div></div>
+      <div class="vitem"><div class="vt">3-Tier System</div><div class="vs">For states with population &gt;20 lakh</div></div>
+      <div class="vitem"><div class="vt">Gram Sabha = Foundation</div><div class="vs">Basic unit of democracy</div></div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Elections & Tenure</div>
+    <h3>🗳️ Democratic Guarantees</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">5-Year Tenure</div><div class="vs">Fixed term, constitutionally guaranteed</div></div>
+      <div class="vitem"><div class="vt">State Election Commission</div><div class="vs">Mandatory independent SEC</div></div>
+      <div class="vitem"><div class="vt">Timely Elections</div><div class="vs">Must be held before expiry</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px;border-radius:9px;background:rgba(26,106,58,0.07);border:1px dashed var(--green);">
+      <div style="font-size:10px;font-weight:800;color:var(--green);">⚡ If dissolved early — elections within 6 months</div>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Reservations & Finance</div>
+    <h3>⚖️ Equity & Money</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">SC/ST Reservation</div><div class="vs">Proportionate to population</div></div>
+      <div class="vitem"><div class="vt">Women Reservation</div><div class="vs">At least 1/3rd seats reserved</div></div>
+      <div class="vitem"><div class="vt">State Finance Commission</div><div class="vs">Every 5 years — fund devolution</div></div>
+    </div>
+    <span class="ps-chip ok" style="margin-top:8px;">✅ Most progressive feature</span>
+  </div>
+</div>
+
+<!-- 3-TIER VISUAL -->
+<div class="pc gold" style="margin-bottom:20px;">
+  <div class="pc-label">The 3-Tier Structure</div>
+  <h3>🏛️ Gram → Block → District</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:4px;">
+    <div style="padding:16px;border-radius:12px;border:2px solid var(--green);background:rgba(26,106,58,0.05);text-align:center;">
+      <div style="font-size:24px;margin-bottom:6px;">🏘️</div>
+      <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:var(--green);">Gram Panchayat</div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);margin-top:4px;">VILLAGE LEVEL</div>
+      <div style="font-size:10px;margin-top:8px;line-height:1.6;color:var(--ink);">Direct elections<br>Gram Sabha = base<br>Day-to-day administration</div>
+      <span class="pill green" style="margin-top:8px;display:inline-block;">Tier 1 · Foundation</span>
+    </div>
+    <div style="padding:16px;border-radius:12px;border:2px solid var(--blue);background:rgba(26,58,138,0.05);text-align:center;">
+      <div style="font-size:24px;margin-bottom:6px;">🏙️</div>
+      <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:var(--blue);">Panchayat Samiti</div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);margin-top:4px;">BLOCK LEVEL</div>
+      <div style="font-size:10px;margin-top:8px;line-height:1.6;color:var(--ink);">Links village & district<br>Coordinates schemes<br>Block development</div>
+      <span class="pill blue" style="margin-top:8px;display:inline-block;">Tier 2 · Intermediate</span>
+    </div>
+    <div style="padding:16px;border-radius:12px;border:2px solid var(--amber);background:rgba(212,106,16,0.05);text-align:center;">
+      <div style="font-size:24px;margin-bottom:6px;">🏛️</div>
+      <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:var(--amber);">Zila Parishad</div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);margin-top:4px;">DISTRICT LEVEL</div>
+      <div style="font-size:10px;margin-top:8px;line-height:1.6;color:var(--ink);">Apex body at district<br>Planning & supervision<br>Major programmes</div>
+      <span class="pill amber" style="margin-top:8px;display:inline-block;">Tier 3 · Apex</span>
+    </div>
+  </div>
+  <div style="margin-top:12px;padding:10px 14px;background:rgba(184,124,16,0.07);border-radius:9px;border:1px dashed var(--gold);">
+    <span style="font-size:11px;font-weight:800;color:var(--amber);">📌 Note: </span>
+    <span style="font-size:10px;color:var(--muted);">3-tier mandatory only for states with population &gt;20 lakh. Smaller states may have 2 tiers. Gram Sabha is the foundation below all tiers.</span>
+  </div>
+</div>
+
+<!-- SECTION 5: POST-AMENDMENT COMMITTEES -->
+<div class="sec-label">⑤ Post-73rd Amendment Committees — Real Devolution Focus</div>
+<div class="map-card mc6">
+  <svg id="svgPostCommittees" viewBox="0 0 1380 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="pc sky" style="margin-bottom:20px;">
+  <div class="pc-label">Post-Constitution Reform Committees</div>
+  <h3>📚 Moving from Legal → Real Devolution</h3>
+  <table class="ctable">
+    <thead><tr><th>Year</th><th>Committee / Task Force</th><th>Focus Area</th></tr></thead>
+    <tbody>
+      <tr><td>2001</td><td>Task Force on Devolution — Lalit Mathur</td><td>Actual 3F transfer to PRIs</td></tr>
+      <tr><td>2005</td><td>Expert Group on Planning at Grassroots — V. Ramachandran</td><td>Bottom-up planning systems</td></tr>
+      <tr><td>2008</td><td>Task Force on District Planning — Rajwant Sandhu</td><td>District-level decentralisation</td></tr>
+      <tr><td>2010</td><td>Committee on Restructuring of DRDA</td><td>District Rural Development Agency reform</td></tr>
+      <tr><td>2012</td><td>Expert Committee on Leveraging Panchayats — Mani Shankar Aiyar</td><td>Strengthen planning + fiscal capacity</td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top:10px;padding:9px 12px;background:rgba(26,88,120,0.07);border-radius:8px;border:1px dashed var(--sky);">
+    <span style="font-size:10px;font-weight:800;color:var(--sky);">🎯 Common Theme: All focus on strengthening planning + district-level decentralisation post-73rd Amendment</span>
+  </div>
+</div>
+
+<!-- SECTION 6: QUICK PRELIMS POINTERS -->
+<div class="sec-label">⑥ Quick Prelims Pointers — High-Value Facts</div>
+<div class="map-card mc1">
+  <svg id="svgPrelims" viewBox="0 0 1380 140" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g4">
+  <div class="pc gold">
+    <div class="pc-label">Jurisdiction</div>
+    <h3>📋 Subject Matters</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Local Govt = State Subject</div><div class="vs">7th Schedule (State List)</div></div>
+      <div class="vitem"><div class="vt">73rd = Rural</div><div class="vs">Panchayati Raj</div></div>
+      <div class="vitem"><div class="vt">74th = Urban</div><div class="vs">Municipalities</div></div>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Key Dates</div>
+    <h3>📅 Important Years</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">1959 — First PR State</div><div class="vs">Rajasthan (Nagaur, 2 Oct)</div></div>
+      <div class="vitem"><div class="vt">1992 — 73rd Amendment</div><div class="vs">Constitutional Status</div></div>
+      <div class="vitem"><div class="vt">24 April 1993</div><div class="vs">Effective Date = PR Day</div></div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Constitutional Points</div>
+    <h3>📜 Article Numbers</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Article 40</div><div class="vs">DPSP — Organise panchayats</div></div>
+      <div class="vitem"><div class="vt">Articles 243–243O</div><div class="vs">Part IX provisions</div></div>
+      <div class="vitem"><div class="vt">11th Schedule</div><div class="vs">29 subjects</div></div>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">Mandatory Bodies</div>
+    <h3>🏛️ Must-Have Institutions</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Gram Sabha</div><div class="vs">Basic democratic unit</div></div>
+      <div class="vitem"><div class="vt">State Election Comm. (SEC)</div><div class="vs">Independent elections body</div></div>
+      <div class="vitem"><div class="vt">State Finance Comm. (SFC)</div><div class="vs">Every 5 years</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: BIGGER PICTURE -->
+<div class="sec-label">⑦ The Bigger Picture — From Idea to Empowerment</div>
+
+<div class="phase-row">
+  <div class="phase-box" style="border-color:var(--earth);background:rgba(90,58,26,0.04);">
+    <div class="phase-num" style="color:var(--earth);">Idea</div>
+    <div class="phase-title">Ancient Village Democracy</div>
+    <div class="phase-sub">Pre-colonial roots</div>
+    <div style="font-size:10px;margin-top:8px;line-height:1.6;color:var(--muted);">Village councils<br>Self-governance<br>Local custom law</div>
+    <span class="pill earth" style="margin-top:8px;">Traditional</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--amber);background:rgba(212,106,16,0.04);">
+    <div class="phase-num" style="color:var(--amber);">Exp.</div>
+    <div class="phase-title">Committees & Experiments</div>
+    <div class="phase-sub">1957–1992</div>
+    <div style="font-size:10px;margin-top:8px;line-height:1.6;color:var(--muted);">Balwant Rai · Ashok Mehta<br>Various state models<br>Rajasthan pioneered</div>
+    <span class="pill amber" style="margin-top:8px;">Testing Phase</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--blue);background:rgba(26,58,138,0.04);">
+    <div class="phase-num" style="color:var(--blue);">73rd</div>
+    <div class="phase-title">Constitutional Status</div>
+    <div class="phase-sub">1992–1993</div>
+    <div style="font-size:10px;margin-top:8px;line-height:1.6;color:var(--muted);">3-tier system<br>Elections mandated<br>Reservations secured</div>
+    <span class="pill blue" style="margin-top:8px;">Legal Framework</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--green);background:rgba(26,106,58,0.04);">
+    <div class="phase-num" style="color:var(--green);">3F</div>
+    <div class="phase-title">Real Devolution Challenge</div>
+    <div class="phase-sub">Ongoing</div>
+    <div style="font-size:10px;margin-top:8px;line-height:1.6;color:var(--muted);">Funds · Functions<br>Functionaries<br>Post-2001 committees</div>
+    <span class="pill green" style="margin-top:8px;">Making It Real</span>
+  </div>
+</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">What 73rd Amendment Achieved</div>
+    <h3>✅ Key Gains</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="ps-chip ok">✅ Constitutional status to PRIs</span>
+      <span class="ps-chip ok">✅ Regular elections mandated</span>
+      <span class="ps-chip ok">✅ Women's reservation (1/3rd)</span>
+      <span class="ps-chip ok">✅ SC/ST representation</span>
+      <span class="ps-chip ok">✅ Gram Sabha as foundation</span>
+      <span class="ps-chip ok">✅ Independent SEC & SFC</span>
+      <span class="ps-chip ok">✅ 29 subjects in 11th Schedule</span>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">Persistent Gap — 3F Problem</div>
+    <h3>⚠️ What Still Fails</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="ps-chip no">❌ Functions not transferred</span>
+      <span class="ps-chip no">❌ Funds inadequate</span>
+      <span class="ps-chip no">❌ Functionaries missing</span>
+      <span class="ps-chip no">❌ State interference</span>
+      <span class="ps-chip no">❌ Gram Sabha inactive</span>
+      <span class="ps-chip no">❌ Delayed elections in states</span>
+      <span class="ps-chip no">❌ SFC recs. ignored</span>
+    </div>
+  </div>
+</div>
+
+<!-- 73rd vs 74th -->
+<div class="pc teal" style="margin-bottom:20px;">
+  <div class="pc-label">73rd vs 74th Amendment — Quick Comparison</div>
+  <h3>🔄 Rural vs Urban Decentralisation</h3>
+  <table class="ctable">
+    <thead><tr><th>Feature</th><th>73rd Amendment (Rural)</th><th>74th Amendment (Urban)</th></tr></thead>
+    <tbody>
+      <tr><td>Scope</td><td>Panchayati Raj — Villages</td><td>Municipalities — Towns & Cities</td></tr>
+      <tr><td>Schedule</td><td>11th Schedule · 29 Subjects</td><td>12th Schedule · 18 Subjects</td></tr>
+      <tr><td>Part</td><td>Part IX (Art. 243–243O)</td><td>Part IX-A (Art. 243P–243ZG)</td></tr>
+      <tr><td>Effective</td><td>24 April 1993</td><td>1 June 1993</td></tr>
+      <tr><td>Key Body</td><td>Gram Sabha (village assembly)</td><td>Ward Committee</td></tr>
+      <tr><td>Elections</td><td>SEC mandatory</td><td>SEC mandatory (same)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🏘️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connected Idea</div>
+    <div class="keystone-sub">India's journey: traditional village councils → British experiments → constitutional directive (Art. 40) → committee blueprints (Balwant Rai, Ashok Mehta) → 73rd Amendment giving constitutional status → ongoing struggle for <strong style="color:#f5d78a;">real 3F devolution (Funds · Functions · Functionaries)</strong>.<br>The law is written. The soul is the Gram Sabha. The goal is genuine democratic participation in development.</div>
+    <div class="keystone-pills">
+      <span class="kpill">🌿 Idea = Decentralisation</span>
+      <span class="kpill">🏗️ Structure = 3-Tier</span>
+      <span class="kpill">❤️ Soul = Gram Sabha</span>
+      <span class="kpill">🎯 Goal = Democratic Participation</span>
+      <span class="kpill">⚡ Challenge = 3F Transfer</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a||{}))e.setAttribute(k,v);return e;}
+
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const d=`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`;
+  svg.appendChild(se('path',{d,stroke:color||'#aaa','stroke-width':w||2,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.65'}));
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx==null?10:rx;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.1)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.2)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7.5)-(sub?5:0)-(emoji?10:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'15',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=18;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.4)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+// MASTER FLOW
+(function(){
+  const svg=document.getElementById('svgMasterFlow');
+  const steps=[
+    {x:90,  label:['Ancient','Village Rule'],  sub:'Informal panchayats', fill:'#5a3a1a', emoji:'🏺'},
+    {x:260, label:['British Period'],          sub:'Ripon·Montagu·Reforms',fill:'#7a4010', emoji:'🏺'},
+    {x:432, label:['Art. 40 DPSP'],            sub:'Constitutional directive',fill:'#1a3a8a',emoji:'📜'},
+    {x:604, label:['Committees','(1957–77)'],  sub:'Balwant·Ashok Mehta',  fill:'#b87c10', emoji:'📋'},
+    {x:776, label:['73rd Amendment'],          sub:'1992 · Eff. 1993',     fill:'#b01a1a', emoji:'⚡'},
+    {x:948, label:['3-Tier System','Secured'], sub:'Gram·Block·District',   fill:'#5a1a8a', emoji:'🏗️'},
+    {x:1120,label:['3F Gap','Challenge'],      sub:'Funds·Fns·Functionaries',fill:'#d46a10',emoji:'⚠️'},
+    {x:1292,label:['Real','Devolution'],       sub:'Goal: Gram Sabha alive',fill:'#1a6a3a', emoji:'🌿'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1) edge(svg,s.x+75,60,steps[i+1].x-75,60,'#b87c1060',false,2);
+  });
+  steps.forEach(s=>node(svg,s.x,60,144,68,s.fill,s.label,s.sub,s.emoji));
+  const t=se('text',{x:690,y:18,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'3',fill:'rgba(120,100,60,0.4)'});
+  t.textContent='IDEA → EXPERIMENTS → COMMITTEES → 73RD AMENDMENT → REAL DEVOLUTION';
+  svg.appendChild(t);
+})();
+
+// WHAT IS PR: Hub & Spoke
+(function(){
+  const svg=document.getElementById('svgWhat');
+  // Centre node
+  node(svg,690,125,240,64,'#1a1208',['Panchayati Raj','Rural Self-Governance'],'People → Village → Development','🏘️');
+  
+  const spokes=[
+    {x:130, y:55,  fill:'#b87c10', lines:['Rule by Five'],         sub:'"Panch" = 5',              emoji:'✋'},
+    {x:360, y:40,  fill:'#1a3a8a', lines:['Subsidiarity'],         sub:'Lowest level decides',     emoji:'📍'},
+    {x:1020,y:40,  fill:'#1a6a3a', lines:['Democratic','Decentralisation'],sub:'Power flows down', emoji:'🔽'},
+    {x:1250,y:55,  fill:'#5a1a8a', lines:["People's","Participation"],sub:'PRI = dev. instrument',emoji:'🤝'},
+    {x:130, y:198, fill:'#d46a10', lines:['Art. 40 DPSP'],         sub:'State organise panchayats',emoji:'📜'},
+    {x:360, y:215, fill:'#0a6070', lines:['State Subject'],        sub:'7th Schedule',             emoji:'⚖️'},
+    {x:1020,y:215, fill:'#b01a1a', lines:['73rd Amendment'],       sub:'1992 · Part IX added',     emoji:'⚡'},
+    {x:1250,y:198, fill:'#1a5878', lines:['Gram Sabha','= Foundation'],sub:'Basic democratic unit',emoji:'🏡'},
+  ];
+  spokes.forEach(n=>{
+    const tx=n.x<690?n.x+76:n.x-76;
+    const ty=n.y<125?n.y+14:n.y-14;
+    edge(svg,tx,n.y,n.x<690?614:766,125,n.fill+'66',true,1.8);
+    node(svg,n.x,n.y,150,50,n.fill,n.lines,n.sub,n.emoji);
+  });
+  const t=se('text',{x:690,y:238,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace',fill:'rgba(26,106,58,0.45)','letter-spacing':'2'});
+  t.textContent='CORE IDEAS AND LEGAL FOUNDATIONS';
+  svg.appendChild(t);
+})();
+
+// HISTORY TIMELINE VISUAL
+(function(){
+  const svg=document.getElementById('svgHistory');
+  const eras=[
+    {x:100,  fill:'#5a3a1a', top:'Ancient India',   sub:'Village self-rule',        emoji:'🏺', year:'ANCIENT'},
+    {x:280,  fill:'#7a5020', top:'Mayo 1870',        sub:'Financial decentralise',   emoji:'💰', year:'1870'},
+    {x:460,  fill:'#8a4010', top:'Lord Ripon',       sub:'Father of LSG',            emoji:'👑', year:'1882'},
+    {x:640,  fill:'#6a3008', top:'Royal Commission', sub:'Village panchayats noted', emoji:'📋', year:'1907'},
+    {x:820,  fill:'#5a2008', top:'Montagu-Chelms.',  sub:'Local govt to provinces',  emoji:'🏛️', year:'1919'},
+    {x:1000, fill:'#1a3a8a', top:'Article 40',       sub:'DPSP directive',           emoji:'📜', year:'1950'},
+    {x:1160, fill:'#b87c10', top:'Balwant Rai',      sub:'3-tier recommended',       emoji:'🏗️', year:'1957'},
+    {x:1300, fill:'#1a6a3a', top:'73rd Amendment',   sub:'Constitutional status',    emoji:'⚡', year:'1992'},
+  ];
+
+  // timeline rail
+  svg.appendChild(se('line',{x1:40,y1:100,x2:1340,y2:100,stroke:'#ddd0b0','stroke-width':'2'}));
+
+  eras.forEach((e,i)=>{
+    // tick
+    svg.appendChild(se('line',{x1:e.x,y1:94,x2:e.x,y2:106,stroke:e.fill,'stroke-width':'2.5'}));
+    // circle
+    const c=se('circle',{cx:e.x,cy:100,r:8,fill:e.fill,stroke:'rgba(255,255,255,0.3)','stroke-width':'1.5'});
+    svg.appendChild(c);
+    const ey=se('text',{x:e.x,y:100,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10',fill:'#fff'});
+    ey.textContent=e.emoji;svg.appendChild(ey);
+    
+    const above=i%2===0;
+    const yt=above?78:126;
+    const yr=above?58:145;
+    
+    const tt=se('text',{x:e.x,y:yt,'text-anchor':'middle','font-size':'10','font-weight':'800','font-family':'Nunito,sans-serif',fill:e.fill});
+    tt.textContent=e.top;svg.appendChild(tt);
+    const ts=se('text',{x:e.x,y:yt+(above?-14:14),'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(100,80,50,0.7)'});
+    ts.textContent=e.sub;svg.appendChild(ts);
+    const ty2=se('text',{x:e.x,y:yr,'text-anchor':'middle','font-size':'8','font-weight':'700','font-family':'DM Mono,monospace',fill:e.fill+'cc'});
+    ty2.textContent=e.year;svg.appendChild(ty2);
+  });
+  
+  // Label
+  const t=se('text',{x:690,y:190,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:'rgba(90,58,26,0.5)','letter-spacing':'3'});
+  t.textContent='HISTORICAL EVOLUTION OF PANCHAYATI RAJ IN INDIA';
+  svg.appendChild(t);
+})();
+
+// COMMITTEES SVG: Two branches
+(function(){
+  const svg=document.getElementById('svgCommittees');
+  // Centre
+  node(svg,690,100,240,60,'#1a1208',['Committees on','Panchayati Raj'],'Shape the 3-tier system','📋');
+
+  // Balwant Rai branch (left)
+  const br=[
+    {x:160, y:50,  fill:'#d46a10', lines:['Balwant Rai','Mehta 1957'],  sub:'CDP+NES examined',      emoji:'📋'},
+    {x:120, y:155, fill:'#b87c10', lines:['3-Tier System'],             sub:'GP→PS→ZP',               emoji:'🏗️'},
+    {x:290, y:155, fill:'#7a4010', lines:['Direct + Indirect','Elections'],sub:'Village direct',      emoji:'🗳️'},
+    {x:120, y:240, fill:'#5a3010', lines:['Implemented','in Rajasthan'], sub:'Nagaur · Oct 1959',     emoji:'✅'},
+  ];
+  const am=[
+    {x:1220,y:50,  fill:'#5a1a8a', lines:['Ashok Mehta','Comm. 1977'],  sub:'Janata Party era',      emoji:'📋'},
+    {x:1090,y:155, fill:'#4a108a', lines:['2-Tier System'],             sub:'ZP + Mandal Panchayat', emoji:'🔄'},
+    {x:1270,y:155, fill:'#3a0878', lines:['Const. Status','Demanded'],  sub:'Major recommendation',  emoji:'📜'},
+    {x:1180,y:240, fill:'#2a0060', lines:['Not Implemented'],           sub:'Janata Govt. fell',      emoji:'❌'},
+  ];
+
+  // edges from centre
+  br.forEach(n=>{
+    edge(svg,n.x<690?590:790,100,n.x+(n.x<690?76:-76),n.y,n.fill+'66',true,1.6);
+  });
+  am.forEach(n=>{
+    edge(svg,790,100,n.x-76,n.y,n.fill+'66',true,1.6);
+  });
+
+  // inner connections
+  edge(svg,160,80,120,130,'#d46a1055',true,1.2);
+  edge(svg,160,80,290,130,'#d46a1055',true,1.2);
+  edge(svg,120,180,120,220,'#b87c1055',true,1.2);
+
+  edge(svg,1220,80,1090,130,'#5a1a8a55',true,1.2);
+  edge(svg,1220,80,1270,130,'#5a1a8a55',true,1.2);
+  edge(svg,1090,180,1180,218,'#4a108a55',true,1.2);
+
+  [...br,...am].forEach(n=>node(svg,n.x,n.y,158,52,n.fill,n.lines,n.sub,n.emoji));
+
+  // separator
+  svg.appendChild(se('line',{x1:690,y1:20,x2:690,y2:265,stroke:'rgba(200,180,140,0.2)','stroke-width':'1','stroke-dasharray':'5 4'}));
+  
+  const tl=se('text',{x:340,y:272,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:'rgba(212,106,16,0.5)','letter-spacing':'2'});
+  tl.textContent='BALWANT RAI MEHTA — IMPLEMENTED ✅'; svg.appendChild(tl);
+  const tr=se('text',{x:1040,y:272,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:'rgba(90,26,138,0.5)','letter-spacing':'2'});
+  tr.textContent='ASHOK MEHTA — NOT IMPLEMENTED ❌'; svg.appendChild(tr);
+})();
+
+// 73rd AMENDMENT SVG: Radial spokes from centre
+(function(){
+  const svg=document.getElementById('svg73rd');
+  node(svg,690,130,220,60,'#1a1208',['73rd Amendment','1992 · Part IX'],'Articles 243–243O','⚡');
+
+  const spokes=[
+    {x:160, y:60,  fill:'#1a3a8a', lines:['Articles','243–243O'],   sub:'Part IX added',         emoji:'📜'},
+    {x:400, y:40,  fill:'#0a6070', lines:['11th Schedule'],         sub:'29 Subjects for PRIs',  emoji:'📋'},
+    {x:980, y:40,  fill:'#1a6a3a', lines:['Gram Sabha'],            sub:'Basic democratic unit', emoji:'🏡'},
+    {x:1220,y:60,  fill:'#b87c10', lines:['5-Year Tenure'],         sub:'Fixed constitutional',  emoji:'📅'},
+    {x:160, y:205, fill:'#b01a1a', lines:['SC/ST Reservation'],     sub:'Proportionate seats',   emoji:'⚖️'},
+    {x:400, y:225, fill:'#5a1a8a', lines:['1/3rd Women'],           sub:'Seats reserved women',  emoji:'👩'},
+    {x:980, y:225, fill:'#d46a10', lines:['State Finance','Comm.'], sub:'Every 5 years · SFC',   emoji:'💰'},
+    {x:1220,y:205, fill:'#2a6870', lines:['State Election','Comm.'],sub:'Independent SEC',       emoji:'🗳️'},
+  ];
+
+  spokes.forEach(n=>{
+    const tx=n.x<690?n.x+76:n.x-76;
+    edge(svg,tx,n.y,n.x<690?580:800,130,n.fill+'55',true,1.8);
+    node(svg,n.x,n.y,160,52,n.fill,n.lines,n.sub,n.emoji);
+  });
+
+  const t=se('text',{x:690,y:248,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace',fill:'rgba(26,106,58,0.5)','letter-spacing':'2'});
+  t.textContent='8 KEY PROVISIONS — 73RD CONSTITUTIONAL AMENDMENT';
+  svg.appendChild(t);
+})();
+
+// POST-AMENDMENT COMMITTEES: Linear flow
+(function(){
+  const svg=document.getElementById('svgPostCommittees');
+  const steps=[
+    {x:110, label:['2001','Lalit Mathur'],     sub:'Devolution TF',        fill:'#1a3a8a', emoji:'📋'},
+    {x:338, label:['2005','Ramachandran'],     sub:'Grassroots planning',  fill:'#0a6070', emoji:'📐'},
+    {x:566, label:['2008','Rajwant Sandhu'],   sub:'District planning TF', fill:'#1a6a3a', emoji:'🏗️'},
+    {x:794, label:['2010','DRDA Reform'],      sub:'Restructure DRDA',     fill:'#b87c10', emoji:'🔄'},
+    {x:1022,label:['2012','M.S. Aiyar'],       sub:'Leverage panchayats',  fill:'#5a1a8a', emoji:'💡'},
+    {x:1260,label:['Goal','Real 3F'],          sub:'Funds·Fns·Staff',      fill:'#1a6a3a', emoji:'🎯'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1) edge(svg,s.x+96,90,steps[i+1].x-96,90,'#1a3a8a55',false,2);
+  });
+  steps.forEach(s=>node(svg,s.x,90,180,62,s.fill,s.label,s.sub,s.emoji));
+  const t=se('text',{x:690,y:20,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'3',fill:'rgba(26,58,138,0.4)'});
+  t.textContent='POST-73RD AMENDMENT: FOCUS ON REAL DEVOLUTION OF 3F (FUNDS · FUNCTIONS · FUNCTIONARIES)';
+  svg.appendChild(t);
+  const t2=se('text',{x:690,y:168,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:'rgba(26,88,120,0.5)','letter-spacing':'2'});
+  t2.textContent='LAW WRITTEN IN 1992 — MAKING IT REAL IS THE ONGOING CHALLENGE';
+  svg.appendChild(t2);
+})();
+
+// QUICK PRELIMS: Radial facts
+(function(){
+  const svg=document.getElementById('svgPrelims');
+  const facts=[
+    {x:100, fill:'#1a3a8a', lines:['Local Govt =','State Subject'], sub:'7th Schedule',   emoji:'📋'},
+    {x:290, fill:'#1a6a3a', lines:['73rd = Rural','PR Institutions'],sub:'Panchayati Raj',emoji:'🌿'},
+    {x:480, fill:'#0a6070', lines:['74th = Urban','Municipalities'], sub:'Town governance',emoji:'🏙️'},
+    {x:670, fill:'#b87c10', lines:['Art. 40 DPSP'],                  sub:'Directive principle',emoji:'📜'},
+    {x:860, fill:'#5a1a8a', lines:['11th Schedule','29 Subjects'],   sub:'For PRIs',        emoji:'📑'},
+    {x:1050,fill:'#d46a10', lines:['Gram Sabha =','Basic Unit'],     sub:'Village assembly', emoji:'🏡'},
+    {x:1240,fill:'#b01a1a', lines:['SEC & SFC','Mandatory'],         sub:'Every 5 years',   emoji:'🏛️'},
+  ];
+  facts.forEach(f=>node(svg,f.x,70,172,56,f.fill,f.lines,f.sub,f.emoji));
+  const t=se('text',{x:690,y:130,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:'rgba(120,100,50,0.4)','letter-spacing':'3'});
+  t.textContent='HIGH-YIELD PRELIMS FACTS — PANCHAYATI RAJ';
+  svg.appendChild(t);
+})();
+</script>
+</body>
+</html>

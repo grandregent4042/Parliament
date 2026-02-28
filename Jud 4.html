@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Judiciary & ADR — Complete Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f4f1ea;
+  --paper:#fffdf8;
+  --ink:#1a1510;
+  --gold:#c4900a;
+  --gold-lt:#f5dfa0;
+  --amber:#d4660a;
+  --green:#1a6040;
+  --blue:#1a3a78;
+  --purple:#5a1a7a;
+  --teal:#0a6068;
+  --red:#a01818;
+  --sky:#1a5070;
+  --muted:#7a6a50;
+  --border:#ddd0b0;
+  --card:#fffdf5;
+  --card2:#f2ede0;
+  --shadow:rgba(60,40,10,0.10);
+}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 800px 600px at 5% 5%,rgba(196,144,10,0.06) 0%,transparent 60%),
+    radial-gradient(ellipse 700px 700px at 95% 95%,rgba(26,58,120,0.05) 0%,transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 28px 120px;}
+
+/* ── HEADER ── */
+.header{text-align:center;padding:52px 16px 28px;}
+.header-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,56px);line-height:1.08;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-desc{font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:1px;margin-top:10px;}
+.header::after{content:'';display:block;width:100px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));border-radius:4px;margin:18px auto 0;}
+
+/* ── SECTION LABEL ── */
+.sec-label{display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin:40px 0 18px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:22px;}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;margin-bottom:22px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:22px;}
+@media(max-width:960px){.g3,.g4{grid-template-columns:1fr 1fr;}.g2x1{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g2x1{grid-template-columns:1fr;}}
+
+/* ── PANEL CARD ── */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px 20px;position:relative;overflow:hidden;box-shadow:0 2px 12px var(--shadow);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.dark::before{background:var(--ink);}
+.pc-lbl{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;line-height:1.3;margin-bottom:12px;display:flex;align-items:center;gap:7px;}
+
+/* ── MAP CARD ── */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;box-shadow:0 3px 18px var(--shadow);}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--sky));}
+.mc5::before{background:linear-gradient(90deg,var(--purple),var(--blue),var(--teal));}
+.map-card svg{display:block;width:100%;}
+
+/* ── PILLS / CHIPS ── */
+.pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:9.5px;font-weight:700;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.gold{background:rgba(196,144,10,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,96,64,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,58,120,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,102,10,0.12);color:var(--amber);}
+.pill.purple{background:rgba(90,26,122,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,96,104,0.12);color:var(--teal);}
+.pill.red{background:rgba(160,24,24,0.12);color:var(--red);}
+.pill.sky{background:rgba(26,80,112,0.12);color:var(--sky);}
+.pill.ink{background:rgba(26,21,16,0.10);color:var(--ink);}
+
+/* ── STAT BOXES ── */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;line-height:1;}
+.stat-lbl{font-size:8.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:2px;}
+.stat-sub{font-size:10px;font-weight:700;margin-top:3px;}
+
+/* ── VERTICAL LIST ── */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vi{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vi .vt{font-weight:700;margin-bottom:1px;}
+.vi .vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ── FEAT GRID ── */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:9px 11px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:15px;margin-bottom:3px;}
+.feat .ft{font-size:10.5px;font-weight:700;}
+.feat .fs{font-size:8.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:1px;}
+
+/* ── KEYSTONE ── */
+.keystone{background:var(--ink);color:#f0e8d0;border-radius:18px;padding:26px 32px;margin:22px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;box-shadow:0 6px 30px rgba(26,21,16,0.22);}
+.keystone-icon{font-size:42px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:6px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.65;}
+.kpills{display:flex;gap:9px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.10);font-size:10px;font-family:'JetBrains Mono',monospace;letter-spacing:0.4px;}
+
+/* ── COMPARISON TABLE ── */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;border-radius:12px;overflow:hidden;}
+.ctable th{background:var(--ink);color:#f0e8d0;padding:8px 12px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(196,144,10,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+
+/* ── FLOW CHAIN ── */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:10px 0;}
+.fn{padding:6px 12px;border-radius:8px;font-size:10.5px;font-weight:700;border:1.5px solid;}
+.farr{font-size:16px;color:var(--muted);}
+
+/* ── PHASE ── */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:18px;border-radius:13px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;}
+.phase-title{font-size:12px;font-weight:800;margin:5px 0 3px;}
+.phase-sub{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);}
+
+/* ── TAG ── */
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.tag.ok{background:#d4edda;color:#155724;}
+.tag.na{background:#f8d7da;color:#721c24;}
+.tag.nu{background:#fff3cd;color:#856404;}
+
+/* ── HOTSPOT ── */
+.hotspot{padding:12px 14px;border-radius:10px;background:rgba(160,24,24,0.06);border:1.5px solid rgba(160,24,24,0.2);margin:10px 0;}
+.hotspot-title{font-size:10.5px;font-weight:800;color:var(--red);margin-bottom:3px;}
+.hotspot-body{font-size:9.5px;color:var(--muted);line-height:1.55;}
+
+/* ── CALLOUT ── */
+.callout{padding:11px 13px;border-radius:9px;background:rgba(26,96,64,0.06);border:1.5px solid rgba(26,96,64,0.2);margin:8px 0;}
+.callout-title{font-size:10.5px;font-weight:800;color:var(--green);margin-bottom:3px;}
+.callout-body{font-size:9.5px;color:var(--muted);line-height:1.55;}
+
+/* ── SIDE BADGE ── */
+.sb{position:absolute;top:12px;right:14px;padding:3px 9px;border-radius:6px;font-size:8.5px;font-weight:700;font-family:'JetBrains Mono',monospace;}
+
+.div-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:8px 0;}
+
+/* Animation */
+.reveal{animation:fadeUp 0.5s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ══════ HEADER ══════ -->
+<div class="header reveal">
+  <div class="header-eyebrow">Indian Polity · Judiciary · UPSC Prelims</div>
+  <h1>Subordinate Courts, ADR &amp; <em>Tribunals</em></h1>
+  <div class="header-desc">Articles 233–237 · NALSA · Lok Adalat · 42nd Amendment · CAT</div>
+</div>
+
+<!-- ══════ SECTION 0: MASTER FLOW ══════ -->
+<div class="sec-label">0 · Master Pyramid — Full Judiciary</div>
+<div class="map-card mc1 reveal">
+  <svg id="svgPyramid" viewBox="0 0 1360 285" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ══════ SECTION 1: SUBORDINATE COURTS ══════ -->
+<div class="sec-label">1 · Subordinate Courts — Articles 233–237</div>
+
+<div class="map-card mc2 reveal">
+  <svg id="svgSubCourts" viewBox="0 0 1360 310" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3 reveal">
+  <div class="pc blue">
+    <div class="pc-lbl">Article 233</div>
+    <h3>⚖️ District Judges</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Appointed by Governor</div><div class="vs">In consultation with High Court</div></div>
+      <div class="vi"><div class="vt">Qualification</div><div class="vs">Not in govt service · Advocate 7 yrs · HC recommendation</div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="pill blue">Art. 233</span>
+      <span class="pill ink">Governor + HC</span>
+    </div>
+  </div>
+
+  <div class="pc green">
+    <div class="pc-lbl">Article 234</div>
+    <h3>👨‍⚖️ Other Judicial Appointments</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Governor appoints</div><div class="vs">Consultation with SPSC + High Court</div></div>
+      <div class="vi"><div class="vt">State Public Service Commission</div><div class="vs">Mandatory consultation body</div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="pill green">Art. 234</span>
+      <span class="pill ink">Governor + SPSC + HC</span>
+    </div>
+  </div>
+
+  <div class="pc amber">
+    <div class="pc-lbl">Article 235</div>
+    <h3>🏛️ High Court Control</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">📍</div><div class="ft">Posting</div><div class="fs">HC decides placement</div></div>
+      <div class="feat"><div class="fi">🔼</div><div class="ft">Promotion</div><div class="fs">HC recommends</div></div>
+      <div class="feat"><div class="fi">🌴</div><div class="ft">Leave</div><div class="fs">HC grants leave</div></div>
+      <div class="feat"><div class="fi">🔄</div><div class="ft">Transfer</div><div class="fs">HC controls transfer</div></div>
+    </div>
+    <div class="callout" style="margin-top:10px;"><div class="callout-title">Purpose</div><div class="callout-body">Ensures judicial independence at the state level — lower judiciary free from executive control.</div></div>
+  </div>
+</div>
+
+<!-- Court hierarchy below HC -->
+<div class="pc gold reveal" style="margin-bottom:22px;">
+  <div class="pc-lbl">Court Structure Below High Court</div>
+  <h3>📊 Hierarchy &amp; Jurisdiction</h3>
+  <div class="g2" style="margin:0;">
+    <div>
+      <div class="flow" style="flex-direction:column;align-items:flex-start;gap:0;">
+        <div style="padding:10px 16px;border-radius:8px 8px 0 0;background:rgba(26,58,120,0.1);border:1.5px solid rgba(26,58,120,0.2);width:100%;font-weight:700;font-size:11px;color:var(--blue);">🏛️ High Court</div>
+        <div style="width:2px;height:14px;background:var(--border);margin-left:32px;"></div>
+        <div style="padding:10px 16px;border-radius:8px;background:rgba(212,102,10,0.09);border:1.5px solid rgba(212,102,10,0.2);width:100%;font-weight:700;font-size:11px;color:var(--amber);">⚖️ District &amp; Sessions Court</div>
+        <div style="width:2px;height:14px;background:var(--border);margin-left:32px;"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;">
+          <div style="padding:9px 12px;border-radius:8px;background:rgba(26,96,64,0.09);border:1.5px solid rgba(26,96,64,0.2);font-size:10.5px;font-weight:700;color:var(--green);">📄 Civil Courts</div>
+          <div style="padding:9px 12px;border-radius:8px;background:rgba(90,26,122,0.09);border:1.5px solid rgba(90,26,122,0.2);font-size:10.5px;font-weight:700;color:var(--purple);">🔨 Magistrate Courts</div>
+        </div>
+        <div style="width:2px;height:14px;background:var(--border);margin-left:32px;"></div>
+        <div style="padding:9px 12px;border-radius:8px;background:rgba(10,96,104,0.09);border:1.5px solid rgba(10,96,104,0.2);width:100%;font-size:10.5px;font-weight:700;color:var(--teal);">🏘️ Panchayat Courts / Small Causes</div>
+      </div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">District Judge</div><div class="vs">Civil + Appellate powers</div></div>
+      <div class="vi"><div class="vt">Sessions Judge</div><div class="vs">Criminal · Can award life imprisonment &amp; death penalty (HC confirmation required)</div></div>
+      <div class="vi"><div class="vt">Metropolitan Magistrate</div><div class="vs">Criminal cases in metro areas</div></div>
+      <div class="vi"><div class="vt">Small Causes Court</div><div class="vs">Minor civil disputes</div></div>
+    </div>
+  </div>
+  <div class="hotspot" style="margin-top:12px;"><div class="hotspot-title">🔥 Prelims Alert — Sessions Judge</div><div class="hotspot-body">Sessions Judge can award death penalty BUT requires confirmation from High Court. This is a commonly tested fact.</div></div>
+</div>
+
+<!-- ══════ SECTION 2: GRAM NYAYALAYAS ══════ -->
+<div class="sec-label">2 · Gram Nyayalayas — Justice at Grassroots</div>
+
+<div class="map-card mc3 reveal">
+  <svg id="svgGram" viewBox="0 0 1360 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2 reveal">
+  <div class="pc green">
+    <div class="pc-lbl">Structure &amp; Presiding Officer</div>
+    <h3>🌾 Gram Nyayalaya Setup</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Established at Intermediate Panchayat Level</div><div class="vs">Grassroots rural justice delivery</div></div>
+      <div class="vi"><div class="vt">Presiding Officer — Nyayadhikari</div><div class="vs">Judicial Magistrate First Class rank</div></div>
+      <div class="vi"><div class="vt">Handles Civil + Criminal matters</div><div class="vs">Summary procedure for quick disposal</div></div>
+      <div class="vi"><div class="vt">Not bound by Indian Evidence Act</div><div class="vs">Follows principles of natural justice</div></div>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-lbl">Appeals &amp; Legal Status</div>
+    <h3>📋 Decisions &amp; Appeals</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--purple);">Criminal</div>
+        <div class="stat-sub">→ Sessions Court</div>
+        <div class="stat-lbl">APPEAL ROUTE</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">Civil</div>
+        <div class="stat-sub">→ District Court</div>
+        <div class="stat-lbl">APPEAL ROUTE</div>
+      </div>
+    </div>
+    <div class="callout"><div class="callout-title">Decision Status</div><div class="callout-body">Decision of Gram Nyayalaya is treated as a <strong>decree</strong> — legally enforceable under civil law.</div></div>
+    <div style="margin-top:8px;"><span class="pill green">Rural Access</span><span class="pill teal">Summary Procedure</span><span class="pill purple">Decree Status</span></div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 3: ADR ══════ -->
+<div class="sec-label">3 · Alternate Dispute Resolution (ADR) — 4 Types</div>
+
+<div class="map-card mc4 reveal">
+  <svg id="svgADR" viewBox="0 0 1360 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g4 reveal">
+  <div class="pc blue">
+    <div class="pc-lbl">ADR Type 1</div>
+    <h3>⚖️ Arbitration</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Binding Decision</div><div class="vs">Arbitration &amp; Conciliation Act, 1996</div></div>
+      <div class="vi"><div class="vt">Arbitrator decides</div><div class="vs">Award is final &amp; enforceable</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="tag ok">BINDING</span></div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-lbl">ADR Type 2</div>
+    <h3>🤝 Conciliation</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Amicable Settlement</div><div class="vs">Conciliator assists parties</div></div>
+      <div class="vi"><div class="vt">Parties-driven outcome</div><div class="vs">Less adversarial than arbitration</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="tag nu">SEMI-BINDING</span></div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-lbl">ADR Type 3</div>
+    <h3>🗣️ Mediation</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Facilitator Role</div><div class="vs">Mediator guides, doesn't decide</div></div>
+      <div class="vi"><div class="vt">Non-binding</div><div class="vs">Parties retain full control</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="tag na">NON-BINDING</span></div>
+  </div>
+  <div class="pc green">
+    <div class="pc-lbl">ADR Type 4</div>
+    <h3>💬 Negotiation</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Direct Settlement</div><div class="vs">No third party involved</div></div>
+      <div class="vi"><div class="vt">Most informal</div><div class="vs">Parties negotiate directly</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="tag na">NON-BINDING</span></div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 4: NALSA & LOK ADALAT ══════ -->
+<div class="sec-label">4 · NALSA &amp; Lok Adalat — People's Justice</div>
+
+<div class="map-card mc5 reveal">
+  <svg id="svgNALSA" viewBox="0 0 1360 300" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2 reveal">
+  <div class="pc sky">
+    <div class="pc-lbl">NALSA — Est. 1987/1995</div>
+    <h3>🏛️ National Legal Services Authority</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Legal Services Authorities Act, 1987</div><div class="vs">Effective from 1995</div></div>
+      <div class="vi"><div class="vt">Constitutional Basis — Article 39A</div><div class="vs">Free legal aid; also Art. 14 &amp; 21</div></div>
+    </div>
+    <div class="div-line"></div>
+    <div style="font-size:10.5px;font-weight:700;margin-bottom:6px;">Beneficiaries of Free Legal Services:</div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="pill blue">Women</span>
+      <span class="pill blue">SC/ST</span>
+      <span class="pill blue">Disabled</span>
+      <span class="pill blue">Disaster Victims</span>
+      <span class="pill blue">Low-Income</span>
+    </div>
+    <div class="callout" style="margin-top:10px;"><div class="callout-title">Key Functions</div><div class="callout-body">Organises Lok Adalats · Legal awareness campaigns · Free legal representation</div></div>
+  </div>
+
+  <div class="pc gold">
+    <div class="pc-lbl">Lok Adalat — People's Court</div>
+    <h3>⚡ Lok Adalat Features</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Award is Final &amp; Binding</div><div class="vs">No appeal lies — treated as decree</div></div>
+      <div class="vi"><div class="vt">Informal, Affordable, Speedy</div><div class="vs">No court fees; accessible to all</div></div>
+      <div class="vi"><div class="vt">No jurisdiction over Non-Compoundable offences</div><div class="vs">Only compoundable cases</div></div>
+      <div class="vi"><div class="vt">Pecuniary Limit</div><div class="vs">Raised to ₹1 Crore</div></div>
+    </div>
+    <div class="hotspot" style="margin-top:10px;">
+      <div class="hotspot-title">🔥 Prelims Alert — Lok Adalat Award</div>
+      <div class="hotspot-body">Award is final, binding, NO appeal. Treated as decree of Civil Court. Commonly tested!</div>
+    </div>
+  </div>
+</div>
+
+<!-- Lok Adalat Types -->
+<div class="g3 reveal">
+  <div class="pc teal">
+    <div class="pc-lbl">Type 1</div>
+    <h3>🌐 National Lok Adalat</h3>
+    <div class="vi"><div class="vt">Held on fixed dates nationally</div><div class="vs">Simultaneous across all courts</div></div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-lbl">Type 2</div>
+    <h3>🏛️ State Lok Adalat</h3>
+    <div class="vi"><div class="vt">State-level sittings</div><div class="vs">Covers state + district cases</div></div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-lbl">Type 3</div>
+    <h3>🔒 Permanent Lok Adalat</h3>
+    <div class="vi"><div class="vt">Public Utility Services only</div><div class="vs">Transport · Electricity · Postal · Insurance · Hospitals</div></div>
+    <div style="margin-top:8px;"><span class="tag ok">PERMANENT BODY</span></div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 5: TRIBUNALS ══════ -->
+<div class="sec-label">5 · Tribunals — Part XIV-A (42nd Amendment, 1976)</div>
+
+<div class="map-card mc1 reveal">
+  <svg id="svgTrib" viewBox="0 0 1360 290" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- 323A vs 323B comparison -->
+<div class="pc dark reveal" style="margin-bottom:20px;background:rgba(26,21,16,0.04);border-color:rgba(26,21,16,0.15);">
+  <div class="pc-lbl">Comparison — 42nd Amendment</div>
+  <h3 style="font-family:'Playfair Display',serif;">⚖️ Article 323A vs Article 323B</h3>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Art. 323A — Administrative</th>
+        <th>Art. 323B — Other Matters</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Subject Matter</td><td>Public service matters</td><td>Taxation, labour, land reforms etc.</td></tr>
+      <tr><td>Who Can Create</td><td>Only Parliament</td><td>Parliament + State Legislature</td></tr>
+      <tr><td>Hierarchy</td><td>No hierarchy of tribunals</td><td>Hierarchy possible</td></tr>
+      <tr><td>Examples</td><td>CAT, SAT</td><td>NGT, ITAT, CESTAT</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CAT details -->
+<div class="g2 reveal">
+  <div class="pc red">
+    <div class="pc-lbl">Art. 323A — Central Administrative Tribunal</div>
+    <h3>🏢 CAT — Est. 1985</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--red);">1985</div>
+        <div class="stat-sub">Year Established</div>
+        <div class="stat-lbl">UNDER ART. 323A</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">4 yrs</div>
+        <div class="stat-sub">Member Tenure</div>
+        <div class="stat-lbl">TERM</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vi"><div class="vt">Covers Central Govt Employees</div><div class="vs">Service matters, recruitment, promotion</div></div>
+      <div class="vi"><div class="vt">Excludes: Armed Forces, SC Staff, Parliament Staff</div><div class="vs">These have separate mechanisms</div></div>
+      <div class="vi"><div class="vt">Chairperson — max 70 years</div><div class="vs">Members — max 67 years</div></div>
+    </div>
+    <div class="hotspot" style="margin-top:10px;">
+      <div class="hotspot-title">🔑 L. Chandra Kumar Case (1997)</div>
+      <div class="hotspot-body">SC restored HC power of judicial review over CAT decisions. Tribunals cannot oust HC jurisdiction — landmark ruling.</div>
+    </div>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-lbl">Tribunal Reforms Act, 2021</div>
+    <h3>📋 Rationalisation of Tribunals</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Uniform Pay Structure</div><div class="vs">Standard salary across tribunals</div></div>
+      <div class="vi"><div class="vt">Search-cum-Selection Committee</div><div class="vs">Standardised appointment process</div></div>
+      <div class="vi"><div class="vt">4-Year Tenure (uniform)</div><div class="vs">Applies to all tribunal members</div></div>
+      <div class="vi"><div class="vt">Removal Grounds</div><div class="vs">Insolvency · Incapacity · Misconduct</div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="pill purple">Rationalised</span><span class="pill ink">2021 Act</span></div>
+  </div>
+</div>
+
+<!-- Tribunal vs Court -->
+<div class="pc sky reveal" style="margin-bottom:22px;">
+  <div class="pc-lbl">Distinction</div>
+  <h3>🏛️ Tribunal vs Regular Court</h3>
+  <div class="g2" style="margin:0;">
+    <div style="padding:14px;border-radius:10px;background:rgba(26,58,120,0.06);border:1.5px solid rgba(26,58,120,0.18);">
+      <div style="font-weight:800;font-size:12px;color:var(--blue);margin-bottom:8px;">⚖️ Regular Court</div>
+      <div class="vlist">
+        <div class="vi" style="font-size:10.5px;"><div class="vt">Part of traditional judiciary</div></div>
+        <div class="vi" style="font-size:10.5px;"><div class="vt">Judges fully independent</div></div>
+        <div class="vi" style="font-size:10.5px;"><div class="vt">Can review legislation</div></div>
+        <div class="vi" style="font-size:10.5px;"><div class="vt">Unlimited jurisdiction</div></div>
+      </div>
+    </div>
+    <div style="padding:14px;border-radius:10px;background:rgba(10,96,104,0.06);border:1.5px solid rgba(10,96,104,0.18);">
+      <div style="font-weight:800;font-size:12px;color:var(--teal);margin-bottom:8px;">🏢 Tribunal</div>
+      <div class="vlist">
+        <div class="vi" style="font-size:10.5px;"><div class="vt">Statutory body (not judiciary)</div></div>
+        <div class="vi" style="font-size:10.5px;"><div class="vt">Tenure controlled by statute</div></div>
+        <div class="vi" style="font-size:10.5px;"><div class="vt">Cannot test constitutional validity</div></div>
+        <div class="vi" style="font-size:10.5px;"><div class="vt">Subject to HC judicial review (post-1997)</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 6: QUICK FIRE PRELIMS ══════ -->
+<div class="sec-label">6 · Prelims Hot Spots — Must Remember</div>
+
+<div class="g3 reveal">
+  <div class="pc red">
+    <div class="pc-lbl">Articles 233–237</div>
+    <h3>🔥 Subordinate Courts Key Facts</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Art. 233 — District Judge appointment</div><div class="vs">Governor + HC consultation</div></div>
+      <div class="vi"><div class="vt">7 Years Advocate</div><div class="vs">Minimum qualification for District Judge (not in govt service)</div></div>
+      <div class="vi"><div class="vt">Art. 235 — HC control</div><div class="vs">Posting, Promotion, Leave, Transfer</div></div>
+      <div class="vi"><div class="vt">Sessions Judge — Death Penalty</div><div class="vs">Requires HC confirmation</div></div>
+    </div>
+  </div>
+
+  <div class="pc gold">
+    <div class="pc-lbl">NALSA &amp; Lok Adalat</div>
+    <h3>🔥 Legal Aid Hot Facts</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Article 39A</div><div class="vs">Constitutional basis for free legal aid</div></div>
+      <div class="vi"><div class="vt">Act — 1987; Effective — 1995</div><div class="vs">Legal Services Authorities Act</div></div>
+      <div class="vi"><div class="vt">Lok Adalat Award — Final &amp; Binding</div><div class="vs">No appeal, treated as decree</div></div>
+      <div class="vi"><div class="vt">Pecuniary Limit — ₹1 Crore</div><div class="vs">Raised for Lok Adalat</div></div>
+    </div>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-lbl">Tribunals</div>
+    <h3>🔥 Tribunal Key Facts</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">42nd Amendment (1976)</div><div class="vs">Inserted Part XIV-A — Tribunals</div></div>
+      <div class="vi"><div class="vt">323A vs 323B</div><div class="vs">Parliament only vs Parliament + States</div></div>
+      <div class="vi"><div class="vt">L. Chandra Kumar 1997</div><div class="vs">HC judicial review over tribunals restored</div></div>
+      <div class="vi"><div class="vt">Tribunal Reforms Act 2021</div><div class="vs">4-year tenure, uniform pay</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ KEYSTONE ══════ -->
+<div class="keystone reveal">
+  <div class="keystone-icon">⚖️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">India's judiciary extends from the Supreme Court down to Gram Nyayalayas. <strong style="color:#f5d78a;">Subordinate courts are under HC control; ADR mechanisms reduce court burden; Tribunals provide specialist justice but remain subject to HC judicial review (L. Chandra Kumar, 1997).</strong><br>NALSA + Lok Adalat = Free + Fast justice for the poor. 42nd Amendment = foundation of the tribunal system.</div>
+    <div class="kpills">
+      <span class="kpill">Art. 233–237</span>
+      <span class="kpill">Art. 39A</span>
+      <span class="kpill">42nd Amendment</span>
+      <span class="kpill">L. Chandra Kumar</span>
+      <span class="kpill">4-yr Tenure</span>
+      <span class="kpill">₹1 Cr Limit</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,attrs){
+  const el=document.createElementNS(NS,tag);
+  for(const[k,v]of Object.entries(attrs)) el.setAttribute(k,v);
+  return el;
+}
+
+function drawNode(svg,x,y,w,h,fill,lines,sub,emoji,rx){
+  rx=rx||11;
+  const g=document.createElementNS(NS,'g');
+  // shadow
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.12)'}));
+  // body
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.22)','stroke-width':'1.5'}));
+
+  // ── Calculate total content height, then centre it ──
+  const LINE_H = 15;   // px between main text lines
+  const emojiH = emoji ? 18 : 0;
+  const emojiGap = emoji ? 5 : 0;
+  const subH = sub ? 13 : 0;
+  const subGap = sub ? 4 : 0;
+  const mainTextH = lines.length * LINE_H;
+  const totalContent = emojiH + emojiGap + mainTextH + subGap + subH;
+  let cursor = y - totalContent/2 + (emojiH>0 ? emojiH/2 : LINE_H/2);
+
+  if(emoji){
+    const em=se('text',{x,y:cursor,'text-anchor':'middle','dominant-baseline':'middle','font-size':'15',fill:'rgba(255,255,255,0.9)'});
+    em.textContent=emoji; g.appendChild(em);
+    cursor += emojiH + emojiGap;
+  }
+
+  lines.forEach((ln,i)=>{
+    const t=se('text',{x,y:cursor+i*LINE_H,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Outfit,sans-serif',fill:'#fff'});
+    t.textContent=ln; g.appendChild(t);
+  });
+  cursor += mainTextH;
+
+  if(sub){
+    cursor += subGap;
+    const s=se('text',{x,y:cursor,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'JetBrains Mono,monospace',fill:'rgba(255,255,255,0.70)'});
+    s.textContent=sub; g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+
+function drawEdge(svg,x1,y1,x2,y2,color,dashed,w){
+  const mx=(x1+x2)/2, my=(y1+y2)/2;
+  const d=`M${x1},${y1} C${x1},${my} ${x2},${my} ${x2},${y2}`;
+  const p=se('path',{d,stroke:color||'#c4900a','stroke-width':w||2,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.6'});
+  svg.appendChild(p);
+}
+
+function drawLine(svg,x1,y1,x2,y2,color,w){
+  svg.appendChild(se('line',{x1,y1,x2,y2,stroke:color||'#c4900a','stroke-width':w||2,opacity:'0.55'}));
+}
+
+function label(svg,x,y,text,size,color,weight,family,spacing){
+  const t=se('text',{x,y,'text-anchor':'middle','font-size':size||10,'font-weight':weight||'400','font-family':family||'Outfit,sans-serif',fill:color||'#7a6a50','letter-spacing':spacing||'0'});
+  t.textContent=text; svg.appendChild(t);
+}
+
+// ── PYRAMID ──
+(function(){
+  const svg=document.getElementById('svgPyramid');
+  const W=1360, H=285;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+
+  svg.appendChild(se('rect',{x:0,y:0,width:W,height:H,fill:'rgba(248,245,238,0.5)'}));
+
+  const NH=64;
+  const levels=[
+    {x:680,y:40,  w:210,h:NH,fill:'#1a1208',lines:['Supreme Court'],        sub:'Apex court of India',    emoji:'🏛️'},
+    {x:680,y:118, w:250,h:NH,fill:'#1a3a78',lines:['High Courts'],           sub:'Art. 214–231',           emoji:'⚖️'},
+    {x:680,y:196, w:300,h:NH,fill:'#d4660a',lines:['District & Sessions'],   sub:'Art. 233–237',           emoji:'📜'},
+  ];
+  const side=[
+    {x:175, y:128,w:215,h:NH,fill:'#1a6040',lines:['Magistrate / Civil'],    sub:'Below District Court',   emoji:'📋'},
+    {x:1185,y:128,w:215,h:NH,fill:'#5a1a7a',lines:['Gram Nyayalayas'],       sub:'Intermediate Panchayat', emoji:'🌾'},
+  ];
+  const parallel=[
+    {x:155, y:258,w:170,h:NH,fill:'#a01818',lines:['ADR'],                   sub:'Arb · Con · Med · Neg',  emoji:'🤝'},
+    {x:355, y:258,w:170,h:NH,fill:'#c4900a',lines:['Lok Adalat'],            sub:"People's Court",         emoji:'⚡'},
+    {x:1005,y:258,w:170,h:NH,fill:'#0a6068',lines:['NALSA'],                 sub:'Free Legal Aid',         emoji:'🏛️'},
+    {x:1205,y:258,w:170,h:NH,fill:'#3a1a7a',lines:['Tribunals'],             sub:'Art. 323A / 323B',       emoji:'🏢'},
+  ];
+
+  for(let i=0;i<levels.length-1;i++){
+    drawLine(svg,680,levels[i].y+NH/2,680,levels[i+1].y-NH/2,'#c4900a55',2);
+  }
+  drawEdge(svg,680,196,175,128,'#1a604055',true,1.5);
+  drawEdge(svg,680,196,1185,128,'#5a1a7a55',true,1.5);
+
+  levels.forEach(n=>drawNode(svg,n.x,n.y,n.w,n.h,n.fill,n.lines,n.sub,n.emoji));
+  side.forEach(n=>drawNode(svg,n.x,n.y,n.w,n.h,n.fill,n.lines,n.sub,n.emoji));
+  parallel.forEach(n=>drawNode(svg,n.x,n.y,n.w,n.h,n.fill,n.lines,n.sub,n.emoji,8));
+})();
+
+// ── SUBORDINATE COURTS MIND MAP ──
+(function(){
+  const svg=document.getElementById('svgSubCourts');
+  const W=1360, H=310;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.appendChild(se('rect',{x:0,y:0,width:W,height:H,fill:'rgba(248,245,238,0.4)'}));
+
+  const NH=72, cNH=78;
+  // Center node has 2 lines so needs more height
+  drawNode(svg,680,155,240,cNH,'#1a1208',['Subordinate Courts','Articles 233–237'],'Part VI of Constitution','⚖️');
+
+  const nodes=[
+    {x:185,y:60,  fill:'#1a3a78', lines:['Art. 233'],        sub:'District Judge appt.',        emoji:'📜'},
+    {x:185,y:155, fill:'#1a6040', lines:['Art. 234'],         sub:'Other Judicial Appointments', emoji:'👨‍⚖️'},
+    {x:185,y:250, fill:'#d4660a', lines:['Art. 235'],         sub:'HC Control over lower cts.',  emoji:'🏛️'},
+    {x:490,y:60,  fill:'#5a1a7a', lines:['District Judge'],   sub:'Civil + Appellate powers',    emoji:'📋'},
+    {x:490,y:250, fill:'#0a6068', lines:['Sessions Judge'],   sub:'Criminal · Death Penalty',    emoji:'🔨'},
+    {x:870,y:60,  fill:'#a01818', lines:['Metro Magistrate'], sub:'Urban criminal courts',       emoji:'🏙️'},
+    {x:870,y:250, fill:'#c4900a', lines:['Small Causes Ct.'], sub:'Minor civil disputes',        emoji:'📄'},
+    {x:1185,y:60, fill:'#1a5070', lines:['Governor','Appoints'], sub:'In consult. with HC/SPSC', emoji:'🤝'},
+    {x:1185,y:250,fill:'#3a1a7a', lines:['HC Controls'],      sub:'Posting · Promo · Leave',     emoji:'🔄'},
+  ];
+
+  nodes.forEach(n=>{
+    const fromX=n.x<680?562:798;
+    const midY=n.y<155?135:(n.y>155?175:155);
+    const toX=n.x<680?n.x+88:(n.x>900?n.x-88:n.x-86);
+    drawEdge(svg,fromX,midY,toX,n.y,'#c4900a44',true,1.5);
+    drawNode(svg,n.x,n.y,185,NH,n.fill,n.lines,n.sub,n.emoji);
+  });
+})();
+
+// ── GRAM NYAYALAYA FLOW ──
+(function(){
+  const svg=document.getElementById('svgGram');
+  const W=1360, H=220;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.appendChild(se('rect',{x:0,y:0,width:W,height:H,fill:'rgba(248,245,238,0.4)'}));
+
+  const NH=80, CY=105;
+  const items=[
+    {x:110,  fill:'#1a1208', lines:['Established at','Intermediate Panchayat'], sub:'Grassroots rural level',    emoji:'🌾', w:188},
+    {x:325,  fill:'#1a6040', lines:['Nyayadhikari','Presides'],                  sub:'JMFC rank officer',         emoji:'👨‍⚖️',w:188},
+    {x:540,  fill:'#1a3a78', lines:['Civil + Criminal','Summary Procedure'],     sub:'Quick disposal of cases',   emoji:'⚡', w:188},
+    {x:755,  fill:'#d4660a', lines:['Not Bound by','Evidence Act'],              sub:'Natural justice principles', emoji:'📋', w:188},
+    {x:970,  fill:'#5a1a7a', lines:['Criminal Appeal','→ Sessions Court'],       sub:'Criminal route',            emoji:'🔼', w:188},
+    {x:1255, fill:'#0a6068', lines:['Civil Appeal','→ District Court'],          sub:'Civil route',               emoji:'📄', w:188},
+  ];
+
+  // Draw arrows between nodes
+  for(let i=0;i<items.length-1;i++){
+    const ax=items[i].x+94, bx=items[i+1].x-94, ay=CY;
+    drawLine(svg,ax,ay,bx,ay,'#c4900a66',2);
+    svg.appendChild(se('polygon',{points:`${bx},${ay-5} ${bx+10},${ay} ${bx},${ay+5}`,fill:'#c4900a66'}));
+  }
+
+  items.forEach(n=>drawNode(svg,n.x,CY,n.w,NH,n.fill,n.lines,n.sub,n.emoji));
+
+  // Decree badge
+  svg.appendChild(se('rect',{x:570,y:185,width:220,height:20,rx:10,ry:10,fill:'rgba(26,96,64,0.14)',stroke:'rgba(26,96,64,0.35)','stroke-width':'1'}));
+  const dt=se('text',{x:680,y:195,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9','font-weight':'700','font-family':'JetBrains Mono,monospace',fill:'#1a6040'});
+  dt.textContent='DECISION = DECREE STATUS · NOT BOUND BY EVIDENCE ACT'; svg.appendChild(dt);
+})();
+
+// ── ADR MIND MAP ──
+(function(){
+  const svg=document.getElementById('svgADR');
+  const W=1360, H=280;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.appendChild(se('rect',{x:0,y:0,width:W,height:H,fill:'rgba(248,245,238,0.4)'}));
+
+  const CNH=78, NH=72;
+  drawNode(svg,680,140,230,CNH,'#1a1208',['Alternate Dispute','Resolution (ADR)'],'Without regular court litigation','🤝');
+
+  const types=[
+    {x:195, y:72,  fill:'#1a3a78', lines:['Arbitration'],   sub:'Binding · Act 1996',     emoji:'⚖️', note:'BINDING',     ncol:'#1a3a78'},
+    {x:195, y:210, fill:'#1a6040', lines:['Conciliation'],   sub:'Amicable settlement',    emoji:'🕊️', note:'SEMI-BIND.',   ncol:'#1a6040'},
+    {x:1165,y:72,  fill:'#5a1a7a', lines:['Mediation'],      sub:'Facilitator, non-bind.', emoji:'🗣️', note:'NON-BINDING',  ncol:'#5a1a7a'},
+    {x:1165,y:210, fill:'#d4660a', lines:['Negotiation'],    sub:'Direct settlement',      emoji:'💬', note:'INFORMAL',     ncol:'#d4660a'},
+  ];
+
+  types.forEach(n=>{
+    const fx=n.x<680?596:764;
+    const fy=n.y<140?122:(n.y>140?158:140);
+    drawEdge(svg,fx,fy,n.x+(n.x<680?88:-88),n.y,'#c4900a44',true,1.8);
+  });
+
+  types.forEach(n=>{
+    drawNode(svg,n.x,n.y,190,NH,n.fill,n.lines,n.sub,n.emoji);
+    // binding badge BELOW the node
+    const bw=80, bh=17, bx=n.x-bw/2, by=n.y+NH/2+4;
+    svg.appendChild(se('rect',{x:bx,y:by,width:bw,height:bh,rx:5,ry:5,fill:n.ncol+'28',stroke:n.ncol+'66','stroke-width':'1'}));
+    const bt=se('text',{x:n.x,y:by+8,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8','font-weight':'700','font-family':'JetBrains Mono,monospace',fill:n.ncol});
+    bt.textContent=n.note; svg.appendChild(bt);
+  });
+
+  label(svg,680,268,'Arbitration & Conciliation Act, 1996 · Reduces court pendency · Time & cost effective',9,'rgba(120,100,60,0.45)','600','JetBrains Mono,monospace','0.5');
+})();
+
+// ── NALSA & LOK ADALAT ──
+(function(){
+  const svg=document.getElementById('svgNALSA');
+  const W=1360, H=300;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.appendChild(se('rect',{x:0,y:0,width:W,height:H,fill:'rgba(248,245,238,0.4)'}));
+
+  const NH=72, CNH=80;
+  drawNode(svg,680,150,250,CNH,'#1a1208',['NALSA & Lok Adalat',"People's Justice System"],'Art. 39A · Free Legal Aid','⚡');
+
+  const left=[
+    {x:175, y:60,  fill:'#1a5070', lines:['NALSA'],           sub:'Est.1987 / Eff. 1995',      emoji:'🏛️'},
+    {x:175, y:150, fill:'#1a3a78', lines:['Article 39A'],     sub:'Free legal aid basis',       emoji:'📜'},
+    {x:175, y:245, fill:'#1a6040', lines:['Beneficiaries'],   sub:'Women · SC/ST · Disabled',   emoji:'👥'},
+  ];
+  const right=[
+    {x:1185,y:60,  fill:'#c4900a', lines:['Lok Adalat'],      sub:"People's Court",             emoji:'⚡'},
+    {x:1185,y:150, fill:'#d4660a', lines:['Award — Final'],   sub:'No appeal · Decree status',  emoji:'🔒'},
+    {x:1185,y:245, fill:'#5a1a7a', lines:['₹1 Crore Limit'], sub:'Pecuniary limit raised',      emoji:'💰'},
+  ];
+  const mid=[
+    {x:450, y:60,  fill:'#0a6068', lines:['Nat. Lok Adalat'],  sub:'Fixed dates nationally',    emoji:'🌐'},
+    {x:450, y:245, fill:'#3a1a7a', lines:['Perm. Lok Adalat'], sub:'Public utility services',   emoji:'🔒'},
+    {x:910, y:60,  fill:'#a01818', lines:['No Jurisdiction'],  sub:'Non-compoundable offences', emoji:'🚫'},
+    {x:910, y:245, fill:'#1a6040', lines:['State Lok Adalat'], sub:'State-level sittings',      emoji:'🏛️'},
+  ];
+
+  [...left,...right].forEach(n=>{
+    const fx=n.x<680?556:804;
+    const fy=n.y<150?122:(n.y>150?178:150);
+    drawEdge(svg,fx,fy,n.x+(n.x<680?88:-88),n.y,'#c4900a44',true,1.8);
+    drawNode(svg,n.x,n.y,185,NH,n.fill,n.lines,n.sub,n.emoji);
+  });
+  mid.forEach(n=>{
+    const fx=n.x<680?556:804;
+    const fy=n.y<150?126:(n.y>150?174:150);
+    drawEdge(svg,fx,fy,n.x+(n.x<680?82:-82),n.y,'#c4900a33',true,1.5);
+    drawNode(svg,n.x,n.y,178,NH,n.fill,n.lines,n.sub,n.emoji);
+  });
+})();
+
+// ── TRIBUNALS MIND MAP ──
+(function(){
+  const svg=document.getElementById('svgTrib');
+  const W=1360, H=290;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.appendChild(se('rect',{x:0,y:0,width:W,height:H,fill:'rgba(248,245,238,0.4)'}));
+
+  const NH=72, CNH=80;
+  drawNode(svg,680,145,255,CNH,'#1a1208',['Tribunals — Part XIV-A','42nd Amendment 1976'],'Art. 323A & 323B','🏢');
+
+  const nodes=[
+    {x:175, y:58,  fill:'#a01818', lines:['42nd Amendment','1976'],        sub:'Inserted Part XIV-A',         emoji:'📜'},
+    {x:175, y:148, fill:'#1a3a78', lines:['Article 323A'],                 sub:'Administrative Tribunals',    emoji:'🏢'},
+    {x:175, y:238, fill:'#5a1a7a', lines:['CAT — Est. 1985'],              sub:'Central Govt. employees',     emoji:'🗃️'},
+    {x:490, y:55,  fill:'#0a6068', lines:['Article 323B'],                 sub:'Taxation · Labour · Land',    emoji:'📋'},
+    {x:490, y:240, fill:'#c4900a', lines:['Only Parliament','(Art. 323A)'],sub:'States too for 323B',         emoji:'🏛️'},
+    {x:870, y:55,  fill:'#d4660a', lines:['L. Chandra Kumar','1997'],      sub:'HC review restored',          emoji:'⚖️'},
+    {x:870, y:240, fill:'#3a1a7a', lines:['4-Year Tenure'],                sub:'Tribunal Reforms Act 2021',   emoji:'📅'},
+    {x:1185,y:58,  fill:'#1a6040', lines:['Tribunal ≠ Court'],             sub:'Statutory body',              emoji:'🔍'},
+    {x:1185,y:240, fill:'#1a5070', lines:['Removal Grounds'],              sub:'Insolvency · Incapacity',     emoji:'🔔'},
+  ];
+
+  nodes.forEach(n=>{
+    const fx=n.x<680?554:806;
+    const fy=n.y<145?126:(n.y>145?164:145);
+    const toX=n.x<680?n.x+90:(n.x>900?n.x-90:n.x-82);
+    drawEdge(svg,fx,fy,toX,n.y,'#c4900a44',true,1.8);
+    drawNode(svg,n.x,n.y,180,NH,n.fill,n.lines,n.sub,n.emoji);
+  });
+})();
+</script>
+</body>
+</html>

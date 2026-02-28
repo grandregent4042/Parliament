@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centre–State Relations — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f6f2eb;--ink:#1a1510;--card:#ffffff;
+  --gold:#c9920e;--gold-lt:#fdf3d8;--amber:#d4640a;--amber-lt:#fce8d4;
+  --blue:#1b3f7f;--blue-lt:#dce6f8;--green:#1a5c35;--green-lt:#d6eed9;
+  --purple:#5b1f8a;--purple-lt:#ead6f8;--teal:#0a5c6e;--teal-lt:#ccecf2;
+  --red:#a81c1c;--red-lt:#f5d6d6;--sky:#1a5070;--sky-lt:#cce4f0;
+  --muted:#7a6a50;--border:#e2d8c4;
+}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    radial-gradient(ellipse 900px 500px at 10% 8%, rgba(201,146,14,0.06) 0%,transparent 60%),
+    radial-gradient(ellipse 700px 700px at 90% 92%, rgba(27,63,127,0.05) 0%,transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");}
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 28px 120px;}
+
+/* ── HEADER ── */
+.header{text-align:center;padding:52px 16px 24px;}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,54px);font-weight:700;line-height:1.1;}
+.header h1 em{font-style:italic;color:var(--amber);}
+.header-desc{margin-top:10px;font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:1.5px;}
+.hbar{width:140px;height:5px;border-radius:4px;overflow:hidden;margin:18px auto 0;display:flex;}
+.hbar span{flex:1;}
+
+/* ── SECTION LABEL ── */
+.sec{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin:36px 0 16px;display:flex;align-items:center;gap:14px;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g21{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:960px){.g3,.g4{grid-template-columns:1fr 1fr;}.g21{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g21{grid-template-columns:1fr;}}
+
+/* ── PANEL CARDS ── */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:18px;position:relative;overflow:hidden;transition:box-shadow .25s,transform .2s;}
+.pc:hover{box-shadow:0 8px 32px rgba(0,0,0,0.08);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;border-radius:14px 14px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.blue::before{background:var(--blue);}
+.pc.green::before{background:var(--green);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.amber::before{background:var(--amber);}
+.pc.sky::before{background:var(--sky);}
+.pc.dark{background:var(--ink);border-color:rgba(255,255,255,0.08);}
+.pc.dark::before{display:none;}
+.pc-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.pc h3{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* ── SVG FLOW CARD ── */
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;position:relative;margin-bottom:24px;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc.c1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.mc.c2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.mc.c3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.mc.c4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.mc svg{display:block;width:100%;}
+
+/* ── VLIST ── */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vi{padding:9px 12px;border-radius:9px;background:var(--bg);border:1px solid var(--border);font-size:11px;}
+.vi .vt{font-weight:700;font-size:11.5px;margin-bottom:2px;}
+.vi .vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ── PILLS ── */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:9.5px;font-weight:700;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.gold{background:var(--gold-lt);color:var(--amber);}
+.pill.blue{background:var(--blue-lt);color:var(--blue);}
+.pill.green{background:var(--green-lt);color:var(--green);}
+.pill.purple{background:var(--purple-lt);color:var(--purple);}
+.pill.teal{background:var(--teal-lt);color:var(--teal);}
+.pill.red{background:var(--red-lt);color:var(--red);}
+.pill.amber{background:var(--amber-lt);color:var(--amber);}
+.pill.sky{background:var(--sky-lt);color:var(--sky);}
+
+/* ── CHIPS ── */
+.chip{display:inline-block;padding:4px 10px;border-radius:7px;font-size:9.5px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip.ok{background:var(--green-lt);border-color:rgba(26,92,53,0.25);color:var(--green);}
+.chip.warn{background:var(--red-lt);border-color:rgba(168,28,28,0.25);color:var(--red);}
+.chip.neu{background:var(--gold-lt);border-color:rgba(201,146,14,0.25);color:var(--amber);}
+
+/* ── STATS ── */
+.stats{display:flex;gap:10px;margin:10px 0;}
+.stat{flex:1;padding:12px 8px;border-radius:11px;text-align:center;background:var(--bg);border:1.5px solid var(--border);}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;line-height:1;}
+.stat-l{font-size:8px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-s{font-size:10px;font-weight:700;margin-top:2px;}
+
+/* ── FEAT GRID ── */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--bg);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:8.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:2px;}
+
+/* ── TABLE ── */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+
+/* ── CALLOUT ── */
+.callout{padding:12px 14px;border-radius:10px;margin:8px 0;}
+.callout.green{background:rgba(26,92,53,0.07);border:1.5px solid rgba(26,92,53,0.2);}
+.callout.blue{background:rgba(27,63,127,0.07);border:1.5px solid rgba(27,63,127,0.2);}
+.callout.amber{background:rgba(212,100,10,0.07);border:1.5px solid rgba(212,100,10,0.2);}
+.callout.red{background:rgba(168,28,28,0.07);border:1.5px solid rgba(168,28,28,0.2);}
+.callout-t{font-size:11px;font-weight:800;margin-bottom:3px;}
+.callout-b{font-size:10px;color:var(--muted);line-height:1.55;}
+
+/* ── PHASES ── */
+.phases3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+@media(max-width:640px){.phases3{grid-template-columns:1fr;}}
+.ph{padding:18px;border-radius:13px;border:2px solid;text-align:center;}
+.ph-n{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;}
+.ph-t{font-size:12px;font-weight:700;margin:4px 0;}
+.ph-s{font-size:8.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:8px;}
+
+/* ── KEYSTONE ── */
+.keystone{background:var(--ink);color:#f0e8d0;border-radius:18px;padding:26px 32px;margin:22px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.keystone-icon{font-size:38px;}
+.keystone-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;margin-bottom:6px;}
+.keystone-sub{font-size:11.5px;color:#c8b880;line-height:1.7;}
+.kpills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'JetBrains Mono',monospace;}
+
+/* ── DOCTRINE CARDS (custom) ── */
+.doctrine-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+@media(max-width:900px){.doctrine-grid{grid-template-columns:1fr;}}
+.doctrine-card{border-radius:14px;overflow:hidden;border:1.5px solid var(--border);}
+.doctrine-head{padding:16px 18px 14px;display:flex;align-items:center;gap:10px;}
+.doctrine-head .emoji{font-size:22px;}
+.doctrine-head .title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:#fff;line-height:1.2;}
+.doctrine-head .sub{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.55);margin-top:3px;}
+.doctrine-body{padding:14px 16px;background:var(--card);}
+.doctrine-rule{padding:10px 12px;border-radius:9px;margin-bottom:8px;font-size:11.5px;font-weight:700;}
+.doctrine-points{display:flex;flex-direction:column;gap:5px;}
+.dp{font-size:10.5px;padding:6px 10px;border-radius:7px;background:var(--bg);border:1px solid var(--border);line-height:1.45;}
+.dp span{font-weight:700;}
+.doctrine-footer{padding:10px 16px;font-size:9px;font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:1px;}
+
+/* ── COMMITTEE COMPARE (side-by-side) ── */
+.comm-row{display:grid;grid-template-columns:1fr auto 1fr;gap:0;margin-bottom:20px;align-items:stretch;}
+.comm-card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;}
+.comm-head{padding:14px 18px;color:#fff;}
+.comm-head .ch-eyebrow{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2px;opacity:0.65;margin-bottom:4px;}
+.comm-head .ch-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;}
+.comm-head .ch-meta{font-size:10px;opacity:0.75;margin-top:3px;}
+.comm-body{padding:14px 16px;}
+.comm-item{display:flex;gap:10px;align-items:flex-start;padding:7px 10px;border-radius:8px;margin-bottom:5px;background:var(--bg);border:1px solid var(--border);}
+.comm-item .ci-icon{font-size:14px;flex:0 0 20px;margin-top:1px;}
+.comm-item .ci-text{font-size:11px;}
+.comm-item .ci-text strong{font-weight:800;display:block;margin-bottom:1px;}
+.comm-item .ci-text span{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+.comm-vs{display:flex;align-items:center;justify-content:center;width:52px;flex:0 0 52px;}
+.vs-badge{background:var(--ink);color:#f0e8d0;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;}
+
+/* ── STATE DEMANDS ROW ── */
+.demands-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+.demand-card{border-radius:14px;overflow:hidden;border:1.5px solid var(--border);}
+.demand-head{padding:14px 18px;color:#fff;}
+.demand-body{padding:14px 16px;background:var(--card);}
+.demand-item{display:flex;gap:9px;align-items:flex-start;padding:7px 10px;border-radius:8px;margin-bottom:5px;background:var(--bg);border:1px solid var(--border);}
+
+/* ── ZONAL GRID ── */
+.zone-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:12px 0;}
+@media(max-width:900px){.zone-grid{grid-template-columns:1fr 1fr;}}
+.zone-card{padding:14px 12px;border-radius:11px;border:2px solid;text-align:center;}
+.zone-card .z-icon{font-size:22px;margin-bottom:6px;}
+.zone-card .z-name{font-size:12px;font-weight:800;margin-bottom:3px;}
+.zone-card .z-states{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);line-height:1.5;}
+
+/* ── ARTICLE CARDS ── */
+.art-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:20px;}
+@media(max-width:768px){.art-row{grid-template-columns:1fr;}}
+.art-card{border-radius:14px;overflow:hidden;border:1.5px solid var(--border);}
+.art-num{padding:12px 16px;color:#fff;display:flex;align-items:center;gap:10px;}
+.art-num .an{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;}
+.art-num .at{font-size:12px;font-weight:700;opacity:0.9;}
+.art-num .as{font-size:9px;opacity:0.6;font-family:'JetBrains Mono',monospace;margin-top:2px;}
+.art-body{padding:12px 14px;background:var(--card);}
+
+/* ── WATER DISPUTES ── */
+.river-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px;}
+@media(max-width:900px){.river-grid{grid-template-columns:1fr 1fr;}}
+.river-card{padding:12px 14px;border-radius:11px;border:1.5px solid;}
+.river-card .rn{font-size:13px;font-weight:800;margin-bottom:3px;}
+.river-card .rs{font-size:9.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:6px;}
+.river-card .rt{font-size:10px;font-weight:700;padding:3px 8px;border-radius:5px;display:inline-block;}
+
+/* ── ASYMM FEDERALISM ── */
+.asymm-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+@media(max-width:768px){.asymm-grid{grid-template-columns:1fr;}}
+.asymm-card{border-radius:14px;overflow:hidden;border:1.5px solid var(--border);}
+.asymm-head{padding:14px 18px;color:#fff;}
+.asymm-head .ah-emoji{font-size:24px;margin-bottom:6px;}
+.asymm-head .ah-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;}
+.asymm-head .ah-sub{font-size:9px;font-family:'JetBrains Mono',monospace;opacity:0.6;margin-top:3px;}
+.asymm-body{padding:14px 16px;background:var(--card);}
+.asymm-item{padding:8px 10px;border-radius:8px;margin-bottom:6px;background:var(--bg);border:1px solid var(--border);}
+.asymm-item .ai-key{font-size:11px;font-weight:800;margin-bottom:2px;}
+.asymm-item .ai-val{font-size:9.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ── FLOW STEPS ── */
+.flow-steps{display:flex;flex-direction:column;gap:0;}
+.flow-step{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;background:var(--bg);border:1px solid var(--border);margin-bottom:4px;}
+.flow-step .fs-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex:0 0 28px;color:#fff;}
+.flow-step .fs-text{font-size:11px;}
+.flow-step .fs-text strong{font-weight:800;display:block;}
+.flow-step .fs-text span{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+.flow-arr{text-align:center;color:var(--muted);font-size:16px;margin:2px 0 2px 20px;}
+
+/* ── PRELIMS BOX ── */
+.prelims-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+@media(max-width:768px){.prelims-grid{grid-template-columns:1fr 1fr;}}
+.prelims-item{padding:14px;border-radius:11px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);}
+.prelims-item .pi-tag{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--gold-lt);font-weight:700;margin-bottom:7px;letter-spacing:1px;}
+.prelims-item .pi-line{font-size:10.5px;color:#e8dcc0;line-height:1.75;margin-bottom:2px;}
+
+/* ── BORDER DISPUTES ── */
+.border-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="eyebrow">Indian Polity · Federalism · UPSC Prelims + Mains</div>
+  <h1>Centre–State Relations — <em>Mind Map</em></h1>
+  <div class="header-desc">Committees · Judicial Doctrines · ISC · Water Disputes · Zonal Councils · Asymmetry</div>
+  <div class="hbar">
+    <span style="background:var(--amber)"></span><span style="background:var(--gold)"></span>
+    <span style="background:var(--blue)"></span><span style="background:var(--green)"></span>
+    <span style="background:var(--purple)"></span><span style="background:var(--teal)"></span>
+  </div>
+</div>
+
+<!-- MASTER FLOW -->
+<div class="sec">Master Flow — The Big Picture</div>
+<div class="mc c1">
+  <svg id="svgMaster" viewBox="0 0 1380 110" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;display:block;width:100%;"></svg>
+</div>
+
+<!-- ══ 1: COMMITTEES ══ -->
+<div class="sec">① Committees on Centre–State Relations</div>
+
+<!-- Sarkaria vs Punchhi -->
+<div class="comm-row">
+  <div class="comm-card">
+    <div class="comm-head" style="background:#1b3f7f;">
+      <div class="ch-eyebrow">CENTRAL GOVT COMMISSION · 1983</div>
+      <div class="ch-title">Sarkaria Commission</div>
+      <div class="ch-meta">Appointed by Indira Gandhi · Reviewed Centre-State power balance</div>
+    </div>
+    <div class="comm-body">
+      <div class="comm-item"><div class="ci-icon">👤</div><div class="ci-text"><strong>Governor — Non-partisan outsider</strong><span>Must be senior figure, not local politician. CM must be consulted before appointment.</span></div></div>
+      <div class="comm-item"><div class="ci-icon">⚠️</div><div class="ci-text"><strong>Art. 356 — Use sparingly</strong><span>President's Rule only in genuine constitutional breakdown, not political convenience.</span></div></div>
+      <div class="comm-item"><div class="ci-icon">🏛️</div><div class="ci-text"><strong>ISC — Recommend setting up</strong><span>Proposed creation of Inter-State Council under Art. 263 for regular Centre-State dialogue.</span></div></div>
+      <div class="comm-item"><div class="ci-icon">📋</div><div class="ci-text"><strong>Concurrent List — Consult states more</strong><span>Centre must consult states before legislating on Concurrent List subjects.</span></div></div>
+      <div class="comm-item"><div class="ci-icon">👔</div><div class="ci-text"><strong>All India Services — Retain & strengthen</strong><span>AIS essential for national integration and uniform administration.</span></div></div>
+    </div>
+  </div>
+
+  <div class="comm-vs"><div class="vs-badge">vs</div></div>
+
+  <div class="comm-card">
+    <div class="comm-head" style="background:#5b1f8a;">
+      <div class="ch-eyebrow">CENTRAL GOVT COMMISSION · 2007</div>
+      <div class="ch-title">Punchhi Commission</div>
+      <div class="ch-meta">Appointed by Manmohan Singh · Updated Sarkaria for modern federalism</div>
+    </div>
+    <div class="comm-body">
+      <div class="comm-item"><div class="ci-icon">🔒</div><div class="ci-text"><strong>Governor — Fixed 5-yr term</strong><span>Not dismissable arbitrarily mid-term. Should not be used as political instrument.</span></div></div>
+      <div class="comm-item"><div class="ci-icon">🚫</div><div class="ci-text"><strong>Art. 356 — Absolute last resort ONLY</strong><span>Stronger language than Sarkaria. Floor test must be conducted before imposition.</span></div></div>
+      <div class="comm-item"><div class="ci-icon">📅</div><div class="ci-text"><strong>ISC — Must meet ≥ 3 times/year</strong><span>Regular, structured meetings mandatory. ISC should be empowered body, not ceremonial.</span></div></div>
+      <div class="comm-item"><div class="ci-icon">📍</div><div class="ci-text"><strong>Localise Concurrent List subjects</strong><span>Subjects fit for state-level governance should be shifted to State List.</span></div></div>
+      <div class="comm-item"><div class="ci-icon">🏘️</div><div class="ci-text"><strong>Intra-state sub-regional councils</strong><span>Recommended councils within large states to handle intra-state regional imbalances.</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- State Demands -->
+<div class="demands-row">
+  <div class="demand-card">
+    <div class="demand-head" style="background:#a81c1c;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2px;opacity:0.65;margin-bottom:4px;">STATE DEMAND · TAMIL NADU · 1969</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;">🔴 Rajamannar Committee</div>
+      <div style="font-size:10px;opacity:0.75;margin-top:3px;">DMK Govt. under M. Karunanidhi · Strong regional autonomy push</div>
+    </div>
+    <div class="demand-body">
+      <div class="demand-item"><div style="font-size:13px;flex:0 0 20px;">🏛️</div><div style="font-size:11px;"><strong>Activate ISC immediately</strong> — Felt Centre was ignoring states</div></div>
+      <div class="demand-item"><div style="font-size:13px;flex:0 0 20px;">⚖️</div><div style="font-size:11px;"><strong>Separate SC bench for states</strong> — Felt Delhi-centric SC disadvantaged southern states</div></div>
+      <div class="demand-item"><div style="font-size:13px;flex:0 0 20px;">📋</div><div style="font-size:11px;"><strong>More subjects in State List</strong> — Demand to shift Concurrent & even some Union items</div></div>
+      <div class="demand-item"><div style="font-size:13px;flex:0 0 20px;">👔</div><div style="font-size:11px;"><strong>Abolish All India Services</strong> — Felt IAS/IPS weakened state administration autonomy</div></div>
+    </div>
+  </div>
+  <div class="demand-card">
+    <div class="demand-head" style="background:#d4640a;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2px;opacity:0.65;margin-bottom:4px;">STATE DEMAND · PUNJAB · 1973</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;">🟠 Anandpur Sahib Resolution</div>
+      <div style="font-size:10px;opacity:0.75;margin-top:3px;">Akali Dal · Radical near-confederation demand</div>
+    </div>
+    <div class="demand-body">
+      <div class="demand-item"><div style="font-size:13px;flex:0 0 20px;">🛡️</div><div style="font-size:11px;"><strong>Centre keep ONLY Defence</strong> — All military and strategic matters</div></div>
+      <div class="demand-item"><div style="font-size:13px;flex:0 0 20px;">🌐</div><div style="font-size:11px;"><strong>Centre keep ONLY Foreign Affairs</strong> — International relations only</div></div>
+      <div class="demand-item"><div style="font-size:13px;flex:0 0 20px;">💰</div><div style="font-size:11px;"><strong>Centre keep ONLY Currency & Communications</strong> — Core monetary/comms control</div></div>
+      <div class="demand-item"><div style="font-size:13px;flex:0 0 20px;">🏘️</div><div style="font-size:11px;"><strong>ALL OTHER subjects → to States</strong> — Near-confederation model demanded</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 2: JUDICIAL DOCTRINES ══ -->
+<div class="sec">② Judicial Doctrines — Legislative Competence Tests</div>
+
+<div class="doctrine-grid">
+  <!-- Pith & Substance -->
+  <div class="doctrine-card">
+    <div class="doctrine-head" style="background:#1b3f7f; padding:16px 18px 14px; display:flex; flex-direction:column; gap:4px;">
+      <div style="font-size:22px;">🔍</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#fff;">Pith & Substance</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.55);">LEGISLATIVE COMPETENCE · CORE DOCTRINE</div>
+    </div>
+    <div class="doctrine-body">
+      <div class="doctrine-rule" style="background:var(--blue-lt);color:var(--blue);border-left:3px solid var(--blue);">
+        🎯 Test: Look at the <strong>TRUE NATURE</strong> of the law — not its label
+      </div>
+      <div class="doctrine-points">
+        <div class="dp">✅ Incidental encroachment on another List's entry is <span>PERMITTED</span></div>
+        <div class="dp">✅ Courts look at the <span>dominant purpose</span> of the legislation</div>
+        <div class="dp">✅ If TRUE subject falls within competence → law is VALID</div>
+        <div class="dp">📌 E.g. State public health law may incidentally touch a Union entry</div>
+        <div class="dp">📌 Used by courts to <span>uphold</span> state laws challenged by Centre</div>
+      </div>
+    </div>
+    <div class="doctrine-footer" style="background:var(--blue-lt);color:var(--blue);">
+      INCIDENTAL OVERLAP IS OK · TRUE SUBJECT GOVERNS
+    </div>
+  </div>
+
+  <!-- Colourable Legislation -->
+  <div class="doctrine-card">
+    <div class="doctrine-head" style="background:#a81c1c; padding:16px 18px 14px; display:flex; flex-direction:column; gap:4px;">
+      <div style="font-size:22px;">🎭</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#fff;">Colourable Legislation</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.55);">ANTI-FRAUD DOCTRINE · SUBSTANCE OVER FORM</div>
+    </div>
+    <div class="doctrine-body">
+      <div class="doctrine-rule" style="background:var(--red-lt);color:var(--red);border-left:3px solid var(--red);">
+        🎯 Rule: Cannot do <strong>INDIRECTLY</strong> what you cannot do <strong>DIRECTLY</strong>
+      </div>
+      <div class="doctrine-points">
+        <div class="dp">❌ Legislature cannot <span>disguise</span> an ultra-vires act as valid legislation</div>
+        <div class="dp">❌ If true intent is beyond legislative competence → law is <span>VOID</span></div>
+        <div class="dp">✅ Courts examine <span>real purpose</span>, not just the text or words used</div>
+        <div class="dp">📌 If State lacks power over subject X, cannot enact it as Y</div>
+        <div class="dp">📌 Prevents <span>legislative fraud</span> — courts void such disguised laws</div>
+      </div>
+    </div>
+    <div class="doctrine-footer" style="background:var(--red-lt);color:var(--red);">
+      FORM ≠ SUBSTANCE · INTENT IS EXAMINED
+    </div>
+  </div>
+
+  <!-- Territorial Nexus -->
+  <div class="doctrine-card">
+    <div class="doctrine-head" style="background:#0a5c6e; padding:16px 18px 14px; display:flex; flex-direction:column; gap:4px;">
+      <div style="font-size:22px;">🌐</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#fff;">Territorial Nexus</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.55);">EXTRA-TERRITORIAL REACH · REAL CONNECTION TEST</div>
+    </div>
+    <div class="doctrine-body">
+      <div class="doctrine-rule" style="background:var(--teal-lt);color:var(--teal);border-left:3px solid var(--teal);">
+        🎯 Test: Is there a <strong>REAL & SUFFICIENT</strong> nexus with the territory?
+      </div>
+      <div class="doctrine-points">
+        <div class="dp">✅ State law CAN apply <span>outside its territory</span> if genuine nexus exists</div>
+        <div class="dp">✅ Nexus must be <span>real and substantial</span> — not far-fetched</div>
+        <div class="dp">❌ Sham or remote nexus → law <span>struck down</span> by courts</div>
+        <div class="dp">📌 E.g. Tax on income from business partly operated in another state</div>
+        <div class="dp">📌 Courts ask: Is the connection <span>genuine</span> to territorial operations?</div>
+      </div>
+    </div>
+    <div class="doctrine-footer" style="background:var(--teal-lt);color:var(--teal);">
+      EXTRA-TERRITORIAL OK · IF NEXUS IS GENUINE
+    </div>
+  </div>
+</div>
+
+<!-- Comparison row for doctrines -->
+<div class="pc dark" style="margin-bottom:20px;">
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:17px;color:#f0e8d0;margin-bottom:12px;">⚡ Doctrines — Quick Comparison</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+    <div style="padding:12px;border-radius:10px;background:rgba(27,63,127,0.25);border:1px solid rgba(27,63,127,0.4);">
+      <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:#dce6f8;font-weight:700;margin-bottom:6px;">🔍 PITH & SUBSTANCE</div>
+      <div style="font-size:11px;color:#e8dcc0;line-height:1.7;">Question: <em>What is the law really about?</em><br>Answer: Look at TRUE nature, not form.<br>Result: Incidental overlap allowed.</div>
+    </div>
+    <div style="padding:12px;border-radius:10px;background:rgba(168,28,28,0.25);border:1px solid rgba(168,28,28,0.4);">
+      <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:#f5d6d6;font-weight:700;margin-bottom:6px;">🎭 COLOURABLE LEGISLATION</div>
+      <div style="font-size:11px;color:#e8dcc0;line-height:1.7;">Question: <em>Is this disguised fraud?</em><br>Answer: Real intent examined, not words.<br>Result: Disguised laws voided.</div>
+    </div>
+    <div style="padding:12px;border-radius:10px;background:rgba(10,92,110,0.25);border:1px solid rgba(10,92,110,0.4);">
+      <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:#ccecf2;font-weight:700;margin-bottom:6px;">🌐 TERRITORIAL NEXUS</div>
+      <div style="font-size:11px;color:#e8dcc0;line-height:1.7;">Question: <em>Real connection to territory?</em><br>Answer: Genuine nexus required.<br>Result: Sham nexus laws struck.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 3: INTER-STATE ARTICLES ══ -->
+<div class="sec">③ Inter-State Relations — Articles 261–263 & 301–307</div>
+
+<div class="art-row">
+  <!-- Art 261 -->
+  <div class="art-card">
+    <div class="art-num" style="background:#1a5c35;">
+      <div style="flex:1;">
+        <div class="an">261</div>
+        <div class="at">Full Faith & Credit</div>
+        <div class="as">MUTUAL RECOGNITION</div>
+      </div>
+      <div style="font-size:28px;">🤝</div>
+    </div>
+    <div class="art-body">
+      <div class="vi" style="margin-bottom:7px;"><div class="vt">Public Acts, Records & Judgments</div><div class="vs">Full faith and credit throughout India</div></div>
+      <div class="vi" style="margin-bottom:7px;"><div class="vt">Court Judgments Enforceable</div><div class="vs">One state's civil judgment runs in all states</div></div>
+      <div class="vi"><div class="vt">Underpins National Unity</div><div class="vs">Makes India a single legal territory</div></div>
+      <span class="chip ok" style="margin-top:10px;display:inline-block;">✅ Mutual Recognition Across India</span>
+    </div>
+  </div>
+
+  <!-- Art 262 -->
+  <div class="art-card">
+    <div class="art-num" style="background:#1b3f7f;">
+      <div style="flex:1;">
+        <div class="an">262</div>
+        <div class="at">Inter-State Water Disputes</div>
+        <div class="as">TRIBUNAL MECHANISM</div>
+      </div>
+      <div style="font-size:28px;">💧</div>
+    </div>
+    <div class="art-body">
+      <div class="vi" style="margin-bottom:7px;"><div class="vt">Parliament may legislate</div><div class="vs">On use/distribution of inter-state rivers</div></div>
+      <div class="vi" style="margin-bottom:7px;"><div class="vt">Supreme Court CAN be excluded</div><div class="vs">Tribunal award is final — SC jurisdiction barred</div></div>
+      <div class="callout blue">
+        <div class="callout-t" style="color:var(--blue);">Two Acts Under Art. 262</div>
+        <div class="callout-b"><strong>River Boards Act 1956</strong> → Advisory only (no board ever formed!)<br><strong>ISWD Act 1956</strong> → Tribunal constituted, award binding</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Art 263 ISC -->
+  <div class="art-card">
+    <div class="art-num" style="background:#5b1f8a;">
+      <div style="flex:1;">
+        <div class="an">263</div>
+        <div class="at">Inter-State Council</div>
+        <div class="as">COORDINATION BODY</div>
+      </div>
+      <div style="font-size:28px;">🏛️</div>
+    </div>
+    <div class="art-body">
+      <div class="stats" style="margin-bottom:10px;">
+        <div class="stat"><div class="stat-n" style="color:var(--purple);font-size:20px;">1990</div><div class="stat-l">SETUP YEAR</div><div class="stat-s">Sarkaria Rec.</div></div>
+        <div class="stat"><div class="stat-n" style="color:var(--blue);font-size:18px;">PM</div><div class="stat-l">CHAIRS</div><div class="stat-s">+ All CMs</div></div>
+      </div>
+      <div class="vi" style="margin-bottom:7px;"><div class="vt">Functions: Investigate · Discuss · Recommend</div><div class="vs">Disputes + subjects of common interest</div></div>
+      <div class="vi"><div class="vt">Constitutional body — NOT binding</div><div class="vs">Advisory recommendations only</div></div>
+      <span class="chip neu" style="margin-top:8px;display:inline-block;">Advisory — Not Binding</span>
+    </div>
+  </div>
+</div>
+
+<!-- Trade Articles -->
+<div class="pc teal" style="margin-bottom:20px;">
+  <div class="pc-label">Articles 301–307 — Free Trade Within India</div>
+  <h3>🔄 Freedom of Trade, Commerce & Intercourse</h3>
+  <table class="ctable">
+    <thead><tr><th>Article</th><th>Provision</th><th>Key Point</th></tr></thead>
+    <tbody>
+      <tr><td>Art. 301</td><td>Trade & commerce shall be free throughout India</td><td>Fundamental right to internal free trade</td></tr>
+      <tr><td>Art. 302</td><td>Parliament may impose restrictions in public interest</td><td>Centre can restrict in national interest</td></tr>
+      <tr><td>Art. 303</td><td>No preference to one state over another</td><td>Equality of states in trade matters</td></tr>
+      <tr><td>Art. 304</td><td>States can regulate with Presidential assent</td><td>Reasonable restrictions allowed by states</td></tr>
+      <tr><td>Art. 307</td><td>Parliament may appoint authority to carry out 301–304</td><td>Regulatory body provision</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ 4: ZONAL COUNCILS ══ -->
+<div class="sec">④ Zonal Councils & North-Eastern Council</div>
+
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-label">Zonal Councils — States Reorganisation Act 1956</div>
+    <h3>🗺️ 5 Zones of India — Statutory Advisory Bodies</h3>
+    <div class="stats" style="margin-bottom:14px;">
+      <div class="stat"><div class="stat-n" style="color:var(--amber);">1956</div><div class="stat-l">ESTABLISHED</div><div class="stat-s">SRA Act</div></div>
+      <div class="stat"><div class="stat-n" style="color:var(--blue);">5</div><div class="stat-l">ZONES</div><div class="stat-s">All India</div></div>
+      <div class="stat"><div class="stat-n" style="color:var(--green);">HM</div><div class="stat-l">CHAIRMAN</div><div class="stat-s">Home Minister</div></div>
+    </div>
+    <div class="zone-grid" style="grid-template-columns:1fr 1fr;">
+      <div class="zone-card" style="border-color:#1b3f7f;background:var(--blue-lt);">
+        <div class="z-icon">🔵</div>
+        <div class="z-name" style="color:var(--blue);">Northern Zone</div>
+        <div class="z-states">Punjab · HP · J&K · UP<br>Delhi · Rajasthan</div>
+      </div>
+      <div class="zone-card" style="border-color:#5b1f8a;background:var(--purple-lt);">
+        <div class="z-icon">🟣</div>
+        <div class="z-name" style="color:var(--purple);">Central Zone</div>
+        <div class="z-states">Madhya Pradesh<br>Chhattisgarh · UP (part)</div>
+      </div>
+      <div class="zone-card" style="border-color:#0a5c6e;background:var(--teal-lt);">
+        <div class="z-icon">🟦</div>
+        <div class="z-name" style="color:var(--teal);">Eastern Zone</div>
+        <div class="z-states">Bihar · Jharkhand<br>Odisha · West Bengal</div>
+      </div>
+      <div class="zone-card" style="border-color:#1a5c35;background:var(--green-lt);">
+        <div class="z-icon">🟢</div>
+        <div class="z-name" style="color:var(--green);">Western Zone</div>
+        <div class="z-states">Goa · Gujarat<br>Maharashtra</div>
+      </div>
+    </div>
+    <div class="zone-card" style="border-color:#a81c1c;background:var(--red-lt);margin-top:8px;text-align:center;padding:12px;">
+      <div class="z-icon">🔴</div>
+      <div class="z-name" style="color:var(--red);">Southern Zone</div>
+      <div class="z-states">AP · Karnataka · Kerala · Tamil Nadu · Telangana</div>
+    </div>
+    <span class="chip neu" style="margin-top:12px;">Statutory · Advisory Only · NOT Binding</span>
+  </div>
+
+  <div class="pc sky">
+    <div class="pc-label">North-Eastern Council — NEC Act 1971</div>
+    <h3>🏔️ Special Body for the Northeast</h3>
+    <div style="padding:12px 14px;border-radius:10px;background:var(--sky-lt);border:1.5px solid rgba(26,80,112,0.25);margin-bottom:14px;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;color:var(--sky);">Separate Statutory Body — NEC Act, 1971</div>
+      <div style="font-size:9.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:3px;">Distinct from Zonal Councils · Unique mandate</div>
+    </div>
+    <div class="vlist" style="margin-bottom:14px;">
+      <div class="vi"><div class="vt">🏠 Home Minister = Ex-officio Chairman</div><div class="vs">Same as Zonal Councils — Home Ministry oversight</div></div>
+      <div class="vi"><div class="vt">📐 Focus: Regional Planning & Security</div><div class="vs">Unique mandate — development + internal security for NE</div></div>
+      <div class="vi"><div class="vt">🗺️ 8 NE States Covered</div><div class="vs">AR · Assam · Manipur · Meghalaya · Mizoram · Nagaland · Sikkim · Tripura</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div style="padding:10px 12px;border-radius:9px;background:var(--gold-lt);border:1.5px solid rgba(201,146,14,0.3);">
+        <div style="font-size:10px;font-weight:800;color:var(--amber);margin-bottom:4px;">Zonal Councils</div>
+        <div style="font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;line-height:1.6;">SRA 1956<br>5 zones · All India<br>HM chairs · Advisory</div>
+      </div>
+      <div style="padding:10px 12px;border-radius:9px;background:var(--sky-lt);border:1.5px solid rgba(26,80,112,0.3);">
+        <div style="font-size:10px;font-weight:800;color:var(--sky);margin-bottom:4px;">NE Council</div>
+        <div style="font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;line-height:1.6;">NEC Act 1971<br>NE only · Security<br>HM chairs · 8 states</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 5: WATER DISPUTES ══ -->
+<div class="sec">⑤ Major River / Water Disputes — Art. 262</div>
+
+<div class="river-grid">
+  <div class="river-card" style="border-color:var(--red);background:var(--red-lt);">
+    <div class="rn" style="color:var(--red);">💧 Cauvery</div>
+    <div class="rs">TN · Karnataka · Kerala · Puducherry</div>
+    <div class="rt" style="background:var(--red);color:#fff;">Tribunal Award + SC</div>
+  </div>
+  <div class="river-card" style="border-color:var(--blue);background:var(--blue-lt);">
+    <div class="rn" style="color:var(--blue);">💧 Krishna</div>
+    <div class="rs">AP · Karnataka · Maharashtra · Telangana</div>
+    <div class="rt" style="background:var(--blue);color:#fff;">KWDT I & II</div>
+  </div>
+  <div class="river-card" style="border-color:var(--green);background:var(--green-lt);">
+    <div class="rn" style="color:var(--green);">💧 Godavari</div>
+    <div class="rs">Multiple Central & South India states</div>
+    <div class="rt" style="background:var(--green);color:#fff;">GWDT Award</div>
+  </div>
+  <div class="river-card" style="border-color:var(--teal);background:var(--teal-lt);">
+    <div class="rn" style="color:var(--teal);">💧 Narmada</div>
+    <div class="rs">MP · Gujarat · Maharashtra · Rajasthan</div>
+    <div class="rt" style="background:var(--teal);color:#fff;">NWDT Award</div>
+  </div>
+  <div class="river-card" style="border-color:var(--amber);background:var(--amber-lt);">
+    <div class="rn" style="color:var(--amber);">💧 Ravi & Beas</div>
+    <div class="rs">Punjab · Haryana · Rajasthan</div>
+    <div class="rt" style="background:var(--amber);color:#fff;">SYL Canal Issue</div>
+  </div>
+  <div class="river-card" style="border-color:var(--purple);background:var(--purple-lt);">
+    <div class="rn" style="color:var(--purple);">💧 Mahanadi</div>
+    <div class="rs">Odisha · Chhattisgarh</div>
+    <div class="rt" style="background:var(--purple);color:#fff;">Tribunal Formed</div>
+  </div>
+  <div class="river-card" style="border-color:var(--sky);background:var(--sky-lt);">
+    <div class="rn" style="color:var(--sky);">💧 Mahadayi</div>
+    <div class="rs">Goa · Karnataka · Maharashtra</div>
+    <div class="rt" style="background:var(--sky);color:#fff;">Award Challenged</div>
+  </div>
+  <div class="river-card" style="border-color:var(--gold);background:var(--gold-lt);">
+    <div class="rn" style="color:var(--amber);">⚖️ Key Rule</div>
+    <div class="rs">Art. 131: SC original jurisdiction</div>
+    <div class="rt" style="background:var(--amber);color:#fff;">UNLESS Art. 262 excludes</div>
+  </div>
+</div>
+
+<div class="g21">
+  <div class="pc blue">
+    <div class="pc-label">Resolution Timeline — ISWD Act 1956</div>
+    <h3>🔧 Step-by-Step Dispute Resolution</h3>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="fs-num" style="background:#1b3f7f;">1</div>
+        <div class="fs-text"><strong>Negotiation between States</strong><span>Preferred first step · Bilateral or multilateral dialogue</span></div>
+      </div>
+      <div class="flow-arr">↓</div>
+      <div class="flow-step">
+        <div class="fs-num" style="background:#5b1f8a;">2</div>
+        <div class="fs-text"><strong>Parliament invokes ISWD Act 1956</strong><span>If negotiation fails · Centre steps in</span></div>
+      </div>
+      <div class="flow-arr">↓</div>
+      <div class="flow-step">
+        <div class="fs-num" style="background:#0a5c6e;">3</div>
+        <div class="fs-text"><strong>Tribunal Constituted by Centre</strong><span>Judges appointed · Judicial proceedings begin</span></div>
+      </div>
+      <div class="flow-arr">↓</div>
+      <div class="flow-step">
+        <div class="fs-num" style="background:#1a5c35;">4</div>
+        <div class="fs-text"><strong>Award — Binding on All States</strong><span>Final decision · Gazetted · Enforceable</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Two Acts — Key Distinction</div>
+    <h3>📋 River Boards vs ISWD</h3>
+    <div class="vi" style="margin-bottom:8px;">
+      <div class="vt">🏛️ River Boards Act 1956</div>
+      <div class="vs">Advisory only · No binding authority · No board was EVER formed under this act!</div>
+    </div>
+    <div class="vi" style="margin-bottom:8px;">
+      <div class="vt">⚖️ ISWD Act 1956</div>
+      <div class="vs">Tribunal constituted · Award is binding · Gazetted in Official Gazette</div>
+    </div>
+    <div class="callout amber">
+      <div class="callout-t" style="color:var(--amber);">⚠️ Important SC Rule</div>
+      <div class="callout-b">Under Art. 262, Parliament CAN exclude Supreme Court jurisdiction. Tribunal award is then final — SC cannot review on merits.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 6: ASYMMETRIC FEDERALISM ══ -->
+<div class="sec">⑥ Asymmetric Federalism — India's Unequal Design</div>
+
+<div class="asymm-grid">
+  <!-- Vertical -->
+  <div class="asymm-card">
+    <div class="asymm-head" style="background:#c9920e;">
+      <div class="ah-emoji">↕️</div>
+      <div class="ah-title">Vertical Asymmetry</div>
+      <div class="ah-sub">CENTRE > STATES · BY DESIGN</div>
+    </div>
+    <div class="asymm-body">
+      <div class="asymm-item">
+        <div class="ai-key">📋 Art. 3 — Parliament Alters States</div>
+        <div class="ai-val">Change names, boundaries, merge/split states without state consent</div>
+      </div>
+      <div class="asymm-item">
+        <div class="ai-key">🔴 Art. 356 — President's Rule</div>
+        <div class="ai-val">Centre can take over a state govt on constitutional breakdown</div>
+      </div>
+      <div class="asymm-item">
+        <div class="ai-key">🔑 Art. 248 — Residuary Powers</div>
+        <div class="ai-val">Unlisted subjects in 7th Schedule go to Centre, NOT states</div>
+      </div>
+      <div class="asymm-item">
+        <div class="ai-key">🚨 Art. 352/360 — Emergency</div>
+        <div class="ai-val">National/financial emergency shifts power dramatically to Centre</div>
+      </div>
+      <span class="chip warn" style="margin-top:8px;">⚠️ Centre Stronger by Constitutional Design</span>
+    </div>
+  </div>
+
+  <!-- Horizontal -->
+  <div class="asymm-card">
+    <div class="asymm-head" style="background:#5b1f8a;">
+      <div class="ah-emoji">↔️</div>
+      <div class="ah-title">Horizontal Asymmetry</div>
+      <div class="ah-sub">DIFFERENT STATES · DIFFERENT RULES</div>
+    </div>
+    <div class="asymm-body">
+      <div class="asymm-item">
+        <div class="ai-key">📊 Unequal Rajya Sabha Seats</div>
+        <div class="ai-val">Population-based — UP has 31 seats, Goa has 1 seat</div>
+      </div>
+      <div class="asymm-item">
+        <div class="ai-key">📜 Part XXI Special Provisions</div>
+        <div class="ai-val">Art. 371A–J: Special provisions for Nagaland, Mizoram, NE states</div>
+      </div>
+      <div class="asymm-item">
+        <div class="ai-key">🔶 Art. 370 — J&K (Historical)</div>
+        <div class="ai-val">Abrogated in 2019 · Now UT · Unique constitutional history</div>
+      </div>
+      <div class="asymm-item">
+        <div class="ai-key">🌿 Scheduled Areas (5th, 6th)</div>
+        <div class="ai-val">Tribal areas under special governance provisions</div>
+      </div>
+      <span class="chip neu" style="margin-top:8px;">📐 Not All States Are Constitutionally Equal</span>
+    </div>
+  </div>
+
+  <!-- Fiscal -->
+  <div class="asymm-card">
+    <div class="asymm-head" style="background:#0a5c6e;">
+      <div class="ah-emoji">💰</div>
+      <div class="ah-title">Fiscal Asymmetry</div>
+      <div class="ah-sub">FINANCE COMMISSION · ART. 280</div>
+    </div>
+    <div class="asymm-body">
+      <div class="asymm-item">
+        <div class="ai-key">💹 15th FC: 41% Tax Devolution</div>
+        <div class="ai-val">Divisible pool shared — but criteria favour poorer states</div>
+      </div>
+      <div class="asymm-item">
+        <div class="ai-key">📎 CSS — Tied Grants</div>
+        <div class="ai-val">Centrally Sponsored Schemes force state priorities to align with Centre</div>
+      </div>
+      <div class="asymm-item">
+        <div class="ai-key">📉 FRBM Borrowing Limits Vary</div>
+        <div class="ai-val">Some states get special fiscal space; others face tighter limits</div>
+      </div>
+      <div class="asymm-item">
+        <div class="ai-key">🎯 FC Attempts Equalisation</div>
+        <div class="ai-val">Horizontal tax devolution redistributes from rich to poor states</div>
+      </div>
+      <span class="chip ok" style="margin-top:8px;">✅ FC Attempts Fiscal Equalisation</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 7: BORDER DISPUTES ══ -->
+<div class="sec">⑦ Border Disputes — Cooperative Federalism Tested</div>
+
+<div class="border-row">
+  <div class="pc red">
+    <div class="pc-label">Active Boundary Disputes</div>
+    <h3>🗺️ Ongoing Territorial Conflicts</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">🔴</div><div class="ft">Karnataka–Maharashtra</div><div class="fs">Belagavi (Belgaum) · Linguistic basis</div></div>
+      <div class="feat"><div class="fi">🟠</div><div class="ft">Assam–Mizoram</div><div class="fs">Recurring violent clashes at boundary</div></div>
+      <div class="feat"><div class="fi">🟡</div><div class="ft">Assam–Nagaland</div><div class="fs">Forest area dispute · Longstanding</div></div>
+      <div class="feat"><div class="fi">🔵</div><div class="ft">Haryana–Himachal</div><div class="fs">Parwanoo–Pinjore industrial area</div></div>
+    </div>
+    <span class="chip warn" style="margin-top:10px;">❌ No Dedicated Permanent Resolution Mechanism</span>
+  </div>
+
+  <div class="pc green">
+    <div class="pc-label">Resolution Path — How to Resolve Border Disputes</div>
+    <h3>⚖️ Escalation Ladder</h3>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="fs-num" style="background:#1a5c35;">1</div>
+        <div class="fs-text"><strong>Bilateral Talks</strong><span>Preferred first step — CMs meet directly</span></div>
+      </div>
+      <div class="flow-arr">↓ if fails</div>
+      <div class="flow-step">
+        <div class="fs-num" style="background:#1b3f7f;">2</div>
+        <div class="fs-text"><strong>Inter-State Council (Art. 263)</strong><span>Mediation through PM-chaired ISC forum</span></div>
+      </div>
+      <div class="flow-arr">↓ if fails</div>
+      <div class="flow-step">
+        <div class="fs-num" style="background:#5b1f8a;">3</div>
+        <div class="fs-text"><strong>Supreme Court — Art. 131</strong><span>Exclusive original jurisdiction for inter-state disputes</span></div>
+      </div>
+    </div>
+    <div class="callout green" style="margin-top:10px;">
+      <div class="callout-t" style="color:var(--green);">Art. 131 — SC Original Jurisdiction</div>
+      <div class="callout-b">SC has exclusive power to hear inter-state disputes. Covers both water (unless excluded by Art. 262) and territorial conflicts.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 8: BIG PICTURE ══ -->
+<div class="sec">⑧ India's Federal Model — The Big Picture</div>
+
+<div class="phases3">
+  <div class="ph" style="border-color:var(--amber);background:rgba(212,100,10,0.04);">
+    <div class="ph-n" style="color:var(--amber);">Cooperative</div>
+    <div class="ph-t">Working Together</div>
+    <div class="ph-s">Constitutional Design</div>
+    <div style="font-size:10.5px;line-height:1.7;color:var(--muted);">ISC · Zonal Councils<br>Finance Commission<br>ISWD Tribunals</div>
+    <span class="pill amber" style="margin-top:8px;">Advisory Bodies</span>
+  </div>
+  <div class="ph" style="border-color:var(--blue);background:rgba(27,63,127,0.04);">
+    <div class="ph-n" style="color:var(--blue);">Competitive</div>
+    <div class="ph-t">States Compete</div>
+    <div class="ph-s">Economic Federalism</div>
+    <div style="font-size:10.5px;line-height:1.7;color:var(--muted);">Investment attraction<br>EODB ranking<br>GSDP growth</div>
+    <span class="pill blue" style="margin-top:8px;">Market Federalism</span>
+  </div>
+  <div class="ph" style="border-color:var(--purple);background:rgba(91,31,138,0.04);">
+    <div class="ph-n" style="color:var(--purple);">Asymmetrical</div>
+    <div class="ph-t">Unequal by Design</div>
+    <div class="ph-s">Constitutional Reality</div>
+    <div style="font-size:10.5px;line-height:1.7;color:var(--muted);">Part XXI · Emergency<br>Residuary — all favour<br>Centre over states</div>
+    <span class="pill purple" style="margin-top:8px;">Not Purely Federal</span>
+  </div>
+</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">Federal Strengths — What Works</div>
+    <h3>✅ What Works</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;">
+      <span class="chip ok">✅ Constitutional division of powers clear</span>
+      <span class="chip ok">✅ SC as independent federal umpire</span>
+      <span class="chip ok">✅ Finance Commission equalises resources</span>
+      <span class="chip ok">✅ Judicial doctrines balance competence</span>
+      <span class="chip ok">✅ Water tribunal mechanism established</span>
+      <span class="chip ok">✅ Zonal Councils coordinate regionally</span>
+      <span class="chip ok">✅ ISC for formal Centre-State dialogue</span>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">Persistent Weaknesses — What Fails</div>
+    <h3>⚠️ What Fails</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;">
+      <span class="chip warn">❌ ISC rarely meets in practice</span>
+      <span class="chip warn">❌ Governor post misused politically</span>
+      <span class="chip warn">❌ Art. 356 historically misused</span>
+      <span class="chip warn">❌ Water tribunals extremely slow</span>
+      <span class="chip warn">❌ CSS reduces state fiscal autonomy</span>
+      <span class="chip warn">❌ No permanent border dispute body</span>
+      <span class="chip warn">❌ River Boards Act never activated</span>
+    </div>
+  </div>
+</div>
+
+<!-- PRELIMS HIGH-YIELD -->
+<div class="sec">🔥 Prelims High-Yield Areas</div>
+<div class="pc dark" style="margin-bottom:20px;">
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:18px;color:#f0e8d0;margin-bottom:14px;">⚡ Most Likely to Appear in Prelims</h3>
+  <div class="prelims-grid">
+    <div class="prelims-item">
+      <div class="pi-tag">DOCTRINES</div>
+      <div class="pi-line">🔍 Pith & Substance</div>
+      <div class="pi-line">🎭 Colourable Legislation</div>
+      <div class="pi-line">🌐 Territorial Nexus</div>
+    </div>
+    <div class="prelims-item">
+      <div class="pi-tag">ARTICLES</div>
+      <div class="pi-line">📜 261 vs 262 vs 263</div>
+      <div class="pi-line">🔄 301–304 free trade</div>
+      <div class="pi-line">⚖️ Art. 131 SC jurisdiction</div>
+    </div>
+    <div class="prelims-item">
+      <div class="pi-tag">BODIES</div>
+      <div class="pi-line">🏛️ ISC vs Zonal Council</div>
+      <div class="pi-line">🏔️ NE Council separately</div>
+      <div class="pi-line">💧 River Boards vs ISWD</div>
+    </div>
+    <div class="prelims-item">
+      <div class="pi-tag">COMMISSIONS</div>
+      <div class="pi-line">🔵 Rajamannar vs Sarkaria</div>
+      <div class="pi-line">📐 Asymmetric federalism</div>
+      <div class="pi-line">👤 Governor reform debate</div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">⚖️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">India's federalism is <strong style="color:#f5d78a;">quasi-federal</strong> — a strong Centre with a federal structure. Judicial doctrines balance legislative competence; advisory bodies like ISC and Zonal Councils coordinate; water tribunals resolve resource disputes. The constant tension between <strong style="color:#f5d78a;">state autonomy and national unity</strong> is managed through law, institutions, and evolving political practice.</div>
+    <div class="kpills">
+      <span class="kpill">⚖️ Quasi-Federal</span>
+      <span class="kpill">🏛️ Advisory Coordination</span>
+      <span class="kpill">🔍 Judicial Balancing</span>
+      <span class="kpill">💧 Tribunal Mechanism</span>
+      <span class="kpill">📐 Asymmetric Design</span>
+      <span class="kpill">🤝 Cooperative + Competitive</span>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+// MASTER FLOW — the only SVG, simple and clean
+(function(){
+  const NS='http://www.w3.org/2000/svg';
+  function se(tag,a){const el=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))el.setAttribute(k,v);return el;}
+  const svg=document.getElementById('svgMaster');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:110,fill:'rgba(250,248,243,0.5)'}));
+
+  const steps=[
+    {x:86,  label:['Constitutional','Division'],   sub:'7th Schedule',       fill:'#1b3f7f', emoji:'📜'},
+    {x:260, label:['Judicial','Doctrines'],         sub:'Pith·Colour·Nexus',  fill:'#5b1f8a', emoji:'⚖️'},
+    {x:434, label:['Committees','& Reports'],       sub:'Sarkaria·Punchhi',   fill:'#c9920e', emoji:'🏛️'},
+    {x:608, label:['Inter-State','Council (263)'],  sub:'Advisory · PM chairs',fill:'#1a5c35', emoji:'🤝'},
+    {x:782, label:['Water','Disputes (262)'],       sub:'ISWD Act · Tribunal', fill:'#0a5c6e', emoji:'💧'},
+    {x:956, label:['Zonal','Councils'],             sub:'SRA 1956 · 5 zones',  fill:'#d4640a', emoji:'🗺️'},
+    {x:1130,label:['Border','Disputes'],            sub:'Art.131 · SC',        fill:'#a81c1c', emoji:'🗺️'},
+    {x:1294,label:['Asymmetric','Federalism'],      sub:'Vertical+Fiscal',    fill:'#1a5070', emoji:'📐'},
+  ];
+
+  function node(svg,s){
+    const g=document.createElementNS(NS,'g');
+    g.appendChild(se('rect',{x:s.x-73,y:13,width:146,height:70,rx:'10',ry:'10',fill:'rgba(0,0,0,0.1)'}));
+    g.appendChild(se('rect',{x:s.x-73,y:11,width:146,height:70,rx:'10',ry:'10',fill:s.fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.5'}));
+    const em=se('text',{x:s.x,y:28,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:'#fff'});
+    em.textContent=s.emoji;g.appendChild(em);
+    s.label.forEach((l,i)=>{
+      const t=se('text',{x:s.x,y:44+i*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Outfit,sans-serif',fill:'#fff'});
+      t.textContent=l;g.appendChild(t);
+    });
+    const sub=se('text',{x:s.x,y:75,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8','font-family':'JetBrains Mono,monospace',fill:'rgba(255,255,255,0.5)'});
+    sub.textContent=s.sub;g.appendChild(sub);
+    svg.appendChild(g);
+  }
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      svg.appendChild(se('line',{x1:s.x+73,y1:46,x2:steps[i+1].x-73,y2:46,stroke:'rgba(184,124,16,0.4)','stroke-width':'2'}));
+      svg.appendChild(se('polygon',{points:`${steps[i+1].x-73},41 ${steps[i+1].x-61},46 ${steps[i+1].x-73},51`,fill:'rgba(184,124,16,0.4)'}));
+    }
+    node(svg,s);
+  });
+
+  const t=se('text',{x:690,y:98,'text-anchor':'middle','font-size':'8.5','font-family':'JetBrains Mono,monospace','letter-spacing':'2.5',fill:'rgba(120,100,60,0.35)'});
+  t.textContent='MASTER FLOW: CENTRE–STATE RELATIONS — COMPLETE PICTURE';
+  svg.appendChild(t);
+})();
+</script>
+</body>
+</html>

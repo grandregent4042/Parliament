@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Articles 371–371J · Special Provisions Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f4f1ea;--ink:#1a1208;--paper:#fffcf5;--border:#e2d9c0;
+  --gold:#b5780e;--gold-lt:#f5e4a0;--amber:#cc5f0a;
+  --green:#1a5e34;--green-lt:#e6f2eb;
+  --blue:#1a3578;--blue-lt:#e8eef8;
+  --purple:#5c1a80;--purple-lt:#f0e8f8;
+  --teal:#0a5c6a;--teal-lt:#e6f4f6;
+  --red:#b01820;--red-lt:#fae8e8;
+  --sky:#1a4e6e;--sky-lt:#e8f2f8;
+  --muted:#7a6a50;--card:#fffef8;
+}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;}
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 800px 600px at 10% 5%,rgba(181,120,14,0.07) 0%,transparent 65%),
+    radial-gradient(ellipse 600px 600px at 90% 80%,rgba(26,53,120,0.06) 0%,transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 28px 100px;}
+
+/* HEADER */
+.hdr{text-align:center;padding:52px 20px 28px;position:relative;}
+.hdr-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.hdr h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,54px);line-height:1.1;color:var(--ink);}
+.hdr h1 em{font-style:italic;color:var(--gold);}
+.hdr-sub{margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:1px;}
+.hdr::after{content:'';display:block;width:100px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue),var(--green));margin:16px auto 0;border-radius:4px;}
+
+/* SECTION LABELS */
+.sec{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin:36px 0 16px;display:flex;align-items:center;gap:14px;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:960px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g2x1{grid-template-columns:1fr;}}
+
+/* CARDS */
+.card{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.card.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.card.green::before{background:var(--green);}
+.card.blue::before{background:var(--blue);}
+.card.purple::before{background:var(--purple);}
+.card.teal::before{background:var(--teal);}
+.card.red::before{background:var(--red);}
+.card.sky::before{background:var(--sky);}
+.card.amber::before{background:var(--amber);}
+.card-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.card h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* SVG MAP WRAPPER */
+.svgwrap{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;}
+.svgwrap::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.svgwrap.c1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.svgwrap.c2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.svgwrap.c3::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--sky));}
+.svgwrap.c4::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.svgwrap svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.gold{background:rgba(181,120,14,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,94,52,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,53,120,0.12);color:var(--blue);}
+.pill.amber{background:rgba(204,95,10,0.12);color:var(--amber);}
+.pill.purple{background:rgba(92,26,128,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,92,106,0.12);color:var(--teal);}
+.pill.red{background:rgba(176,24,32,0.12);color:var(--red);}
+.pill.sky{background:rgba(26,78,110,0.12);color:var(--sky);}
+.pill.muted{background:rgba(122,106,80,0.12);color:var(--muted);}
+
+/* CHIPS */
+.chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip.green{background:rgba(26,94,52,0.07);border-color:rgba(26,94,52,0.2);color:var(--green);}
+.chip.amber{background:rgba(204,95,10,0.07);border-color:rgba(204,95,10,0.2);color:var(--amber);}
+.chip.blue{background:rgba(26,53,120,0.07);border-color:rgba(26,53,120,0.2);color:var(--blue);}
+.chip.red{background:rgba(176,24,32,0.07);border-color:rgba(176,24,32,0.2);color:var(--red);}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vi{padding:9px 12px;border-radius:9px;background:rgba(242,237,224,0.7);border:1px solid var(--border);font-size:11px;}
+.vi .vt{font-weight:700;margin-bottom:2px;}
+.vi .vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* STAT */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:rgba(242,237,224,0.7);}
+.sn{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;line-height:1;}
+.sl{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:3px;}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:11px;}
+.tbl th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;}
+.tbl td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tr:nth-child(even) td{background:rgba(181,120,14,0.03);}
+.tbl td:first-child{font-weight:700;color:var(--amber);font-family:'JetBrains Mono',monospace;}
+.tbl td:last-child{color:var(--muted);font-size:10px;}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:26px 32px;margin:24px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.keystone-icon{font-size:42px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;margin-bottom:6px;}
+.keystone-sub{font-size:12px;color:#c8b880;line-height:1.7;}
+.kpills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kp{padding:4px 14px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'JetBrains Mono',monospace;}
+
+/* IMPACT CHAIN */
+.chain{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:6px 0;margin:8px 0;}
+.cn{padding:6px 12px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;}
+.ca{font-size:18px;color:var(--muted);}
+
+/* ARTICLE STATE CARD */
+.art-card{border-radius:14px;border:2px solid;padding:16px 18px;position:relative;overflow:hidden;}
+.art-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;line-height:1;margin-bottom:2px;}
+.art-state{font-size:12px;font-weight:700;margin-bottom:8px;}
+.art-theme{display:inline-block;padding:3px 10px;border-radius:20px;font-size:9px;font-weight:700;font-family:'JetBrains Mono',monospace;margin-bottom:10px;}
+.art-points{display:flex;flex-direction:column;gap:5px;}
+.art-pt{font-size:10px;display:flex;gap:6px;align-items:flex-start;line-height:1.5;}
+.art-pt::before{content:'→';flex:0 0 auto;font-weight:700;}
+.art-accent{position:absolute;top:0;right:0;bottom:0;width:3px;border-radius:0 14px 14px 0;}
+
+/* REGION BLOCK */
+.region-title{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.region-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:3px 9px;border-radius:6px;font-weight:700;}
+
+/* COMPARISON GRID */
+.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0;}
+.cmp-box{padding:12px;border-radius:10px;border:1.5px solid;}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;border:1.5px solid;margin:8px 0;}
+.cl-title{font-size:11px;font-weight:700;margin-bottom:4px;}
+.cl-body{font-size:10px;color:var(--muted);line-height:1.6;}
+
+/* FLOW */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:8px 0;}
+.fn{padding:6px 12px;border-radius:8px;font-size:11px;font-weight:700;border:1.5px solid;}
+.fa{font-size:16px;color:var(--muted);}
+
+/* PHASE */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+@media(max-width:640px){.phases{grid-template-columns:1fr;}}
+.phase{padding:18px;border-radius:13px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;}
+.phase-title{font-size:12px;font-weight:800;margin:4px 0 2px;}
+.phase-sub{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:8px;}
+.phase-body{font-size:10px;line-height:1.6;color:var(--muted);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-eyebrow">Indian Polity · Part XXI · UPSC Special Focus</div>
+  <h1>Articles 371 to 371J — <em>Special Provisions</em></h1>
+  <div class="hdr-sub">12 States · Constitutional Flexibility · Federalism in Action</div>
+</div>
+
+<!-- ── SECTION 0: BIG PICTURE FLOW ── -->
+<div class="sec">Big Picture — The Connected Story</div>
+
+<div class="svgwrap c1">
+<svg id="svgMaster" viewBox="0 0 1380 140" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- WHY SPECIAL PROVISIONS -->
+<div class="sec">① Why These Provisions Exist</div>
+
+<div class="svgwrap c2" style="margin-bottom:18px;">
+<svg id="svgWhy" viewBox="0 0 1380 560" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="card green">
+    <div class="card-lbl">Purpose 1</div>
+    <h3>🏔️ Tribal Identity</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Customary Law Protected</div><div class="vs">Nagaland, Mizoram special status</div></div>
+      <div class="vi"><div class="vt">Religious Practices</div><div class="vs">Parliament cannot override without consent</div></div>
+      <div class="vi"><div class="vt">Land Ownership</div><div class="vs">Tribal lands shielded from external laws</div></div>
+    </div>
+  </div>
+  <div class="card amber">
+    <div class="card-lbl">Purpose 2</div>
+    <h3>⚖️ Regional Balance</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Development Boards</div><div class="vs">Maharashtra, Gujarat, Karnataka</div></div>
+      <div class="vi"><div class="vt">Equitable Fund Allocation</div><div class="vs">Backward regions get priority</div></div>
+      <div class="vi"><div class="vt">Annual Reports to Assembly</div><div class="vs">Accountability mechanism</div></div>
+    </div>
+  </div>
+  <div class="card blue">
+    <div class="card-lbl">Purpose 3</div>
+    <h3>🗳️ Local Employment & Law</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Local Cadres System</div><div class="vs">AP/Telangana — jobs for locals</div></div>
+      <div class="vi"><div class="vt">Law & Order Powers</div><div class="vs">Governor's special responsibility</div></div>
+      <div class="vi"><div class="vt">Post-Reorganisation Stability</div><div class="vs">Sikkim, Goa, NE states</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 2: ARTICLE-WISE MAP (CENTRAL RADIAL) ── -->
+<div class="sec">② Article-wise Mind Map — State by State</div>
+
+<div class="svgwrap c3" style="margin-bottom:18px;">
+<svg id="svgRadial" viewBox="0 0 1380 880" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ── SECTION 3: REGION-WISE DEEP DIVE ── -->
+<div class="sec">③ Region-wise Deep Dive — Articles & States</div>
+
+<!-- WESTERN INDIA -->
+<div style="margin-bottom:8px;">
+  <div class="region-title">
+    <span style="font-size:20px;">🟠</span>
+    Western India — Development Imbalance
+    <span class="region-label" style="background:rgba(204,95,10,0.1);color:var(--amber);border:1px solid rgba(204,95,10,0.2);">371 · 371J</span>
+  </div>
+</div>
+
+<div class="g2">
+  <div class="art-card" style="border-color:rgba(204,95,10,0.35);background:rgba(255,248,235,0.9);">
+    <div class="art-accent" style="background:var(--amber);"></div>
+    <div class="art-num" style="color:var(--amber);">371</div>
+    <div class="art-state">Maharashtra & Gujarat</div>
+    <span class="art-theme" style="background:rgba(204,95,10,0.1);color:var(--amber);">REGIONAL IMBALANCE CORRECTION</span>
+    <div class="art-points">
+      <div class="art-pt">Governor sets up Development Boards</div>
+      <div class="art-pt">Vidarbha · Marathwada · Saurashtra · Kutch</div>
+      <div class="art-pt">Equitable fund allocation ensured</div>
+      <div class="art-pt">Focus on education & employment</div>
+      <div class="art-pt">Annual report to Assembly</div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip amber">Development Boards</span>
+      <span class="chip amber">Fund Equity</span>
+    </div>
+  </div>
+  <div class="art-card" style="border-color:rgba(92,26,128,0.35);background:rgba(248,242,255,0.9);">
+    <div class="art-accent" style="background:var(--purple);"></div>
+    <div class="art-num" style="color:var(--purple);">371J</div>
+    <div class="art-state">Karnataka</div>
+    <span class="art-theme" style="background:rgba(92,26,128,0.1);color:var(--purple);">BACKWARD REGION UPLIFTMENT</span>
+    <div class="art-points">
+      <div class="art-pt">Development Board for Hyderabad-Karnataka</div>
+      <div class="art-pt">Local reservations in education & jobs</div>
+      <div class="art-pt">Most recently added (2012)</div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip blue">Hyderabad-Karnataka Board</span>
+      <span class="chip blue">Local Reservations</span>
+    </div>
+  </div>
+</div>
+
+<!-- SOUTH INDIA -->
+<div style="margin:20px 0 8px;">
+  <div class="region-title">
+    <span style="font-size:20px;">🔵</span>
+    South India — Job & Education Balance
+    <span class="region-label" style="background:rgba(26,53,120,0.1);color:var(--blue);border:1px solid rgba(26,53,120,0.2);">371D · 371E</span>
+  </div>
+</div>
+
+<div class="g2">
+  <div class="art-card" style="border-color:rgba(26,53,120,0.35);background:rgba(235,240,255,0.9);">
+    <div class="art-accent" style="background:var(--blue);"></div>
+    <div class="art-num" style="color:var(--blue);">371D</div>
+    <div class="art-state">Andhra Pradesh & Telangana</div>
+    <span class="art-theme" style="background:rgba(26,53,120,0.1);color:var(--blue);">REGIONAL JOB BALANCE</span>
+    <div class="art-points">
+      <div class="art-pt">Equal opportunities in public employment</div>
+      <div class="art-pt">Local cadres system in education</div>
+      <div class="art-pt">Administrative Tribunal established</div>
+      <div class="art-pt">President's order for implementation</div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip blue">Local Cadres</span>
+      <span class="chip blue">Admin Tribunal</span>
+    </div>
+  </div>
+  <div class="art-card" style="border-color:rgba(10,92,106,0.35);background:rgba(235,248,250,0.9);">
+    <div class="art-accent" style="background:var(--teal);"></div>
+    <div class="art-num" style="color:var(--teal);">371E</div>
+    <div class="art-state">Andhra Pradesh</div>
+    <span class="art-theme" style="background:rgba(10,92,106,0.1);color:var(--teal);">EDUCATION EQUITY</span>
+    <div class="art-points">
+      <div class="art-pt">Parliament may establish Central University</div>
+      <div class="art-pt">Companion to 371D provisions</div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip teal">Central University</span>
+    </div>
+    <div class="callout" style="border-color:rgba(10,92,106,0.2);background:rgba(10,92,106,0.05);margin-top:10px;">
+      <div class="cl-title" style="color:var(--teal);">📌 Note</div>
+      <div class="cl-body">After Telangana bifurcation (2014), both states share 371D provisions.</div>
+    </div>
+  </div>
+</div>
+
+<!-- NORTH-EAST INDIA -->
+<div style="margin:20px 0 8px;">
+  <div class="region-title">
+    <span style="font-size:20px;">🟢</span>
+    North-East India — Cultural & Tribal Autonomy
+    <span class="region-label" style="background:rgba(26,94,52,0.1);color:var(--green);border:1px solid rgba(26,94,52,0.2);">371A · 371B · 371C · 371G · 371H</span>
+  </div>
+</div>
+
+<div class="g3">
+  <div class="art-card" style="border-color:rgba(26,94,52,0.4);background:rgba(235,248,240,0.95);">
+    <div class="art-accent" style="background:var(--green);"></div>
+    <div class="art-num" style="color:var(--green);">371A</div>
+    <div class="art-state">Nagaland ⭐ Most Powerful</div>
+    <span class="art-theme" style="background:rgba(26,94,52,0.12);color:var(--green);">CULTURAL AUTONOMY + PEACE</span>
+    <div class="art-points">
+      <div class="art-pt">No Parliament law on Naga customs</div>
+      <div class="art-pt">Customary law & civil justice protected</div>
+      <div class="art-pt">Land ownership — tribal shield</div>
+      <div class="art-pt">Assembly consent required for laws</div>
+      <div class="art-pt">Governor: special law & order power</div>
+      <div class="art-pt">Linked to 1960 Naga Peace Agreement</div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip green">Customary Law</span>
+      <span class="chip green">Peace Deal 1960</span>
+      <span class="chip green">Governor Power</span>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <div class="art-card" style="border-color:rgba(26,94,52,0.25);background:rgba(240,250,244,0.95);">
+      <div class="art-accent" style="background:#2e8a52;"></div>
+      <div class="art-num" style="color:#2e8a52;font-size:22px;">371B</div>
+      <div class="art-state">Assam</div>
+      <span class="art-theme" style="background:rgba(46,138,82,0.1);color:#2e8a52;">TRIBAL REPRESENTATION</span>
+      <div class="art-points">
+        <div class="art-pt">President creates Tribal Committee</div>
+        <div class="art-pt">Special focus on Hill Tribes</div>
+      </div>
+    </div>
+
+    <div class="art-card" style="border-color:rgba(10,92,106,0.3);background:rgba(236,248,250,0.95);">
+      <div class="art-accent" style="background:var(--teal);"></div>
+      <div class="art-num" style="color:var(--teal);font-size:22px;">371C</div>
+      <div class="art-state">Manipur</div>
+      <span class="art-theme" style="background:rgba(10,92,106,0.1);color:var(--teal);">HILL AREA PROTECTION</span>
+      <div class="art-points">
+        <div class="art-pt">Hill Areas Committee in Assembly</div>
+        <div class="art-pt">Governor sends annual reports</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <div class="art-card" style="border-color:rgba(26,94,52,0.3);background:rgba(238,250,243,0.95);">
+      <div class="art-accent" style="background:#3a7a50;"></div>
+      <div class="art-num" style="color:#3a7a50;font-size:22px;">371G</div>
+      <div class="art-state">Mizoram <em style="font-size:10px;">(Similar to 371A)</em></div>
+      <span class="art-theme" style="background:rgba(58,122,80,0.1);color:#3a7a50;">CULTURAL PROTECTION</span>
+      <div class="art-points">
+        <div class="art-pt">Customary law protected</div>
+        <div class="art-pt">Parliament needs Assembly consent</div>
+        <div class="art-pt">Assembly min. 40 members</div>
+      </div>
+    </div>
+
+    <div class="art-card" style="border-color:rgba(26,78,110,0.3);background:rgba(236,242,250,0.95);">
+      <div class="art-accent" style="background:var(--sky);"></div>
+      <div class="art-num" style="color:var(--sky);font-size:22px;">371H</div>
+      <div class="art-state">Arunachal Pradesh</div>
+      <span class="art-theme" style="background:rgba(26,78,110,0.1);color:var(--sky);">LAW & ORDER CONTROL</span>
+      <div class="art-points">
+        <div class="art-pt">Governor's special L&O powers</div>
+        <div class="art-pt">Assembly min. 30 members</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SPECIAL INTEGRATIONS -->
+<div style="margin:20px 0 8px;">
+  <div class="region-title">
+    <span style="font-size:20px;">🟡</span>
+    Special Integration Cases
+    <span class="region-label" style="background:rgba(181,120,14,0.1);color:var(--gold);border:1px solid rgba(181,120,14,0.2);">371F · 371I</span>
+  </div>
+</div>
+
+<div class="g2">
+  <div class="art-card" style="border-color:rgba(181,120,14,0.4);background:rgba(255,248,228,0.95);">
+    <div class="art-accent" style="background:var(--gold);"></div>
+    <div class="art-num" style="color:var(--gold);">371F</div>
+    <div class="art-state">Sikkim — Smooth Integration (1975)</div>
+    <span class="art-theme" style="background:rgba(181,120,14,0.12);color:var(--gold);">POST-MERGER STABILITY</span>
+    <div class="art-points">
+      <div class="art-pt">Assembly minimum 30 members</div>
+      <div class="art-pt">1 Lok Sabha seat guaranteed</div>
+      <div class="art-pt">Governor ensures social peace</div>
+      <div class="art-pt">President may extend laws with modifications</div>
+      <div class="art-pt">Sikkim subject's rights protected</div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip amber">Min. 30 MLAs</span>
+      <span class="chip amber">1 LS Seat</span>
+      <span class="chip amber">1975 Merger</span>
+    </div>
+  </div>
+  <div class="art-card" style="border-color:rgba(26,78,110,0.3);background:rgba(236,245,252,0.95);">
+    <div class="art-accent" style="background:var(--sky);"></div>
+    <div class="art-num" style="color:var(--sky);">371I</div>
+    <div class="art-state">Goa</div>
+    <span class="art-theme" style="background:rgba(26,78,110,0.1);color:var(--sky);">ASSEMBLY PROTECTION</span>
+    <div class="art-points">
+      <div class="art-pt">Assembly minimum 30 members</div>
+      <div class="art-pt">Ensures representative democracy for small state</div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip sky">Min. 30 MLAs</span>
+    </div>
+    <div class="callout" style="border-color:rgba(26,78,110,0.2);background:rgba(26,78,110,0.05);margin-top:10px;">
+      <div class="cl-title" style="color:var(--sky);">📌 Compare with 371F</div>
+      <div class="cl-body">Both Sikkim (371F) and Goa (371I) have the 30-member minimum Assembly size protection — but Sikkim has far more extensive provisions.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 4: COMPARATIVE FLOW MAP ── -->
+<div class="sec">④ Comparative Flow — Key Distinctions</div>
+
+<div class="svgwrap c4" style="margin-bottom:18px;">
+<svg id="svgComp" viewBox="0 0 1380 340" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ── SECTION 5: PRELIMS QUICK TRIGGER TABLE ── -->
+<div class="sec">⑤ Prelims Quick Triggers — Fact Matrix</div>
+
+<div class="card gold" style="margin-bottom:18px;">
+  <div class="card-lbl">Exam Ready</div>
+  <h3>🎯 Focus Area → Article Mapping</h3>
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th>FOCUS AREA</th>
+        <th>ARTICLE(S)</th>
+        <th>STATE(S)</th>
+        <th>KEY FEATURE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Customary Law Protection</td><td><span class="pill green">371A</span> <span class="pill green">371G</span></td><td>Nagaland · Mizoram</td><td>Parliament law needs Assembly consent</td></tr>
+      <tr><td>Law & Order Special Power</td><td><span class="pill amber">371A</span> <span class="pill sky">371H</span></td><td>Nagaland · Arunachal Pradesh</td><td>Governor's discretionary authority</td></tr>
+      <tr><td>Development Boards</td><td><span class="pill amber">371</span> <span class="pill purple">371J</span></td><td>Maharashtra, Gujarat, Karnataka</td><td>Equitable fund allocation</td></tr>
+      <tr><td>Local Employment</td><td><span class="pill blue">371D</span></td><td>AP & Telangana</td><td>Local cadres + Administrative Tribunal</td></tr>
+      <tr><td>Hill Areas Committee</td><td><span class="pill teal">371C</span></td><td>Manipur</td><td>Special hill area governance</td></tr>
+      <tr><td>Tribal Committee</td><td><span class="pill green">371B</span></td><td>Assam</td><td>President creates tribal committee</td></tr>
+      <tr><td>Sikkim Integration</td><td><span class="pill gold">371F</span></td><td>Sikkim</td><td>Min 30 MLAs + 1 LS seat + peace mandate</td></tr>
+      <tr><td>Central University</td><td><span class="pill blue">371E</span></td><td>AP</td><td>Parliament may establish university</td></tr>
+      <tr><td>Min Assembly Seats</td><td><span class="pill gold">371F</span> <span class="pill green">371G</span> <span class="pill sky">371H</span> <span class="pill sky">371I</span></td><td>Sikkim, Mizoram, AP, Goa</td><td>371G & 371H = 30; 371G = 40</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ── SECTION 6: MEMORY FLOW ── -->
+<div class="sec">⑥ Memory Flow — Recall in Order</div>
+
+<div class="svgwrap c1" style="margin-bottom:18px;">
+<svg id="svgMemory" viewBox="0 0 1380 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="phases">
+  </div>
+</div>
+<div class="phases">
+  <div class="phase" style="border-color:var(--amber);background:rgba(204,95,10,0.04);">
+    <div class="phase-num" style="color:var(--amber);">🟠 West</div>
+    <div class="phase-title">Development Imbalance</div>
+    <div class="phase-sub">Articles 371 · 371J</div>
+    <div class="phase-body">Maharashtra, Gujarat, Karnataka<br>→ Development Boards<br>→ Fund Equity<br>→ Backward Region Uplift</div>
+    <span class="pill amber" style="margin-top:8px;">Regional Boards</span>
+  </div>
+  <div class="phase" style="border-color:var(--blue);background:rgba(26,53,120,0.04);">
+    <div class="phase-num" style="color:var(--blue);">🔵 South</div>
+    <div class="phase-title">Job & Education Balance</div>
+    <div class="phase-sub">Articles 371D · 371E</div>
+    <div class="phase-body">AP & Telangana<br>→ Local Cadres System<br>→ Admin Tribunal<br>→ Central University</div>
+    <span class="pill blue" style="margin-top:8px;">Employment Equity</span>
+  </div>
+  <div class="phase" style="border-color:var(--green);background:rgba(26,94,52,0.04);">
+    <div class="phase-num" style="color:var(--green);">🟢 North-East</div>
+    <div class="phase-title">Cultural & Tribal Autonomy</div>
+    <div class="phase-sub">Articles 371A–C · 371G–H</div>
+    <div class="phase-body">Nagaland, Assam, Manipur<br>Mizoram, Arunachal Pradesh<br>→ Customary Law<br>→ Assembly Consent</div>
+    <span class="pill green" style="margin-top:8px;">Cultural Shield</span>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🇮🇳</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">Articles 371–371J prove that <strong style="color:#f5d78a;">Indian federalism is not uniform — it is adaptive.</strong> Added through amendments (not original Constitution), these provisions show that the Constitution is a living document that accommodates diversity through asymmetric federalism. Each provision reflects a unique historical, political, or cultural challenge.<br><br>
+    <strong style="color:#f5d78a;">Mnemonic:</strong> <em>MAN SAG · SF · MA · GK</em> → Maharashtra, Assam, Nagaland · Sikkim-AP-Goa · Manipur-Arunachal-Mizoram · Goa-Karnataka</div>
+    <div class="kpills">
+      <span class="kp">🏔️ Tribal Autonomy</span>
+      <span class="kp">📊 Regional Equity</span>
+      <span class="kp">⚖️ Asymmetric Federalism</span>
+      <span class="kp">📜 Living Constitution</span>
+      <span class="kp">🕊️ Peace Deals</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a||{}))e.setAttribute(k,v);return e;}
+
+function curve(svg,x1,y1,x2,y2,col,dash,w){
+  const mx=(x1+x2)/2;
+  const p=el('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,stroke:col||'#b5780e44','stroke-width':w||2,fill:'none','stroke-dasharray':dash||'none','stroke-linecap':'round'});
+  svg.appendChild(p);
+}
+function line(svg,x1,y1,x2,y2,col,dash,w){
+  const p=el('line',{x1,y1,x2,y2,stroke:col||'#b5780e44','stroke-width':w||1.5,'stroke-dasharray':dash||'none','stroke-linecap':'round'});
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,tc,rx){
+  tc=tc||'#fff';rx=rx||10;
+  const g=el('g');
+  g.appendChild(el('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.1)'}));
+  g.appendChild(el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.25)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*8)-(sub?5:0)-(emoji?11:0);
+  if(emoji){const em=el('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:tc});em.textContent=emoji;g.appendChild(em);ty+=18;}
+  lines.forEach((l,i)=>{const t=el('text',{x,y:ty+i*16,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Outfit,sans-serif',fill:tc});t.textContent=l;g.appendChild(t);});
+  if(sub){const s=el('text',{x,y:ty+lines.length*16,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8','font-family':'JetBrains Mono,monospace',fill:tc==='#fff'?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.4)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+function badge(svg,x,y,w,h,fill,text,tc){
+  tc=tc||'#fff';
+  const g=el('g');
+  g.appendChild(el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx:6,ry:6,fill}));
+  const t=el('text',{x,y,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9','font-weight':'700','font-family':'JetBrains Mono,monospace',fill:tc});
+  t.textContent=text;g.appendChild(t);svg.appendChild(g);
+}
+
+function txt(svg,x,y,text,size,fill,weight,family,anchor){
+  const t=el('text',{x,y,'text-anchor':anchor||'middle','dominant-baseline':'middle','font-size':size||11,'font-weight':weight||'400','font-family':family||'Outfit,sans-serif',fill:fill||'#1a1208'});
+  t.textContent=text;svg.appendChild(t);return t;
+}
+
+// ── MASTER FLOW ──
+(function(){
+  const svg=document.getElementById('svgMaster');
+  svg.appendChild(el('rect',{x:0,y:0,width:1380,height:140,fill:'rgba(250,246,238,0.5)'}));
+
+  const steps=[
+    {x:80, fill:'#b5780e', label:['Not in'], label2:'Original Constitution', emoji:'📜'},
+    {x:240, fill:'#cc5f0a', label:['Added via'], label2:'Amendments', emoji:'✏️'},
+    {x:410, fill:'#1a5e34', label:['12 States'], label2:'Get Special Status', emoji:'🗺️'},
+    {x:590, fill:'#1a3578', label:['Protect Culture'], label2:'Tribal Identity', emoji:'🏔️'},
+    {x:760, fill:'#5c1a80', label:['Regional Dev.'], label2:'Balance Ensured', emoji:'⚖️'},
+    {x:930, fill:'#0a5c6a', label:['Local Jobs'], label2:'Employment Focus', emoji:'👷'},
+    {x:1110, fill:'#b01820', label:['Law & Order'], label2:'Stability Secured', emoji:'🛡️'},
+    {x:1300, fill:'#1a4e6e', label:['Flexible'], label2:'Federalism', emoji:'🇮🇳'},
+  ];
+
+  for(let i=0;i<steps.length-1;i++){
+    const s=steps[i],n=steps[i+1];
+    curve(svg,s.x+72,70,n.x-72,70,'#b5780e66',undefined,2);
+    svg.appendChild(el('polygon',{points:`${n.x-74},64 ${n.x-62},70 ${n.x-74},76`,fill:'#b5780e88'}));
+  }
+  steps.forEach(s=>{
+    node(svg,s.x,70,136,66,s.fill,[s.label[0]],s.label2,s.emoji);
+  });
+  txt(svg,690,16,'MASTER FLOW: WHY SPECIAL PROVISIONS EXIST → WHAT THEY DO → WHAT THEY ENSURE',8,'rgba(120,100,60,0.45)','400','JetBrains Mono,monospace');
+})();
+
+// ── WHY RADIAL ──
+(function(){
+  const svg=document.getElementById('svgWhy');
+  const W=1380, H=560;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.appendChild(el('rect',{x:0,y:0,width:W,height:H,fill:'rgba(250,246,238,0.4)'}));
+
+  const cx=690, cy=280;
+  node(svg,cx,cy,230,64,'#1a1208',['Articles 371–371J'],'Part XXI · Special Provisions','🏛️');
+
+  // Node half-height ≈ 27, half-width ≈ 85
+  // cy=280, H=560 → bottom clearance = 280. Max vert r = 280 - 27 - 18 = 235
+  // cx=690, W=1380 → horiz clearance = 690. Max horiz r = 690 - 85 - 15 = 590
+  // Use fixed r=230 for all — safe for both axes at these angles
+  const spokes=[
+    {angle:-157, fill:'#1a5e34', label:['Tribal Culture'],  sub:'Custom law shield',  emoji:'🏔️'},
+    {angle:-112, fill:'#cc5f0a', label:['Development'],      sub:'Regional boards',    emoji:'📊'},
+    {angle: -67, fill:'#1a3578', label:['Local Jobs'],       sub:'Employment equity',  emoji:'💼'},
+    {angle: -22, fill:'#5c1a80', label:['Law & Order'],      sub:'Governor powers',    emoji:'🛡️'},
+    {angle:  22, fill:'#0a5c6a', label:['Post-Merger'],      sub:'Integration ease',   emoji:'🤝'},
+    {angle:  67, fill:'#b01820', label:['Assembly Size'],    sub:'Min members fixed',  emoji:'🗳️'},
+    {angle: 112, fill:'#b5780e', label:['Peace Deals'],      sub:'Historical accords', emoji:'🕊️'},
+    {angle: 157, fill:'#1a4e6e', label:['Education'],        sub:'Central university', emoji:'🎓'},
+  ];
+
+  spokes.forEach(s=>{
+    const rad=s.angle*Math.PI/180;
+    // Compute position with angle-aware radius: shrink r for near-vertical angles
+    const absAngle=Math.abs(((s.angle%180)+180)%180); // 0=horiz, 90=vert
+    const vertFactor=Math.abs(Math.sin(rad)); // 0 horiz → 1 vert
+    const r = 230 - vertFactor*40; // 230 horiz → 190 vert
+    const nx=cx+Math.cos(rad)*r, ny=cy+Math.sin(rad)*r;
+    const ex=cx+Math.cos(rad)*118, ey=cy+Math.sin(rad)*34;
+    line(svg,ex,ey,nx,ny,s.fill+'66','5 3',1.8);
+    svg.appendChild(el('circle',{cx:ex,cy:ey,r:3,fill:s.fill+'99'}));
+    node(svg,nx,ny,170,54,s.fill,s.label,s.sub,s.emoji);
+  });
+
+  txt(svg,W/2,548,'WHY SPECIAL PROVISIONS EXIST — 8 KEY PURPOSES',8,'rgba(120,100,60,0.4)','400','JetBrains Mono,monospace');
+})();
+
+// ── RADIAL ARTICLE MAP ──
+(function(){
+  const svg=document.getElementById('svgRadial');
+  const W=1380, H=880;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.appendChild(el('rect',{x:0,y:0,width:W,height:H,fill:'rgba(250,246,238,0.4)'}));
+
+  const cx=690, cy=440;
+  node(svg,cx,cy,210,66,'#1a1208',['Articles','371–371J'],'12 States · Part XXI','📜');
+
+  // 11 articles spread evenly: 360/11 ≈ 32.7° apart, starting from -150°
+  // Vary r: near-horiz angles get r=380, near-vert angles get r=280
+  // W=1380,cx=690 → horiz limit: r+90 < 690 → r<600 ✓
+  // H=880,cy=440 → vert limit: r+35 < 440 → r<405 ✓
+  const arts=[
+    {a:'371',  state:'Maharashtra & Gujarat', theme:'Dev. Boards',  fill:'#cc5f0a', angle:-150, r:370, emoji:'🟠'},
+    {a:'371A', state:'Nagaland',              theme:'Custom Law',   fill:'#1a5e34', angle:-117, r:320, emoji:'🏔️'},
+    {a:'371B', state:'Assam',                 theme:'Tribal Comm.', fill:'#2e7a4a', angle: -84, r:320, emoji:'🌿'},
+    {a:'371C', state:'Manipur',               theme:'Hill Areas',   fill:'#0a5c6a', angle: -51, r:340, emoji:'⛰️'},
+    {a:'371D', state:'AP & Telangana',        theme:'Local Jobs',   fill:'#1a3578', angle: -18, r:310, emoji:'💼'},
+    {a:'371E', state:'AP',                    theme:'Ctrl. Univ.',  fill:'#2a4a90', angle:  15, r:310, emoji:'🎓'},
+    {a:'371F', state:'Sikkim',                theme:'Integration',  fill:'#b5780e', angle:  48, r:340, emoji:'🤝'},
+    {a:'371G', state:'Mizoram',               theme:'Custom Law',   fill:'#3a7a50', angle:  81, r:320, emoji:'🏔️'},
+    {a:'371H', state:'Arunachal Pradesh',     theme:'L&O Power',    fill:'#1a4e6e', angle: 114, r:320, emoji:'🛡️'},
+    {a:'371I', state:'Goa',                   theme:'Assm. Size',   fill:'#3a6e8e', angle: 147, r:370, emoji:'🌊'},
+    {a:'371J', state:'Karnataka',             theme:'Dev. Board',   fill:'#5c1a80', angle:-178, r:370, emoji:'🔷'},
+  ];
+
+  arts.forEach(a=>{
+    const rad=a.angle*Math.PI/180;
+    const nx=cx+Math.cos(rad)*a.r, ny=cy+Math.sin(rad)*a.r;
+    const ex=cx+Math.cos(rad)*107, ey=cy+Math.sin(rad)*35;
+
+    const p=el('path',{d:`M${ex},${ey} C${(ex+nx)/2},${ey} ${(ex+nx)/2},${ny} ${nx},${ny}`,stroke:a.fill+'55','stroke-width':'2',fill:'none','stroke-dasharray':'5 3'});
+    svg.appendChild(p);
+    svg.appendChild(el('circle',{cx:ex,cy:ey,r:3,fill:a.fill+'88'}));
+
+    node(svg,nx,ny,174,56,a.fill,[`Art. ${a.a}`],a.state+' · '+a.theme,a.emoji);
+  });
+
+  // Region labels
+  txt(svg,220,440,'Western India','13','rgba(204,95,10,0.35)','700','JetBrains Mono,monospace');
+  txt(svg,cx+500,cy-60,'North-East India','13','rgba(26,94,52,0.35)','700','JetBrains Mono,monospace');
+  txt(svg,cx+320,cy+300,'South India','13','rgba(26,53,120,0.35)','700','JetBrains Mono,monospace');
+  txt(svg,cx-160,cy+350,'Special Cases','13','rgba(181,120,14,0.35)','700','JetBrains Mono,monospace');
+})();
+
+// ── COMPARATIVE FLOW ──
+(function(){
+  const svg=document.getElementById('svgComp');
+  svg.appendChild(el('rect',{x:0,y:0,width:1380,height:340,fill:'rgba(250,246,238,0.4)'}));
+
+  // Three "pillars" with branches
+  const pillars=[
+    {x:230, y:60, fill:'#cc5f0a', title:'Development\nBoards', sub:'Regional Balance', emoji:'📊',
+     items:[
+       {y:160,fill:'#d47020',label:'Art. 371',sub:'Mah · Guj'},
+       {y:240,fill:'#b85a10',label:'Art. 371J',sub:'Karnataka'},
+     ]
+    },
+    {x:690, y:60, fill:'#1a5e34', title:'Customary\nLaw Shield', sub:'Cultural Autonomy', emoji:'🏔️',
+     items:[
+       {y:155,fill:'#1a5e34',label:'Art. 371A',sub:'Nagaland'},
+       {y:230,fill:'#2e7a50',label:'Art. 371G',sub:'Mizoram'},
+       {y:305,fill:'#0a5c6a',label:'Art. 371B/C/H',sub:'Assam·Manipur·AP'},
+     ]
+    },
+    {x:1150, y:60, fill:'#1a3578', title:'Employment\n& Education', sub:'Local Equity', emoji:'💼',
+     items:[
+       {y:155,fill:'#1a3578',label:'Art. 371D',sub:'AP & Telangana'},
+       {y:230,fill:'#2a5090',label:'Art. 371E',sub:'Andhra Pradesh'},
+       {y:305,fill:'#b5780e',label:'Art. 371F/I',sub:'Sikkim · Goa'},
+     ]
+    }
+  ];
+
+  pillars.forEach(p=>{
+    const lines=p.title.split('\n');
+    node(svg,p.x,p.y,220,56,p.fill,lines,p.sub,p.emoji);
+    p.items.forEach(it=>{
+      line(svg,p.x,p.y+30,p.x,it.y-22,it.fill+'55','4 3',2);
+      svg.appendChild(el('circle',{cx:p.x,cy:it.y-22,r:4,fill:it.fill}));
+      node(svg,p.x,it.y,200,42,it.fill,[it.label],it.sub);
+    });
+  });
+
+  // Feature comparison columns between pillars
+  // vertical dividers
+  line(svg,460,20,460,320,'rgba(200,180,140,0.3)','6 4',1);
+  line(svg,920,20,920,320,'rgba(200,180,140,0.3)','6 4',1);
+
+  txt(svg,230,322,'WESTERN INDIA FOCUS',8,'rgba(204,95,10,0.4)','700','JetBrains Mono,monospace');
+  txt(svg,690,322,'NORTH-EAST INDIA FOCUS',8,'rgba(26,94,52,0.4)','700','JetBrains Mono,monospace');
+  txt(svg,1150,322,'SOUTH + SPECIAL CASES',8,'rgba(26,53,120,0.4)','700','JetBrains Mono,monospace');
+})();
+
+// ── MEMORY FLOW ──
+(function(){
+  const svg=document.getElementById('svgMemory');
+  const W=1380, H=240;
+  svg.appendChild(el('rect',{x:0,y:0,width:W,height:H,fill:'rgba(250,246,238,0.4)'}));
+
+  // 11 items spread evenly with 70px left/right padding → span = 1380-140 = 1240, step = 124
+  const pad=70, span=W-pad*2, n=11;
+  const step=span/(n-1);
+
+  const data=[
+    {fill:'#cc5f0a', a:'371',  state:'Mah & Guj',  feature:'Dev. Boards',   emoji:'🟠'},
+    {fill:'#1a5e34', a:'371A', state:'Nagaland',    feature:'Custom Law ⭐', emoji:'🏔️'},
+    {fill:'#2e7a50', a:'371B', state:'Assam',       feature:'Tribal Comm.',  emoji:'🌿'},
+    {fill:'#0a5c6a', a:'371C', state:'Manipur',     feature:'Hill Areas',    emoji:'⛰️'},
+    {fill:'#1a3578', a:'371D', state:'AP & TG',     feature:'Local Jobs',    emoji:'💼'},
+    {fill:'#2a5090', a:'371E', state:'AP',          feature:'Ctrl. Univ.',   emoji:'🎓'},
+    {fill:'#b5780e', a:'371F', state:'Sikkim',      feature:'Integration',   emoji:'🤝'},
+    {fill:'#3a7a50', a:'371G', state:'Mizoram',     feature:'Custom Law',    emoji:'🌄'},
+    {fill:'#1a4e6e', a:'371H', state:'Arunachal',   feature:'L&O Power',     emoji:'🛡️'},
+    {fill:'#3a6e8e', a:'371I', state:'Goa',         feature:'Min 30 MLAs',   emoji:'🌊'},
+    {fill:'#5c1a80', a:'371J', state:'Karnataka',   feature:'Dev. Board',    emoji:'🔷'},
+  ];
+
+  const spineY=120;
+  // spine line
+  line(svg,pad-10,spineY,W-pad+10,spineY,'rgba(181,120,14,0.25)',undefined,2);
+
+  data.forEach((it,i)=>{
+    const x=pad+i*step;
+    const up=i%2===0; // alternate above/below
+    const ny=up ? spineY-70 : spineY+70;
+    const connY=up ? ny+22 : ny-22;
+
+    line(svg,x,spineY,x,connY,it.fill+'99',undefined,1.5);
+    svg.appendChild(el('circle',{cx:x,cy:spineY,r:5,fill:it.fill,stroke:'#fff','stroke-width':'1.5'}));
+    // node width 118, ensure it stays within bounds
+    const nw=Math.min(118, 118); // clamp if near edges
+    node(svg,x,ny,nw,42,it.fill,[it.a+' · '+it.feature],it.state,it.emoji);
+  });
+
+  txt(svg,W/2,228,'ARTICLES 371 → 371J IN ORDER — MEMORY SEQUENCE',8,'rgba(120,100,60,0.4)','400','JetBrains Mono,monospace');
+})();
+</script>
+</body>
+</html>

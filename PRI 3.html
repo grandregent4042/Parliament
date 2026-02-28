@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Local Government — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#1a1410;--paper:#faf7f2;--cream:#f2ede3;--cream2:#ede6d8;
+  --gold:#c4901a;--gold-lt:#f7e8b8;--amber:#d4680a;
+  --green:#1a6838;--green-lt:#e8f5ee;
+  --blue:#1a3a7a;--blue-lt:#e8eef8;
+  --purple:#5c1a80;--purple-lt:#f0e8f8;
+  --teal:#0a6268;--teal-lt:#e8f5f6;
+  --red:#ac1a1a;--red-lt:#faeaea;
+  --sky:#1a5278;--sky-lt:#e8f2f8;
+  --muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf5;
+  --shadow:0 2px 16px rgba(0,0,0,0.07);
+}
+
+body{font-family:'Outfit',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;
+  background-image:radial-gradient(ellipse 80% 50% at 20% 5%,rgba(196,144,26,0.06) 0%,transparent 60%),
+  radial-gradient(ellipse 60% 60% at 80% 90%,rgba(26,58,122,0.05) 0%,transparent 60%);
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:0 24px 120px;}
+
+/* HEADER */
+.header{text-align:center;padding:50px 16px 24px;position:relative;}
+.header-kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,52px);font-weight:700;line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-top:8px;letter-spacing:0.5px;}
+.header::after{content:'';display:block;width:80px;height:3px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:16px auto 0;border-radius:4px;}
+
+/* SECTION LABELS */
+.sec{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:36px 0 16px;display:flex;align-items:center;gap:12px;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:16px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}
+.g3c{display:grid;grid-template-columns:1fr 2fr;gap:16px;margin-bottom:16px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}.g3c{grid-template-columns:1fr;}}
+@media(max-width:600px){.g2,.g3,.g4,.g3c{grid-template-columns:1fr;}}
+
+/* CARDS */
+.card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:16px;position:relative;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s,transform .2s;}
+.card:hover{box-shadow:0 6px 28px rgba(0,0,0,0.1);transform:translateY(-1px);}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.card.c-gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.card.c-blue::before{background:var(--blue);}
+.card.c-green::before{background:var(--green);}
+.card.c-purple::before{background:var(--purple);}
+.card.c-teal::before{background:var(--teal);}
+.card.c-red::before{background:var(--red);}
+.card.c-sky::before{background:var(--sky);}
+.card.c-amber::before{background:var(--amber);}
+
+.card-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.card h3{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:6px;line-height:1.3;}
+
+/* MAP WRAPPER */
+.map-wrap{background:var(--card);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:18px;position:relative;box-shadow:var(--shadow);}
+.map-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;}
+.mw-gold::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.mw-blue::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.mw-green::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+.mw-red::before{background:linear-gradient(90deg,var(--red),var(--amber));}
+.mw-sky::before{background:linear-gradient(90deg,var(--sky),var(--blue));}
+.map-wrap svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:600;font-family:'JetBrains Mono',monospace;margin:2px;}
+.pill-gold{background:rgba(196,144,26,0.12);color:var(--gold);}
+.pill-blue{background:rgba(26,58,122,0.12);color:var(--blue);}
+.pill-green{background:rgba(26,104,56,0.12);color:var(--green);}
+.pill-amber{background:rgba(212,104,10,0.12);color:var(--amber);}
+.pill-purple{background:rgba(92,26,128,0.12);color:var(--purple);}
+.pill-teal{background:rgba(10,98,104,0.12);color:var(--teal);}
+.pill-red{background:rgba(172,26,26,0.12);color:var(--red);}
+.pill-sky{background:rgba(26,82,120,0.12);color:var(--sky);}
+.pill-ink{background:rgba(26,20,16,0.1);color:var(--ink);}
+
+/* STAT BOXES */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat{flex:1;padding:12px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--cream);}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;line-height:1;}
+.stat-l{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:2px;}
+.stat-s{font-size:10px;font-weight:600;margin-top:3px;}
+
+/* LIST ITEMS */
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vi{padding:8px 11px;border-radius:8px;background:var(--cream);border:1px solid var(--border);font-size:11px;}
+.vi-t{font-weight:700;margin-bottom:1px;}
+.vi-s{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* CHIPS */
+.chip{display:inline-block;padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;font-family:'JetBrains Mono',monospace;margin:2px;border:1.5px solid;}
+.chip-ok{background:rgba(26,104,56,0.07);border-color:rgba(26,104,56,0.2);color:var(--green);}
+.chip-no{background:rgba(172,26,26,0.07);border-color:rgba(172,26,26,0.2);color:var(--red);}
+.chip-neu{background:rgba(196,144,26,0.07);border-color:rgba(196,144,26,0.2);color:var(--gold);}
+
+/* FLOW CHAIN */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.fn{padding:6px 12px;border-radius:7px;font-size:11px;font-weight:700;border:1.5px solid;}
+.fa{font-size:16px;color:var(--muted);}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:11px;}
+.tbl th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;}
+.tbl td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tr:nth-child(even) td{background:rgba(196,144,26,0.03);}
+.tbl td:first-child{font-weight:700;color:var(--amber);}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:16px;padding:24px 28px;margin:20px 0;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.ks-icon{font-size:38px;flex:0 0 auto;}
+.ks-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;margin-bottom:5px;}
+.ks-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.ks-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.kp{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'JetBrains Mono',monospace;}
+
+/* TIMELINE */
+.timeline{position:relative;margin:16px 0;}
+.timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--gold),var(--blue));border-radius:2px;}
+.tl-item{display:flex;gap:16px;margin-bottom:12px;position:relative;}
+.tl-dot{width:12px;height:12px;border-radius:50%;flex:0 0 12px;margin-top:3px;margin-left:14px;border:2px solid var(--paper);box-shadow:0 0 0 2px var(--gold);}
+.tl-body{padding:9px 12px;border-radius:9px;background:var(--cream);border:1px solid var(--border);flex:1;}
+.tl-year{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+.tl-text{font-size:11px;font-weight:600;}
+.tl-sub{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:1px;}
+
+/* 2-col timeline */
+.tl2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:640px){.tl2{grid-template-columns:1fr;}}
+
+/* FEAT GRID */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.fgi{padding:9px 11px;border-radius:8px;background:var(--cream);border:1px solid var(--border);}
+.fgi-i{font-size:15px;margin-bottom:3px;}
+.fgi-t{font-size:11px;font-weight:700;}
+.fgi-s{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:1px;}
+
+/* BADGE */
+.badge{display:inline-block;padding:2px 8px;border-radius:5px;font-size:9px;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.badge-ok{background:#d4edda;color:#155724;}
+.badge-na{background:#f8d7da;color:#721c24;}
+.badge-neu{background:#fff3cd;color:#856404;}
+
+/* IMPACT CHAIN */
+.ic{display:flex;align-items:center;flex-wrap:wrap;gap:0;margin:10px 0;}
+.icn{padding:6px 10px;border-radius:7px;font-size:10px;font-weight:700;border:1.5px solid;white-space:nowrap;}
+.ica{font-size:13px;color:var(--muted);margin:0 4px;flex:0 0 auto;}
+
+/* COMPARISON */
+.cmp-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0;}
+.cmp-col{padding:12px;border-radius:10px;border:1.5px solid;}
+.cmp-head{font-size:12px;font-weight:800;margin-bottom:8px;font-family:'JetBrains Mono',monospace;}
+.cmp-col.c-left{background:rgba(26,58,122,0.05);border-color:rgba(26,58,122,0.2);}
+.cmp-col.c-right{background:rgba(26,104,56,0.05);border-color:rgba(26,104,56,0.2);}
+@media(max-width:600px){.cmp-wrap{grid-template-columns:1fr;}}
+
+/* NOTE BOX */
+.note{padding:10px 14px;border-radius:9px;background:rgba(196,144,26,0.07);border:1.5px solid rgba(196,144,26,0.25);margin:8px 0;font-size:11px;}
+.note-t{font-weight:700;color:var(--gold);margin-bottom:3px;font-size:11px;}
+.note-b{color:var(--muted);line-height:1.5;}
+
+/* PHASE ROW */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase{padding:14px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-n{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;}
+.phase-t{font-size:12px;font-weight:800;margin:4px 0;}
+.phase-s{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);}
+
+/* TAG INLINE */
+.tag{display:inline-block;padding:1px 6px;border-radius:4px;font-size:9px;font-weight:700;}
+.tag-ok{background:#d4edda;color:#155724;}
+.tag-na{background:#f8d7da;color:#721c24;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-kicker">Indian Polity · Urban Governance · UPSC Prelims + Mains</div>
+  <h1>Urban Local Government <em>(Municipalities)</em></h1>
+  <div class="header-sub">History → Constitutional Status → Structure → Elections → Powers → Finances → Safeguards</div>
+</div>
+
+<!-- ══════ SECTION 0: MASTER STORY FLOW ══════ -->
+<div class="sec">⓪ The Story at a Glance</div>
+
+<div class="map-wrap mw-gold">
+<svg viewBox="0 0 1280 110" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<defs>
+  <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+    <path d="M1,1 L7,4 L1,7 Z" fill="#b87c10" opacity="0.8"/>
+  </marker>
+</defs>
+<rect width="1280" height="110" fill="rgba(250,247,242,0.6)"/>
+
+<!-- nodes -->
+<g id="flow-nodes">
+  <!-- node helper: cx, cy, w, h, fill, label, sub -->
+</g>
+
+<script type="text/javascript">/* inline script handled below */</script>
+
+<!-- Node 1: Cities = State Subject -->
+<rect x="12" y="24" width="148" height="62" rx="9" fill="#c4901a" opacity="0.12" stroke="#c4901a" stroke-width="1.5"/>
+<text x="86" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#c4901a">🏙️ Cities</text>
+<text x="86" y="59" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1410">State Subject</text>
+<text x="86" y="74" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono',monospace">7th Schedule</text>
+
+<line x1="162" y1="55" x2="186" y2="55" stroke="#c4901a" stroke-width="2" marker-end="url(#arr)"/>
+
+<!-- Node 2: No mention in orig. Constitution -->
+<rect x="188" y="24" width="158" height="62" rx="9" fill="#ac1a1a" opacity="0.1" stroke="#ac1a1a" stroke-width="1.5"/>
+<text x="267" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#ac1a1a">⚠️ Gap in</text>
+<text x="267" y="59" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1410">Constitution</text>
+<text x="267" y="74" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono',monospace">No ULB mention</text>
+
+<line x1="348" y1="55" x2="372" y2="55" stroke="#c4901a" stroke-width="2" marker-end="url(#arr)"/>
+
+<!-- Node 3: 74th Amendment -->
+<rect x="374" y="14" width="170" height="82" rx="9" fill="#1a3a7a" opacity="0.1" stroke="#1a3a7a" stroke-width="2"/>
+<text x="459" y="38" text-anchor="middle" font-size="13" font-weight="700" fill="#1a3a7a">📜 74th Amend.</text>
+<text x="459" y="56" text-anchor="middle" font-size="11" fill="#1a1410" font-weight="600">Constitutional Status</text>
+<text x="459" y="72" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono',monospace">Part IX-A · Art 243P-ZG</text>
+<text x="459" y="86" text-anchor="middle" font-size="9" fill="#1a3a7a" font-weight="700" font-family="'JetBrains Mono',monospace">1 June 1993</text>
+
+<line x1="546" y1="55" x2="570" y2="55" stroke="#c4901a" stroke-width="2" marker-end="url(#arr)"/>
+
+<!-- Node 4: Structure -->
+<rect x="572" y="24" width="152" height="62" rx="9" fill="#1a6838" opacity="0.1" stroke="#1a6838" stroke-width="1.5"/>
+<text x="648" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#1a6838">🏛️ 3 Types</text>
+<text x="648" y="59" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1410">Nagar Pan. → Corp.</text>
+<text x="648" y="74" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono',monospace">Art 243Q</text>
+
+<line x1="726" y1="55" x2="750" y2="55" stroke="#c4901a" stroke-width="2" marker-end="url(#arr)"/>
+
+<!-- Node 5: Elections & Term -->
+<rect x="752" y="24" width="152" height="62" rx="9" fill="#5c1a80" opacity="0.1" stroke="#5c1a80" stroke-width="1.5"/>
+<text x="828" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#5c1a80">🗳️ Elections</text>
+<text x="828" y="59" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1410">SEC · 5-yr Term</text>
+<text x="828" y="74" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono',monospace">Art 243U · 243ZA</text>
+
+<line x1="906" y1="55" x2="930" y2="55" stroke="#c4901a" stroke-width="2" marker-end="url(#arr)"/>
+
+<!-- Node 6: Powers & 12th Schedule -->
+<rect x="932" y="24" width="152" height="62" rx="9" fill="#0a6268" opacity="0.1" stroke="#0a6268" stroke-width="1.5"/>
+<text x="1008" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#0a6268">⚙️ Powers</text>
+<text x="1008" y="59" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1410">12th Schedule</text>
+<text x="1008" y="74" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono',monospace">18 subjects · Art 243W</text>
+
+<line x1="1086" y1="55" x2="1110" y2="55" stroke="#c4901a" stroke-width="2" marker-end="url(#arr)"/>
+
+<!-- Node 7: Finance + Safeguards -->
+<rect x="1112" y="14" width="158" height="82" rx="9" fill="#d4680a" opacity="0.1" stroke="#d4680a" stroke-width="2"/>
+<text x="1191" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="#d4680a">💰 Finances</text>
+<text x="1191" y="54" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1410">+ Safeguards</text>
+<text x="1191" y="70" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono',monospace">Taxes · Grants · SFC</text>
+<text x="1191" y="84" text-anchor="middle" font-size="9" fill="#d4680a" font-weight="700" font-family="'JetBrains Mono',monospace">Art 243X–243Z</text>
+
+<!-- Bottom label -->
+<text x="640" y="105" text-anchor="middle" font-size="8" font-family="'JetBrains Mono',monospace" letter-spacing="2" fill="rgba(120,100,60,0.4)">MASTER FLOW — URBAN LOCAL GOVERNMENT STORY</text>
+</svg>
+</div>
+
+<!-- ══════ SECTION 1: BASIC IDEA ══════ -->
+<div class="sec">① Basic Idea — What are ULBs?</div>
+
+<div class="g2">
+  <div class="card c-gold">
+    <div class="card-label">Constitutional Position</div>
+    <h3>📌 Local Govt = State Subject</h3>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-n" style="color:var(--gold);">7th</div>
+        <div class="stat-s">Schedule</div>
+        <div class="stat-l">STATE LIST</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:var(--blue);">IX-A</div>
+        <div class="stat-s">Part Added</div>
+        <div class="stat-l">74TH AMENDMENT</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:var(--green);">18</div>
+        <div class="stat-s">Functions</div>
+        <div class="stat-l">12TH SCHEDULE</div>
+      </div>
+    </div>
+    <div class="note" style="margin-top:10px;">
+      <div class="note-t">⚠️ Original Constitution Silent on ULBs</div>
+      <div class="note-b">Parliament stepped in → 74th Constitutional Amendment Act, 1992 → Effective <strong>1 June 1993</strong></div>
+    </div>
+  </div>
+  <div class="card c-blue">
+    <div class="card-label">Core Responsibilities</div>
+    <h3>🏙️ What ULBs Manage</h3>
+    <div class="fg">
+      <div class="fgi"><div class="fgi-i">🛣️</div><div class="fgi-t">Roads</div><div class="fgi-s">Maintenance & upkeep</div></div>
+      <div class="fgi"><div class="fgi-i">💧</div><div class="fgi-t">Water Supply</div><div class="fgi-s">Distribution networks</div></div>
+      <div class="fgi"><div class="fgi-i">🚿</div><div class="fgi-t">Sanitation</div><div class="fgi-s">Sewage & drains</div></div>
+      <div class="fgi"><div class="fgi-i">🏥</div><div class="fgi-t">Public Health</div><div class="fgi-s">Clinics, hygiene</div></div>
+      <div class="fgi"><div class="fgi-i">🏗️</div><div class="fgi-t">City Planning</div><div class="fgi-s">Land use, zoning</div></div>
+      <div class="fgi"><div class="fgi-i">🗑️</div><div class="fgi-t">Solid Waste</div><div class="fgi-s">Collection & disposal</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 2: HISTORY TIMELINE ══════ -->
+<div class="sec">② Historical Background — Prelims Timeline</div>
+
+<div class="map-wrap mw-gold">
+<svg viewBox="0 0 1280 140" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<defs>
+  <marker id="arrB" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+    <path d="M0,0 L7,3.5 L0,7 Z" fill="#c4901a" opacity="0.7"/>
+  </marker>
+</defs>
+<rect width="1280" height="140" fill="rgba(250,247,242,0.5)"/>
+
+<!-- timeline spine -->
+<line x1="60" y1="70" x2="1240" y2="70" stroke="#c4901a" stroke-width="2.5" stroke-dasharray="6 3" opacity="0.4"/>
+<circle cx="60" cy="70" r="4" fill="#c4901a" opacity="0.5"/>
+<circle cx="1240" cy="70" r="4" fill="#1a3a7a" opacity="0.5"/>
+
+<!-- Events: x positions spread across the width -->
+<!-- 1688 -->
+<circle cx="100" cy="70" r="7" fill="#c4901a" stroke="white" stroke-width="2"/>
+<rect x="50" y="83" width="100" height="42" rx="6" fill="rgba(196,144,26,0.1)" stroke="rgba(196,144,26,0.3)" stroke-width="1"/>
+<text x="100" y="96" text-anchor="middle" font-size="11" font-weight="700" fill="#c4901a" font-family="'JetBrains Mono',monospace">1688</text>
+<text x="100" y="110" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1410">Madras Corp.</text>
+<text x="100" y="122" text-anchor="middle" font-size="8.5" fill="#7a6a50">First municipal corp.</text>
+
+<!-- 1726 -->
+<circle cx="235" cy="70" r="7" fill="#d4680a" stroke="white" stroke-width="2"/>
+<rect x="185" y="83" width="100" height="42" rx="6" fill="rgba(212,104,10,0.1)" stroke="rgba(212,104,10,0.3)" stroke-width="1"/>
+<text x="235" y="96" text-anchor="middle" font-size="11" font-weight="700" fill="#d4680a" font-family="'JetBrains Mono',monospace">1726</text>
+<text x="235" y="110" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1410">Bombay &amp; Calcutta</text>
+<text x="235" y="122" text-anchor="middle" font-size="8.5" fill="#7a6a50">Corporations formed</text>
+
+<!-- 1870 -->
+<circle cx="380" cy="70" r="7" fill="#1a3a7a" stroke="white" stroke-width="2"/>
+<rect x="330" y="83" width="100" height="42" rx="6" fill="rgba(26,58,122,0.1)" stroke="rgba(26,58,122,0.3)" stroke-width="1"/>
+<text x="380" y="96" text-anchor="middle" font-size="11" font-weight="700" fill="#1a3a7a" font-family="'JetBrains Mono',monospace">1870</text>
+<text x="380" y="110" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1410">Lord Mayo</text>
+<text x="380" y="122" text-anchor="middle" font-size="8.5" fill="#7a6a50">Fiscal decentralisation</text>
+
+<!-- 1882 -->
+<circle cx="520" cy="70" r="8" fill="#1a6838" stroke="white" stroke-width="2.5"/>
+<rect x="466" y="10" width="108" height="50" rx="6" fill="rgba(26,104,56,0.12)" stroke="rgba(26,104,56,0.35)" stroke-width="1.5"/>
+<text x="520" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#1a6838" font-family="'JetBrains Mono',monospace">1882</text>
+<text x="520" y="41" text-anchor="middle" font-size="10" font-weight="700" fill="#1a1410">Lord Ripon</text>
+<text x="520" y="54" text-anchor="middle" font-size="8.5" fill="#7a6a50">Father of Local Self-Govt</text>
+<line x1="520" y1="60" x2="520" y2="62" stroke="#1a6838" stroke-width="1.5" stroke-dasharray="3 2"/>
+
+<!-- 1907 -->
+<circle cx="660" cy="70" r="7" fill="#5c1a80" stroke="white" stroke-width="2"/>
+<rect x="610" y="83" width="100" height="42" rx="6" fill="rgba(92,26,128,0.1)" stroke="rgba(92,26,128,0.3)" stroke-width="1"/>
+<text x="660" y="96" text-anchor="middle" font-size="11" font-weight="700" fill="#5c1a80" font-family="'JetBrains Mono',monospace">1907</text>
+<text x="660" y="110" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1410">Royal Commission</text>
+<text x="660" y="122" text-anchor="middle" font-size="8.5" fill="#7a6a50">On decentralisation</text>
+
+<!-- 1919 -->
+<circle cx="800" cy="70" r="7" fill="#0a6268" stroke="white" stroke-width="2"/>
+<rect x="750" y="10" width="100" height="52" rx="6" fill="rgba(10,98,104,0.1)" stroke="rgba(10,98,104,0.3)" stroke-width="1"/>
+<text x="800" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0a6268" font-family="'JetBrains Mono',monospace">1919</text>
+<text x="800" y="41" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1410">GOI Act</text>
+<text x="800" y="55" text-anchor="middle" font-size="8.5" fill="#7a6a50">Local self-govt provinces</text>
+<line x1="800" y1="62" x2="800" y2="63" stroke="#0a6268" stroke-width="1.5" stroke-dasharray="3 2"/>
+
+<!-- 1935 -->
+<circle cx="940" cy="70" r="7" fill="#ac1a1a" stroke="white" stroke-width="2"/>
+<rect x="890" y="83" width="100" height="42" rx="6" fill="rgba(172,26,26,0.1)" stroke="rgba(172,26,26,0.3)" stroke-width="1"/>
+<text x="940" y="96" text-anchor="middle" font-size="11" font-weight="700" fill="#ac1a1a" font-family="'JetBrains Mono',monospace">1935</text>
+<text x="940" y="110" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1410">Provincial Subject</text>
+<text x="940" y="122" text-anchor="middle" font-size="8.5" fill="#7a6a50">Formally recognised</text>
+
+<!-- 1989 -->
+<circle cx="1080" cy="70" r="7" fill="#7a4010" stroke="white" stroke-width="2"/>
+<rect x="1030" y="10" width="100" height="52" rx="6" fill="rgba(122,64,16,0.1)" stroke="rgba(122,64,16,0.3)" stroke-width="1"/>
+<text x="1080" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#7a4010" font-family="'JetBrains Mono',monospace">1989</text>
+<text x="1080" y="41" text-anchor="middle" font-size="10" font-weight="600" fill="#1a1410">65th Amend. Bill</text>
+<text x="1080" y="55" text-anchor="middle" font-size="8.5" fill="#ac1a1a" font-weight="600">Failed in Rajya Sabha</text>
+<line x1="1080" y1="62" x2="1080" y2="63" stroke="#7a4010" stroke-width="1.5" stroke-dasharray="3 2"/>
+
+<!-- 1992 -->
+<circle cx="1220" cy="70" r="10" fill="#1a3a7a" stroke="white" stroke-width="3"/>
+<rect x="1158" y="83" width="120" height="52" rx="7" fill="rgba(26,58,122,0.15)" stroke="rgba(26,58,122,0.5)" stroke-width="2"/>
+<text x="1218" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="#1a3a7a" font-family="'JetBrains Mono',monospace">1992 ✓</text>
+<text x="1218" y="112" text-anchor="middle" font-size="10" font-weight="700" fill="#1a1410">74th Amendment</text>
+<text x="1218" y="125" text-anchor="middle" font-size="8.5" fill="#1a3a7a" font-weight="600">1 June 1993</text>
+
+<text x="640" y="136" text-anchor="middle" font-size="8" font-family="'JetBrains Mono',monospace" letter-spacing="2" fill="rgba(120,100,60,0.4)">HISTORICAL TIMELINE OF URBAN LOCAL GOVERNANCE IN INDIA</text>
+</svg>
+</div>
+
+<!-- ══════ SECTION 3: CONSTITUTIONAL POSITION ══════ -->
+<div class="sec">③ Constitutional Position — 74th Amendment</div>
+
+<div class="g2" style="margin-bottom:16px;">
+  <div class="card c-blue">
+    <div class="card-label">What Was Added</div>
+    <h3>📜 74th Amendment Additions</h3>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-n" style="color:var(--blue);">IX-A</div>
+        <div class="stat-s">New Part</div>
+        <div class="stat-l">ADDED TO CONST.</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:var(--amber);">12th</div>
+        <div class="stat-s">New Schedule</div>
+        <div class="stat-l">18 SUBJECTS</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:var(--green);">16</div>
+        <div class="stat-s">New Articles</div>
+        <div class="stat-l">243P → 243ZG</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:10px;">
+      <span class="pill pill-blue">Art 243P — Definitions</span>
+      <span class="pill pill-blue">Art 243Q — Constituting ULBs</span>
+      <span class="pill pill-blue">Art 243R — Composition</span>
+      <span class="pill pill-blue">Art 243S — Ward Committees</span>
+      <span class="pill pill-blue">Art 243T — Reservation</span>
+      <span class="pill pill-blue">Art 243U — Duration</span>
+      <span class="pill pill-blue">Art 243W — Powers & Functions</span>
+      <span class="pill pill-blue">Art 243X — Finances</span>
+      <span class="pill pill-blue">Art 243ZA — Elections</span>
+    </div>
+  </div>
+  <div class="card c-amber">
+    <div class="card-label">Article Map — Key Provisions</div>
+    <h3>🗺️ Article-to-Topic Quick Map</h3>
+    <table class="tbl">
+      <thead><tr><th>Article</th><th>Topic</th></tr></thead>
+      <tbody>
+        <tr><td>243P</td><td>Definitions</td></tr>
+        <tr><td>243Q</td><td>Constitution of Municipalities (3 types)</td></tr>
+        <tr><td>243R</td><td>Composition of Municipalities</td></tr>
+        <tr><td>243S</td><td>Ward Committees</td></tr>
+        <tr><td>243T</td><td>Reservation (SC/ST/Women/OBC)</td></tr>
+        <tr><td>243U</td><td>Duration — 5-year term</td></tr>
+        <tr><td>243V</td><td>Disqualifications</td></tr>
+        <tr><td>243W</td><td>Powers, Authority & Responsibilities</td></tr>
+        <tr><td>243X</td><td>Powers to Impose Taxes & Finances</td></tr>
+        <tr><td>243Y</td><td>State Finance Commission</td></tr>
+        <tr><td>243Z</td><td>Audit of Accounts</td></tr>
+        <tr><td>243ZA</td><td>Elections to Municipalities (SEC)</td></tr>
+        <tr><td>243ZB</td><td>Application to Union Territories</td></tr>
+        <tr><td>243ZC</td><td>Exemptions (Scheduled/Tribal areas)</td></tr>
+        <tr><td>243ZD</td><td>Committee for District Planning (DPC)</td></tr>
+        <tr><td>243ZE</td><td>Committee for Metro Planning (MPC)</td></tr>
+        <tr><td>243ZG</td><td>Bar on Court Interference</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════ SECTION 4: TYPES OF MUNICIPALITIES ══════ -->
+<div class="sec">④ Types of Municipalities — Art 243Q</div>
+
+<div class="map-wrap mw-blue">
+<svg viewBox="0 0 1280 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<defs>
+  <marker id="arrC" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+    <path d="M0,0 L8,4 L0,8 Z" fill="#1a3a7a" opacity="0.6"/>
+  </marker>
+</defs>
+<rect width="1280" height="200" fill="rgba(250,247,242,0.5)"/>
+
+<!-- Central root -->
+<rect x="490" y="74" width="300" height="60" rx="12" fill="#1a3a7a"/>
+<text x="640" y="98" text-anchor="middle" font-size="13" font-weight="700" fill="white">🏛️ Art 243Q</text>
+<text x="640" y="116" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">Types of Municipalities</text>
+<text x="640" y="130" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="'JetBrains Mono',monospace">State decides based on population</text>
+
+<!-- Left: Nagar Panchayat -->
+<path d="M490,104 C400,104 300,80 280,80" stroke="#c4901a" stroke-width="2" fill="none" stroke-dasharray="5 3" marker-end="url(#arrC)"/>
+<rect x="78" y="36" width="200" height="88" rx="10" fill="rgba(196,144,26,0.1)" stroke="#c4901a" stroke-width="2"/>
+<text x="178" y="60" text-anchor="middle" font-size="21" fill="#c4901a">🌅</text>
+<text x="178" y="81" text-anchor="middle" font-size="12" font-weight="800" fill="#c4901a">Nagar Panchayat</text>
+<text x="178" y="97" text-anchor="middle" font-size="10" fill="#1a1410">Transitional Area</text>
+<text x="178" y="112" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono',monospace">Rural → Urban shift</text>
+
+<!-- Centre-bottom: Municipal Council -->
+<path d="M640,134 L640,155" stroke="#1a6838" stroke-width="2" fill="none" marker-end="url(#arrC)"/>
+<rect x="510" y="157" width="260" height="36" rx="9" fill="rgba(26,104,56,0.12)" stroke="#1a6838" stroke-width="2"/>
+<text x="640" y="170" text-anchor="middle" font-size="11" font-weight="800" fill="#1a6838">🏘️ Municipal Council</text>
+<text x="640" y="184" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono',monospace">Smaller urban areas</text>
+
+<!-- Right: Municipal Corporation -->
+<path d="M790,104 C880,104 980,60 1000,60" stroke="#5c1a80" stroke-width="2" fill="none" stroke-dasharray="5 3" marker-end="url(#arrC)"/>
+<rect x="1002" y="36" width="220" height="88" rx="10" fill="rgba(92,26,128,0.1)" stroke="#5c1a80" stroke-width="2"/>
+<text x="1112" y="60" text-anchor="middle" font-size="21" fill="#5c1a80">🌆</text>
+<text x="1112" y="81" text-anchor="middle" font-size="12" font-weight="800" fill="#5c1a80">Municipal Corporation</text>
+<text x="1112" y="97" text-anchor="middle" font-size="10" fill="#1a1410">Large Urban Area</text>
+<text x="1112" y="112" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono',monospace">Big cities (Delhi, Mumbai...)</text>
+
+<!-- Size arrow showing hierarchy -->
+<text x="640" y="196" text-anchor="middle" font-size="9" font-family="'JetBrains Mono',monospace" fill="rgba(26,58,122,0.5)" letter-spacing="2">SMALLER ←————————————— POPULATION SIZE ——————————————→ LARGER</text>
+</svg>
+</div>
+
+<div class="g3">
+  <div class="card c-gold">
+    <div class="card-label">Type 1</div>
+    <h3>🌅 Nagar Panchayat</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vi-t">Transitional Area</div><div class="vi-s">Moving from rural to urban character</div></div>
+      <div class="vi"><div class="vi-t">Smallest Urban Body</div><div class="vi-s">Population: typically 5,000–20,000</div></div>
+    </div>
+    <span class="chip chip-neu" style="margin-top:8px;">Often peri-urban zones</span>
+  </div>
+  <div class="card c-green">
+    <div class="card-label">Type 2</div>
+    <h3>🏘️ Municipal Council</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vi-t">Smaller Urban Area</div><div class="vi-s">Medium-sized towns and cities</div></div>
+      <div class="vi"><div class="vi-t">Mid-tier Governance</div><div class="vi-s">Typically 20,000–3 lakh population</div></div>
+    </div>
+    <span class="chip chip-ok" style="margin-top:8px;">Also called Nagar Parishad</span>
+  </div>
+  <div class="card c-purple">
+    <div class="card-label">Type 3</div>
+    <h3>🌆 Municipal Corporation</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vi-t">Large Urban Area</div><div class="vi-s">Metropolitan cities, large urban centres</div></div>
+      <div class="vi"><div class="vi-t">Maximum Powers</div><div class="vi-s">Most functions & resources</div></div>
+    </div>
+    <span class="chip chip-ok" style="margin-top:8px;">Delhi, Mumbai, Chennai...</span>
+  </div>
+</div>
+
+<!-- ══════ SECTION 5: STRUCTURE & COMPOSITION ══════ -->
+<div class="sec">⑤ Composition, Ward Committees & Reservation</div>
+
+<div class="g3">
+  <div class="card c-blue">
+    <div class="card-label">Art 243R — Composition</div>
+    <h3>🧱 Who Makes Up a Municipality?</h3>
+    <div class="vlist">
+      <div class="vi">
+        <div class="vi-t">🗳️ Directly Elected Members</div>
+        <div class="vi-s">From territorial constituencies (wards)</div>
+      </div>
+      <div class="vi">
+        <div class="vi-t">👤 State-Nominated Experts</div>
+        <div class="vi-s">Knowledge in municipal admin — <strong>No voting right</strong> in elections of chairperson</div>
+      </div>
+      <div class="vi">
+        <div class="vi-t">🏛️ MP/MLA/MLC Representatives</div>
+        <div class="vi-s">Elected from constituencies within municipality</div>
+      </div>
+    </div>
+    <div class="note" style="margin-top:8px;">
+      <div class="note-t">⚠️ Key Rule</div>
+      <div class="note-b">Nominated experts have NO voting right in elections of chairperson of municipality.</div>
+    </div>
+  </div>
+
+  <div class="card c-teal">
+    <div class="card-label">Art 243S — Ward Committees</div>
+    <h3>🏘️ Ward Committees</h3>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-n" style="color:var(--teal);">3L</div>
+        <div class="stat-s">Population</div>
+        <div class="stat-l">MANDATORY IF ≥ 3 LAKH</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vi"><div class="vi-t">One or more wards</div><div class="vi-s">Constitute one Ward Committee</div></div>
+      <div class="vi"><div class="vi-t">Composition by State Law</div><div class="vi-s">State decides structure & powers</div></div>
+      <div class="vi"><div class="vi-t">Grassroots Democracy</div><div class="vi-s">Citizens participate at ward level</div></div>
+    </div>
+    <span class="chip chip-neu" style="margin-top:6px;">Below Municipal Council level</span>
+  </div>
+
+  <div class="card c-red">
+    <div class="card-label">Art 243T — Reservation</div>
+    <h3>⚖️ Seat Reservation Rules</h3>
+    <div class="vlist">
+      <div class="vi">
+        <div class="vi-t">SC/ST Seats</div>
+        <div class="vi-s">Proportional to SC/ST population in municipality</div>
+      </div>
+      <div class="vi">
+        <div class="vi-t">Women — Min. 1/3rd</div>
+        <div class="vi-s">Includes seats reserved for SC/ST women; also applies to chairpersons</div>
+      </div>
+      <div class="vi">
+        <div class="vi-t">OBC Reservation</div>
+        <div class="vi-s">As per state law — discretionary for state</div>
+      </div>
+    </div>
+    <div class="note" style="margin-top:8px;background:rgba(172,26,26,0.05);border-color:rgba(172,26,26,0.2);">
+      <div class="note-t" style="color:var(--red);">Rotation of Reserved Seats</div>
+      <div class="note-b">Seats can be rotated among different constituencies in each election.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 6: ELECTIONS & TERM ══════ -->
+<div class="sec">⑥ Duration, Elections & State Election Commission</div>
+
+<div class="map-wrap mw-sky">
+<svg viewBox="0 0 1280 170" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<defs>
+  <marker id="arrD" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+    <path d="M0,0 L8,4 L0,8 Z" fill="#1a5278" opacity="0.6"/>
+  </marker>
+</defs>
+<rect width="1280" height="170" fill="rgba(250,247,242,0.5)"/>
+
+<!-- Central: SEC -->
+<rect x="490" y="54" width="300" height="68" rx="12" fill="#1a5278"/>
+<text x="640" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="white">🗳️ State Election Commission</text>
+<text x="640" y="96" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Superintendence, Direction, Control</text>
+<text x="640" y="112" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="'JetBrains Mono',monospace">Art 243ZA · Independent of Election Commission of India</text>
+
+<!-- Left: 5-year term -->
+<path d="M490,88 L360,88" stroke="#1a5278" stroke-width="2" fill="none" marker-end="url(#arrD)"/>
+<rect x="118" y="46" width="240" height="84" rx="10" fill="rgba(26,82,120,0.1)" stroke="#1a5278" stroke-width="1.5"/>
+<text x="238" y="68" text-anchor="middle" font-size="26" font-weight="800" fill="#1a5278" font-family="'Cormorant Garamond',serif">5 Yrs</text>
+<text x="238" y="90" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1410">Fixed 5-Year Term</text>
+<text x="238" y="106" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono',monospace">Art 243U</text>
+<text x="238" y="120" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono',monospace">From first meeting date</text>
+
+<!-- Right: If dissolved → 6 months -->
+<path d="M790,88 L920,88" stroke="#1a5278" stroke-width="2" fill="none" marker-end="url(#arrD)"/>
+<rect x="922" y="46" width="260" height="84" rx="10" fill="rgba(172,26,26,0.08)" stroke="#ac1a1a" stroke-width="1.5"/>
+<text x="1052" y="68" text-anchor="middle" font-size="11" font-weight="800" fill="#ac1a1a">If Dissolved Early</text>
+<text x="1052" y="86" text-anchor="middle" font-size="22" font-weight="700" fill="#ac1a1a" font-family="'Cormorant Garamond',serif">6 Months</text>
+<text x="1052" y="105" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono',monospace">Election must be held within</text>
+<text x="1052" y="118" text-anchor="middle" font-size="9" fill="#ac1a1a" font-weight="700" font-family="'JetBrains Mono',monospace">6 months of dissolution</text>
+
+<!-- Bottom: Court bar -->
+<path d="M640,122 L640,144" stroke="#c4901a" stroke-width="2" fill="none" marker-end="url(#arrD)"/>
+<rect x="420" y="146" width="440" height="18" rx="6" fill="rgba(196,144,26,0.12)" stroke="rgba(196,144,26,0.35)" stroke-width="1"/>
+<text x="640" y="159" text-anchor="middle" font-size="10" font-weight="700" fill="#c4901a">⚖️ Art 243ZG — Courts CANNOT interfere in election process · Only via Election Petitions</text>
+</svg>
+</div>
+
+<div class="g2">
+  <div class="card c-sky">
+    <div class="card-label">State Election Commission (SEC)</div>
+    <h3>🏛️ SEC — Who Conducts Urban Elections</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vi-t">Independent Authority</div><div class="vi-s">Separate from Election Commission of India</div></div>
+      <div class="vi"><div class="vi-t">Superintendence & Direction</div><div class="vi-s">Preparation of electoral rolls</div></div>
+      <div class="vi"><div class="vi-t">Conduct of Elections</div><div class="vi-s">All elections to municipalities</div></div>
+    </div>
+    <div class="note" style="margin-top:8px;background:rgba(26,82,120,0.06);border-color:rgba(26,82,120,0.2);">
+      <div class="note-t" style="color:var(--sky);">Art 243ZA</div>
+      <div class="note-b">SEC is a constitutional body — State Election Commissioner cannot be removed except like a High Court judge.</div>
+    </div>
+  </div>
+  <div class="card c-gold">
+    <div class="card-label">Election Dispute Resolution</div>
+    <h3>⚖️ Bar on Court Interference</h3>
+    <div style="padding:14px;border-radius:10px;background:rgba(172,26,26,0.07);border:1.5px solid rgba(172,26,26,0.2);margin-bottom:10px;">
+      <div style="font-size:14px;font-weight:800;color:var(--red);margin-bottom:4px;">🚫 Art 243ZG</div>
+      <div style="font-size:11px;line-height:1.6;color:var(--ink);">No court shall entertain any question on election laws <em>during</em> the election process.</div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vi-t">✅ Allowed: Election Petitions</div><div class="vi-s">After election, disputes via election petition</div></div>
+      <div class="vi"><div class="vi-t">❌ Not Allowed: Writ During Election</div><div class="vi-s">Courts cannot halt ongoing election process</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 7: POWERS & 12TH SCHEDULE ══════ -->
+<div class="sec">⑦ Powers & Functions — 12th Schedule (18 Subjects)</div>
+
+<div class="map-wrap mw-green">
+<svg viewBox="0 0 1280 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<rect width="1280" height="280" fill="rgba(250,247,242,0.5)"/>
+
+<!-- Centre root -->
+<rect x="490" y="110" width="300" height="60" rx="12" fill="#1a6838"/>
+<text x="640" y="134" text-anchor="middle" font-size="13" font-weight="700" fill="white">⚙️ 12th Schedule</text>
+<text x="640" y="153" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">18 Functions · Art 243W</text>
+
+<!-- Infrastructure cluster (top-left) -->
+<rect x="30" y="18" width="280" height="82" rx="10" fill="rgba(26,58,122,0.08)" stroke="#1a3a7a" stroke-width="1.5"/>
+<text x="170" y="38" text-anchor="middle" font-size="11" font-weight="800" fill="#1a3a7a">🏗️ Infrastructure</text>
+<text x="170" y="55" text-anchor="middle" font-size="10" fill="#1a1410">Urban Planning · Land Use · Roads</text>
+<text x="170" y="70" text-anchor="middle" font-size="10" fill="#1a1410">Bridges · Parking Lots</text>
+<text x="170" y="85" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono',monospace">Street Lighting · Regulation of Slaughterhouses</text>
+<path d="M310,60 Q400,60 490,130" stroke="#1a3a7a55" stroke-width="1.5" fill="none" stroke-dasharray="5 3"/>
+
+<!-- Water & Environment (top-centre) -->
+<rect x="490" y="12" width="300" height="78" rx="10" fill="rgba(10,98,104,0.08)" stroke="#0a6268" stroke-width="1.5"/>
+<text x="640" y="34" text-anchor="middle" font-size="11" font-weight="800" fill="#0a6268">💧 Water & Environment</text>
+<text x="640" y="52" text-anchor="middle" font-size="10" fill="#1a1410">Water Supply · Sanitation</text>
+<text x="640" y="67" text-anchor="middle" font-size="10" fill="#1a1410">Solid Waste Mgmt. · Fire Services</text>
+<text x="640" y="82" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono',monospace">Urban Forestry · Ecological Aspects</text>
+<path d="M640,90 L640,110" stroke="#0a626855" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+
+<!-- Public Health & Social (top-right) -->
+<rect x="970" y="18" width="280" height="82" rx="10" fill="rgba(92,26,128,0.08)" stroke="#5c1a80" stroke-width="1.5"/>
+<text x="1110" y="38" text-anchor="middle" font-size="11" font-weight="800" fill="#5c1a80">🏥 Public Health & Social</text>
+<text x="1110" y="55" text-anchor="middle" font-size="10" fill="#1a1410">Public Health · Dispensaries</text>
+<text x="1110" y="70" text-anchor="middle" font-size="10" fill="#1a1410">Education · Cultural Activities</text>
+<text x="1110" y="85" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono',monospace">Registration of Births &amp; Deaths</text>
+<path d="M970,60 Q880,60 790,130" stroke="#5c1a8055" stroke-width="1.5" fill="none" stroke-dasharray="5 3"/>
+
+<!-- Urban Poverty & Welfare (bottom-left) -->
+<rect x="30" y="192" width="270" height="72" rx="10" fill="rgba(212,104,10,0.08)" stroke="#d4680a" stroke-width="1.5"/>
+<text x="165" y="212" text-anchor="middle" font-size="11" font-weight="800" fill="#d4680a">🏚️ Urban Welfare</text>
+<text x="165" y="230" text-anchor="middle" font-size="10" fill="#1a1410">Urban Poverty Alleviation</text>
+<text x="165" y="245" text-anchor="middle" font-size="10" fill="#1a1410">Slum Improvement</text>
+<text x="165" y="260" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono',monospace">Safeguarding weaker sections</text>
+<path d="M300,228 Q400,228 490,170" stroke="#d4680a55" stroke-width="1.5" fill="none" stroke-dasharray="5 3"/>
+
+<!-- Parks & Amenities (bottom-right) -->
+<rect x="980" y="192" width="270" height="72" rx="10" fill="rgba(196,144,26,0.08)" stroke="#c4901a" stroke-width="1.5"/>
+<text x="1115" y="212" text-anchor="middle" font-size="11" font-weight="800" fill="#c4901a">🌳 Amenities</text>
+<text x="1115" y="230" text-anchor="middle" font-size="10" fill="#1a1410">Parks · Playgrounds · Gardens</text>
+<text x="1115" y="245" text-anchor="middle" font-size="10" fill="#1a1410">Cattle Ponds · Markets</text>
+<text x="1115" y="260" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono',monospace">Public amenities management</text>
+<path d="M980,228 Q880,228 790,170" stroke="#c4901a55" stroke-width="1.5" fill="none" stroke-dasharray="5 3"/>
+
+<text x="640" y="274" text-anchor="middle" font-size="8" font-family="'JetBrains Mono',monospace" letter-spacing="2" fill="rgba(26,104,56,0.45)">12TH SCHEDULE — 18 FUNCTIONS ACROSS 5 CLUSTERS</text>
+</svg>
+</div>
+
+<div class="g4">
+  <div class="card c-blue">
+    <div class="card-label">Infrastructure</div>
+    <h3 style="font-size:14px;">🏗️ Urban Planning</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:3px;">
+      <span class="chip chip-neu">Urban planning</span>
+      <span class="chip chip-neu">Land use regulation</span>
+      <span class="chip chip-neu">Roads & bridges</span>
+      <span class="chip chip-neu">Street lighting</span>
+      <span class="chip chip-neu">Parking lots</span>
+    </div>
+  </div>
+  <div class="card c-teal">
+    <div class="card-label">Water & Environment</div>
+    <h3 style="font-size:14px;">💧 Water & Ecology</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:3px;">
+      <span class="chip chip-neu">Water supply</span>
+      <span class="chip chip-neu">Public health</span>
+      <span class="chip chip-neu">Solid waste mgmt.</span>
+      <span class="chip chip-neu">Fire services</span>
+      <span class="chip chip-neu">Urban forestry</span>
+    </div>
+  </div>
+  <div class="card c-purple">
+    <div class="card-label">Social Services</div>
+    <h3 style="font-size:14px;">🏥 Public Health</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:3px;">
+      <span class="chip chip-neu">Dispensaries</span>
+      <span class="chip chip-neu">Education</span>
+      <span class="chip chip-neu">Births & deaths</span>
+      <span class="chip chip-neu">Cultural activities</span>
+      <span class="chip chip-neu">Sanitation</span>
+    </div>
+  </div>
+  <div class="card c-amber">
+    <div class="card-label">Welfare & Amenities</div>
+    <h3 style="font-size:14px;">🏚️ Urban Welfare</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:3px;">
+      <span class="chip chip-neu">Slum improvement</span>
+      <span class="chip chip-neu">Poverty alleviation</span>
+      <span class="chip chip-neu">Parks & playgrounds</span>
+      <span class="chip chip-neu">Cattle ponds</span>
+      <span class="chip chip-neu">Markets</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 8: FINANCES ══════ -->
+<div class="sec">⑧ Finances — Revenue Sources & SFC</div>
+
+<div class="g2">
+  <div class="card c-gold">
+    <div class="card-label">Art 243X — Revenue Sources</div>
+    <h3>💰 How Municipalities Get Money</h3>
+    <div class="phase-row" style="grid-template-columns:1fr 1fr;margin:12px 0;">
+      <div class="phase" style="border-color:var(--gold);background:rgba(196,144,26,0.06);">
+        <div class="phase-n" style="color:var(--gold);">①</div>
+        <div class="phase-t">Own Taxes</div>
+        <div class="phase-s">Property tax, tolls, fees, duties charged by municipality</div>
+      </div>
+      <div class="phase" style="border-color:var(--amber);background:rgba(212,104,10,0.06);">
+        <div class="phase-n" style="color:var(--amber);">②</div>
+        <div class="phase-t">Assigned Taxes</div>
+        <div class="phase-s">State taxes shared with ULBs by state law</div>
+      </div>
+      <div class="phase" style="border-color:var(--blue);background:rgba(26,58,122,0.06);">
+        <div class="phase-n" style="color:var(--blue);">③</div>
+        <div class="phase-t">Grants-in-Aid</div>
+        <div class="phase-s">From state consolidated fund to municipalities</div>
+      </div>
+      <div class="phase" style="border-color:var(--green);background:rgba(26,104,56,0.06);">
+        <div class="phase-n" style="color:var(--green);">④</div>
+        <div class="phase-t">Municipal Fund</div>
+        <div class="phase-s">All receipts credited to municipal fund</div>
+      </div>
+    </div>
+    <span class="chip chip-ok">Art 243X · Financial Autonomy</span>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-label">Art 243Y — State Finance Commission</div>
+    <h3>🏛️ State Finance Commission (SFC)</h3>
+    <div class="vlist">
+      <div class="vi">
+        <div class="vi-t">Constituted Every 5 Years</div>
+        <div class="vi-s">By Governor, after each election</div>
+      </div>
+      <div class="vi">
+        <div class="vi-t">Reviews Financial Position</div>
+        <div class="vi-s">Of Panchayats AND Municipalities</div>
+      </div>
+      <div class="vi">
+        <div class="vi-t">Recommends Distribution</div>
+        <div class="vi-s">Taxes, duties, tolls, fees between state & ULBs</div>
+      </div>
+      <div class="vi">
+        <div class="vi-t">Grants-in-Aid Principles</div>
+        <div class="vi-s">Principles for grants from consolidated fund</div>
+      </div>
+    </div>
+    <div class="note" style="background:rgba(26,104,56,0.06);border-color:rgba(26,104,56,0.2);margin-top:8px;">
+      <div class="note-t" style="color:var(--green);">✅ Art 243Z — Audit</div>
+      <div class="note-b">Accounts of municipalities must be maintained and audited as provided by state legislature.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 9: SAFEGUARDS & EXEMPTIONS ══════ -->
+<div class="sec">⑨ Application, Exemptions & Safeguards</div>
+
+<div class="g3">
+  <div class="card c-sky">
+    <div class="card-label">Art 243ZB — Application to UTs</div>
+    <h3>🗺️ Union Territories</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vi-t">Applies to UTs</div><div class="vi-s">President may direct by public notification</div></div>
+      <div class="vi"><div class="vi-t">Modifications Possible</div><div class="vi-s">With such exceptions as specified</div></div>
+    </div>
+    <span class="chip chip-ok" style="margin-top:8px;">Delhi, Chandigarh, Puducherry etc.</span>
+  </div>
+
+  <div class="card c-red">
+    <div class="card-label">Art 243ZC — Exemptions</div>
+    <h3>🚫 Where Part IX-A Does NOT Apply</h3>
+    <div class="vlist">
+      <div class="vi">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="font-size:16px;">🏔️</span>
+          <div><div class="vi-t">Scheduled Areas</div><div class="vi-s">5th Schedule tribal areas</div></div>
+        </div>
+      </div>
+      <div class="vi">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="font-size:16px;">🌄</span>
+          <div><div class="vi-t">Tribal Areas</div><div class="vi-s">6th Schedule areas (NE states)</div></div>
+        </div>
+      </div>
+      <div class="vi">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="font-size:16px;">🏕️</span>
+          <div><div class="vi-t">Darjeeling Gorkha Hill Council</div><div class="vi-s">West Bengal — special exemption</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c-teal">
+    <div class="card-label">Planning Committees</div>
+    <h3>📐 DPC & MPC</h3>
+    <div class="vlist">
+      <div class="vi">
+        <div class="vi-t">Art 243ZD — District Planning Committee</div>
+        <div class="vi-s">Plans for rural + urban areas; 4/5 elected members</div>
+      </div>
+      <div class="vi">
+        <div class="vi-t">Art 243ZE — Metro Planning Committee</div>
+        <div class="vi-s">For areas >10 lakh population; 2/3 elected members</div>
+      </div>
+    </div>
+    <div class="note" style="background:rgba(10,98,104,0.06);border-color:rgba(10,98,104,0.2);margin-top:8px;">
+      <div class="note-t" style="color:var(--teal);">Integrated Urban-Rural Planning</div>
+      <div class="note-b">DPC prepares draft development plan combining panchayat & municipality areas.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 10: 73rd vs 74th COMPARISON ══════ -->
+<div class="sec">⑩ 73rd vs 74th Amendment — High-Yield Comparison</div>
+
+<div class="card c-gold" style="margin-bottom:16px;">
+  <div class="card-label">UPSC High-Yield Table</div>
+  <h3>⚖️ 73rd vs 74th Amendment — Side-by-Side</h3>
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>73rd Amendment (Rural)</th>
+        <th>74th Amendment (Urban)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Subject</td><td>Panchayati Raj (Rural)</td><td>Municipalities (Urban)</td></tr>
+      <tr><td>Constitutional Part</td><td>Part IX</td><td>Part IX-A</td></tr>
+      <tr><td>Articles</td><td>243–243O</td><td>243P–243ZG</td></tr>
+      <tr><td>Schedule</td><td>11th Schedule</td><td>12th Schedule</td></tr>
+      <tr><td>Subjects</td><td>29 subjects</td><td>18 subjects</td></tr>
+      <tr><td>3 Tiers</td><td>Village / Intermediate / District</td><td>Nagar Panchayat / Municipal Council / Municipal Corp.</td></tr>
+      <tr><td>Women Reservation</td><td>Min. 1/3rd seats <span class="tag tag-ok">Same</span></td><td>Min. 1/3rd seats <span class="tag tag-ok">Same</span></td></tr>
+      <tr><td>SC/ST Reservation</td><td>Proportional to population <span class="tag tag-ok">Same</span></td><td>Proportional to population <span class="tag tag-ok">Same</span></td></tr>
+      <tr><td>Term</td><td>5 years <span class="tag tag-ok">Same</span></td><td>5 years <span class="tag tag-ok">Same</span></td></tr>
+      <tr><td>Election Body</td><td>State Election Commission <span class="tag tag-ok">Same</span></td><td>State Election Commission <span class="tag tag-ok">Same</span></td></tr>
+      <tr><td>Finance Commission</td><td>State Finance Commission <span class="tag tag-ok">Same</span></td><td>State Finance Commission <span class="tag tag-ok">Same</span></td></tr>
+      <tr><td>Gram Sabha / Ward Committee</td><td>Gram Sabha (all voters in village)</td><td>Ward Committees (if pop. ≥ 3 lakh)</td></tr>
+      <tr><td>Bar on Courts</td><td>Art 243O <span class="tag tag-ok">Same</span></td><td>Art 243ZG <span class="tag tag-ok">Same</span></td></tr>
+      <tr><td>Effective Date</td><td>24 April 1993</td><td>1 June 1993</td></tr>
+      <tr><td>DPC / MPC</td><td>DPC relates to rural area</td><td>DPC & MPC both apply</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════ SECTION 11: MASTER CONNECTED SUMMARY ══════ -->
+<div class="sec">⑪ Connected Summary — The Full Story</div>
+
+<div class="map-wrap mw-blue" style="margin-bottom:18px;">
+<svg viewBox="0 0 1280 320" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<rect width="1280" height="320" fill="rgba(250,247,242,0.5)"/>
+
+<!-- Layer 1: Foundation -->
+<text x="60" y="30" font-size="9" font-family="'JetBrains Mono',monospace" fill="rgba(120,100,60,0.5)" letter-spacing="2">LAYER 1 — FOUNDATION</text>
+<rect x="440" y="14" width="400" height="48" rx="10" fill="#1a1410"/>
+<text x="640" y="34" text-anchor="middle" font-size="13" font-weight="700" fill="#f5e8c0">📜 74th Constitutional Amendment, 1992</text>
+<text x="640" y="52" text-anchor="middle" font-size="10" fill="#c8b880" font-family="'JetBrains Mono',monospace">Part IX-A · Arts 243P–243ZG · 12th Schedule · Effective: 1 June 1993</text>
+
+<!-- Layer 2: Structure -->
+<line x1="420" y1="62" x2="200" y2="98" stroke="#c4901a55" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="640" y1="62" x2="640" y2="98" stroke="#c4901a55" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="860" y1="62" x2="1080" y2="98" stroke="#c4901a55" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+<text x="60" y="92" font-size="9" font-family="'JetBrains Mono',monospace" fill="rgba(120,100,60,0.5)" letter-spacing="2">LAYER 2 — STRUCTURE</text>
+
+<rect x="70" y="100" width="270" height="44" rx="9" fill="rgba(196,144,26,0.12)" stroke="#c4901a" stroke-width="1.5"/>
+<text x="205" y="118" text-anchor="middle" font-size="11" font-weight="700" fill="#c4901a">🏙️ 3 Types (Art 243Q)</text>
+<text x="205" y="134" text-anchor="middle" font-size="9.5" fill="#1a1410">Nagar Panchayat · Council · Corporation</text>
+
+<rect x="490" y="100" width="300" height="44" rx="9" fill="rgba(26,58,122,0.1)" stroke="#1a3a7a" stroke-width="1.5"/>
+<text x="640" y="118" text-anchor="middle" font-size="11" font-weight="700" fill="#1a3a7a">🧱 Composition (Art 243R)</text>
+<text x="640" y="134" text-anchor="middle" font-size="9.5" fill="#1a1410">Elected + Nominated (no vote for chairperson)</text>
+
+<rect x="940" y="100" width="300" height="44" rx="9" fill="rgba(172,26,26,0.1)" stroke="#ac1a1a" stroke-width="1.5"/>
+<text x="1090" y="118" text-anchor="middle" font-size="11" font-weight="700" fill="#ac1a1a">⚖️ Reservation (Art 243T)</text>
+<text x="1090" y="134" text-anchor="middle" font-size="9.5" fill="#1a1410">SC/ST (prop.) · Women ≥1/3 · OBC (state)</text>
+
+<!-- Layer 3: Democracy & Finance -->
+<line x1="205" y1="144" x2="205" y2="174" stroke="#c4901a55" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="640" y1="144" x2="420" y2="174" stroke="#1a3a7a55" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="640" y1="144" x2="860" y2="174" stroke="#1a3a7a55" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="1090" y1="144" x2="1090" y2="174" stroke="#ac1a1a55" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+<text x="60" y="168" font-size="9" font-family="'JetBrains Mono',monospace" fill="rgba(120,100,60,0.5)" letter-spacing="2">LAYER 3 — DEMOCRACY &amp; FINANCE</text>
+
+<rect x="70" y="176" width="270" height="44" rx="9" fill="rgba(10,98,104,0.1)" stroke="#0a6268" stroke-width="1.5"/>
+<text x="205" y="194" text-anchor="middle" font-size="11" font-weight="700" fill="#0a6268">🏘️ Ward Committees (243S)</text>
+<text x="205" y="210" text-anchor="middle" font-size="9.5" fill="#1a1410">Mandatory if pop ≥ 3 lakh</text>
+
+<rect x="360" y="176" width="250" height="44" rx="9" fill="rgba(26,82,120,0.1)" stroke="#1a5278" stroke-width="1.5"/>
+<text x="485" y="194" text-anchor="middle" font-size="11" font-weight="700" fill="#1a5278">🗳️ Elections (243ZA)</text>
+<text x="485" y="210" text-anchor="middle" font-size="9.5" fill="#1a1410">SEC · 5-year term · 6-month rule</text>
+
+<rect x="670" y="176" width="250" height="44" rx="9" fill="rgba(26,104,56,0.1)" stroke="#1a6838" stroke-width="1.5"/>
+<text x="795" y="194" text-anchor="middle" font-size="11" font-weight="700" fill="#1a6838">⚙️ Powers (243W)</text>
+<text x="795" y="210" text-anchor="middle" font-size="9.5" fill="#1a1410">12th Sched · 18 functions</text>
+
+<rect x="940" y="176" width="300" height="44" rx="9" fill="rgba(196,144,26,0.1)" stroke="#c4901a" stroke-width="1.5"/>
+<text x="1090" y="194" text-anchor="middle" font-size="11" font-weight="700" fill="#c4901a">💰 Finances (243X/Y/Z)</text>
+<text x="1090" y="210" text-anchor="middle" font-size="9.5" fill="#1a1410">Taxes · Grants · SFC · Audit</text>
+
+<!-- Layer 4: Safeguards -->
+<text x="60" y="244" font-size="9" font-family="'JetBrains Mono',monospace" fill="rgba(120,100,60,0.5)" letter-spacing="2">LAYER 4 — SAFEGUARDS</text>
+
+<line x1="485" y1="220" x2="300" y2="252" stroke="#5c1a8055" stroke-width="1.2" stroke-dasharray="4 3"/>
+<line x1="640" y1="144" x2="640" y2="252" stroke="#d4680a55" stroke-width="1.2" stroke-dasharray="4 3"/>
+<line x1="795" y1="220" x2="980" y2="252" stroke="#ac1a1a55" stroke-width="1.2" stroke-dasharray="4 3"/>
+
+<rect x="60" y="254" width="240" height="40" rx="8" fill="rgba(92,26,128,0.1)" stroke="#5c1a80" stroke-width="1.5"/>
+<text x="180" y="270" text-anchor="middle" font-size="10" font-weight="700" fill="#5c1a80">📐 DPC/MPC (243ZD/ZE)</text>
+<text x="180" y="284" text-anchor="middle" font-size="8.5" fill="#7a6a50" font-family="'JetBrains Mono',monospace">District &amp; Metro Planning</text>
+
+<rect x="500" y="254" width="280" height="40" rx="8" fill="rgba(212,104,10,0.1)" stroke="#d4680a" stroke-width="1.5"/>
+<text x="640" y="270" text-anchor="middle" font-size="10" font-weight="700" fill="#d4680a">🗺️ Exemptions (243ZC)</text>
+<text x="640" y="284" text-anchor="middle" font-size="8.5" fill="#7a6a50" font-family="'JetBrains Mono',monospace">Sched. Areas · Tribal · Darjeeling</text>
+
+<rect x="980" y="254" width="260" height="40" rx="8" fill="rgba(172,26,26,0.1)" stroke="#ac1a1a" stroke-width="1.5"/>
+<text x="1110" y="270" text-anchor="middle" font-size="10" font-weight="700" fill="#ac1a1a">⚖️ Court Bar (243ZG)</text>
+<text x="1110" y="284" text-anchor="middle" font-size="8.5" fill="#7a6a50" font-family="'JetBrains Mono',monospace">Only election petitions allowed</text>
+
+<text x="640" y="314" text-anchor="middle" font-size="8" font-family="'JetBrains Mono',monospace" letter-spacing="2" fill="rgba(26,58,122,0.4)">CONNECTED CONSTITUTIONAL ARCHITECTURE OF URBAN LOCAL GOVERNMENT</text>
+</svg>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="ks-icon">🌆</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Core Connecting Idea</div>
+    <div class="ks-sub">
+      India created a <strong style="color:#f5d78a;">constitutional framework for urban democracy</strong> through the 74th Amendment — giving municipalities their first constitutional recognition.<br>
+      The structure flows: <strong style="color:#f5d78a;">74th Amend. → Part IX-A → 3 Tiers → 5-yr elections → 12th Schedule powers → SFC finances → Court safeguards</strong><br>
+      The challenge remains bridging the gap between <em>legal empowerment</em> and <em>real devolution</em> of funds, functions, and functionaries.
+    </div>
+    <div class="ks-pills">
+      <span class="kp">📜 Constitutional Recognition</span>
+      <span class="kp">🗳️ Democratic Devolution</span>
+      <span class="kp">⚙️ 12th Schedule Powers</span>
+      <span class="kp">💰 Fiscal Federalism</span>
+      <span class="kp">⚖️ Social Equity</span>
+      <span class="kp">🏙️ City-Led Growth</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+</body>
+</html>

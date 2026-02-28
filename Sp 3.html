@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Official Language — Part XVII · Indian Constitution</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f4ef;--paper:#fffcf7;--ink:#1a1510;
+  --saffron:#e07820;--saffron-lt:#f5d4a8;--saffron-dk:#a05010;
+  --green:#1a6040;--green-lt:#d4ede0;--green-dk:#0d3a24;
+  --navy:#1a2a5a;--navy-lt:#d4daf0;--navy-dk:#0d1a3a;
+  --teal:#0a5060;--teal-lt:#cce8f0;
+  --gold:#b87820;--gold-lt:#f5e4c0;
+  --red:#8a1a1a;--red-lt:#f0d0d0;
+  --purple:#4a1a6a;--purple-lt:#e0d0f0;
+  --muted:#7a6a50;--border:#ddd0b0;--card:#fffdf5;--card2:#f3ede0;
+  --ashoka:#1a2a5a;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:
+  radial-gradient(ellipse 800px 400px at 10% 5%,rgba(224,120,32,0.07) 0%,transparent 60%),
+  radial-gradient(ellipse 600px 600px at 90% 95%,rgba(26,96,64,0.06) 0%,transparent 60%),
+  radial-gradient(ellipse 500px 300px at 50% 50%,rgba(26,42,90,0.04) 0%,transparent 60%);
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 28px 120px;}
+
+/* HEADER */
+.header{text-align:center;padding:52px 20px 28px;position:relative;}
+.header-eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:5px;color:var(--saffron);text-transform:uppercase;margin-bottom:12px;}
+.header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5.5vw,58px);font-weight:700;line-height:1.05;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--saffron);}
+.header-sub{margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;}
+.flag-bar{display:flex;height:6px;border-radius:3px;overflow:hidden;width:120px;margin:16px auto 0;}
+.flag-bar div:nth-child(1){flex:1;background:var(--saffron);}
+.flag-bar div:nth-child(2){flex:1;background:#fff;border-top:1px solid #ddd;border-bottom:1px solid #ddd;}
+.flag-bar div:nth-child(3){flex:1;background:var(--green);}
+
+/* SEC LABEL */
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;color:var(--saffron);text-transform:uppercase;margin:36px 0 16px;display:flex;align-items:center;gap:14px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:22px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:22px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:22px;}
+@media(max-width:900px){.g3,.g4,.g5{grid-template-columns:1fr 1fr;}.g2x1{grid-template-columns:1fr;}}
+@media(max-width:600px){.g2,.g3,.g4,.g5,.g2x1{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:18px;padding:20px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pc:hover{box-shadow:0 8px 32px rgba(184,120,32,0.1);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:18px 18px 0 0;}
+.pc.saffron::before{background:linear-gradient(90deg,var(--saffron-dk),var(--saffron));}
+.pc.green::before{background:linear-gradient(90deg,var(--green-dk),var(--green));}
+.pc.navy::before{background:linear-gradient(90deg,var(--navy-dk),var(--navy));}
+.pc.teal::before{background:var(--teal);}
+.pc.gold::before{background:var(--gold);}
+.pc.red::before{background:var(--red);}
+.pc.purple::before{background:var(--purple);}
+.pc.dark::before{background:var(--ink);}
+.pc-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.pc h3{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;line-height:1.3;}
+
+/* MAP CARDS */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:24px;position:relative;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--saffron),var(--gold),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--navy),var(--teal),var(--green));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--saffron),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--navy));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--purple),var(--navy),var(--teal));}
+.map-card svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.saffron{background:rgba(224,120,32,0.12);color:var(--saffron-dk);}
+.pill.green{background:rgba(26,96,64,0.12);color:var(--green);}
+.pill.navy{background:rgba(26,42,90,0.12);color:var(--navy);}
+.pill.gold{background:rgba(184,120,32,0.12);color:var(--gold);}
+.pill.red{background:rgba(138,26,26,0.12);color:var(--red);}
+.pill.purple{background:rgba(74,26,106,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,80,96,0.12);color:var(--teal);}
+.pill.ink{background:rgba(26,21,16,0.08);color:var(--ink);}
+
+/* STAT BOXES */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;line-height:1;}
+.stat-lbl{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;font-weight:600;margin-top:2px;}
+
+/* ARTICLE CHIP */
+.art-chip{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;}
+.art-chip.saffron{background:rgba(224,120,32,0.08);border-color:rgba(224,120,32,0.3);color:var(--saffron-dk);}
+.art-chip.green{background:rgba(26,96,64,0.08);border-color:rgba(26,96,64,0.3);color:var(--green);}
+.art-chip.navy{background:rgba(26,42,90,0.08);border-color:rgba(26,42,90,0.3);color:var(--navy);}
+.art-chip.teal{background:rgba(10,80,96,0.08);border-color:rgba(10,80,96,0.3);color:var(--teal);}
+.art-chip.red{background:rgba(138,26,26,0.08);border-color:rgba(138,26,26,0.3);color:var(--red);}
+.art-chip.purple{background:rgba(74,26,106,0.08);border-color:rgba(74,26,106,0.3);color:var(--purple);}
+.art-chip.gold{background:rgba(184,120,32,0.08);border-color:rgba(184,120,32,0.3);color:var(--gold);}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:700;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:2px;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#f5e8c0;padding:9px 12px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable th:first-child{border-radius:8px 0 0 0;}
+.ctable th:last-child{border-radius:0 8px 0 0;}
+.ctable td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(224,120,32,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--saffron-dk);font-family:'JetBrains Mono',monospace;}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:20px;padding:28px 36px;margin:24px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.keystone-icon{font-size:42px;flex:0 0 auto;}
+.keystone-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;margin-bottom:6px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.kpills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 14px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'JetBrains Mono',monospace;}
+
+/* IMPACT CHAIN */
+.ic{display:flex;align-items:center;flex-wrap:wrap;gap:6px;padding:6px 0;}
+.ic-node{padding:6px 12px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;font-family:'JetBrains Mono',monospace;}
+.ic-arr{font-size:16px;color:var(--muted);}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;border:1.5px solid;margin:8px 0;}
+.callout.saffron{background:rgba(224,120,32,0.06);border-color:rgba(224,120,32,0.25);}
+.callout.green{background:rgba(26,96,64,0.06);border-color:rgba(26,96,64,0.25);}
+.callout.navy{background:rgba(26,42,90,0.06);border-color:rgba(26,42,90,0.25);}
+.callout-title{font-size:10px;font-weight:800;margin-bottom:3px;font-family:'JetBrains Mono',monospace;}
+.callout-title.saffron{color:var(--saffron-dk);}
+.callout-title.green{color:var(--green);}
+.callout-title.navy{color:var(--navy);}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* PHASE */
+.phase-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0;}
+@media(max-width:700px){.phase-row{grid-template-columns:1fr 1fr;}}
+.phase-box{padding:18px 14px;border-radius:13px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;}
+.phase-title{font-size:12px;font-weight:700;margin:4px 0 2px;}
+.phase-sub{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);}
+
+/* LANG GRID */
+.lang-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-top:10px;}
+.lang-item{padding:10px 8px;border-radius:10px;border:1.5px solid var(--border);background:var(--card2);text-align:center;}
+.lang-name{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;}
+.lang-year{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:2px;}
+
+/* DIV LINE */
+.div-line{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:12px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-eyebrow">Indian Constitution · Part XVII · UPSC Polity</div>
+  <h1>Official Language <em>in India</em></h1>
+  <div class="header-sub">Articles 343–351 · 8th Schedule · Classical Languages · A Constitutional Story</div>
+  <div class="flag-bar"><div></div><div></div><div></div></div>
+</div>
+
+<!-- ══ MASTER FLOW ══ -->
+<div class="sec-label">Master Architecture — The 4-Layer Language Framework</div>
+
+<div class="map-card mc1">
+<svg viewBox="0 0 1400 140" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 Z" fill="#b87820" opacity="1"/>
+    </marker>
+  </defs>
+
+  <!-- BG -->
+  <rect width="1400" height="140" fill="rgba(250,247,240,0.6)"/>
+
+  <!-- Layer boxes -->
+  <!-- Layer 1: Union -->
+  <rect x="30" y="20" width="290" height="100" rx="12" fill="rgba(224,120,32,0.1)" stroke="rgba(224,120,32,0.4)" stroke-width="1.5"/>
+  <text x="175" y="42" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="rgba(160,80,16,0.7)" letter-spacing="2">LAYER 1</text>
+  <text x="175" y="63" text-anchor="middle" font-size="14" font-weight="700" font-family="Cormorant Garamond,serif" fill="#a05010">🇮🇳 Union Language</text>
+  <text x="175" y="82" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1a1510">Hindi + English</text>
+  <text x="175" y="97" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="#7a6a50">Art. 343, 344</text>
+  <text x="175" y="112" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="#7a6a50">Official Languages Act 1963</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="322" y1="70" x2="368" y2="70" stroke="#b87820" stroke-width="2.5" marker-end="url(#arr)" opacity="0.85"/>
+
+  <!-- Layer 2: States -->
+  <rect x="370" y="20" width="260" height="100" rx="12" fill="rgba(26,96,64,0.09)" stroke="rgba(26,96,64,0.35)" stroke-width="1.5"/>
+  <text x="500" y="42" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="rgba(13,58,36,0.7)" letter-spacing="2">LAYER 2</text>
+  <text x="500" y="63" text-anchor="middle" font-size="14" font-weight="700" font-family="Cormorant Garamond,serif" fill="#1a6040">🏛️ State Freedom</text>
+  <text x="500" y="82" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1a1510">Any language(s)</text>
+  <text x="500" y="97" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="#7a6a50">Art. 345, 346, 347</text>
+  <text x="500" y="112" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="#7a6a50">Union–State in English</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="632" y1="70" x2="678" y2="70" stroke="#b87820" stroke-width="2.5" marker-end="url(#arr)" opacity="0.85"/>
+
+  <!-- Layer 3: Judiciary -->
+  <rect x="680" y="20" width="270" height="100" rx="12" fill="rgba(26,42,90,0.09)" stroke="rgba(26,42,90,0.35)" stroke-width="1.5"/>
+  <text x="815" y="42" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="rgba(13,26,58,0.7)" letter-spacing="2">LAYER 3</text>
+  <text x="815" y="63" text-anchor="middle" font-size="14" font-weight="700" font-family="Cormorant Garamond,serif" fill="#1a2a5a">⚖️ Judiciary</text>
+  <text x="815" y="82" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1a1510">English dominates SC/HC</text>
+  <text x="815" y="97" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="#7a6a50">Art. 348</text>
+  <text x="815" y="112" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="#7a6a50">Hindi in HC — Gov+Pres. consent</text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="952" y1="70" x2="998" y2="70" stroke="#b87820" stroke-width="2.5" marker-end="url(#arr)" opacity="0.85"/>
+
+  <!-- Layer 4: Safeguards -->
+  <rect x="1000" y="20" width="370" height="100" rx="12" fill="rgba(74,26,106,0.08)" stroke="rgba(74,26,106,0.3)" stroke-width="1.5"/>
+  <text x="1185" y="42" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="rgba(74,26,106,0.7)" letter-spacing="2">LAYER 4</text>
+  <text x="1185" y="63" text-anchor="middle" font-size="14" font-weight="700" font-family="Cormorant Garamond,serif" fill="#4a1a6a">🛡️ Safeguards</text>
+  <text x="1185" y="82" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1a1510">Minority & Mother Tongue Protection</text>
+  <text x="1185" y="97" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="#7a6a50">Art. 350, 350A, 350B, 351</text>
+  <text x="1185" y="112" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="#7a6a50">8th Schedule · Classical Languages</text>
+</svg>
+</div>
+
+<!-- ══ SECTION 1: UNION LANGUAGE ══ -->
+<div class="sec-label">① Language of the Union — The Centre</div>
+
+<!-- Big SVG mind map for Article 343-344 -->
+<div class="map-card mc1">
+<svg viewBox="0 0 1400 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<defs>
+  <marker id="arr2" markerWidth="9" markerHeight="9" refX="6" refY="3.5" orient="auto"><path d="M1,1 L6,3.5 L1,6 Z" fill="#b87820" opacity="1"/></marker>
+</defs>
+<rect width="1400" height="280" fill="rgba(250,247,240,0.5)"/>
+
+<!-- Central node: Union Language -->
+<rect x="540" y="110" width="320" height="60" rx="14" fill="#a05010" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+<rect x="542" y="113" width="320" height="60" rx="14" fill="none" stroke="rgba(255,180,80,0.2)" stroke-width="1"/>
+<text x="700" y="135" text-anchor="middle" font-size="13" font-weight="700" font-family="DM Sans,sans-serif" fill="#fff">🇮🇳  Language of the Union</text>
+<text x="700" y="155" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="rgba(255,220,150,0.8)">PART XVII · ARTICLES 343–344</text>
+
+<!-- Article 343 -->
+<rect x="60" y="30" width="320" height="90" rx="12" fill="rgba(224,120,32,0.1)" stroke="rgba(224,120,32,0.35)" stroke-width="1.5"/>
+<text x="220" y="54" text-anchor="middle" font-size="11" font-weight="700" fill="#a05010">📜 Article 343</text>
+<text x="220" y="74" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1a1510">Hindi (Devanagari) = Official</text>
+<text x="220" y="92" text-anchor="middle" font-size="9.5" fill="#3a2a10">English continues for official use</text>
+<text x="220" y="109" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="#7a6a50">Parliament may extend English</text>
+<line x1="380" y1="75" x2="538" y2="130" stroke="#e07820" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr2)"/>
+
+<!-- Article 344 -->
+<rect x="60" y="160" width="320" height="95" rx="12" fill="rgba(184,120,32,0.1)" stroke="rgba(184,120,32,0.35)" stroke-width="1.5"/>
+<text x="220" y="184" text-anchor="middle" font-size="11" font-weight="700" fill="#906010">📜 Article 344</text>
+<text x="220" y="204" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1a1510">President appoints Commission</text>
+<text x="220" y="222" text-anchor="middle" font-size="9.5" fill="#3a2a10">Reviews Hindi use &amp; English limits</text>
+<text x="220" y="240" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="#7a6a50">After 5 &amp; 10 years</text>
+<line x1="380" y1="207" x2="538" y2="155" stroke="#b87820" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr2)"/>
+
+<!-- Official Languages Act box -->
+<rect x="480" y="205" width="440" height="60" rx="12" fill="rgba(26,42,90,0.09)" stroke="rgba(26,42,90,0.3)" stroke-width="1.5"/>
+<text x="700" y="228" text-anchor="middle" font-size="11" font-weight="700" fill="#1a2a5a">📘 Official Languages Act, 1963</text>
+<text x="700" y="248" text-anchor="middle" font-size="9.5" fill="#2a3a6a">English continues beyond 1965 · 1967: Hindi+English compulsory · 30 MPs Committee (Home Minister chairs)</text>
+<line x1="700" y1="172" x2="700" y2="203" stroke="#1a2a5a" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr2)"/>
+
+<!-- Kher Commission -->
+<rect x="1000" y="30" width="360" height="58" rx="12" fill="rgba(224,120,32,0.08)" stroke="rgba(224,120,32,0.28)" stroke-width="1.5"/>
+<text x="1180" y="52" text-anchor="middle" font-size="11" font-weight="700" fill="#a05010">🎖️ B.G. Kher Commission</text>
+<text x="1180" y="72" text-anchor="middle" font-size="9.5" fill="#3a2a10">1955 · Reviewed official language use</text>
+<line x1="862" y1="125" x2="998" y2="70" stroke="#e07820" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr2)"/>
+
+<!-- G.B. Pant Committee -->
+<rect x="1000" y="120" width="360" height="58" rx="12" fill="rgba(184,120,32,0.08)" stroke="rgba(184,120,32,0.28)" stroke-width="1.5"/>
+<text x="1180" y="142" text-anchor="middle" font-size="11" font-weight="700" fill="#906010">🏛️ G.B. Pant Committee</text>
+<text x="1180" y="162" text-anchor="middle" font-size="9.5" fill="#3a2a10">1957 · Parliamentary Committee on OL</text>
+<line x1="862" y1="142" x2="998" y2="150" stroke="#b87820" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr2)"/>
+
+<!-- Parl Committee box -->
+<rect x="1000" y="205" width="360" height="60" rx="12" fill="rgba(26,42,90,0.07)" stroke="rgba(26,42,90,0.25)" stroke-width="1.5"/>
+<text x="1180" y="227" text-anchor="middle" font-size="11" font-weight="700" fill="#1a2a5a">🏛️ Parliamentary Committee</text>
+<text x="1180" y="247" text-anchor="middle" font-size="9.5" fill="#2a3a6a">30 MPs: 20 Lok Sabha + 10 Rajya Sabha</text>
+<line x1="920" y1="235" x2="998" y2="235" stroke="#1a2a5a" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr2)"/>
+
+<!-- Practical outcome -->
+<rect x="480" y="25" width="220" height="50" rx="10" fill="#a05010"/>
+<text x="590" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Practical Reality</text>
+<text x="590" y="64" text-anchor="middle" font-size="10" fill="rgba(255,220,160,0.85)">Hindi + English both used</text>
+<line x1="590" y1="75" x2="615" y2="108" stroke="#e07820" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr2)"/>
+</svg>
+</div>
+
+<div class="g2">
+  <div class="pc saffron">
+    <div class="pc-label">Art. 343 · Art. 344</div>
+    <h3>📜 Union Language Provisions</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Article 343</div><div class="vs">Hindi in Devanagari = official · English continues · Parliament may extend English use</div></div>
+      <div class="vitem"><div class="vt">Article 344</div><div class="vs">President appoints Official Language Commission + Parliamentary Committee to review Hindi progression</div></div>
+    </div>
+    <div class="ic" style="margin-top:10px;">
+      <div class="ic-node" style="border-color:var(--saffron);background:rgba(224,120,32,0.08);color:var(--saffron-dk);">Hindi Official</div>
+      <div class="ic-arr">+</div>
+      <div class="ic-node" style="border-color:var(--navy);background:rgba(26,42,90,0.08);color:var(--navy);">English Continues</div>
+      <div class="ic-arr">=</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,96,64,0.08);color:var(--green);">Bilingualism</div>
+    </div>
+  </div>
+  <div class="pc navy">
+    <div class="pc-label">Official Languages Act, 1963</div>
+    <h3>📘 Key Statutory Provisions</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">English beyond 1965</div><div class="vs">Continues despite 15-year transition originally planned</div></div>
+      <div class="vitem"><div class="vt">1967 Amendment</div><div class="vs">Hindi + English compulsory in certain official cases; Hindi translation is authoritative</div></div>
+      <div class="vitem"><div class="vt">Parliamentary Committee on OL</div><div class="vs">30 MPs (20 LS + 10 RS) · Chaired by Union Home Minister</div></div>
+    </div>
+    <div class="callout navy" style="margin-top:8px;">
+      <div class="callout-title navy">💡 Key Commissions</div>
+      <div class="callout-body">B.G. Kher Commission (1955) · G.B. Pant Committee (1957) — both reviewed Hindi progress</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 2: UNION-STATE LANGUAGE ══ -->
+<div class="sec-label">② Language Between Union & States</div>
+
+<div class="map-card mc2">
+<svg viewBox="0 0 1400 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<defs>
+  <marker id="arr3" markerWidth="9" markerHeight="9" refX="6" refY="3.5" orient="auto"><path d="M1,1 L6,3.5 L1,6 Z" fill="#1a6040" opacity="1"/></marker>
+</defs>
+<rect width="1400" height="200" fill="rgba(248,252,248,0.5)"/>
+
+<!-- Central -->
+<rect x="550" y="75" width="300" height="55" rx="13" fill="#0d3a24"/>
+<text x="700" y="97" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">🔄 Union ↔ State Language</text>
+<text x="700" y="117" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="rgba(200,240,200,0.7)">ARTICLES 345 · 346 · 347</text>
+
+<!-- 345 -->
+<rect x="60" y="30" width="310" height="70" rx="12" fill="rgba(26,96,64,0.1)" stroke="rgba(26,96,64,0.35)" stroke-width="1.5"/>
+<text x="215" y="54" text-anchor="middle" font-size="11" font-weight="700" fill="#1a6040">📜 Article 345</text>
+<text x="215" y="74" text-anchor="middle" font-size="10.5" fill="#1a1510">State Legislative Adoption</text>
+<text x="215" y="92" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="#7a6a50">State can adopt any language(s) as official</text>
+<line x1="372" y1="65" x2="548" y2="102" stroke="#1a6040" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr3)"/>
+
+<!-- 346 -->
+<rect x="60" y="125" width="310" height="60" rx="12" fill="rgba(10,80,96,0.1)" stroke="rgba(10,80,96,0.35)" stroke-width="1.5"/>
+<text x="215" y="149" text-anchor="middle" font-size="11" font-weight="700" fill="#0a5060">📜 Article 346</text>
+<text x="215" y="169" text-anchor="middle" font-size="10.5" fill="#1a1510">English for Union–State communication</text>
+<line x1="372" y1="155" x2="548" y2="128" stroke="#0a5060" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr3)"/>
+
+<!-- 347 -->
+<rect x="1030" y="30" width="340" height="70" rx="12" fill="rgba(74,26,106,0.09)" stroke="rgba(74,26,106,0.3)" stroke-width="1.5"/>
+<text x="1200" y="54" text-anchor="middle" font-size="11" font-weight="700" fill="#4a1a6a">📜 Article 347</text>
+<text x="1200" y="74" text-anchor="middle" font-size="10.5" fill="#1a1510">Presidential Recognition</text>
+<text x="1200" y="92" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="#7a6a50">Pres. may recognize minority language in state</text>
+<line x1="852" y1="102" x2="1028" y2="65" stroke="#4a1a6a" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr3)"/>
+
+<!-- State freedom callout -->
+<rect x="430" y="155" width="540" height="38" rx="9" fill="rgba(26,96,64,0.06)" stroke="rgba(26,96,64,0.25)" stroke-width="1"/>
+<text x="700" y="169" text-anchor="middle" font-size="10" font-weight="700" fill="#1a6040">🌍 Linguistic Federalism</text>
+<text x="700" y="184" text-anchor="middle" font-size="9" fill="#3a5a3a">States keep diversity · Union uses English for official cross-boundary communication</text>
+</svg>
+</div>
+
+<div class="g3">
+  <div class="pc green">
+    <div class="pc-label">Article 345</div>
+    <h3>🌐 State Language Freedom</h3>
+    <p style="font-size:11px;line-height:1.6;color:var(--muted);">State legislature may adopt one or more languages used in the state, OR Hindi, as the official language for state purposes.</p>
+    <div style="margin-top:10px;"><span class="art-chip green">Art. 345</span><span class="pill green">State Autonomy</span></div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Article 346</div>
+    <h3>📬 Inter-Governmental Communication</h3>
+    <p style="font-size:11px;line-height:1.6;color:var(--muted);">English is the language for communication between Union and States. If two states agree to use Hindi between themselves, they may.</p>
+    <div style="margin-top:10px;"><span class="art-chip teal">Art. 346</span><span class="pill teal">English Official</span></div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Article 347</div>
+    <h3>🛡️ Minority Language Recognition</h3>
+    <p style="font-size:11px;line-height:1.6;color:var(--muted);">If substantial proportion of state population speaks a particular language, President may direct it to be officially recognised in that state.</p>
+    <div style="margin-top:10px;"><span class="art-chip purple">Art. 347</span><span class="pill purple">Minority Right</span></div>
+  </div>
+</div>
+
+<!-- ══ SECTION 3: JUDICIARY ══ -->
+<div class="sec-label">③ Language of Judiciary — Article 348</div>
+
+<div class="map-card mc3">
+<svg viewBox="0 0 1400 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<defs>
+  <marker id="arr4" markerWidth="9" markerHeight="9" refX="6" refY="3.5" orient="auto"><path d="M1,1 L6,3.5 L1,6 Z" fill="#1a2a5a" opacity="1"/></marker>
+</defs>
+<rect width="1400" height="200" fill="rgba(247,248,252,0.6)"/>
+
+<!-- Art 348 center -->
+<rect x="530" y="70" width="340" height="62" rx="13" fill="#1a2a5a"/>
+<text x="700" y="94" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">⚖️ Article 348</text>
+<text x="700" y="114" text-anchor="middle" font-size="10.5" fill="rgba(200,210,240,0.85)">Language of Supreme Court &amp; High Courts</text>
+
+<!-- English SC -->
+<rect x="60" y="20" width="320" height="65" rx="11" fill="rgba(26,42,90,0.1)" stroke="rgba(26,42,90,0.35)" stroke-width="1.5"/>
+<text x="220" y="45" text-anchor="middle" font-size="11" font-weight="700" fill="#1a2a5a">🏛️ Supreme Court</text>
+<text x="220" y="63" text-anchor="middle" font-size="10" fill="#1a1510">English only — no Hindi mandated</text>
+<text x="220" y="78" text-anchor="middle" font-size="8.5" font-family="JetBrains Mono,monospace" fill="#7a6a50">Parliament has NOT mandated Hindi in SC</text>
+<line x1="382" y1="52" x2="528" y2="96" stroke="#1a2a5a" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr4)"/>
+
+<!-- English HC -->
+<rect x="60" y="115" width="320" height="65" rx="11" fill="rgba(10,80,96,0.1)" stroke="rgba(10,80,96,0.35)" stroke-width="1.5"/>
+<text x="220" y="140" text-anchor="middle" font-size="11" font-weight="700" fill="#0a5060">🏛️ High Courts</text>
+<text x="220" y="158" text-anchor="middle" font-size="10" fill="#1a1510">English — Bills, Acts, legal documents</text>
+<text x="220" y="173" text-anchor="middle" font-size="8.5" font-family="JetBrains Mono,monospace" fill="#7a6a50">Hindi in HC: Governor + President consent</text>
+<line x1="382" y1="148" x2="528" y2="120" stroke="#0a5060" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr4)"/>
+
+<!-- Not judgments -->
+<rect x="1020" y="25" width="360" height="65" rx="11" fill="rgba(138,26,26,0.08)" stroke="rgba(138,26,26,0.28)" stroke-width="1.5"/>
+<text x="1200" y="49" text-anchor="middle" font-size="11" font-weight="700" fill="#8a1a1a">⚠️ Important Limit</text>
+<text x="1200" y="67" text-anchor="middle" font-size="10" fill="#1a1510">HC judgments NOT in Hindi</text>
+<text x="1200" y="82" text-anchor="middle" font-size="8.5" font-family="JetBrains Mono,monospace" fill="#7a6a50">Even if HC language is Hindi</text>
+<line x1="872" y1="100" x2="1018" y2="55" stroke="#8a1a1a" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr4)"/>
+
+<!-- English documents -->
+<rect x="1020" y="115" width="360" height="65" rx="11" fill="rgba(26,42,90,0.08)" stroke="rgba(26,42,90,0.25)" stroke-width="1.5"/>
+<text x="1200" y="139" text-anchor="middle" font-size="11" font-weight="700" fill="#1a2a5a">📄 Legal Documents</text>
+<text x="1200" y="157" text-anchor="middle" font-size="10" fill="#1a1510">Bills, Acts, Ordinances — English</text>
+<text x="1200" y="172" text-anchor="middle" font-size="8.5" font-family="JetBrains Mono,monospace" fill="#7a6a50">Unless Parliament says otherwise</text>
+<line x1="872" y1="118" x2="1018" y2="148" stroke="#1a2a5a" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr4)"/>
+</svg>
+</div>
+
+<div class="pc navy" style="margin-bottom:22px;">
+  <div class="pc-label">Article 348 — Summary</div>
+  <h3>⚖️ English Dominates Judiciary</h3>
+  <div class="g2" style="margin-bottom:0;">
+    <div>
+      <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:6px;">English Used For:</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;">
+        <span class="art-chip navy">Supreme Court</span>
+        <span class="art-chip navy">High Courts</span>
+        <span class="art-chip navy">Bills & Acts</span>
+        <span class="art-chip navy">Legal Documents</span>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:700;color:var(--red);margin-bottom:6px;">Key Exception:</div>
+      <div class="callout" style="background:rgba(138,26,26,0.06);border-color:rgba(138,26,26,0.25);">
+        <div class="callout-title" style="color:var(--red);">⚠️ HC Hindi Exception</div>
+        <div class="callout-body">Governor (with President's consent) may allow Hindi in HC proceedings — BUT NOT for judgments, decrees, orders.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 4: SPECIAL SAFEGUARDS ══ -->
+<div class="sec-label">④ Special Safeguards — Minority & Linguistic Protection</div>
+
+<div class="map-card mc4">
+<svg viewBox="0 0 1400 230" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<defs>
+  <marker id="arr5" markerWidth="9" markerHeight="9" refX="6" refY="3.5" orient="auto"><path d="M1,1 L6,3.5 L1,6 Z" fill="#1a6040" opacity="1"/></marker>
+</defs>
+<rect width="1400" height="230" fill="rgba(248,252,248,0.5)"/>
+
+<!-- Center -->
+<rect x="535" y="88" width="330" height="54" rx="13" fill="#0d3a24"/>
+<text x="700" y="109" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">🛡️ Special Safeguards</text>
+<text x="700" y="129" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="rgba(180,240,200,0.7)">LINGUISTIC MINORITY PROTECTION</text>
+
+<!-- Art 350 -->
+<rect x="50" y="20" width="280" height="68" rx="11" fill="rgba(26,96,64,0.1)" stroke="rgba(26,96,64,0.3)" stroke-width="1.5"/>
+<text x="190" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#1a6040">📜 Article 350</text>
+<text x="190" y="62" text-anchor="middle" font-size="10.5" fill="#1a1510">Grievance in any language</text>
+<text x="190" y="80" text-anchor="middle" font-size="8.5" font-family="JetBrains Mono,monospace" fill="#7a6a50">Right to represent to any authority</text>
+<line x1="332" y1="54" x2="533" y2="110" stroke="#1a6040" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr5)"/>
+
+<!-- Art 350A -->
+<rect x="50" y="130" width="280" height="68" rx="11" fill="rgba(26,96,64,0.1)" stroke="rgba(26,96,64,0.3)" stroke-width="1.5"/>
+<text x="190" y="154" text-anchor="middle" font-size="11" font-weight="700" fill="#1a6040">📜 Article 350A</text>
+<text x="190" y="172" text-anchor="middle" font-size="10.5" fill="#1a1510">Mother tongue education</text>
+<text x="190" y="190" text-anchor="middle" font-size="8.5" font-family="JetBrains Mono,monospace" fill="#7a6a50">Primary level for linguistic minorities</text>
+<line x1="332" y1="164" x2="533" y2="128" stroke="#1a6040" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr5)"/>
+
+<!-- Art 350B -->
+<rect x="1070" y="30" width="300" height="68" rx="11" fill="rgba(10,80,96,0.1)" stroke="rgba(10,80,96,0.3)" stroke-width="1.5"/>
+<text x="1220" y="54" text-anchor="middle" font-size="11" font-weight="700" fill="#0a5060">📜 Article 350B</text>
+<text x="1220" y="72" text-anchor="middle" font-size="10.5" fill="#1a1510">Special Officer for Ling. Minorities</text>
+<text x="1220" y="90" text-anchor="middle" font-size="8.5" font-family="JetBrains Mono,monospace" fill="#7a6a50">Commissioner; reports to President</text>
+<line x1="867" y1="108" x2="1068" y2="64" stroke="#0a5060" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr5)"/>
+
+<!-- Art 351 -->
+<rect x="1070" y="135" width="300" height="68" rx="11" fill="rgba(184,120,32,0.1)" stroke="rgba(184,120,32,0.3)" stroke-width="1.5"/>
+<text x="1220" y="159" text-anchor="middle" font-size="11" font-weight="700" fill="#906010">📜 Article 351</text>
+<text x="1220" y="177" text-anchor="middle" font-size="10.5" fill="#1a1510">Duty to promote Hindi</text>
+<text x="1220" y="195" text-anchor="middle" font-size="8.5" font-family="JetBrains Mono,monospace" fill="#7a6a50">Enrich from Sanskrit; medium of expression</text>
+<line x1="867" y1="128" x2="1068" y2="172" stroke="#b87820" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr5)"/>
+
+<!-- Art 120 + 210 (bottom) -->
+<rect x="400" y="180" width="220" height="40" rx="9" fill="rgba(26,42,90,0.08)" stroke="rgba(26,42,90,0.22)" stroke-width="1"/>
+<text x="510" y="198" text-anchor="middle" font-size="10" font-weight="700" fill="#1a2a5a">📜 Art. 120</text>
+<text x="510" y="213" text-anchor="middle" font-size="8.5" font-family="JetBrains Mono,monospace" fill="#7a6a50">Parliament: Hindi or English</text>
+
+<rect x="640" y="180" width="220" height="40" rx="9" fill="rgba(26,42,90,0.08)" stroke="rgba(26,42,90,0.22)" stroke-width="1"/>
+<text x="750" y="198" text-anchor="middle" font-size="10" font-weight="700" fill="#1a2a5a">📜 Art. 210</text>
+<text x="750" y="213" text-anchor="middle" font-size="8.5" font-family="JetBrains Mono,monospace" fill="#7a6a50">State Legislature: provisions</text>
+</svg>
+</div>
+
+<div class="g4">
+  <div class="pc green">
+    <div class="pc-label">Art. 350</div>
+    <h3>📣 Grievance Right</h3>
+    <p style="font-size:10.5px;color:var(--muted);line-height:1.6;">Any person can submit a representation in any language used in the Union or State.</p>
+    <span class="art-chip green" style="margin-top:8px;">Art. 350</span>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Art. 350A</div>
+    <h3>📚 Mother Tongue Education</h3>
+    <p style="font-size:10.5px;color:var(--muted);line-height:1.6;">Adequate facilities for instruction in mother tongue at primary level for linguistic minority children.</p>
+    <span class="art-chip green" style="margin-top:8px;">Art. 350A</span>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Art. 350B</div>
+    <h3>👤 Special Officer</h3>
+    <p style="font-size:10.5px;color:var(--muted);line-height:1.6;">Special Officer for Linguistic Minorities appointed by President. Reports annually on safeguards.</p>
+    <span class="art-chip teal" style="margin-top:8px;">Art. 350B</span>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">Art. 351</div>
+    <h3>📖 Promote Hindi</h3>
+    <p style="font-size:10.5px;color:var(--muted);line-height:1.6;">Union's duty to promote spread of Hindi, develop it as medium of expression for composite culture drawing from Sanskrit.</p>
+    <span class="art-chip gold" style="margin-top:8px;">Art. 351</span>
+  </div>
+</div>
+
+<!-- ══ SECTION 5: EIGHTH SCHEDULE ══ -->
+<div class="sec-label">⑤ The Eighth Schedule — 22 Recognised Languages</div>
+
+<div class="map-card mc5">
+<svg viewBox="0 0 1400 170" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<defs>
+  <marker id="arr6" markerWidth="9" markerHeight="9" refX="6" refY="3.5" orient="auto"><path d="M1,1 L6,3.5 L1,6 Z" fill="#4a1a6a" opacity="1"/></marker>
+</defs>
+<rect width="1400" height="170" fill="rgba(248,246,252,0.5)"/>
+
+<!-- Center label -->
+<rect x="540" y="55" width="320" height="60" rx="13" fill="#2a1a4a"/>
+<text x="700" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">📚 Eighth Schedule</text>
+<text x="700" y="98" text-anchor="middle" font-size="10" fill="rgba(210,190,240,0.8)">22 Scheduled Languages</text>
+<text x="700" y="113" text-anchor="middle" font-size="8.5" font-family="JetBrains Mono,monospace" fill="rgba(200,180,230,0.65)">CULTURAL RECOGNITION · ≠ OFFICIAL LANGUAGE</text>
+
+<!-- What it is NOT -->
+<rect x="50" y="30" width="310" height="55" rx="11" fill="rgba(138,26,26,0.08)" stroke="rgba(138,26,26,0.28)" stroke-width="1.5"/>
+<text x="205" y="53" text-anchor="middle" font-size="11" font-weight="700" fill="#8a1a1a">❌ Not = Official Language</text>
+<text x="205" y="71" text-anchor="middle" font-size="10" fill="#3a1a1a">Listed ≠ national/official status</text>
+<line x1="362" y1="57" x2="538" y2="85" stroke="#8a1a1a" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr6)"/>
+
+<!-- What it provides -->
+<rect x="50" y="105" width="310" height="52" rx="11" fill="rgba(74,26,106,0.09)" stroke="rgba(74,26,106,0.3)" stroke-width="1.5"/>
+<text x="205" y="128" text-anchor="middle" font-size="11" font-weight="700" fill="#4a1a6a">✅ Cultural Recognition</text>
+<text x="205" y="147" text-anchor="middle" font-size="10" fill="#2a1a3a">Constitutional legitimacy &amp; status</text>
+<line x1="362" y1="131" x2="538" y2="115" stroke="#4a1a6a" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr6)"/>
+
+<!-- benefits right -->
+<rect x="1040" y="20" width="330" height="50" rx="10" fill="rgba(26,96,64,0.08)" stroke="rgba(26,96,64,0.25)" stroke-width="1.5"/>
+<text x="1205" y="41" text-anchor="middle" font-size="11" font-weight="700" fill="#1a6040">🎓 UPSC Language Paper</text>
+<text x="1205" y="58" text-anchor="middle" font-size="9.5" fill="#2a4a2a">Candidates may use 8th Schedule languages</text>
+<line x1="862" y1="75" x2="1038" y2="45" stroke="#1a6040" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr6)"/>
+
+<rect x="1040" y="95" width="330" height="50" rx="10" fill="rgba(74,26,106,0.08)" stroke="rgba(74,26,106,0.25)" stroke-width="1.5"/>
+<text x="1205" y="116" text-anchor="middle" font-size="11" font-weight="700" fill="#4a1a6a">🏛️ Sahitya Akademi Award</text>
+<text x="1205" y="134" text-anchor="middle" font-size="9.5" fill="#2a1a3a">Given for these recognised languages</text>
+<line x1="862" y1="100" x2="1038" y2="120" stroke="#4a1a6a" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr6)"/>
+</svg>
+</div>
+
+<div class="pc purple" style="margin-bottom:18px;">
+  <div class="pc-label">Eighth Schedule — 22 Languages (Original 14 → Now 22)</div>
+  <h3>📚 All 22 Scheduled Languages</h3>
+  <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;">
+    <span class="pill purple">Assamese</span><span class="pill purple">Bengali</span><span class="pill purple">Gujarati</span><span class="pill purple">Hindi</span><span class="pill purple">Kannada</span><span class="pill purple">Kashmiri</span><span class="pill purple">Konkani</span><span class="pill purple">Malayalam</span><span class="pill purple">Manipuri</span><span class="pill purple">Marathi</span><span class="pill purple">Nepali</span><span class="pill purple">Odia</span><span class="pill purple">Punjabi</span><span class="pill purple">Sanskrit</span><span class="pill purple">Sindhi</span><span class="pill purple">Tamil</span><span class="pill purple">Telugu</span><span class="pill purple">Urdu</span><span class="pill purple">Bodo</span><span class="pill purple">Dogri</span><span class="pill purple">Maithili</span><span class="pill purple">Santhali</span>
+  </div>
+  <div class="callout" style="margin-top:12px;background:rgba(74,26,106,0.06);border-color:rgba(74,26,106,0.25);">
+    <div class="callout-title" style="color:var(--purple);">⚠️ UPSC Trap: 8th Schedule ≠ Official Language</div>
+    <div class="callout-body">Inclusion in 8th Schedule gives cultural/constitutional recognition but does NOT confer "official language" status. Official language = Article 343 (Hindi) + English. Classical language status is separate criteria entirely.</div>
+  </div>
+</div>
+
+<!-- ══ SECTION 6: CLASSICAL LANGUAGES ══ -->
+<div class="sec-label">⑥ Classical Language Status — Since 2004</div>
+
+<div class="map-card mc3">
+<svg viewBox="0 0 1400 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<defs>
+  <marker id="arr7" markerWidth="9" markerHeight="9" refX="6" refY="3.5" orient="auto"><path d="M1,1 L6,3.5 L1,6 Z" fill="#906010" opacity="1"/></marker>
+</defs>
+<rect width="1400" height="200" fill="rgba(252,250,245,0.5)"/>
+
+<!-- Center -->
+<rect x="520" y="73" width="360" height="54" rx="13" fill="#5a3a08"/>
+<text x="700" y="95" text-anchor="middle" font-size="13" font-weight="700" fill="#f5e4c0">🎖️ Classical Language Status</text>
+<text x="700" y="115" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="rgba(220,190,130,0.7)">INTRODUCED 2004 · GOVT OF INDIA CRITERIA</text>
+
+<!-- Criteria left -->
+<rect x="50" y="15" width="300" height="160" rx="12" fill="rgba(184,120,32,0.09)" stroke="rgba(184,120,32,0.3)" stroke-width="1.5"/>
+<text x="200" y="42" text-anchor="middle" font-size="11" font-weight="700" fill="#906010">📋 Criteria for Classical Status</text>
+<text x="200" y="62" text-anchor="middle" font-size="9.5" fill="#3a2a10">1. Antiquity: 1500–2000 years</text>
+<text x="200" y="80" text-anchor="middle" font-size="9.5" fill="#3a2a10">2. Ancient literature / texts</text>
+<text x="200" y="98" text-anchor="middle" font-size="9.5" fill="#3a2a10">3. Original literary tradition</text>
+<text x="200" y="116" text-anchor="middle" font-size="9.5" fill="#3a2a10">4. Not borrowed from another language</text>
+<text x="200" y="134" text-anchor="middle" font-size="9.5" fill="#3a2a10">5. Distinct from modern form</text>
+<text x="200" y="152" text-anchor="middle" font-size="9.5" fill="#3a2a10">6. Scholarly tradition of continuity</text>
+<line x1="352" y1="95" x2="518" y2="100" stroke="#b87820" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr7)"/>
+
+<!-- Benefits right -->
+<rect x="1050" y="15" width="310" height="155" rx="12" fill="rgba(26,96,64,0.09)" stroke="rgba(26,96,64,0.28)" stroke-width="1.5"/>
+<text x="1205" y="42" text-anchor="middle" font-size="11" font-weight="700" fill="#1a6040">🏆 Benefits</text>
+<text x="1205" y="62" text-anchor="middle" font-size="9.5" fill="#1a3a20">• Financial assistance for research</text>
+<text x="1205" y="80" text-anchor="middle" font-size="9.5" fill="#1a3a20">• Two national awards</text>
+<text x="1205" y="98" text-anchor="middle" font-size="9.5" fill="#1a3a20">• University Chair (Central Univ.)</text>
+<text x="1205" y="116" text-anchor="middle" font-size="9.5" fill="#1a3a20">• Centre of Excellence for Studies</text>
+<text x="1205" y="134" text-anchor="middle" font-size="9.5" fill="#1a3a20">• Promotion via Ministry of Education</text>
+<line x1="882" y1="100" x2="1048" y2="100" stroke="#1a6040" stroke-width="1.5" stroke-width="2" opacity="0.75" marker-end="url(#arr7)"/>
+</svg>
+</div>
+
+<div class="pc gold" style="margin-bottom:18px;">
+  <div class="pc-label">Classical Languages — Timeline (2004–2024)</div>
+  <h3>🎖️ All 11 Classical Languages (As of 2024)</h3>
+  <div class="lang-grid">
+    <div class="lang-item" style="border-color:rgba(184,120,32,0.4);background:rgba(184,120,32,0.06);">
+      <div class="lang-name" style="color:var(--saffron-dk);">Tamil</div><div class="lang-year">2004 · First</div></div>
+    <div class="lang-item" style="border-color:rgba(184,120,32,0.35);">
+      <div class="lang-name">Sanskrit</div><div class="lang-year">2005</div></div>
+    <div class="lang-item" style="border-color:rgba(184,120,32,0.35);">
+      <div class="lang-name">Telugu</div><div class="lang-year">2008</div></div>
+    <div class="lang-item" style="border-color:rgba(184,120,32,0.35);">
+      <div class="lang-name">Kannada</div><div class="lang-year">2008</div></div>
+    <div class="lang-item" style="border-color:rgba(184,120,32,0.35);">
+      <div class="lang-name">Malayalam</div><div class="lang-year">2013</div></div>
+    <div class="lang-item" style="border-color:rgba(184,120,32,0.35);">
+      <div class="lang-name">Odia</div><div class="lang-year">2014</div></div>
+    <div class="lang-item" style="border-color:rgba(26,96,64,0.4);background:rgba(26,96,64,0.05);">
+      <div class="lang-name" style="color:var(--green);">Marathi</div><div class="lang-year">2024 · New</div></div>
+    <div class="lang-item" style="border-color:rgba(26,96,64,0.4);background:rgba(26,96,64,0.05);">
+      <div class="lang-name" style="color:var(--green);">Bengali</div><div class="lang-year">2024 · New</div></div>
+    <div class="lang-item" style="border-color:rgba(26,96,64,0.4);background:rgba(26,96,64,0.05);">
+      <div class="lang-name" style="color:var(--green);">Assamese</div><div class="lang-year">2024 · New</div></div>
+    <div class="lang-item" style="border-color:rgba(26,96,64,0.4);background:rgba(26,96,64,0.05);">
+      <div class="lang-name" style="color:var(--green);">Pali</div><div class="lang-year">2024 · New</div></div>
+    <div class="lang-item" style="border-color:rgba(26,96,64,0.4);background:rgba(26,96,64,0.05);">
+      <div class="lang-name" style="color:var(--green);">Prakrit</div><div class="lang-year">2024 · New</div></div>
+  </div>
+  <div style="margin-top:10px;padding:8px 12px;background:rgba(138,26,26,0.06);border-radius:8px;border:1px dashed rgba(138,26,26,0.3);font-size:10px;font-weight:700;color:var(--red);">
+    ⚠️ Classical status ≠ 8th Schedule listing · Classical criteria separate from Scheduled language criteria
+  </div>
+</div>
+
+<!-- ══ SECTION 7: QUICK REFERENCE TABLE ══ -->
+<div class="sec-label">⑦ Prelims Quick Reference — Article Mapping</div>
+
+<div class="g2x1">
+  <div class="pc dark" style="background:var(--card);border-color:var(--border);">
+    <div class="pc-label">All Language Articles — At A Glance</div>
+    <h3>⚡ UPSC Quick Triggers</h3>
+    <table class="ctable">
+      <thead>
+        <tr><th>Area</th><th>Article</th><th>Key Point</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Official language of Union</td><td><span class="art-chip saffron">343</span></td><td>Hindi (Devanagari) + English</td></tr>
+        <tr><td>Language Commission</td><td><span class="art-chip saffron">344</span></td><td>President appoints; 5 &amp; 10 yr review</td></tr>
+        <tr><td>State official language</td><td><span class="art-chip green">345</span></td><td>State legislature freedom</td></tr>
+        <tr><td>Union–State communication</td><td><span class="art-chip green">346</span></td><td>English</td></tr>
+        <tr><td>Minority language recognition</td><td><span class="art-chip purple">347</span></td><td>President may recognize</td></tr>
+        <tr><td>Judiciary language</td><td><span class="art-chip navy">348</span></td><td>English in SC/HC</td></tr>
+        <tr><td>Parliament language</td><td><span class="art-chip navy">120</span></td><td>Hindi or English</td></tr>
+        <tr><td>State Legislature</td><td><span class="art-chip navy">210</span></td><td>Language provisions</td></tr>
+        <tr><td>Grievance submission</td><td><span class="art-chip green">350</span></td><td>Any language</td></tr>
+        <tr><td>Mother tongue education</td><td><span class="art-chip green">350A</span></td><td>Primary level, linguistic minorities</td></tr>
+        <tr><td>Special Officer LM</td><td><span class="art-chip teal">350B</span></td><td>Appointed by President</td></tr>
+        <tr><td>Promote Hindi</td><td><span class="art-chip gold">351</span></td><td>Union's duty; draw from Sanskrit</td></tr>
+        <tr><td>22 languages listed</td><td><span class="art-chip purple">8th Sch.</span></td><td>Cultural recognition only</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <div class="pc red">
+      <div class="pc-label">Common UPSC Traps</div>
+      <h3>⚠️ Prelims Pitfalls</h3>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">8th Schedule ≠ Official Language</div><div class="vs">It's cultural recognition, not official status</div></div>
+        <div class="vitem"><div class="vt">Classical ≠ Scheduled</div><div class="vs">Tamil is both; Pali is Classical but not in 8th Sch.</div></div>
+        <div class="vitem"><div class="vt">Hindi NOT mandated in SC</div><div class="vs">Parliament has not done this yet</div></div>
+        <div class="vitem"><div class="vt">HC Hindi: No judgments</div><div class="vs">Only proceedings, not decrees/orders</div></div>
+      </div>
+    </div>
+    <div class="pc green">
+      <div class="pc-label">Parliamentary Committee</div>
+      <h3>🏛️ OL Committee Composition</h3>
+      <div class="stat-row">
+        <div class="stat-box"><div class="stat-num" style="color:var(--saffron);">20</div><div class="stat-sub">Lok Sabha MPs</div><div class="stat-lbl">LOWER HOUSE</div></div>
+        <div class="stat-box"><div class="stat-num" style="color:var(--navy);">10</div><div class="stat-sub">Rajya Sabha MPs</div><div class="stat-lbl">UPPER HOUSE</div></div>
+        <div class="stat-box"><div class="stat-num" style="color:var(--green);">30</div><div class="stat-sub">Total MPs</div><div class="stat-lbl">TOTAL</div></div>
+      </div>
+      <div style="padding:8px 10px;border-radius:8px;background:rgba(26,96,64,0.07);border:1px solid rgba(26,96,64,0.25);margin-top:8px;font-size:10px;font-weight:700;color:var(--green);">
+        Chaired by Union Home Minister
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 4-LAYER SUMMARY ══ -->
+<div class="sec-label">⑧ The Big Picture — India's Language Model</div>
+
+<div class="phase-row">
+  <div class="phase-box" style="border-color:var(--saffron);background:rgba(224,120,32,0.04);">
+    <div class="phase-num" style="color:var(--saffron);">1️⃣</div>
+    <div class="phase-title">Union Language</div>
+    <div class="phase-sub">Art. 343–344</div>
+    <div style="font-size:10px;margin-top:8px;line-height:1.7;color:var(--muted);">Hindi + English<br>Practical Bilingualism<br>OL Act 1963</div>
+    <span class="pill saffron" style="margin-top:8px;">Centre</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--green);background:rgba(26,96,64,0.04);">
+    <div class="phase-num" style="color:var(--green);">2️⃣</div>
+    <div class="phase-title">State Freedom</div>
+    <div class="phase-sub">Art. 345–347</div>
+    <div style="font-size:10px;margin-top:8px;line-height:1.7;color:var(--muted);">Any language<br>Linguistic Federalism<br>English for Union–State</div>
+    <span class="pill green" style="margin-top:8px;">States</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--navy);background:rgba(26,42,90,0.04);">
+    <div class="phase-num" style="color:var(--navy);">3️⃣</div>
+    <div class="phase-title">Judiciary: English</div>
+    <div class="phase-sub">Art. 348</div>
+    <div style="font-size:10px;margin-top:8px;line-height:1.7;color:var(--muted);">SC &amp; HC in English<br>HC Hindi (no judgments)<br>Acts &amp; Bills in English</div>
+    <span class="pill navy" style="margin-top:8px;">Courts</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--purple);background:rgba(74,26,106,0.04);">
+    <div class="phase-num" style="color:var(--purple);">4️⃣</div>
+    <div class="phase-title">Safeguards</div>
+    <div class="phase-sub">Art. 350–351</div>
+    <div style="font-size:10px;margin-top:8px;line-height:1.7;color:var(--muted);">Minority rights<br>Mother tongue education<br>8th Schedule · Classical</div>
+    <span class="pill purple" style="margin-top:8px;">Minorities</span>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🇮🇳</div>
+  <div style="flex:1;">
+    <div class="keystone-title">India's Language Philosophy — The Core Idea</div>
+    <div class="keystone-sub">India did not impose a single national language. Instead it built a constitutional architecture of <strong style="color:#f5d78a;">practical bilingualism at the Centre (Hindi + English)</strong>, <strong style="color:#f5d78a;">linguistic freedom for States</strong>, <strong style="color:#f5d78a;">English dominance in judiciary</strong>, and <strong style="color:#f5d78a;">protective safeguards for minorities</strong>.<br>
+    The 8th Schedule provides cultural recognition. Classical status is separate. Together they form the <em>world's most linguistically diverse democracy's constitutional language framework</em>.</div>
+    <div class="kpills">
+      <span class="kpill">🗣️ Bilingualism at Centre</span>
+      <span class="kpill">🌍 Linguistic Federalism</span>
+      <span class="kpill">⚖️ English in Courts</span>
+      <span class="kpill">🛡️ Minority Safeguards</span>
+      <span class="kpill">📚 8th Schedule ≠ Official</span>
+      <span class="kpill">🎖️ Classical = Heritage</span>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

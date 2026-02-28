@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RPA 1950 + 1951 + Delimitation — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#12100e;--paper:#f8f5ef;--gold:#b87c10;--gold-lt:#f5d78a;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf5;--card2:#f2ede0;--sky:#1a5878;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 900px 500px at 15% 10%,rgba(184,124,16,0.06) 0%,transparent 60%),
+  radial-gradient(ellipse 700px 700px at 85% 90%,rgba(26,58,138,0.05) 0%,transparent 60%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 24px 100px;}
+
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,50px);line-height:1.1;}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:14px auto 0;border-radius:4px;}
+
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}.g2x1{grid-template-columns:1fr;}}
+@media(max-width:600px){.g2,.g3,.g4,.g2x1{grid-template-columns:1fr;}}
+
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.amber::before{background:var(--amber);}
+.pc.dark::before{background:var(--ink);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--purple),var(--sky),var(--teal));}
+.map-card svg{display:block;width:100%;}
+
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,96,112,0.12);color:var(--teal);}
+.pill.red{background:rgba(176,26,26,0.12);color:var(--red);}
+.pill.sky{background:rgba(26,88,120,0.12);color:var(--sky);}
+
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+.ps-chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.prob{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.ps-chip.sol{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.ps-chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+.ps-chip.blue{background:rgba(26,58,138,0.07);border-color:rgba(26,58,138,0.2);color:var(--blue);}
+
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;}
+.tag.ok{background:#d4edda;color:#155724;}
+.tag.na{background:#f8d7da;color:#721c24;}
+.tag.nu{background:#fff3cd;color:#856404;}
+
+.phase-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0;}
+@media(max-width:900px){.phase-row{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;}
+.phase-title{font-size:12px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-bottom:8px;}
+
+.ic-node{padding:7px 12px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:14px;color:var(--muted);flex:0 0 auto;margin:0 4px;}
+.impact-chain{display:flex;align-items:center;flex-wrap:wrap;gap:0;padding:6px 0;margin:8px 0;}
+
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;}
+
+.callout{padding:12px 14px;border-radius:10px;background:rgba(26,106,58,0.06);border:1.5px solid rgba(26,106,58,0.2);margin:8px 0;}
+.callout.red{background:rgba(176,26,26,0.06);border-color:rgba(176,26,26,0.2);}
+.callout.blue{background:rgba(26,58,138,0.06);border-color:rgba(26,58,138,0.2);}
+.callout.gold{background:rgba(184,124,16,0.06);border-color:rgba(184,124,16,0.2);}
+.callout-title{font-size:11px;font-weight:800;color:var(--green);margin-bottom:3px;}
+.callout.red .callout-title{color:var(--red);}
+.callout.blue .callout-title{color:var(--blue);}
+.callout.gold .callout-title{color:var(--amber);}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+.div-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:10px 0;}
+
+/* Timeline row */
+.timeline{display:flex;position:relative;margin:16px 0;padding:0 10px;}
+.timeline::before{content:'';position:absolute;left:50%;top:26px;width:2px;height:calc(100% - 26px);background:var(--border);transform:translateX(-50%);}
+.tl-item{flex:1;padding:0 14px;position:relative;}
+.tl-item:nth-child(odd){text-align:right;padding-right:30px;}
+.tl-item:nth-child(even){text-align:left;padding-left:30px;}
+.tl-dot{position:absolute;top:14px;width:12px;height:12px;border-radius:50%;border:2.5px solid;background:var(--card);}
+.tl-item:nth-child(odd) .tl-dot{right:-6px;}
+.tl-item:nth-child(even) .tl-dot{left:-6px;}
+.tl-year{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;}
+.tl-title{font-size:11px;font-weight:800;margin:2px 0;}
+.tl-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Polity · Elections · UPSC Prelims</div>
+  <h1>RPA 1950 + 1951 + <em>Delimitation</em></h1>
+  <div class="header-sub">Census → Delimitation → Electoral Rolls → Conduct of Elections → Disputes</div>
+</div>
+
+<!-- SECTION 0: MASTER FLOW -->
+<div class="sec-label">Master Flow — The Complete Election Story</div>
+<div class="map-card mc1">
+  <svg id="svgMaster" viewBox="0 0 1360 120" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- SECTION 1: DELIMITATION -->
+<div class="sec-label">① Delimitation — Drawing the Map</div>
+
+<div class="map-card mc2">
+  <svg id="svgDelim" viewBox="0 0 1360 280" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2" style="margin-bottom:18px;">
+  <div class="pc gold">
+    <div class="pc-label">Constitutional Base</div>
+    <h3>📜 Articles 82 & 170</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">82</div>
+        <div class="stat-sub">Lok Sabha</div>
+        <div class="stat-label">PARLIAMENT ACT</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--green);">170</div>
+        <div class="stat-sub">State Assembly</div>
+        <div class="stat-label">VIDHANSABHA</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">4×</div>
+        <div class="stat-sub">Commissions</div>
+        <div class="stat-label">SET UP TILL DATE</div>
+      </div>
+    </div>
+    <div class="callout gold" style="margin-top:10px;">
+      <div class="callout-title">📌 What is Delimitation?</div>
+      <div class="callout-body">Fixing constituency boundaries based on population after Census. Example: Delhi → 7 Lok Sabha + 70 Assembly seats.</div>
+    </div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">Delimitation Commission</div>
+    <h3>🏛️ Structure & Powers</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">👨‍⚖️</div><div class="ft">Retired SC Judge</div><div class="fs">Chairperson</div></div>
+      <div class="feat"><div class="fi">🗳️</div><div class="ft">Chief Election Comm.</div><div class="fs">Ex-officio member</div></div>
+      <div class="feat"><div class="fi">🏛️</div><div class="ft">State Election Comm.</div><div class="fs">Ex-officio member</div></div>
+      <div class="feat"><div class="fi">🇮🇳</div><div class="ft">Appointed by President</div><div class="fs">Set up by Parliament</div></div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="ps-chip prob">❌ Orders not challengeable in court</span>
+      <span class="ps-chip prob">❌ Cannot be modified by Parliament</span>
+      <span class="ps-chip sol">✅ Orders have force of law</span>
+    </div>
+  </div>
+</div>
+
+<!-- History Timeline -->
+<div class="pc dark" style="background:rgba(18,16,14,0.03);border-color:rgba(18,16,14,0.12);margin-bottom:20px;">
+  <div class="pc-label" style="margin-bottom:12px;">History of Delimitation Commissions</div>
+  <div class="phase-row">
+    <div class="phase-box" style="border-color:var(--amber);background:rgba(212,106,16,0.04);">
+      <div class="phase-num" style="color:var(--amber);">1952</div>
+      <div class="phase-title">1st Commission</div>
+      <div class="phase-sub">Post-independence</div>
+      <span class="pill amber">First Delimitation</span>
+    </div>
+    <div class="phase-box" style="border-color:var(--blue);background:rgba(26,58,138,0.04);">
+      <div class="phase-num" style="color:var(--blue);">1963</div>
+      <div class="phase-title">2nd Commission</div>
+      <div class="phase-sub">After 1961 Census</div>
+      <span class="pill blue">2nd Round</span>
+    </div>
+    <div class="phase-box" style="border-color:var(--green);background:rgba(26,106,58,0.04);">
+      <div class="phase-num" style="color:var(--green);">1973</div>
+      <div class="phase-title">3rd Commission</div>
+      <div class="phase-sub">After 1971 Census</div>
+      <span class="pill green">3rd Round</span>
+    </div>
+    <div class="phase-box" style="border-color:var(--purple);background:rgba(90,26,138,0.04);">
+      <div class="phase-num" style="color:var(--purple);">2002</div>
+      <div class="phase-title">4th Commission</div>
+      <div class="phase-sub">After 2001 Census</div>
+      <span class="pill purple">Latest Round</span>
+    </div>
+  </div>
+
+  <div class="g3" style="margin-bottom:0;">
+    <div style="padding:12px;border-radius:10px;background:rgba(176,26,26,0.06);border:1.5px solid rgba(176,26,26,0.2);">
+      <div style="font-size:11px;font-weight:800;color:var(--red);margin-bottom:5px;">⚠️ 42nd Amendment (1976)</div>
+      <div style="font-size:10px;color:var(--muted);">Froze number of seats <strong>till 2000</strong></div>
+    </div>
+    <div style="padding:12px;border-radius:10px;background:rgba(212,106,16,0.06);border:1.5px solid rgba(212,106,16,0.2);">
+      <div style="font-size:11px;font-weight:800;color:var(--amber);margin-bottom:5px;">⚠️ 84th Amendment (2001)</div>
+      <div style="font-size:10px;color:var(--muted);">Extended freeze <strong>till 2026</strong></div>
+    </div>
+    <div style="padding:12px;border-radius:10px;background:rgba(26,58,138,0.06);border:1.5px solid rgba(26,58,138,0.2);">
+      <div style="font-size:11px;font-weight:800;color:var(--blue);margin-bottom:5px;">ℹ️ 87th Amendment (2003)</div>
+      <div style="font-size:10px;color:var(--muted);">Based on <strong>2001 Census</strong> — no seat increase, only boundary change</div>
+    </div>
+  </div>
+
+  <div style="margin-top:12px;padding:10px 14px;background:rgba(176,26,26,0.07);border-radius:8px;border:1.5px dashed var(--red);">
+    <span style="font-size:11px;font-weight:800;color:var(--red);">🚨 PRELIMS TRAP: Freeze = number of seats frozen, NOT constituency boundaries. Boundaries can still be redrawn!</span>
+  </div>
+</div>
+
+<!-- J&K Delimitation -->
+<div class="pc red" style="margin-bottom:20px;">
+  <div class="pc-label">Special Case</div>
+  <h3>🗺️ Jammu & Kashmir Delimitation</h3>
+  <div class="g2" style="margin-bottom:0;">
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Triggered By</div><div class="vs">Article 370 removal (2019)</div></div>
+      <div class="vitem"><div class="vt">Commission Set Up</div><div class="vs">2020 — Justice Ranjana Prakash Desai</div></div>
+      <div class="vitem"><div class="vt">SC Upheld Legality</div><div class="vs">Supreme Court validated the process</div></div>
+    </div>
+    <div class="stat-row" style="flex-wrap:wrap;">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--red);">83→90</div>
+        <div class="stat-sub">Assembly Seats</div>
+        <div class="stat-label">INCREASED</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">7</div>
+        <div class="stat-sub">SC Seats</div>
+        <div class="stat-label">RESERVED</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--green);">9</div>
+        <div class="stat-sub">ST Seats</div>
+        <div class="stat-label">RESERVED</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">5</div>
+        <div class="stat-sub">Parliamentary</div>
+        <div class="stat-label">CONSTITUENCIES</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: RPA 1950 -->
+<div class="sec-label">② RPA 1950 — Building the Electoral Structure</div>
+
+<div class="map-card mc3">
+  <svg id="svgRPA50" viewBox="0 0 1360 260" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g3" style="margin-bottom:18px;">
+  <div class="pc green">
+    <div class="pc-label">Core Coverage</div>
+    <h3>📋 What RPA 1950 Covers</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;">
+      <span class="pill green">Seat Allocation</span>
+      <span class="pill green">Delimitation</span>
+      <span class="pill green">Electoral Rolls</span>
+      <span class="pill green">Voter Qualification</span>
+      <span class="pill green">SC/ST Reservation</span>
+    </div>
+    <div class="callout">
+      <div class="callout-title">🎯 Simple Memory Hook</div>
+      <div class="callout-body"><strong>1950 = Builds the MAP</strong> — who votes, how many seats, which constituency.</div>
+    </div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">Voter Qualification</div>
+    <h3>👤 Who Can Vote?</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🎂 Age 18+</div><div class="vs">Minimum voting age</div></div>
+      <div class="vitem"><div class="vt">🇮🇳 Indian Citizen</div><div class="vs">Citizenship mandatory</div></div>
+      <div class="vitem"><div class="vt">🏠 Ordinary Resident</div><div class="vs">Must reside in constituency</div></div>
+      <div class="vitem"><div class="vt">✅ Not Disqualified</div><div class="vs">No court order of disqualification</div></div>
+    </div>
+  </div>
+
+  <div class="pc amber">
+    <div class="pc-label">Electoral Roll Officers</div>
+    <h3>📋 Who Manages Rolls?</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div><div class="vt">CEO</div><div class="vs">Chief Electoral Officer</div></div>
+          <span class="pill amber">State</span>
+        </div>
+      </div>
+      <div class="vitem">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div><div class="vt">DEO</div><div class="vs">District Electoral Officer</div></div>
+          <span class="pill gold">District</span>
+        </div>
+      </div>
+      <div class="vitem">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div><div class="vt">ERO</div><div class="vs">Electoral Registration Officer</div></div>
+          <span class="pill green">Prepares Roll</span>
+        </div>
+      </div>
+      <div class="vitem">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div><div class="vt">RO</div><div class="vs">Returning Officer</div></div>
+          <span class="pill blue">Conducts</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Schedules of RPA 1950 -->
+<div class="pc sky" style="margin-bottom:20px;">
+  <div class="pc-label">Schedules of RPA 1950</div>
+  <h3>📚 4 Schedules — Quick Reference</h3>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>SCHEDULE</th>
+        <th>COVERS</th>
+        <th>BODY</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1st Schedule</td><td>Lok Sabha seat allocation by state</td><td><span class="tag ok">Parliament</span></td></tr>
+      <tr><td>2nd Schedule</td><td>Assembly (Vidhan Sabha) seats</td><td><span class="tag ok">State</span></td></tr>
+      <tr><td>3rd Schedule</td><td>Legislative Council seats</td><td><span class="tag nu">Vidhan Parishad</span></td></tr>
+      <tr><td>4th Schedule</td><td>Local authorities for Council elections</td><td><span class="tag nu">Local Body</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 3: RPA 1951 -->
+<div class="sec-label">③ RPA 1951 — Running the Election Game</div>
+
+<div class="map-card mc4">
+  <svg id="svgRPA51" viewBox="0 0 1360 260" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2" style="margin-bottom:18px;">
+  <div class="pc purple">
+    <div class="pc-label">Core Coverage</div>
+    <h3>⚙️ What RPA 1951 Covers</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;">
+      <span class="pill purple">Conduct of Elections</span>
+      <span class="pill purple">Disqualification</span>
+      <span class="pill purple">Election Offences</span>
+      <span class="pill purple">Election Disputes</span>
+      <span class="pill purple">Party Registration (S.29A)</span>
+      <span class="pill purple">By-elections</span>
+    </div>
+    <div class="callout" style="background:rgba(90,26,138,0.06);border-color:rgba(90,26,138,0.2);">
+      <div class="callout-title" style="color:var(--purple);">🎯 Simple Memory Hook</div>
+      <div class="callout-body"><strong>1951 = Runs the GAME</strong> — conduct, disqualify, dispute, punish. Everything that happens during and after the election.</div>
+    </div>
+    <div style="margin-top:10px;">
+      <div style="font-size:10px;font-weight:800;color:var(--muted);margin-bottom:6px;font-family:'DM Mono',monospace;">ELECTION DISPUTE HIERARCHY</div>
+      <div class="impact-chain">
+        <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.07);color:var(--red);">Election Petition</div>
+        <div class="ic-arr">→</div>
+        <div class="ic-node" style="border-color:var(--amber);background:rgba(212,106,16,0.07);color:var(--amber);">High Court</div>
+        <div class="ic-arr">→</div>
+        <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.07);color:var(--blue);">Supreme Court</div>
+      </div>
+      <span class="ps-chip prob" style="margin-top:4px;">❌ Civil courts have NO jurisdiction</span>
+    </div>
+  </div>
+
+  <!-- Disqualification Sections -->
+  <div class="pc red">
+    <div class="pc-label">Disqualification Sections — Most Important</div>
+    <h3>🚫 Sections 8–10A at a Glance</h3>
+    <div class="vlist">
+      <div class="vitem" style="background:rgba(176,26,26,0.06);border-color:rgba(176,26,26,0.2);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div>
+            <div class="vt" style="color:var(--red);">Section 8 — Conviction</div>
+            <div class="vs">2+ years imprisonment → disqualified; 6+ months for bribery etc.</div>
+          </div>
+          <span class="ps-chip prob" style="flex:0 0 auto;">🔑 Key</span>
+        </div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Section 8A — Corrupt Practices</div>
+        <div class="vs">6 years disqualification</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Section 9 — Govt Dismissal</div>
+        <div class="vs">Dismissed for corruption → disqualified</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Section 9A — Govt Contracts</div>
+        <div class="vs">Having govt contracts → disqualified</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Section 10 — Govt Company</div>
+        <div class="vs">Managing govt company → disqualified</div>
+      </div>
+      <div class="vitem" style="background:rgba(212,106,16,0.06);border-color:rgba(212,106,16,0.2);">
+        <div class="vt" style="color:var(--amber);">Section 10A — Expenses Not Filed</div>
+        <div class="vs">Failure to lodge election expenses → 3 years disqualification</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: COMPARISON -->
+<div class="sec-label">④ RPA 1950 vs RPA 1951 — Side by Side</div>
+
+<div class="map-card mc5">
+  <svg id="svgCompare" viewBox="0 0 1360 200" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="pc dark" style="background:rgba(18,16,14,0.03);border-color:rgba(18,16,14,0.12);margin-bottom:20px;">
+  <div class="pc-label" style="margin-bottom:10px;">Comparison Matrix</div>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>DIMENSION</th>
+        <th style="background:var(--green);">🌿 RPA 1950</th>
+        <th style="background:var(--purple);">⚙️ RPA 1951</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Role</td><td>Builds the Map</td><td>Runs the Game</td></tr>
+      <tr><td>Focus</td><td>Voter eligibility & seat structure</td><td>Election conduct & disputes</td></tr>
+      <tr><td>Key Officers</td><td>CEO, DEO, ERO</td><td>RO, ARO</td></tr>
+      <tr><td>Disqualification</td><td><span class="tag nu">Voter qualifications</span></td><td><span class="tag na">Candidate disqualification Sec 8–10A</span></td></tr>
+      <tr><td>Schedules</td><td>4 schedules (LS, Assembly, Council, Local)</td><td>N/A — procedural act</td></tr>
+      <tr><td>Party Registration</td><td><span class="tag na">Not covered</span></td><td><span class="tag ok">Section 29A</span></td></tr>
+      <tr><td>Election Disputes</td><td><span class="tag na">Not covered</span></td><td><span class="tag ok">High Court → Supreme Court</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 5: FULL FLOW -->
+<div class="sec-label">⑤ Full Connected Flow — Exam-Friendly</div>
+
+<div class="map-card mc1">
+  <svg id="svgFlow" viewBox="0 0 1360 160" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- SECTION 6: PRELIMS ANCHOR -->
+<div class="sec-label">⑥ Prelims Anchor — Most Probable Points</div>
+
+<div class="g3">
+  <div class="pc gold">
+    <div class="pc-label">Must Know Articles</div>
+    <h3>📜 Constitutional Pegs</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Article 82</div><div class="vs">Delimitation of Lok Sabha after Census</div></div>
+      <div class="vitem"><div class="vt">Article 170</div><div class="vs">Delimitation of State Assembly</div></div>
+      <div class="vitem"><div class="vt">42nd Amendment</div><div class="vs">Froze seats till 2000</div></div>
+      <div class="vitem"><div class="vt">84th Amendment</div><div class="vs">Extended freeze till 2026</div></div>
+      <div class="vitem"><div class="vt">87th Amendment</div><div class="vs">2001 Census — no new seats</div></div>
+    </div>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-label">Exam Traps</div>
+    <h3>🚨 Common Mistakes</h3>
+    <div class="vlist">
+      <div class="vitem" style="background:rgba(176,26,26,0.06);border-color:rgba(176,26,26,0.2);">
+        <div class="vt" style="color:var(--red);">Freeze ≠ No Delimitation</div>
+        <div class="vs">Seats frozen, boundaries still change</div>
+      </div>
+      <div class="vitem" style="background:rgba(176,26,26,0.06);border-color:rgba(176,26,26,0.2);">
+        <div class="vt" style="color:var(--red);">Delimitation Orders = Law</div>
+        <div class="vs">Cannot be challenged in any court</div>
+      </div>
+      <div class="vitem" style="background:rgba(176,26,26,0.06);border-color:rgba(176,26,26,0.2);">
+        <div class="vt" style="color:var(--red);">2+ Years = Auto Disqualification</div>
+        <div class="vs">Section 8 RPA 1951 — no appeal needed</div>
+      </div>
+      <div class="vitem" style="background:rgba(176,26,26,0.06);border-color:rgba(176,26,26,0.2);">
+        <div class="vt" style="color:var(--red);">Civil Courts = No Jurisdiction</div>
+        <div class="vs">Election disputes go to HC, not civil courts</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc teal">
+    <div class="pc-label">Quick Recall</div>
+    <h3>🧠 Memory Anchors</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;">
+      <span class="ps-chip sol">✅ 1950 = Structure</span>
+      <span class="ps-chip sol">✅ 1951 = Conduct</span>
+      <span class="ps-chip sol">✅ S.8 = 2yr jail = DQ</span>
+      <span class="ps-chip sol">✅ S.10A = 3yr if no expenses</span>
+      <span class="ps-chip sol">✅ Ret. SC Judge chairs DC</span>
+      <span class="ps-chip sol">✅ Art 82 = LS | Art 170 = SA</span>
+      <span class="ps-chip sol">✅ J&K: 83→90 seats</span>
+      <span class="ps-chip sol">✅ 4 Delimitation Commissions</span>
+    </div>
+    <div class="callout">
+      <div class="callout-title">🔑 One-Line Summary</div>
+      <div class="callout-body">Census → Delimit (Art 82/170) → Rolls (RPA 1950) → Election → Conduct/DQ (RPA 1951) → Dispute → HC → SC</div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🗳️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">India's election architecture flows in one clean story: <strong style="color:#f5d78a;">Census triggers Delimitation (Art 82/170) → RPA 1950 builds the structure (rolls, seats, voters) → RPA 1951 runs the game (conduct, disqualify, disputes).</strong><br>The key insight: seats are frozen till 2026 but boundaries can change — and Delimitation orders are final law, unchallengeable in court.</div>
+    <div class="keystone-pills">
+      <span class="kpill">🗺️ Art 82 & 170</span>
+      <span class="kpill">🔒 Freeze till 2026</span>
+      <span class="kpill">📋 1950 = Structure</span>
+      <span class="kpill">⚙️ 1951 = Conduct</span>
+      <span class="kpill">🚫 S.8 — 2yr DQ</span>
+      <span class="kpill">⚖️ HC → SC Disputes</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+function edge(svg,x1,y1,x2,y2,col,dash,w){
+  const p=se('path',{d:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,stroke:col||'#aaa','stroke-width':w||2,fill:'none','stroke-dasharray':dash?'5 4':'none',opacity:'0.7'});
+  svg.appendChild(p);
+}
+function node(svg,x,y,w,h,fill,lines,sub,emoji,tc,rx){
+  tc=tc||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.1)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.2)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7.5)-(sub?5:0)-(emoji?10:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:tc});em.textContent=emoji;g.appendChild(em);ty+=17;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10.5','font-weight':'700','font-family':'Nunito,sans-serif',fill:tc});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*14+1,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:tc==='#fff'?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.38)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+function lbl(svg,x,y,txt,col,fs){
+  const t=se('text',{x,y,'text-anchor':'middle','font-size':fs||8.5,'font-family':'DM Mono,monospace',fill:col||'rgba(120,100,60,0.4)','letter-spacing':'2'});
+  t.textContent=txt;svg.appendChild(t);
+}
+
+// ── MASTER FLOW ──
+(()=>{
+  const svg=document.getElementById('svgMaster');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:120,fill:'rgba(250,245,238,0.5)'}));
+  const steps=[
+    {x:85,  fill:'#b87c10', label:['Census'], sub:'Population count', emoji:'📊'},
+    {x:245, fill:'#1a3a8a', label:['Art 82/170'], sub:'Constitutional basis', emoji:'📜'},
+    {x:405, fill:'#0a6070', label:['Delimitation','Commission'], sub:'Ret. SC Judge chairs', emoji:'🏛️'},
+    {x:580, fill:'#1a6a3a', label:['Seat Allocation'], sub:'RPA 1950 Schedules', emoji:'🗺️'},
+    {x:740, fill:'#1a6a3a', label:['Electoral Rolls'], sub:'CEO/DEO/ERO prepare', emoji:'📋'},
+    {x:900, fill:'#5a1a8a', label:['Election Notice'], sub:'ECI notification', emoji:'📢'},
+    {x:1060,fill:'#b01a1a', label:['RPA 1951','Conduct+DQ'], sub:'Sections 8–10A', emoji:'⚙️'},
+    {x:1230,fill:'#1a5878', label:['HC → SC'], sub:'Dispute resolution', emoji:'⚖️'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1) edge(svg,s.x+68,60,steps[i+1].x-68,60,'#b87c10',false,1.8);
+  });
+  steps.forEach(s=>node(svg,s.x,60,130,68,s.fill,s.label,s.sub,s.emoji));
+  lbl(svg,680,18,'MASTER FLOW: CENSUS → DELIMITATION → RPA 1950 (STRUCTURE) → RPA 1951 (CONDUCT) → DISPUTE','rgba(120,100,60,0.45)',8.5);
+})();
+
+// ── DELIMITATION MINDMAP ──
+(()=>{
+  const svg=document.getElementById('svgDelim');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:280,fill:'rgba(248,246,240,0.5)'}));
+  node(svg,680,120,220,58,'#1a3a8a',['Delimitation','Commission'],'Art 82 & 170','🏛️');
+
+  const L=[
+    {x:130,y:55,  fill:'#b87c10', label:['Appointed by','President'], sub:'Set up by Parliament'},
+    {x:130,y:140, fill:'#1a3a8a', label:['Retired SC','Judge (Chair)'], sub:'Independent judiciary'},
+    {x:130,y:218, fill:'#0a6070', label:['CEC Member'], sub:'Ex-officio'},
+    {x:360,y:240, fill:'#1a6a3a', label:['State EC','Member'], sub:'Ex-officio'},
+  ];
+  const R=[
+    {x:1230,y:55,  fill:'#b01a1a', label:['Orders = Law'], sub:'Force of law'},
+    {x:1230,y:140, fill:'#b01a1a', label:['Not Challengeable','in Court'], sub:'Cannot be questioned'},
+    {x:1230,y:218, fill:'#5a1a8a', label:['Laid Before','Parliament'], sub:'Cannot be modified'},
+    {x:1000,y:240, fill:'#d46a10', label:['Seat Freeze','till 2026'], sub:'42nd + 84th Amendment'},
+  ];
+
+  L.forEach(n=>{edge(svg,570,120,n.x+(n.x>360?80:-80),n.y,'#1a3a8a44',true,1.5);node(svg,n.x,n.y,180,52,n.fill,n.label,n.sub);});
+  R.forEach(n=>{edge(svg,790,120,n.x-(n.x<1000?80:-80),n.y,'#b01a1a44',true,1.5);node(svg,n.x,n.y,180,52,n.fill,n.label,n.sub);});
+
+  lbl(svg,300,268,'COMPOSITION & APPOINTMENT','#1a3a8a55',8);
+  lbl(svg,1060,268,'POWERS & LIMITATIONS','#b01a1a55',8);
+})();
+
+// ── RPA 1950 MINDMAP ──
+(()=>{
+  const svg=document.getElementById('svgRPA50');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:260,fill:'rgba(244,250,246,0.5)'}));
+  node(svg,680,120,220,58,'#1a6a3a',['RPA 1950','The Structure'],'Electoral rolls · Seats · Voters','📋');
+
+  const pts=[
+    {x:110,y:50,  fill:'#1a6a3a', label:['Seat Allocation'], sub:'LS, Assembly, Council'},
+    {x:300,y:45,  fill:'#b87c10', label:['Delimitation','Reference'], sub:'Links to DC'},
+    {x:490,y:55,  fill:'#0a6070', label:['Electoral Rolls'], sub:'Voter list preparation'},
+    {x:110,y:190, fill:'#1a3a8a', label:['Voter: 18+','Citizen'], sub:'Ordinary resident'},
+    {x:300,y:200, fill:'#5a1a8a', label:['SC/ST','Reservation'], sub:'Proportional seats'},
+    {x:490,y:190, fill:'#7a4010', label:['4 Schedules'], sub:'LS/Assembly/Council/Local'},
+    {x:870,y:50,  fill:'#1a6a3a', label:['CEO (State)'], sub:'Chief Electoral Officer'},
+    {x:1060,y:45, fill:'#d46a10', label:['DEO (District)'], sub:'District Electoral Off.'},
+    {x:1230,y:55, fill:'#0a6070', label:['ERO'], sub:'Prepares roll'},
+    {x:1060,y:200,fill:'#1a3a8a', label:['RO'], sub:'Conducts election'},
+    {x:870,y:190, fill:'#5a1a8a', label:['Not disqualified'], sub:'No court order against'},
+  ];
+
+  pts.forEach(p=>{
+    const fx=p.x<680?590:770; const fy=p.y<120?112:128;
+    edge(svg,fx,fy,p.x+(p.x<680?78:-78),p.y,p.x<680?'#1a6a3a44':'#1a6a3a44',true,1.4);
+    node(svg,p.x,p.y,155,50,p.fill,p.label,p.sub);
+  });
+  lbl(svg,340,252,'VOTER ELIGIBILITY · ROLLS · SEATS · SCHEDULES','#1a6a3a55');
+  lbl(svg,1060,252,'ELECTORAL OFFICERS HIERARCHY','#1a6a3a55');
+})();
+
+// ── RPA 1951 MINDMAP ──
+(()=>{
+  const svg=document.getElementById('svgRPA51');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:260,fill:'rgba(248,244,252,0.5)'}));
+  node(svg,680,120,220,58,'#5a1a8a',['RPA 1951','The Game'],'Conduct · Disqualify · Dispute','⚙️');
+
+  const pts=[
+    {x:110,y:50,  fill:'#5a1a8a', label:['Conduct of','Elections'], sub:'RO manages process'},
+    {x:300,y:45,  fill:'#b01a1a', label:['S.8: 2yr Jail','= DQ'], sub:'Automatic disqualification'},
+    {x:490,y:55,  fill:'#b01a1a', label:['S.8A: Corrupt','Practice 6yr'], sub:'6 years DQ'},
+    {x:110,y:200, fill:'#d46a10', label:['S.9A: Govt','Contracts'], sub:'Disqualified'},
+    {x:300,y:205, fill:'#0a6070', label:['S.10A: Expenses','Not Filed'], sub:'3 years DQ'},
+    {x:490,y:195, fill:'#7a4010', label:['S.9: Dismissal','Corruption'], sub:'Disqualified'},
+    {x:870,y:50,  fill:'#1a5878', label:['Party Regn.','Sec 29A'], sub:'Political parties'},
+    {x:1060,y:45, fill:'#1a6a3a', label:['By-elections'], sub:'Casual vacancies'},
+    {x:1230,y:55, fill:'#1a3a8a', label:['Election','Offences'], sub:'Bribery, booth capture'},
+    {x:870,y:200, fill:'#b01a1a', label:['Petition →','High Court'], sub:'First forum'},
+    {x:1060,y:205,fill:'#1a3a8a', label:['Appeal →','Supreme Court'], sub:'Final forum'},
+    {x:1230,y:195,fill:'#b01a1a', label:['No Civil','Court'], sub:'Excluded jurisdiction'},
+  ];
+
+  pts.forEach(p=>{
+    const fx=p.x<680?590:770; const fy=p.y<120?112:128;
+    edge(svg,fx,fy,p.x+(p.x<680?78:-78),p.y,p.x<680?'#5a1a8a44':'#5a1a8a44',true,1.4);
+    node(svg,p.x,p.y,155,50,p.fill,p.label,p.sub);
+  });
+  lbl(svg,340,252,'CONDUCT · DISQUALIFICATION SECTIONS 8-10A','#5a1a8a55');
+  lbl(svg,1060,252,'PARTY REGISTRATION · DISPUTES · OFFENCES','#5a1a8a55');
+})();
+
+// ── COMPARE SVG ──
+(()=>{
+  const svg=document.getElementById('svgCompare');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:200,fill:'rgba(248,246,240,0.4)'}));
+  svg.appendChild(se('line',{x1:680,y1:10,x2:680,y2:190,stroke:'rgba(200,180,140,0.25)','stroke-width':'2','stroke-dasharray':'6 4'}));
+
+  node(svg,340,44,250,52,'#1a6a3a',['RPA 1950 — The Structure'],'Voter rolls · Seat allocation','📋');
+  node(svg,1020,44,250,52,'#5a1a8a',['RPA 1951 — The Game'],'Conduct · DQ · Disputes','⚙️');
+
+  const L=[
+    {x:130,y:130, fill:'#1a6a3a', label:['Electoral Rolls'], sub:'CEO/DEO/ERO prepare'},
+    {x:310,y:140, fill:'#b87c10', label:['4 Schedules'], sub:'LS/Assembly/Council'},
+    {x:490,y:130, fill:'#0a6070', label:['Voter: 18+ Citizen'], sub:'Ordinary resident'},
+  ];
+  const R=[
+    {x:870,y:130, fill:'#b01a1a', label:['DQ: Sec 8–10A'], sub:'2yr jail = auto DQ'},
+    {x:1050,y:140,fill:'#5a1a8a', label:['Party Regn S.29A'], sub:'Political parties'},
+    {x:1230,y:130,fill:'#1a3a8a', label:['HC → SC Dispute'], sub:'No civil courts'},
+  ];
+
+  L.forEach(n=>{edge(svg,340,70,n.x+(n.x<490?80:-80),n.y,'#1a6a3a44',true,1.5);node(svg,n.x,n.y,165,48,n.fill,n.label,n.sub);});
+  R.forEach(n=>{edge(svg,1020,70,n.x-(n.x>870?80:-80),n.y,'#5a1a8a44',true,1.5);node(svg,n.x,n.y,165,48,n.fill,n.label,n.sub);});
+
+  lbl(svg,340,192,'BUILDS THE MAP','#1a6a3a55',9);
+  lbl(svg,1020,192,'RUNS THE GAME','#5a1a8a55',9);
+})();
+
+// ── FULL FLOW ──
+(()=>{
+  const svg=document.getElementById('svgFlow');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:160,fill:'rgba(250,245,238,0.5)'}));
+
+  // Two-row flow
+  const row1=[
+    {x:90,  y:55, fill:'#b87c10', label:['Census'], sub:'Population', emoji:'📊'},
+    {x:240, y:55, fill:'#1a3a8a', label:['Art 82/170'], sub:'Constitutional', emoji:'📜'},
+    {x:400, y:55, fill:'#0a6070', label:['Delimitation','Commission'], sub:'Boundary fix', emoji:'🏛️'},
+    {x:570, y:55, fill:'#1a6a3a', label:['Seat Allocation'], sub:'RPA 1950', emoji:'🗺️'},
+    {x:730, y:55, fill:'#1a6a3a', label:['Electoral Rolls'], sub:'RPA 1950', emoji:'📋'},
+    {x:900, y:55, fill:'#5a1a8a', label:['ECI Notification'], sub:'Election date', emoji:'📢'},
+    {x:1070,y:55, fill:'#b01a1a', label:['Conduct+DQ'], sub:'RPA 1951', emoji:'⚙️'},
+    {x:1250,y:55, fill:'#1a5878', label:['HC→SC'], sub:'Dispute', emoji:'⚖️'},
+  ];
+
+  row1.forEach((s,i)=>{
+    if(i<row1.length-1) edge(svg,s.x+65,55,row1[i+1].x-65,55,'#b87c10',false,1.8);
+  });
+  row1.forEach(s=>node(svg,s.x,s.y,125,64,s.fill,s.label,s.sub,s.emoji));
+
+  // Freeze annotation
+  const ta=se('text',{x:400,y:140,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace',fill:'rgba(176,26,26,0.6)','font-weight':'700'});
+  ta.textContent='↑ SEAT FREEZE TILL 2026 (42nd+84th Amendment) — BUT BOUNDARIES CAN CHANGE';
+  svg.appendChild(ta);
+})();
+</script>
+</body>
+</html>

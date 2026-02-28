@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federal Dynamics in India — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f4ee;
+  --paper:#fffdf8;
+  --ink:#1a1714;
+  --muted:#8a7a60;
+  --border:#e2d8c4;
+  --card:#ffffff;
+  --card2:#f4f0e8;
+
+  --saffron:#c85a00;
+  --saffron-lt:#fde8d4;
+  --green:#1a6e3c;
+  --green-lt:#d4edde;
+  --blue:#1a3d8c;
+  --blue-lt:#dce5f8;
+  --purple:#5c1f8a;
+  --purple-lt:#ead6f8;
+  --teal:#0a5e6e;
+  --teal-lt:#d0ecf0;
+  --red:#a01820;
+  --red-lt:#f8d6d8;
+  --gold:#9a6c10;
+  --gold-lt:#f8edc8;
+  --amber:#b84c00;
+
+  --r1:#c85a00; /* Legislative */
+  --r2:#1a3d8c; /* Admin */
+  --r3:#1a6e3c; /* Financial */
+  --r4:#a01820; /* Emergency */
+  --r5:#5c1f8a; /* Unitary Tilt */
+}
+
+body{
+  font-family:'Outfit',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:
+    radial-gradient(ellipse 800px 600px at 5% 0%, rgba(200,90,0,0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 700px 700px at 95% 100%, rgba(26,61,140,0.05) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 28px 120px;}
+
+/* ══ HEADER ══ */
+.header{
+  text-align:center;
+  padding:52px 16px 28px;
+  position:relative;
+}
+.header-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:4px;
+  color:var(--saffron);text-transform:uppercase;
+  margin-bottom:12px;
+}
+.header h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,5.5vw,60px);
+  font-weight:700;
+  line-height:1.05;
+  color:var(--ink);
+}
+.header h1 em{color:var(--saffron);font-style:italic;}
+.header-tagline{
+  margin-top:10px;
+  font-size:13px;color:var(--muted);
+  font-family:'JetBrains Mono',monospace;
+  letter-spacing:0.5px;
+}
+.header-bar{
+  display:flex;align-items:center;gap:0;
+  width:200px;height:5px;
+  margin:18px auto 0;
+  border-radius:4px;
+  overflow:hidden;
+}
+.header-bar span{flex:1;height:100%;}
+
+/* ══ SECTION LABELS ══ */
+.sec-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:3.5px;
+  text-transform:uppercase;
+  margin:40px 0 16px;
+  display:flex;align-items:center;gap:14px;
+  color:var(--muted);
+}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ══ GRIDS ══ */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+.g1x2{display:grid;grid-template-columns:1fr 2fr;gap:18px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}.g2x1,.g1x2{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g2x1,.g1x2{grid-template-columns:1fr;}}
+
+/* ══ PANEL CARDS ══ */
+.pc{
+  background:var(--card);
+  border:1.5px solid var(--border);
+  border-radius:16px;
+  padding:18px 20px;
+  position:relative;
+  overflow:hidden;
+  transition:box-shadow 0.2s,transform 0.2s;
+}
+.pc:hover{box-shadow:0 8px 32px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.pc::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  border-radius:16px 16px 0 0;
+}
+.pc.saffron::before{background:linear-gradient(90deg,var(--amber),var(--saffron));}
+.pc.blue::before{background:var(--blue);}
+.pc.green::before{background:var(--green);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.gold::before{background:var(--gold);}
+.pc.dark::before{background:var(--ink);}
+.pc-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:8.5px;letter-spacing:2px;
+  color:var(--muted);text-transform:uppercase;margin-bottom:6px;
+}
+.pc h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;font-weight:700;
+  margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+  line-height:1.3;
+}
+
+/* ══ MAP CARD ══ */
+.map-card{
+  background:var(--card);
+  border:1.5px solid var(--border);
+  border-radius:20px;
+  overflow:hidden;
+  position:relative;
+  margin-bottom:24px;
+}
+.map-card::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:4px;z-index:2;
+}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--saffron),var(--red));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--saffron));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--purple),var(--blue));}
+.map-card svg{display:block;width:100%;}
+
+/* ══ CHIPS / PILLS ══ */
+.pill{
+  display:inline-flex;align-items:center;
+  padding:3px 10px;border-radius:20px;
+  font-size:9.5px;font-weight:600;
+  margin:2px;font-family:'JetBrains Mono',monospace;
+}
+.pill.saffron{background:var(--saffron-lt);color:var(--saffron);}
+.pill.blue{background:var(--blue-lt);color:var(--blue);}
+.pill.green{background:var(--green-lt);color:var(--green);}
+.pill.purple{background:var(--purple-lt);color:var(--purple);}
+.pill.teal{background:var(--teal-lt);color:var(--teal);}
+.pill.red{background:var(--red-lt);color:var(--red);}
+.pill.gold{background:var(--gold-lt);color:var(--gold);}
+.pill.dark{background:var(--card2);color:var(--ink);}
+
+/* ══ STAT BOXES ══ */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{
+  flex:1;padding:12px 8px;
+  border-radius:11px;
+  border:1.5px solid var(--border);
+  text-align:center;
+  background:var(--card2);
+}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;font-weight:700;line-height:1;
+}
+.stat-label{font-size:8px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:600;margin-top:2px;}
+
+/* ══ TABLE ══ */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{
+  background:var(--ink);color:#fff;
+  padding:8px 12px;text-align:left;
+  font-family:'JetBrains Mono',monospace;
+  font-size:8.5px;letter-spacing:1px;
+}
+.ctable th:first-child{border-radius:0;}
+.ctable td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(200,90,0,0.025);}
+.ctable td:first-child{font-weight:700;}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.tag.s{background:var(--saffron-lt);color:var(--saffron);}
+.tag.b{background:var(--blue-lt);color:var(--blue);}
+.tag.g{background:var(--green-lt);color:var(--green);}
+.tag.c{background:var(--purple-lt);color:var(--purple);}
+.tag.sh{background:var(--teal-lt);color:var(--teal);}
+
+/* ══ VLIST ══ */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:700;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ══ CHIP PAIRS ══ */
+.chip{display:inline-block;padding:4px 10px;border-radius:7px;font-size:9.5px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip.warn{background:rgba(160,24,32,0.07);border-color:rgba(160,24,32,0.2);color:var(--red);}
+.chip.ok{background:rgba(26,110,60,0.07);border-color:rgba(26,110,60,0.2);color:var(--green);}
+.chip.neu{background:rgba(154,108,16,0.07);border-color:rgba(154,108,16,0.2);color:var(--gold);}
+.chip.info{background:var(--blue-lt);border-color:rgba(26,61,140,0.2);color:var(--blue);}
+
+/* ══ FLOW ══ */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.flow-node{padding:7px 13px;border-radius:8px;font-size:11px;font-weight:600;border:1.5px solid;}
+.flow-arr{font-size:18px;color:var(--muted);}
+
+/* ══ KEYSTONE ══ */
+.keystone{
+  background:var(--ink);color:#f5e8c0;
+  border-radius:20px;padding:28px 32px;
+  margin:28px 0;
+  display:flex;align-items:center;gap:24px;
+  flex-wrap:wrap;
+}
+.keystone-icon{font-size:38px;flex:0 0 auto;}
+.keystone-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;margin-bottom:6px;}
+.keystone-sub{font-size:11.5px;color:#c8b880;line-height:1.7;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 13px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10.5px;font-family:'JetBrains Mono',monospace;}
+
+/* ══ CALLOUT ══ */
+.callout{padding:12px 15px;border-radius:10px;background:rgba(160,24,32,0.05);border:1.5px solid rgba(160,24,32,0.18);margin:8px 0;}
+.callout-title{font-size:11px;font-weight:700;color:var(--red);margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* ══ FEAT GRID ══ */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:700;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:2px;}
+
+/* ══ IMPACT CHAIN ══ */
+.impact-chain{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:6px 0;margin:8px 0;}
+.ic-node{padding:7px 12px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:14px;color:var(--muted);flex:0 0 auto;margin:0 4px;}
+
+/* ══ PHASE ROW ══ */
+.phase-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0;}
+@media(max-width:800px){.phase-row{grid-template-columns:1fr 1fr;}}
+.phase-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;}
+.phase-title{font-size:11.5px;font-weight:700;margin:4px 0 2px;}
+.phase-sub{font-size:8.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);}
+
+/* ══ DIVIDER ══ */
+.div{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:6px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ══════════ HEADER ══════════ -->
+<div class="header">
+  <div class="header-eyebrow">Indian Polity · Constitutional Law · UPSC Prelims</div>
+  <h1>Federal Dynamics<br>in <em>India</em></h1>
+  <div class="header-tagline">Federal in Structure · Unitary in Spirit — One Connected Story</div>
+  <div class="header-bar">
+    <span style="background:#c85a00;"></span>
+    <span style="background:#ffffff;"></span>
+    <span style="background:#1a6e3c;"></span>
+  </div>
+</div>
+
+<!-- ══════════ MASTER OVERVIEW ══════════ -->
+<div class="sec-label">Master Framework — The Big Picture</div>
+
+<div class="map-card mc1">
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;display:block;margin:0 auto;width:100%;max-width:900px;">
+<defs>
+  <linearGradient id="gLeg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c85a00"/><stop offset="100%" stop-color="#9a3c00"/></linearGradient>
+  <linearGradient id="gAdm" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a3d8c"/><stop offset="100%" stop-color="#0e2560"/></linearGradient>
+  <linearGradient id="gFin" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a6e3c"/><stop offset="100%" stop-color="#0e4828"/></linearGradient>
+  <linearGradient id="gEm" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a01820"/><stop offset="100%" stop-color="#700c14"/></linearGradient>
+  <linearGradient id="gUn" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5c1f8a"/><stop offset="100%" stop-color="#3c1260"/></linearGradient>
+  <!-- Glow filter for centre -->
+  <filter id="glow"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+
+<!-- ── BACKGROUND RING (decorative) ── -->
+<circle cx="450" cy="272" r="168" fill="none" stroke="rgba(200,168,80,0.12)" stroke-width="1.5" stroke-dasharray="6 4"/>
+<circle cx="450" cy="272" r="220" fill="none" stroke="rgba(200,168,80,0.07)" stroke-width="1" stroke-dasharray="3 6"/>
+
+<!-- ── SPOKE LINES (centre → each node) ── -->
+<!-- Top: Legislative  (angle ~270° → top centre) -->
+<line x1="450" y1="236" x2="450" y2="100" stroke="#c85a00" stroke-width="2" opacity="0.45"/>
+<!-- Top-Right: Administrative  (~342°) -->
+<line x1="474" y1="245" x2="686" y2="130" stroke="#1a3d8c" stroke-width="2" opacity="0.45"/>
+<!-- Bottom-Right: Financial  (~54°) -->
+<line x1="474" y1="300" x2="686" y2="415" stroke="#1a6e3c" stroke-width="2" opacity="0.45"/>
+<!-- Bottom: Emergency  (~180°) -->
+<line x1="450" y1="308" x2="450" y2="443" stroke="#a01820" stroke-width="2" opacity="0.45"/>
+<!-- Top-Left: Unitary Tilt  (~198°) -->
+<line x1="426" y1="245" x2="214" y2="130" stroke="#5c1f8a" stroke-width="2" opacity="0.45"/>
+<!-- Bottom-Left: (leave empty — 5 spokes only, so use bottom-left for balance) -->
+<line x1="426" y1="300" x2="214" y2="415" stroke="#9a6c10" stroke-width="2" opacity="0.35"/>
+
+<!-- Small dot at each spoke junction on centre circle -->
+<circle cx="450" cy="236" r="4" fill="#c85a00" opacity="0.7"/>
+<circle cx="474" cy="245" r="4" fill="#1a3d8c" opacity="0.7"/>
+<circle cx="474" cy="300" r="4" fill="#1a6e3c" opacity="0.7"/>
+<circle cx="450" cy="308" r="4" fill="#a01820" opacity="0.7"/>
+<circle cx="426" cy="245" r="4" fill="#5c1f8a" opacity="0.7"/>
+<circle cx="426" cy="300" r="4" fill="#9a6c10" opacity="0.6"/>
+
+<!-- ── CENTRE NODE ── -->
+<rect x="344" y="228" width="212" height="88" rx="18" fill="#1a1714" filter="url(#glow)" opacity="0.15"/>
+<rect x="342" y="226" width="212" height="88" rx="18" fill="#1a1714"/>
+<text x="448" y="253" text-anchor="middle" font-size="15" font-weight="700" fill="#f5e8c0">🇮🇳 Indian Federalism</text>
+<text x="448" y="271" text-anchor="middle" font-size="9" fill="#c8a870" font-family="JetBrains Mono" letter-spacing="1">QUASI-FEDERAL · STRONG CENTRE</text>
+<text x="448" y="286" text-anchor="middle" font-size="9.5" fill="#d4b870">Art. 1 — "Union of States"</text>
+<text x="448" y="302" text-anchor="middle" font-size="8.5" fill="rgba(200,168,80,0.5)" font-family="JetBrains Mono">Dr. Ambedkar: "Federal &amp; Unitary"</text>
+
+<!-- ── TOP: Legislative ── -->
+<rect x="340" y="24" width="220" height="74" rx="13" fill="url(#gLeg)"/>
+<text x="450" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">⚖️ Legislative</text>
+<text x="450" y="66" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)" font-family="JetBrains Mono">Art. 245–255</text>
+<text x="450" y="83" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)">Union / State / Concurrent Lists</text>
+
+<!-- ── TOP-RIGHT: Administrative ── -->
+<rect x="646" y="92" width="218" height="74" rx="13" fill="url(#gAdm)"/>
+<text x="755" y="118" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">🏛️ Administrative</text>
+<text x="755" y="134" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)" font-family="JetBrains Mono">Art. 256–263</text>
+<text x="755" y="151" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)">Centre directs States</text>
+
+<!-- ── BOTTOM-RIGHT: Financial ── -->
+<rect x="646" y="381" width="218" height="74" rx="13" fill="url(#gFin)"/>
+<text x="755" y="407" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">💰 Financial</text>
+<text x="755" y="423" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)" font-family="JetBrains Mono">Art. 264–293</text>
+<text x="755" y="440" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)">Taxation &amp; Finance Comm.</text>
+
+<!-- ── BOTTOM: Emergency ── -->
+<rect x="340" y="449" width="220" height="74" rx="13" fill="url(#gEm)"/>
+<text x="450" y="475" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">🚨 Emergency</text>
+<text x="450" y="491" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)" font-family="JetBrains Mono">Art. 352 / 356 / 360</text>
+<text x="450" y="508" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)">Parliament expands power</text>
+
+<!-- ── TOP-LEFT: Unitary Tilt ── -->
+<rect x="36" y="92" width="218" height="74" rx="13" fill="url(#gUn)"/>
+<text x="145" y="118" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff">🔗 Unitary Tilt</text>
+<text x="145" y="134" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)" font-family="JetBrains Mono">Single Const. + Judiciary</text>
+<text x="145" y="151" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)">Residuary → Parliament</text>
+
+<!-- ── BOTTOM-LEFT: Quasi-Federal Outcome ── -->
+<rect x="36" y="381" width="218" height="74" rx="13" fill="#9a6c10" opacity="0.92"/>
+<text x="145" y="405" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">⚡ Result</text>
+<text x="145" y="421" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)" font-family="JetBrains Mono">Quasi-Federal</text>
+<text x="145" y="438" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)">Strong Centre bias always</text>
+
+<!-- ── AXIS LABELS ── -->
+<text x="450" y="554" text-anchor="middle" font-size="8.5" font-family="JetBrains Mono" fill="rgba(100,80,40,0.45)" letter-spacing="2">MASTER FRAMEWORK — 5 PILLARS OF INDIAN FEDERALISM</text>
+</svg>
+</div>
+
+<!-- ══════════ SECTION 1: LEGISLATIVE ══════════ -->
+<div class="sec-label" style="color:var(--saffron);">① Legislative Relations — Art. 245–255</div>
+
+<!-- 7th Schedule Map -->
+<div class="map-card mc1">
+<svg viewBox="0 0 1380 300" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<defs>
+  <linearGradient id="gU" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c85a00"/><stop offset="100%" stop-color="#9a3c00"/></linearGradient>
+  <linearGradient id="gS" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a6e3c"/><stop offset="100%" stop-color="#0e4828"/></linearGradient>
+  <linearGradient id="gC" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5c1f8a"/><stop offset="100%" stop-color="#3c1260"/></linearGradient>
+  <linearGradient id="gR" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a3d8c"/><stop offset="100%" stop-color="#0e2560"/></linearGradient>
+</defs>
+
+<!-- Title -->
+<text x="690" y="26" text-anchor="middle" font-size="10" font-family="JetBrains Mono" fill="rgba(100,80,40,0.5)" letter-spacing="2">7TH SCHEDULE — DISTRIBUTION OF SUBJECTS</text>
+
+<!-- ROOT -->
+<rect x="555" y="34" width="270" height="62" rx="12" fill="#1a1714"/>
+<text x="690" y="60" text-anchor="middle" font-size="14" font-weight="700" fill="#f5e8c0">📋 7th Schedule</text>
+<text x="690" y="76" text-anchor="middle" font-size="9" fill="#c8a870" font-family="JetBrains Mono">Division of Legislative Powers</text>
+<text x="690" y="90" text-anchor="middle" font-size="9" fill="rgba(200,168,112,0.6)" font-family="JetBrains Mono">CONFLICT RULE: Union > Concurrent > State</text>
+
+<!-- Connectors -->
+<path d="M690,96 L200,160" stroke="#c85a00" stroke-width="1.5" fill="none" opacity="0.35"/>
+<path d="M690,96 L560,160" stroke="#5c1f8a" stroke-width="1.5" fill="none" opacity="0.35"/>
+<path d="M690,96 L820,160" stroke="#1a6e3c" stroke-width="1.5" fill="none" opacity="0.35"/>
+<path d="M690,96 L1160,160" stroke="#1a3d8c" stroke-width="1.5" fill="none" opacity="0.35"/>
+
+<!-- Union List -->
+<rect x="22" y="162" width="356" height="118" rx="12" fill="url(#gU)" opacity="0.95"/>
+<text x="200" y="186" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">🏛️ Union List (List I)</text>
+<rect x="38" y="196" width="56" height="56" rx="8" fill="rgba(0,0,0,0.2)"/>
+<text x="66" y="228" text-anchor="middle" font-size="30" font-weight="700" fill="#fff" font-family="Cormorant Garamond">98</text>
+<text x="66" y="244" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">SUBJECTS</text>
+<text x="205" y="210" font-size="10" fill="rgba(255,255,255,0.85)">Only Parliament can legislate</text>
+<text x="108" y="224" font-size="9.5" fill="rgba(255,255,255,0.75)">• Defence  • Foreign Affairs</text>
+<text x="108" y="237" font-size="9.5" fill="rgba(255,255,255,0.75)">• Atomic Energy  • Banking</text>
+<text x="108" y="250" font-size="9.5" fill="rgba(255,255,255,0.75)">• Railways  • Currency</text>
+<text x="200" y="270" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono">EXCLUSIVE PARLIAMENT DOMAIN</text>
+
+<!-- Concurrent List -->
+<rect x="388" y="162" width="304" height="118" rx="12" fill="url(#gC)" opacity="0.95"/>
+<text x="540" y="186" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">🔄 Concurrent List (III)</text>
+<rect x="404" y="196" width="56" height="56" rx="8" fill="rgba(0,0,0,0.2)"/>
+<text x="432" y="228" text-anchor="middle" font-size="30" font-weight="700" fill="#fff" font-family="Cormorant Garamond">52</text>
+<text x="432" y="244" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">SUBJECTS</text>
+<text x="535" y="210" font-size="10" fill="rgba(255,255,255,0.85)">Both Parliament &amp; States</text>
+<text x="468" y="224" font-size="9.5" fill="rgba(255,255,255,0.75)">• Education  • Marriage</text>
+<text x="468" y="237" font-size="9.5" fill="rgba(255,255,255,0.75)">• Criminal Law  • Forests</text>
+<text x="468" y="250" font-size="9.5" fill="rgba(255,255,255,0.75)">• Trade Unions  • Labour</text>
+<text x="540" y="270" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono">STATE LAW PREVAILS IF PRES. ASSENT</text>
+
+<!-- State List -->
+<rect x="702" y="162" width="316" height="118" rx="12" fill="url(#gS)" opacity="0.95"/>
+<text x="860" y="186" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">🏘️ State List (List II)</text>
+<rect x="718" y="196" width="56" height="56" rx="8" fill="rgba(0,0,0,0.2)"/>
+<text x="746" y="228" text-anchor="middle" font-size="30" font-weight="700" fill="#fff" font-family="Cormorant Garamond">59</text>
+<text x="746" y="244" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">SUBJECTS</text>
+<text x="860" y="210" font-size="10" fill="rgba(255,255,255,0.85)">Only State can legislate</text>
+<text x="782" y="224" font-size="9.5" fill="rgba(255,255,255,0.75)">• Police  • Agriculture</text>
+<text x="782" y="237" font-size="9.5" fill="rgba(255,255,255,0.75)">• Public Health  • Land</text>
+<text x="782" y="250" font-size="9.5" fill="rgba(255,255,255,0.75)">• Local Governance</text>
+<text x="860" y="270" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono">STATE EXCLUSIVE — BUT CAN BE ENCROACHED</text>
+
+<!-- Residuary -->
+<rect x="1028" y="162" width="330" height="118" rx="12" fill="url(#gR)" opacity="0.95"/>
+<text x="1193" y="186" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">⚡ Residuary Powers</text>
+<text x="1050" y="206" font-size="10" fill="rgba(255,255,255,0.85)">Not in any list?</text>
+<text x="1050" y="222" font-size="10" font-weight="700" fill="#fde8d4">→ Goes to Parliament</text>
+<text x="1050" y="242" font-size="9.5" fill="rgba(255,255,255,0.75)">Example: Cyber crimes, GST</text>
+<text x="1050" y="256" font-size="9.5" fill="rgba(255,255,255,0.75)">initially, space technology</text>
+<rect x="1044" y="266" width="295" height="8" rx="4" fill="rgba(255,255,255,0.1)"/>
+<text x="1193" y="273" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono">KEY PRELIMS: CENTRE GETS RESIDUARY</text>
+</svg>
+</div>
+
+<!-- Parliament on State List -->
+<div class="g2">
+  <div class="pc saffron">
+    <div class="pc-label">Art. 249–253</div>
+    <h3>⚡ When Parliament Legislates on State List</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">📜 Art. 249 — Rajya Sabha Resolution</div>
+        <div class="vs">2/3 majority (present & voting) → valid 1 year, renewable</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🚨 Art. 250 — National Emergency</div>
+        <div class="vs">Ends 6 months after emergency ceases</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🤝 Art. 252 — State Request</div>
+        <div class="vs">Only for the requesting states</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🌐 Art. 253 — International Agreements</div>
+        <div class="vs">To implement treaties/conventions</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">⚠️ Art. 356 — President's Rule</div>
+        <div class="vs">Parliament makes laws for the state</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">Centre's Control Over State Laws</div>
+    <h3>🔒 Centre's Reserve Powers</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">👨‍⚖️ Governor Reserves Bills</div>
+        <div class="vs">Can send State bills to President for assent</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">📋 Prior Presidential Recommendation</div>
+        <div class="vs">Certain State bills need Centre clearance before introduction</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">💹 Financial Emergency</div>
+        <div class="vs">States may be directed to reserve Money Bills</div>
+      </div>
+    </div>
+    <div class="callout" style="background:rgba(26,61,140,0.06);border-color:rgba(26,61,140,0.18);margin-top:10px;">
+      <div class="callout-title" style="color:var(--blue);">⚡ Conflict Rule — Priority Order</div>
+      <div class="callout-body">
+        <div class="flow" style="gap:6px;">
+          <div class="flow-node" style="border-color:var(--saffron);background:var(--saffron-lt);color:var(--saffron);font-size:10px;">Union List</div>
+          <div class="flow-arr">›</div>
+          <div class="flow-node" style="border-color:var(--purple);background:var(--purple-lt);color:var(--purple);font-size:10px;">Concurrent List</div>
+          <div class="flow-arr">›</div>
+          <div class="flow-node" style="border-color:var(--green);background:var(--green-lt);color:var(--green);font-size:10px;">State List</div>
+        </div>
+        <div style="font-size:10px;margin-top:6px;color:var(--muted);">Exception: State law in Concurrent List prevails if President gives assent</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Territorial Extent -->
+<div class="map-card mc5">
+<svg viewBox="0 0 1380 110" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<text x="690" y="22" text-anchor="middle" font-size="9" font-family="JetBrains Mono" fill="rgba(100,80,40,0.5)" letter-spacing="2">ART. 245 — TERRITORIAL EXTENT OF LAWS</text>
+
+<rect x="10" y="30" width="660" height="68" rx="12" fill="#1a3d8c" opacity="0.9"/>
+<text x="340" y="55" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">🏛️ Parliament</text>
+<text x="340" y="72" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.8)">Whole of India + laws for Indian citizens outside India</text>
+<text x="340" y="88" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono">EXTRATERRITORIAL JURISDICTION ALLOWED</text>
+
+<rect x="706" y="30" width="664" height="68" rx="12" fill="#1a6e3c" opacity="0.9"/>
+<text x="1038" y="55" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">🏘️ State Legislature</text>
+<text x="1038" y="72" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.8)">Only within the boundaries of that state</text>
+<text x="1038" y="88" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono">NO EXTRATERRITORIAL POWER</text>
+</svg>
+</div>
+
+<!-- ══════════ SECTION 2: ADMINISTRATIVE ══════════ -->
+<div class="sec-label" style="color:var(--blue);">② Administrative Relations — Art. 256–263</div>
+
+<div class="map-card mc2">
+<svg viewBox="0 0 1380 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<text x="690" y="22" text-anchor="middle" font-size="9" font-family="JetBrains Mono" fill="rgba(100,80,40,0.5)" letter-spacing="2">EXECUTIVE POWER CO-EXTENSIVE WITH LEGISLATIVE POWER</text>
+
+<!-- Centre Node -->
+<rect x="530" y="30" width="320" height="66" rx="13" fill="#1a3d8c"/>
+<text x="690" y="55" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">🏛️ Centre — Administrative Powers</text>
+<text x="690" y="73" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">Art. 256 · States must comply with Parliament laws</text>
+<text x="690" y="86" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.5)">Non-compliance → President's Rule (Art. 365)</text>
+
+<!-- Connectors -->
+<path d="M690,96 L150,145" stroke="#1a3d8c" stroke-width="1.5" fill="none" opacity="0.3"/>
+<path d="M690,96 L430,145" stroke="#1a3d8c" stroke-width="1.5" fill="none" opacity="0.3"/>
+<path d="M690,96 L690,145" stroke="#1a3d8c" stroke-width="1.5" fill="none" opacity="0.3"/>
+<path d="M690,96 L960,145" stroke="#1a3d8c" stroke-width="1.5" fill="none" opacity="0.3"/>
+<path d="M690,96 L1230,145" stroke="#1a3d8c" stroke-width="1.5" fill="none" opacity="0.3"/>
+
+<!-- 5 Boxes -->
+<rect x="10" y="147" width="278" height="64" rx="10" fill="#1a3d8c" opacity="0.85"/>
+<text x="149" y="168" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">📡 Centre's Directions</text>
+<text x="149" y="183" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Railways, Communication</text>
+<text x="149" y="197" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">ST Welfare (Art. 339)</text>
+
+<rect x="297" y="147" width="270" height="64" rx="10" fill="#0a5e6e" opacity="0.85"/>
+<text x="432" y="168" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">🤝 Delegation (Art. 258)</text>
+<text x="432" y="183" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Centre entrusts functions</text>
+<text x="432" y="197" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">to States (consent)</text>
+
+<rect x="576" y="147" width="228" height="64" rx="10" fill="#5c1f8a" opacity="0.85"/>
+<text x="690" y="168" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">🏢 Inter-State Council</text>
+<text x="690" y="183" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Art. 263 — Coordination</text>
+<text x="690" y="197" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">& dispute discussion</text>
+
+<rect x="813" y="147" width="294" height="64" rx="10" fill="#1a6e3c" opacity="0.85"/>
+<text x="960" y="168" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">🎓 All India Services</text>
+<text x="960" y="183" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Art. 312 — RS Resolution</text>
+<text x="960" y="197" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">IAS, IPS, IFS — Centre controls</text>
+
+<rect x="1116" y="147" width="254" height="64" rx="10" fill="#a01820" opacity="0.85"/>
+<text x="1243" y="168" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">⚠️ Art. 365</text>
+<text x="1243" y="183" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Non-compliance with</text>
+<text x="1243" y="197" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Centre → President's Rule</text>
+</svg>
+</div>
+
+<!-- ══════════ SECTION 3: FINANCIAL RELATIONS ══════════ -->
+<div class="sec-label" style="color:var(--green);">③ Financial Relations — Art. 264–293</div>
+
+<!-- Tax Distribution Table -->
+<div class="pc green" style="margin-bottom:18px;">
+  <div class="pc-label">Art. 268–271 — Taxation Architecture</div>
+  <h3>💰 Distribution of Tax Revenues</h3>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>Article</th>
+        <th>Tax Levied By</th>
+        <th>Collected By</th>
+        <th>Goes To</th>
+        <th>Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tag s">Art. 268</span></td>
+        <td>Centre</td>
+        <td>States</td>
+        <td>States</td>
+        <td>Stamp duties on bills of exchange</td>
+      </tr>
+      <tr>
+        <td><span class="tag b">Art. 269</span></td>
+        <td>Centre</td>
+        <td>Centre</td>
+        <td>States</td>
+        <td>Estate duty on property, succession duty</td>
+      </tr>
+      <tr>
+        <td><span class="tag g">Art. 270</span></td>
+        <td>Centre</td>
+        <td>Centre</td>
+        <td>Shared (Centre + States)</td>
+        <td>Income Tax, Central Excise (via Finance Comm.)</td>
+      </tr>
+      <tr>
+        <td><span class="tag c">Art. 271</span></td>
+        <td>Centre</td>
+        <td>Centre</td>
+        <td>Centre only</td>
+        <td>Surcharges — ⚠️ No GST surcharge allowed!</td>
+      </tr>
+      <tr>
+        <td><span class="tag sh">Art. 269A</span></td>
+        <td>Centre</td>
+        <td>Centre</td>
+        <td>Centre + States shared</td>
+        <td>IGST (Inter-State GST)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="g2">
+  <!-- Finance Commission -->
+  <div class="pc green">
+    <div class="pc-label">Art. 280 — Constitutional Body</div>
+    <h3>⚖️ Finance Commission</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--green);">5</div>
+        <div class="stat-sub">Yearly Cycle</div>
+        <div class="stat-label">EVERY 5 YEARS</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--saffron);">41%</div>
+        <div class="stat-sub">Vertical Devolution</div>
+        <div class="stat-label">15TH FINANCE COMM.</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">Art<br><span style="font-size:18px;">280</span></div>
+        <div class="stat-sub">Constitutional</div>
+        <div class="stat-label">ESTABLISHED BY</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vitem"><div class="vt">Vertical Devolution</div><div class="vs">Determines % of central taxes shared with states</div></div>
+      <div class="vitem"><div class="vt">Horizontal Distribution</div><div class="vs">How to divide among states (equity-based criteria)</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;background:rgba(26,110,60,0.06);border-radius:8px;border:1px solid rgba(26,110,60,0.2);">
+      <span style="font-size:10px;font-weight:700;color:var(--green);">⚠️ PRELIMS: Finance Commission is a Constitutional body — NOT a statutory body</span>
+    </div>
+  </div>
+
+  <!-- Grants + Borrowing -->
+  <div class="pc teal">
+    <div class="pc-label">Grants & Borrowing Powers</div>
+    <h3>📊 Grants-in-Aid + Borrowing</h3>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="fi">📋</div>
+        <div class="ft">Art. 275 — Statutory Grants</div>
+        <div class="fs">Finance Commission recommends; mandatory in nature</div>
+      </div>
+      <div class="feat">
+        <div class="fi">🤝</div>
+        <div class="ft">Art. 282 — Discretionary Grants</div>
+        <div class="fs">Centre/State can give grants for any public purpose; flexible</div>
+      </div>
+      <div class="feat">
+        <div class="fi">🏦</div>
+        <div class="ft">Art. 292 — Centre Borrowing</div>
+        <div class="fs">Centre can borrow on security of Consolidated Fund</div>
+      </div>
+      <div class="feat">
+        <div class="fi">⚠️</div>
+        <div class="ft">Art. 293 — State Borrowing</div>
+        <div class="fs">State needs Centre's consent if already indebted to Centre</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;background:rgba(10,94,110,0.06);border-radius:8px;border:1px solid rgba(10,94,110,0.2);">
+      <span style="font-size:10px;font-weight:700;color:var(--teal);">Art. 265 → No tax shall be levied or collected except by authority of law</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 4: EMERGENCY ══════════ -->
+<div class="sec-label" style="color:var(--red);">④ Emergency Impact on Federal Structure</div>
+
+<div class="map-card mc4">
+<svg viewBox="0 0 1380 210" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<text x="690" y="22" text-anchor="middle" font-size="9" font-family="JetBrains Mono" fill="rgba(100,80,40,0.5)" letter-spacing="2">EMERGENCY PROVISIONS — FEDERAL → UNITARY SHIFT</text>
+
+<!-- 3 Emergency Types as columns -->
+<rect x="10" y="30" width="430" height="170" rx="14" fill="#a01820" opacity="0.9"/>
+<text x="225" y="56" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">🚨 National Emergency (Art. 352)</text>
+<rect x="26" y="64" width="398" height="1" fill="rgba(255,255,255,0.2)"/>
+<text x="40" y="82" font-size="10" fill="rgba(255,255,255,0.9)">Grounds: External aggression, armed rebellion</text>
+<text x="40" y="98" font-size="10" fill="rgba(255,255,255,0.85)">• Parliament legislates on State List</text>
+<text x="40" y="113" font-size="10" fill="rgba(255,255,255,0.85)">• Revenue sharing can be modified</text>
+<text x="40" y="128" font-size="10" fill="rgba(255,255,255,0.85)">• State subject to Centre's executive directions</text>
+<text x="40" y="144" font-size="10" fill="rgba(255,255,255,0.85)">• Laws survive for 6 months after emergency</text>
+<text x="40" y="162" font-size="10" fill="rgba(255,255,255,0.85)">• Rajya Sabha can pass by simple majority</text>
+<rect x="30" y="170" width="390" height="18" rx="6" fill="rgba(255,255,255,0.1)"/>
+<text x="225" y="182" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">STATE AUTONOMY SUSPENDED DURING EMERGENCY</text>
+
+<rect x="476" y="30" width="426" height="170" rx="14" fill="#5c1f8a" opacity="0.9"/>
+<text x="689" y="56" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">⚠️ President's Rule (Art. 356)</text>
+<rect x="492" y="64" width="394" height="1" fill="rgba(255,255,255,0.2)"/>
+<text x="506" y="82" font-size="10" fill="rgba(255,255,255,0.9)">Grounds: Constitutional machinery fails</text>
+<text x="506" y="98" font-size="10" fill="rgba(255,255,255,0.85)">• Parliament assumes state legislative powers</text>
+<text x="506" y="113" font-size="10" fill="rgba(255,255,255,0.85)">• President's Rule laws continue until repealed</text>
+<text x="506" y="128" font-size="10" fill="rgba(255,255,255,0.85)">• Governor acts as Centre's agent</text>
+<text x="506" y="144" font-size="10" fill="rgba(255,255,255,0.85)">• SR Bommai case (1994) limits misuse</text>
+<text x="506" y="162" font-size="10" fill="rgba(255,255,255,0.85)">• Maximum 3 years with parliamentary approval</text>
+<rect x="496" y="170" width="390" height="18" rx="6" fill="rgba(255,255,255,0.1)"/>
+<text x="689" y="182" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">⚠️ PRELIMS: LAWS CONTINUE UNTIL REPEALED</text>
+
+<rect x="938" y="30" width="432" height="170" rx="14" fill="#9a6c10" opacity="0.9"/>
+<text x="1154" y="56" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">💰 Financial Emergency (Art. 360)</text>
+<rect x="954" y="64" width="400" height="1" fill="rgba(255,255,255,0.2)"/>
+<text x="968" y="82" font-size="10" fill="rgba(255,255,255,0.9)">Grounds: Financial stability/credit of India</text>
+<text x="968" y="98" font-size="10" fill="rgba(255,255,255,0.85)">• Centre can reduce salaries of civil servants</text>
+<text x="968" y="113" font-size="10" fill="rgba(255,255,255,0.85)">• Including Supreme Court & HC judges</text>
+<text x="968" y="128" font-size="10" fill="rgba(255,255,255,0.85)">• Direct financial management by Centre</text>
+<text x="968" y="144" font-size="10" fill="rgba(255,255,255,0.85)">• States directed to reserve money bills</text>
+<text x="968" y="162" font-size="10" fill="rgba(255,255,255,0.85)">• Never been declared so far in India</text>
+<rect x="958" y="170" width="400" height="18" rx="6" fill="rgba(255,255,255,0.1)"/>
+<text x="1154" y="182" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">NEVER PROCLAIMED IN INDIA TILL DATE</text>
+</svg>
+</div>
+
+<!-- ══════════ SECTION 5: UNITARY TILT ══════════ -->
+<div class="sec-label" style="color:var(--purple);">⑤ Integrated Features — The Unitary Tilt</div>
+
+<div class="map-card mc5">
+<svg viewBox="0 0 1380 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<text x="690" y="22" text-anchor="middle" font-size="9" font-family="JetBrains Mono" fill="rgba(100,80,40,0.5)" letter-spacing="2">FEATURES THAT MAKE INDIA MORE UNITARY THAN FEDERAL</text>
+
+<!-- Central Node -->
+<rect x="540" y="30" width="300" height="60" rx="12" fill="#5c1f8a"/>
+<text x="690" y="55" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">🔗 Unitary Tilt Features</text>
+<text x="690" y="72" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">"Federal in structure, unitary in spirit"</text>
+
+<!-- 6 spokes -->
+<path d="M690,90 L140,135" stroke="#5c1f8a" stroke-width="1.5" fill="none" opacity="0.35"/>
+<path d="M690,90 L370,135" stroke="#5c1f8a" stroke-width="1.5" fill="none" opacity="0.35"/>
+<path d="M690,90 L580,135" stroke="#5c1f8a" stroke-width="1.5" fill="none" opacity="0.35"/>
+<path d="M690,90 L800,135" stroke="#5c1f8a" stroke-width="1.5" fill="none" opacity="0.35"/>
+<path d="M690,90 L1010,135" stroke="#5c1f8a" stroke-width="1.5" fill="none" opacity="0.35"/>
+<path d="M690,90 L1240,135" stroke="#5c1f8a" stroke-width="1.5" fill="none" opacity="0.35"/>
+
+<!-- 6 boxes -->
+<rect x="10" y="138" width="258" height="36" rx="9" fill="#5c1f8a" opacity="0.85"/>
+<text x="139" y="152" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">📜 Single Constitution</text>
+<text x="139" y="167" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.65)">No separate state constitution</text>
+
+<rect x="280" y="138" width="176" height="36" rx="9" fill="#1a3d8c" opacity="0.85"/>
+<text x="368" y="152" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">⚖️ Single Judiciary</text>
+<text x="368" y="167" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.65)">Integrated system</text>
+
+<rect x="468" y="138" width="224" height="36" rx="9" fill="#0a5e6e" opacity="0.85"/>
+<text x="580" y="152" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🎓 All India Services</text>
+<text x="580" y="167" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.65)">IAS, IPS — Centre controls</text>
+
+<rect x="704" y="138" width="192" height="36" rx="9" fill="#a01820" opacity="0.85"/>
+<text x="800" y="152" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">👨‍⚖️ Governor by Centre</text>
+<text x="800" y="167" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.65)">Agent of President</text>
+
+<rect x="908" y="138" width="202" height="36" rx="9" fill="#9a6c10" opacity="0.85"/>
+<text x="1009" y="152" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">⚡ Residuary → Centre</text>
+<text x="1009" y="167" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.65)">Unlisted subjects: Parliament</text>
+
+<rect x="1122" y="138" width="248" height="36" rx="9" fill="#1a6e3c" opacity="0.85"/>
+<text x="1246" y="152" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🏛️ Rajya Sabha Resolutions</text>
+<text x="1246" y="167" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.65)">Parliament invades State List</text>
+</svg>
+</div>
+
+<!-- ══════════ SECTION 6: PRELIMS TRAPS ══════════ -->
+<div class="sec-label" style="color:var(--red);">⑥ 🔥 Core Prelims Traps — Don't Get These Wrong</div>
+
+<div class="g2">
+  <div class="pc red">
+    <div class="pc-label">High-Frequency Traps</div>
+    <h3>⚠️ Common Exam Mistakes</h3>
+    <div class="vlist">
+      <div class="vitem" style="border-left:3px solid var(--red);">
+        <div class="vt">❌ Residuary Powers</div>
+        <div class="vs">Goes to Parliament — NOT states (unlike USA where states get residuary)</div>
+      </div>
+      <div class="vitem" style="border-left:3px solid var(--red);">
+        <div class="vt">❌ Art. 271 Surcharge + GST</div>
+        <div class="vs">Surcharges go to Centre ONLY — no GST surcharge is permitted under Art. 271</div>
+      </div>
+      <div class="vitem" style="border-left:3px solid var(--red);">
+        <div class="vt">❌ President's Rule Laws</div>
+        <div class="vs">Laws passed during PR continue UNTIL REPEALED — they don't auto-lapse</div>
+      </div>
+      <div class="vitem" style="border-left:3px solid var(--red);">
+        <div class="vt">❌ Art. 249 Resolution Duration</div>
+        <div class="vs">Rajya Sabha resolution valid for 1 year at a time — but RENEWABLE</div>
+      </div>
+      <div class="vitem" style="border-left:3px solid var(--red);">
+        <div class="vt">❌ Finance Commission</div>
+        <div class="vs">Constitutional body (Art. 280) — NOT a statutory body. Appointed every 5 years</div>
+      </div>
+      <div class="vitem" style="border-left:3px solid var(--red);">
+        <div class="vt">❌ State List Conflict</div>
+        <div class="vs">State law in Concurrent List prevails only if President gives assent — not automatically</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc saffron">
+    <div class="pc-label">Article Quick Reference</div>
+    <h3>📚 Fast Recall — Key Articles</h3>
+    <div class="g2" style="gap:8px;margin-top:4px;margin-bottom:0;">
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div class="vitem"><div class="vt">Art. 245–255</div><div class="vs">Legislative Relations</div></div>
+        <div class="vitem"><div class="vt">Art. 249</div><div class="vs">RS Resolution → State List</div></div>
+        <div class="vitem"><div class="vt">Art. 250</div><div class="vs">National Emergency → State</div></div>
+        <div class="vitem"><div class="vt">Art. 252</div><div class="vs">State Request to Parliament</div></div>
+        <div class="vitem"><div class="vt">Art. 253</div><div class="vs">International Treaties</div></div>
+        <div class="vitem"><div class="vt">Art. 256</div><div class="vs">States comply with Centre</div></div>
+        <div class="vitem"><div class="vt">Art. 263</div><div class="vs">Inter-State Council</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div class="vitem"><div class="vt">Art. 265</div><div class="vs">No tax without law</div></div>
+        <div class="vitem"><div class="vt">Art. 268–271</div><div class="vs">Tax Distribution</div></div>
+        <div class="vitem"><div class="vt">Art. 269A</div><div class="vs">IGST Distribution</div></div>
+        <div class="vitem"><div class="vt">Art. 280</div><div class="vs">Finance Commission</div></div>
+        <div class="vitem"><div class="vt">Art. 293</div><div class="vs">State Borrowing — consent</div></div>
+        <div class="vitem"><div class="vt">Art. 312</div><div class="vs">All India Services</div></div>
+        <div class="vitem"><div class="vt">Art. 356/365</div><div class="vs">President's Rule triggers</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 7: CONNECTED STORY ══════════ -->
+<div class="sec-label" style="color:var(--green);">⑦ The Connected Story — How It All Flows</div>
+
+<div class="map-card mc3">
+<svg viewBox="0 0 1380 120" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<text x="690" y="20" text-anchor="middle" font-size="9" font-family="JetBrains Mono" fill="rgba(100,80,40,0.5)" letter-spacing="2">INDIA'S FEDERAL STORY — FOUR SCENARIOS</text>
+
+<!-- 4 scenario boxes -->
+<rect x="8" y="28" width="330" height="80" rx="12" fill="#1a6e3c" opacity="0.9"/>
+<text x="173" y="52" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">📅 Normal Times</text>
+<text x="173" y="68" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)">Division of powers works</text>
+<text x="173" y="83" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.75)">States manage State List</text>
+<text x="173" y="98" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono">GENUINE FEDERALISM</text>
+
+<path d="M338,68 L356,68" stroke="#aaa" stroke-width="2" marker-end="url(#arr)"/>
+
+<rect x="356" y="28" width="330" height="80" rx="12" fill="#c85a00" opacity="0.9"/>
+<text x="521" y="52" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">⚡ Special Situations</text>
+<text x="521" y="68" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)">Parliament expands power</text>
+<text x="521" y="83" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.75)">Art. 249, 250, 252, 253</text>
+<text x="521" y="98" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono">CENTRE EXPANDS INTO STATES</text>
+
+<path d="M686,68 L704,68" stroke="#aaa" stroke-width="2" marker-end="url(#arr)"/>
+
+<rect x="704" y="28" width="330" height="80" rx="12" fill="#1a3d8c" opacity="0.9"/>
+<text x="869" y="52" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">💰 Financially</text>
+<text x="869" y="68" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)">States depend on Centre</text>
+<text x="869" y="83" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.75)">Finance Comm. + Grants</text>
+<text x="869" y="98" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono">FISCAL FEDERALISM — CENTRE DOMINANT</text>
+
+<path d="M1034,68 L1052,68" stroke="#aaa" stroke-width="2" marker-end="url(#arr)"/>
+
+<rect x="1052" y="28" width="320" height="80" rx="12" fill="#5c1f8a" opacity="0.9"/>
+<text x="1212" y="52" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">🏛️ Administratively</text>
+<text x="1212" y="68" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)">Centre directs States</text>
+<text x="1212" y="83" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.75)">AIS, Directions, Governor</text>
+<text x="1212" y="98" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono">ADMINISTRATIVE DEPENDENCE ON CENTRE</text>
+
+<defs>
+  <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+    <path d="M0,0 L0,8 L8,4 z" fill="#aaa"/>
+  </marker>
+</defs>
+</svg>
+</div>
+
+<!-- ══════════ KEYSTONE ══════════ -->
+<div class="keystone">
+  <div class="keystone-icon">⚖️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea — Quasi-Federal with Strong Centre Bias</div>
+    <div class="keystone-sub">
+      India's Constitution creates a federal structure but with a clear <strong style="color:#f5d78a;">unitary tilt</strong>. In normal times, powers are divided between Centre and States. But through emergency provisions, residuary powers, All India Services, single Constitution/Judiciary, and financial dependence — <strong style="color:#f5d78a;">the Centre always holds the decisive hand.</strong> Dr. Ambedkar called it "both federal and unitary" depending on circumstances.
+    </div>
+    <div class="keystone-pills">
+      <span class="kpill">⚖️ 7th Schedule</span>
+      <span class="kpill">⚡ Residuary → Centre</span>
+      <span class="kpill">💰 Finance Commission</span>
+      <span class="kpill">🚨 Emergency Powers</span>
+      <span class="kpill">🔗 Quasi-Federal</span>
+      <span class="kpill">🇮🇳 Art. 1 — "Union of States"</span>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

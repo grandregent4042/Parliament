@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>High Court — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0f0d0a;--paper:#f7f4ed;--warm:#ede8da;
+  --gold:#c9900a;--gold-lt:#f7e6a8;--amber:#d9620e;
+  --blue:#1c3f8c;--blue-lt:#dce6fa;
+  --green:#1a6b3c;--green-lt:#d8f0e3;
+  --purple:#6a1a9a;--purple-lt:#eeddf8;
+  --teal:#076472;--teal-lt:#d4f0f5;
+  --red:#b01a1a;--red-lt:#fae0e0;
+  --orange:#c95a0a;--orange-lt:#fae6d8;
+  --muted:#8a7a60;--border:#ddd0b0;
+  --card:#fffdf7;--card2:#f2ede0;
+}
+body{font-family:'Outfit',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;}
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:
+    radial-gradient(ellipse 800px 600px at 10% 5%,rgba(201,144,10,.06) 0%,transparent 55%),
+    radial-gradient(ellipse 600px 800px at 90% 85%,rgba(28,63,140,.05) 0%,transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+.wrap{position:relative;z-index:1;max-width:1380px;margin:0 auto;padding:0 22px 120px;}
+
+/* HEADER */
+.header{text-align:center;padding:42px 16px 16px;position:relative;}
+.header-sup{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(24px,4.5vw,48px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:80px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:14px auto 0;border-radius:4px;}
+
+/* SECTION LABELS */
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:30px 0 12px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:18px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.g2,.g3,.g4,.g2x1{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:16px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pc:hover{box-shadow:0 6px 24px rgba(201,144,10,.1);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.blue::before{background:var(--blue);}
+.pc.green::before{background:var(--green);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.orange::before{background:var(--orange);}
+.pc.dark::before{background:var(--ink);}
+.pc-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:6px;line-height:1.3;}
+
+/* MAP CARD */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;position:relative;margin-bottom:24px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--purple),var(--blue),var(--teal));}
+.map-card svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.gold{background:rgba(201,144,10,.12);color:var(--gold);}
+.pill.blue{background:rgba(28,63,140,.12);color:var(--blue);}
+.pill.green{background:rgba(26,107,60,.12);color:var(--green);}
+.pill.purple{background:rgba(106,26,154,.12);color:var(--purple);}
+.pill.teal{background:rgba(7,100,114,.12);color:var(--teal);}
+.pill.red{background:rgba(176,26,26,.12);color:var(--red);}
+.pill.orange{background:rgba(201,90,10,.12);color:var(--orange);}
+
+/* STAT BOXES */
+.stat-row{display:flex;gap:9px;margin:9px 0;}
+.stat-box{flex:1;padding:11px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;line-height:1;}
+.stat-label{font-size:8.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:2px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* CHIPS */
+.ps-chip{display:inline-block;padding:4px 9px;border-radius:7px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.ps-chip.prob{background:rgba(176,26,26,.07);border-color:rgba(176,26,26,.2);color:var(--red);}
+.ps-chip.sol{background:rgba(26,107,60,.07);border-color:rgba(26,107,60,.2);color:var(--green);}
+.ps-chip.neu{background:rgba(201,144,10,.07);border-color:rgba(201,144,10,.2);color:var(--gold);}
+.ps-chip.blue{background:rgba(28,63,140,.07);border-color:rgba(28,63,140,.2);color:var(--blue);}
+.ps-chip.purple{background:rgba(106,26,154,.07);border-color:rgba(106,26,154,.2);color:var(--purple);}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vitem{padding:8px 11px;border-radius:8px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:700;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* FEAT GRID */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px;}
+.feat{padding:9px 11px;border-radius:8px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:15px;margin-bottom:3px;}
+.feat .ft{font-size:10.5px;font-weight:700;}
+.feat .fs{font-size:8.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:2px;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:7px 10px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(201,144,10,.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;}
+.tag.ok{background:#d4edda;color:#155724;}
+.tag.na{background:#f8d7da;color:#721c24;}
+
+/* IMPACT CHAIN */
+.impact-chain{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.ic-node{padding:5px 10px;border-radius:7px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:16px;color:var(--muted);}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:16px;padding:22px 28px;margin:18px 0;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.keystone-icon{font-size:34px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:19px;font-style:italic;margin-bottom:4px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.keystone-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:3px 10px;border-radius:20px;background:rgba(255,255,255,.1);font-size:10.5px;font-family:'JetBrains Mono',monospace;}
+
+/* CALLOUT */
+.callout{padding:11px 13px;border-radius:9px;background:rgba(26,107,60,.06);border:1.5px solid rgba(26,107,60,.2);margin:7px 0;}
+.callout-title{font-size:11px;font-weight:800;color:var(--green);margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* PHASE */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0;}
+@media(max-width:600px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:14px;border-radius:11px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;}
+.phase-title{font-size:12px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'JetBrains Mono',monospace;margin-bottom:7px;color:var(--muted);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Polity · Judiciary · UPSC Prelims</div>
+  <h1>High Courts — <em>Advanced Mind Map</em></h1>
+  <div class="header-sub">Transfer · Additional Judges · Supervisory Power · Control · Common HCs</div>
+</div>
+
+<!-- MASTER FLOW -->
+<div class="sec-label">Master Overview — High Court Powers & Provisions</div>
+<div class="map-card mc1">
+  <svg id="svgMaster" viewBox="0 0 1340 120" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- SECTION 1: ARTICLE 222 — TRANSFER -->
+<div class="sec-label">① Article 222 — Transfer of High Court Judges</div>
+<div class="map-card mc2">
+  <svg id="svgTransfer" viewBox="0 0 1340 260" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">Article 222 — Transfer Process</div>
+    <h3>⚖️ Who Can Transfer?</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">President</div>
+        <div class="stat-sub">Transfer Authority</div>
+        <div class="stat-label">OF INDIA</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--gold);">CJI</div>
+        <div class="stat-sub">Must Consult</div>
+        <div class="stat-label">MANDATORY</div>
+      </div>
+    </div>
+    <div class="impact-chain" style="margin-top:10px;">
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(28,63,140,.08);color:var(--blue);">President Initiates</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--gold);background:rgba(201,144,10,.08);color:var(--gold);">Consult CJI</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--purple);background:rgba(106,26,154,.08);color:var(--purple);">Collegium of 4</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,107,60,.08);color:var(--green);">Transfer Order</div>
+    </div>
+    <div class="callout" style="margin-top:8px;">
+      <div class="callout-title">⚖️ Nature of Power</div>
+      <div class="callout-body">Transfer is an <strong>executive power</strong> — but consultation ensures <strong>judicial independence</strong>. Public interest is the stated purpose.</div>
+    </div>
+  </div>
+
+  <div class="pc gold">
+    <div class="pc-label">Third Judges Case, 1998</div>
+    <h3>📜 Post-1998 Collegium Rule</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">CJI + 4 Senior SC Judges</div><div class="vs">Collegium must be consulted for any HC transfer</div></div>
+      <div class="vitem"><div class="vt">Chief Justices of Concerned HCs</div><div class="vs">Both sending & receiving HC CJs must be consulted</div></div>
+      <div class="vitem"><div class="vt">Compensatory Allowance</div><div class="vs">Given to transferred judge — fixed by Parliament</div></div>
+      <div class="vitem"><div class="vt">Who Can Challenge?</div><div class="vs">Only the transferred judge can legally challenge</div></div>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="ps-chip blue">Executive + Judicial balance</span>
+      <span class="ps-chip sol">Public interest basis</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: ARTICLE 224 -->
+<div class="sec-label">② Article 224 — Additional & Acting Judges</div>
+<div class="map-card mc4">
+  <svg id="svgArt224" viewBox="0 0 1340 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc orange">
+    <div class="pc-label">Article 224 — Why Appointed</div>
+    <h3>📋 Additional Judges</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Temporary Workload Increase</div><div class="vs">When HC has backlog of cases</div></div>
+      <div class="vitem"><div class="vt">Business Arrears</div><div class="vs">Pendency beyond normal capacity</div></div>
+    </div>
+    <div class="stat-row" style="margin-top:10px;">
+      <div class="stat-box"><div class="stat-num" style="color:var(--orange);">2 Yrs</div><div class="stat-sub">Max Term</div><div class="stat-label">TIME LIMIT</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--red);">62</div><div class="stat-sub">Age Cutoff</div><div class="stat-label">CANNOT EXCEED</div></div>
+    </div>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-label">Acting Judges</div>
+    <h3>👤 Temporary Gap Fill</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">When HC Chief Justice Absent</div><div class="vs">Or unable to perform duties</div></div>
+      <div class="vitem"><div class="vt">Acting Charge Given</div><div class="vs">To a judge already serving in HC</div></div>
+      <div class="vitem"><div class="vt">Appointed by President</div><div class="vs">Same appointing authority as regular judges</div></div>
+    </div>
+    <span class="ps-chip purple" style="margin-top:8px;">Fills temporary gaps</span>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">Key Rule</div>
+    <h3>🔑 Article 224 Essentials</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Appointed by President</div><div class="vs">After consultation with CJI</div></div>
+      <div class="vitem"><div class="vt">Duly Qualified Person</div><div class="vs">Must meet HC judge qualifications</div></div>
+      <div class="vitem"><div class="vt">No Continuation Post-62</div><div class="vs">Strict upper age limit applies</div></div>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="ps-chip blue">Backlog → Additional Judge</span>
+      <span class="ps-chip blue">Absence → Acting Judge</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: ARTICLE 227 -->
+<div class="sec-label">③ Article 227 — Supervisory Jurisdiction</div>
+<div class="map-card mc3">
+  <svg id="svgArt227" viewBox="0 0 1340 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc teal">
+    <div class="pc-label">Article 227 — Scope</div>
+    <h3>🏛️ Supervisory Jurisdiction</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">All Subordinate Courts & Tribunals</div><div class="vs">Except military courts/tribunals</div></div>
+      <div class="vitem"><div class="vt">Administrative Control</div><div class="vs">Over functioning of subordinate courts</div></div>
+      <div class="vitem"><div class="vt">Judicial Supervision</div><div class="vs">Correctness of proceedings</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;background:rgba(176,26,26,.06);border-radius:8px;border:1px dashed var(--red);">
+      <span style="font-size:10px;font-weight:800;color:var(--red);">⚠️ Military Courts EXCLUDED from HC supervision</span>
+    </div>
+  </div>
+
+  <div class="pc green">
+    <div class="pc-label">What HC Can Do — Article 227</div>
+    <h3>✅ Powers Under Art. 227</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">📋</div><div class="ft">Call Records</div><div class="fs">From any subordinate court</div></div>
+      <div class="feat"><div class="fi">🔄</div><div class="ft">Suo Motu</div><div class="fs">Without waiting for appeal</div></div>
+      <div class="feat"><div class="fi">⚖️</div><div class="ft">Excess Jurisdiction</div><div class="fs">Correct if exceeded limits</div></div>
+      <div class="feat"><div class="fi">🚫</div><div class="ft">Natural Justice</div><div class="fs">Correct violations</div></div>
+      <div class="feat"><div class="fi">🔍</div><div class="ft">Manifest Injustice</div><div class="fs">Intervene to prevent</div></div>
+      <div class="feat"><div class="fi">📏</div><div class="ft">General Rules</div><div class="fs">Make rules for subordinate courts</div></div>
+    </div>
+    <div style="margin-top:8px;padding:9px;background:rgba(28,63,140,.06);border-radius:8px;border:1px dashed var(--blue);">
+      <span style="font-size:10px;font-weight:700;color:var(--blue);">📌 Key Distinction: Art.227 is SUPERVISORY, not appellate jurisdiction</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: CONTROL OVER SUBORDINATE COURTS -->
+<div class="sec-label">④ Control Over Subordinate Courts</div>
+<div class="map-card mc5">
+  <svg id="svgControl" viewBox="0 0 1340 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2x1">
+  <div class="pc blue">
+    <div class="pc-label">HC Control — Extent</div>
+    <h3>🏗️ What HC Controls</h3>
+    <div class="g2" style="margin-bottom:0;gap:8px;">
+      <div>
+        <div style="font-size:11px;font-weight:800;color:var(--blue);margin-bottom:6px;">Appointments</div>
+        <div class="vlist">
+          <div class="vitem"><div class="vt">District Judges</div><div class="vs">Governor consults HC for appointment & promotion</div></div>
+          <div class="vitem"><div class="vt">Judicial Service Personnel</div><div class="vs">HC has direct control over state judicial officers</div></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:800;color:var(--green);margin-bottom:6px;">Case Withdrawal</div>
+        <div class="vlist">
+          <div class="vitem"><div class="vt">Substantial Constitutional Questions</div><div class="vs">HC can withdraw & decide such cases itself</div></div>
+          <div class="vitem"><div class="vt">Article 141 Binding</div><div class="vs">SC law binds all courts including HCs & subordinates</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc gold">
+    <div class="pc-label">Art. 141 Hierarchy</div>
+    <h3>📐 Court Hierarchy</h3>
+    <div class="vlist">
+      <div class="vitem" style="border-color:var(--gold);"><div class="vt">🔺 Supreme Court</div><div class="vs">Article 141 — law binding on ALL</div></div>
+      <div class="vitem"><div class="vt">🔹 High Courts</div><div class="vs">Supervisory over all below</div></div>
+      <div class="vitem"><div class="vt">🔸 District Courts</div><div class="vs">HC controls appointments</div></div>
+      <div class="vitem"><div class="vt">🔻 Subordinate Courts</div><div class="vs">Under HC judicial supervision</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: COMMON HIGH COURTS -->
+<div class="sec-label">⑤ Common High Courts — 7th Amendment, 1956</div>
+<div class="map-card mc1">
+  <svg id="svgCommon" viewBox="0 0 1340 260" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="pc dark" style="margin-bottom:18px;">
+  <div class="pc-label">7th Amendment Act, 1956</div>
+  <h3 style="font-family:'Playfair Display',serif;font-size:14px;margin-bottom:10px;">🗺️ Common High Courts — States & UTs Covered</h3>
+  <div style="overflow-x:auto;">
+    <table class="ctable">
+      <thead>
+        <tr>
+          <th>High Court</th>
+          <th>States / UTs Covered</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Bombay HC</td><td>Maharashtra, Goa, Dadra & Nagar Haveli and Daman & Diu</td><td><span class="tag ok">Multi-State</span></td></tr>
+        <tr><td>Guwahati HC</td><td>Assam, Nagaland, Mizoram, Arunachal Pradesh</td><td><span class="tag ok">North-East</span></td></tr>
+        <tr><td>Punjab & Haryana HC</td><td>Punjab, Haryana, Chandigarh (UT)</td><td><span class="tag ok">Multi-State</span></td></tr>
+        <tr><td>Calcutta HC</td><td>West Bengal, Andaman & Nicobar Islands (UT)</td><td><span class="tag ok">State + UT</span></td></tr>
+        <tr><td>Madras HC</td><td>Tamil Nadu, Puducherry (UT)</td><td><span class="tag ok">State + UT</span></td></tr>
+        <tr><td>Kerala HC</td><td>Kerala, Lakshadweep (UT)</td><td><span class="tag ok">State + UT</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="margin-top:10px;padding:8px 12px;background:rgba(201,144,10,.07);border-radius:8px;font-size:10px;color:var(--gold);font-weight:700;font-family:'JetBrains Mono',monospace;">
+    ⚡ PRELIMS TIP: Matching-type questions frequently test Guwahati (NE states) and Bombay (Goa + UTs)
+  </div>
+</div>
+
+<!-- SECTION 6: HIGH PROBABILITY PRELIMS AREAS -->
+<div class="sec-label">⑥ 🔥 High Probability Prelims Areas</div>
+
+<div class="g3">
+  <div class="pc red">
+    <div class="pc-label">Prelims Hot Zone</div>
+    <h3>🎯 Article 222 — Transfer</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">President transfers HC judges</div><div class="vs">Not CJI, not Parliament</div></div>
+      <div class="vitem"><div class="vt">CJI consultation mandatory</div><div class="vs">Third Judges Case 1998</div></div>
+      <div class="vitem"><div class="vt">Collegium of 4 senior SC judges</div><div class="vs">CJI + 4 = 5 total</div></div>
+      <div class="vitem"><div class="vt">Both HC Chief Justices</div><div class="vs">Sending + receiving HCs</div></div>
+    </div>
+    <span class="ps-chip prob" style="margin-top:8px;">⚠️ Often tricky: It's President, not CJI who transfers</span>
+  </div>
+
+  <div class="pc orange">
+    <div class="pc-label">Prelims Hot Zone</div>
+    <h3>⏱️ Article 224 — Numbers</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--orange);">2</div><div class="stat-sub">Years Max</div><div class="stat-label">ADDITIONAL JUDGE</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--red);">62</div><div class="stat-sub">Age Limit</div><div class="stat-label">CANNOT CONTINUE</div></div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">Appointed by President</div><div class="vs">Same as regular HC judges</div></div>
+      <div class="vitem"><div class="vt">For workload / arrears</div><div class="vs">Not permanent appointment</div></div>
+    </div>
+    <span class="ps-chip neu" style="margin-top:8px;">📌 Both 2 years AND 62 limit apply</span>
+  </div>
+
+  <div class="pc teal">
+    <div class="pc-label">Prelims Hot Zone</div>
+    <h3>🔍 Article 227 — Supervisory</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">NOT an appellate power</div><div class="vs">Broader — superintendence</div></div>
+      <div class="vitem"><div class="vt">Military courts EXCLUDED</div><div class="vs">★ Most frequently tested exclusion</div></div>
+      <div class="vitem"><div class="vt">Suo motu power</div><div class="vs">Can act without petition</div></div>
+      <div class="vitem"><div class="vt">All tribunals included</div><div class="vs">Except armed forces tribunals</div></div>
+    </div>
+    <span class="ps-chip sol" style="margin-top:8px;">✅ Military courts exclusion = top pick MCQ</span>
+  </div>
+</div>
+
+<!-- QUICK MEMORY FLOW -->
+<div class="sec-label">⑦ Quick Memory Flow — Exam Day Recall</div>
+
+<div class="map-card mc2">
+  <svg id="svgMemory" viewBox="0 0 1340 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">Remember This Pattern</div>
+    <h3>✅ What's True About HCs</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="ps-chip sol">✅ Can be common for 2+ states</span>
+      <span class="ps-chip sol">✅ Judges transferred by President (Art.222)</span>
+      <span class="ps-chip sol">✅ Additional judges — up to 2 years (Art.224)</span>
+      <span class="ps-chip sol">✅ Supervisory over all courts except military (Art.227)</span>
+      <span class="ps-chip sol">✅ Controls subordinate court appointments</span>
+      <span class="ps-chip sol">✅ Retirement at 62</span>
+      <span class="ps-chip sol">✅ Third Judges Case → Collegium of 4+CJI</span>
+      <span class="ps-chip sol">✅ Compensatory allowance after transfer</span>
+    </div>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-label">Common Traps — Do Not Fall For These</div>
+    <h3>⚠️ Common Mistakes</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="ps-chip prob">❌ CJI doesn't transfer — President does</span>
+      <span class="ps-chip prob">❌ Art.227 is NOT an appeal — it's supervision</span>
+      <span class="ps-chip prob">❌ Military courts NOT under HC supervision</span>
+      <span class="ps-chip prob">❌ Additional judges ≠ permanent judges</span>
+      <span class="ps-chip prob">❌ Third Judges Case = 1998, not 1993</span>
+      <span class="ps-chip prob">❌ 62 years = HC retirement (SC = 65)</span>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">⚖️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea — High Courts</div>
+    <div class="keystone-sub">High Courts sit at the pivot of India's judicial pyramid — exercising <strong style="color:#f5d78a;">original, appellate, supervisory AND writ jurisdiction</strong>, while being subordinate to the Supreme Court. The 74th Amendment created a framework of <strong style="color:#f5d78a;">democratic accountability</strong> at the urban level, while Arts. 222–227 ensure HCs remain <strong style="color:#f5d78a;">independent yet accountable</strong> in the judicial hierarchy.</div>
+    <div class="keystone-pills">
+      <span class="kpill">📜 Art.222 — Transfer</span>
+      <span class="kpill">⏱️ Art.224 — 2yr / 62</span>
+      <span class="kpill">🔍 Art.227 — Supervisory</span>
+      <span class="kpill">🗺️ Common HCs</span>
+      <span class="kpill">⚖️ President Transfers</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function curve(svg,x1,y1,x2,y2,color,dashed,w){
+  const mx=(x1+x2)/2;
+  const p=se('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':w||1.8,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.65'});
+  svg.appendChild(p);
+}
+
+function straight(svg,x1,y1,x2,y2,color,dashed,w){
+  const p=se('path',{d:`M${x1},${y1} L${x2},${y2}`,stroke:color||'#aaa','stroke-width':w||1.5,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.55'});
+  svg.appendChild(p);
+}
+
+function nd(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||9;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7)-(sub?4:0)-(emoji?9:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=17;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10.5','font-weight':'700','font-family':'Outfit,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8','font-family':'JetBrains Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.38)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgMaster');
+  const steps=[
+    {x:80,  fill:'#1c3f8c', label:['Article 222'],   sub:'Transfer',       emoji:'🔄'},
+    {x:255, fill:'#c9900a', label:['Art.224'],        sub:'Add./Acting Judges', emoji:'👤'},
+    {x:430, fill:'#6a1a9a', label:['Article 227'],    sub:'Supervisory',    emoji:'🔍'},
+    {x:605, fill:'#1a6b3c', label:['Subordinate'],    sub:'Courts Control', emoji:'🏛️'},
+    {x:780, fill:'#076472', label:['Common HCs'],     sub:'7th Amendment',  emoji:'🗺️'},
+    {x:955, fill:'#b01a1a', label:['Retirement @ 62'],sub:'Age limit',      emoji:'📅'},
+    {x:1130,fill:'#d9620e', label:['3rd Judges Case'],sub:'1998 Collegium', emoji:'⚖️'},
+    {x:1280,fill:'#1a5878', label:['Prelims Focus'],  sub:'High probability',emoji:'🎯'},
+  ];
+  steps.forEach((s,i)=>{if(i<steps.length-1)curve(svg,s.x+68,60,steps[i+1].x-68,60,'#c9900a44',false,2);});
+  steps.forEach(s=>{
+    const lines=s.label;
+    nd(svg,s.x,60,130,68,s.fill,lines,s.sub,s.emoji);
+  });
+  const t=se('text',{x:680,y:16,'text-anchor':'middle','font-size':'8.5','font-family':'JetBrains Mono,monospace','letter-spacing':'3',fill:'rgba(120,100,60,0.4)'});
+  t.textContent='HIGH COURT — KEY PROVISIONS FLOW';
+  svg.appendChild(t);
+})();
+
+// ─── TRANSFER SVG ───
+(function(){
+  const svg=document.getElementById('svgTransfer');
+  // Central node
+  nd(svg,670,130,200,58,'#1c3f8c',['Transfer of HC Judge'],null,'🔄','#fff');
+
+  const left=[
+    {x:160,y:55,  fill:'#0a2a6a', label:['Who?'],         sub:'Authority', emoji:'👤'},
+    {x:160,y:130, fill:'#2a2a8a', label:['President'],     sub:'Art. 222', emoji:'🇮🇳'},
+    {x:160,y:205, fill:'#1a3a7a', label:['Public Interest'], sub:'Reason for transfer', emoji:'⚖️'},
+  ];
+  const right=[
+    {x:1180,y:55,  fill:'#6a1a9a', label:['Third Judges'],  sub:'1998 Case', emoji:'📜'},
+    {x:1180,y:130, fill:'#8a1a7a', label:['CJI + 4'],       sub:'Collegium consult', emoji:'⚖️'},
+    {x:1180,y:205, fill:'#5a1a8a', label:['Both HC CJs'],   sub:'Sending + receiving', emoji:'🏛️'},
+  ];
+  const bot=[
+    {x:670,y:230, fill:'#b87c10', label:['Compensatory'],  sub:'Allowance — Parliament fixes', emoji:'💰'},
+  ];
+
+  left.forEach(n=>{curve(svg,585,130,n.x+72,n.y,'#1c3f8c55',true,1.6);nd(svg,n.x,n.y,140,48,n.fill,[n.label[0]],n.sub,n.emoji);});
+  right.forEach(n=>{curve(svg,755,130,n.x-72,n.y,'#6a1a9a55',true,1.6);nd(svg,n.x,n.y,140,48,n.fill,[n.label[0]],n.sub,n.emoji);});
+  bot.forEach(n=>{straight(svg,670,159,670,206,'#b87c1055',true,1.6);nd(svg,n.x,n.y,200,42,n.fill,[n.label[0]],n.sub,n.emoji);});
+
+  // Challenge note
+  const box=se('rect',{x:480,y:12,width:380,height:28,rx:7,ry:7,fill:'rgba(176,26,26,0.08)',stroke:'rgba(176,26,26,0.25)','stroke-width':'1.2'});
+  svg.appendChild(box);
+  const t=se('text',{x:670,y:26,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10','font-weight':'700','font-family':'JetBrains Mono,monospace',fill:'#b01a1a'});
+  t.textContent='⚠️  Only the transferred judge can challenge the transfer order';
+  svg.appendChild(t);
+})();
+
+// ─── ART 224 SVG ───
+(function(){
+  const svg=document.getElementById('svgArt224');
+  nd(svg,670,100,230,56,'#d9620e',['Article 224'],null,'👤');
+
+  const items=[
+    {x:130,y:60,  fill:'#a04008', label:['Workload'],     sub:'Reason — backlog'},
+    {x:130,y:140, fill:'#b05010', label:['Up to 2 Years'], sub:'Max additional judge term'},
+    {x:380,y:55,  fill:'#6a1060', label:['President'],    sub:'Who appoints?'},
+    {x:380,y:150, fill:'#7a0a50', label:['After 62'],     sub:'Cannot continue'},
+    {x:960,y:60,  fill:'#1a3a7a', label:['Acting Judge'], sub:'HC Chief Justice absent'},
+    {x:960,y:140, fill:'#0a4070', label:['Qualified Person'], sub:'Meets HC judge criteria'},
+    {x:1200,y:60, fill:'#1a5828', label:['Temporary'],    sub:'Not permanent post'},
+    {x:1200,y:140,fill:'#064850', label:['Also by President'], sub:'Same authority'},
+  ];
+
+  items.forEach(n=>{
+    const fromX=n.x<670?756:584;
+    const dir=n.x<670?-1:1;
+    curve(svg,fromX,100,n.x+(dir<0?68:-68),n.y,'#d9620e44',true,1.5);
+    nd(svg,n.x,n.y,148,44,n.fill,[n.label[0]],n.sub,undefined,'#fff');
+  });
+
+  // separator
+  straight(svg,670,14,670,186,'rgba(200,180,140,0.15)',true,1.2);
+  const tl=se('text',{x:330,y:190,'text-anchor':'middle','font-size':'8','font-family':'JetBrains Mono,monospace',fill:'rgba(212,106,16,0.45)','letter-spacing':'2'}); tl.textContent='ADDITIONAL JUDGES'; svg.appendChild(tl);
+  const tr=se('text',{x:1050,y:190,'text-anchor':'middle','font-size':'8','font-family':'JetBrains Mono,monospace',fill:'rgba(28,63,140,0.45)','letter-spacing':'2'}); tr.textContent='ACTING JUDGES'; svg.appendChild(tr);
+})();
+
+// ─── ART 227 SVG ───
+(function(){
+  const svg=document.getElementById('svgArt227');
+  nd(svg,670,120,220,56,'#076472',['Article 227'],null,'🔍','#fff');
+
+  const left=[
+    {x:170,y:60,  fill:'#065060', label:['All Subordinate'],  sub:'Courts & Tribunals', emoji:'🏛️'},
+    {x:170,y:130, fill:'#0a4050', label:['Suo Motu'],         sub:'Without petition',   emoji:'🔄'},
+    {x:170,y:200, fill:'#1a4860', label:['Admin Control'],    sub:'Administrative superintendence', emoji:'⚙️'},
+  ];
+  const right=[
+    {x:1170,y:60,  fill:'#b01a1a', label:['MILITARY EXCLUDED'], sub:'★ Key exclusion — often tested', emoji:'🚫'},
+    {x:1170,y:130, fill:'#1a6a3a', label:['NOT Appellate'],    sub:'Broader — supervisory power',   emoji:'📐'},
+    {x:1170,y:200, fill:'#6a1a9a', label:['Correct Injustice'], sub:'Manifest injustice / excess jurisdiction', emoji:'⚖️'},
+  ];
+
+  left.forEach(n=>{curve(svg,580,120,n.x+80,n.y,'#07647255',true,1.6);nd(svg,n.x,n.y,158,46,n.fill,[n.label[0]],n.sub,n.emoji);});
+  right.forEach(n=>{curve(svg,760,120,n.x-80,n.y,'#07647255',true,1.6);nd(svg,n.x,n.y,158,46,n.fill,[n.label[0]],n.sub,n.emoji);});
+
+  // big annotation for military
+  const box=se('rect',{x:1000,y:42,width:248,height:28,rx:6,fill:'rgba(176,26,26,0.06)',stroke:'rgba(176,26,26,0.3)','stroke-width':'1.2','stroke-dasharray':'3 3'});
+  svg.appendChild(box);
+})();
+
+// ─── CONTROL SVG ───
+(function(){
+  const svg=document.getElementById('svgControl');
+  nd(svg,670,100,210,54,'#1a3a8a',['HC Controls'],null,'🏗️','#fff');
+
+  const left=[
+    {x:155,y:58,  fill:'#1a3060', label:['District Judges'],   sub:'Governor consults HC — appt+promo'},
+    {x:155,y:140, fill:'#0a204a', label:['Judicial Service'],  sub:'HC directly controls state judges'},
+  ];
+  const right=[
+    {x:1185,y:58,  fill:'#1a6a3a', label:['Withdraw Cases'],   sub:'Constitutional questions → HC decides'},
+    {x:1185,y:140, fill:'#1a5828', label:['Art.141 Binding'],  sub:'SC law binds HC & all lower courts'},
+  ];
+
+  left.forEach(n=>{curve(svg,566,100,n.x+84,n.y,'#1a3a8a55',true,1.5);nd(svg,n.x,n.y,164,46,n.fill,[n.label[0]],n.sub);});
+  right.forEach(n=>{curve(svg,774,100,n.x-84,n.y,'#1a6a3a55',true,1.5);nd(svg,n.x,n.y,164,46,n.fill,[n.label[0]],n.sub);});
+})();
+
+// ─── COMMON HC SVG ───
+(function(){
+  const svg=document.getElementById('svgCommon');
+  nd(svg,670,100,250,56,'#c9900a',['Common High Courts'],null,'🗺️','#fff');
+
+  const hcs=[
+    {x:115,y:60,  fill:'#6a3010', label:['Bombay HC'],          sub:'MH + Goa + DnH + DD'},
+    {x:115,y:140, fill:'#5a2a08', label:['Guwahati HC'],         sub:'Assam+Nagaland+Mizoram+AP'},
+    {x:115,y:210, fill:'#4a2010', label:['Punjab & Haryana'],   sub:'Punjab + Haryana + Chandigarh'},
+    {x:1225,y:60,  fill:'#1a5060', label:['Calcutta HC'],         sub:'WB + Andaman & Nicobar'},
+    {x:1225,y:140, fill:'#1a6040', label:['Madras HC'],           sub:'Tamil Nadu + Puducherry'},
+    {x:1225,y:210, fill:'#0a5030', label:['Kerala HC'],           sub:'Kerala + Lakshadweep'},
+  ];
+
+  hcs.forEach(n=>{
+    const fx=n.x<670?590:750;
+    const dir=n.x<670?-1:1;
+    curve(svg,fx,100,n.x+(dir<0?82:-82),n.y,'#c9900a55',true,1.5);
+    nd(svg,n.x,n.y,148,44,n.fill,[n.label[0]],n.sub,undefined,'#fff');
+  });
+
+  straight(svg,670,16,670,246,'rgba(200,180,140,0.12)',true,1);
+  const tl=se('text',{x:300,y:250,'text-anchor':'middle','font-size':'8','font-family':'JetBrains Mono,monospace',fill:'rgba(180,100,20,0.45)','letter-spacing':'2'}); tl.textContent='WESTERN & NORTH-EAST'; svg.appendChild(tl);
+  const tr=se('text',{x:1060,y:250,'text-anchor':'middle','font-size':'8','font-family':'JetBrains Mono,monospace',fill:'rgba(26,88,60,0.45)','letter-spacing':'2'}); tr.textContent='EASTERN & SOUTHERN'; svg.appendChild(tr);
+  // parliament note
+  const t=se('text',{x:670,y:18,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9','font-family':'JetBrains Mono,monospace',fill:'rgba(120,100,60,0.5)','letter-spacing':'2'});
+  t.textContent='PARLIAMENT CAN CREATE ONE HC FOR 2+ STATES / UTs  —  7TH AMENDMENT 1956';
+  svg.appendChild(t);
+})();
+
+// ─── MEMORY FLOW SVG ───
+(function(){
+  const svg=document.getElementById('svgMemory');
+  const steps=[
+    {x:95,  fill:'#1c3f8c', label:['HC Can Be'],    sub:'Common for states',   emoji:'🗺️'},
+    {x:270, fill:'#c9900a', label:['Art. 222'],      sub:'President transfers', emoji:'🔄'},
+    {x:445, fill:'#d9620e', label:['Art. 224'],      sub:'2 yrs / age 62',      emoji:'⏱️'},
+    {x:620, fill:'#076472', label:['Art. 227'],      sub:'Supervisory',         emoji:'🔍'},
+    {x:795, fill:'#1a6b3c', label:['Subordinate'],   sub:'Controls appointments',emoji:'⚙️'},
+    {x:970, fill:'#b01a1a', label:['Retirement'],    sub:'At 62 years',         emoji:'📅'},
+    {x:1145,fill:'#6a1a9a', label:['Collegium'],     sub:'CJI + 4 post-1998',   emoji:'⚖️'},
+    {x:1290,fill:'#1a5060', label:['Military Out'],  sub:'Art.227 exclusion',   emoji:'🚫'},
+  ];
+  steps.forEach((s,i)=>{if(i<steps.length-1)curve(svg,s.x+68,80,steps[i+1].x-68,80,'#c9900a55',false,2);});
+  steps.forEach(s=>nd(svg,s.x,80,128,66,s.fill,[s.label[0]],s.sub,s.emoji));
+})();
+</script>
+</body>
+</html>

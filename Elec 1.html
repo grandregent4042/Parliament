@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elections in India — Complete Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0e1117;--paper:#f7f5f0;--cream:#fffdf8;
+  --saffron:#e8610a;--saffron-lt:#fff0e6;
+  --navy:#0f2a5a;--navy-lt:#e8f0ff;
+  --green:#1a6640;--green-lt:#e8f5ee;
+  --gold:#b8860b;--gold-lt:#fef9e7;
+  --purple:#6520a0;--purple-lt:#f3eaff;
+  --teal:#0a607a;--teal-lt:#e5f4f8;
+  --red:#b81a1a;--red-lt:#fdeaea;
+  --slate:#445566;--border:#ddd5c0;
+  --muted:#7a6e5a;--shadow:rgba(14,17,23,0.08);
+}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--paper);color:var(--ink);
+  min-height:100vh;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 800px 600px at 0% 0%, rgba(232,97,10,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 600px at 100% 100%, rgba(15,42,90,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 400px at 50% 50%, rgba(26,102,64,0.02) 0%, transparent 70%);
+  pointer-events:none;z-index:0;
+}
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:52px 16px 24px;position:relative;}
+.header-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:5px 16px;border-radius:30px;
+  background:linear-gradient(135deg,var(--saffron),#f08030);
+  color:#fff;font-size:10px;font-family:'DM Mono',monospace;
+  letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;
+  box-shadow:0 2px 12px rgba(232,97,10,0.25);
+}
+.header h1{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(28px,5vw,52px);line-height:1.1;
+  color:var(--ink);margin-bottom:10px;
+}
+.header h1 em{font-style:italic;color:var(--saffron);}
+.header p{font-size:13px;color:var(--muted);max-width:600px;margin:0 auto;line-height:1.7;}
+.tricolor{display:flex;width:80px;height:5px;border-radius:4px;overflow:hidden;margin:18px auto 0;}
+.tricolor-s{flex:1;}
+.tricolor-s:nth-child(1){background:#ff9933;}
+.tricolor-s:nth-child(2){background:#fff;border:1px solid #ddd;}
+.tricolor-s:nth-child(3){background:#128807;}
+
+/* SECTION LABEL */
+.sec{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;margin:40px 0 16px;
+  display:flex;align-items:center;gap:12px;
+}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+.sec.s1{color:var(--saffron);}
+.sec.s2{color:var(--navy);}
+.sec.s3{color:var(--green);}
+.sec.s4{color:var(--purple);}
+.sec.s5{color:var(--red);}
+.sec.s6{color:var(--teal);}
+.sec.s7{color:var(--gold);}
+.sec.s8{color:var(--slate);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;margin-bottom:20px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:960px){.g3,.g4{grid-template-columns:1fr 1fr;}.g2x1{grid-template-columns:1fr;}}
+@media(max-width:620px){.g2,.g3,.g4,.g2x1{grid-template-columns:1fr;}}
+
+/* PANEL CARD */
+.pc{
+  background:var(--cream);border:1.5px solid var(--border);
+  border-radius:16px;padding:20px;position:relative;overflow:hidden;
+  transition:box-shadow 0.25s,transform 0.25s;
+}
+.pc:hover{box-shadow:0 8px 32px var(--shadow);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.saffron::before{background:linear-gradient(90deg,var(--saffron),#f0a060);}
+.pc.navy::before{background:linear-gradient(90deg,var(--navy),#3060b0);}
+.pc.green::before{background:linear-gradient(90deg,var(--green),#30a060);}
+.pc.gold::before{background:linear-gradient(90deg,var(--gold),#d4a030);}
+.pc.purple::before{background:linear-gradient(90deg,var(--purple),#9040d0);}
+.pc.teal::before{background:linear-gradient(90deg,var(--teal),#2090b0);}
+.pc.red::before{background:linear-gradient(90deg,var(--red),#d04040);}
+.pc.slate::before{background:linear-gradient(90deg,var(--slate),#8090a0);}
+.pc-label{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;
+  color:var(--muted);text-transform:uppercase;margin-bottom:6px;
+}
+.pc h3{
+  font-family:'Libre Baskerville',serif;font-size:15px;
+  margin-bottom:12px;display:flex;align-items:center;gap:8px;line-height:1.35;
+}
+
+/* STAT ROW */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{
+  flex:1;padding:12px 8px;border-radius:10px;
+  background:var(--paper);border:1.5px solid var(--border);text-align:center;
+}
+.stat-num{font-family:'Libre Baskerville',serif;font-size:26px;font-weight:700;line-height:1;}
+.stat-lbl{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;font-weight:700;margin-top:2px;color:var(--ink);}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{
+  padding:9px 12px;border-radius:9px;
+  background:var(--paper);border:1px solid var(--border);font-size:11px;
+}
+.vt{font-weight:700;margin-bottom:2px;}
+.vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* CHIPS */
+.chip{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:3px 9px;border-radius:20px;
+  font-size:10px;font-weight:700;margin:2px;
+  font-family:'DM Mono',monospace;
+}
+.chip.ok{background:rgba(26,102,64,0.1);color:var(--green);border:1px solid rgba(26,102,64,0.2);}
+.chip.warn{background:rgba(184,26,26,0.1);color:var(--red);border:1px solid rgba(184,26,26,0.2);}
+.chip.info{background:rgba(15,42,90,0.08);color:var(--navy);border:1px solid rgba(15,42,90,0.2);}
+.chip.gold{background:rgba(184,134,11,0.1);color:var(--gold);border:1px solid rgba(184,134,11,0.2);}
+.chip.purple{background:rgba(101,32,160,0.1);color:var(--purple);border:1px solid rgba(101,32,160,0.2);}
+.chip.saffron{background:rgba(232,97,10,0.1);color:var(--saffron);border:1px solid rgba(232,97,10,0.2);}
+.chip.teal{background:rgba(10,96,122,0.1);color:var(--teal);border:1px solid rgba(10,96,122,0.2);}
+
+/* FEAT GRID */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{
+  padding:10px 12px;border-radius:9px;
+  background:var(--paper);border:1px solid var(--border);
+}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:700;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* MAP CARD */
+.map-card{
+  background:var(--cream);border:1.5px solid var(--border);
+  border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;
+}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--saffron),#e0a030,var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--navy),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--navy));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--red),var(--saffron),var(--gold));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--purple),var(--navy));}
+.map-card.mc6::before{background:linear-gradient(90deg,var(--teal),var(--green));}
+.map-card svg{display:block;width:100%;}
+
+/* KEYSTONE */
+.keystone{
+  background:linear-gradient(135deg,var(--navy) 0%,#1a3a6a 100%);
+  color:#f0ecdf;border-radius:20px;padding:28px 32px;
+  margin:24px 0;display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap;
+  box-shadow:0 8px 40px rgba(15,42,90,0.2);
+}
+.keystone-icon{font-size:40px;flex:0 0 auto;margin-top:4px;}
+.keystone-title{
+  font-family:'Libre Baskerville',serif;font-size:22px;
+  font-style:italic;margin-bottom:8px;color:#fff;
+}
+.keystone-body{font-size:12px;color:#b8c8e8;line-height:1.75;}
+.keystone-body strong{color:#f0ecdf;}
+.kpills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+.kpill{
+  padding:4px 12px;border-radius:20px;
+  background:rgba(255,255,255,0.1);
+  font-size:10px;font-family:'DM Mono',monospace;
+  color:#d0e0ff;border:1px solid rgba(255,255,255,0.15);
+}
+
+/* FLOW ROW */
+.flow-row{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:10px 0;}
+.fn{
+  padding:6px 13px;border-radius:8px;font-size:11px;
+  font-weight:700;border:1.5px solid;
+}
+.fa{font-size:16px;color:var(--muted);font-weight:300;}
+
+/* TABLE */
+.ctbl{width:100%;border-collapse:collapse;font-size:11px;}
+.ctbl th{
+  background:var(--ink);color:#fff;padding:9px 12px;
+  text-align:left;font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:1px;
+}
+.ctbl td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55;}
+.ctbl tr:last-child td{border-bottom:none;}
+.ctbl tr:nth-child(even) td{background:rgba(232,97,10,0.025);}
+.ctbl td:first-child{font-weight:700;color:var(--saffron);}
+
+/* ARTICLE TAG */
+.art{
+  display:inline-block;padding:2px 8px;border-radius:5px;
+  font-size:9px;font-weight:700;font-family:'DM Mono',monospace;
+  background:var(--navy-lt);color:var(--navy);border:1px solid rgba(15,42,90,0.2);
+  margin:1px;
+}
+
+/* PHASE */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:14px 0;}
+@media(max-width:620px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{
+  padding:18px;border-radius:14px;border:2px solid;text-align:center;
+  background:var(--cream);transition:box-shadow 0.2s;
+}
+.phase-box:hover{box-shadow:0 6px 24px var(--shadow);}
+.phase-num{font-family:'Libre Baskerville',serif;font-size:30px;font-weight:700;}
+.phase-title{font-size:12px;font-weight:800;margin:5px 0 2px;}
+.phase-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);}
+
+/* STEP FLOW (vertical) */
+.step-flow{display:flex;flex-direction:column;gap:0;}
+.step{display:flex;gap:14px;position:relative;}
+.step-num{
+  flex:0 0 32px;width:32px;height:32px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:13px;font-family:'DM Mono',monospace;
+  color:#fff;z-index:1;flex-shrink:0;
+}
+.step-content{padding-bottom:20px;flex:1;}
+.step:last-child .step-content{padding-bottom:0;}
+.step::before{
+  content:'';position:absolute;left:15px;top:32px;
+  width:2px;bottom:0;background:var(--border);
+}
+.step:last-child::before{display:none;}
+.step-title{font-size:12px;font-weight:800;margin-top:6px;}
+.step-sub{font-size:10px;color:var(--muted);margin-top:2px;font-family:'DM Mono',monospace;}
+
+/* CALLOUT */
+.callout{
+  padding:12px 14px;border-radius:10px;margin:8px 0;
+  background:rgba(26,102,64,0.06);border:1.5px solid rgba(26,102,64,0.2);
+}
+.callout-title{font-size:11px;font-weight:800;color:var(--green);margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.6;}
+
+/* DIVIDER */
+.div-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:6px 0;}
+
+/* IMPACT CHAIN */
+.impact-chain{
+  display:flex;align-items:center;gap:0;
+  flex-wrap:wrap;padding:8px 0;margin:8px 0;
+}
+.ic-node{
+  padding:7px 13px;border-radius:8px;font-size:10px;
+  font-weight:700;white-space:nowrap;border:1.5px solid;
+}
+.ic-arr{font-size:12px;color:var(--muted);flex:0 0 auto;margin:0 5px;}
+
+/* SIDE BADGE */
+.sbadge{
+  position:absolute;top:14px;right:16px;
+  padding:3px 10px;border-radius:6px;font-size:9px;
+  font-weight:700;font-family:'DM Mono',monospace;
+}
+
+/* NARROW BAND */
+.band{
+  background:var(--ink);color:#f0ecdf;
+  border-radius:12px;padding:14px 20px;
+  margin:12px 0;font-size:11px;line-height:1.7;
+}
+.band strong{color:var(--gold-lt);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-badge">🗳️ Indian Polity · Elections · UPSC Prelims</div>
+  <h1>Elections in <em>India</em></h1>
+  <p>One connected story — Political Parties → ECI → Constitutional Articles → Process → Laws → Full Picture</p>
+  <div class="tricolor"><div class="tricolor-s"></div><div class="tricolor-s"></div><div class="tricolor-s"></div></div>
+</div>
+
+<!-- ═══ MASTER FLOW ═══ -->
+<div class="sec s1">① Master Flow — The Connected Story</div>
+
+<div class="map-card mc1">
+  <svg id="svgMaster" viewBox="0 0 1360 120" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<!-- ═══ SECTION 1: POLITICAL PARTIES ═══ -->
+<div class="sec s1">① Political Parties — Who Fights Elections?</div>
+
+<!-- Party system overview -->
+<div class="map-card mc1">
+  <svg id="svgParties" viewBox="0 0 1360 300" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <!-- National Party Criteria -->
+  <div class="pc saffron">
+    <div class="pc-label">Recognition Criteria</div>
+    <h3>🏛️ National Party — Any ONE Condition</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">📊 6% Votes + 4 LS Seats</div>
+        <div class="vs">6% valid votes in 4+ states AND 4 Lok Sabha seats</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🪑 2% LS Seats from 3 States</div>
+        <div class="vs">At least 2% of total LS seats, spread across min 3 states</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">⭐ State Party Status in 4 States</div>
+        <div class="vs">Already recognised as state party in 4 or more states</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:10px 12px;background:var(--saffron-lt);border-radius:8px;border:1px solid rgba(232,97,10,0.2);">
+      <span style="font-size:10px;font-weight:800;color:var(--saffron);">Currently: 6 National Parties in India</span>
+    </div>
+  </div>
+
+  <!-- State Party Criteria -->
+  <div class="pc green">
+    <div class="pc-label">Recognition Criteria</div>
+    <h3>🗺️ State Party — Any ONE Condition</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">📊 6% Votes + 2 Assembly Seats</div>
+        <div class="vs">6% valid votes in state elections + 2 assembly seats won</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🪑 3% of Assembly Seats (min 3)</div>
+        <div class="vs">At least 3% of total assembly seats, or 3 seats (whichever higher)</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🏟️ 1 LS Seat + 6% Votes</div>
+        <div class="vs">1 Lok Sabha seat from state AND 6% valid votes in state</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:10px 12px;background:var(--green-lt);border-radius:8px;border:1px solid rgba(26,102,64,0.2);">
+      <span style="font-size:10px;font-weight:800;color:var(--green);">Currently: 50+ State Parties + 2500+ Registered-Unrecognised</span>
+    </div>
+  </div>
+</div>
+
+<!-- Benefits & Party System -->
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-label">Benefits of Recognition</div>
+    <h3>🎁 Recognised Parties Get</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">🔣</div><div class="ft">Reserved Symbol</div><div class="fs">Exclusive electoral symbol</div></div>
+      <div class="feat"><div class="fi">📺</div><div class="ft">Free Media Time</div><div class="fs">Doordarshan & AIR</div></div>
+      <div class="feat"><div class="fi">📋</div><div class="ft">Electoral Rolls</div><div class="fs">Access to voter lists</div></div>
+      <div class="feat"><div class="fi">💰</div><div class="ft">Free Premises</div><div class="fs">Election offices</div></div>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">10th Schedule</div>
+    <h3>⚖️ Anti-Defection Law — Key Link</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">10th Schedule (1985)</div><div class="vs">Disqualification for switching party</div></div>
+      <div class="vitem"><div class="vt">Grounds for Disqualification</div><div class="vs">Voting against party whip, voluntarily leaving party</div></div>
+      <div class="vitem"><div class="vt">Exception: Merger</div><div class="vs">2/3rd of party members agree to merge</div></div>
+      <div class="vitem"><div class="vt">Decided by</div><div class="vs">Speaker / Chairman (not courts initially)</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip purple">📜 10th Schedule</span><span class="chip info">52nd Amendment</span></div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 2: ECI ═══ -->
+<div class="sec s2">② Election Commission of India — Who Conducts?</div>
+
+<div class="map-card mc2">
+  <svg id="svgECI" viewBox="0 0 1360 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc navy">
+    <div class="pc-label">Constitutional Status</div>
+    <h3>🏛️ ECI — Article 324</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Constitutional Body</div><div class="vs">Not statutory; established by Constitution</div></div>
+      <div class="vitem"><div class="vt">Multi-Member Commission</div><div class="vs">1 CEC + 2 Election Commissioners (since 1989)</div></div>
+      <div class="vitem"><div class="vt">CEC Removal</div><div class="vs">Same procedure as Supreme Court judge</div></div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="art">Art 324</span>
+      <span class="chip info">Constitutional Protection</span>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Jurisdiction</div>
+    <h3>🗳️ ECI Conducts Elections For</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">🏛️</div><div class="ft">Lok Sabha</div><div class="fs">Lower house elections</div></div>
+      <div class="feat"><div class="fi">🏛️</div><div class="ft">Rajya Sabha</div><div class="fs">Upper house elections</div></div>
+      <div class="feat"><div class="fi">🏘️</div><div class="ft">State Assemblies</div><div class="fs">Vidhan Sabha elections</div></div>
+      <div class="feat"><div class="fi">👑</div><div class="ft">President & VP</div><div class="fs">Constitutional heads</div></div>
+    </div>
+    <div class="callout" style="margin-top:8px;">
+      <div class="callout-title">NOT ECI's jurisdiction:</div>
+      <div class="callout-body">Panchayats & Municipalities → State Election Commission (Art 243K, 243ZA)</div>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">State Election Commission</div>
+    <h3>🏙️ Local Body Elections</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Panchayats (Art 243K)</div><div class="vs">Gram Panchayat, Panchayat Samiti, Zila Parishad</div></div>
+      <div class="vitem"><div class="vt">Municipalities (Art 243ZA)</div><div class="vs">Municipal Corporations, Councils, Nagar Panchayats</div></div>
+      <div class="vitem"><div class="vt">Separate from ECI</div><div class="vs">Each state has its own SEC</div></div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="art">Art 243K</span>
+      <span class="art">Art 243ZA</span>
+    </div>
+  </div>
+</div>
+
+<!-- Electoral Machinery -->
+<div class="pc slate" style="margin-bottom:18px;">
+  <div class="pc-label">Electoral Machinery — Hierarchy</div>
+  <h3>⚙️ Who Does What on the Ground</h3>
+  <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:10px;">
+    <div style="text-align:center;padding:12px 8px;background:var(--navy);border-radius:10px;color:#fff;">
+      <div style="font-size:18px;margin-bottom:4px;">👑</div>
+      <div style="font-size:10px;font-weight:800;">CEC</div>
+      <div style="font-size:8px;opacity:0.7;font-family:'DM Mono',monospace;margin-top:2px;">National Head</div>
+    </div>
+    <div style="text-align:center;padding:12px 8px;background:var(--teal);border-radius:10px;color:#fff;">
+      <div style="font-size:18px;margin-bottom:4px;">🏛️</div>
+      <div style="font-size:10px;font-weight:800;">Chief Electoral Officer</div>
+      <div style="font-size:8px;opacity:0.7;font-family:'DM Mono',monospace;margin-top:2px;">State Level</div>
+    </div>
+    <div style="text-align:center;padding:12px 8px;background:var(--purple);border-radius:10px;color:#fff;">
+      <div style="font-size:18px;margin-bottom:4px;">📋</div>
+      <div style="font-size:10px;font-weight:800;">District Election Officer</div>
+      <div style="font-size:8px;opacity:0.7;font-family:'DM Mono',monospace;margin-top:2px;">District Level</div>
+    </div>
+    <div style="text-align:center;padding:12px 8px;background:var(--saffron);border-radius:10px;color:#fff;">
+      <div style="font-size:18px;margin-bottom:4px;">📝</div>
+      <div style="font-size:10px;font-weight:800;">Returning Officer</div>
+      <div style="font-size:8px;opacity:0.7;font-family:'DM Mono',monospace;margin-top:2px;">Constituency</div>
+    </div>
+    <div style="text-align:center;padding:12px 8px;background:var(--green);border-radius:10px;color:#fff;">
+      <div style="font-size:18px;margin-bottom:4px;">🏫</div>
+      <div style="font-size:10px;font-weight:800;">Presiding Officer</div>
+      <div style="font-size:8px;opacity:0.7;font-family:'DM Mono',monospace;margin-top:2px;">Polling Booth</div>
+    </div>
+    <div style="text-align:center;padding:12px 8px;background:var(--gold);border-radius:10px;color:#fff;">
+      <div style="font-size:18px;margin-bottom:4px;">👁️</div>
+      <div style="font-size:10px;font-weight:800;">Observers</div>
+      <div style="font-size:8px;opacity:0.7;font-family:'DM Mono',monospace;margin-top:2px;">ECI Deputed</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 3: CONSTITUTIONAL ARTICLES ═══ -->
+<div class="sec s3">③ Constitutional Articles — Very Important for Prelims</div>
+
+<div class="map-card mc3">
+  <svg id="svgArticles" viewBox="0 0 1360 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<div style="overflow-x:auto;margin-bottom:20px;">
+<table class="ctbl">
+  <thead>
+    <tr>
+      <th>ARTICLE</th>
+      <th>PROVISION</th>
+      <th>KEY DETAIL</th>
+      <th>PRELIMS TIP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Art 324</td>
+      <td>Superintendence of ECI</td>
+      <td>Constitutional body; conducts LS, RS, State Assembly, President & VP elections</td>
+      <td><span class="chip info">Most important</span></td>
+    </tr>
+    <tr>
+      <td>Art 325</td>
+      <td>Single Electoral Roll</td>
+      <td>No exclusion based on religion, race, caste or sex</td>
+      <td><span class="chip ok">Equality principle</span></td>
+    </tr>
+    <tr>
+      <td>Art 326</td>
+      <td>Universal Adult Franchise</td>
+      <td>Every citizen 18+ can vote; 61st Amendment reduced age from 21 to 18 (1989)</td>
+      <td><span class="chip saffron">⭐ High frequency</span></td>
+    </tr>
+    <tr>
+      <td>Art 327</td>
+      <td>Parliament's Power</td>
+      <td>Parliament can make laws for elections to LS, RS and State Legislatures</td>
+      <td><span class="chip info">Parliament's role</span></td>
+    </tr>
+    <tr>
+      <td>Art 328</td>
+      <td>State Legislature's Power</td>
+      <td>State Legislature can make laws for elections to that state's legislature</td>
+      <td><span class="chip info">State's role</span></td>
+    </tr>
+    <tr>
+      <td>Art 329</td>
+      <td>No Court Interference</td>
+      <td>Courts cannot interfere in election process; disputes only through election petition AFTER result</td>
+      <td><span class="chip warn">⚠️ Tricky MCQ</span></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ═══ SECTION 4: TYPES OF ELECTIONS ═══ -->
+<div class="sec s4">④ Types of Elections — Comparison</div>
+
+<div class="map-card mc4">
+  <svg id="svgTypes" viewBox="0 0 1360 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="g2" style="margin-bottom:0;">
+    <!-- Lok Sabha -->
+    <div class="pc saffron">
+      <div class="pc-label">Lower House</div>
+      <h3>🏛️ Lok Sabha</h3>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">Direct Election</div><div class="vs">Citizens vote directly</div></div>
+        <div class="vitem"><div class="vt">5-Year Term</div><div class="vs">Subject to dissolution</div></div>
+        <div class="vitem"><div class="vt">FPTP System</div><div class="vs">First-Past-The-Post</div></div>
+        <div class="vitem"><div class="vt">543 Constituencies</div><div class="vs">One MP per constituency</div></div>
+      </div>
+      <div style="margin-top:8px;"><span class="chip saffron">Direct</span><span class="chip gold">FPTP</span></div>
+    </div>
+
+    <!-- Rajya Sabha -->
+    <div class="pc navy">
+      <div class="pc-label">Upper House</div>
+      <h3>🏛️ Rajya Sabha</h3>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">Indirect Election</div><div class="vs">MLAs of state vote</div></div>
+        <div class="vitem"><div class="vt">Permanent House</div><div class="vs">Cannot be dissolved</div></div>
+        <div class="vitem"><div class="vt">PR + STV System</div><div class="vs">Proportional Representation + Single Transferable Vote</div></div>
+        <div class="vitem"><div class="vt">1/3 Retire Every 2 Years</div><div class="vs">Staggered retirement</div></div>
+      </div>
+      <div style="margin-top:8px;"><span class="chip info">Indirect</span><span class="chip purple">PR+STV</span></div>
+    </div>
+  </div>
+  <div class="g2" style="margin-bottom:0;">
+    <!-- Vidhan Sabha -->
+    <div class="pc green">
+      <div class="pc-label">State Lower House</div>
+      <h3>🏘️ Vidhan Sabha</h3>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">Direct Election</div><div class="vs">Citizens vote directly</div></div>
+        <div class="vitem"><div class="vt">5-Year Term</div><div class="vs">Subject to dissolution</div></div>
+        <div class="vitem"><div class="vt">FPTP System</div><div class="vs">First-Past-The-Post</div></div>
+        <div class="vitem"><div class="vt">State Level</div><div class="vs">MLAs represent constituencies</div></div>
+      </div>
+      <div style="margin-top:8px;"><span class="chip ok">Direct</span><span class="chip gold">FPTP</span></div>
+    </div>
+
+    <!-- Vidhan Parishad -->
+    <div class="pc purple">
+      <div class="pc-label">State Upper House</div>
+      <h3>📜 Vidhan Parishad</h3>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">Indirect Election</div><div class="vs">MLAs, teachers, graduates vote</div></div>
+        <div class="vitem"><div class="vt">Permanent House</div><div class="vs">Cannot be dissolved</div></div>
+        <div class="vitem"><div class="vt">Size Limit</div><div class="vs">Max 1/3 of Assembly; min 40 members</div></div>
+        <div class="vitem"><div class="vt">Not in All States</div><div class="vs">Only 6 states have Vidhan Parishad</div></div>
+      </div>
+      <div style="margin-top:8px;"><span class="chip purple">Indirect</span><span class="chip teal">PR+STV</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- FPTP vs PR Box -->
+<div class="pc red" style="margin-bottom:20px;">
+  <div class="pc-label">Voting System Deep-Dive</div>
+  <h3>⚖️ FPTP vs Proportional Representation</h3>
+  <div class="g2" style="margin-bottom:0;margin-top:8px;">
+    <div style="padding:14px;border-radius:10px;background:var(--saffron-lt);border:1.5px solid rgba(232,97,10,0.2);">
+      <div style="font-size:12px;font-weight:800;color:var(--saffron);margin-bottom:8px;">🏆 FPTP (First-Past-The-Post)</div>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">Simple majority wins</div><div class="vs">Highest votes — doesn't need 50%</div></div>
+        <div class="vitem"><div class="vt">Used in</div><div class="vs">Lok Sabha, Vidhan Sabha</div></div>
+        <div class="vitem"><div class="vt">Problem</div><div class="vs">Seat-Vote Mismatch — party can win more seats with fewer votes</div></div>
+      </div>
+    </div>
+    <div style="padding:14px;border-radius:10px;background:var(--navy-lt);border:1.5px solid rgba(15,42,90,0.2);">
+      <div style="font-size:12px;font-weight:800;color:var(--navy);margin-bottom:8px;">🔄 PR + STV (Single Transferable Vote)</div>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">Voter ranks candidates</div><div class="vs">1st preference, 2nd preference, etc.</div></div>
+        <div class="vitem"><div class="vt">Used in</div><div class="vs">Rajya Sabha, Vidhan Parishad, President & VP</div></div>
+        <div class="vitem"><div class="vt">Advantage</div><div class="vs">More proportional; reduces wasted votes</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 5: ELECTION PROCESS ═══ -->
+<div class="sec s5">⑤ Election Process — Chronological Flow</div>
+
+<div class="map-card mc1">
+  <svg id="svgProcess" viewBox="0 0 1360 130" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<div class="g2x1">
+  <!-- Step Flow -->
+  <div class="pc saffron">
+    <div class="pc-label">Step-by-Step Process</div>
+    <h3>📋 9 Stages of an Election</h3>
+    <div class="step-flow" style="margin-top:10px;">
+      <div class="step">
+        <div class="step-num" style="background:var(--saffron);">1</div>
+        <div class="step-content">
+          <div class="step-title">ECI Announces Schedule → MCC Begins</div>
+          <div class="step-sub">Model Code of Conduct comes into force immediately</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:var(--navy);">2</div>
+        <div class="step-content">
+          <div class="step-title">Notification Issued</div>
+          <div class="step-sub">By President (LS) / Governor (State Assembly)</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:var(--green);">3</div>
+        <div class="step-content">
+          <div class="step-title">Filing Nomination</div>
+          <div class="step-sub">Candidates submit nomination + security deposit</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:var(--gold);">4</div>
+        <div class="step-content">
+          <div class="step-title">Scrutiny of Nominations</div>
+          <div class="step-sub">Returning Officer checks validity of nominations</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:var(--purple);">5</div>
+        <div class="step-content">
+          <div class="step-title">Withdrawal of Candidature</div>
+          <div class="step-sub">Last date to withdraw nomination</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:var(--teal);">6</div>
+        <div class="step-content">
+          <div class="step-title">Election Campaign</div>
+          <div class="step-sub">MCC governs campaigning; silent period 48 hrs before poll</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:var(--red);">7</div>
+        <div class="step-content">
+          <div class="step-title">Polling Day (EVM + Secret Ballot)</div>
+          <div class="step-sub">VVPAT generates paper trail for verification</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:var(--slate);">8</div>
+        <div class="step-content">
+          <div class="step-title">Counting of Votes</div>
+          <div class="step-sub">Conducted at counting centres under strict supervision</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:var(--navy);">9</div>
+        <div class="step-content">
+          <div class="step-title">Result Declared</div>
+          <div class="step-sub">Winner = candidate with highest votes (FPTP)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Side panel: Key facts -->
+  <div style="display:flex;flex-direction:column;gap:16px;">
+    <div class="pc gold">
+      <div class="pc-label">Security Deposit Rule</div>
+      <h3>💰 Deposit Forfeiture</h3>
+      <div style="text-align:center;padding:16px;background:var(--gold-lt);border-radius:10px;margin-bottom:8px;">
+        <div style="font-family:'Libre Baskerville',serif;font-size:32px;font-weight:700;color:var(--gold);">1/6</div>
+        <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;">Votes needed to keep deposit</div>
+      </div>
+      <div class="callout-body" style="font-size:11px;">If a candidate gets fewer than <strong>1/6th</strong> of total valid votes in the constituency, their security deposit is forfeited to the government.</div>
+    </div>
+    <div class="pc navy">
+      <div class="pc-label">Model Code of Conduct</div>
+      <h3>📏 MCC Key Points</h3>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">Not Legally Enforceable</div><div class="vs">But ECI has moral authority to enforce</div></div>
+        <div class="vitem"><div class="vt">Comes into force</div><div class="vs">Immediately on election schedule announcement</div></div>
+        <div class="vitem"><div class="vt">Ends on</div><div class="vs">Result declaration</div></div>
+      </div>
+    </div>
+    <div class="pc green">
+      <div class="pc-label">Other Key Facts</div>
+      <h3>📌 Quick Facts</h3>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">Electoral Roll Updated</div><div class="vs">Annually (Jan 1 qualifying date)</div></div>
+        <div class="vitem"><div class="vt">Convicted Prisoners</div><div class="vs">Cannot vote during imprisonment</div></div>
+        <div class="vitem"><div class="vt">By-Elections</div><div class="vs">Must be held within 6 months of vacancy</div></div>
+        <div class="vitem"><div class="vt">One Nation One Election</div><div class="vs">Simultaneous elections — still a proposal</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 6: IMPORTANT LAWS ═══ -->
+<div class="sec s6">⑥ Important Laws — RPA 1950 & 1951</div>
+
+<div class="g2">
+  <div class="pc teal">
+    <div class="pc-label">Representation of the People Act</div>
+    <h3>📜 RPA 1950 — Electoral Rolls</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Primary Focus</div><div class="vs">Preparation and revision of electoral rolls</div></div>
+      <div class="vitem"><div class="vt">Voter Registration</div><div class="vs">Rules for enrolling as voter</div></div>
+      <div class="vitem"><div class="vt">Delimitation</div><div class="vs">Allied with Delimitation Commission work</div></div>
+      <div class="vitem"><div class="vt">Qualifications</div><div class="vs">Age 18+, citizen of India, resident of constituency</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip teal">Electoral Rolls</span><span class="chip info">Voter Qualification</span></div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Representation of the People Act</div>
+    <h3>📜 RPA 1951 — Conduct of Elections</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Conduct of Elections</div><div class="vs">Entire election process rules</div></div>
+      <div class="vitem"><div class="vt">Disqualifications</div><div class="vs">Conviction, corrupt practices, office of profit</div></div>
+      <div class="vitem"><div class="vt">Election Expenses</div><div class="vs">Limits on candidate spending</div></div>
+      <div class="vitem"><div class="vt">Election Petitions</div><div class="vs">Disputes go to High Court (not lower courts)</div></div>
+      <div class="vitem"><div class="vt">Corrupt Practices</div><div class="vs">Bribery, booth capturing, false statements, etc.</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip purple">Election Conduct</span><span class="chip warn">Disqualifications</span></div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 7: FULL PICTURE SUMMARY ═══ -->
+<div class="sec s7">⑦ Full Picture — The Complete Flow</div>
+
+<div class="map-card mc6">
+  <svg id="svgSummary" viewBox="0 0 1360 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<!-- Gains/Challenges / What's Good & What's Not -->
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">India's Electoral Strengths</div>
+    <h3>✅ What India Does Well</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;">
+      <span class="chip ok">✅ Universal Adult Franchise</span>
+      <span class="chip ok">✅ Independent ECI</span>
+      <span class="chip ok">✅ EVM + VVPAT system</span>
+      <span class="chip ok">✅ Reserved symbols for parties</span>
+      <span class="chip ok">✅ Anti-defection law</span>
+      <span class="chip ok">✅ Model Code of Conduct</span>
+      <span class="chip ok">✅ World's largest democracy</span>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">Ongoing Challenges</div>
+    <h3>⚠️ Reform Areas</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;">
+      <span class="chip warn">❌ Money power in elections</span>
+      <span class="chip warn">❌ FPTP seat-vote mismatch</span>
+      <span class="chip warn">❌ Criminalisation of politics</span>
+      <span class="chip warn">❌ Voter ID issues</span>
+      <span class="chip warn">❌ Party funding opacity</span>
+      <span class="chip warn">❌ ONOE debate unresolved</span>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🗳️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Complete Story — One Sentence</div>
+    <div class="keystone-body">
+      <strong>Political Parties</strong> recognised by ECI → ECI conducts all major elections under <strong>Art 324</strong> → Based on <strong>Universal Adult Franchise (Art 326)</strong> → Mainly through <strong>FPTP system</strong> for direct elections → <strong>Art 329</strong> bars court interference during elections → Disputes via <strong>election petitions only</strong> → Governed by <strong>RPA 1950 & 1951</strong> → Anti-defection via <strong>10th Schedule</strong>
+    </div>
+    <div class="kpills">
+      <span class="kpill">📜 Art 324–329</span>
+      <span class="kpill">🗳️ ECI = Constitutional</span>
+      <span class="kpill">👥 18+ Universal Vote</span>
+      <span class="kpill">🏆 FPTP for Direct</span>
+      <span class="kpill">🔄 PR+STV for Indirect</span>
+      <span class="kpill">📋 RPA 1950 + 1951</span>
+      <span class="kpill">⚖️ 10th Schedule</span>
+    </div>
+  </div>
+</div>
+
+<!-- PRELIMS QUICK FIRE -->
+<div class="sec s8">⑧ Prelims Quick-Fire — High Frequency MCQ Points</div>
+
+<div class="g3">
+  <div class="pc gold">
+    <div class="pc-label">Numbers to Remember</div>
+    <h3>🔢 Key Numbers</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--saffron);">6</div>
+        <div class="stat-sub">National Parties</div>
+        <div class="stat-lbl">Currently</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--navy);">18</div>
+        <div class="stat-sub">Age to Vote</div>
+        <div class="stat-lbl">Art 326</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--green);">1/6</div>
+        <div class="stat-sub">Deposit Safe</div>
+        <div class="stat-lbl">Min votes</div>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--purple);">543</div>
+        <div class="stat-sub">LS Seats</div>
+        <div class="stat-lbl">Elected</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--teal);">2/3</div>
+        <div class="stat-sub">Merger Quorum</div>
+        <div class="stat-lbl">Anti-defection</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--gold);">6</div>
+        <div class="stat-sub">By-poll months</div>
+        <div class="stat-lbl">Deadline</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc saffron">
+    <div class="pc-label">Tricky Distinctions</div>
+    <h3>🎯 Easy to Confuse</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">ECI ≠ SEC</div><div class="vs">ECI → Lok Sabha, RS, State Assembly, President/VP | SEC → Panchayats & Municipalities</div></div>
+      <div class="vitem"><div class="vt">Art 324 ≠ Art 325</div><div class="vs">324 = ECI powers | 325 = Single electoral roll, no exclusion</div></div>
+      <div class="vitem"><div class="vt">FPTP ≠ PR+STV</div><div class="vs">FPTP = LS, VS (direct) | PR+STV = RS, VP, President (indirect)</div></div>
+      <div class="vitem"><div class="vt">RPA 1950 ≠ RPA 1951</div><div class="vs">1950 = Rolls | 1951 = Conduct + Disqualification</div></div>
+      <div class="vitem"><div class="vt">Art 329 = No Courts During Elections</div><div class="vs">Only election petition AFTER result — not during process</div></div>
+    </div>
+  </div>
+
+  <div class="pc navy">
+    <div class="pc-label">Article Quick Map</div>
+    <h3>📋 Article Anchor Table</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt"><span class="art">324</span> ECI — Superintendence</div><div class="vs">Most asked article on elections</div></div>
+      <div class="vitem"><div class="vt"><span class="art">325</span> No exclusion from rolls</div><div class="vs">Religion, race, caste, sex — none valid</div></div>
+      <div class="vitem"><div class="vt"><span class="art">326</span> Universal Adult Franchise</div><div class="vs">18+, 61st Amendment (1989)</div></div>
+      <div class="vitem"><div class="vt"><span class="art">327</span> Parliament makes laws</div><div class="vs">For central elections</div></div>
+      <div class="vitem"><div class="vt"><span class="art">328</span> State makes laws</div><div class="vs">For state elections</div></div>
+      <div class="vitem"><div class="vt"><span class="art">329</span> No court interference</div><div class="vs">During election; petition only after</div></div>
+      <div class="vitem"><div class="vt"><span class="art">243K / 243ZA</span> SEC</div><div class="vs">Local body elections</div></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- JAVASCRIPT: SVG RENDERING -->
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){
+  const e=document.createElementNS(NS,tag);
+  for(const[k,v]of Object.entries(a))e.setAttribute(k,v);
+  return e;
+}
+function curve(svg,x1,y1,x2,y2,col,dash,w){
+  const mid=(x1+x2)/2;
+  const p=se('path',{
+    d:`M${x1},${y1} C${mid},${y1} ${mid},${y2} ${x2},${y2}`,
+    stroke:col||'#aaa','stroke-width':w||2,fill:'none',
+    'stroke-dasharray':dash?'5 4':'none',opacity:'0.65'
+  });
+  svg.appendChild(p);
+}
+function node(svg,x,y,w,h,fill,lines,sub,emoji,rx){
+  rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  // shadow
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  // main rect
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.25)','stroke-width':'1.5'}));
+  // text
+  const textCol='#fff';
+  let ty=y-((lines.length-1)*7)-(sub?5:0)-(emoji?8:0);
+  if(emoji){
+    const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});
+    em.textContent=emoji;g.appendChild(em);ty+=18;
+  }
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'11','font-weight':'700','font-family':'Plus Jakarta Sans,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){
+    const s=se('text',{x,y:ty+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'8.5','font-family':'DM Mono,monospace',fill:'rgba(255,255,255,0.55)'});
+    s.textContent=sub;g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+function label(svg,x,y,text,col,size){
+  const t=se('text',{x,y,'text-anchor':'middle','font-size':size||'9',
+    'font-family':'DM Mono,monospace','letter-spacing':'2.5',fill:col||'rgba(120,100,60,0.4)'});
+  t.textContent=text;svg.appendChild(t);
+}
+
+// ── MASTER FLOW ──
+(()=>{
+  const svg=document.getElementById('svgMaster');
+  svg.setAttribute('viewBox','0 0 1360 120');
+  const steps=[
+    {x:80,  fill:'#e8610a', lines:['Political','Parties'],      sub:'Multi-party system',    emoji:'🏛️'},
+    {x:240, fill:'#b8860b', lines:['ECI / SEC'],                sub:'Art 324 / 243K',         emoji:'⚖️'},
+    {x:410, fill:'#0f2a5a', lines:['Art 324–329'],              sub:'Constitutional basis',   emoji:'📜'},
+    {x:580, fill:'#1a6640', lines:['Universal','Franchise'],    sub:'Art 326 — Age 18+',      emoji:'🗳️'},
+    {x:760, fill:'#6520a0', lines:['FPTP /','PR+STV'],         sub:'Direct vs Indirect',     emoji:'📊'},
+    {x:940, fill:'#b81a1a', lines:['Election','Process'],       sub:'9 Stages + MCC',         emoji:'📋'},
+    {x:1110,fill:'#0a607a', lines:['RPA 1950','& 1951'],        sub:'Election laws',          emoji:'📖'},
+    {x:1290,fill:'#445566', lines:['Result &','Petition'],      sub:'Art 329 — Dispute path', emoji:'🏆'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      curve(svg,s.x+65,60,steps[i+1].x-65,60,'#b8860b55',false,2);
+    }
+  });
+  steps.forEach(s=>{node(svg,s.x,60,122,70,s.fill,s.lines,s.sub,s.emoji);});
+  label(svg,680,14,'ELECTIONS IN INDIA — CONNECTED STORY','rgba(14,17,23,0.3)','9');
+})();
+
+// ── POLITICAL PARTIES SVG ──
+(()=>{
+  const svg=document.getElementById('svgParties');
+  svg.setAttribute('viewBox','0 0 1360 300');
+
+  // Central node
+  node(svg,680,140,210,60,'#0f2a5a',['Political Parties','in India'],'10th Sched + Art 324','🏛️');
+
+  // Left cluster: Types
+  const lefts=[
+    {x:160,y:60,  fill:'#e8610a',lines:['Multi-Party','System'],    sub:'India\'s party structure',emoji:'🗺️'},
+    {x:160,y:140, fill:'#b8860b',lines:['6 National','Parties'],    sub:'Currently',               emoji:'🏆'},
+    {x:160,y:220, fill:'#1a6640',lines:['50+ State','Parties'],     sub:'Recognised by ECI',       emoji:'🏘️'},
+    {x:360,y:240, fill:'#6520a0',lines:['2500+ Unrec.','Parties'],  sub:'Registered but not recog.',emoji:'📋'},
+  ];
+  lefts.forEach(n=>{
+    curve(svg,575,140,n.x+75,n.y,'#0f2a5a44',true,1.8);
+    node(svg,n.x,n.y,140,52,n.fill,n.lines,n.sub,n.emoji);
+  });
+
+  // Right cluster: Recognition benefits
+  const rights=[
+    {x:1200,y:60,  fill:'#0a607a',lines:['Reserved','Symbol'],     sub:'Exclusive symbol allotted',emoji:'🔣'},
+    {x:1200,y:140, fill:'#b81a1a',lines:['Free Media','Time'],     sub:'DD + AIR',                 emoji:'📺'},
+    {x:1200,y:220, fill:'#445566',lines:['Electoral','Rolls'],     sub:'Free access to voter lists',emoji:'📋'},
+    {x:1000,y:240, fill:'#6520a0',lines:['Reserved','Premises'],   sub:'During elections',         emoji:'🏢'},
+  ];
+  rights.forEach(n=>{
+    curve(svg,785,140,n.x-75,n.y,'#e8610a44',true,1.8);
+    node(svg,n.x,n.y,140,52,n.fill,n.lines,n.sub,n.emoji);
+  });
+
+  // Mid-top: criteria summary
+  node(svg,680,38,260,44,'#1a6640',['National: 6%+4LS OR 2% LS/3 states OR State in 4'],'Recognition criteria','');
+  curve(svg,680,62,680,110,'#1a664044',true,1.5);
+
+  label(svg,280,288,'TYPES OF PARTIES','rgba(232,97,10,0.4)','8');
+  label(svg,1060,288,'BENEFITS OF RECOGNITION','rgba(10,96,122,0.4)','8');
+})();
+
+// ── ECI SVG ──
+(()=>{
+  const svg=document.getElementById('svgECI');
+  svg.setAttribute('viewBox','0 0 1360 240');
+
+  node(svg,680,110,230,62,'#0f2a5a',['Election Commission','of India (ECI)'],'Article 324 — Constitutional','🏛️');
+
+  const lefts=[
+    {x:150,y:55,  fill:'#e8610a',lines:['Constitutional','Body'],      sub:'Not statutory',           emoji:'📜'},
+    {x:150,y:130, fill:'#b8860b',lines:['Art 324'],                    sub:'Source of powers',        emoji:'⚖️'},
+    {x:150,y:205, fill:'#1a6640',lines:['CEC Removal'],                sub:'Like SC Judge',           emoji:'👨‍⚖️'},
+    {x:380,y:205, fill:'#6520a0',lines:['Multi-member','Since 1989'],  sub:'1 CEC + 2 ECs',           emoji:'👥'},
+  ];
+  lefts.forEach(n=>{
+    curve(svg,565,110,n.x+75,n.y,'#0f2a5a44',true,1.8);
+    node(svg,n.x,n.y,155,50,n.fill,n.lines,n.sub,n.emoji);
+  });
+
+  const rights=[
+    {x:1210,y:55,  fill:'#0a607a',lines:['Lok Sabha'],      sub:'Direct elections',    emoji:'🏛️'},
+    {x:1210,y:118, fill:'#b81a1a',lines:['Rajya Sabha'],    sub:'Indirect elections',  emoji:'🏛️'},
+    {x:1210,y:181, fill:'#1a6640',lines:['State Assemblies'],sub:'Direct elections',   emoji:'🏘️'},
+    {x:1000,y:205, fill:'#445566',lines:['President & VP'], sub:'Indirect elections',  emoji:'👑'},
+    {x:790,y:200,  fill:'#b8860b',lines:['NOT Panchayats','& Municipalities'],sub:'→ SEC (Art 243K)',emoji:'🏙️'},
+  ];
+  rights.forEach(n=>{
+    curve(svg,795,110,n.x-75,n.y,'#e8610a44',true,1.8);
+    node(svg,n.x,n.y,155,48,n.fill,n.lines,n.sub,n.emoji);
+  });
+
+  label(svg,250,230,'ECI POWERS & STRUCTURE','rgba(15,42,90,0.4)','8');
+  label(svg,1000,230,'ECI CONDUCTS ELECTIONS FOR','rgba(232,97,10,0.4)','8');
+})();
+
+// ── ARTICLES SVG ──
+(()=>{
+  const svg=document.getElementById('svgArticles');
+  svg.setAttribute('viewBox','0 0 1360 200');
+
+  const articles=[
+    {x:110,  fill:'#e8610a',lines:['Art 324'],   sub:'ECI Superintendence', emoji:'⚖️'},
+    {x:310,  fill:'#0f2a5a',lines:['Art 325'],   sub:'No exclusion, rolls', emoji:'📋'},
+    {x:510,  fill:'#1a6640',lines:['Art 326'],   sub:'Universal Franchise', emoji:'🗳️'},
+    {x:710,  fill:'#b8860b',lines:['Art 327'],   sub:'Parliament makes laws',emoji:'🏛️'},
+    {x:910,  fill:'#6520a0',lines:['Art 328'],   sub:'State makes laws',    emoji:'🏘️'},
+    {x:1110, fill:'#b81a1a',lines:['Art 329'],   sub:'No court during poll', emoji:'⛔'},
+    {x:1290, fill:'#0a607a',lines:['Art 243K/','243ZA'],sub:'SEC — Local bodies',emoji:'🏙️'},
+  ];
+
+  // Connecting spine
+  for(let i=0;i<articles.length-1;i++){
+    const a=articles[i],b=articles[i+1];
+    svg.appendChild(se('line',{x1:a.x+70,y1:100,x2:b.x-70,y2:100,
+      stroke:'#b8860b55','stroke-width':'2'}));
+  }
+
+  // Alternating up/down layout
+  articles.forEach((a,i)=>{
+    const up=i%2===0;
+    const ny=up?70:130;
+    // vertical connector
+    svg.appendChild(se('line',{x1:a.x,y1:100,x2:a.x,y2:ny+(up?-20:20),
+      stroke:a.fill+'66','stroke-width':'1.5','stroke-dasharray':'3 3'}));
+    node(svg,a.x,ny,128,44,a.fill,a.lines,a.sub,a.emoji);
+  });
+
+  // Spine label
+  const spineLabel=se('rect',{x:580,y:93,width:200,height:14,rx:7,ry:7,fill:'#fffdf8',stroke:'var(--border)','stroke-width':'1'});
+  svg.appendChild(spineLabel);
+  const sl=se('text',{x:680,y:100,'text-anchor':'middle','dominant-baseline':'middle',
+    'font-size':'8','font-family':'DM Mono,monospace','letter-spacing':'2',fill:'rgba(14,17,23,0.45)'});
+  sl.textContent='ARTICLES 324–329 + 243K/243ZA';svg.appendChild(sl);
+
+  label(svg,680,190,'CONSTITUTIONAL ARTICLES ON ELECTIONS','rgba(14,17,23,0.3)','8');
+})();
+
+// ── TYPES OF ELECTIONS SVG ──
+(()=>{
+  const svg=document.getElementById('svgTypes');
+  svg.setAttribute('viewBox','0 0 1360 240');
+
+  node(svg,680,100,220,58,'#0f2a5a',['Types of','Elections in India'],'Direct vs Indirect','🗳️');
+
+  // Direct Elections (top)
+  const direct=[
+    {x:230, y:55,  fill:'#e8610a',lines:['Lok Sabha'],        sub:'FPTP · Direct · 5yr',     emoji:'🏛️'},
+    {x:450, y:38,  fill:'#1a6640',lines:['Vidhan Sabha'],     sub:'FPTP · Direct · 5yr',     emoji:'🏘️'},
+  ];
+  // Indirect Elections (bottom)
+  const indirect=[
+    {x:230, y:175, fill:'#0f2a5a',lines:['Rajya Sabha'],      sub:'PR+STV · Indirect · Perm',emoji:'🏛️'},
+    {x:450, y:195, fill:'#6520a0',lines:['Vidhan Parishad'],  sub:'Indirect · Max 1/3 of VS',emoji:'📜'},
+    {x:680, y:210, fill:'#b8860b',lines:['President & VP'],   sub:'PR+STV · Electoral College',emoji:'👑'},
+  ];
+
+  // Direct band
+  const db=se('rect',{x:90,y:22,width:560,height:60,rx:12,ry:12,
+    fill:'rgba(26,102,64,0.04)',stroke:'rgba(26,102,64,0.2)','stroke-width':'1.5','stroke-dasharray':'5 3'});
+  svg.appendChild(db);
+  const dt=se('text',{x:110,y:36,'font-size':'8','font-family':'DM Mono,monospace',
+    'letter-spacing':'2',fill:'rgba(26,102,64,0.6)'});dt.textContent='DIRECT ELECTIONS';svg.appendChild(dt);
+
+  // Indirect band
+  const ib=se('rect',{x:90,y:155,width:870,height:58,rx:12,ry:12,
+    fill:'rgba(15,42,90,0.04)',stroke:'rgba(15,42,90,0.2)','stroke-width':'1.5','stroke-dasharray':'5 3'});
+  svg.appendChild(ib);
+  const it=se('text',{x:110,y:168,'font-size':'8','font-family':'DM Mono,monospace',
+    'letter-spacing':'2',fill:'rgba(15,42,90,0.6)'});it.textContent='INDIRECT ELECTIONS';svg.appendChild(it);
+
+  [...direct,...indirect].forEach(n=>{
+    curve(svg,n.x<680?570:790,100,n.x+(n.x<680?75:-75),n.y,n.fill+'55',true,1.8);
+    node(svg,n.x,n.y,155,48,n.fill,n.lines,n.sub,n.emoji);
+  });
+
+  // FPTP & PR+STV side nodes
+  node(svg,1100,60,180,48,'#b8860b',['FPTP'],  'Highest votes wins','🏆');
+  node(svg,1100,160,180,48,'#6520a0',['PR + STV'],'Ranked preference voting','🔄');
+  node(svg,1290,110,130,36,'#0a607a',['LS · VS'],  'Use FPTP','');
+  node(svg,1290,155,130,36,'#b81a1a',['RS · VP'],  'Use PR+STV','');
+
+  curve(svg,1190,60,1290,105,'#b8860b55',false,1.5);
+  curve(svg,1190,160,1290,155,'#6520a055',false,1.5);
+
+  label(svg,680,232,'FPTP = DIRECT ELECTIONS   ·   PR+STV = INDIRECT ELECTIONS','rgba(14,17,23,0.3)','8');
+})();
+
+// ── ELECTION PROCESS SVG ──
+(()=>{
+  const svg=document.getElementById('svgProcess');
+  svg.setAttribute('viewBox','0 0 1360 130');
+
+  const steps=[
+    {x:80,  fill:'#e8610a',lines:['Schedule','Announced'],  sub:'MCC begins',   emoji:'📢'},
+    {x:240, fill:'#0f2a5a',lines:['Notification','Issued'],sub:'Pres/Gov order',emoji:'📄'},
+    {x:400, fill:'#1a6640',lines:['Nomination','Filed'],   sub:'+ Security dep.',emoji:'✍️'},
+    {x:560, fill:'#b8860b',lines:['Scrutiny'],             sub:'RO validates',  emoji:'🔍'},
+    {x:720, fill:'#6520a0',lines:['Withdrawal'],           sub:'Last date',     emoji:'↩️'},
+    {x:880, fill:'#0a607a',lines:['Campaign'],             sub:'MCC applies',   emoji:'📣'},
+    {x:1040,fill:'#b81a1a',lines:['Polling','Day'],        sub:'EVM + VVPAT',   emoji:'🗳️'},
+    {x:1200,fill:'#445566',lines:['Counting'],             sub:'Counting centre',emoji:'🔢'},
+    {x:1320,fill:'#1a6640',lines:['Result'],               sub:'FPTP wins',     emoji:'🏆'},
+  ];
+
+  // Arrow line
+  svg.appendChild(se('line',{x1:30,y1:65,x2:1350,y2:65,stroke:'#ddd5c0','stroke-width':'2'}));
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      svg.appendChild(se('line',{x1:s.x+52,y1:65,x2:steps[i+1].x-52,y2:65,
+        stroke:s.fill+'88','stroke-width':'2.5'}));
+    }
+  });
+
+  steps.forEach(s=>{node(svg,s.x,65,98,62,s.fill,s.lines,s.sub,s.emoji,8);});
+
+  label(svg,680,118,'9-STAGE ELECTION PROCESS → MCC OPERATIVE THROUGHOUT','rgba(14,17,23,0.3)','8');
+})();
+
+// ── SUMMARY FLOW SVG ──
+(()=>{
+  const svg=document.getElementById('svgSummary');
+  svg.setAttribute('viewBox','0 0 1360 180');
+
+  const steps=[
+    {x:90,  y:90, fill:'#e8610a',lines:['Political','Parties'],   sub:'National / State',   emoji:'🏛️'},
+    {x:280, y:90, fill:'#b8860b',lines:['Recognised','by ECI'],   sub:'Symbol + Media',     emoji:'🔣'},
+    {x:480, y:90, fill:'#0f2a5a',lines:['ECI Art 324'],           sub:'Conducts elections', emoji:'⚖️'},
+    {x:680, y:90, fill:'#1a6640',lines:['Art 326','UAF 18+'],     sub:'Universal franchise', emoji:'🗳️'},
+    {x:880, y:90, fill:'#6520a0',lines:['Mostly FPTP','PR+STV'], sub:'Direct & Indirect',  emoji:'📊'},
+    {x:1080,y:90, fill:'#b81a1a',lines:['Art 329','No Courts'],   sub:'During elections',   emoji:'⛔'},
+    {x:1280,y:90, fill:'#0a607a',lines:['Election','Petition'],   sub:'Only after result',  emoji:'📋'},
+  ];
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      curve(svg,s.x+68,90,steps[i+1].x-68,90,'#b8860b66',false,2.5);
+    }
+  });
+  steps.forEach(s=>node(svg,s.x,s.y,128,70,s.fill,s.lines,s.sub,s.emoji));
+
+  label(svg,680,170,'COMPLETE ELECTION FLOW — PRELIMS STORY ARC','rgba(14,17,23,0.3)','9');
+})();
+</script>
+</body>
+</html>

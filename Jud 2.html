@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supreme Court of India — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f5f2ec;
+  --paper:#fffef9;
+  --ink:#1a1510;
+  --gold:#c8900a;
+  --gold-lt:#f7e8be;
+  --amber:#d45e0a;
+  --red:#b01818;
+  --blue:#1a3878;
+  --green:#1a6038;
+  --purple:#5c1a80;
+  --teal:#0a5f6e;
+  --sky:#1a5070;
+  --muted:#7a6a50;
+  --border:#e0d4b0;
+  --card:#fffdf6;
+}
+body{
+  font-family:'Outfit',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  min-height:100vh;
+  background-image:
+    radial-gradient(ellipse 800px 600px at 5% 5%, rgba(200,144,10,0.07) 0%,transparent 60%),
+    radial-gradient(ellipse 600px 800px at 95% 80%, rgba(26,56,120,0.06) 0%,transparent 60%);
+}
+.wrap{max-width:1380px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.hdr{text-align:center;padding:52px 20px 28px;position:relative;}
+.hdr-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.hdr h1{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,60px);font-weight:700;line-height:1.1;color:var(--ink);}
+.hdr h1 em{font-style:italic;color:var(--gold);}
+.hdr-sub{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;margin-top:10px;}
+.hdr-line{width:100px;height:3px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:16px auto 0;border-radius:3px;}
+
+/* SECTION LABEL */
+.slabel{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:36px 0 16px;display:flex;align-items:center;gap:12px;}
+.slabel::before,.slabel::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* PANEL CARD */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:18px 18px 16px;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.pc.c-gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.c-blue::before{background:var(--blue);}
+.pc.c-green::before{background:var(--green);}
+.pc.c-red::before{background:var(--red);}
+.pc.c-purple::before{background:var(--purple);}
+.pc.c-teal::before{background:var(--teal);}
+.pc.c-amber::before{background:var(--amber);}
+.pc.c-sky::before{background:var(--sky);}
+.pc.c-ink::before{background:var(--ink);}
+.pc-tag{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.pc h3{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vi{padding:7px 10px;border-radius:8px;background:rgba(184,144,10,0.04);border:1px solid var(--border);font-size:11px;line-height:1.5;}
+.vi .vt{font-weight:700;font-size:11px;}
+.vi .vs{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:1px;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:9px;font-weight:700;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.gold{background:rgba(200,144,10,0.12);color:var(--gold);}
+.pill.blue{background:rgba(26,56,120,0.12);color:var(--blue);}
+.pill.green{background:rgba(26,96,56,0.12);color:var(--green);}
+.pill.red{background:rgba(176,24,24,0.12);color:var(--red);}
+.pill.purple{background:rgba(92,26,128,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,95,110,0.12);color:var(--teal);}
+.pill.amber{background:rgba(212,94,10,0.12);color:var(--amber);}
+
+/* CHIP */
+.chip{display:inline-block;padding:3px 8px;border-radius:6px;font-size:9px;font-weight:700;border:1px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip.ok{background:rgba(26,96,56,0.07);border-color:rgba(26,96,56,0.25);color:var(--green);}
+.chip.warn{background:rgba(176,24,24,0.07);border-color:rgba(176,24,24,0.25);color:var(--red);}
+.chip.note{background:rgba(200,144,10,0.07);border-color:rgba(200,144,10,0.25);color:var(--gold);}
+
+/* STAT BOX */
+.stat-row{display:flex;gap:8px;margin:8px 0;}
+.stat-b{flex:1;text-align:center;padding:10px 6px;border-radius:10px;background:rgba(200,144,10,0.05);border:1.5px solid var(--border);}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;line-height:1;}
+.stat-l{font-size:8px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:2px;}
+
+/* MAP CARD (SVG wrapper) */
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;position:relative;margin-bottom:20px;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;}
+.mc.m1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.mc.m2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.mc.m3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.mc.m4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.mc.m5::before{background:linear-gradient(90deg,var(--purple),var(--blue));}
+.mc svg{display:block;width:100%;}
+
+/* KEYSTONE */
+.ks{background:var(--ink);color:#f5e8c0;border-radius:16px;padding:24px 28px;margin:20px 0;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.ks-icon{font-size:40px;}
+.ks-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;margin-bottom:6px;color:#f5e8c0;}
+.ks-body{font-size:11px;color:#c8b880;line-height:1.7;}
+.ks-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.kp{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'JetBrains Mono',monospace;}
+
+/* FLOW */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.fn{padding:5px 11px;border-radius:7px;font-size:10px;font-weight:700;border:1.5px solid;}
+.fa{font-size:16px;color:var(--muted);}
+
+/* ARTICLE BADGE */
+.art-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;background:rgba(26,56,120,0.1);color:var(--blue);border:1px solid rgba(26,56,120,0.2);margin-right:4px;}
+
+/* CALLOUT */
+.callout{padding:10px 12px;border-radius:9px;background:rgba(26,96,56,0.06);border:1.5px solid rgba(26,96,56,0.2);margin:8px 0;}
+.callout-t{font-size:10px;font-weight:800;color:var(--green);margin-bottom:2px;}
+.callout-b{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* TABLE */
+.ctbl{width:100%;border-collapse:collapse;font-size:11px;}
+.ctbl th{background:var(--ink);color:#f5e8c0;padding:7px 10px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctbl td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctbl tr:last-child td{border-bottom:none;}
+.ctbl tr:nth-child(even) td{background:rgba(200,144,10,0.025);}
+.ctbl td:first-child{font-weight:700;color:var(--amber);font-family:'JetBrains Mono',monospace;font-size:10px;}
+
+/* PHASE */
+.phase-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0;}
+@media(max-width:900px){.phase-row{grid-template-columns:1fr 1fr;}}
+.pbox{padding:14px;border-radius:12px;border:2px solid;text-align:center;}
+.p-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;}
+.p-title{font-size:11px;font-weight:700;margin:3px 0;}
+.p-sub{font-size:8px;font-family:'JetBrains Mono',monospace;color:var(--muted);}
+
+/* HIGHLIGHT BOX */
+.hbox{padding:14px 16px;border-radius:10px;margin:10px 0;border:1.5px solid;}
+.hbox.warn{background:rgba(176,24,24,0.05);border-color:rgba(176,24,24,0.2);}
+.hbox.ok{background:rgba(26,96,56,0.05);border-color:rgba(26,96,56,0.2);}
+.hbox.note{background:rgba(200,144,10,0.05);border-color:rgba(200,144,10,0.2);}
+
+/* QUICK FIRE */
+.qf-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:10px 0;}
+@media(max-width:900px){.qf-grid{grid-template-columns:1fr 1fr 1fr;}}
+.qf-item{padding:12px 10px;border-radius:10px;text-align:center;background:var(--card);border:1.5px solid var(--border);}
+.qf-art{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;}
+.qf-desc{font-size:9px;color:var(--muted);margin-top:3px;line-height:1.4;}
+
+/* DOCTRINE GRID */
+.doc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:10px 0;}
+@media(max-width:900px){.doc-grid{grid-template-columns:1fr 1fr;}}
+.doc-item{padding:11px 12px;border-radius:9px;background:var(--card);border:1.5px solid var(--border);}
+.doc-name{font-size:11px;font-weight:800;margin-bottom:2px;}
+.doc-desc{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;line-height:1.4;}
+
+/* SVG HELPERS — inline for all diagrams */
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-tag">Indian Polity · Judiciary · UPSC Prelims 2026</div>
+  <h1>Supreme Court of India — <em>Mind Map</em></h1>
+  <div class="hdr-sub">Ad Hoc Judges · SLP · Advisory Jurisdiction · Doctrines · Advocates</div>
+  <div class="hdr-line"></div>
+</div>
+
+<!-- ═══════════ SECTION 0: MASTER FLOW ═══════════ -->
+<div class="slabel">Master Flow — How the SC Works</div>
+
+<div class="mc m1">
+<svg viewBox="0 0 1340 120" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<defs>
+  <linearGradient id="gflow1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#d45e0a"/><stop offset="100%" stop-color="#c8900a"/></linearGradient>
+  <linearGradient id="gflow2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1a3878"/><stop offset="100%" stop-color="#5c1a80"/></linearGradient>
+  <linearGradient id="gflow3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1a6038"/><stop offset="100%" stop-color="#0a5f6e"/></linearGradient>
+  <linearGradient id="gflow4" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#b01818"/><stop offset="100%" stop-color="#d45e0a"/></linearGradient>
+  <linearGradient id="gflow5" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#5c1a80"/><stop offset="100%" stop-color="#1a5070"/></linearGradient>
+  <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#c8b090"/></marker>
+</defs>
+
+<!-- Background -->
+<rect width="1340" height="120" fill="rgba(255,253,246,0.5)"/>
+
+<!-- Arrow lines -->
+<line x1="162" y1="60" x2="200" y2="60" stroke="#c8b090" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="338" y1="60" x2="376" y2="60" stroke="#c8b090" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="514" y1="60" x2="552" y2="60" stroke="#c8b090" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="690" y1="60" x2="728" y2="60" stroke="#c8b090" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="866" y1="60" x2="904" y2="60" stroke="#c8b090" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="1042" y1="60" x2="1080" y2="60" stroke="#c8b090" stroke-width="2" marker-end="url(#arr)"/>
+
+<!-- Node 1: Constitution -->
+<rect x="6" y="22" width="156" height="76" rx="10" fill="url(#gflow1)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+<text x="84" y="44" text-anchor="middle" font-size="14" fill="#fff" font-family="Outfit">⚖️</text>
+<text x="84" y="63" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Constitution</text>
+<text x="84" y="78" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">Foundation</text>
+
+<!-- Node 2: SC Structure -->
+<rect x="200" y="22" width="138" height="76" rx="10" fill="url(#gflow2)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+<text x="269" y="44" text-anchor="middle" font-size="14" fill="#fff">🏛️</text>
+<text x="269" y="63" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">SC Structure</text>
+<text x="269" y="78" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">Art 124–147</text>
+
+<!-- Node 3: Jurisdiction -->
+<rect x="376" y="22" width="138" height="76" rx="10" fill="url(#gflow3)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+<text x="445" y="44" text-anchor="middle" font-size="14" fill="#fff">📋</text>
+<text x="445" y="63" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Jurisdiction</text>
+<text x="445" y="78" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">SLP · Advisory</text>
+
+<!-- Node 4: Powers -->
+<rect x="552" y="22" width="138" height="76" rx="10" fill="url(#gflow4)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+<text x="621" y="44" text-anchor="middle" font-size="14" fill="#fff">⚡</text>
+<text x="621" y="63" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Powers</text>
+<text x="621" y="78" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">Art 141·142·144</text>
+
+<!-- Node 5: Doctrines -->
+<rect x="728" y="22" width="138" height="76" rx="10" fill="url(#gflow5)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+<text x="797" y="44" text-anchor="middle" font-size="14" fill="#fff">📖</text>
+<text x="797" y="63" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Doctrines</text>
+<text x="797" y="78" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">12 Key Doctrines</text>
+
+<!-- Node 6: Advocates -->
+<rect x="904" y="22" width="138" height="76" rx="10" fill="#1a6038" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+<text x="973" y="44" text-anchor="middle" font-size="14" fill="#fff">👨‍⚖️</text>
+<text x="973" y="63" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Advocates</text>
+<text x="973" y="78" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">Sr · AoR · Others</text>
+
+<!-- Node 7: Binding -->
+<rect x="1080" y="22" width="254" height="76" rx="10" fill="#1a1510" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+<text x="1207" y="44" text-anchor="middle" font-size="14" fill="#f5e8c0">🌟</text>
+<text x="1207" y="63" text-anchor="middle" font-size="11" font-weight="700" fill="#f5e8c0">Binding on All Courts</text>
+<text x="1207" y="78" text-anchor="middle" font-size="9" fill="rgba(245,232,192,0.55)" font-family="JetBrains Mono">Art 141 · Ultimate Authority</text>
+</svg>
+</div>
+
+<!-- ═══════════ SECTION 1: SC SPECIAL PROVISIONS ═══════════ -->
+<div class="slabel">① Special Provisions — Ad Hoc Judges & Seat</div>
+
+<div class="g2">
+  <!-- Art 127 -->
+  <div class="pc c-gold">
+    <div class="pc-tag">Article 127</div>
+    <h3>⚖️ Ad Hoc Judge</h3>
+    <div style="margin-bottom:10px;">
+      <div class="hbox note">
+        <div style="font-size:12px;font-weight:800;color:var(--amber);">Trigger: Lack of Quorum</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px;">When insufficient SC judges available for a bench</div>
+      </div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Who Appoints?</div><div class="vs">CJI requests a High Court judge</div></div>
+      <div class="vi"><div class="vt">Consultation Required</div><div class="vs">Concerned HC Chief Justice + President's consent</div></div>
+      <div class="vi"><div class="vt">Eligibility</div><div class="vs">Must be qualified to be an SC judge</div></div>
+      <div class="vi"><div class="vt">Status</div><div class="vs">Gets same powers & privileges as SC judge</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip note">📌 Temporary solution</span><span class="chip note">Not permanent appointment</span></div>
+  </div>
+
+  <!-- Art 130 + Procedure -->
+  <div class="pc c-blue">
+    <div class="pc-tag">Article 130 + Procedure</div>
+    <h3>🗺️ Seat & Court Rules</h3>
+    <div class="stat-row">
+      <div class="stat-b">
+        <div class="stat-n" style="color:var(--blue);">Delhi</div>
+        <div class="stat-l">CONSTITUTIONAL SEAT</div>
+      </div>
+      <div class="stat-b">
+        <div class="stat-n" style="color:var(--amber);">5</div>
+        <div class="stat-l">CONSTITUTION BENCH MIN.</div>
+      </div>
+      <div class="stat-b">
+        <div class="stat-n" style="color:var(--green);">✓</div>
+        <div class="stat-l">DISSENT ALLOWED</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vi"><div class="vt">Seat Shift</div><div class="vs">CJI can shift SC seat with President's approval</div></div>
+      <div class="vi"><div class="vt">Rule-Making Power</div><div class="vs">SC makes its own procedural rules → needs Presidential approval</div></div>
+      <div class="vi"><div class="vt">Bench Composition</div><div class="vs">Constitutional matters → min. 5 judges (Constitution Bench)</div></div>
+      <div class="vi"><div class="vt">Judgment</div><div class="vs">Based on majority · Minority dissent allowed</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 2: JURISDICTION — SPIDER MAP ═══════════ -->
+<div class="slabel">② Jurisdiction — SLP & Advisory (Art 136 & 143)</div>
+
+<div class="mc m2">
+<svg viewBox="0 0 1340 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<defs>
+  <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#9090b0"/></marker>
+  <marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#90b090"/></marker>
+</defs>
+<rect width="1340" height="280" fill="rgba(255,253,246,0.4)"/>
+
+<!-- === LEFT TREE: SLP Art 136 === -->
+<text x="335" y="20" text-anchor="middle" font-size="9" font-family="JetBrains Mono" fill="rgba(26,56,120,0.5)" letter-spacing="2">ARTICLE 136 — SPECIAL LEAVE PETITION</text>
+
+<!-- Root -->
+<rect x="240" y="28" width="190" height="56" rx="10" fill="#1a3878" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+<rect x="242" y="30" width="186" height="52" rx="9" fill="rgba(255,255,255,0.05)" stroke="none"/>
+<text x="335" y="51" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Art 136 — SLP</text>
+<text x="335" y="67" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">Special Leave Petition</text>
+
+<!-- SLP branches -->
+<!-- Branch: Any Court -->
+<path d="M310,84 C280,84 140,115 140,140" stroke="#1a387860" stroke-width="1.8" fill="none" stroke-dasharray="4 3"/>
+<rect x="40" y="125" width="200" height="44" rx="8" fill="#1a5070" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+<text x="140" y="143" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🏛️ Any Court/Tribunal</text>
+<text x="140" y="158" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">Civil · Criminal · Constitutional</text>
+
+<!-- Branch: NOT Court Martial -->
+<path d="M335,84 C335,100 335,115 335,125" stroke="#b0181860" stroke-width="1.8" fill="none" stroke-dasharray="4 3"/>
+<rect x="245" y="125" width="180" height="44" rx="8" fill="#b01818" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+<text x="335" y="143" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🚫 EXCEPT</text>
+<text x="335" y="158" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">Court Martial Excluded</text>
+
+<!-- Branch: Discretionary -->
+<path d="M360,84 C400,84 500,115 510,125" stroke="#1a387860" stroke-width="1.8" fill="none" stroke-dasharray="4 3"/>
+<rect x="420" y="125" width="180" height="44" rx="8" fill="#5c1a80" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+<text x="510" y="143" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🎯 Discretionary</text>
+<text x="510" y="158" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">Not a right · Used sparingly</text>
+
+<!-- SLP bottom note -->
+<rect x="40" y="195" width="650" height="34" rx="8" fill="rgba(26,56,120,0.07)" stroke="rgba(26,56,120,0.2)" stroke-width="1.5"/>
+<text x="365" y="208" text-anchor="middle" font-size="10" font-weight="700" fill="#1a3878">⭐ Very Important Prelims Area</text>
+<text x="365" y="222" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="JetBrains Mono">SLP = Gateway to SC from any court; discretionary; court martial excluded</text>
+
+<!-- DIVIDER -->
+<line x1="700" y1="20" x2="700" y2="260" stroke="rgba(200,180,140,0.2)" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+<!-- === RIGHT TREE: Art 143 Advisory === -->
+<text x="1010" y="20" text-anchor="middle" font-size="9" font-family="JetBrains Mono" fill="rgba(26,96,56,0.5)" letter-spacing="2">ARTICLE 143 — ADVISORY JURISDICTION</text>
+
+<!-- Root -->
+<rect x="905" y="28" width="210" height="56" rx="10" fill="#1a6038" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+<text x="1010" y="51" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Art 143 — Advisory</text>
+<text x="1010" y="67" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">Presidential Reference</text>
+
+<!-- Who asks -->
+<path d="M980,84 C950,100 850,115 840,125" stroke="#1a603860" stroke-width="1.8" fill="none" stroke-dasharray="4 3"/>
+<rect x="750" y="125" width="180" height="44" rx="8" fill="#0a5f6e" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+<text x="840" y="143" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🏛️ Asked By</text>
+<text x="840" y="158" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">President of India</text>
+
+<!-- Topic -->
+<path d="M1010,84 C1010,100 1010,115 1010,125" stroke="#1a603860" stroke-width="1.8" fill="none" stroke-dasharray="4 3"/>
+<rect x="930" y="125" width="160" height="44" rx="8" fill="#1a6038" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+<text x="1010" y="143" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">📋 On What?</text>
+<text x="1010" y="158" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">Law/Fact of public importance</text>
+
+<!-- Binding? -->
+<path d="M1040,84 C1080,100 1150,115 1165,125" stroke="#b0181860" stroke-width="1.8" fill="none" stroke-dasharray="4 3"/>
+<rect x="1090" y="125" width="195" height="44" rx="8" fill="#b01818" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+<text x="1187" y="143" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">⚠️ Not Binding</text>
+<text x="1187" y="158" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">Advisory only · SC may refuse Cl(1)</text>
+
+<!-- Advisory note -->
+<rect x="730" y="195" width="590" height="48" rx="8" fill="rgba(26,96,56,0.07)" stroke="rgba(26,96,56,0.2)" stroke-width="1.5"/>
+<text x="1025" y="213" text-anchor="middle" font-size="10" font-weight="700" fill="#1a6038">🔑 Key Distinction: Clause 1 vs Clause 2</text>
+<text x="1025" y="228" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="JetBrains Mono">Clause 1 (general matters): SC MAY refuse to give opinion</text>
+<text x="1025" y="242" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="JetBrains Mono">Clause 2 (pre-constitutional treaties): SC MUST give opinion</text>
+</svg>
+</div>
+
+<!-- ═══════════ SECTION 3: KEY POWERS — ARTICLES 141, 142, 144 ═══════════ -->
+<div class="slabel">③ The Power Trilogy — Art 141 · 142 · 144</div>
+
+<div class="g3">
+  <div class="pc c-blue">
+    <div class="pc-tag">Article 141</div>
+    <h3>📖 Law Declared by SC</h3>
+    <div style="padding:12px;border-radius:10px;background:rgba(26,56,120,0.07);border:1.5px solid rgba(26,56,120,0.2);text-align:center;margin-bottom:10px;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--blue);">Binding on All Courts</div>
+      <div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);">IN INDIA</div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Scope</div><div class="vs">Every court & tribunal in India must follow SC law</div></div>
+      <div class="vi"><div class="vt">Stare Decisis</div><div class="vs">Precedent doctrine — follow earlier judgments</div></div>
+      <div class="vi"><div class="vt">Exception</div><div class="vs">SC can overrule its own previous judgments</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="pill blue">Ultimate Legal Authority</span></div>
+  </div>
+
+  <div class="pc c-amber">
+    <div class="pc-tag">Article 142</div>
+    <h3>⚡ Complete Justice</h3>
+    <div style="padding:12px;border-radius:10px;background:rgba(212,94,10,0.07);border:1.5px solid rgba(212,94,10,0.2);text-align:center;margin-bottom:10px;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--amber);">Any Decree/Order</div>
+      <div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);">NECESSARY FOR COMPLETE JUSTICE</div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Extraordinary Power</div><div class="vs">SC can pass any decree needed for justice</div></div>
+      <div class="vi"><div class="vt">Landmark Use</div><div class="vs">Union Carbide Case (1989) — Bhopal Gas Tragedy</div></div>
+      <div class="vi"><div class="vt">Judicial Activism</div><div class="vs">Often invoked in landmark PIL judgments</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="pill amber">Linked to Judicial Activism</span></div>
+  </div>
+
+  <div class="pc c-green">
+    <div class="pc-tag">Article 144</div>
+    <h3>🤝 All Authorities to Aid SC</h3>
+    <div style="padding:12px;border-radius:10px;background:rgba(26,96,56,0.07);border:1.5px solid rgba(26,96,56,0.2);text-align:center;margin-bottom:10px;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--green);">Enforcement Power</div>
+      <div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);">CIVIL & JUDICIAL AUTHORITIES</div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Duty</div><div class="vs">All civil & judicial authorities must act in aid of SC</div></div>
+      <div class="vi"><div class="vt">Complements Art 142</div><div class="vs">Ensures SC decrees are actually enforced</div></div>
+      <div class="vi"><div class="vt">Scope</div><div class="vs">Covers Executive, Judiciary, Statutory bodies</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="pill green">141 + 142 + 144 = Complete Power</span></div>
+  </div>
+</div>
+
+<!-- POWER FLOW -->
+<div class="pc c-ink" style="margin-bottom:18px;">
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:16px;margin-bottom:10px;">🔗 How the Three Articles Work Together</h3>
+  <div class="flow">
+    <div class="fn" style="border-color:var(--blue);color:var(--blue);background:rgba(26,56,120,0.07);">Art 141: SC declares law</div>
+    <div class="fa">→</div>
+    <div class="fn" style="border-color:var(--amber);color:var(--amber);background:rgba(212,94,10,0.07);">Art 142: SC ensures complete justice</div>
+    <div class="fa">→</div>
+    <div class="fn" style="border-color:var(--green);color:var(--green);background:rgba(26,96,56,0.07);">Art 144: All authorities execute SC orders</div>
+    <div class="fa">→</div>
+    <div class="fn" style="border-color:var(--ink);color:var(--ink);background:rgba(26,21,10,0.05);">🏆 Complete Constitutional Supremacy</div>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 4: OTHER SC POWERS ═══════════ -->
+<div class="slabel">④ Other Important Powers of the SC</div>
+
+<div class="mc m3">
+<!--
+  Layout: 3 nodes left (cx=230) · central node (cx=670) · 3 nodes right (cx=1110)
+  Row Y centres: top=60, mid=160, bot=260   →  SVG height = 320
+  Node size: 220×52
+  Central: 210×90 at cx=670, cy=160
+-->
+<svg viewBox="0 0 1340 320" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<rect width="1340" height="320" fill="rgba(255,253,246,0.4)"/>
+
+<!-- ── connector lines (drawn before nodes so nodes sit on top) ── -->
+<!-- L-top: Election Disputes  ← centre-left edge (460,140) to node right edge (340,60) -->
+<path d="M460,145 C400,145 350,60 340,60" stroke="#c8900a50" stroke-width="1.8" fill="none" stroke-dasharray="5 3"/>
+<!-- L-mid: Review Power -->
+<path d="M460,160 C400,160 340,160 340,160" stroke="#1a387850" stroke-width="1.8" fill="none" stroke-dasharray="5 3"/>
+<!-- L-bot: Transfer Cases -->
+<path d="M460,175 C400,175 350,260 340,260" stroke="#5c1a8050" stroke-width="1.8" fill="none" stroke-dasharray="5 3"/>
+
+<!-- R-top: Curative Petition  centre-right edge (880,145) to node left (1000,60) -->
+<path d="M880,145 C940,145 990,60 1000,60" stroke="#d45e0a50" stroke-width="1.8" fill="none" stroke-dasharray="5 3"/>
+<!-- R-mid: Original Jurisdiction -->
+<path d="M880,160 C940,160 1000,160 1000,160" stroke="#1a603850" stroke-width="1.8" fill="none" stroke-dasharray="5 3"/>
+<!-- R-bot: Writ Jurisdiction -->
+<path d="M880,175 C940,175 990,260 1000,260" stroke="#0a5f6e50" stroke-width="1.8" fill="none" stroke-dasharray="5 3"/>
+
+<!-- ── CENTRAL NODE ── -->
+<rect x="462" y="108" width="216" height="104" rx="13" fill="#1a1510" stroke="rgba(245,232,192,0.2)" stroke-width="2"/>
+<text x="570" y="143" text-anchor="middle" font-size="14" font-weight="700" fill="#f5e8c0">⚖️ Supreme Court</text>
+<text x="570" y="162" text-anchor="middle" font-size="10" fill="rgba(245,232,192,0.5)" font-family="JetBrains Mono">Ultimate Authority</text>
+<text x="570" y="178" text-anchor="middle" font-size="10" fill="rgba(245,232,192,0.5)" font-family="JetBrains Mono">Art 147 — Interpreter</text>
+<text x="570" y="196" text-anchor="middle" font-size="9" fill="rgba(245,200,100,0.55)" font-family="JetBrains Mono">6 Powers →</text>
+
+<!-- ── LEFT COLUMN ── (right edge at x=340, nodes 220×52, cx=230) -->
+
+<!-- L-TOP: Election Disputes  y=34..86 -->
+<rect x="120" y="34" width="220" height="52" rx="9" fill="#c8900a" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+<text x="230" y="55" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">🗳️ Election Disputes</text>
+<text x="230" y="72" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">President &amp; VP — Final authority</text>
+
+<!-- L-MID: Review Power  y=134..186 -->
+<rect x="120" y="134" width="220" height="52" rx="9" fill="#1a3878" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+<text x="230" y="155" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">🔄 Review Power</text>
+<text x="230" y="172" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">SC reviews its own judgments</text>
+
+<!-- L-BOT: Transfer Cases  y=234..286 -->
+<rect x="120" y="234" width="220" height="52" rx="9" fill="#5c1a80" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+<text x="230" y="255" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">↔️ Transfer Cases</text>
+<text x="230" y="272" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">Between High Courts</text>
+
+<!-- ── RIGHT COLUMN ── (left edge at x=1000, cx=1110) -->
+
+<!-- R-TOP: Curative Petition  y=34..86 -->
+<rect x="1000" y="34" width="222" height="52" rx="9" fill="#d45e0a" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+<text x="1111" y="55" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">📝 Curative Petition</text>
+<text x="1111" y="72" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">After review petition dismissed</text>
+
+<!-- R-MID: Original Jurisdiction  y=134..186 -->
+<rect x="1000" y="134" width="222" height="52" rx="9" fill="#1a6038" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+<text x="1111" y="155" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">⚖️ Original Jurisdiction</text>
+<text x="1111" y="172" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">Art 131: Centre–State disputes</text>
+
+<!-- R-BOT: Writ Jurisdiction  y=234..286 -->
+<rect x="1000" y="234" width="222" height="52" rx="9" fill="#0a5f6e" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+<text x="1111" y="255" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">📜 Writ Jurisdiction</text>
+<text x="1111" y="272" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">Art 32 — FR Enforcement</text>
+
+<!-- footer label -->
+<text x="670" y="308" text-anchor="middle" font-size="8" font-family="JetBrains Mono" fill="rgba(120,100,60,0.4)" letter-spacing="2">ARTICLE 147 — SC IS THE ULTIMATE INTERPRETER OF THE CONSTITUTION</text>
+</svg>
+</div>
+
+<!-- ═══════════ SECTION 5: DOCTRINES ═══════════ -->
+<div class="slabel">⑤ Key Doctrines of Constitutional Interpretation</div>
+
+<div class="pc c-purple" style="margin-bottom:14px;">
+  <div class="pc-tag">Constitutional Interpretation</div>
+  <h3>📖 12 Key Doctrines — UPSC High Value</h3>
+  <div class="doc-grid">
+    <div class="doc-item" style="border-color:rgba(176,24,24,0.25);background:rgba(176,24,24,0.04);">
+      <div class="doc-name" style="color:var(--red);">Severability</div>
+      <div class="doc-desc">Invalid part removed; rest of law survives</div>
+    </div>
+    <div class="doc-item" style="border-color:rgba(26,56,120,0.25);background:rgba(26,56,120,0.04);">
+      <div class="doc-name" style="color:var(--blue);">Waiver</div>
+      <div class="doc-desc">Fundamental Rights can be voluntarily given up</div>
+    </div>
+    <div class="doc-item" style="border-color:rgba(200,144,10,0.25);background:rgba(200,144,10,0.04);">
+      <div class="doc-name" style="color:var(--gold);">Eclipse</div>
+      <div class="doc-desc">Law inconsistent with FR becomes dormant (not void)</div>
+    </div>
+    <div class="doc-item" style="border-color:rgba(26,96,56,0.25);background:rgba(26,96,56,0.04);">
+      <div class="doc-name" style="color:var(--green);">Territorial Nexus</div>
+      <div class="doc-desc">State law valid if sufficient connection to territory</div>
+    </div>
+    <div class="doc-item" style="border-color:rgba(212,94,10,0.25);background:rgba(212,94,10,0.04);">
+      <div class="doc-name" style="color:var(--amber);">Pith & Substance</div>
+      <div class="doc-desc">Look at true nature of law for legislative competence</div>
+    </div>
+    <div class="doc-item" style="border-color:rgba(92,26,128,0.25);background:rgba(92,26,128,0.04);">
+      <div class="doc-name" style="color:var(--purple);">Colourable Legislation</div>
+      <div class="doc-desc">What cannot be done directly cannot be done indirectly</div>
+    </div>
+    <div class="doc-item" style="border-color:rgba(10,95,110,0.25);background:rgba(10,95,110,0.04);">
+      <div class="doc-name" style="color:var(--teal);">Incidental & Ancillary</div>
+      <div class="doc-desc">Implied powers allowed for legislative functions</div>
+    </div>
+    <div class="doc-item" style="border-color:rgba(26,56,120,0.25);background:rgba(26,56,120,0.04);">
+      <div class="doc-name" style="color:var(--blue);">Occupied Field</div>
+      <div class="doc-desc">State law invalid if Parliament already covered the field</div>
+    </div>
+    <div class="doc-item" style="border-color:rgba(26,96,56,0.25);background:rgba(26,96,56,0.04);">
+      <div class="doc-name" style="color:var(--green);">Prospective Overruling</div>
+      <div class="doc-desc">Judgment applies only in future; not retrospective</div>
+    </div>
+    <div class="doc-item" style="border-color:rgba(200,144,10,0.25);background:rgba(200,144,10,0.04);">
+      <div class="doc-name" style="color:var(--gold);">Harmonious Construction</div>
+      <div class="doc-desc">Interpret provisions to avoid conflict between them</div>
+    </div>
+    <div class="doc-item" style="border-color:rgba(176,24,24,0.25);background:rgba(176,24,24,0.04);">
+      <div class="doc-name" style="color:var(--red);">Precedent</div>
+      <div class="doc-desc">Follow earlier SC judgments (Stare Decisis)</div>
+    </div>
+    <div class="doc-item" style="border-color:rgba(26,80,112,0.25);background:rgba(26,80,112,0.04);">
+      <div class="doc-name" style="color:var(--sky);">Liberal Interpretation</div>
+      <div class="doc-desc">Constitution read broadly, not narrowly</div>
+    </div>
+  </div>
+</div>
+
+<!-- DOCTRINE QUICK COMPARE -->
+<div class="mc m5">
+<svg viewBox="0 0 1340 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<rect width="1340" height="160" fill="rgba(255,253,246,0.4)"/>
+<text x="670" y="20" text-anchor="middle" font-size="9" font-family="JetBrains Mono" fill="rgba(92,26,128,0.5)" letter-spacing="2">QUICK COMPARE — ECLIPSE vs SEVERABILITY vs COLOURABLE LEGISLATION</text>
+
+<!-- Eclipse -->
+<rect x="30" y="32" width="370" height="108" rx="10" fill="rgba(200,144,10,0.07)" stroke="rgba(200,144,10,0.3)" stroke-width="1.5"/>
+<text x="215" y="56" text-anchor="middle" font-size="14" fill="#c8900a">☀️ Doctrine of Eclipse</text>
+<text x="215" y="76" text-anchor="middle" font-size="10" font-weight="700" fill="#c8900a">Law ≠ Void; Just Dormant</text>
+<text x="215" y="94" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="JetBrains Mono">Pre-constitutional law inconsistent</text>
+<text x="215" y="109" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="JetBrains Mono">with FR → eclipsed, not void</text>
+<text x="215" y="124" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="JetBrains Mono">If FR amended → law revives</text>
+
+<!-- Severability -->
+<rect x="485" y="32" width="370" height="108" rx="10" fill="rgba(176,24,24,0.07)" stroke="rgba(176,24,24,0.3)" stroke-width="1.5"/>
+<text x="670" y="56" text-anchor="middle" font-size="14" fill="#b01818">✂️ Doctrine of Severability</text>
+<text x="670" y="76" text-anchor="middle" font-size="10" font-weight="700" fill="#b01818">Bad Part Out; Rest Survives</text>
+<text x="670" y="94" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="JetBrains Mono">If part of law is unconstitutional</text>
+<text x="670" y="109" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="JetBrains Mono">→ that part struck down</text>
+<text x="670" y="124" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="JetBrains Mono">Rest of the law continues</text>
+
+<!-- Colourable -->
+<rect x="940" y="32" width="370" height="108" rx="10" fill="rgba(92,26,128,0.07)" stroke="rgba(92,26,128,0.3)" stroke-width="1.5"/>
+<text x="1125" y="56" text-anchor="middle" font-size="14" fill="#5c1a80">🎭 Colourable Legislation</text>
+<text x="1125" y="76" text-anchor="middle" font-size="10" font-weight="700" fill="#5c1a80">Indirect = Invalid Too</text>
+<text x="1125" y="94" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="JetBrains Mono">Cannot circumvent Constitution</text>
+<text x="1125" y="109" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="JetBrains Mono">by doing indirectly what is</text>
+<text x="1125" y="124" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="JetBrains Mono">prohibited directly</text>
+</svg>
+</div>
+
+<!-- ═══════════ SECTION 6: ADVOCATES ═══════════ -->
+<div class="slabel">⑥ Types of Advocates — Advocates Act 1961</div>
+
+<div class="mc m4">
+<svg viewBox="0 0 1340 270" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<defs>
+  <marker id="arr5" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L5,3 L0,6 Z" fill="#90a090"/></marker>
+</defs>
+<rect width="1340" height="270" fill="rgba(255,253,246,0.4)"/>
+
+<!-- Act Header -->
+<rect x="500" y="10" width="340" height="44" rx="10" fill="#1a1510" stroke="rgba(245,232,192,0.2)" stroke-width="1.5"/>
+<text x="670" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#f5e8c0">Advocates Act, 1961</text>
+<text x="670" y="47" text-anchor="middle" font-size="9" fill="rgba(245,232,192,0.55)" font-family="JetBrains Mono">Only advocates can practice law in India</text>
+
+<!-- Connections from act to 3 types -->
+<path d="M550,54 C480,54 300,80 280,94" stroke="#c8900a50" stroke-width="2" fill="none" stroke-dasharray="5 3"/>
+<path d="M670,54 C670,72 670,80 670,94" stroke="#1a387850" stroke-width="2" fill="none" stroke-dasharray="5 3"/>
+<path d="M790,54 C860,54 1040,80 1060,94" stroke="#1a603850" stroke-width="2" fill="none" stroke-dasharray="5 3"/>
+
+<!-- === TYPE 1: SENIOR ADVOCATES === -->
+<rect x="80" y="94" width="390" height="154" rx="12" fill="#c8900a" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+<rect x="82" y="96" width="386" height="150" rx="11" fill="rgba(255,255,255,0.06)" stroke="none"/>
+<text x="275" y="118" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">👨‍⚖️ Senior Advocates</text>
+<text x="275" y="135" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">Designated by SC / HC</text>
+<!-- Sub-items -->
+<rect x="96" y="144" width="362" height="34" rx="7" fill="rgba(0,0,0,0.2)"/>
+<text x="277" y="157" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">🚫 Cannot directly file in SC</text>
+<text x="277" y="172" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">Must appear WITH Advocate-on-Record</text>
+<rect x="96" y="185" width="362" height="28" rx="7" fill="rgba(0,0,0,0.15)"/>
+<text x="277" y="198" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Designation Committee headed by CJI</text>
+<text x="277" y="212" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">Cannot draft pleadings; only appears in court</text>
+<text x="277" y="234" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">🏆 Prestige designation; not a right</text>
+
+<!-- === TYPE 2: ADVOCATE-ON-RECORD === -->
+<rect x="475" y="94" width="390" height="154" rx="12" fill="#1a3878" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+<rect x="477" y="96" width="386" height="150" rx="11" fill="rgba(255,255,255,0.06)" stroke="none"/>
+<text x="670" y="118" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">⭐ Advocate-on-Record</text>
+<text x="670" y="135" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">Exclusive Right to File in SC</text>
+<rect x="491" y="144" width="362" height="34" rx="7" fill="rgba(0,0,0,0.2)"/>
+<text x="672" y="158" text-anchor="middle" font-size="10" font-weight="700" fill="#f5d788">Requirements</text>
+<text x="672" y="173" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">7 yrs practice · AoR exam · 1 yr training under Sr AoR</text>
+<rect x="491" y="185" width="362" height="28" rx="7" fill="rgba(0,0,0,0.15)"/>
+<text x="672" y="199" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">🔑 ONLY AoR can FILE cases in SC</text>
+<text x="672" y="213" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">Can also draft & argue</text>
+<text x="672" y="234" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">⭐ Most important for Prelims</text>
+
+<!-- === TYPE 3: OTHER ADVOCATES === -->
+<rect x="870" y="94" width="390" height="154" rx="12" fill="#1a6038" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+<rect x="872" y="96" width="386" height="150" rx="11" fill="rgba(255,255,255,0.06)" stroke="none"/>
+<text x="1065" y="118" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">👤 Other Advocates</text>
+<text x="1065" y="135" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">Registered under State Bar Councils</text>
+<rect x="886" y="144" width="362" height="34" rx="7" fill="rgba(0,0,0,0.2)"/>
+<text x="1067" y="157" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">❌ Cannot appear in SC directly</text>
+<text x="1067" y="172" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">Must go THROUGH Advocate-on-Record</text>
+<rect x="886" y="185" width="362" height="28" rx="7" fill="rgba(0,0,0,0.15)"/>
+<text x="1067" y="199" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Practice in: HC, District Courts, Tribunals</text>
+<text x="1067" y="213" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">State Bar Council enrollment</text>
+<text x="1067" y="234" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">Bar Council of India = apex body</text>
+
+<!-- Comparison Arrow -->
+<path d="M470,168 L478,168" stroke="rgba(200,180,140,0.6)" stroke-width="2" fill="none"/>
+<path d="M865,168 L873,168" stroke="rgba(200,180,140,0.6)" stroke-width="2" fill="none"/>
+<text x="670" y="262" text-anchor="middle" font-size="8" font-family="JetBrains Mono" fill="rgba(120,100,60,0.45)" letter-spacing="1.5">HIERARCHY: OTHER ADVOCATE → AoR (files in SC) ↔ SENIOR ADVOCATE (appears in SC)</text>
+</svg>
+</div>
+
+<!-- ═══════════ SECTION 7: ARTICLE QUICK-REF ═══════════ -->
+<div class="slabel">⑦ High-Probability Prelims — Article Quick Reference</div>
+
+<div class="pc c-ink" style="margin-bottom:18px;">
+  <div class="pc-tag">Prelims 2026 Hot Zone</div>
+  <h3>🎯 Key Articles at a Glance</h3>
+  <div class="qf-grid">
+    <div class="qf-item" style="border-color:rgba(200,144,10,0.3);background:rgba(200,144,10,0.05);">
+      <div class="qf-art" style="color:var(--gold);">Art 127</div>
+      <div class="qf-desc">Ad Hoc Judge<br>CJI + HC CJ + President</div>
+    </div>
+    <div class="qf-item" style="border-color:rgba(26,56,120,0.3);background:rgba(26,56,120,0.05);">
+      <div class="qf-art" style="color:var(--blue);">Art 130</div>
+      <div class="qf-desc">Seat of SC<br>Delhi; CJI can shift</div>
+    </div>
+    <div class="qf-item" style="border-color:rgba(176,24,24,0.3);background:rgba(176,24,24,0.05);">
+      <div class="qf-art" style="color:var(--red);">Art 136</div>
+      <div class="qf-desc">SLP<br>Any court; NOT court martial</div>
+    </div>
+    <div class="qf-item" style="border-color:rgba(26,96,56,0.3);background:rgba(26,96,56,0.05);">
+      <div class="qf-art" style="color:var(--green);">Art 143</div>
+      <div class="qf-desc">Advisory Jurisdiction<br>Not binding; may refuse Cl.1</div>
+    </div>
+    <div class="qf-item" style="border-color:rgba(26,56,120,0.3);background:rgba(26,56,120,0.05);">
+      <div class="qf-art" style="color:var(--blue);">Art 141</div>
+      <div class="qf-desc">Binding Law<br>All courts in India</div>
+    </div>
+    <div class="qf-item" style="border-color:rgba(212,94,10,0.3);background:rgba(212,94,10,0.05);">
+      <div class="qf-art" style="color:var(--amber);">Art 142</div>
+      <div class="qf-desc">Complete Justice<br>Bhopal Union Carbide 1989</div>
+    </div>
+    <div class="qf-item" style="border-color:rgba(26,96,56,0.3);background:rgba(26,96,56,0.05);">
+      <div class="qf-art" style="color:var(--green);">Art 144</div>
+      <div class="qf-desc">All Authorities<br>Must aid SC</div>
+    </div>
+    <div class="qf-item" style="border-color:rgba(92,26,128,0.3);background:rgba(92,26,128,0.05);">
+      <div class="qf-art" style="color:var(--purple);">Art 147</div>
+      <div class="qf-desc">Interpretation<br>SC = ultimate interpreter</div>
+    </div>
+    <div class="qf-item" style="border-color:rgba(10,95,110,0.3);background:rgba(10,95,110,0.05);">
+      <div class="qf-art" style="color:var(--teal);">Art 131</div>
+      <div class="qf-desc">Original Jurisdiction<br>Centre–State disputes</div>
+    </div>
+    <div class="qf-item" style="border-color:rgba(176,24,24,0.3);background:rgba(176,24,24,0.05);">
+      <div class="qf-art" style="color:var(--red);">Art 32</div>
+      <div class="qf-desc">Writ Jurisdiction<br>FR Enforcement; Dr. Ambedkar: "Heart of Constitution"</div>
+    </div>
+  </div>
+</div>
+
+<!-- TABLE: Compare SLP vs Advisory -->
+<div class="pc c-blue" style="margin-bottom:18px;">
+  <div class="pc-tag">Critical Comparison</div>
+  <h3>📊 SLP (Art 136) vs Advisory Jurisdiction (Art 143)</h3>
+  <table class="ctbl">
+    <tr>
+      <th>Feature</th>
+      <th>SLP — Art 136</th>
+      <th>Advisory — Art 143</th>
+    </tr>
+    <tr>
+      <td>Who Invokes?</td>
+      <td>Any person/party aggrieved</td>
+      <td>President of India</td>
+    </tr>
+    <tr>
+      <td>Against Whom?</td>
+      <td>Any court/tribunal (except court martial)</td>
+      <td>No adversary; reference to SC</td>
+    </tr>
+    <tr>
+      <td>SC's Discretion?</td>
+      <td>Yes — may refuse to grant leave</td>
+      <td>Clause 1: May refuse; Clause 2: Must opine</td>
+    </tr>
+    <tr>
+      <td>Outcome?</td>
+      <td>Final binding judgment</td>
+      <td>Advisory opinion — NOT binding</td>
+    </tr>
+    <tr>
+      <td>Nature</td>
+      <td>Appellate jurisdiction</td>
+      <td>Advisory/Consultative jurisdiction</td>
+    </tr>
+    <tr>
+      <td>Key Exception</td>
+      <td>Court Martial excluded</td>
+      <td>Pre-constitutional treaties — must opine</td>
+    </tr>
+  </table>
+</div>
+
+<!-- TABLE: AoR vs Senior Advocate -->
+<div class="pc c-gold" style="margin-bottom:18px;">
+  <div class="pc-tag">Critical Comparison</div>
+  <h3>📊 Senior Advocate vs Advocate-on-Record</h3>
+  <table class="ctbl">
+    <tr>
+      <th>Feature</th>
+      <th>Senior Advocate</th>
+      <th>Advocate-on-Record (AoR)</th>
+    </tr>
+    <tr>
+      <td>How Designated?</td>
+      <td>Designated by SC/HC; Committee headed by CJI</td>
+      <td>Passes AoR exam + training</td>
+    </tr>
+    <tr>
+      <td>Can File in SC?</td>
+      <td>❌ NO — Cannot file directly</td>
+      <td>✅ YES — Only AoR can file</td>
+    </tr>
+    <tr>
+      <td>Can Appear in SC?</td>
+      <td>✅ YES — But with AoR</td>
+      <td>✅ YES — Can file & appear</td>
+    </tr>
+    <tr>
+      <td>Requirements</td>
+      <td>Prestigious designation; expertise</td>
+      <td>7 yrs practice + AoR exam + 1 yr training</td>
+    </tr>
+    <tr>
+      <td>Draft Pleadings?</td>
+      <td>❌ Cannot draft pleadings/petitions</td>
+      <td>✅ Can draft pleadings</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ═══════════ KEYSTONE ═══════════ -->
+<div class="ks">
+  <div class="ks-icon">⚖️</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Core Idea — What Makes SC Supreme</div>
+    <div class="ks-body">The Supreme Court is not merely a court — it <strong style="color:#f5d788;">interprets the Constitution (Art 147)</strong>, advises the President (Art 143), grants special leave from any court (Art 136), ensures complete justice (Art 142), and its law binds all courts (Art 141). Combined with Art 144's enforcement power, the SC is the <strong style="color:#f5d788;">apex constitutional authority</strong> of India — regulating its own procedure, designating lawyers, and shaping constitutional jurisprudence through 12 key doctrines.</div>
+    <div class="ks-pills">
+      <span class="kp">⚖️ SLP — Any Court</span>
+      <span class="kp">📖 Art 141 Binding</span>
+      <span class="kp">⚡ Art 142 Justice</span>
+      <span class="kp">🤝 Art 144 Enforce</span>
+      <span class="kp">🎯 Art 147 Interpret</span>
+      <span class="kp">📋 12 Doctrines</span>
+      <span class="kp">👨‍⚖️ AoR Files Only</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+</body>
+</html>

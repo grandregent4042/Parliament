@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Types of Urban Government in India</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,800;1,300;1,600&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f3ec;
+  --bg2:#eee9de;
+  --ink:#1a1410;
+  --muted:#7a6a52;
+  --border:#d8ceb8;
+  --gold:#c08010;
+  --gold-lt:#f5dfa0;
+  --amber:#d46810;
+  --green:#1a6a3a;
+  --blue:#1a3a8a;
+  --purple:#5a1a8a;
+  --teal:#0a6070;
+  --red:#b01a1a;
+  --sky:#1a5878;
+  --card:#fffef8;
+  --card2:#f3ede0;
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+
+/* texture */
+body::before{content:'';position:fixed;inset:0;
+  background-image:radial-gradient(ellipse 1200px 700px at 20% 0%,rgba(192,128,16,0.07) 0%,transparent 60%),
+    radial-gradient(ellipse 800px 800px at 80% 100%,rgba(26,58,138,0.05) 0%,transparent 60%);
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1380px;margin:0 auto;padding:0 28px 120px;}
+
+/* HEADER */
+.header{text-align:center;padding:52px 16px 24px;}
+.header-kicker{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.header h1{font-family:'Fraunces',serif;font-size:clamp(28px,4.5vw,54px);font-weight:800;line-height:1.05;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-tagline{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:1px;margin-top:10px;}
+.header-bar{width:100px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:16px auto 0;border-radius:4px;}
+
+/* SECTION LABELS */
+.sec{display:flex;align-items:center;gap:14px;margin:40px 0 18px;}
+.sec-line{flex:1;height:1px;background:var(--border);}
+.sec-txt{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;white-space:nowrap;}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:22px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:22px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:22px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-bottom:22px;}
+@media(max-width:960px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g2x1{grid-template-columns:1fr;}}
+
+/* PANEL CARD */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:20px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pc:hover{box-shadow:0 6px 30px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.c-gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.c-blue::before{background:var(--blue);}
+.pc.c-green::before{background:var(--green);}
+.pc.c-amber::before{background:var(--amber);}
+.pc.c-purple::before{background:var(--purple);}
+.pc.c-teal::before{background:var(--teal);}
+.pc.c-red::before{background:var(--red);}
+.pc.c-sky::before{background:var(--sky);}
+.pc.c-dark::before{background:var(--ink);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.pc h3{font-family:'Fraunces',serif;font-size:17px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px;line-height:1.3;}
+
+/* MAP CARD */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:28px;position:relative;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc-gold::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.map-card.mc-blue::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc-green::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--sky));}
+.map-card.mc-red::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card svg{display:block;width:100%;}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:7px;margin-top:8px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;line-height:1.5;}
+.vitem .vt{font-weight:700;color:var(--ink);}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* CHIPS */
+.chip{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;font-family:'DM Mono',monospace;margin:2px;}
+.chip.gold{background:rgba(192,128,16,0.12);color:var(--gold);}
+.chip.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.chip.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.chip.amber{background:rgba(212,104,16,0.12);color:var(--amber);}
+.chip.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.chip.teal{background:rgba(10,96,112,0.12);color:var(--teal);}
+.chip.red{background:rgba(176,26,26,0.12);color:var(--red);}
+.chip.sky{background:rgba(26,88,120,0.12);color:var(--sky);}
+
+/* WARN BOX */
+.warn{padding:10px 14px;border-radius:9px;background:rgba(176,26,26,0.06);border:1.5px solid rgba(176,26,26,0.2);margin-top:10px;font-size:10px;font-weight:700;color:var(--red);line-height:1.5;}
+.info{padding:10px 14px;border-radius:9px;background:rgba(26,58,138,0.06);border:1.5px solid rgba(26,58,138,0.2);margin-top:10px;font-size:10px;font-weight:700;color:var(--blue);line-height:1.5;}
+.tip{padding:10px 14px;border-radius:9px;background:rgba(26,106,58,0.06);border:1.5px solid rgba(26,106,58,0.2);margin-top:10px;font-size:10px;font-weight:700;color:var(--green);line-height:1.5;}
+
+/* FLOW ROW */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.fn{padding:7px 13px;border-radius:9px;font-size:11px;font-weight:700;border:1.5px solid;}
+.fa{font-size:16px;color:var(--muted);}
+
+/* STAT BOX */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Fraunces',serif;font-size:24px;font-weight:800;line-height:1;}
+.stat-lbl{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:26px 32px;margin:20px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.keystone-icon{font-size:40px;}
+.keystone h3{font-family:'Fraunces',serif;font-size:20px;font-style:italic;margin-bottom:6px;}
+.keystone p{font-size:11px;color:#c8b880;line-height:1.7;}
+.kpills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'DM Mono',monospace;letter-spacing:.3px;}
+
+/* MODEL COMPARE */
+.model-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0;}
+.model-box{padding:12px;border-radius:10px;border:2px solid;text-align:center;}
+.model-title{font-family:'Fraunces',serif;font-size:15px;font-weight:700;}
+.model-tag{font-size:9px;font-family:'DM Mono',monospace;margin-top:3px;margin-bottom:6px;}
+
+/* ARTICLE TAG */
+.art-tag{display:inline-block;padding:3px 9px;border-radius:5px;font-size:9px;font-weight:700;font-family:'DM Mono',monospace;background:rgba(26,58,138,0.12);color:var(--blue);margin-bottom:4px;}
+
+/* BADGE (absolute) */
+.badge{position:absolute;top:14px;right:16px;padding:3px 9px;border-radius:6px;font-size:9px;font-weight:700;font-family:'DM Mono',monospace;}
+
+/* HIERARCHY VISUAL */
+.hier{display:flex;flex-direction:column;gap:0;align-items:center;margin:10px 0;}
+.hier-level{display:flex;justify-content:center;gap:8px;width:100%;margin:4px 0;}
+.hier-node{padding:6px 14px;border-radius:8px;font-size:11px;font-weight:700;border:1.5px solid;white-space:nowrap;}
+.hier-conn{width:2px;height:14px;background:var(--border);margin:0 auto;}
+
+/* REVENUE TABLE */
+.rtable{width:100%;border-collapse:collapse;font-size:11px;margin-top:8px;}
+.rtable th{background:var(--ink);color:#fff;padding:7px 10px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-align:left;}
+.rtable td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.rtable tr:last-child td{border-bottom:none;}
+.rtable tr:nth-child(even) td{background:rgba(192,128,16,0.03);}
+.rtable td:first-child{font-weight:700;color:var(--amber);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-kicker">Indian Polity · Urban Governance · UPSC</div>
+  <h1>Types of Urban Government<br><em>in India</em></h1>
+  <div class="header-tagline">Normal City Bodies → Special Bodies → Planning Committees → Personnel → Finance</div>
+  <div class="header-bar"></div>
+</div>
+
+<!-- ══ MASTER FLOW ══ -->
+<div class="sec"><div class="sec-line"></div><div class="sec-txt">Master Flow — The Connected Picture</div><div class="sec-line"></div></div>
+<div class="map-card mc-gold">
+  <svg id="svgMaster" viewBox="0 0 1320 100" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 1: MAIN ULBs ══ -->
+<div class="sec"><div class="sec-line"></div><div class="sec-txt">① Main Urban Local Bodies — 74th Amendment Framework</div><div class="sec-line"></div></div>
+
+<!-- Overview SVG Flowchart -->
+<div class="map-card mc-blue">
+  <svg id="svgMain" viewBox="0 0 1320 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<!-- 1.1 Municipal Corporation -->
+<div class="g2x1">
+  <div class="pc c-blue">
+    <div class="pc-label">Type 01 · Largest Cities</div>
+    <h3>🏛️ Municipal Corporation</h3>
+    <div class="badge" style="background:rgba(26,58,138,0.1);color:var(--blue);">Big Cities</div>
+
+    <!-- Hierarchy visual -->
+    <div class="hier" style="margin-bottom:12px;">
+      <div class="hier-level">
+        <div class="hier-node" style="border-color:var(--blue);background:rgba(26,58,138,0.08);color:var(--blue);">👤 Mayor — Political Head</div>
+        <div class="hier-node" style="border-color:var(--amber);background:rgba(212,104,16,0.08);color:var(--amber);">🧑‍💼 Commissioner — Executive Head (IAS)</div>
+      </div>
+      <div class="hier-conn"></div>
+      <div class="hier-level">
+        <div class="hier-node" style="border-color:var(--teal);background:rgba(10,96,112,0.07);color:var(--teal);">🗳️ Council — Elected Councillors</div>
+      </div>
+      <div class="hier-conn"></div>
+      <div class="hier-level">
+        <div class="hier-node" style="border-color:var(--purple);background:rgba(90,26,138,0.07);color:var(--purple);">📋 Standing Committees — Finance, Health, etc.</div>
+      </div>
+    </div>
+
+    <!-- Two models -->
+    <div class="model-row">
+      <div class="model-box" style="border-color:var(--amber);background:rgba(212,104,16,0.05);">
+        <div class="model-title" style="color:var(--amber);">Calcutta Model</div>
+        <div class="model-tag" style="color:var(--muted);">Mayor is powerful</div>
+        <div style="font-size:10px;color:var(--muted);">Mayor exercises real executive authority</div>
+      </div>
+      <div class="model-box" style="border-color:var(--blue);background:rgba(26,58,138,0.05);">
+        <div class="model-title" style="color:var(--blue);">Bombay Model</div>
+        <div class="model-tag" style="color:var(--muted);">Commissioner is powerful</div>
+        <div style="font-size:10px;color:var(--muted);">More common across India</div>
+      </div>
+    </div>
+
+    <div class="warn">⚠️ Commissioner appointed by State — real executive power often outside elected body</div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:18px;">
+    <div class="pc c-teal">
+      <div class="pc-label">Type 02 · Medium/Small Cities</div>
+      <h3>🏘️ Municipality</h3>
+      <div class="vlist">
+        <div class="vitem"><span class="vt">President / Chairperson</span><span class="vs">Political head of council</span></div>
+        <div class="vitem"><span class="vt">Elected Councillors</span><span class="vs">From wards</span></div>
+        <div class="vitem"><span class="vt">CEO — State appointed</span><span class="vs">Executive officer</span></div>
+      </div>
+      <div style="margin-top:8px;"><span class="chip teal">Smaller scale than Corp.</span></div>
+    </div>
+    <div class="pc c-green">
+      <div class="pc-label">Type 03 · Small Towns</div>
+      <h3>🏡 Town Area Committee</h3>
+      <div class="vlist">
+        <div class="vitem"><span class="vt">Limited Civic Functions</span><span class="vs">Basic services only</span></div>
+        <div class="vitem"><span class="vt">Elected or Nominated</span><span class="vs">Members may be either</span></div>
+      </div>
+      <div style="margin-top:8px;"><span class="chip green">Minimal governance</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 2: SPECIAL BODIES ══ -->
+<div class="sec"><div class="sec-line"></div><div class="sec-txt">② Special Urban Bodies — Not Fully Under 74th Amendment</div><div class="sec-line"></div></div>
+
+<div class="map-card mc-red">
+  <svg id="svgSpecial" viewBox="0 0 1320 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<div class="g4">
+  <div class="pc c-red">
+    <div class="pc-label">Type 04</div>
+    <h3>🪖 Cantonment Board</h3>
+    <div class="vlist">
+      <div class="vitem"><span class="vt">Cantonments Act 2006</span><span class="vs">Under Ministry of Defence</span></div>
+      <div class="vitem"><span class="vt">Partly Elected + Nominated</span></div>
+      <div class="vitem"><span class="vt">Exec. Officer</span><span class="vs">Appointed by President</span></div>
+      <div class="vitem"><span class="vt">Presided by Military Officer</span></div>
+    </div>
+    <span class="chip red" style="margin-top:8px;">Defence jurisdiction</span>
+  </div>
+  <div class="pc c-amber">
+    <div class="pc-label">Type 05</div>
+    <h3>📢 Notified Area Committee</h3>
+    <div class="vlist">
+      <div class="vitem"><span class="vt">By Government Notification</span><span class="vs">Fast-growing towns</span></div>
+      <div class="vitem"><span class="vt">Fully Nominated</span><span class="vs">No elections at all</span></div>
+    </div>
+    <div class="warn" style="font-size:9px;">❌ No democratic representation</div>
+  </div>
+  <div class="pc c-gold">
+    <div class="pc-label">Type 06</div>
+    <h3>🏭 Township</h3>
+    <div class="vlist">
+      <div class="vitem"><span class="vt">Public Enterprises create these</span><span class="vs">e.g. ONGC, SAIL townships</span></div>
+      <div class="vitem"><span class="vt">No Elected Body</span><span class="vs">Completely non-democratic</span></div>
+    </div>
+    <span class="chip gold" style="margin-top:8px;">Enterprise-run</span>
+  </div>
+  <div class="pc c-purple">
+    <div class="pc-label">Types 07 & 08</div>
+    <h3>⚓ Port Trust & SPA</h3>
+    <div class="vlist">
+      <div class="vitem"><span class="vt">Port Trust</span><span class="vs">Created by Parliament · Manages ports + civic</span></div>
+      <div class="vitem"><span class="vt">Special Purpose Agency</span><span class="vs">Water board, Dev. Authority — single task</span></div>
+    </div>
+    <div class="info" style="font-size:9px;">🔵 Not area-based · Independent of ULB</div>
+  </div>
+</div>
+
+<!-- ══ SECTION 3: PLANNING COMMITTEES ══ -->
+<div class="sec"><div class="sec-line"></div><div class="sec-txt">③ Planning Committees — Constitutional Provisions (UPSC 2011 Focus)</div><div class="sec-line"></div></div>
+
+<div class="map-card mc-green">
+  <svg id="svgPlanning" viewBox="0 0 1320 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc c-teal">
+    <div class="art-tag">Article 243ZD</div>
+    <div class="pc-label">District Level</div>
+    <h3>🗺️ District Planning Committee (DPC)</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-num" style="color:var(--teal);">4/5</div><div class="stat-lbl">Elected Members</div></div>
+      <div class="stat"><div class="stat-num" style="color:var(--muted);">1/5</div><div class="stat-lbl">Nominated</div></div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><span class="vt">Consolidates Panchayat + Municipality Plans</span></div>
+      <div class="vitem"><span class="vt">Mostly Elected Members</span><span class="vs">Proportional representation</span></div>
+      <div class="vitem"><span class="vt">Sends Development Plan → State Govt.</span></div>
+    </div>
+    <div class="flow" style="margin-top:10px;">
+      <div class="fn" style="border-color:var(--green);background:rgba(26,106,58,0.07);color:var(--green);">Panchayats</div>
+      <div class="fa">+</div>
+      <div class="fn" style="border-color:var(--teal);background:rgba(10,96,112,0.07);color:var(--teal);">Municipalities</div>
+      <div class="fa">→</div>
+      <div class="fn" style="border-color:var(--blue);background:rgba(26,58,138,0.07);color:var(--blue);">DPC Plan</div>
+      <div class="fa">→</div>
+      <div class="fn" style="border-color:var(--amber);background:rgba(212,104,16,0.07);color:var(--amber);">State Govt.</div>
+    </div>
+  </div>
+  <div class="pc c-sky">
+    <div class="art-tag">Article 243ZE</div>
+    <div class="pc-label">Metropolitan Level</div>
+    <h3>🌆 Metropolitan Planning Committee (MPC)</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-num" style="color:var(--sky);">2/3</div><div class="stat-lbl">Elected (Local Bodies)</div></div>
+      <div class="stat"><div class="stat-num" style="color:var(--muted);">10L+</div><div class="stat-lbl">Population Threshold</div></div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><span class="vt">For Metro Regions (&gt;10 lakh population)</span></div>
+      <div class="vitem"><span class="vt">2/3rd Elected from Local Bodies</span></div>
+      <div class="vitem"><span class="vt">Prepares Draft Development Plan for Metro Region</span></div>
+    </div>
+    <div class="warn">⚠️ Mostly on paper — rarely functional in practice</div>
+  </div>
+</div>
+
+<!-- ══ SECTION 4: PERSONNEL + FINANCE ══ -->
+<div class="sec"><div class="sec-line"></div><div class="sec-txt">④ Municipal Personnel Systems & Revenue Sources</div><div class="sec-line"></div></div>
+
+<div class="g2">
+  <!-- Personnel -->
+  <div class="pc c-purple">
+    <div class="pc-label">Administration</div>
+    <h3>👷 Municipal Personnel Systems</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">1. Separate System</div>
+        <div class="vs">Local body controls its own staff</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">2. Unified System</div>
+        <div class="vs">State controls staff — transferable across cities</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">3. Integrated System</div>
+        <div class="vs">Common state-local cadre shared service</div>
+      </div>
+    </div>
+    <div class="tip">✅ Most states follow Unified / Integrated model</div>
+  </div>
+
+  <!-- Finance -->
+  <div class="pc c-gold">
+    <div class="pc-label">Revenue Sources</div>
+    <h3>💰 How Municipalities Are Funded</h3>
+    <table class="rtable">
+      <thead>
+        <tr><th>Source</th><th>Examples</th><th>Nature</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Local Taxes</td><td>Property tax, advertisement tax</td><td><span class="chip gold" style="font-size:8px;">Own Revenue</span></td></tr>
+        <tr><td>User Charges</td><td>Water fees, rent from properties</td><td><span class="chip gold" style="font-size:8px;">Own Revenue</span></td></tr>
+        <tr><td>State Grants</td><td>SFC devolution, tied grants</td><td><span class="chip amber" style="font-size:8px;">Dependent</span></td></tr>
+        <tr><td>Central Grants</td><td>14th/15th FC, scheme grants</td><td><span class="chip amber" style="font-size:8px;">Dependent</span></td></tr>
+        <tr><td>Loans / Bonds</td><td>Municipal bonds, bank loans</td><td><span class="chip blue" style="font-size:8px;">Borrowed</span></td></tr>
+      </tbody>
+    </table>
+    <div class="warn" style="margin-top:10px;">⚠️ 80%+ revenue of most ULBs from state/centre grants → fiscal dependency</div>
+  </div>
+</div>
+
+<!-- ══ SECTION 5: FULL COMPARISON TABLE ══ -->
+<div class="sec"><div class="sec-line"></div><div class="sec-txt">⑤ Quick Comparison — All Urban Bodies at a Glance</div><div class="sec-line"></div></div>
+
+<div class="pc c-dark" style="margin-bottom:22px;padding:0;overflow:hidden;">
+  <table class="rtable" style="margin:0;">
+    <thead>
+      <tr>
+        <th>Body</th>
+        <th>City Type</th>
+        <th>Head</th>
+        <th>Executive</th>
+        <th>Members</th>
+        <th>Act / Authority</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Municipal Corporation</td>
+        <td>Large cities</td>
+        <td>Mayor</td>
+        <td>Commissioner (IAS)</td>
+        <td>Elected councillors</td>
+        <td>State Municipal Act</td>
+      </tr>
+      <tr>
+        <td>Municipality</td>
+        <td>Medium/Small cities</td>
+        <td>President/Chairperson</td>
+        <td>CEO (State appointed)</td>
+        <td>Elected councillors</td>
+        <td>State Municipal Act</td>
+      </tr>
+      <tr>
+        <td>Town Area Committee</td>
+        <td>Small towns</td>
+        <td>Chair</td>
+        <td>—</td>
+        <td>Elected / Nominated</td>
+        <td>State Act</td>
+      </tr>
+      <tr>
+        <td>Cantonment Board</td>
+        <td>Military areas</td>
+        <td>Military Officer</td>
+        <td>Exec. Officer (President)</td>
+        <td>Partly elected, partly nominated</td>
+        <td>Cantonments Act 2006</td>
+      </tr>
+      <tr>
+        <td>Notified Area Committee</td>
+        <td>Fast-growing towns</td>
+        <td>Chair (Nominated)</td>
+        <td>Nominated officer</td>
+        <td>Fully nominated</td>
+        <td>Notification</td>
+      </tr>
+      <tr>
+        <td>Township</td>
+        <td>Industrial areas</td>
+        <td>Enterprise head</td>
+        <td>Enterprise</td>
+        <td>No elections</td>
+        <td>Enterprise rules</td>
+      </tr>
+      <tr>
+        <td>Port Trust</td>
+        <td>Port cities</td>
+        <td>Chairman</td>
+        <td>Trust board</td>
+        <td>Elected + Nominated</td>
+        <td>Parliament (Major Ports Act)</td>
+      </tr>
+      <tr>
+        <td>Special Purpose Agency</td>
+        <td>Specific task area</td>
+        <td>CEO / Director</td>
+        <td>Independent board</td>
+        <td>Appointed</td>
+        <td>Specific legislation</td>
+      </tr>
+      <tr>
+        <td>DPC</td>
+        <td>District level</td>
+        <td>Elected Chair</td>
+        <td>District Collector</td>
+        <td>Mostly elected (4/5)</td>
+        <td>Art. 243ZD</td>
+      </tr>
+      <tr>
+        <td>MPC</td>
+        <td>Metro region (&gt;10L)</td>
+        <td>Elected Chair</td>
+        <td>State designated</td>
+        <td>2/3 elected local bodies</td>
+        <td>Art. 243ZE</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ KEYSTONE ══ -->
+<div class="keystone">
+  <div class="keystone-icon">🌆</div>
+  <div style="flex:1;">
+    <h3>Core Theme — The Connected Picture</h3>
+    <p>Urban governance flows from <strong style="color:#f5d78a;">Big cities → Municipal Corporations</strong> · <strong style="color:#f5d78a;">Medium towns → Councils</strong> · <strong style="color:#f5d78a;">Small towns → Town Committees</strong><br>
+    Special areas → Cantonments, Townships, Port Trusts · Planning → DPC (district) + MPC (metro)<br>
+    Administration: Mayor (political) + Commissioner (executive) · Finance: Taxes + Grants + Devolution<br>
+    <strong style="color:#f5d78a;">74th Amendment created the legal framework — but State Govt. still controls executive machinery strongly.</strong></p>
+    <div class="kpills">
+      <span class="kpill">🏛️ 74th Amendment</span>
+      <span class="kpill">⚖️ Mayor vs Commissioner</span>
+      <span class="kpill">📋 12th Schedule · 18 Functions</span>
+      <span class="kpill">📐 Art. 243ZD/ZE</span>
+      <span class="kpill">💸 3F: Funds · Functions · Functionaries</span>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function curve(svg,x1,y1,x2,y2,color,dash,w){
+  const cp=`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`;
+  svg.appendChild(el('path',{d:cp,stroke:color||'#bbb','stroke-width':w||1.8,fill:'none','stroke-dasharray':dash||'none',opacity:'0.65'}));
+}
+
+function line(svg,x1,y1,x2,y2,color,dash,w){
+  svg.appendChild(el('line',{x1,y1,x2,y2,stroke:color||'#bbb','stroke-width':w||1.8,fill:'none','stroke-dasharray':dash||'none',opacity:'0.6'}));
+}
+
+function node(svg,cx,cy,w,h,fill,lines,sub,ico,textCol,rx){
+  textCol=textCol||'#fff'; rx=rx||9;
+  const g=document.createElementNS(NS,'g');
+  // shadow
+  g.appendChild(el('rect',{x:cx-w/2+2,y:cy-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  // bg
+  g.appendChild(el('rect',{x:cx-w/2,y:cy-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.2'}));
+  let ty=cy-((lines.length-1)*7)-(sub?4:0)-(ico?10:0);
+  if(ico){
+    const t=el('text',{x:cx,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});
+    t.textContent=ico; g.appendChild(t); ty+=18;
+  }
+  lines.forEach((l,i)=>{
+    const t=el('text',{x:cx,y:ty+i*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10.5','font-weight':'700','font-family':'Plus Jakarta Sans,sans-serif',fill:textCol});
+    t.textContent=l; g.appendChild(t);
+  });
+  if(sub){
+    const s=el('text',{x:cx,y:ty+lines.length*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.38)'});
+    s.textContent=sub; g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+
+function label(svg,x,y,txt,color){
+  const t=el('text',{x,y,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace','letter-spacing':'2','fill':color||'rgba(120,100,60,0.4)','text-transform':'uppercase'});
+  t.textContent=txt; svg.appendChild(t);
+}
+
+// ══ MASTER FLOW ══
+(function(){
+  const svg=document.getElementById('svgMaster');
+  const steps=[
+    {x:80,  label:['Big Cities'],     sub:'Municipal Corp.', fill:'#1a3a8a', ico:'🏛️'},
+    {x:240, label:['Medium Towns'],   sub:'Municipality',    fill:'#0a6070', ico:'🏘️'},
+    {x:400, label:['Small Towns'],    sub:'Town Committee',  fill:'#1a6a3a', ico:'🏡'},
+    {x:560, label:['Special Areas'],  sub:'Cantt/Township',  fill:'#b01a1a', ico:'⚡'},
+    {x:720, label:['Planning'],       sub:'DPC + MPC',       fill:'#5a1a8a', ico:'📐'},
+    {x:880, label:['Administration'], sub:'Mayor+Commissioner',fill:'#d46810', ico:'👤'},
+    {x:1040,label:['Personnel'],      sub:'3 Staff Systems', fill:'#7a4010', ico:'👷'},
+    {x:1200,label:['Finance'],        sub:'Taxes+Grants+Loans',fill:'#c08010', ico:'💰'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1) line(svg,s.x+60,50,steps[i+1].x-60,50,'#c08010',undefined,1.8);
+  });
+  steps.forEach(s=> node(svg,s.x,50,108,60,s.fill,s.label,s.sub,s.ico));
+  label(svg,660,96,'Connected Flow: Urban Governance Structure in India');
+})();
+
+// ══ MAIN ULBs SVG ══
+(function(){
+  const svg=document.getElementById('svgMain');
+  // Root
+  node(svg,660,50,240,50,'#1a1410',['74th Amendment ULBs'],'Three Tiers of Urban Bodies','🏙️');
+
+  // Three columns
+  const cols=[
+    {x:180,y:155, fill:'#1a3a8a', lines:['Municipal','Corporation'], sub:'Large Cities', ico:'🏛️'},
+    {x:660,y:155, fill:'#0a6070', lines:['Municipality'], sub:'Medium / Small Cities', ico:'🏘️'},
+    {x:1140,y:155, fill:'#1a6a3a', lines:['Town Area','Committee'], sub:'Small Towns', ico:'🏡'},
+  ];
+
+  cols.forEach(c=>{
+    curve(svg,660,75,c.x,128,'#b8801055',undefined,1.6);
+    node(svg,c.x,c.y,200,58,c.fill,c.lines,c.sub,c.ico);
+  });
+
+  // Sub-nodes for Municipal Corporation
+  const corpsub=[
+    {x:60,y:240,  fill:'#2a4a9a', lines:['Mayor'], sub:'Political Head', ico:'👤'},
+    {x:200,y:240, fill:'#3a6a8a', lines:['Commissioner'], sub:'Executive (IAS)', ico:'🧑‍💼'},
+    {x:340,y:240, fill:'#4a5a7a', lines:['Council'], sub:'Elected Wards', ico:'🗳️'},
+  ];
+  corpsub.forEach(s=>{
+    line(svg,180,184,s.x,218,'#1a3a8a44','4 3',1.4);
+    node(svg,s.x,s.y,118,42,s.fill,s.lines,s.sub,s.ico);
+  });
+
+  // Sub-nodes for Municipality
+  const munsub=[
+    {x:580,y:240, fill:'#0a5060', lines:['President'], sub:'Political Head', ico:'👤'},
+    {x:720,y:240, fill:'#1a7080', lines:['CEO'], sub:'State Appointed', ico:'🧑‍💼'},
+  ];
+  munsub.forEach(s=>{
+    line(svg,660,184,s.x,218,'#0a607044','4 3',1.4);
+    node(svg,s.x,s.y,118,42,s.fill,s.lines,s.sub,s.ico);
+  });
+
+  label(svg,660,275,'MAIN URBAN LOCAL BODIES UNDER 74TH AMENDMENT');
+})();
+
+// ══ SPECIAL BODIES SVG ══
+(function(){
+  const svg=document.getElementById('svgSpecial');
+  node(svg,660,45,260,50,'#2a0a0a',['Special Urban Bodies'],'Outside 74th Amendment Framework','⚠️');
+
+  const specials=[
+    {x:110,y:150, fill:'#8a1a1a', lines:['Cantonment','Board'], sub:'Ministry of Defence', ico:'🪖'},
+    {x:350,y:150, fill:'#c06010', lines:['Notified Area','Committee'], sub:'Fully Nominated', ico:'📢'},
+    {x:590,y:150, fill:'#8a6010', lines:['Township'], sub:'Public Enterprises', ico:'🏭'},
+    {x:830,y:150, fill:'#4a1a6a', lines:['Port Trust'], sub:'Parliament Created', ico:'⚓'},
+    {x:1070,y:150, fill:'#0a4a6a', lines:['Special Purpose','Agency'], sub:'Single Task · Non-Area', ico:'🎯'},
+  ];
+
+  specials.forEach(s=>{
+    curve(svg,660,70,s.x,122,'#b0101044','4 3',1.5);
+    node(svg,s.x,s.y,178,56,s.fill,s.lines,s.sub,s.ico);
+  });
+
+  // Key distinction row
+  const dists=[
+    {x:110, txt:'Partly Elected', color:'#8a1a1a'},
+    {x:350, txt:'No Elections', color:'#c06010'},
+    {x:590, txt:'No Elected Body', color:'#8a6010'},
+    {x:830, txt:'Mixed Members', color:'#4a1a6a'},
+    {x:1070,txt:'Independent of ULB', color:'#0a4a6a'},
+  ];
+  dists.forEach(d=>{
+    const r=el('rect',{x:d.x-72,y:200,width:144,height:24,rx:'6',ry:'6',fill:d.color,opacity:'0.12'});
+    svg.appendChild(r);
+    const t=el('text',{x:d.x,y:214,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9','font-weight':'700','font-family':'DM Mono,monospace',fill:d.color});
+    t.textContent=d.txt; svg.appendChild(t);
+  });
+
+  label(svg,660,236,'SPECIAL BODIES — NOT UNDER 74TH AMENDMENT · EACH HAS SEPARATE GOVERNING STATUTE');
+})();
+
+// ══ PLANNING SVG ══
+(function(){
+  const svg=document.getElementById('svgPlanning');
+  node(svg,660,45,250,50,'#0a1a2a',['Constitutional Planning','Committees'],'Art. 243ZD & 243ZE','📐');
+
+  // DPC left tree
+  node(svg,260,125,210,52,'#0a6070',['District Planning','Committee (DPC)'],'Article 243ZD','🗺️');
+  curve(svg,535,70,356,98,'#0a607066',undefined,2);
+
+  const dpcsub=[
+    {x:100,y:185, fill:'#0a5060', lines:['Consolidates Plans'], sub:'Panchayat + Municipality'},
+    {x:280,y:185, fill:'#0a4a70', lines:['Mostly Elected'], sub:'4/5 members elected'},
+    {x:450,y:185, fill:'#0a5850', lines:['→ State Govt.'], sub:'Sends development plan'},
+  ];
+  dpcsub.forEach(s=>{
+    line(svg,260,151,s.x,169,'#0a607044','3 3',1.3);
+    node(svg,s.x,s.y,158,30,s.fill,s.lines,s.sub,null,'#fff',7);
+  });
+
+  // MPC right tree
+  node(svg,1060,125,210,52,'#1a5878',['Metro Planning','Committee (MPC)'],'Article 243ZE','🌆');
+  curve(svg,785,70,964,98,'#1a587866',undefined,2);
+
+  const mpcsub=[
+    {x:870, y:185, fill:'#1a4a68', lines:['10 Lakh+'], sub:'Population threshold'},
+    {x:1050,y:185, fill:'#1a5070', lines:['2/3 Elected'], sub:'From local bodies'},
+    {x:1230,y:185, fill:'#0a4858', lines:['Draft Metro Plan'], sub:'Regional development'},
+  ];
+  mpcsub.forEach(s=>{
+    line(svg,1060,151,s.x,169,'#1a587844','3 3',1.3);
+    node(svg,s.x,s.y,158,30,s.fill,s.lines,s.sub,null,'#fff',7);
+  });
+
+  // UPSC badge
+  const ub=el('rect',{x:596,y:80,width:128,height:24,rx:'8',ry:'8',fill:'rgba(176,26,26,0.12)',stroke:'rgba(176,26,26,0.3)','stroke-width':'1'});
+  svg.appendChild(ub);
+  const ut=el('text',{x:660,y:93,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9','font-weight':'800','font-family':'DM Mono,monospace',fill:'#b01a1a'});
+  ut.textContent='★ UPSC 2011 TOPIC'; svg.appendChild(ut);
+
+  label(svg,660,196,'PLANNING COMMITTEES — COORDINATE URBAN AND RURAL GOVERNANCE AT DISTRICT AND METRO LEVEL');
+})();
+</script>
+</body>
+</html>
