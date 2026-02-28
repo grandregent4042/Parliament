@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Election Laws, Anti-Defection & SC Judgments — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0d1117;--paper:#f6f4ef;--cream:#fffdf8;
+  --saffron:#d95f0e;--saffron-lt:#fff0e4;
+  --navy:#0f2a5a;--navy-lt:#e8f0ff;
+  --green:#1a6640;--green-lt:#e6f5ed;
+  --gold:#9a7200;--gold-lt:#fef8e2;
+  --purple:#6b1fa0;--purple-lt:#f4eaff;
+  --teal:#0a6070;--teal-lt:#e4f4f8;
+  --red:#b81a1a;--red-lt:#fdeaea;
+  --slate:#3c4f60;--border:#ddd5bf;
+  --muted:#7a6e58;--shadow:rgba(13,17,23,0.08);
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse 900px 500px at 10% 5%,rgba(217,95,14,0.04) 0%,transparent 60%),
+  radial-gradient(ellipse 600px 600px at 90% 95%,rgba(15,42,90,0.04) 0%,transparent 60%);
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:50px 16px 22px;}
+.hbadge{display:inline-flex;align-items:center;gap:8px;padding:5px 16px;border-radius:30px;
+  background:linear-gradient(135deg,var(--saffron),#f08030);color:#fff;
+  font-size:10px;font-family:'DM Mono',monospace;letter-spacing:2.5px;text-transform:uppercase;
+  margin-bottom:14px;box-shadow:0 2px 12px rgba(217,95,14,0.25);}
+.header h1{font-family:'Libre Baskerville',serif;font-size:clamp(26px,5vw,48px);line-height:1.1;}
+.header h1 em{font-style:italic;color:var(--saffron);}
+.header p{font-size:13px;color:var(--muted);margin-top:8px;}
+.tricolor{display:flex;width:80px;height:5px;border-radius:4px;overflow:hidden;margin:16px auto 0;}
+.tc{flex:1;}.tc:nth-child(1){background:#ff9933;}.tc:nth-child(2){background:#fff;border:1px solid #ddd;}.tc:nth-child(3){background:#128807;}
+
+/* SECTION */
+.sec{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  margin:38px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+.s1{color:var(--saffron);}.s2{color:var(--navy);}.s3{color:var(--purple);}.s4{color:var(--red);}
+.s5{color:var(--green);}.s6{color:var(--gold);}.s7{color:var(--teal);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;margin-bottom:20px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:960px){.g3,.g4{grid-template-columns:1fr 1fr;}.g2x1{grid-template-columns:1fr;}}
+@media(max-width:620px){.g2,.g3,.g4,.g2x1{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--cream);border:1.5px solid var(--border);border-radius:16px;
+  padding:18px;position:relative;overflow:hidden;transition:box-shadow 0.22s,transform 0.22s;}
+.pc:hover{box-shadow:0 8px 30px var(--shadow);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.saffron::before{background:linear-gradient(90deg,var(--saffron),#f0a060);}
+.pc.navy::before{background:linear-gradient(90deg,var(--navy),#3060b0);}
+.pc.green::before{background:linear-gradient(90deg,var(--green),#30a060);}
+.pc.gold::before{background:linear-gradient(90deg,var(--gold),#c8a030);}
+.pc.purple::before{background:linear-gradient(90deg,var(--purple),#9040d0);}
+.pc.teal::before{background:linear-gradient(90deg,var(--teal),#2090b0);}
+.pc.red::before{background:linear-gradient(90deg,var(--red),#d04040);}
+.pc.slate::before{background:linear-gradient(90deg,var(--slate),#8090a0);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.pc h3{font-family:'Libre Baskerville',serif;font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:7px;line-height:1.35;}
+
+/* MAP CARD */
+.mc{background:var(--cream);border:1.5px solid var(--border);border-radius:20px;
+  overflow:hidden;position:relative;margin-bottom:22px;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc1::before{background:linear-gradient(90deg,var(--saffron),#e0a030,var(--green));}
+.mc2::before{background:linear-gradient(90deg,var(--navy),var(--purple),var(--teal));}
+.mc3::before{background:linear-gradient(90deg,var(--purple),var(--red),var(--saffron));}
+.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--navy));}
+.mc5::before{background:linear-gradient(90deg,var(--gold),var(--saffron));}
+.mc6::before{background:linear-gradient(90deg,var(--red),var(--navy));}
+.mc svg{display:block;width:100%;}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vitem{padding:8px 11px;border-radius:8px;background:var(--paper);border:1px solid var(--border);font-size:11px;}
+.vt{font-weight:700;margin-bottom:2px;}
+.vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* CHIPS */
+.chip{display:inline-flex;align-items:center;gap:3px;padding:3px 9px;border-radius:20px;
+  font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.chip.ok{background:rgba(26,102,64,0.1);color:var(--green);border:1px solid rgba(26,102,64,0.2);}
+.chip.warn{background:rgba(184,26,26,0.1);color:var(--red);border:1px solid rgba(184,26,26,0.2);}
+.chip.info{background:rgba(15,42,90,0.08);color:var(--navy);border:1px solid rgba(15,42,90,0.2);}
+.chip.gold{background:rgba(154,114,0,0.1);color:var(--gold);border:1px solid rgba(154,114,0,0.2);}
+.chip.purple{background:rgba(107,31,160,0.1);color:var(--purple);border:1px solid rgba(107,31,160,0.2);}
+.chip.saffron{background:rgba(217,95,14,0.1);color:var(--saffron);border:1px solid rgba(217,95,14,0.2);}
+.chip.teal{background:rgba(10,96,112,0.1);color:var(--teal);border:1px solid rgba(10,96,112,0.2);}
+
+/* AMEND BADGE */
+.amend{display:inline-block;padding:2px 8px;border-radius:5px;font-size:9px;font-weight:700;
+  font-family:'DM Mono',monospace;background:var(--navy);color:#fff;margin:1px;}
+.case-badge{display:inline-block;padding:2px 8px;border-radius:5px;font-size:9px;font-weight:700;
+  font-family:'DM Mono',monospace;background:var(--purple-lt);color:var(--purple);border:1px solid rgba(107,31,160,0.25);margin:1px;}
+
+/* FEAT GRID */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px;}
+.feat{padding:9px 11px;border-radius:8px;background:var(--paper);border:1px solid var(--border);}
+.feat .fi{font-size:15px;margin-bottom:3px;}
+.feat .ft{font-size:11px;font-weight:700;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:1px;}
+
+/* IMPACT CHAIN */
+.chain{display:flex;align-items:center;flex-wrap:wrap;gap:0;padding:8px 0;margin:8px 0;}
+.cn{padding:6px 12px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ca{font-size:13px;color:var(--muted);flex:0 0 auto;margin:0 5px;}
+
+/* KEYSTONE */
+.keystone{background:linear-gradient(135deg,var(--navy),#1a3a6a);color:#f0ecdf;
+  border-radius:20px;padding:26px 30px;margin:22px 0;display:flex;align-items:flex-start;
+  gap:22px;flex-wrap:wrap;box-shadow:0 8px 36px rgba(15,42,90,0.2);}
+.keystone-icon{font-size:38px;flex:0 0 auto;margin-top:4px;}
+.keystone-title{font-family:'Libre Baskerville',serif;font-size:20px;font-style:italic;margin-bottom:7px;color:#fff;}
+.keystone-body{font-size:12px;color:#b8c8e8;line-height:1.75;}
+.keystone-body strong{color:#f0ecdf;}
+.kpills{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 11px;border-radius:20px;background:rgba(255,255,255,0.1);
+  font-size:10px;font-family:'DM Mono',monospace;color:#d0e0ff;border:1px solid rgba(255,255,255,0.15);}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;gap:0;position:relative;padding-left:22px;}
+.timeline::before{content:'';position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:var(--border);}
+.titem{position:relative;padding:10px 0 10px 18px;margin-left:0;}
+.titem::before{content:'';position:absolute;left:-6px;top:50%;transform:translateY(-50%);
+  width:12px;height:12px;border-radius:50%;border:2.5px solid;background:var(--cream);}
+.titem.saffron::before{border-color:var(--saffron);}
+.titem.navy::before{border-color:var(--navy);}
+.titem.green::before{border-color:var(--green);}
+.titem.purple::before{border-color:var(--purple);}
+.titem.red::before{border-color:var(--red);}
+.titem.gold::before{border-color:var(--gold);}
+.titem.teal::before{border-color:var(--teal);}
+.tyear{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;margin-bottom:2px;}
+.ttitle{font-size:12px;font-weight:700;}
+.tsub{font-size:10px;color:var(--muted);}
+
+/* CALLOUT */
+.callout{padding:10px 13px;border-radius:9px;margin:8px 0;
+  background:rgba(26,102,64,0.06);border:1.5px solid rgba(26,102,64,0.2);}
+.callout-title{font-size:11px;font-weight:700;color:var(--green);margin-bottom:2px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.55;}
+.callout.warn{background:rgba(184,26,26,0.05);border-color:rgba(184,26,26,0.2);}
+.callout.warn .callout-title{color:var(--red);}
+.callout.info{background:rgba(15,42,90,0.05);border-color:rgba(15,42,90,0.2);}
+.callout.info .callout-title{color:var(--navy);}
+.callout.purple{background:rgba(107,31,160,0.05);border-color:rgba(107,31,160,0.2);}
+.callout.purple .callout-title{color:var(--purple);}
+
+/* TABLE */
+.ctbl{width:100%;border-collapse:collapse;font-size:11px;}
+.ctbl th{background:var(--ink);color:#fff;padding:9px 12px;text-align:left;
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctbl td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55;}
+.ctbl tr:last-child td{border-bottom:none;}
+.ctbl tr:nth-child(even) td{background:rgba(217,95,14,0.025);}
+.ctbl td:first-child{font-weight:700;color:var(--saffron);}
+.ctbl td:nth-child(2){color:var(--navy);font-weight:700;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="hbadge">⚖️ Indian Polity · Elections · UPSC Prelims</div>
+  <h1>Election Laws, <em>Anti-Defection</em> &amp; SC Judgments</h1>
+  <p>Other Laws → Rules → 10th Schedule → 91st Amendment → SC Cases → Committees — one connected flow</p>
+  <div class="tricolor"><div class="tc"></div><div class="tc"></div><div class="tc"></div></div>
+</div>
+
+<!-- ═══ MASTER FLOW ═══ -->
+<div class="sec s1">⓪ Master Flow — The Full Connected Story</div>
+<div class="mc mc1">
+  <svg id="svgMaster" viewBox="0 0 1360 110" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- ═══ SECTION 1: OTHER ELECTION LAWS ═══ -->
+<div class="sec s1">① Other Important Election Laws — Beyond RPA</div>
+<div class="mc mc1">
+  <svg id="svgLaws" viewBox="0 0 1360 300" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+<div class="g3">
+  <div class="pc saffron">
+    <div class="pc-label">Presidential Elections</div>
+    <h3>👑 Pres. & VP Elections Act, 1952</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Governs President & VP Election</div><div class="vs">Separate from RPA; specific to top offices</div></div>
+      <div class="vitem"><div class="vt">Electoral College</div><div class="vs">Elected MPs + MLAs; PR + STV system</div></div>
+      <div class="vitem"><div class="vt">Disputes to</div><div class="vs">Supreme Court (not High Court)</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip saffron">1952 Act</span><span class="chip info">PR + STV</span></div>
+  </div>
+  <div class="pc navy">
+    <div class="pc-label">Office of Profit</div>
+    <h3>🏛️ Prevention of Disqualification Act, 1959</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Exempts certain offices from disqualification</div><div class="vs">Parliament lists safe "offices of profit"</div></div>
+      <div class="vitem"><div class="vt">Why it matters</div><div class="vs">Holding office of profit → disqualified as MP/MLA unless exempted</div></div>
+    </div>
+    <div class="callout info" style="margin-top:8px;">
+      <div class="callout-title">Key Prelims Point</div>
+      <div class="callout-body">Parliament regularly amends this list. States have their own versions.</div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Territory-Specific Laws</div>
+    <h3>🗺️ UT & Delhi Acts</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Govt of UT Act, 1963</div><div class="vs">Assemblies & CoMs in UTs like Puducherry</div></div>
+      <div class="vitem"><div class="vt">GNCTD Act, 1991</div><div class="vs">Governs Delhi's special assembly & LG-CM relationship</div></div>
+      <div class="vitem"><div class="vt">SC/ST Orders (Amendment), 1976</div><div class="vs">Updates scheduled caste/tribe lists</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip ok">1963 — UTs</span><span class="chip ok">1991 — Delhi</span></div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 2: RULES ═══ -->
+<div class="sec s2">② Subordinate Legislation — Key Election Rules</div>
+<div class="mc mc2">
+  <svg id="svgRules" viewBox="0 0 1360 130" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+<div class="g4">
+  <div class="pc navy">
+    <div class="pc-label">1960</div>
+    <h3>📋 Registration of Electors Rules</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Electoral Roll management</div><div class="vs">Preparation, revision, publication</div></div>
+    </div>
+    <span class="chip info" style="margin-top:8px;">Voter Registration</span>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">1961</div>
+    <h3>⚙️ Conduct of Elections Rules</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Governs election procedure</div><div class="vs">From nomination to result declaration</div></div>
+    </div>
+    <span class="chip teal" style="margin-top:8px;">Election Conduct</span>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">1974</div>
+    <h3>👑 Pres. & VP Election Rules</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Procedural rules</div><div class="vs">For presidential & VP election conduct</div></div>
+    </div>
+    <span class="chip purple" style="margin-top:8px;">Top Office Rules</span>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">2004</div>
+    <h3>💰 Asset Declaration Rules</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Candidate disclosures</div><div class="vs">Criminal record + assets + liabilities mandatory</div></div>
+    </div>
+    <div class="callout purple" style="margin-top:8px;">
+      <div class="callout-title">Origin: ADR Case (2002)</div>
+      <div class="callout-body">SC mandated this in ADR judgment</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 3: ANTI-DEFECTION ═══ -->
+<div class="sec s3">③ Anti-Defection Law — 10th Schedule (Very Important)</div>
+<div class="mc mc3">
+  <svg id="svgAD" viewBox="0 0 1360 310" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc purple">
+    <div class="pc-label">Constitutional Basis</div>
+    <h3>📜 52nd Amendment, 1985 — Tenth Schedule</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Added Tenth Schedule</div><div class="vs">Anti-defection provisions inserted</div></div>
+      <div class="vitem"><div class="vt">Articles Amended</div><div class="vs">Art 101, 102, 190, 191 — disqualification provisions</div></div>
+      <div class="vitem"><div class="vt">Who decides?</div><div class="vs">Speaker (Lok Sabha) / Chairman (Rajya Sabha)</div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="amend">52nd Amendment</span>
+      <span class="amend">10th Schedule</span>
+      <span class="case-badge">Kihoto Hollohan (1992)</span>
+    </div>
+    <div class="callout purple" style="margin-top:8px;">
+      <div class="callout-title">⚖️ Kihoto Hollohan v. Zachillhu (1992)</div>
+      <div class="callout-body">Speaker's decision is subject to judicial review — but only AFTER the decision is made, not during proceedings.</div>
+    </div>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-label">Grounds for Disqualification</div>
+    <h3>⛔ Who Gets Disqualified?</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px;">
+      <div style="padding:10px;border-radius:9px;background:rgba(184,26,26,0.06);border:1.5px solid rgba(184,26,26,0.2);text-align:center;">
+        <div style="font-size:18px;margin-bottom:4px;">🏛️</div>
+        <div style="font-size:11px;font-weight:700;margin-bottom:4px;">Party Member</div>
+        <div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;">Voluntarily quits OR votes against whip (not condoned in 15 days)</div>
+      </div>
+      <div style="padding:10px;border-radius:9px;background:rgba(107,31,160,0.06);border:1.5px solid rgba(107,31,160,0.2);text-align:center;">
+        <div style="font-size:18px;margin-bottom:4px;">🆓</div>
+        <div style="font-size:11px;font-weight:700;margin-bottom:4px;">Independent</div>
+        <div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;">Joins any party after winning election</div>
+      </div>
+      <div style="padding:10px;border-radius:9px;background:rgba(15,42,90,0.06);border:1.5px solid rgba(15,42,90,0.2);text-align:center;">
+        <div style="font-size:18px;margin-bottom:4px;">📝</div>
+        <div style="font-size:11px;font-weight:700;margin-bottom:4px;">Nominated</div>
+        <div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;">Joins party after 6 months of being nominated</div>
+      </div>
+    </div>
+    <div style="padding:10px;background:var(--green-lt);border-radius:9px;border:1.5px solid rgba(26,102,64,0.2);">
+      <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:5px;">✅ Exceptions — NOT Disqualified</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;">
+        <span class="chip ok">✅ Merger — 2/3 members agree</span>
+        <span class="chip warn">❌ 1/3 Split — deleted by 91st Amendment</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 91st Amendment -->
+<div class="pc slate" style="margin-bottom:20px;">
+  <div class="pc-label">91st Amendment Act, 2003</div>
+  <h3>⚖️ Council of Ministers Cap + Defector Disqualification</h3>
+  <div class="g2" style="margin-bottom:0;margin-top:8px;">
+    <div style="padding:12px;border-radius:10px;background:var(--navy-lt);border:1.5px solid rgba(15,42,90,0.2);">
+      <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px;">📐 Ministry Size Cap</div>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">Central / State — 15% cap</div><div class="vs">Council of Ministers ≤ 15% of LS / Assembly strength</div></div>
+        <div class="vitem"><div class="vt">Minimum 12 Ministers</div><div class="vs">For states — floor to prevent tiny cabinets</div></div>
+        <div class="vitem"><div class="vt">Delhi special case</div><div class="vs">10% of Assembly strength for Delhi CM</div></div>
+      </div>
+    </div>
+    <div style="padding:12px;border-radius:10px;background:var(--red-lt);border:1.5px solid rgba(184,26,26,0.2);">
+      <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:8px;">🚫 Defector Restrictions</div>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">Cannot become Ministers</div><div class="vs">Defectors barred from ministerial office</div></div>
+        <div class="vitem"><div class="vt">No Remunerative Posts</div><div class="vs">Cannot hold any political post with salary</div></div>
+        <div class="vitem"><div class="vt">Split rule deleted</div><div class="vs">1/3 split exception removed — now only merger allowed</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 4: SC JUDGMENTS ═══ -->
+<div class="sec s4">④ Supreme Court Judgments — Very Important for Prelims</div>
+<div class="mc mc4">
+  <svg id="svgSC" viewBox="0 0 1440 310" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g3" style="margin-bottom:16px;">
+  <!-- Candidate Transparency -->
+  <div class="pc purple">
+    <div class="pc-label">Candidate Transparency</div>
+    <h3>📋 Disclosure Judgments</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">ADR v. Union of India <span class="case-badge">2002</span></div>
+        <div class="vs">Mandatory disclosure of criminal record, assets & liabilities before elections</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Lily Thomas v. Union of India <span class="case-badge">2013</span></div>
+        <div class="vs">Immediate disqualification on conviction — cannot continue as MP/MLA even if appeal pending</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">PUCL v. Union of India <span class="case-badge">2013</span></div>
+        <div class="vs">Right to reject all candidates → NOTA (None Of The Above) introduced on EVMs</div>
+      </div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="chip purple">⭐ Lily Thomas — High Freq</span>
+      <span class="chip purple">⭐ PUCL → NOTA</span>
+    </div>
+  </div>
+
+  <!-- ECI Powers -->
+  <div class="pc navy">
+    <div class="pc-label">ECI Powers</div>
+    <h3>⚖️ ECI Jurisdiction Cases</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">Mohinder Singh Gill <span class="case-badge">1978</span></div>
+        <div class="vs">ECI has plenary powers under Art 324 — broad superintendence beyond mere supervision</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">T.N. Seshan v. Union of India <span class="case-badge">1995</span></div>
+        <div class="vs">CEC and two Election Commissioners have equal powers — CEC is not superior</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Anoop Baranwal <span class="case-badge">2023</span></div>
+        <div class="vs">Independent committee must appoint CEC — PM, Leader of Opposition, CJI</div>
+      </div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="chip info">⭐ Anoop Baranwal — New</span>
+    </div>
+  </div>
+
+  <!-- Electoral Integrity -->
+  <div class="pc red">
+    <div class="pc-label">Electoral Integrity</div>
+    <h3>🗳️ Process & Integrity Cases</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">Subramanian Swamy <span class="case-badge">2013</span></div>
+        <div class="vs">VVPAT mandatory — EVMs must produce paper trail for voter verification</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Abhiram Singh v. Dwarka Saran <span class="case-badge">2017</span></div>
+        <div class="vs">Appealing to voters on basis of religion, caste or language = corrupt practice</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Union of India v. Harbans Singh</div>
+        <div class="vs">ECI can cancel elections in case of booth capturing — plenary Art 324 power</div>
+      </div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="chip warn">⭐ VVPAT mandatory</span>
+      <span class="chip warn">⭐ No religion appeal</span>
+    </div>
+  </div>
+</div>
+
+<!-- All SC judgments quick table -->
+<div style="overflow-x:auto;margin-bottom:22px;">
+<table class="ctbl">
+  <thead>
+    <tr>
+      <th>YEAR</th>
+      <th>CASE</th>
+      <th>KEY RULING</th>
+      <th>PRELIMS TAG</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>1978</td><td>Mohinder Singh Gill</td><td>ECI has plenary supervisory powers under Art 324</td><td><span class="chip info">ECI Powers</span></td></tr>
+    <tr><td>1992</td><td>Kihoto Hollohan</td><td>Speaker's anti-defection decision is judicially reviewable — but after decision</td><td><span class="chip purple">Anti-Defection</span></td></tr>
+    <tr><td>1995</td><td>T.N. Seshan</td><td>CEC & ECs have equal power; CEC not superior</td><td><span class="chip info">ECI Equality</span></td></tr>
+    <tr><td>2002</td><td>ADR v. Union of India</td><td>Candidates must disclose criminal record + assets + liabilities</td><td><span class="chip purple">Transparency</span></td></tr>
+    <tr><td>2013</td><td>Lily Thomas</td><td>Conviction = immediate disqualification; no stay during appeal</td><td><span class="chip warn">⭐ High Freq</span></td></tr>
+    <tr><td>2013</td><td>PUCL v. Union of India</td><td>Right to reject → NOTA introduced on EVMs</td><td><span class="chip warn">⭐ NOTA</span></td></tr>
+    <tr><td>2013</td><td>Subramanian Swamy</td><td>VVPAT mandatory alongside EVMs</td><td><span class="chip warn">⭐ VVPAT</span></td></tr>
+    <tr><td>2017</td><td>Abhiram Singh</td><td>Appeal to religion/caste/language = corrupt practice</td><td><span class="chip teal">Electoral Integrity</span></td></tr>
+    <tr><td>2023</td><td>Anoop Baranwal</td><td>CEC appointed by PM + Leader of Opp + CJI panel</td><td><span class="chip warn">⭐ New — 2023</span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ═══ SECTION 5: COMMITTEES ═══ -->
+<div class="sec s5">⑤ Important Committees — Prelims Favorite</div>
+<div class="mc mc5">
+  <svg id="svgComm" viewBox="0 0 1360 200" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <!-- Timeline -->
+  <div class="pc gold">
+    <div class="pc-label">Chronological Timeline</div>
+    <h3>📅 Committees on Electoral Reform</h3>
+    <div class="timeline">
+      <div class="titem saffron">
+        <div class="tyear" style="color:var(--saffron);">1974</div>
+        <div class="ttitle">Tarkunde Committee</div>
+        <div class="tsub">Addressed electoral malpractices</div>
+      </div>
+      <div class="titem navy">
+        <div class="tyear" style="color:var(--navy);">1990</div>
+        <div class="ttitle">Dinesh Goswami Committee</div>
+        <div class="tsub">Focus: Funding reforms in elections</div>
+      </div>
+      <div class="titem green">
+        <div class="tyear" style="color:var(--green);">1998</div>
+        <div class="ttitle">Indrajit Gupta Committee</div>
+        <div class="tsub">Focus: State funding of elections</div>
+      </div>
+      <div class="titem purple">
+        <div class="tyear" style="color:var(--purple);">2000</div>
+        <div class="ttitle">NCRWC — Venkatachaliah</div>
+        <div class="tsub">Constitutional review commission</div>
+      </div>
+      <div class="titem red">
+        <div class="tyear" style="color:var(--red);">2005</div>
+        <div class="ttitle">2nd ARC</div>
+        <div class="tsub">Ethics in governance & electoral reforms</div>
+      </div>
+      <div class="titem gold">
+        <div class="tyear" style="color:var(--gold);">2023</div>
+        <div class="ttitle">Ramnath Kovind Committee</div>
+        <div class="tsub">One Nation, One Election — simultaneous polls</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key recommendations -->
+  <div class="pc green">
+    <div class="pc-label">Key Recommendations Summary</div>
+    <h3>💡 What Committees Suggested</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">State Funding of Elections</div>
+        <div class="vs">Indrajit Gupta (1998) — reduce money power influence</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Proportional Representation</div>
+        <div class="vs">Tarkunde & others — reduce seat-vote mismatch of FPTP</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Stronger ECI</div>
+        <div class="vs">All committees — more independence, enforcement powers</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Simultaneous Elections</div>
+        <div class="vs">Kovind Committee (2023) — ONOE; reduce election frequency</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Decriminalisation</div>
+        <div class="vs">2nd ARC + NCRWC — bar candidates with criminal records</div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:8px;">
+      <div class="callout-title">Prelims Memory Hook</div>
+      <div class="callout-body">Tarkunde 1974 → Goswami 1990 → Gupta 1998 → NCRWC 2000 → 2nd ARC 2005 → Kovind 2023</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 6: FULL FLOW ═══ -->
+<div class="sec s7">⑥ Complete Legislative Ladder — Full Flow</div>
+<div class="mc mc6">
+  <svg id="svgFlow" viewBox="0 0 1360 140" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- Quick-fire prelims -->
+<div class="sec s4">⑦ High-Probability Prelims Points — Quick Reference</div>
+<div class="g3">
+  <div class="pc purple">
+    <div class="pc-label">Amendments</div>
+    <h3>⭐ Must-Know Amendments</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;">
+      <span class="chip purple">52nd — 10th Schedule (Anti-defection)</span>
+      <span class="chip purple">61st — Voting age 21→18</span>
+      <span class="chip purple">91st — 15% minister cap</span>
+      <span class="chip purple">91st — Split rule deleted</span>
+      <span class="chip purple">2/3 merger still valid</span>
+    </div>
+    <div class="callout purple" style="margin-top:8px;">
+      <div class="callout-title">Easy trap: 91st Amendment</div>
+      <div class="callout-body">91st = 15% cap AND defector bar AND split deletion — ALL in one amendment.</div>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">SC Cases</div>
+    <h3>⭐ Must-Know SC Judgments</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;">
+      <span class="chip warn">Lily Thomas → Immediate disqualification</span>
+      <span class="chip warn">PUCL → NOTA</span>
+      <span class="chip warn">VVPAT → Subramanian Swamy</span>
+      <span class="chip warn">Kihoto → Speaker reviewable</span>
+      <span class="chip warn">Anoop Baranwal → CEC panel</span>
+      <span class="chip warn">Abhiram → No religion/caste appeal</span>
+    </div>
+  </div>
+  <div class="pc navy">
+    <div class="pc-label">Other Facts</div>
+    <h3>⭐ Other Quick Points</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;">
+      <span class="chip info">Asset disclosure = mandatory</span>
+      <span class="chip info">Delimitation freeze till 2026</span>
+      <span class="chip info">Speaker decides defection</span>
+      <span class="chip info">Art 324 = plenary ECI power</span>
+      <span class="chip info">By-election within 6 months</span>
+      <span class="chip info">Security deposit: 1/6 threshold</span>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🏛️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Complete Election Law Architecture</div>
+    <div class="keystone-body">
+      <strong>Constitution (Art 324–329)</strong> → <strong>RPA 1950 (Rolls) + RPA 1951 (Conduct)</strong> → <strong>Other Acts</strong> (1952, 1959 etc.) → <strong>Anti-Defection (52nd Amendment, 10th Schedule)</strong> → <strong>91st Amendment (Minister cap, defector bar)</strong> → <strong>SC Strengthens ECI</strong> (Mohinder, Seshan, Baranwal) → <strong>SC Adds Transparency</strong> (ADR, Lily Thomas, NOTA, VVPAT) → <strong>Committees recommend reforms</strong> (Tarkunde → Kovind 2023)
+    </div>
+    <div class="kpills">
+      <span class="kpill">📜 10th Schedule</span>
+      <span class="kpill">⚖️ 52nd + 91st Amendment</span>
+      <span class="kpill">🏛️ ECI = Constitutional</span>
+      <span class="kpill">📋 NOTA + VVPAT = SC mandated</span>
+      <span class="kpill">👑 Kovind 2023 = ONOE</span>
+      <span class="kpill">⭐ Lily Thomas = Instant DQ</span>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(t,a){const e=document.createElementNS(NS,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+function curve(svg,x1,y1,x2,y2,col,dash,w){
+  const m=(x1+x2)/2;
+  svg.appendChild(se('path',{d:`M${x1},${y1} C${m},${y1} ${m},${y2} ${x2},${y2}`,
+    stroke:col||'#aaa','stroke-width':w||2,fill:'none','stroke-dasharray':dash?'5 4':'none',opacity:'0.65'}));
+}
+function node(svg,x,y,w,h,fill,lines,sub,emoji,rx){
+  rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.25)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7)-(sub?5:0)-(emoji?9:0);
+  if(emoji){const e=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:'#fff'});e.textContent=emoji;g.appendChild(e);ty+=18;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*14,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'11','font-weight':'700','font-family':'Plus Jakarta Sans,sans-serif',fill:'#fff'});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*14+2,'text-anchor':'middle','dominant-baseline':'middle',
+    'font-size':'9.5','font-family':'DM Mono,monospace',fill:'rgba(255,255,255,0.82)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+function lbl(svg,x,y,text,col){
+  const t=se('text',{x,y,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace',
+    'letter-spacing':'2',fill:col||'rgba(14,17,23,0.35)'});t.textContent=text;svg.appendChild(t);
+}
+
+// MASTER FLOW
+(()=>{
+  const svg=document.getElementById('svgMaster');
+  const steps=[
+    {x:80,  fill:'#d95f0e',lines:['Constitution','Art 324–329'],  sub:'Foundation',       emoji:'📜'},
+    {x:260, fill:'#0f2a5a',lines:['RPA 1950','& RPA 1951'],      sub:'Rolls + Conduct',  emoji:'📋'},
+    {x:440, fill:'#1a6640',lines:['Other Acts','& Rules'],        sub:'1952–2004',        emoji:'⚖️'},
+    {x:620, fill:'#6b1fa0',lines:['10th Schedule','52nd Amend'], sub:'Anti-defection',   emoji:'🚫'},
+    {x:800, fill:'#b81a1a',lines:['91st Amend.','(2003)'],       sub:'Ministry cap',     emoji:'📐'},
+    {x:980, fill:'#0a6070',lines:['SC Judgments','ECI Powers'],  sub:'Mohinder → Seshan',emoji:'🏛️'},
+    {x:1160,fill:'#9a7200',lines:['SC Adds','Transparency'],     sub:'ADR→NOTA→VVPAT',   emoji:'👁️'},
+    {x:1300,fill:'#3c4f60',lines:['Committees','Reform Recs'],   sub:'Tarkunde → Kovind',emoji:'💡'},
+  ];
+  steps.forEach((s,i)=>{if(i<steps.length-1)curve(svg,s.x+63,55,steps[i+1].x-63,55,'#9a720088',false,2.5);});
+  steps.forEach(s=>node(svg,s.x,55,118,68,s.fill,s.lines,s.sub,s.emoji));
+  lbl(svg,680,104,'COMPLETE ELECTION LAW ARCHITECTURE — CONSTITUTIONAL → STATUTORY → JUDICIAL → REFORM');
+})();
+
+// OTHER LAWS SVG — clear directional arrows center→node
+(()=>{
+  const svg=document.getElementById('svgLaws');
+  svg.setAttribute('viewBox','0 0 1360 300');
+
+  // Define arrowhead markers for each color
+  const defs=se('defs',{});
+  const arrowColors=[
+    {id:'arr-saffron',col:'#d95f0e'},{id:'arr-navy',col:'#0f2a5a'},
+    {id:'arr-green',col:'#1a6640'},{id:'arr-purple',col:'#6b1fa0'},
+    {id:'arr-red',col:'#b81a1a'},{id:'arr-gold',col:'#9a7200'},
+    {id:'arr-teal',col:'#0a6070'},{id:'arr-slate',col:'#3c4f60'},
+  ];
+  arrowColors.forEach(({id,col})=>{
+    const m=se('marker',{id,markerWidth:'9',markerHeight:'9',refX:'8',refY:'4.5',orient:'auto'});
+    m.appendChild(se('path',{d:'M0,1 L8,4.5 L0,8 Z',fill:col,opacity:'0.5'}));
+    defs.appendChild(m);
+  });
+  svg.appendChild(defs);
+
+  // Helper: draw arrow from center to node edge
+  function arrow(x1,y1,x2,y2,col,markerId){
+    const dx=x2-x1,dy=y2-y1,len=Math.sqrt(dx*dx+dy*dy);
+    const trim=10;
+    const ex=x2-dx/len*trim, ey=y2-dy/len*trim;
+    const mx=(x1+x2)/2, my=(y1+y2)/2;
+    svg.appendChild(se('path',{
+      d:`M${x1},${y1} Q${mx},${my} ${ex},${ey}`,
+      stroke:col,'stroke-width':'1.6',fill:'none',opacity:'0.45',
+      'marker-end':`url(#${markerId})`
+    }));
+  }
+
+  // Center hub
+  const cx=680,cy=130;
+  node(svg,cx,cy,230,60,'#0f2a5a',['Statutory Election Laws','Beyond Constitution'],'Supporting framework — Acts + Rules','📚');
+
+  // LEFT SIDE: Acts
+  const left=[
+    {x:165,y:55,  fill:'#d95f0e',markerId:'arr-saffron',lines:['Pres. & VP','Elections Act, 1952'],       sub:'Presidential elections',       emoji:'👑'},
+    {x:165,y:140, fill:'#0f2a5a',markerId:'arr-navy',   lines:['Prevention of Disqualif.','Act, 1959'],    sub:'Office of profit exceptions',  emoji:'🏛️'},
+    {x:165,y:225, fill:'#1a6640',markerId:'arr-green',  lines:['Govt of UT Act, 1963'],                    sub:'UT Assemblies & CoMs',         emoji:'🗺️'},
+  ];
+  // RIGHT SIDE: Acts
+  const right=[
+    {x:1195,y:55,  fill:'#6b1fa0',markerId:'arr-purple',lines:['SC/ST Orders','Amend. Act, 1976'],         sub:'Caste/tribe list updates',     emoji:'📋'},
+    {x:1195,y:140, fill:'#b81a1a',markerId:'arr-red',   lines:['GNCTD Act, 1991'],                         sub:'Delhi Assembly & LG-CM',      emoji:'🏙️'},
+  ];
+  // BOTTOM: Rules
+  const bottom=[
+    {x:430, y:258, fill:'#9a7200',markerId:'arr-gold',  lines:['Reg. of Electors','Rules, 1960'],          sub:'Electoral rolls prep',         emoji:'📝'},
+    {x:680, y:258, fill:'#0a6070',markerId:'arr-teal',  lines:['Conduct of Elections','Rules, 1961'],       sub:'Election procedure',           emoji:'⚙️'},
+    {x:930, y:258, fill:'#3c4f60',markerId:'arr-slate', lines:['Asset Declaration','Rules, 2004'],          sub:'Candidate disclosures',        emoji:'💰'},
+  ];
+
+  // Draw arrows FROM center TO each node
+  left.forEach(n=>{
+    // From left edge of center hub to right edge of node
+    arrow(cx-115, cy, n.x+85, n.y, n.fill, n.markerId);
+    node(svg,n.x,n.y,168,56,n.fill,n.lines,n.sub,n.emoji);
+  });
+  right.forEach(n=>{
+    // From right edge of center hub to left edge of node
+    arrow(cx+115, cy, n.x-85, n.y, n.fill, n.markerId);
+    node(svg,n.x,n.y,168,56,n.fill,n.lines,n.sub,n.emoji);
+  });
+  bottom.forEach(n=>{
+    // From bottom edge of center hub downward
+    arrow(cx, cy+30, n.x, n.y-28, n.fill, n.markerId);
+    node(svg,n.x,n.y,182,56,n.fill,n.lines,n.sub,n.emoji);
+  });
+
+  // Divider labels
+  lbl(svg,165,285,'← ACTS (LEFT)','rgba(15,42,90,0.45)');
+  lbl(svg,680,285,'↓ RULES (SUBORDINATE LEGISLATION)','rgba(154,114,0,0.45)');
+  lbl(svg,1195,285,'ACTS (RIGHT) →','rgba(107,31,160,0.45)');
+})();
+
+// RULES FLOW SVG
+(()=>{
+  const svg=document.getElementById('svgRules');
+  const items=[
+    {x:160, fill:'#0f2a5a',lines:['Reg. of Electors','Rules, 1960'],sub:'Electoral rolls',  emoji:'📋'},
+    {x:430, fill:'#0a6070',lines:['Conduct of Elections','Rules, 1961'],sub:'Procedure',    emoji:'⚙️'},
+    {x:700, fill:'#6b1fa0',lines:['Pres. & VP','Election Rules, 1974'],sub:'Top office',    emoji:'👑'},
+    {x:970, fill:'#9a7200',lines:['Asset Declaration','Rules, 2004'],  sub:'Disclosures',   emoji:'💰'},
+    {x:1220,fill:'#d95f0e',lines:['Conduct Rules','(State Bodies)'],   sub:'State specific',emoji:'🏘️'},
+  ];
+  items.forEach((s,i)=>{if(i<items.length-1)curve(svg,s.x+100,65,items[i+1].x-100,65,'#9a720077',false,2);});
+  items.forEach(s=>node(svg,s.x,65,188,64,s.fill,s.lines,s.sub,s.emoji));
+  lbl(svg,680,120,'SUBORDINATE LEGISLATION — DERIVED FROM RPA 1950 & RPA 1951');
+})();
+
+// ANTI-DEFECTION SVG
+(()=>{
+  const svg=document.getElementById('svgAD');
+  svg.setAttribute('viewBox','0 0 1360 310');
+  node(svg,680,130,240,62,'#6b1fa0',['Anti-Defection Law','10th Schedule + 52nd Amend.'],'1985 — Articles 101,102,190,191','⚖️');
+
+  const left=[
+    {x:160,y:55,  fill:'#6b1fa0',lines:['52nd Amendment','(1985)'],        sub:'Added 10th Schedule',    emoji:'📜'},
+    {x:160,y:145, fill:'#0f2a5a',lines:['Arts 101,102','190,191'],         sub:'Disqualification articles',emoji:'📋'},
+    {x:160,y:225, fill:'#b81a1a',lines:['Speaker Decides','(LS/RS Chair)'],sub:'Final authority',         emoji:'🔨'},
+  ];
+  const right=[
+    {x:1190,y:55,  fill:'#b81a1a',lines:['Party Member DQ'],             sub:'Quits or whip violation',  emoji:'🚫'},
+    {x:1190,y:130, fill:'#6b1fa0',lines:['Independent DQ'],              sub:'Joins party post-election',emoji:'🔀'},
+    {x:1190,y:205, fill:'#0f2a5a',lines:['Nominated DQ'],                sub:'Joins party after 6 months',emoji:'📝'},
+  ];
+  const bot=[
+    {x:430, y:265, fill:'#1a6640',lines:['Exception: Merger'],sub:'2/3 members agree',emoji:'✅'},
+    {x:680, y:265, fill:'#b81a1a',lines:['No More: Split'],  sub:'1/3 rule deleted (91st)',emoji:'❌'},
+    {x:930, y:265, fill:'#9a7200',lines:['Kihoto Hollohan'], sub:'Speaker is reviewable (1992)',emoji:'⚖️'},
+  ];
+
+  left.forEach(n=>{curve(svg,555,130,n.x+90,n.y,'#6b1fa055',true,1.8);node(svg,n.x,n.y,162,50,n.fill,n.lines,n.sub,n.emoji);});
+  right.forEach(n=>{curve(svg,805,130,n.x-90,n.y,'#b81a1a55',true,1.8);node(svg,n.x,n.y,162,50,n.fill,n.lines,n.sub,n.emoji);});
+  bot.forEach(n=>{
+    svg.appendChild(se('line',{x1:680,y1:162,x2:n.x,y2:n.y-26,stroke:n.fill+'55','stroke-width':'1.5','stroke-dasharray':'4 3'}));
+    node(svg,n.x,n.y,190,52,n.fill,n.lines,n.sub,n.emoji);
+  });
+  lbl(svg,680,298,'GROUNDS → EXCEPTIONS → JUDICIAL REVIEW');
+})();
+
+// SC JUDGMENTS SVG — no overlaps, lighter arrows, well-spaced
+(()=>{
+  const svg=document.getElementById('svgSC');
+  svg.setAttribute('viewBox','0 0 1440 310');
+
+  // Lighter arrowhead markers
+  const defs=se('defs',{});
+  [['asc-purple','#6b1fa0'],['asc-navy','#0f2a5a'],['asc-red','#b81a1a'],
+   ['asc-green','#1a6640'],['asc-saffron','#d95f0e'],['asc-gold','#9a7200'],
+   ['asc-teal','#0a6070'],['asc-slate','#3c4f60']].forEach(([id,col])=>{
+    const m=se('marker',{id,markerWidth:'8',markerHeight:'8',refX:'7',refY:'4',orient:'auto'});
+    m.appendChild(se('path',{d:'M0,1 L7,4 L0,7 Z',fill:col,opacity:'0.5'}));
+    defs.appendChild(m);
+  });
+  svg.appendChild(defs);
+
+  // Light arrow helper
+  function arr(x1,y1,x2,y2,col,markId){
+    const dx=x2-x1,dy=y2-y1,len=Math.sqrt(dx*dx+dy*dy);
+    const ex=x2-dx/len*8, ey=y2-dy/len*8;
+    svg.appendChild(se('line',{x1,y1,x2:ex,y2:ey,
+      stroke:col,'stroke-width':'1.6',opacity:'0.45','marker-end':`url(#${markId})`}));
+  }
+
+  // Layout constants
+  // Width = 1440, 3 columns at x=240, x=720, x=1200
+  // Each column has 2 child nodes side by side + 1 below
+  const W=1440;
+  const COL=[240,720,1200];  // cluster centers
+  const NW=178; // node width
+  const NH=56;  // node height
+  const GAP=10; // gap between sibling nodes
+
+  // Row Y
+  const R0=72;   // top hub + category headers
+  const R1=168;  // first child row
+  const R2=244;  // second child row
+
+  // ── Central hub ──
+  node(svg,W/2,R0,256,58,'#0f2a5a',['Supreme Court Judgments','Shaping Electoral Democracy'],'Art 324 · Transparency · Integrity','⚖️');
+
+  // ── 3 Category header nodes ──
+  const catDefs=[
+    {cx:COL[0], fill:'#6b1fa0', markId:'asc-purple', lines:['Candidate','Transparency'], sub:'ADR · Lily Thomas · NOTA', emoji:'📋'},
+    {cx:COL[1], fill:'#15406a', markId:'asc-navy',   lines:['ECI Powers','& Independence'], sub:'Art 324 Judgments', emoji:'🏛️'},
+    {cx:COL[2], fill:'#b81a1a', markId:'asc-red',    lines:['Electoral','Integrity'], sub:'VVPAT · Religion · Booth', emoji:'🛡️'},
+  ];
+  catDefs.forEach(cat=>{
+    // Arrow from hub edge to cat node
+    const fromX = cat.cx < W/2 ? W/2-128 : cat.cx > W/2 ? W/2+128 : W/2;
+    const fromY = cat.cx === W/2 ? R0+29 : R0;
+    const toX   = cat.cx < W/2 ? cat.cx+90 : cat.cx > W/2 ? cat.cx-90 : cat.cx;
+    const toY   = cat.cx === W/2 ? R0+60 : R0;
+    arr(fromX,fromY,toX,toY,cat.fill,cat.markId);
+    node(svg,cat.cx,R0,NW,NH,cat.fill,cat.lines,cat.sub,cat.emoji);
+  });
+
+  // ── Children per cluster ──
+  // Each cluster: left child, right child at R1; centre child at R2
+  const clusters=[
+    { cx:COL[0], catMarkId:'asc-purple',
+      kids:[
+        {dx:-NW/2-GAP/2, dy:R1, fill:'#6b1fa0', markId:'asc-purple', lines:['ADR (2002)'],         sub:'Disclose criminal record + assets', emoji:'📋'},
+        {dx: NW/2+GAP/2, dy:R1, fill:'#b81a1a', markId:'asc-red',    lines:['Lily Thomas (2013)'],  sub:'Instant DQ on conviction',         emoji:'⚡'},
+        {dx:0,            dy:R2, fill:'#9a7200', markId:'asc-gold',   lines:['PUCL (2013)'],         sub:'Right to reject → NOTA on EVM',    emoji:'🗳️'},
+      ]},
+    { cx:COL[1], catMarkId:'asc-navy',
+      kids:[
+        {dx:-NW/2-GAP/2, dy:R1, fill:'#0f2a5a', markId:'asc-navy',    lines:['Mohinder Gill (1978)'], sub:'ECI plenary powers — Art 324',  emoji:'🏛️'},
+        {dx: NW/2+GAP/2, dy:R1, fill:'#1a6640', markId:'asc-green',   lines:['T.N. Seshan (1995)'],   sub:'CEC = EC; equal powers',         emoji:'⚖️'},
+        {dx:0,            dy:R2, fill:'#d95f0e', markId:'asc-saffron', lines:['Anoop Baranwal (2023)'],sub:'PM + LOP + CJI appoint CEC',     emoji:'👥'},
+      ]},
+    { cx:COL[2], catMarkId:'asc-red',
+      kids:[
+        {dx:-NW/2-GAP/2, dy:R1, fill:'#b81a1a', markId:'asc-red',   lines:['Subramanian (2013)'],    sub:'VVPAT mandatory alongside EVM',        emoji:'🖨️'},
+        {dx: NW/2+GAP/2, dy:R1, fill:'#3c4f60', markId:'asc-slate', lines:['Abhiram Singh (2017)'],  sub:'No religion/caste/language appeal',     emoji:'🚫'},
+        {dx:0,            dy:R2, fill:'#0a6070', markId:'asc-teal',  lines:['Harbans Singh'],         sub:'ECI can cancel — booth capturing',      emoji:'⛔'},
+      ]},
+  ];
+
+  clusters.forEach(cl=>{
+    cl.kids.forEach(k=>{
+      const kx=cl.cx+k.dx, ky=k.dy;
+      arr(cl.cx, R0+NH/2, kx, ky-NH/2, k.fill, k.markId);
+      node(svg,kx,ky,NW,NH,k.fill,k.lines,k.sub,k.emoji);
+    });
+  });
+
+  // Bottom labels
+  lbl(svg,COL[0],300,'CANDIDATE TRANSPARENCY','rgba(107,31,160,0.45)');
+  lbl(svg,COL[1],300,'ECI POWERS & INDEPENDENCE','rgba(15,42,90,0.45)');
+  lbl(svg,COL[2],300,'ELECTORAL INTEGRITY','rgba(184,26,26,0.45)');
+})();
+
+// COMMITTEES SVG
+(()=>{
+  const svg=document.getElementById('svgComm');
+  const comms=[
+    {x:110,  fill:'#d95f0e',lines:['1974','Tarkunde'],      sub:'Electoral malpractices',    emoji:'🔍'},
+    {x:300,  fill:'#0f2a5a',lines:['1990','Goswami'],       sub:'Funding reforms',           emoji:'💸'},
+    {x:490,  fill:'#1a6640',lines:['1998','Indrajit Gupta'],sub:'State funding',             emoji:'🏛️'},
+    {x:700,  fill:'#6b1fa0',lines:['2000','NCRWC (Venkata)'],sub:'Constitutional review',   emoji:'📜'},
+    {x:910,  fill:'#b81a1a',lines:['2005','2nd ARC'],       sub:'Ethics & reforms',         emoji:'⚖️'},
+    {x:1120, fill:'#9a7200',lines:['2023','Kovind'],        sub:'Simultaneous elections',    emoji:'🗳️'},
+  ];
+  // Timeline spine
+  svg.appendChild(se('line',{x1:50,y1:100,x2:1310,y2:100,stroke:'#ddd5bf','stroke-width':'2.5'}));
+  comms.forEach((c,i)=>{
+    const up=i%2===0;
+    const ny=up?55:145;
+    svg.appendChild(se('circle',{cx:c.x,cy:100,r:'7',fill:c.fill,stroke:'#fffdf8','stroke-width':'2.5'}));
+    svg.appendChild(se('line',{x1:c.x,y1:100,x2:c.x,y2:ny+(up?-22:22),stroke:c.fill+'77','stroke-width':'1.5','stroke-dasharray':'3 2'}));
+    node(svg,c.x,ny,172,46,c.fill,c.lines,c.sub,c.emoji);
+  });
+  lbl(svg,680,190,'ELECTORAL REFORM COMMITTEES — CHRONOLOGICAL TIMELINE 1974 → 2023');
+})();
+
+// FULL FLOW SVG
+(()=>{
+  const svg=document.getElementById('svgFlow');
+  const steps=[
+    {x:88,  fill:'#d95f0e',lines:['Constitution','Art 324–329'],  sub:'Framework',       emoji:'📜'},
+    {x:260, fill:'#0f2a5a',lines:['RPA 1950','(Rolls, Seats)'],   sub:'Electoral rolls', emoji:'📋'},
+    {x:435, fill:'#1a6640',lines:['RPA 1951','(Conduct, DQ)'],    sub:'Disqualification',emoji:'⚙️'},
+    {x:615, fill:'#6b1fa0',lines:['Anti-Defection','10th Sched.'],sub:'52nd Amend.',     emoji:'🚫'},
+    {x:790, fill:'#b81a1a',lines:['91st Amend.','Minister Cap'],  sub:'Defector bar',    emoji:'📐'},
+    {x:975, fill:'#0a6070',lines:['ECI Powers','Strengthened'],   sub:'SC judgments',    emoji:'🏛️'},
+    {x:1150,fill:'#9a7200',lines:['Committees','Recommend'],      sub:'1974 → 2023',     emoji:'💡'},
+    {x:1300,fill:'#3c4f60',lines:['Reform','Ongoing'],            sub:'ONOE · Digital',  emoji:'🔄'},
+  ];
+  steps.forEach((s,i)=>{if(i<steps.length-1)curve(svg,s.x+63,70,steps[i+1].x-63,70,s.fill+'88',false,2.5);});
+  steps.forEach(s=>node(svg,s.x,70,120,68,s.fill,s.lines,s.sub,s.emoji));
+  lbl(svg,680,130,'THE COMPLETE LEGISLATIVE + JUDICIAL + REFORM LADDER');
+})();
+</script>
+</body>
+</html>
