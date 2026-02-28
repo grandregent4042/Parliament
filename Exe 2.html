@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prime Minister & PMO — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#12100e;--paper:#f8f5ef;--gold:#b87c10;--gold-lt:#f5d78a;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf5;--card2:#f2ede0;--sky:#1a5878;--rose:#8a1a5a;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 900px 500px at 15% 10%,rgba(184,124,16,0.06) 0%,transparent 60%),
+  radial-gradient(ellipse 700px 700px at 85% 90%,rgba(26,58,138,0.05) 0%,transparent 60%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,50px);line-height:1.1;}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:14px auto 0;border-radius:4px;}
+
+/* SEC LABEL */
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}.g2x1{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g2x1{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(184,124,16,0.10);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.rose::before{background:var(--rose);}
+.pc.dark::before{background:var(--ink);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* MAP CARD */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:28px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--sky),var(--rose),var(--purple));}
+.map-card svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,96,112,0.12);color:var(--teal);}
+.pill.red{background:rgba(176,26,26,0.12);color:var(--red);}
+.pill.sky{background:rgba(26,88,120,0.12);color:var(--sky);}
+.pill.rose{background:rgba(138,26,90,0.12);color:var(--rose);}
+
+/* STAT */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* PS CHIP */
+.ps-chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.fact{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.ps-chip.trap{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.ps-chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+.ps-chip.info{background:rgba(26,58,138,0.07);border-color:rgba(26,58,138,0.2);color:var(--blue);}
+
+/* FEAT GRID */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* IMPACT CHAIN */
+.impact-chain{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:6px 0;margin:8px 0;}
+.ic-node{padding:7px 12px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:14px;color:var(--muted);flex:0 0 auto;margin:0 4px;}
+
+/* PHASE */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;}
+.phase-title{font-size:12px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'DM Mono',monospace;margin-bottom:8px;}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;letter-spacing:0.4px;}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;background:rgba(176,26,26,0.06);border:1.5px solid rgba(176,26,26,0.2);margin:8px 0;}
+.callout.green{background:rgba(26,106,58,0.06);border-color:rgba(26,106,58,0.2);}
+.callout.blue{background:rgba(26,58,138,0.06);border-color:rgba(26,58,138,0.2);}
+.callout-title{font-size:11px;font-weight:800;color:var(--red);margin-bottom:3px;}
+.callout.green .callout-title{color:var(--green);}
+.callout.blue .callout-title{color:var(--blue);}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* QUOTE BOX */
+.quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.quote-item{padding:10px 12px;border-radius:9px;background:var(--card2);border-left:3px solid var(--gold);}
+.quote-author{font-size:10px;font-weight:800;color:var(--amber);margin-bottom:3px;font-family:'DM Mono',monospace;}
+.quote-text{font-size:11px;font-style:italic;color:var(--ink);}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;gap:0;position:relative;padding-left:32px;}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--amber),var(--gold),var(--blue));}
+.tl-item{position:relative;padding:10px 0 10px 20px;margin-bottom:4px;}
+.tl-dot{position:absolute;left:-26px;top:14px;width:12px;height:12px;border-radius:50%;border:2px solid var(--amber);background:var(--paper);}
+.tl-year{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;color:var(--amber);margin-bottom:2px;}
+.tl-title{font-size:12px;font-weight:800;margin-bottom:2px;}
+.tl-sub{font-size:10px;color:var(--muted);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Polity · Executive · UPSC Prelims + Mains</div>
+  <h1>Prime Minister &amp; PMO — <em>Mind Map</em></h1>
+  <div class="header-sub">PMO Structure → PM Funds → Responsibility → Cabinet → Scholars → Key Facts</div>
+</div>
+
+<!-- ══ MASTER FLOW ══ -->
+<div class="sec-label">Master Flow — The Big Picture</div>
+<div class="map-card mc1">
+  <svg id="svgMaster" viewBox="0 0 1360 118" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 1: PMO ══ -->
+<div class="sec-label">① Prime Minister's Office (PMO) — The Control Room</div>
+
+<div class="map-card mc2">
+  <svg id="svgPMO" viewBox="0 0 1360 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-label">What PMO Does</div>
+    <h3>🏛️ Administrative Brain of PM</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">🎯</div><div class="ft">Manage GoI</div><div class="fs">Coordinates all ministries</div></div>
+      <div class="feat"><div class="fi">📋</div><div class="ft">Policy Advice</div><div class="fs">Shapes administrative decisions</div></div>
+      <div class="feat"><div class="fi">🔗</div><div class="ft">Inter-Ministry Sync</div><div class="fs">Ensures cohesion across depts.</div></div>
+      <div class="feat"><div class="fi">🔑</div><div class="ft">Headed by</div><div class="fs">Principal Secretary to PM</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;background:rgba(184,124,16,0.07);border-radius:8px;border:1px solid rgba(184,124,16,0.2);">
+      <span style="font-size:10px;font-weight:800;color:var(--amber);">🧠 PMO = Administrative muscle behind the PM's political authority</span>
+    </div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">Bodies Under PMO</div>
+    <h3>🔬 Strategic Departments</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">⚛️ Dept. of Atomic Energy (DAE)</div>
+        <div class="vs">Nuclear programme oversight</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🚀 Dept. of Space (DoS)</div>
+        <div class="vs">ISRO and space policy</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🛡️ National Security Council (NSC)</div>
+        <div class="vs">Est. 1998 · By executive order · <span style="color:var(--red);font-weight:800;">NOT constitutional</span></div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:10px;">
+      <div class="callout-title">⚠️ Prelims Trap — NSC</div>
+      <div class="callout-body">NSC established in <strong>1998 by executive order</strong>, NOT by Constitution. Not mentioned anywhere in the Constitution.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 2: PM FUNDS ══ -->
+<div class="sec-label">② PM Funds — PMNRF · NDF · PM CARES</div>
+
+<div class="map-card mc3">
+  <svg id="svgFunds" viewBox="0 0 1360 210" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc amber">
+    <div class="pc-label">Fund 1 · Oldest</div>
+    <h3>🆘 PMNRF</h3>
+    <div style="text-align:center;padding:12px;background:rgba(212,106,16,0.07);border-radius:10px;margin-bottom:12px;border:1.5px solid rgba(212,106,16,0.2);">
+      <div style="font-family:'Playfair Display',serif;font-size:30px;font-weight:800;color:var(--amber);">1948</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">YEAR ESTABLISHED</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Founded by Jawaharlal Nehru</div><div class="vs">Oldest PM fund</div></div>
+      <div class="vitem"><div class="vt">Natural Disasters + Medical</div><div class="vs">Purpose of the fund</div></div>
+      <div class="vitem"><div class="vt">Section 80G — 100% deduction</div><div class="vs">Full tax benefit on donations</div></div>
+    </div>
+    <span class="ps-chip info" style="margin-top:8px;">📌 80G = 100% Deduction</span>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-label">Fund 2 · War-Born</div>
+    <h3>⚔️ National Defence Fund</h3>
+    <div style="text-align:center;padding:12px;background:rgba(176,26,26,0.07);border-radius:10px;margin-bottom:12px;border:1.5px solid rgba(176,26,26,0.2);">
+      <div style="font-family:'Playfair Display',serif;font-size:30px;font-weight:800;color:var(--red);">1962</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">SINO-INDIAN WAR YEAR</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Created after Sino-Indian War</div><div class="vs">National defence emergency response</div></div>
+      <div class="vitem"><div class="vt">Chaired by Prime Minister</div><div class="vs">PM heads this fund</div></div>
+      <div class="vitem"><div class="vt">Section 80G — 100% deduction</div><div class="vs">Full tax benefit on donations</div></div>
+    </div>
+    <span class="ps-chip trap" style="margin-top:8px;">⚠️ PM = Chair of this fund</span>
+  </div>
+
+  <div class="pc teal">
+    <div class="pc-label">Fund 3 · Newest</div>
+    <h3>🦠 PM CARES Fund</h3>
+    <div style="text-align:center;padding:12px;background:rgba(10,96,112,0.07);border-radius:10px;margin-bottom:12px;border:1.5px solid rgba(10,96,112,0.2);">
+      <div style="font-family:'Playfair Display',serif;font-size:30px;font-weight:800;color:var(--teal);">2020</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">COVID-19 PANDEMIC</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">March 2020 — COVID crisis</div><div class="vs">Newest PM fund ever created</div></div>
+      <div class="vitem"><div class="vt">Emergency situations focus</div><div class="vs">Pandemic, disasters, crises</div></div>
+    </div>
+    <span class="ps-chip fact" style="margin-top:8px;">✅ Newest fund (2020)</span>
+  </div>
+</div>
+
+<!-- Funds Quick Compare Table -->
+<div class="pc dark" style="margin-bottom:20px;background:rgba(18,16,14,0.02);border-color:rgba(18,16,14,0.12);">
+  <h3 style="font-family:'Playfair Display',serif;font-size:15px;margin-bottom:12px;">📊 Funds Comparison — Quick Reference</h3>
+  <table class="ctable">
+    <thead>
+      <tr><th>Fund</th><th>Year</th><th>Founder / Trigger</th><th>Purpose</th><th>80G Benefit</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>PMNRF</td><td>1948</td><td>Jawaharlal Nehru</td><td>Natural disasters + Medical</td><td>100%</td></tr>
+      <tr><td>National Defence Fund</td><td>1962</td><td>Sino-Indian War</td><td>National defence</td><td>100%</td></tr>
+      <tr><td>PM CARES Fund</td><td>2020</td><td>COVID-19 Pandemic</td><td>Emergency situations</td><td>100%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ SECTION 3: RESPONSIBILITY ══ -->
+<div class="sec-label">③ Collective vs Individual Responsibility</div>
+
+<div class="map-card mc4">
+  <svg id="svgResp" viewBox="0 0 1360 232" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">Article 75(3)</div>
+    <h3>🤝 Collective Responsibility</h3>
+    <div class="impact-chain">
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.08);color:var(--green);">Entire CoM</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.08);color:var(--blue);">Acts as Team</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,106,16,0.08);color:var(--amber);">Collectively Accountable</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">No-Confidence Motion Passes</div><div class="vs">→ ENTIRE govt. must resign</div></div>
+      <div class="vitem"><div class="vt">Union Level</div><div class="vs">Responsible to <strong>Lok Sabha</strong></div></div>
+      <div class="vitem"><div class="vt">State Level</div><div class="vs">Responsible to <strong>Legislative Assembly</strong></div></div>
+      <div class="vitem"><div class="vt">Cabinet Decision</div><div class="vs">All ministers defend — even if personally opposed</div></div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="ps-chip fact">✅ Solidarity principle</span>
+      <span class="ps-chip fact">✅ Sink or swim together</span>
+    </div>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-label">Individual Accountability</div>
+    <h3>👤 Individual Responsibility</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">President / Governor Can Remove</div><div class="vs">But ONLY on advice of PM/CM</div></div>
+      <div class="vitem"><div class="vt">PM's Recommendation Mandatory</div><div class="vs">Head of state cannot act alone</div></div>
+    </div>
+    <div class="callout" style="margin-top:10px;">
+      <div class="callout-title">⚠️ India vs UK Distinction</div>
+      <div class="callout-body">UK has <strong>legal responsibility</strong> provisions. India does <strong>NOT</strong> have any provision for legal ministerial responsibility. Only political/parliamentary responsibility exists in India.</div>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="ps-chip trap">❌ No legal responsibility in India</span>
+      <span class="ps-chip info">📌 Unlike UK system</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 4: CABINET ══ -->
+<div class="sec-label">④ Cabinet &amp; Kitchen Cabinet</div>
+
+<div class="map-card mc5">
+  <svg id="svgCabinet" viewBox="0 0 1360 232" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc sky">
+    <div class="pc-label">Constitutional Cabinet</div>
+    <h3>📜 The Formal Cabinet</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--sky);">Once</div>
+        <div class="stat-sub">Mentioned in Constitution</div>
+        <div class="stat-label">VERY RARE</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">44th</div>
+        <div class="stat-sub">Amendment Act, 1978</div>
+        <div class="stat-label">SOURCE</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--green);">352</div>
+        <div class="stat-sub">Article — explanation</div>
+        <div class="stat-label">LOCATION</div>
+      </div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">15–20 Ministers (Typically)</div><div class="vs">Smaller decision-making nucleus</div></div>
+      <div class="vitem"><div class="vt">Major Policy Decisions</div><div class="vs">Budget, legislation, emergencies</div></div>
+      <div class="vitem"><div class="vt">Emergency Powers</div><div class="vs">Cabinet approves proclamations</div></div>
+    </div>
+    <div class="callout blue" style="margin-top:10px;">
+      <div class="callout-title">🔥 Prelims Hot Fact</div>
+      <div class="callout-body">The word <strong>"Cabinet"</strong> appears <strong>only ONCE</strong> in the entire Constitution — in the explanation to Article 352, inserted by the 44th Amendment Act 1978.</div>
+    </div>
+  </div>
+
+  <div class="pc rose">
+    <div class="pc-label">Informal Power Structure</div>
+    <h3>🍳 Kitchen Cabinet</h3>
+    <div style="text-align:center;padding:12px;background:rgba(138,26,90,0.07);border-radius:10px;margin-bottom:12px;border:1.5px dashed rgba(138,26,90,0.3);">
+      <div style="font-size:22px;margin-bottom:4px;">🔒</div>
+      <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:var(--rose);">Informal Inner Circle</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">TRUSTED COLLEAGUES ONLY</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">PM's Trusted Advisers</div><div class="vs">No formal constitutional basis</div></div>
+      <div class="vitem"><div class="vt">Real power often flows here</div><div class="vs">Decisions pre-shaped informally</div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <div style="font-size:10px;font-weight:800;color:var(--rose);margin-bottom:6px;">Found In:</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <span class="pill rose">🇮🇳 India</span>
+        <span class="pill blue">🇺🇸 USA</span>
+        <span class="pill green">🇬🇧 Britain</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 5: SCHOLARS ══ -->
+<div class="sec-label">⑤ What Scholars Say About PM</div>
+
+<div class="map-card mc1">
+  <svg id="svgScholars" viewBox="0 0 1360 196" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="pc gold">
+  <div class="pc-label">Static Content — Very High Prelims Frequency</div>
+  <h3>📚 Scholar Quotes &amp; Descriptions</h3>
+  <div class="quote-grid">
+    <div class="quote-item">
+      <div class="quote-author">Sir William Harcourt</div>
+      <div class="quote-text">"Moon among lesser stars" — PM stands above cabinet peers</div>
+    </div>
+    <div class="quote-item">
+      <div class="quote-author">Ivor Jennings</div>
+      <div class="quote-text">"Sun around which planets revolve" — Cabinet orbits the PM</div>
+    </div>
+    <div class="quote-item">
+      <div class="quote-author">Lord Morley</div>
+      <div class="quote-text">"Primus inter pares" — First among equals (original view)</div>
+    </div>
+    <div class="quote-item">
+      <div class="quote-author">Herbert Morrison</div>
+      <div class="quote-text">Stronger primus inter pares — beyond mere equality</div>
+    </div>
+    <div class="quote-item">
+      <div class="quote-author">Humphrey Berkeley</div>
+      <div class="quote-text">"Super-ministerial powers" — PM exceeds all ministers</div>
+    </div>
+    <div class="quote-item">
+      <div class="quote-author">Dr. B.R. Ambedkar</div>
+      <div class="quote-text">PM's role surpasses even the President in practical power</div>
+    </div>
+  </div>
+  <div class="quote-item" style="margin-top:8px;">
+    <div class="quote-author">R.H. Crossman</div>
+    <div class="quote-text">"Cabinet turned into PM government" — cabinet government transformed into prime ministerial government</div>
+  </div>
+</div>
+
+<!-- ══ SECTION 6: PM FACTS ══ -->
+<div class="sec-label">⑥ Key PM Facts — Frequently Asked in Prelims</div>
+
+<div class="map-card mc3">
+  <svg id="svgFacts" viewBox="0 0 1360 225" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc amber">
+    <div class="pc-label">Record Holders</div>
+    <h3>🏆 Notable Firsts &amp; Records</h3>
+    <table class="ctable">
+      <thead><tr><th>Category</th><th>Name</th></tr></thead>
+      <tbody>
+        <tr><td>Longest Serving</td><td>Jawaharlal Nehru</td></tr>
+        <tr><td>Second Longest</td><td>Indira Gandhi</td></tr>
+        <tr><td>First Non-Congress PM</td><td>Morarji Desai</td></tr>
+        <tr><td>Youngest PM</td><td>Rajiv Gandhi</td></tr>
+        <tr><td>First from South India</td><td>P.V. Narasimha Rao</td></tr>
+        <tr><td>First from Rajya Sabha</td><td>Indira Gandhi</td></tr>
+        <tr><td>Twice Acting PM</td><td>Gulzarilal Nanda</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">CMs Who Became PM</div>
+    <h3>🔼 Chief Minister → Prime Minister</h3>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1977</div><div class="tl-title">Morarji Desai</div><div class="tl-sub">CM Bombay → PM</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1979</div><div class="tl-title">Charan Singh</div><div class="tl-sub">CM Uttar Pradesh → PM</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1989</div><div class="tl-title">V.P. Singh</div><div class="tl-sub">CM Uttar Pradesh → PM</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1991</div><div class="tl-title">P.V. Narasimha Rao</div><div class="tl-sub">CM Andhra Pradesh → PM</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1996</div><div class="tl-title">H.D. Deve Gowda</div><div class="tl-sub">CM Karnataka → PM</div></div>
+      <div class="tl-item"><div class="tl-dot" style="border-color:var(--green);"></div><div class="tl-year">2014</div><div class="tl-title">Narendra Modi</div><div class="tl-sub">CM Gujarat → PM</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- MP Rule Callout -->
+<div class="g3" style="margin-bottom:20px;">
+  <div class="pc red">
+    <div class="pc-label">Appointment Rule</div>
+    <h3>📌 PM &amp; Parliament Membership</h3>
+    <div style="text-align:center;padding:14px;background:rgba(176,26,26,0.07);border-radius:10px;margin-bottom:12px;">
+      <div style="font-size:28px;margin-bottom:4px;">⏱️</div>
+      <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:var(--red);">6 Months</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">DEADLINE TO BECOME MP</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">At time of appointment</div><div class="vs">Need NOT be an MP — permitted</div></div>
+      <div class="vitem"><div class="vt">After appointment</div><div class="vs">MUST become MP within 6 months</div></div>
+    </div>
+    <span class="ps-chip trap" style="margin-top:8px;">⚠️ Classic Prelims Trap</span>
+  </div>
+
+  <div class="pc teal">
+    <div class="pc-label">Hierarchy Under PM</div>
+    <h3>🏗️ Council of Ministers Types</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Cabinet Ministers</div><div class="vs">Senior, attend Cabinet meetings, 15–20</div></div>
+      <div class="vitem"><div class="vt">Ministers of State (Independent)</div><div class="vs">Independent charge, don't attend Cabinet</div></div>
+      <div class="vitem"><div class="vt">Ministers of State</div><div class="vs">Attached to Cabinet Ministers</div></div>
+      <div class="vitem"><div class="vt">Deputy Ministers</div><div class="vs">Assist ministers (rarely used now)</div></div>
+    </div>
+  </div>
+
+  <div class="pc green">
+    <div class="pc-label">PM Powers Summary</div>
+    <h3>⚡ PM's Key Powers</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Appoints Ministers</div><div class="vs">President acts on PM's advice</div></div>
+      <div class="vitem"><div class="vt">Allocates Portfolios</div><div class="vs">Decides who gets which ministry</div></div>
+      <div class="vitem"><div class="vt">Can demand resignation</div><div class="vs">Any minister must step down</div></div>
+      <div class="vitem"><div class="vt">Chairs Cabinet</div><div class="vs">Controls the agenda</div></div>
+      <div class="vitem"><div class="vt">Advises President</div><div class="vs">On all major constitutional matters</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 7: BIG PICTURE ══ -->
+<div class="sec-label">⑦ Connected Framework — The Big Picture</div>
+
+<div class="phase-row">
+  <div class="phase-box" style="border-color:var(--amber);background:rgba(212,106,16,0.04);">
+    <div class="phase-num" style="color:var(--amber);">PMO</div>
+    <div class="phase-title">Administrative Support</div>
+    <div class="phase-sub" style="color:var(--muted);">Principal Secretary</div>
+    <div style="font-size:10px;margin-top:8px;line-height:1.6;color:var(--muted);">DAE · DoS · NSC<br>Policy + Coordination</div>
+    <span class="pill amber" style="margin-top:8px;">Control Room</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--blue);background:rgba(26,58,138,0.04);">
+    <div class="phase-num" style="color:var(--blue);">CoM</div>
+    <div class="phase-title">Political Authority</div>
+    <div class="phase-sub" style="color:var(--muted);">Collective Responsibility</div>
+    <div style="font-size:10px;margin-top:8px;line-height:1.6;color:var(--muted);">Cabinet + Kitchen Cabinet<br>Responsible to Lok Sabha</div>
+    <span class="pill blue" style="margin-top:8px;">Governing Engine</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--green);background:rgba(26,106,58,0.04);">
+    <div class="phase-num" style="color:var(--green);">PM</div>
+    <div class="phase-title">Constitutional Apex</div>
+    <div class="phase-sub" style="color:var(--muted);">Primus Inter Pares → Beyond</div>
+    <div style="font-size:10px;margin-top:8px;line-height:1.6;color:var(--muted);">Funds · Powers · Leadership<br>Sun around which planets revolve</div>
+    <span class="pill green" style="margin-top:8px;">Real Executive</span>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🏛️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">
+      India's PM is <strong style="color:#f5d78a;">not just primus inter pares</strong> — scholars from Harcourt to Ambedkar agree the PM has evolved into the <strong style="color:#f5d78a;">real executive nucleus</strong> of the Republic. The PMO is the administrative brain, Cabinet is the formal decision body, Kitchen Cabinet is the informal power center, and PM Funds are the emergency response apparatus — all orbiting the PM as the constitutional sun. <strong style="color:#f5d78a;">Collective responsibility binds them all to Parliament.</strong>
+    </div>
+    <div class="keystone-pills">
+      <span class="kpill">🏛️ PMO = Brain</span>
+      <span class="kpill">📜 Cabinet = Formal Power</span>
+      <span class="kpill">🍳 Kitchen Cabinet = Real Power</span>
+      <span class="kpill">💸 Funds = Emergency Tools</span>
+      <span class="kpill">🤝 Collective Responsibility</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+/* Smooth curved edge */
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const mx=(x1+x2)/2;
+  const p=se('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:color||'#b87c1066','stroke-width':w||1.8,fill:'none',
+    'stroke-dasharray':dashed?'5 4':'none',opacity:'0.8'});
+  svg.appendChild(p);
+}
+
+/*
+  node() — draws a rounded rect with emoji + label lines + subtitle.
+  All text is vertically centred INSIDE the box using absolute y maths.
+  Lines[] should already be split (no \n inside strings).
+*/
+function node(svg,cx,cy,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol = textCol||'#fff';
+  rx = rx||10;
+  const g = document.createElementNS(NS,'g');
+
+  // shadow
+  g.appendChild(se('rect',{x:cx-w/2+2,y:cy-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.12)'}));
+  // body
+  g.appendChild(se('rect',{x:cx-w/2,y:cy-h/2,width:w,height:h,rx,ry:rx,
+    fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.5'}));
+
+  // measure content height so we can centre it
+  const emojiH  = emoji ? 17 : 0;
+  const lineH   = 14;
+  const subH    = sub   ? 13 : 0;
+  const gap     = 3;
+  const totalH  = emojiH + (emojiH&&lines.length?gap:0)
+                + lines.length * lineH
+                + (sub?gap:0) + subH;
+
+  let curY = cy - totalH/2 + (emojiH?emojiH/2:lineH/2);
+
+  if(emoji){
+    const em=se('text',{x:cx,y:curY,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'15',fill:textCol});
+    em.textContent=emoji; g.appendChild(em);
+    curY += emojiH + gap;
+  } else {
+    curY = cy - totalH/2 + lineH/2;
+  }
+
+  lines.forEach((l)=>{
+    const t=se('text',{x:cx,y:curY,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l; g.appendChild(t);
+    curY += lineH;
+  });
+
+  if(sub){
+    curY += gap;
+    const sc = textCol==='#fff' ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.4)';
+    const s=se('text',{x:cx,y:curY,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'8.5','font-family':'DM Mono,monospace',fill:sc});
+    s.textContent=sub; g.appendChild(s);
+  }
+
+  svg.appendChild(g);
+}
+
+/* helper — label strip at bottom of SVG */
+function svgLabel(svg,x,y,text,color){
+  const t=se('text',{x,y,'text-anchor':'middle','font-size':'8.5',
+    'font-family':'DM Mono,monospace','letter-spacing':'2',fill:color||'rgba(120,100,60,0.45)'});
+  t.textContent=text; svg.appendChild(t);
+}
+
+/* vertical divider */
+function vdiv(svg,x,y1,y2){
+  svg.appendChild(se('line',{x1:x,y1,x2:x,y2,stroke:'rgba(200,180,140,0.18)',
+    'stroke-width':'1','stroke-dasharray':'5 3'}));
+}
+
+/* ══════════════════════════════
+   1. MASTER FLOW
+══════════════════════════════ */
+(function(){
+  const svg=document.getElementById('svgMaster');
+  // 8 nodes, each ~140px wide, with ~15px gaps → total ~1360
+  const steps=[
+    {x:88,  lines:['PM','Real Exec.'],  sub:'Constitutional Head',      fill:'#b87c10', emoji:'👑'},
+    {x:264, lines:['PMO','Control Room'],sub:'Admin · DAE · DoS · NSC', fill:'#1a3a8a', emoji:'🏛️'},
+    {x:440, lines:['PM Funds'],          sub:'PMNRF · NDF · PMCARES',   fill:'#b01a1a', emoji:'💰'},
+    {x:616, lines:['Cabinet','Formal'],  sub:'44th Amend · Art.352',    fill:'#0a6070', emoji:'📜'},
+    {x:792, lines:['Kitchen','Cabinet'], sub:'Inner trusted circle',    fill:'#5a1a8a', emoji:'🍳'},
+    {x:968, lines:['Responsibility'],    sub:'Collective + Individual', fill:'#1a6a3a', emoji:'🤝'},
+    {x:1144,lines:['Scholars','Views'],  sub:'Jennings · Ambedkar',     fill:'#d46a10', emoji:'📚'},
+    {x:1300,lines:['Key Facts'],         sub:'Records · CMs · 6-month', fill:'#1a5878', emoji:'🏆'},
+  ];
+  const NW=130, NH=76, CY=75;
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      edge(svg,s.x+NW/2+2,CY,steps[i+1].x-NW/2-2,CY,'#b87c1077',false,2);
+    }
+  });
+  steps.forEach(s=>node(svg,s.x,CY,NW,NH,s.fill,s.lines,s.sub,s.emoji));
+  svgLabel(svg,680,22,'MASTER FLOW: PM ECOSYSTEM — PMO → FUNDS → CABINET → RESPONSIBILITY → SCHOLARS → FACTS');
+})();
+
+/* ══════════════════════════════
+   2. PMO MIND MAP
+   Layout: centre hub at (680,130)
+   Left cluster (functions): x≈160–420, rows at y=65,145,215
+   Right cluster (bodies):   x≈940–1220, rows at y=65,145,215
+══════════════════════════════ */
+(function(){
+  const svg=document.getElementById('svgPMO');
+  const HX=680, HY=125, NW=170, NH=56;
+  node(svg,HX,HY,230,66,'#1a1208',['Prime Ministers','Office (PMO)'],'Administrative Brain of PM','🏛️');
+
+  const items=[
+    // left — PMO Functions
+    {x:155, y:55,  fill:'#b87c10', lines:['Manages GoI'],     sub:'All ministries coordinated', emoji:'🎯'},
+    {x:155, y:130, fill:'#1a3a8a', lines:['Policy Advice'],   sub:'Administrative guidance',    emoji:'📋'},
+    {x:155, y:205, fill:'#1a6a3a', lines:['Principal Secy.'], sub:'Heads the PMO',              emoji:'🔑'},
+    {x:390, y:205, fill:'#d46a10', lines:['Inter-Ministry'],  sub:'Coordination role',          emoji:'🔗'},
+    // right — Bodies under PMO
+    {x:970, y:55,  fill:'#1a6a3a', lines:['Dept. Atomic','Energy (DAE)'],sub:'Nuclear policy',  emoji:'⚛️'},
+    {x:970, y:140, fill:'#0a6070', lines:['Dept. of Space'],  sub:'ISRO oversight',             emoji:'🚀'},
+    {x:970, y:215, fill:'#b01a1a', lines:['NSC (1998)'],      sub:'By exec. order — NOT const.',emoji:'🛡️'},
+    {x:1210,y:130, fill:'#5a1a8a', lines:['Executive','Order Only'],sub:'Not in Constitution',  emoji:'⚖️'},
+  ];
+  items.forEach(n=>{
+    const ex = n.x<HX ? HX-115 : HX+115;
+    edge(svg,ex,HY, n.x+(n.x<HX?NW/2:-NW/2), n.y,'#b87c1055',true,1.7);
+    node(svg,n.x,n.y,NW,NH,n.fill,n.lines,n.sub,n.emoji);
+  });
+  vdiv(svg,690,12,228);
+  svgLabel(svg,280,228,'FUNCTIONS OF PMO','rgba(184,124,16,0.5)');
+  svgLabel(svg,1080,228,'BODIES UNDER PMO','rgba(26,58,138,0.5)');
+})();
+
+/* ══════════════════════════════
+   3. FUNDS MAP
+   Centre hub (680,110)
+   Balanced radial: 3 funds left-centre-right, each with a sub-node below
+══════════════════════════════ */
+(function(){
+  const svg=document.getElementById('svgFunds');
+  const HX=680,HY=105,NW=172,NH=54;
+  node(svg,HX,HY,230,64,'#1a1208',['PM Funds','Emergency Tools'],'PMNRF · NDF · PM CARES','💰');
+
+  const items=[
+    {x:175,  y:52,  fill:'#d46a10', lines:['PMNRF (1948)'],       sub:'Nehru · Disasters · Medical',   emoji:'🆘'},
+    {x:175,  y:148, fill:'#a05010', lines:['80G — 100%'],          sub:'Full tax deduction',             emoji:'📊'},
+    {x:450,  y:52,  fill:'#b01a1a', lines:['Natl. Defence Fund'],  sub:'1962 · Sino-Indian War',         emoji:'⚔️'},
+    {x:450,  y:148, fill:'#7a0a0a', lines:['PM = Chair'],          sub:'Chaired by Prime Minister',      emoji:'👑'},
+    {x:920,  y:52,  fill:'#0a6070', lines:['PM CARES (2020)'],     sub:'COVID-19 · Emergency',           emoji:'🦠'},
+    {x:920,  y:148, fill:'#1a5878', lines:['Newest Fund'],         sub:'Emergency situations focus',     emoji:'🆕'},
+    {x:1185, y:100, fill:'#1a6a3a', lines:['All 3 Funds','80G: 100%'],sub:'Donations fully deductible', emoji:'✅'},
+  ];
+  items.forEach(n=>{
+    const ex=n.x<HX?HX-115:HX+115;
+    edge(svg,ex,HY,n.x+(n.x<HX?NW/2:-NW/2),n.y,'#b87c1055',true,1.6);
+    node(svg,n.x,n.y,NW,NH,n.fill,n.lines,n.sub,n.emoji);
+  });
+  svgLabel(svg,680,196,'ALL THREE FUNDS OFFER 100% TAX DEDUCTION UNDER SECTION 80G');
+})();
+
+/* ══════════════════════════════
+   4. RESPONSIBILITY MAP
+   Centre hub (680,115)
+   Left = Collective (4 nodes), Right = Individual (4 nodes)
+══════════════════════════════ */
+(function(){
+  const svg=document.getElementById('svgResp');
+  const HX=680,HY=110,NW=172,NH=56;
+  node(svg,HX,HY,238,66,'#1a1208',['Collective vs','Individual Resp.'],'Accountability Framework','⚖️');
+
+  const left=[
+    {x:165,y:52,  fill:'#1a6a3a', lines:['No-Confidence','Motion'], sub:'Whole govt. resigns',        emoji:'🗳️'},
+    {x:165,y:130, fill:'#1a3a8a', lines:['Union Level'],            sub:'Responsible to Lok Sabha',   emoji:'🏛️'},
+    {x:165,y:208, fill:'#0a6070', lines:['State Level'],            sub:'Resp. to Vidhan Sabha',      emoji:'📋'},
+    {x:420,y:52,  fill:'#006040', lines:['Cabinet','Solidarity'],   sub:'All defend all decisions',   emoji:'🤝'},
+  ];
+  const right=[
+    {x:940, y:52,  fill:'#5a1a8a', lines:['Pres/Gov','Can Remove'], sub:'ONLY on PM/CM advice',       emoji:'👤'},
+    {x:940, y:138, fill:'#8a1a5a', lines:['PM Recommends'],         sub:'Head of state acts on advice',emoji:'📝'},
+    {x:1185,y:52,  fill:'#b01a1a', lines:['No Legal','Resp. (India)'],sub:'Unlike UK — only political',emoji:'❌'},
+    {x:1185,y:145, fill:'#7a3010', lines:['Only Political','Accountability'],sub:'Parliamentary only', emoji:'📜'},
+  ];
+
+  [...left,...right].forEach(n=>{
+    const ex=n.x<HX?HX-119:HX+119;
+    edge(svg,ex,HY,n.x+(n.x<HX?NW/2:-NW/2),n.y,'#b87c1055',true,1.6);
+    node(svg,n.x,n.y,NW,NH,n.fill,n.lines,n.sub,n.emoji);
+  });
+  vdiv(svg,692,12,218);
+  svgLabel(svg,305,218,'COLLECTIVE RESPONSIBILITY','rgba(26,106,58,0.5)');
+  svgLabel(svg,1065,218,'INDIVIDUAL RESPONSIBILITY','rgba(90,26,138,0.5)');
+})();
+
+/* ══════════════════════════════
+   5. CABINET MAP
+   Centre hub (680,110)
+   Left = Formal Cabinet, Right = Kitchen Cabinet
+══════════════════════════════ */
+(function(){
+  const svg=document.getElementById('svgCabinet');
+  const HX=680,HY=108,NW=172,NH=56;
+  node(svg,HX,HY,230,64,'#1a1208',['Cabinet &','Kitchen Cabinet'],'Formal + Informal Power','🏛️');
+
+  const items=[
+    {x:160, y:50,  fill:'#1a5878', lines:['44th Amendment','(1978)'],   sub:'Source in Constitution',          emoji:'📜'},
+    {x:160, y:132, fill:'#1a3a8a', lines:['Article 352'],               sub:'Only mention in Constitution',    emoji:'🔍'},
+    {x:160, y:208, fill:'#0a6070', lines:['15–20 Ministers'],           sub:'Core decision-making nucleus',    emoji:'👥'},
+    {x:420, y:50,  fill:'#006050', lines:['Major Policy','Decisions'],  sub:'Budget · legislation · emergency',emoji:'📋'},
+    {x:420, y:148, fill:'#004060', lines:['Emergency','Powers'],        sub:'Approves Art.352 proclamation',   emoji:'🚨'},
+    {x:940, y:50,  fill:'#8a1a5a', lines:['Kitchen Cabinet'],          sub:'Informal inner circle of PM',     emoji:'🍳'},
+    {x:940, y:138, fill:'#6a0a4a', lines:['Trusted','Colleagues'],     sub:'No constitutional basis',         emoji:'🔒'},
+    {x:1185,y:50,  fill:'#5a1a8a', lines:['India · USA','· Britain'],  sub:'Exists in 3 major democracies',   emoji:'🌍'},
+    {x:1185,y:148, fill:'#3a0a6a', lines:['Real Power','Often Here'],  sub:'Decisions pre-shaped informally', emoji:'⚡'},
+  ];
+  items.forEach(n=>{
+    const ex=n.x<HX?HX-115:HX+115;
+    edge(svg,ex,HY,n.x+(n.x<HX?NW/2:-NW/2),n.y,'#b87c1055',true,1.6);
+    node(svg,n.x,n.y,NW,NH,n.fill,n.lines,n.sub,n.emoji);
+  });
+  vdiv(svg,692,12,215);
+  svgLabel(svg,290,215,'FORMAL CABINET','rgba(26,88,120,0.5)');
+  svgLabel(svg,1065,215,'KITCHEN CABINET','rgba(138,26,90,0.5)');
+})();
+
+/* ══════════════════════════════
+   6. SCHOLARS MAP
+   Centre hub (680,100)
+   Radial: 3 left + 1 far-left, 3 right + 1 far-right
+══════════════════════════════ */
+(function(){
+  const svg=document.getElementById('svgScholars');
+  const HX=680,HY=92,NW=188,NH=56;
+  node(svg,HX,HY,230,62,'#1a1208',['Scholar Views','on PM\'s Role'],'Static Prelims Content','📚');
+
+  const scholars=[
+    {x:118, y:48,  fill:'#b87c10', lines:['Wm. Harcourt'],      sub:'"Moon among lesser stars"',      emoji:'🌕'},
+    {x:118, y:128, fill:'#d46a10', lines:['Ivor Jennings'],     sub:'"Sun — planets revolve"',        emoji:'☀️'},
+    {x:358, y:48,  fill:'#1a3a8a', lines:['Lord Morley'],       sub:'"Primus inter pares"',           emoji:'⚖️'},
+    {x:358, y:135, fill:'#5a1a8a', lines:['H. Berkeley'],       sub:'"Super-ministerial powers"',     emoji:'💪'},
+    {x:1002,y:48,  fill:'#1a6a3a', lines:['H. Morrison'],       sub:'Stronger primus inter pares',    emoji:'🔝'},
+    {x:1002,y:135, fill:'#0a6070', lines:['Dr. B.R. Ambedkar'], sub:'PM surpasses President',          emoji:'🏅'},
+    {x:1242,y:92,  fill:'#b01a1a', lines:['R.H. Crossman'],     sub:'"PM govt." — not Cabinet govt.', emoji:'🔄'},
+  ];
+  scholars.forEach(n=>{
+    const ex=n.x<HX?HX-115:HX+115;
+    edge(svg,ex,HY,n.x+(n.x<HX?NW/2:-NW/2),n.y,'#b87c1055',true,1.6);
+    node(svg,n.x,n.y,NW,NH,n.fill,n.lines,n.sub,n.emoji);
+  });
+  svgLabel(svg,680,180,'TREND: PRIMUS INTER PARES → PM GOVERNMENT — GROWING POWER CONCENTRATION');
+})();
+
+/* ══════════════════════════════
+   7. FACTS MAP
+   Centre hub (680,108)
+   Left cluster = record holders (3 cols)
+   Right cluster = special facts
+══════════════════════════════ */
+(function(){
+  const svg=document.getElementById('svgFacts');
+  const HX=680,HY=105,NW=168,NH=54;
+  node(svg,HX,HY,220,62,'#1a1208',['Key PM Facts','Prelims Ready'],'Records · CMs · Rules','🏆');
+
+  const facts=[
+    {x:155, y:48,  fill:'#b87c10', lines:['Longest Serving'],    sub:'Jawaharlal Nehru',              emoji:'🥇'},
+    {x:155, y:122, fill:'#d46a10', lines:['2nd Longest'],        sub:'Indira Gandhi',                 emoji:'🥈'},
+    {x:155, y:196, fill:'#1a3a8a', lines:['Youngest PM'],        sub:'Rajiv Gandhi',                  emoji:'🌟'},
+    {x:390, y:48,  fill:'#1a6a3a', lines:['1st Non-Congress'],   sub:'Morarji Desai — 1977',          emoji:'🆕'},
+    {x:390, y:132, fill:'#0a6070', lines:['1st from South'],     sub:'P.V. Narasimha Rao',            emoji:'🗺️'},
+    {x:390, y:205, fill:'#5a1a8a', lines:['1st Rajya Sabha PM'], sub:'Indira Gandhi',                 emoji:'📜'},
+    {x:962, y:48,  fill:'#8a1a5a', lines:['Twice Acting PM'],    sub:'Gulzarilal Nanda',              emoji:'⏳'},
+    {x:962, y:132, fill:'#b01a1a', lines:['Not MP at Appoint.',  '6-Month Rule'],sub:'Must be MP within 6 months',emoji:'⏱️'},
+    {x:1200,y:48,  fill:'#7a4010', lines:['CM → PM Path'],       sub:'6 PMs rose from CM posts',      emoji:'🔼'},
+    {x:1200,y:148, fill:'#004060', lines:['Narendra Modi'],      sub:'CM Gujarat → PM 2014',          emoji:'🏆'},
+  ];
+  facts.forEach(n=>{
+    const ex=n.x<HX?HX-110:HX+110;
+    edge(svg,ex,HY,n.x+(n.x<HX?NW/2:-NW/2),n.y,'#b87c1055',true,1.5);
+    node(svg,n.x,n.y,NW,NH,n.fill,n.lines,n.sub,n.emoji);
+  });
+  vdiv(svg,692,12,210);
+  svgLabel(svg,300,210,'RECORD HOLDERS & FIRSTS','rgba(184,124,16,0.5)');
+  svgLabel(svg,1080,210,'SPECIAL FACTS & RULES','rgba(138,26,90,0.5)');
+})();
+</script>
+</body>
+</html>

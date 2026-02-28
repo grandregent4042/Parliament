@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vice-President of India — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--ink:#12100e;--paper:#f8f5ef;--gold:#b87c10;--amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;--teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0b0;--card:#fffdf5;--card2:#f2ede0;--sky:#1a5878;}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 900px 500px at 15% 10%,rgba(184,124,16,0.06) 0%,transparent 60%),radial-gradient(ellipse 700px 700px at 85% 90%,rgba(26,58,138,0.05) 0%,transparent 60%);pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 20px 80px;}
+.header{text-align:center;padding:36px 16px 18px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(22px,4vw,44px);line-height:1.1;}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:6px;font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:80px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:12px auto 0;border-radius:4px;}
+.sec-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:28px 0 12px;display:flex;align-items:center;gap:10px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:16px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.pc:hover{box-shadow:0 6px 24px rgba(184,124,16,0.1);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.pc.blue::before{background:var(--blue);}.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}.pc.purple::before{background:var(--purple);}.pc.teal::before{background:var(--teal);}.pc.red::before{background:var(--red);}.pc.sky::before{background:var(--sky);}.pc.green::before{background:var(--green);}.pc.amber::before{background:var(--amber);}.pc.dark::before{background:var(--ink);}
+.pc-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:6px;line-height:1.3;}
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;position:relative;margin-bottom:24px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card svg{display:block;width:100%;}
+.pill{display:inline-flex;align-items:center;padding:3px 8px;border-radius:20px;font-size:9px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}.pill.red{background:rgba(176,26,26,0.12);color:var(--red);}.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.stat-row{display:flex;gap:8px;margin:8px 0;}
+.stat-box{flex:1;padding:10px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;line-height:1;}
+.stat-label{font-size:8px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:2px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+.ps-chip{display:inline-block;padding:3px 9px;border-radius:7px;font-size:9px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.prob{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.ps-chip.sol{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.ps-chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+.ps-chip.info{background:rgba(26,58,138,0.07);border-color:rgba(26,58,138,0.2);color:var(--blue);}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px;}
+.feat{padding:9px 11px;border-radius:8px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:14px;margin-bottom:3px;}.feat .ft{font-size:10px;font-weight:800;}.feat .fs{font-size:8px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:1px;}
+.ctable{width:100%;border-collapse:collapse;font-size:10px;}
+.ctable th{background:var(--ink);color:#fff;padding:7px 9px;text-align:left;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;}
+.ctable td{padding:8px 9px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vitem{padding:8px 11px;border-radius:8px;background:var(--card2);border:1px solid var(--border);font-size:10px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}.vitem .vs{font-size:8px;color:var(--muted);font-family:'DM Mono',monospace;}
+.ic-node{padding:7px 11px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;text-align:center;}
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:16px;padding:22px 26px;margin:18px 0;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.keystone-icon{font-size:34px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;margin-bottom:4px;}
+.keystone-sub{font-size:10px;color:#c8b880;line-height:1.6;}
+.keystone-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 11px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'DM Mono',monospace;}
+.tip-strip{background:rgba(184,124,16,0.08);border:1.5px solid rgba(184,124,16,0.2);border-radius:9px;padding:9px 12px;margin:7px 0;}
+.tip-strip .tt{font-size:9px;font-weight:800;color:var(--gold);margin-bottom:3px;}
+.tip-strip .tb{font-size:9px;color:var(--ink);line-height:1.6;}
+.warn-box{padding:9px 12px;border-radius:8px;background:rgba(176,26,26,0.06);border:1.5px dashed rgba(176,26,26,0.3);margin:7px 0;}
+.warn-box .wt{font-size:10px;font-weight:800;color:var(--red);margin-bottom:2px;}
+.warn-box .ws{font-size:9px;color:var(--muted);}
+.art-badge{display:inline-block;padding:2px 9px;background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;border-radius:5px;font-size:9px;font-weight:800;font-family:'DM Mono',monospace;margin:2px;}
+.callout{padding:10px 12px;border-radius:9px;background:rgba(26,58,138,0.06);border:1.5px solid rgba(26,58,138,0.2);margin:7px 0;}
+.callout-title{font-size:10px;font-weight:800;color:var(--blue);margin-bottom:2px;}
+.callout-body{font-size:9px;color:var(--muted);line-height:1.5;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="header">
+  <div class="header-sup">Indian Polity · Constitutional Offices · UPSC</div>
+  <h1>Vice-President of India — <em>Mind Map</em></h1>
+  <div class="header-sub">Art. 63–71 → Election → Powers → Removal → Comparison with President</div>
+</div>
+<!-- MASTER FLOW -->
+<div class="sec-label">Master Flow — The Big Picture</div>
+<div class="map-card mc1">
+  <svg id="svgFlow" viewBox="0 0 1360 130" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+<!-- SECTION 1 -->
+<div class="sec-label">① Constitutional Position — Articles & Overview</div>
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">Art. 63 | Second Highest Office</div>
+    <h3>🏛️ Position in Hierarchy</h3>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+      <span class="art-badge">Art. 63</span><span class="art-badge">Art. 64</span><span class="art-badge">Art. 65</span><span class="art-badge">Art. 66</span><span class="art-badge">Art. 67</span><span class="art-badge">Art. 69</span><span class="art-badge">Art. 71</span>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🥇 President → Head of State (First)</div><div class="vs">Article 52 — highest constitutional office</div></div>
+      <div class="vitem"><div class="vt">🥈 Vice-President → Second highest</div><div class="vs">Article 63 establishes the office</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px;border-radius:8px;background:rgba(26,58,138,0.06);border:1px solid rgba(26,58,138,0.2);">
+      <div style="font-size:10px;font-weight:800;color:var(--blue);">🇺🇸 Modelled on American VP — but functions differently</div>
+      <div style="font-size:9px;color:var(--muted);margin-top:3px;">Indian VP acts <em>temporarily only</em> · US VP becomes full President for remaining term</div>
+    </div>
+    <div class="tip-strip" style="margin-top:8px;">
+      <div class="tt">🎯 Think of VP as:</div>
+      <div class="tb">🪑 Chairman of Rajya Sabha &nbsp;<strong>+</strong>&nbsp; 🔄 Backup President (temporarily)</div>
+    </div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">Articles at a Glance</div>
+    <h3>📜 Constitutional Articles</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">📌</div><div class="ft">Art. 63</div><div class="fs">Establishes VP office</div></div>
+      <div class="feat"><div class="fi">🪑</div><div class="ft">Art. 64</div><div class="fs">Ex-officio Chairman RS</div></div>
+      <div class="feat"><div class="fi">🔄</div><div class="ft">Art. 65</div><div class="fs">Acting President powers</div></div>
+      <div class="feat"><div class="fi">🎓</div><div class="ft">Art. 66</div><div class="fs">Qualification & election</div></div>
+      <div class="feat"><div class="fi">⏳</div><div class="ft">Art. 67</div><div class="fs">Term & removal</div></div>
+      <div class="feat"><div class="fi">🙏</div><div class="ft">Art. 69</div><div class="fs">Oath of office</div></div>
+      <div class="feat"><div class="fi">⚖️</div><div class="ft">Art. 71</div><div class="fs">SC decides disputes</div></div>
+      <div class="feat"><div class="fi">💰</div><div class="ft">Salary</div><div class="fs">As Chairman RS, not VP</div></div>
+    </div>
+  </div>
+</div>
+<!-- SECTION 2 -->
+<div class="sec-label">② Election Process — Most Tested</div>
+<div class="map-card mc2">
+  <svg id="svgElection" viewBox="0 0 1360 260" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-label">Electoral College (Art. 66)</div>
+    <h3>🗳️ Who Elects the VP?</h3>
+    <div class="vlist">
+      <div class="vitem" style="border-color:rgba(26,58,138,0.3);background:rgba(26,58,138,0.06);">
+        <div class="vt" style="color:var(--blue);">✅ Elected MPs — LS + RS</div><div class="vs">Both Houses of Parliament</div>
+      </div>
+      <div class="vitem" style="border-color:rgba(26,58,138,0.3);background:rgba(26,58,138,0.06);">
+        <div class="vt" style="color:var(--blue);">✅ Nominated MPs also vote</div><div class="vs">Anglo-Indian (LS) + Nominated (RS)</div>
+      </div>
+      <div class="vitem" style="border-color:rgba(176,26,26,0.3);background:rgba(176,26,26,0.06);">
+        <div class="vt" style="color:var(--red);">❌ State MLAs — DO NOT vote</div><div class="vs">KEY difference from President</div>
+      </div>
+    </div>
+    <div class="warn-box" style="margin-top:8px;">
+      <div class="wt">⚠️ CRITICAL DIFFERENCE</div>
+      <div class="ws">President → MPs + MLAs &nbsp;|&nbsp; VP → <strong>Only MPs</strong></div>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Voting Method</div>
+    <h3>🗂️ How Votes Are Cast</h3>
+    <div style="display:flex;flex-direction:column;gap:8px;margin:10px 0;">
+      <div class="ic-node" style="border-color:var(--purple);background:rgba(90,26,138,0.08);color:var(--purple);">📊 Proportional Representation</div>
+      <div style="text-align:center;font-size:18px;color:var(--muted);">↓</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.08);color:var(--blue);">🔢 Single Transferable Vote (STV)</div>
+      <div style="text-align:center;font-size:18px;color:var(--muted);">↓</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.08);color:var(--green);">🔒 Secret Ballot</div>
+    </div>
+    <div class="tip-strip">
+      <div class="tt">🎯 Secret Ballot Implication</div>
+      <div class="tb">Party whip does <strong>NOT apply</strong> — No anti-defection consequences</div>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Nomination Requirements</div>
+    <h3>📋 Filing Checklist</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--amber);">20</div><div class="stat-label">PROPOSERS</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--blue);">20</div><div class="stat-label">SECONDERS</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--green);">₹15K</div><div class="stat-label">DEPOSIT (RBI)</div></div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">🎓 Citizen of India</div></div>
+      <div class="vitem"><div class="vt">📅 Minimum age: 35 years</div></div>
+      <div class="vitem"><div class="vt">🪑 Qualified for Rajya Sabha</div><div class="vs">NOT Lok Sabha — key difference from President!</div></div>
+      <div class="vitem"><div class="vt">🚫 Not hold office of profit</div></div>
+    </div>
+  </div>
+</div>
+<!-- SECTION 3 -->
+<div class="sec-label">③ Term · Oath · Vacancy · Removal</div>
+<div class="map-card mc3">
+  <svg id="svgTermRemoval" viewBox="0 0 1360 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+<div class="g3">
+  <div class="pc teal">
+    <div class="pc-label">Art. 67 | Term</div>
+    <h3>⏳ Term & Vacancy</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--teal);">5 Yrs</div><div class="stat-label">RE-ELECTION ALLOWED</div></div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">📩 Resignation → Submitted to President</div></div>
+      <div class="vitem"><div class="vt">🔄 Holds office until successor assumes</div></div>
+      <div class="vitem"><div class="vt">📅 New election before term expiry</div></div>
+    </div>
+    <div style="margin-top:8px;font-size:9px;font-weight:800;color:var(--teal);">Vacancy Causes:</div>
+    <div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:4px;">
+      <span class="ps-chip neu">Expiry</span><span class="ps-chip neu">Resignation</span><span class="ps-chip neu">Removal</span><span class="ps-chip neu">Death</span><span class="ps-chip neu">Disqualification</span>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Art. 69 | Oath</div>
+    <h3>🙏 Oath of Office</h3>
+    <div style="padding:16px;border-radius:12px;background:rgba(26,106,58,0.07);border:1.5px solid rgba(26,106,58,0.2);text-align:center;margin-bottom:10px;">
+      <div style="font-size:32px;margin-bottom:6px;">🤝</div>
+      <div style="font-family:'Playfair Display',serif;font-size:12px;color:var(--green);">Administered by</div>
+      <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:800;">The President</div>
+      <div style="font-size:8px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;">OR HIS NOMINEE</div>
+    </div>
+    <div class="tip-strip">
+      <div class="tt">🎯 Prelims Trap</div>
+      <div class="tb">Oath by <strong>President</strong>, NOT CJI or RS Chairman</div>
+    </div>
+    <div class="callout">
+      <div class="callout-title">Art. 71 — Dispute → Supreme Court</div>
+      <div class="callout-body">Acts done remain valid even if election later declared void. Cannot challenge on incomplete electoral college grounds.</div>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">Art. 67(b) | Removal</div>
+    <h3>❌ Removal Process</h3>
+    <div style="display:flex;flex-direction:column;gap:6px;margin:8px 0;">
+      <div style="padding:8px 11px;border-radius:8px;background:rgba(184,124,16,0.08);border:1px solid rgba(184,124,16,0.3);font-size:10px;font-weight:700;">📋 Step 1: 14 days prior notice</div>
+      <div style="text-align:center;font-size:16px;color:var(--muted);">↓</div>
+      <div style="padding:8px 11px;border-radius:8px;background:rgba(176,26,26,0.08);border:1px solid rgba(176,26,26,0.3);font-size:10px;font-weight:700;color:var(--red);">🏛️ Step 2: Resolution in Rajya Sabha (Effective Majority)</div>
+      <div style="text-align:center;font-size:16px;color:var(--muted);">↓</div>
+      <div style="padding:8px 11px;border-radius:8px;background:rgba(26,58,138,0.08);border:1px solid rgba(26,58,138,0.3);font-size:10px;font-weight:700;color:var(--blue);">✅ Step 3: Agreed by Lok Sabha (Simple Majority)</div>
+    </div>
+    <div class="warn-box">
+      <div class="wt">⚠️ NO Impeachment for VP</div>
+      <div class="ws">Simpler than President · No grounds specified · Starts in Rajya Sabha</div>
+    </div>
+  </div>
+</div>
+<!-- SECTION 4 -->
+<div class="sec-label">④ Powers of Vice-President — 2 Core Functions</div>
+<div class="map-card mc4">
+  <svg id="svgPowers" viewBox="0 0 1360 270" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+<div class="g2">
+  <div class="pc purple">
+    <div class="pc-label">Art. 64 | Power 1</div>
+    <h3>🪑 Ex-Officio Chairman — Rajya Sabha</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Presides over all Rajya Sabha sessions</div><div class="vs">Powers similar to Speaker of Lok Sabha</div></div>
+      <div class="vitem"><div class="vt">Casting vote only in case of a tie</div><div class="vs">Not a normal vote in house business</div></div>
+      <div class="vitem"><div class="vt">NOT a member of Rajya Sabha</div><div class="vs">Cannot vote in normal proceedings</div></div>
+    </div>
+    <div class="warn-box" style="margin-top:10px;">
+      <div class="wt">💰 Salary received as Chairman of RS</div>
+      <div class="ws">Not as VP — salary is for the Chairman role, not VP office itself</div>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="ps-chip info">Maintains order</span><span class="ps-chip info">Decides procedure</span><span class="ps-chip info">Recognises speakers</span><span class="ps-chip info">Rulings on bills</span>
+    </div>
+  </div>
+  <div class="pc sky">
+    <div class="pc-label">Art. 65 | Power 2</div>
+    <h3>🔄 Acting President</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">President dies / resigns / removed</div><div class="vs">VP steps in immediately</div></div>
+      <div class="vitem"><div class="vt">President unable to discharge duties</div><div class="vs">Temporary incapacity, illness etc.</div></div>
+    </div>
+    <div style="margin:10px 0;padding:14px;border-radius:10px;background:rgba(26,88,120,0.07);border:1.5px solid rgba(26,88,120,0.2);text-align:center;">
+      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:800;color:var(--sky);">Max 6 Months</div>
+      <div style="font-size:8px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;">NEW PRESIDENT MUST BE ELECTED WITHIN 6 MONTHS</div>
+    </div>
+    <div class="warn-box">
+      <div class="wt">⚠️ India vs USA Difference</div>
+      <div class="ws">Indian VP acts <em>temporarily only</em> · US VP becomes full President for remaining term</div>
+    </div>
+    <div class="tip-strip">
+      <div class="tt">When acting as President:</div>
+      <div class="tb">VP does NOT function as Chairman of RS during this period</div>
+    </div>
+  </div>
+</div>
+<!-- SECTION 5 -->
+<div class="sec-label">⑤ President vs Vice-President — Side-by-Side</div>
+<div class="pc dark" style="background:rgba(18,16,14,0.02);border-color:rgba(18,16,14,0.1);margin-bottom:18px;">
+  <h3 style="font-family:'Playfair Display',serif;font-size:16px;margin-bottom:12px;">⚖️ Comparison Table — Prelims Favourite</h3>
+  <table class="ctable">
+    <thead>
+      <tr><th>Feature</th><th>President</th><th>Vice-President</th><th>Key Diff?</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Electoral College</td><td>MPs + MLAs</td><td>MPs Only (incl. nominated)</td><td style="color:var(--red);font-weight:800;">⚠️ YES</td></tr>
+      <tr><td>Qualification</td><td>Qualified for Lok Sabha</td><td>Qualified for Rajya Sabha</td><td style="color:var(--red);font-weight:800;">⚠️ YES</td></tr>
+      <tr><td>Removal Method</td><td>Impeachment (Art. 61)</td><td>RS Resolution → LS concurrence</td><td style="color:var(--red);font-weight:800;">⚠️ YES</td></tr>
+      <tr><td>Acts as President</td><td>—</td><td>Yes, max 6 months (Art. 65)</td><td>—</td></tr>
+      <tr><td>Chairman of RS</td><td>No</td><td>Yes — Ex-officio (Art. 64)</td><td>—</td></tr>
+      <tr><td>Oath administered by</td><td>Chief Justice of India</td><td>President or his nominee</td><td style="color:var(--red);font-weight:800;">⚠️ YES</td></tr>
+      <tr><td>Disputes decided by</td><td>Supreme Court</td><td>Supreme Court (Art. 71)</td><td>Same</td></tr>
+      <tr><td>Grounds for removal</td><td>Violation of Constitution</td><td>Not specified in Constitution</td><td style="color:var(--red);font-weight:800;">⚠️ YES</td></tr>
+    </tbody>
+  </table>
+</div>
+<!-- SECTION 6 -->
+<div class="sec-label">⑥ Ultra-Important Prelims Checklist</div>
+<div class="g3">
+  <div class="pc green">
+    <div class="pc-label">Election — Must Know</div>
+    <h3>✅ Election Quick Facts</h3>
+    <div style="display:flex;flex-direction:column;gap:4px;">
+      <span class="ps-chip sol">✅ Nominated MPs vote for VP</span>
+      <span class="ps-chip sol">✅ MLAs do NOT vote</span>
+      <span class="ps-chip sol">✅ STV + PR + Secret Ballot</span>
+      <span class="ps-chip sol">✅ RS qualification (not LS)</span>
+      <span class="ps-chip sol">✅ 20 proposers + 20 seconders</span>
+      <span class="ps-chip sol">✅ ₹15,000 deposit to RBI</span>
+      <span class="ps-chip sol">✅ Four times elected unopposed</span>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Powers — Must Know</div>
+    <h3>⚡ Powers Quick Facts</h3>
+    <div style="display:flex;flex-direction:column;gap:4px;">
+      <span class="ps-chip neu">🪑 Ex-officio Chairman of RS</span>
+      <span class="ps-chip neu">🔄 Acting President max 6 months</span>
+      <span class="ps-chip neu">💸 Salary = Chairman RS salary</span>
+      <span class="ps-chip neu">🗳️ Casting vote only in tie</span>
+      <span class="ps-chip neu">📜 Oath by President (Art. 69)</span>
+      <span class="ps-chip neu">🔒 No whip in VP election</span>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">Removal — Must Know</div>
+    <h3>❌ Removal Quick Facts</h3>
+    <div style="display:flex;flex-direction:column;gap:4px;">
+      <span class="ps-chip prob">❌ NO impeachment for VP</span>
+      <span class="ps-chip prob">❌ No grounds specified</span>
+      <span class="ps-chip prob">⚠️ Starts in Rajya Sabha</span>
+      <span class="ps-chip prob">⚠️ 14 days prior notice</span>
+      <span class="ps-chip prob">⚠️ Effective majority in RS</span>
+      <span class="ps-chip prob">⚠️ Simple majority in LS</span>
+    </div>
+  </div>
+</div>
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🏛️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Logic</div>
+    <div class="keystone-sub">VP exists for <strong style="color:#f5d78a;">constitutional continuity</strong>. As Chairman of RS, VP bridges executive + legislative. As Acting President, VP ensures no power vacuum. The key UPSC insight: <strong style="color:#f5d78a;">VP's electoral college = Parliament only (not states)</strong> — because VP is a parliamentary presiding officer, not head of the Union-State federal structure like the President.</div>
+    <div class="keystone-pills">
+      <span class="kpill">🗳️ MPs Only Vote</span>
+      <span class="kpill">🪑 Chairman of RS</span>
+      <span class="kpill">🔄 Backup President</span>
+      <span class="kpill">🔒 Secret Ballot</span>
+      <span class="kpill">⏳ Max 6 Months Acting</span>
+      <span class="kpill">❌ No Impeachment</span>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const p=se('path',{d:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':w||2,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.7'});
+  svg.appendChild(p);
+}
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.1)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.2)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7.5)-(sub?5:0)-(emoji?10:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=17;}
+  lines.forEach((l,i)=>{const t=se('text',{x,y:ty+i*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10.5','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});t.textContent=l;g.appendChild(t);});
+  if(sub){const s=se('text',{x,y:ty+lines.length*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.4)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+// MASTER FLOW
+(function(){
+  const svg=document.getElementById('svgFlow');
+  const steps=[
+    {x:90,  label:'Art. 63',        sub:'Office Established',       fill:'#1a3a8a', emoji:'📜'},
+    {x:265, label:'Election',       sub:'MPs Only · STV · Secret',   fill:'#5a1a8a', emoji:'🗳️'},
+    {x:440, label:'Qualifications', sub:'35 yrs · Citizen · RS-qual',fill:'#b87c10', emoji:'🎓'},
+    {x:615, label:'Term & Oath',    sub:'5 yrs · By President',      fill:'#1a6a3a', emoji:'⏳'},
+    {x:790, label:'Chairman RS',    sub:'Ex-officio · Art. 64',      fill:'#0a6070', emoji:'🪑'},
+    {x:965, label:'Acting Pres.',   sub:'Max 6 months · Art. 65',    fill:'#d46a10', emoji:'🔄'},
+    {x:1140,label:'Removal',        sub:'RS→LS · No Impeachment',    fill:'#b01a1a', emoji:'❌'},
+    {x:1290,label:'Art. 71',        sub:'Disputes → Supreme Court',  fill:'#1a5878', emoji:'⚖️'},
+  ];
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:130,fill:'rgba(250,245,238,0.5)'}));
+  steps.forEach((s,i)=>{if(i<steps.length-1)edge(svg,s.x+78,65,steps[i+1].x-78,65,'#b87c10',false,2);});
+  steps.forEach(s=>node(svg,s.x,65,145,72,s.fill,[s.label],s.sub,s.emoji));
+  const t=se('text',{x:680,y:17,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace','letter-spacing':'2.5','fill':'rgba(120,100,60,0.45)'});
+  t.textContent='MASTER FLOW: ART.63 → ELECTION → QUALIFICATIONS → TERM → POWERS → REMOVAL → DISPUTE';
+  svg.appendChild(t);
+})();
+
+// ELECTION SVG — radial
+(function(){
+  const svg=document.getElementById('svgElection');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:260,fill:'rgba(250,245,238,0.3)'}));
+  node(svg,680,130,220,60,'#1a3a8a',['Election of VP'],'Art. 66 · Electoral College · Method','🗳️');
+
+  const leftN=[
+    {x:190,y:62,  fill:'#1a6a3a', label:['Elected MPs'],      sub:'Both LS + RS', emoji:'✅'},
+    {x:190,y:140, fill:'#1a3a8a', label:['Nominated MPs'],    sub:'Included — key fact', emoji:'📋'},
+    {x:190,y:215, fill:'#b01a1a', label:['MLAs — NOT'],       sub:'Do NOT vote for VP', emoji:'❌'},
+  ];
+  leftN.forEach(n=>{edge(svg,570,130,n.x+82,n.y,'#1a3a8a33',true,1.8);node(svg,n.x,n.y,155,50,n.fill,[n.label[0]],n.sub,n.emoji);});
+
+  const rightN=[
+    {x:1155,y:62,  fill:'#5a1a8a', label:['Proportional Rep.'], sub:'PR system used', emoji:'📊'},
+    {x:1155,y:140, fill:'#0a6070', label:['Single Transferable'],sub:'STV method', emoji:'🔢'},
+    {x:1155,y:215, fill:'#b87c10', label:['No Whip Applies'],  sub:'Secret ballot — no anti-defection', emoji:'🔒'},
+  ];
+  rightN.forEach(n=>{edge(svg,790,130,n.x-82,n.y,'#5a1a8a33',true,1.8);node(svg,n.x,n.y,160,50,n.fill,[n.label[0]],n.sub,n.emoji);});
+
+  [['ELECTORAL COLLEGE — WHO VOTES',190,'rgba(26,58,138,0.5)'],['VOTING METHOD — HOW',1155,'rgba(90,26,138,0.5)']].forEach(([txt,x,col])=>{
+    const t=se('text',{x,y:16,'text-anchor':'middle','font-size':'7.5','font-family':'DM Mono,monospace',fill:col,'letter-spacing':'2'});t.textContent=txt;svg.appendChild(t);
+  });
+})();
+
+// TERM & REMOVAL SVG
+(function(){
+  const svg=document.getElementById('svgTermRemoval');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:240,fill:'rgba(250,245,238,0.3)'}));
+  node(svg,680,120,225,60,'#1a1208',['Art.67 · Art.69 · Removal'],'5 yrs · Oath by President · No Impeachment','📜');
+
+  const leftN=[
+    {x:175,y:54,  fill:'#0a6070', label:['5 Year Term'],       sub:'Re-election allowed', emoji:'⏳'},
+    {x:175,y:130, fill:'#1a6a3a', label:['Oath by President'], sub:'Art.69 · NOT CJI', emoji:'🙏'},
+    {x:175,y:204, fill:'#1a5878', label:['SC Decides Dispute'],sub:'Art.71 · Supreme Court', emoji:'⚖️'},
+  ];
+  leftN.forEach(n=>{edge(svg,568,120,n.x+83,n.y,'#0a607033',true,1.8);node(svg,n.x,n.y,158,50,n.fill,[n.label[0]],n.sub,n.emoji);});
+
+  const remN=[
+    {x:1165,y:54,  fill:'#b87c10', label:['14 Days Notice'],    sub:'Prior notice mandatory', emoji:'📋'},
+    {x:1165,y:130, fill:'#b01a1a', label:['RS Effective Maj.'], sub:'Resolution in Rajya Sabha', emoji:'🏛️'},
+    {x:1165,y:204, fill:'#d46a10', label:['LS Simple Maj.'],    sub:'Lok Sabha agrees', emoji:'✅'},
+  ];
+  remN.forEach(n=>{edge(svg,793,120,n.x-83,n.y,'#b01a1a33',true,1.8);node(svg,n.x,n.y,158,50,n.fill,[n.label[0]],n.sub,n.emoji);});
+  edge(svg,1165,80,1165,104,'#b01a1a',false,2);
+  edge(svg,1165,156,1165,179,'#b01a1a',false,2);
+
+  [['TERM & OATH',175,'rgba(10,96,112,0.5)'],['REMOVAL STEPS (NO IMPEACHMENT)',1165,'rgba(176,26,26,0.5)']].forEach(([txt,x,col])=>{
+    const t=se('text',{x,y:15,'text-anchor':'middle','font-size':'7.5','font-family':'DM Mono,monospace',fill:col,'letter-spacing':'2'});t.textContent=txt;svg.appendChild(t);
+  });
+})();
+
+// POWERS SVG
+(function(){
+  const svg=document.getElementById('svgPowers');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:270,fill:'rgba(250,245,238,0.3)'}));
+  node(svg,680,135,220,60,'#1a1208',['2 Core Powers of VP'],'Art. 64 — Chairman RS · Art. 65 — Acting President','⚡');
+
+  const leftP=[
+    {x:175,y:56,  fill:'#5a1a8a', label:['Presides over RS'],   sub:'All sessions of Rajya Sabha', emoji:'🪑'},
+    {x:175,y:135, fill:'#1a3a8a', label:['Speaker-like Powers'],sub:'Order, rulings, recognition', emoji:'🔨'},
+    {x:175,y:210, fill:'#0a6070', label:['Casting Vote: Tie'],  sub:'Only when tie occurs', emoji:'🗳️'},
+    {x:450,y:212, fill:'#7a2070', label:['NOT a RS Member'],    sub:'Cannot vote normally', emoji:'⚠️'},
+  ];
+  leftP.forEach(n=>{edge(svg,570,135,n.x+82,n.y,'#5a1a8a33',true,1.8);node(svg,n.x,n.y,158,50,n.fill,[n.label[0]],n.sub,n.emoji);});
+
+  const rightP=[
+    {x:1183,y:56,  fill:'#d46a10', label:['Pres. dies/resigns'], sub:'VP steps in immediately', emoji:'🔄'},
+    {x:1183,y:135, fill:'#b01a1a', label:['Pres. incapacitated'],sub:'Temporary inability', emoji:'🏥'},
+    {x:1183,y:210, fill:'#1a6a3a', label:['Max 6 Months'],       sub:'New Pres. in 6 months', emoji:'⏳'},
+    {x:905,y:212,  fill:'#1a5878', label:['India ≠ USA'],        sub:'India: temp · USA: full term', emoji:'🌐'},
+  ];
+  rightP.forEach(n=>{edge(svg,790,135,n.x-82,n.y,'#d46a1033',true,1.8);node(svg,n.x,n.y,160,50,n.fill,[n.label[0]],n.sub,n.emoji);});
+  svg.appendChild(se('line',{x1:680,y1:18,x2:680,y2:258,stroke:'rgba(200,180,140,0.15)','stroke-width':'1','stroke-dasharray':'5 4'}));
+
+  [['POWER 1 — CHAIRMAN OF RAJYA SABHA (ART.64)',175,'rgba(90,26,138,0.5)'],['POWER 2 — ACTING PRESIDENT (ART.65)',1183,'rgba(212,106,16,0.5)']].forEach(([txt,x,col])=>{
+    const t=se('text',{x,y:14,'text-anchor':'middle','font-size':'7.5','font-family':'DM Mono,monospace',fill:col,'letter-spacing':'2'});t.textContent=txt;svg.appendChild(t);
+  });
+})();
+</script>
+</body>
+</html>

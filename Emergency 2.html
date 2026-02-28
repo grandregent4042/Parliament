@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>President's Rule — Article 356 Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=Barlow:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f4ee;
+  --paper:#fffdf8;
+  --ink:#1a1612;
+  --muted:#7a6e5e;
+  --border:#ddd4be;
+  --card:#fffdf5;
+  --gold:#9a6f10;
+  --amber:#c05a0a;
+  --blue:#1a3878;
+  --red:#9a1010;
+  --green:#1a5a30;
+  --teal:#0a5068;
+  --purple:#4a1878;
+  --sky:#1a4870;
+  --orange:#b84010;
+  --warm:#f0e8d0;
+}
+body{
+  font-family:'Barlow',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:
+    radial-gradient(ellipse 800px 500px at 10% 5%, rgba(154,111,16,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 600px at 90% 95%, rgba(26,56,120,0.05) 0%, transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+.wrap{position:relative;z-index:1;max-width:1380px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:52px 16px 24px;border-bottom:2px solid var(--border);margin-bottom:36px;position:relative;}
+.header-kicker{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.header h1{font-family:'Libre Baskerville',serif;font-size:clamp(28px,5vw,52px);line-height:1.08;color:var(--ink);font-weight:700;}
+.header h1 em{font-style:italic;color:var(--amber);}
+.header-meta{margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:1px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+.header-meta span::before{content:'▸ ';}
+.header::after{content:'';display:block;width:120px;height:3px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:18px auto 0;border-radius:3px;}
+
+/* SECTION LABEL */
+.sec{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin:40px 0 16px;display:flex;align-items:center;gap:14px;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g1x2{display:grid;grid-template-columns:1fr 2fr;gap:18px;margin-bottom:20px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}.g1x2,.g2x1{grid-template-columns:1fr;}}
+@media(max-width:580px){.g2,.g3,.g4,.g1x2,.g2x1{grid-template-columns:1fr;}}
+
+/* PANEL CARD */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:18px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.pc:hover{box-shadow:0 8px 32px rgba(154,111,16,0.1);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.blue::before{background:var(--blue);}
+.pc.red::before{background:var(--red);}
+.pc.green::before{background:var(--green);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.amber::before{background:var(--amber);}
+.pc.sky::before{background:var(--sky);}
+.pc-kicker{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Libre Baskerville',serif;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px;line-height:1.3;font-weight:700;}
+
+/* MAP CARD (SVG wrapper) */
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;position:relative;margin-bottom:24px;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--red));}
+.mc.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple));}
+.mc.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber));}
+.mc.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.mc.mc5::before{background:linear-gradient(90deg,var(--sky),var(--blue));}
+.mc svg{display:block;width:100%;}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vi{padding:9px 12px;border-radius:9px;background:var(--warm);border:1px solid var(--border);font-size:11px;}
+.vi .vt{font-weight:700;margin-bottom:2px;font-size:12px;}
+.vi .vs{font-size:9px;color:var(--muted);font-family:'IBM Plex Mono',monospace;}
+
+/* STAT */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--warm);}
+.stat-num{font-family:'Libre Baskerville',serif;font-size:28px;font-weight:700;line-height:1;}
+.stat-lbl{font-size:9px;font-family:'IBM Plex Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;font-weight:700;margin-top:3px;}
+
+/* CHIPS */
+.chip{display:inline-block;padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;font-family:'IBM Plex Mono',monospace;margin:2px;border:1.5px solid;}
+.chip.red{background:rgba(154,16,16,0.07);border-color:rgba(154,16,16,0.2);color:var(--red);}
+.chip.green{background:rgba(26,90,48,0.07);border-color:rgba(26,90,48,0.2);color:var(--green);}
+.chip.blue{background:rgba(26,56,120,0.07);border-color:rgba(26,56,120,0.2);color:var(--blue);}
+.chip.gold{background:rgba(154,111,16,0.08);border-color:rgba(154,111,16,0.2);color:var(--gold);}
+.chip.amber{background:rgba(184,64,16,0.07);border-color:rgba(184,64,16,0.2);color:var(--orange);}
+.chip.purple{background:rgba(74,24,120,0.07);border-color:rgba(74,24,120,0.2);color:var(--purple);}
+
+/* IMPACT CHAIN */
+.chain{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.ch-node{padding:6px 12px;border-radius:8px;font-size:10px;font-weight:700;font-family:'IBM Plex Mono',monospace;border:1.5px solid;}
+.ch-arr{font-size:16px;color:var(--muted);}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:16px;padding:24px 28px;margin:24px 0;display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
+.ks-icon{font-size:40px;}
+.ks-title{font-family:'Libre Baskerville',serif;font-size:20px;font-style:italic;margin-bottom:6px;}
+.ks-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.kpill{display:inline-block;padding:4px 11px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'IBM Plex Mono',monospace;margin:3px;}
+
+/* BADGE */
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;font-family:'IBM Plex Mono',monospace;}
+.badge.hot{background:#fff3cd;color:#856404;border:1px solid #ffc107;}
+.badge.ok{background:#d4edda;color:#155724;border:1px solid #28a745;}
+.badge.bad{background:#f8d7da;color:#721c24;border:1px solid #dc3545;}
+.badge.info{background:#cce5ff;color:#004085;border:1px solid #007bff;}
+
+/* PHASE */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+@media(max-width:640px){.phases{grid-template-columns:1fr;}}
+.phase{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Libre Baskerville',serif;font-size:30px;font-weight:700;}
+.phase-title{font-size:12px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'IBM Plex Mono',monospace;color:var(--muted);}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;margin:8px 0;}
+.callout.info{background:rgba(26,56,120,0.06);border:1.5px solid rgba(26,56,120,0.18);}
+.callout.warn{background:rgba(154,16,16,0.06);border:1.5px solid rgba(154,16,16,0.18);}
+.callout.tip{background:rgba(26,90,48,0.06);border:1.5px solid rgba(26,90,48,0.18);}
+.callout-title{font-size:11px;font-weight:800;margin-bottom:3px;}
+.callout-title.blue{color:var(--blue);}
+.callout-title.red{color:var(--red);}
+.callout-title.green{color:var(--green);}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.6;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#f5e8c0;padding:8px 10px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(154,111,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;gap:0;position:relative;margin:12px 0;padding-left:28px;}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--amber),var(--blue));}
+.titem{position:relative;padding:10px 12px;margin-bottom:10px;border-radius:9px;background:var(--warm);border:1px solid var(--border);}
+.titem::before{content:'';position:absolute;left:-24px;top:14px;width:12px;height:12px;border-radius:50%;border:2px solid var(--amber);background:var(--paper);}
+.titem.key::before{background:var(--amber);}
+.titem .tt{font-size:12px;font-weight:700;}
+.titem .ts{font-size:9px;font-family:'IBM Plex Mono',monospace;color:var(--muted);margin-top:2px;}
+
+/* FEAT */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px;border-radius:8px;background:var(--warm);border:1px solid var(--border);}
+.feat .fi{font-size:15px;margin-bottom:3px;}
+.feat .ft{font-size:11px;font-weight:700;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'IBM Plex Mono',monospace;}
+
+/* SIDE ACCENT */
+.side-acc{position:absolute;top:10px;right:12px;}
+
+/* DIVIDER */
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:8px 0;}
+
+/* QUICK FACTS */
+.qf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin:10px 0;}
+.qf{padding:12px;border-radius:10px;background:var(--warm);border:1.5px solid var(--border);text-align:center;}
+.qf-val{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:var(--amber);}
+.qf-lbl{font-size:9px;font-family:'IBM Plex Mono',monospace;color:var(--muted);margin-top:3px;}
+.qf-note{font-size:10px;font-weight:700;margin-top:3px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-kicker">Indian Polity · Constitutional Law · UPSC</div>
+  <h1>President's Rule — <em>Article 356</em></h1>
+  <div class="header-meta">
+    <span>74th Amendment Link</span>
+    <span>S.R. Bommai Case</span>
+    <span>Judicial Review</span>
+    <span>3-Year Duration</span>
+    <span>Prelims Hot Area 🔥</span>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 0: MASTER FLOW ══════════ -->
+<div class="sec">Master Flow — Big Picture</div>
+
+<div class="mc mc1">
+  <svg id="svgFlow" viewBox="0 0 1340 110" xmlns="http://www.w3.org/2000/svg" style="font-family:'Barlow',sans-serif;"></svg>
+</div>
+
+<!-- ══════════ SECTION 1: WHAT IS IT ══════════ -->
+<div class="sec">① What is President's Rule?</div>
+
+<div class="mc mc2" style="margin-bottom:18px;">
+  <svg id="svgWhat" viewBox="0 0 1340 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Barlow',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-kicker">Core Provision</div>
+    <h3>📜 Article 356 — The Trigger</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Premise</div><div class="vs">State govt cannot run as per Constitution</div></div>
+      <div class="vi"><div class="vt">Who Acts</div><div class="vs">President takes over state executive functions</div></div>
+    </div>
+    <div class="divider" style="margin:10px 0;"></div>
+    <div style="font-size:11px;font-weight:700;margin-bottom:6px;color:var(--blue);">🔗 Linked Articles</div>
+    <div class="chain">
+      <div class="ch-node" style="border-color:var(--blue);color:var(--blue);background:rgba(26,56,120,0.06);">Art. 355</div>
+      <div class="ch-arr">→</div>
+      <div class="ch-node" style="border-color:var(--gold);color:var(--gold);background:rgba(154,111,16,0.06);">Centre's Duty</div>
+      <div class="ch-arr">+</div>
+      <div class="ch-node" style="border-color:var(--red);color:var(--red);background:rgba(154,16,16,0.06);">Art. 365</div>
+      <div class="ch-arr">→</div>
+      <div class="ch-node" style="border-color:var(--amber);color:var(--amber);background:rgba(192,90,10,0.06);">State Disobedience</div>
+    </div>
+    <div class="callout info" style="margin-top:10px;">
+      <div class="callout-title blue">Art. 355</div>
+      <div class="callout-body">Centre's duty to protect states from internal disturbance & ensure constitutional governance.</div>
+    </div>
+    <div class="callout warn" style="margin-top:6px;">
+      <div class="callout-title red">Art. 365</div>
+      <div class="callout-body">If state disobeys Centre's directions → may trigger Art. 356 imposition.</div>
+    </div>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-kicker">Key Facts</div>
+    <h3>⚠️ Critical Notes</h3>
+    <div class="vlist">
+      <div class="vi" style="border-left:3px solid var(--red);">
+        <div class="vt">Governor's Report — Not Mandatory!</div>
+        <div class="vs">Can be imposed with OR without governor's report <span class="badge hot">UPSC 2018</span></div>
+      </div>
+      <div class="vi" style="border-left:3px solid var(--amber);">
+        <div class="vt">First Imposition</div>
+        <div class="vs">Punjab, 1951 — Earliest use in India</div>
+      </div>
+      <div class="vi" style="border-left:3px solid var(--blue);">
+        <div class="vt">Dr. B.R. Ambedkar's View</div>
+        <div class="vs">"Last resort" — emergency dead letter, never used</div>
+      </div>
+      <div class="vi" style="border-left:3px solid var(--green);">
+        <div class="vt">Article 356 Is Discretionary</div>
+        <div class="vs">Parliament must approve; subject to judicial review</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:10px;background:rgba(154,16,16,0.06);border-radius:8px;border:1px dashed var(--red);">
+      <span style="font-size:11px;font-weight:700;color:var(--red);">⚠️ Most misused provision of the Constitution — over 130 times till 1994</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 2: APPROVAL & DURATION ══════════ -->
+<div class="sec">② Approval & Duration <span class="badge hot">🔥 Prelims Hot</span></div>
+
+<div class="mc mc3" style="margin-bottom:18px;">
+  <svg id="svgDuration" viewBox="0 0 1340 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'Barlow',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-kicker">Approval Process</div>
+    <h3>🏛️ Parliament Must Approve</h3>
+    <div class="qf-grid" style="grid-template-columns:1fr 1fr;">
+      <div class="qf"><div class="qf-val">2</div><div class="qf-lbl">Months Window</div><div class="qf-note">Both Houses must approve</div></div>
+      <div class="qf"><div class="qf-val">Simple</div><div class="qf-lbl">Majority Needed</div><div class="qf-note">Not Special Majority</div></div>
+    </div>
+    <div class="callout info" style="margin-top:10px;">
+      <div class="callout-title blue">📌 Lok Sabha Dissolved?</div>
+      <div class="callout-body">If LS is dissolved during 2-month window → survives 30 days after new LS reconstitutes, provided Rajya Sabha already approved.</div>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip blue">✓ Both Houses</span>
+      <span class="chip blue">✓ Within 2 months</span>
+      <span class="chip blue">✓ Simple Majority</span>
+    </div>
+  </div>
+
+  <div class="pc amber">
+    <div class="pc-kicker">Duration Rules</div>
+    <h3>⏱️ How Long Can It Last?</h3>
+    <div class="timeline">
+      <div class="titem key">
+        <div class="tt">Initial: 6 Months</div>
+        <div class="ts">After Parliamentary approval</div>
+      </div>
+      <div class="titem key">
+        <div class="tt">Extended: Upto 3 Years</div>
+        <div class="ts">Approval every 6 months required</div>
+      </div>
+      <div class="titem" style="border-left:3px solid var(--red);background:rgba(154,16,16,0.05);">
+        <div class="tt" style="color:var(--red);">Beyond 1 Year — Special Condition</div>
+        <div class="ts">ONLY if: National Emergency in force, OR</div>
+        <div class="ts">Election Commission certifies polls can't be held</div>
+      </div>
+    </div>
+    <div style="margin-top:4px;padding:8px 10px;background:rgba(154,111,16,0.08);border-radius:8px;border:1px solid rgba(154,111,16,0.2);">
+      <span style="font-size:11px;font-weight:700;color:var(--gold);">📜 44th Amendment Safeguard — Added this 1-year condition</span>
+    </div>
+  </div>
+</div>
+
+<!-- Quick Stat Row -->
+<div class="qf-grid" style="grid-template-columns:repeat(6,1fr);margin-bottom:20px;">
+  <div class="qf"><div class="qf-val">356</div><div class="qf-lbl">Article</div></div>
+  <div class="qf"><div class="qf-val">2 Mo</div><div class="qf-lbl">Approval Window</div></div>
+  <div class="qf"><div class="qf-val">6 Mo</div><div class="qf-lbl">Initial Term</div></div>
+  <div class="qf"><div class="qf-val">3 Yr</div><div class="qf-lbl">Maximum Term</div></div>
+  <div class="qf"><div class="qf-val">44th</div><div class="qf-lbl">Amendment</div></div>
+  <div class="qf"><div class="qf-val">1951</div><div class="qf-lbl">First Use (Punjab)</div></div>
+</div>
+
+<!-- ══════════ SECTION 3: WHAT HAPPENS AFTER ══════════ -->
+<div class="sec">③ What Happens After Imposition?</div>
+
+<div class="mc mc4" style="margin-bottom:18px;">
+  <svg id="svgAfter" viewBox="0 0 1340 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Barlow',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc red">
+    <div class="pc-kicker">Executive Changes</div>
+    <h3>⚙️ Executive Side</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">President Takes Over</div><div class="vs">State executive functions assumed by Centre</div></div>
+      <div class="vi"><div class="vt">Governor Acts</div><div class="vs">Runs administration on behalf of President</div></div>
+      <div class="vi"><div class="vt">Council of Ministers</div><div class="vs">Dismissed — no state cabinet functions</div></div>
+    </div>
+    <span class="chip red" style="margin-top:8px;">❌ State Cabinet Gone</span>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-kicker">Legislative Changes</div>
+    <h3>🏛️ Legislative Side</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">State Assembly</div><div class="vs">May be <strong>Suspended</strong> OR <strong>Dissolved</strong></div></div>
+      <div class="vi"><div class="vt">Parliament Legislates</div><div class="vs">Exercises state legislative powers</div></div>
+      <div class="vi"><div class="vt">Bills & Budget</div><div class="vs">State legislation passed by Parliament</div></div>
+      <div class="vi" style="border-left:3px solid var(--amber);">
+        <div class="vt">Laws Survive After PR Ends</div>
+        <div class="vs">Legislation continues even after revocation</div>
+      </div>
+    </div>
+    <span class="chip purple" style="margin-top:8px;">⚡ Parliament = State Legislature</span>
+  </div>
+
+  <div class="pc green">
+    <div class="pc-kicker">What Stays Intact</div>
+    <h3>✅ Unchanged</h3>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;">
+      <div style="padding:14px;border-radius:10px;background:rgba(26,90,48,0.07);border:1.5px solid rgba(26,90,48,0.2);text-align:center;">
+        <div style="font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:var(--green);">High Court</div>
+        <div style="font-size:10px;font-family:'IBM Plex Mono',monospace;color:var(--muted);margin-top:3px;">POWERS UNCHANGED</div>
+        <div style="font-size:11px;margin-top:5px;">Judiciary remains fully functional and independent</div>
+      </div>
+    </div>
+    <div class="callout tip" style="margin-top:10px;">
+      <div class="callout-title green">⚖️ Judicial Independence</div>
+      <div class="callout-body">High Courts continue to function normally. President's Rule does NOT affect the judiciary.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 4: JUDICIAL REVIEW ══════════ -->
+<div class="sec">④ Judicial Review — S.R. Bommai Case (1994)</div>
+
+<div class="mc mc5" style="margin-bottom:18px;">
+  <svg id="svgBommai" viewBox="0 0 1340 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Barlow',sans-serif;"></svg>
+</div>
+
+<div class="g1x2">
+  <div class="pc gold">
+    <div class="pc-kicker">Background</div>
+    <h3>📚 The Case</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">S.R. Bommai vs. Union of India</div><div class="vs">Supreme Court, 1994 — 9-Judge Bench</div></div>
+      <div class="vi"><div class="vt">Context</div><div class="vs">BJP govts dismissed after Babri demolition (1992)</div></div>
+    </div>
+    <div class="divider" style="margin:10px 0;"></div>
+    <div style="font-size:11px;font-weight:700;margin-bottom:6px;">Amendment History:</div>
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <div class="chain">
+        <div class="ch-node" style="border-color:var(--red);color:var(--red);background:rgba(154,16,16,0.06);font-size:9px;">38th Amendment</div>
+        <div class="ch-arr">→</div>
+        <div class="ch-node" style="font-size:9px;border-color:var(--muted);color:var(--muted);">Gave Immunity</div>
+      </div>
+      <div class="chain">
+        <div class="ch-node" style="border-color:var(--green);color:var(--green);background:rgba(26,90,48,0.06);font-size:9px;">44th Amendment</div>
+        <div class="ch-arr">→</div>
+        <div class="ch-node" style="font-size:9px;border-color:var(--green);color:var(--green);background:rgba(26,90,48,0.06);">Removed Immunity</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-kicker">Landmark Ruling — 5 Key Holdings</div>
+    <h3>⚖️ What the Court Said</h3>
+    <div class="vlist">
+      <div class="vi" style="border-left:3px solid var(--blue);">
+        <div class="vt">1. Judicial Review Allowed</div>
+        <div class="vs">Imposition is subject to courts — not immune</div>
+      </div>
+      <div class="vi" style="border-left:3px solid var(--blue);">
+        <div class="vt">2. Material Must Exist</div>
+        <div class="vs">President's satisfaction must be based on relevant, objective material</div>
+      </div>
+      <div class="vi" style="border-left:3px solid var(--red);">
+        <div class="vt">3. No Dissolution Before Approval</div>
+        <div class="vs">Assembly can only be dissolved AFTER Parliament approves</div>
+      </div>
+      <div class="vi" style="border-left:3px solid var(--amber);">
+        <div class="vt">4. Floor Test is Decisive</div>
+        <div class="vs">Majority tested on floor of House, NOT governor's guess</div>
+      </div>
+      <div class="vi" style="border-left:3px solid var(--green);">
+        <div class="vt">5. Court Can Restore Govt</div>
+        <div class="vs">If unconstitutional → government can be reinstated by court</div>
+      </div>
+    </div>
+    <div style="margin-top:8px;padding:9px 12px;background:rgba(26,56,120,0.06);border-radius:8px;border:1px dashed var(--blue);">
+      <span style="font-size:10px;font-weight:700;color:var(--blue);">🏛️ Also: Action allowed if state promotes anti-secular policies</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 5: PROPER vs IMPROPER ══════════ -->
+<div class="sec">⑤ Proper vs Improper Use <span class="badge hot">🔥 Prelims Favourite</span></div>
+
+<div class="mc mc1" style="margin-bottom:18px;">
+  <svg id="svgUse" viewBox="0 0 1340 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Barlow',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-kicker">Constitutional Grounds</div>
+    <h3>✅ Proper / Valid Use</h3>
+    <div class="vlist">
+      <div class="vi" style="border-left:3px solid var(--green);"><div class="vt">Hung Assembly</div><div class="vs">No party has clear majority after elections</div></div>
+      <div class="vi" style="border-left:3px solid var(--green);"><div class="vt">No Govt Can Be Formed</div><div class="vs">All combinations fail to secure majority</div></div>
+      <div class="vi" style="border-left:3px solid var(--green);"><div class="vt">Govt Loses Majority</div><div class="vs">No viable alternative government possible</div></div>
+      <div class="vi" style="border-left:3px solid var(--green);"><div class="vt">Unconstitutional Acts</div><div class="vs">State acts against Constitution provisions</div></div>
+      <div class="vi" style="border-left:3px solid var(--green);"><div class="vt">Violent Breakdown</div><div class="vs">Physical breakdown of constitutional machinery</div></div>
+      <div class="vi" style="border-left:3px solid var(--green);"><div class="vt">Disobeys Centre (Art. 365)</div><div class="vs">Refuses to follow constitutional directives</div></div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="chip green">✓ Valid Constitutional Ground</span>
+    </div>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-kicker">Political Misuse</div>
+    <h3>❌ Improper / Invalid Use</h3>
+    <div class="vlist">
+      <div class="vi" style="border-left:3px solid var(--red);"><div class="vt">Maladministration Alone</div><div class="vs">Bad governance is NOT sufficient grounds</div></div>
+      <div class="vi" style="border-left:3px solid var(--red);"><div class="vt">Losing Lok Sabha Elections</div><div class="vs">State LS results don't invalidate state govt</div></div>
+      <div class="vi" style="border-left:3px solid var(--red);"><div class="vt">Governor Blocking Floor Test</div><div class="vs">Denying majority test is unconstitutional</div></div>
+      <div class="vi" style="border-left:3px solid var(--red);"><div class="vt">No Prior Warning</div><div class="vs">Centre must warn state first (except extreme emergency)</div></div>
+      <div class="vi" style="border-left:3px solid var(--red);"><div class="vt">Internal Disturbance</div><div class="vs">Without actual constitutional breakdown</div></div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="chip red">✗ Political Vendetta</span>
+      <span class="chip red">✗ Centre vs Opposition</span>
+    </div>
+    <div class="callout warn" style="margin-top:8px;">
+      <div class="callout-title red">S.R. Bommai Test</div>
+      <div class="callout-body">Post-1994, all impositions must withstand judicial scrutiny — "relevant material" must exist.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 6: BIG TAKEAWAYS ══════════ -->
+<div class="sec">⑥ Big Prelims Takeaways</div>
+
+<div class="mc mc2" style="margin-bottom:18px;">
+  <svg id="svgTakeaways" viewBox="0 0 1340 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Barlow',sans-serif;"></svg>
+</div>
+
+<div class="g3" style="margin-bottom:20px;">
+  <div class="pc gold">
+    <div class="pc-kicker">Articles to Remember</div>
+    <h3>📋 Article Cluster</h3>
+    <table class="ctable">
+      <tr><td>356</td><td>President's Rule — Main provision</td></tr>
+      <tr><td>355</td><td>Centre's duty to protect states</td></tr>
+      <tr><td>365</td><td>State disobedience trigger</td></tr>
+      <tr><td>44th</td><td>1-yr condition + removed immunity</td></tr>
+      <tr><td>38th</td><td>Added immunity (later removed)</td></tr>
+    </table>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-kicker">Duration Sequence</div>
+    <h3>⏱️ How Long Can It Last?</h3>
+
+    <!-- Step 1 -->
+    <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:4px;">
+      <div style="flex:0 0 44px;height:44px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;color:#fff;box-shadow:0 2px 8px rgba(26,90,48,0.25);">6mo</div>
+      <div style="flex:1;padding:8px 11px;border-radius:9px;background:rgba(26,90,48,0.07);border:1.5px solid rgba(26,90,48,0.2);">
+        <div style="font-size:12px;font-weight:800;color:var(--green);">Initial Period</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px;">Starts after Parliament approves. Renewed every 6 months by simple majority of <em>both</em> Houses.</div>
+      </div>
+    </div>
+
+    <!-- Arrow down -->
+    <div style="display:flex;gap:10px;align-items:center;margin:0 0 4px;">
+      <div style="flex:0 0 44px;text-align:center;font-size:18px;color:var(--muted);">↓</div>
+      <div style="flex:1;font-size:9px;font-family:'IBM Plex Mono',monospace;color:var(--muted);">RENEWED EVERY 6 MONTHS →</div>
+    </div>
+
+    <!-- Step 2 — Gate -->
+    <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:4px;">
+      <div style="flex:0 0 44px;height:44px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;color:#fff;box-shadow:0 2px 8px rgba(192,90,10,0.25);">1yr</div>
+      <div style="flex:1;padding:8px 11px;border-radius:9px;background:rgba(192,90,10,0.07);border:1.5px solid rgba(192,90,10,0.25);">
+        <div style="font-size:12px;font-weight:800;color:var(--amber);">⚠️ 44th Amendment Gate</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px;">To go <strong>beyond 1 year</strong>, one condition must be met:</div>
+        <div style="display:flex;gap:6px;margin-top:5px;flex-wrap:wrap;">
+          <span style="padding:3px 8px;border-radius:5px;background:rgba(192,90,10,0.1);border:1px solid rgba(192,90,10,0.2);font-size:10px;font-weight:700;color:var(--amber);">🔴 National Emergency in force</span>
+          <span style="padding:3px 8px;border-radius:5px;font-size:9px;font-weight:700;color:var(--muted);">OR</span>
+          <span style="padding:3px 8px;border-radius:5px;background:rgba(192,90,10,0.1);border:1px solid rgba(192,90,10,0.2);font-size:10px;font-weight:700;color:var(--amber);">🗳️ EC certifies: polls can't be held</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrow down -->
+    <div style="display:flex;gap:10px;align-items:center;margin:0 0 4px;">
+      <div style="flex:0 0 44px;text-align:center;font-size:18px;color:var(--muted);">↓</div>
+      <div style="flex:1;font-size:9px;font-family:'IBM Plex Mono',monospace;color:var(--muted);">IF CONDITION MET, CAN CONTINUE →</div>
+    </div>
+
+    <!-- Step 3 -->
+    <div style="display:flex;gap:10px;align-items:flex-start;">
+      <div style="flex:0 0 44px;height:44px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;color:#fff;box-shadow:0 2px 8px rgba(154,16,16,0.25);">3yr</div>
+      <div style="flex:1;padding:8px 11px;border-radius:9px;background:rgba(154,16,16,0.07);border:1.5px solid rgba(154,16,16,0.2);">
+        <div style="font-size:12px;font-weight:800;color:var(--red);">Absolute Maximum — No Extensions</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px;">Cannot be extended beyond 3 years under any circumstance. Must be revoked or fresh proclamation issued.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-kicker">Bommai Case Holdings</div>
+    <h3>⚖️ S.R. Bommai 1994</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="chip green">✓ Judicial Review</span>
+      <span class="chip green">✓ Relevant Material</span>
+      <span class="chip red">✗ No pre-approval dissolution</span>
+      <span class="chip green">✓ Floor Test</span>
+      <span class="chip green">✓ Court can restore govt</span>
+      <span class="chip blue">▸ Anti-secular = valid ground</span>
+    </div>
+    <div class="callout info" style="margin-top:10px;">
+      <div class="callout-title blue">44th Amendment</div>
+      <div class="callout-body">Removed presidential immunity. Now Art. 356 is fully judicially reviewable.</div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="ks-icon">⚖️</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Core Connecting Idea</div>
+    <div class="ks-sub">
+      Article 356 was designed as a <strong style="color:#f5d78a;">constitutional safety net</strong> — a last resort (per Ambedkar) when state governance collapses. But it was <strong style="color:#f5d78a;">chronically misused</strong> for political purposes. The S.R. Bommai judgment (1994) fundamentally changed this by making President's Rule subject to judicial review, requiring objective material, and insisting that majority must be tested on the floor — not guessed by governors. The 44th Amendment removed immunity. Today, Art. 356 is far harder to misuse.
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;">
+      <span class="kpill">📜 Art. 355 + 356 + 365</span>
+      <span class="kpill">⚖️ S.R. Bommai = Landmark</span>
+      <span class="kpill">🏛️ Judicial Review</span>
+      <span class="kpill">⏱️ Max 3 Years</span>
+      <span class="kpill">✓ Floor Test</span>
+      <span class="kpill">🔥 44th Amendment</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function edge(svg,x1,y1,x2,y2,col,dashed,w){
+  const path=se('path',{
+    d:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,
+    stroke:col||'#aaa','stroke-width':w||1.8,fill:'none',
+    'stroke-dasharray':dashed?'5 3':'none',opacity:'0.65'
+  });
+  svg.appendChild(path);
+}
+
+function straightEdge(svg,x1,y1,x2,y2,col,dashed,w){
+  const line=se('line',{x1,y1,x2,y2,stroke:col||'#aaa','stroke-width':w||1.8,'stroke-dasharray':dashed?'5 3':'none',opacity:'0.65'});
+  svg.appendChild(line);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff'; rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.22)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7.5)-(sub?5:0)-(emoji?10:0);
+  if(emoji){
+    const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});
+    em.textContent=emoji; g.appendChild(em); ty+=17;
+  }
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Barlow,sans-serif',fill:textCol});
+    t.textContent=l; g.appendChild(t);
+  });
+  if(sub){
+    const s=se('text',{x,y:ty+lines.length*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'IBM Plex Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.52)':'rgba(0,0,0,0.38)'});
+    s.textContent=sub; g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+
+function label(svg,x,y,text,col,size,mono){
+  const t=se('text',{x,y,'text-anchor':'middle','font-size':size||9,'font-family':mono?'IBM Plex Mono,monospace':'Barlow,sans-serif','fill':col||'rgba(120,100,60,0.45)','letter-spacing':mono?'2':'0','font-weight':'600'});
+  t.textContent=text; svg.appendChild(t);
+}
+
+// ── MASTER FLOW ──
+(function(){
+  const svg=document.getElementById('svgFlow');
+  svg.setAttribute('viewBox','0 0 1340 110');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:110,fill:'rgba(250,245,238,0.4)'}));
+
+  const steps=[
+    {x:85,  label:['State Fails'], sub:'Constitutional breakdown', fill:'#9a1010', emoji:'🏚️'},
+    {x:248, label:['Art. 355/365'], sub:'Centre intervenes', fill:'#9a6f10', emoji:'📋'},
+    {x:411, label:['Art. 356'], sub:'President invoked', fill:'#1a3878', emoji:'📜'},
+    {x:574, label:['2-Month Window'], sub:'Parliament must approve', fill:'#4a1878', emoji:'🏛️'},
+    {x:737, label:['State Assembly'], sub:'Suspended or dissolved', fill:'#c05a0a', emoji:'⚡'},
+    {x:900, label:['Parliament Acts'], sub:'Legislates for state', fill:'#0a5068', emoji:'🗳️'},
+    {x:1063,label:['Judicial Review'], sub:'Bommai safeguard', fill:'#1a5a30', emoji:'⚖️'},
+    {x:1250,label:['Max 3 Years'], sub:'Or revoked earlier', fill:'#1a4870', emoji:'⏱️'},
+  ];
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      edge(svg,s.x+72,55,steps[i+1].x-72,55,'#9a6f10',false,2);
+    }
+  });
+  steps.forEach(s=>{
+    node(svg,s.x,55,138,70,s.fill,s.label,s.sub,s.emoji);
+  });
+  label(svg,670,15,'PRESIDENT\'S RULE — MASTER FLOW: TRIGGER → APPROVAL → IMPOSITION → REVIEW','rgba(100,80,40,0.4)',8.5,true);
+})();
+
+// ── WHAT IS IT ──
+(function(){
+  const svg=document.getElementById('svgWhat');
+  svg.setAttribute('viewBox','0 0 1340 220');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:220,fill:'rgba(250,245,238,0.3)'}));
+
+  // Central node
+  node(svg,670,110,220,60,'#1a1612',['Article 356','President\'s Rule'],'Constitutional Provision','🏛️');
+
+  // Surrounding nodes
+  const items=[
+    // top
+    {x:280,y:45,  fill:'#9a6f10', label:['Trigger Condition'],  sub:'State cannot function per Constitution', emoji:'⚠️'},
+    {x:670,y:32,  fill:'#9a1010', label:['President Takes Over'], sub:'Executive powers assumed', emoji:'👤'},
+    {x:1060,y:45, fill:'#1a3878', label:['Art. 355 Link'],       sub:'Centre duty to protect states', emoji:'🔗'},
+    // bottom
+    {x:230,y:175, fill:'#c05a0a', label:['Art. 365 Link'],       sub:'State disobedience → 356', emoji:'📋'},
+    {x:560,y:180, fill:'#4a1878', label:['Governor\'s Report'],   sub:'Not mandatory! (UPSC 2018)', emoji:'📝'},
+    {x:780,y:180, fill:'#1a5a30', label:['First Use: 1951'],     sub:'Punjab — Ambedkar: last resort', emoji:'📅'},
+    {x:1090,y:175,fill:'#0a5068', label:['Judicial Review'],     sub:'Bommai 1994 safeguard', emoji:'⚖️'},
+  ];
+
+  items.forEach(n=>{
+    const fromX=n.x<670?580:760;
+    const fromY=n.y<110?86:134;
+    edge(svg,fromX,fromY,n.x+(n.x<670?75:-75),n.y,'#9a6f1044',true,1.6);
+    node(svg,n.x,n.y,170,48,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  label(svg,670,208,'ARTICLE 356 — CONNECTIONS AND CONTEXT','rgba(100,80,40,0.4)',8.5,true);
+})();
+
+// ── DURATION ──
+(function(){
+  const svg=document.getElementById('svgDuration');
+  svg.setAttribute('viewBox','0 0 1340 180');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:180,fill:'rgba(248,244,238,0.4)'}));
+
+  // Timeline bar
+  const tl_y=90, tl_x1=80, tl_x2=1260;
+  // Draw the timeline line with gradient
+  const grad=se('linearGradient',{id:'tlgrad',x1:'0',y1:'0',x2:'1',y2:'0'});
+  grad.appendChild(se('stop',{offset:'0%','stop-color':'#1a5a30'}));
+  grad.appendChild(se('stop',{offset:'40%','stop-color':'#9a6f10'}));
+  grad.appendChild(se('stop',{offset:'100%','stop-color':'#9a1010'}));
+  let defs=se('defs',{}); defs.appendChild(grad); svg.insertBefore(defs,svg.firstChild);
+  svg.appendChild(se('rect',{x:tl_x1,y:tl_y-2,width:tl_x2-tl_x1,height:4,rx:2,fill:'url(#tlgrad)'}));
+
+  const milestones=[
+    {x:120, y:90, label:['Proclamation'], sub:'Day 0', fill:'#1a3878', emoji:'📜', top:true},
+    {x:320, y:90, label:['2 Month'], sub:'Parliament Approves', fill:'#4a1878', emoji:'🏛️', top:false},
+    {x:570, y:90, label:['6 Months'], sub:'Initial Period', fill:'#9a6f10', emoji:'⏱️', top:true},
+    {x:820, y:90, label:['1 Year'], sub:'44th Amend. Condition', fill:'#c05a0a', emoji:'⚠️', top:false},
+    {x:1080,y:90, label:['3 Years'], sub:'Maximum Limit', fill:'#9a1010', emoji:'🔴', top:true},
+    {x:1240,y:90, label:['Revoke'], sub:'Anytime by President', fill:'#1a5a30', emoji:'✅', top:false},
+  ];
+
+  milestones.forEach(m=>{
+    const dotY=m.y; const lineLen=m.top?-38:38;
+    svg.appendChild(se('line',{x1:m.x,y1:dotY,x2:m.x,y2:dotY+lineLen,stroke:m.fill,'stroke-width':'1.5','stroke-dasharray':'3 2',opacity:'0.7'}));
+    svg.appendChild(se('circle',{cx:m.x,cy:dotY,r:'6',fill:m.fill,stroke:'#fff','stroke-width':'1.5'}));
+    const tx=m.x, ty=m.top?dotY-52:dotY+52;
+    const tg=document.createElementNS(NS,'g');
+    tg.appendChild(se('rect',{x:tx-62,y:ty-24,width:124,height:46,rx:7,fill:m.fill,opacity:'0.9'}));
+    const em=se('text',{x:tx,y:ty-8,'text-anchor':'middle','dominant-baseline':'middle','font-size':'12',fill:'#fff'});
+    em.textContent=m.emoji; tg.appendChild(em);
+    m.label.forEach((l,i)=>{
+      const t=se('text',{x:tx,y:ty+4+i*13,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10','font-weight':'700','font-family':'Barlow,sans-serif',fill:'#fff'});
+      t.textContent=l; tg.appendChild(t);
+    });
+    const s=se('text',{x:tx,y:ty+18,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8','font-family':'IBM Plex Mono,monospace',fill:'rgba(255,255,255,0.6)'});
+    s.textContent=m.sub; tg.appendChild(s);
+    svg.appendChild(tg);
+  });
+  label(svg,670,168,'APPROVAL & DURATION TIMELINE — 44TH AMENDMENT APPLIES AFTER 1 YEAR','rgba(100,80,40,0.38)',8.5,true);
+})();
+
+// ── AFTER IMPOSITION ──
+(function(){
+  const svg=document.getElementById('svgAfter');
+  svg.setAttribute('viewBox','0 0 1340 200');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:200,fill:'rgba(248,244,238,0.35)'}));
+
+  // Root
+  node(svg,670,95,220,58,'#1a1612',['After Imposition','What Changes?'],'Two-sided impact','⚡');
+
+  // Left side: Executive
+  const exec=[
+    {x:220,y:48,  fill:'#9a1010', label:['President Assumes'], sub:'State executive functions', emoji:'👤'},
+    {x:220,y:115, fill:'#c05a0a', label:['Governor Rules'],    sub:'Acts for President', emoji:'🏛️'},
+    {x:220,y:178, fill:'#4a1878', label:['Cabinet Dismissed'], sub:'CoM dissolved', emoji:'❌'},
+  ];
+  exec.forEach(n=>{
+    edge(svg,560,95,n.x+78,n.y,'#9a101055',true,1.6);
+    node(svg,n.x,n.y,148,44,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  // Right side: Legislative
+  const legis=[
+    {x:1110,y:48,  fill:'#1a3878', label:['Assembly Suspended'], sub:'Or dissolved', emoji:'🏚️'},
+    {x:1110,y:115, fill:'#0a5068', label:['Parliament Legislates'],sub:'State list powers', emoji:'📋'},
+    {x:1110,y:178, fill:'#1a5a30', label:['High Court Safe'],    sub:'Judiciary unchanged', emoji:'✅'},
+  ];
+  legis.forEach(n=>{
+    edge(svg,780,95,n.x-78,n.y,'#1a387855',true,1.6);
+    node(svg,n.x,n.y,148,44,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  // Left label
+  label(svg,220,193,'EXECUTIVE SIDE','rgba(154,16,16,0.4)',8.5,true);
+  // Right label
+  label(svg,1110,193,'LEGISLATIVE SIDE','rgba(26,56,120,0.4)',8.5,true);
+  // Center label
+  label(svg,670,190,'WHAT CHANGES AFTER IMPOSITION','rgba(100,80,40,0.38)',8.5,true);
+})();
+
+// ── BOMMAI ──
+(function(){
+  const svg=document.getElementById('svgBommai');
+  svg.setAttribute('viewBox','0 0 1340 200');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:200,fill:'rgba(248,244,238,0.35)'}));
+
+  // Central
+  node(svg,670,100,230,58,'#1a3878',['S.R. Bommai (1994)','Supreme Court Landmark'],'9-Judge Bench Decision','⚖️');
+
+  const holdings=[
+    {x:175,y:55,  fill:'#1a3878', label:['Judicial Review'],    sub:'Not immune to courts', emoji:'🔍'},
+    {x:175,y:140, fill:'#1a5a30', label:['Relevant Material'],  sub:'President\'s satisfaction', emoji:'📁'},
+    {x:450,y:28,  fill:'#4a1878', label:['No Pre-Approval'],    sub:'Dissolution only after Parliament', emoji:'🚫'},
+    {x:450,y:168, fill:'#9a1010', label:['Anti-Secular'],       sub:'Valid ground for action', emoji:'🏛️'},
+    {x:890,y:28,  fill:'#c05a0a', label:['Floor Test'],         sub:'Not governor\'s guess', emoji:'📊'},
+    {x:890,y:168, fill:'#0a5068', label:['Court Restores Govt'],sub:'If unconstitutional', emoji:'↩️'},
+    {x:1150,y:55, fill:'#9a6f10', label:['44th Amendment'],     sub:'Removed immunity', emoji:'📜'},
+    {x:1150,y:140,fill:'#1a1868', label:['38th Amendment'],     sub:'Had given immunity', emoji:'📋'},
+  ];
+
+  holdings.forEach(n=>{
+    const fromX=n.x<670?586:754;
+    edge(svg,fromX,100,n.x+(n.x<670?72:-72),n.y,'#1a387844',true,1.5);
+    node(svg,n.x,n.y,160,44,n.fill,n.label,n.sub,n.emoji);
+  });
+  label(svg,670,190,'BOMMAI CASE — 5 KEY HOLDINGS + AMENDMENT HISTORY','rgba(26,56,120,0.38)',8.5,true);
+})();
+
+// ── PROPER vs IMPROPER ──
+(function(){
+  const svg=document.getElementById('svgUse');
+  svg.setAttribute('viewBox','0 0 1340 200');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:200,fill:'rgba(248,244,238,0.35)'}));
+
+  // Separator
+  svg.appendChild(se('line',{x1:670,y1:15,x2:670,y2:188,stroke:'rgba(180,160,120,0.3)','stroke-width':'1.5','stroke-dasharray':'6 3'}));
+
+  // Left: Proper
+  node(svg,335,30,240,44,'#1a5a30',['✅ PROPER USE'],'Valid Constitutional Grounds','');
+  const proper=[
+    {x:140,y:95,  label:['Hung Assembly'],       sub:'No majority post-election'},
+    {x:330,y:90,  label:['No Govt Possible'],     sub:'All combinations fail'},
+    {x:515,y:95,  label:['Govt Loses Majority'],  sub:'No alternative available'},
+    {x:130,y:165, label:['Unconstitutional Acts'],sub:'State violates Constitution'},
+    {x:320,y:165, label:['Violent Breakdown'],    sub:'Physical constitutional failure'},
+    {x:520,y:165, label:['Art. 365 Disobedience'],sub:'Defies Centre\'s directives'},
+  ];
+  proper.forEach(n=>{
+    node(svg,n.x,n.y,168,42,'#1a5a30',n.label,n.sub,'✓','#fff');
+  });
+
+  // Right: Improper
+  node(svg,1005,30,240,44,'#9a1010',['❌ IMPROPER USE'],'Political Misuse / Invalid','');
+  const improper=[
+    {x:760,y:95,  label:['Maladministration'],    sub:'Bad governance only'},
+    {x:950,y:90,  label:['LS Election Loss'],     sub:'State polls ≠ LS polls'},
+    {x:1145,y:95, label:['Block Floor Test'],     sub:'Governor denying test'},
+    {x:770,y:165, label:['No Prior Warning'],     sub:'Except extreme emergency'},
+    {x:1140,y:165,label:['Internal Disturbance'], sub:'No actual breakdown'},
+  ];
+  improper.forEach(n=>{
+    node(svg,n.x,n.y,168,42,'#9a1010',n.label,n.sub,'✗','#fff');
+  });
+
+  label(svg,335,192,'VALID GROUNDS FOR PRESIDENT\'S RULE','rgba(26,90,48,0.4)',8,true);
+  label(svg,1005,192,'POLITICAL MISUSE — BOMMAI TEST BARS THESE','rgba(154,16,16,0.4)',8,true);
+})();
+
+// ── TAKEAWAYS ──
+(function(){
+  const svg=document.getElementById('svgTakeaways');
+  svg.setAttribute('viewBox','0 0 1340 160');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:160,fill:'rgba(248,244,238,0.35)'}));
+
+  const items=[
+    {x:90,  fill:'#1a3878', label:['Art. 356'],         sub:'President\'s Rule', emoji:'📜'},
+    {x:246, fill:'#9a6f10', label:['Art. 355 & 365'],   sub:'Linked provisions', emoji:'🔗'},
+    {x:402, fill:'#4a1878', label:['Simple Majority'],  sub:'2 months approval', emoji:'🏛️'},
+    {x:558, fill:'#c05a0a', label:['6 Mo → 3 Yr'],      sub:'Duration range', emoji:'⏱️'},
+    {x:714, fill:'#9a1010', label:['1-Year Gate'],       sub:'44th Amendment', emoji:'🚧'},
+    {x:870, fill:'#0a5068', label:['Judicial Review'],  sub:'Post-Bommai 1994', emoji:'⚖️'},
+    {x:1026,fill:'#1a5a30', label:['Floor Test'],       sub:'Not governor\'s guess', emoji:'📊'},
+    {x:1196,fill:'#1a4870', label:['HC Unaffected'],    sub:'Judiciary intact', emoji:'✅'},
+  ];
+
+  items.forEach((n,i)=>{
+    if(i<items.length-1){
+      edge(svg,n.x+70,80,items[i+1].x-70,80,'#9a6f1044',false,1.5);
+    }
+  });
+  items.forEach(n=>{
+    node(svg,n.x,80,132,66,n.fill,n.label,n.sub,n.emoji);
+  });
+  label(svg,670,148,'PRELIMS KEY TAKEAWAYS — ALL 8 POINTS TO REMEMBER','rgba(100,80,40,0.38)',8.5,true);
+})();
+</script>
+</body>
+</html>

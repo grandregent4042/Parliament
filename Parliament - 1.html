@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parliament — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f5f0;--ink:#1a1710;--paper:#fffcf5;
+  --saffron:#e8610a;--saffron-lt:#fde8d8;
+  --navy:#0f2d5e;--navy-lt:#dbe4f0;
+  --emerald:#0a6640;--emerald-lt:#d6efe3;
+  --violet:#5a1a8a;--violet-lt:#ead6f5;
+  --gold:#c49a1a;--gold-lt:#faf0c8;
+  --ruby:#b01a1a;--ruby-lt:#f5d8d8;
+  --teal:#0a7070;--teal-lt:#d0eded;
+  --muted:#7a6a50;--border:#e0d5bc;
+  --card:#fffdf8;
+}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 800px 600px at 10% 5%,rgba(232,97,10,0.05) 0%,transparent 60%),radial-gradient(ellipse 600px 600px at 90% 95%,rgba(15,45,94,0.05) 0%,transparent 60%);pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 24px 120px;}
+
+.header{text-align:center;padding:52px 16px 24px;}
+.header-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--saffron);text-transform:uppercase;margin-bottom:12px;}
+.header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,6vw,58px);font-weight:700;line-height:1.05;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--saffron);}
+.header-sub{margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:1px;}
+.header-line{width:0;height:3px;background:linear-gradient(90deg,var(--saffron),var(--gold),var(--navy));margin:18px auto 0;border-radius:3px;animation:growLine 1.2s ease-out 0.3s forwards;}
+@keyframes growLine{to{width:120px;}}
+
+.sec{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;color:var(--saffron);text-transform:uppercase;margin:44px 0 18px;display:flex;align-items:center;gap:14px;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;}
+@media(max-width:800px){.g3{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.g2,.g3{grid-template-columns:1fr;}}
+
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:18px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pc:hover{box-shadow:0 8px 28px rgba(0,0,0,.07);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.pc.saffron::before{background:linear-gradient(90deg,var(--saffron),var(--gold));}
+.pc.navy::before{background:var(--navy);}
+.pc.emerald::before{background:var(--emerald);}
+.pc.violet::before{background:var(--violet);}
+.pc.gold::before{background:linear-gradient(90deg,var(--gold),var(--saffron));}
+.pc.ruby::before{background:var(--ruby);}
+.pc.teal::before{background:var(--teal);}
+.pc-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.pc h3{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;position:relative;margin-bottom:24px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--saffron),var(--gold),var(--emerald));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--navy),var(--violet),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--ruby),var(--saffron),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--emerald),var(--teal),var(--navy));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--violet),var(--navy));}
+.map-card svg{display:block;width:100%;}
+
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px 8px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:rgba(247,245,240,.8);}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;line-height:1;}
+.stat-label{font-size:8px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:2px;}
+.stat-sub{font-size:10px;font-weight:600;margin-top:3px;}
+
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:9px;font-weight:700;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.saffron{background:var(--saffron-lt);color:var(--saffron);}
+.pill.navy{background:var(--navy-lt);color:var(--navy);}
+.pill.emerald{background:var(--emerald-lt);color:var(--emerald);}
+.pill.violet{background:var(--violet-lt);color:var(--violet);}
+.pill.gold{background:var(--gold-lt);color:var(--gold);}
+.pill.ruby{background:var(--ruby-lt);color:var(--ruby);}
+.pill.teal{background:var(--teal-lt);color:var(--teal);}
+
+.chip{display:inline-block;padding:3px 9px;border-radius:7px;font-size:9px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip.ok{background:var(--emerald-lt);border-color:rgba(10,102,64,.3);color:var(--emerald);}
+.chip.no{background:var(--ruby-lt);border-color:rgba(176,26,26,.3);color:var(--ruby);}
+.chip.neu{background:var(--gold-lt);border-color:rgba(196,154,26,.3);color:var(--gold);}
+
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vitem{padding:8px 10px;border-radius:8px;background:rgba(247,245,240,.9);border:1px solid var(--border);font-size:11px;line-height:1.4;}
+.vitem .vt{font-weight:700;margin-bottom:1px;}
+.vitem .vs{font-size:8.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);}
+
+.ctbl{width:100%;border-collapse:collapse;font-size:11px;margin-top:8px;}
+.ctbl th{background:var(--ink);color:#fff;padding:7px 10px;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1px;text-align:left;}
+.ctbl td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctbl tr:last-child td{border-bottom:none;}
+.ctbl tr:nth-child(even) td{background:rgba(232,97,10,.02);}
+.ctbl td:first-child{font-weight:800;color:var(--saffron);font-size:10px;}
+
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:8.5px;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.tag.yes{background:#d4edda;color:#155724;}
+.tag.warn{background:#fff3cd;color:#856404;}
+
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px;}
+.feat{padding:9px 11px;border-radius:8px;background:rgba(247,245,240,.9);border:1px solid var(--border);}
+.feat .fi{font-size:15px;margin-bottom:3px;}
+.feat .ft{font-size:10px;font-weight:700;}
+.feat .fs{font-size:8px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:1px;}
+
+.callout{padding:11px 13px;border-radius:9px;background:rgba(10,102,64,.06);border:1.5px solid rgba(10,102,64,.2);margin:8px 0;}
+.callout.warn{background:rgba(176,26,26,.06);border-color:rgba(176,26,26,.2);}
+.callout-title{font-size:10px;font-weight:800;color:var(--emerald);margin-bottom:3px;}
+.callout.warn .callout-title{color:var(--ruby);}
+.callout-body{font-size:9.5px;color:var(--muted);line-height:1.5;}
+
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;}
+.phase-title{font-size:12px;font-weight:700;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);}
+
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:16px;padding:24px 28px;margin:20px 0;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.keystone-icon{font-size:38px;flex:0 0 auto;}
+.keystone-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;margin-bottom:5px;color:#fde8d8;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,.1);font-size:10px;font-family:'JetBrains Mono',monospace;display:inline-block;margin:2px;}
+
+.fade-in{opacity:0;transform:translateY(14px);animation:fadeUp .5s ease forwards;}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+.fd1{animation-delay:.05s}.fd2{animation-delay:.1s}.fd3{animation-delay:.15s}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header fade-in">
+  <div class="header-eyebrow">Indian Polity · Part V · Articles 79–122 · UPSC</div>
+  <h1>Parliament — <em>Mind Map</em></h1>
+  <div class="header-sub">President + Lok Sabha + Rajya Sabha → Composition → Disqualification → Powers</div>
+  <div class="header-line"></div>
+</div>
+
+<!-- ① MASTER FLOW -->
+<div class="sec fade-in fd1">① Master Flow — Top to Bottom</div>
+<div class="map-card mc1 fade-in fd2">
+  <svg id="svgMaster" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ② WHAT IS PARLIAMENT -->
+<div class="sec">② What Is Parliament? — Three Parts</div>
+<div class="map-card mc2">
+  <svg id="svgParl" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc saffron">
+    <div class="pc-label">Constitutional Basis</div>
+    <h3>📜 Article 79 — Definition</h3>
+    <div style="padding:12px;border-radius:10px;background:var(--saffron-lt);border:1.5px solid rgba(232,97,10,.25);margin-bottom:10px;text-align:center;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--saffron);">President + LS + RS</div>
+      <div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);">THREE-PART INSTITUTION</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">President — Integral, Not a Member</div><div class="vs">Part of Parliament but sits in neither House</div></div>
+      <div class="vitem"><div class="vt">Rajya Sabha First Constituted: 1952</div><div class="vs">Hindi names adopted in 1954</div></div>
+    </div>
+  </div>
+  <div class="pc navy">
+    <div class="pc-label">Who Represents Whom</div>
+    <h3>🏛️ Representation Logic</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;">
+      <div style="padding:14px;border-radius:10px;background:var(--navy-lt);border:1.5px solid rgba(15,45,94,.2);text-align:center;">
+        <div style="font-size:22px;">🏠</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--navy);margin-top:4px;">Lok Sabha</div>
+        <div style="font-size:10px;font-weight:700;margin-top:4px;">People of India</div>
+        <div style="font-size:8px;font-family:'JetBrains Mono',monospace;color:var(--muted);">DIRECT ELECTION</div>
+      </div>
+      <div style="padding:14px;border-radius:10px;background:var(--violet-lt);border:1.5px solid rgba(90,26,138,.2);text-align:center;">
+        <div style="font-size:22px;">🗺️</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--violet);margin-top:4px;">Rajya Sabha</div>
+        <div style="font-size:10px;font-weight:700;margin-top:4px;">States &amp; UTs</div>
+        <div style="font-size:8px;font-family:'JetBrains Mono',monospace;color:var(--muted);">INDIRECT ELECTION</div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:10px;">
+      <div class="callout-title">💡 Memory Hook</div>
+      <div class="callout-body">People choose LS directly → States choose RS indirectly</div>
+    </div>
+  </div>
+</div>
+
+<!-- ③ COMPOSITION -->
+<div class="sec">③ Composition &amp; Strength — LS vs RS</div>
+<div class="map-card mc3">
+  <svg id="svgComp" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="pc saffron" style="margin-bottom:18px;">
+  <div class="pc-label">Quick Comparison</div>
+  <h3>⚖️ Lok Sabha vs Rajya Sabha — At a Glance</h3>
+  <table class="ctbl">
+    <thead><tr><th>FEATURE</th><th>LOK SABHA</th><th>RAJYA SABHA</th></tr></thead>
+    <tbody>
+      <tr><td>Represents</td><td>People of India</td><td>States &amp; UTs</td></tr>
+      <tr><td>Max Strength</td><td>550</td><td>250</td></tr>
+      <tr><td>Present Strength</td><td>543</td><td>245</td></tr>
+      <tr><td>Min Age</td><td>25 years</td><td>30 years</td></tr>
+      <tr><td>Election Method</td><td>Direct — FPTP</td><td>Indirect — PR-STV</td></tr>
+      <tr><td>Term</td><td>5 years (dissolvable)</td><td>6 years (permanent)</td></tr>
+      <tr><td>Nominated</td><td>None (104th CAA removed)</td><td>12 by President (Art 80)</td></tr>
+      <tr><td>Money Bill</td><td><span class="tag yes">Originates here</span></td><td><span class="tag warn">14-day delay only</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ④ TERM & SESSIONS -->
+<div class="sec">④ Term, Sessions &amp; President's Role</div>
+<div class="map-card mc4">
+  <svg id="svgTerm" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc saffron">
+    <div class="pc-label">Lok Sabha Term</div>
+    <h3>📅 Dissolution Rules</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Normal Term: 5 Years</div><div class="vs">From date of first sitting</div></div>
+      <div class="vitem"><div class="vt">Dissolved by President</div><div class="vs">On advice of PM / Cabinet</div></div>
+      <div class="vitem"><div class="vt">National Emergency (Art 352)</div><div class="vs">Extend 1yr at a time; stops 6mo after emergency ends</div></div>
+    </div>
+    <div class="callout warn" style="margin-top:8px;">
+      <div class="callout-title">⚠️ Key Rule</div>
+      <div class="callout-body">Dissolution of LS cannot be challenged in court</div>
+    </div>
+  </div>
+  <div class="pc violet">
+    <div class="pc-label">Rajya Sabha Term</div>
+    <h3>♾️ Permanent Nature</h3>
+    <div style="padding:12px;border-radius:10px;background:var(--violet-lt);text-align:center;margin-bottom:10px;border:1px solid rgba(90,26,138,.2);">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--violet);">NEVER DISSOLVED</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">1/3 Members Retire Every 2 Years</div><div class="vs">Staggered retirement system</div></div>
+      <div class="vitem"><div class="vt">Each Member Serves 6 Years</div><div class="vs">Full term after election</div></div>
+    </div>
+  </div>
+  <div class="pc navy">
+    <div class="pc-label">President's Powers</div>
+    <h3>🎖️ Role in Parliament</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">📅</div><div class="ft">Summons Sessions</div><div class="fs">Calls both Houses</div></div>
+      <div class="feat"><div class="fi">⏸️</div><div class="ft">Prorogues</div><div class="fs">Ends a session</div></div>
+      <div class="feat"><div class="fi">💥</div><div class="ft">Dissolves LS</div><div class="fs">Only Lok Sabha</div></div>
+      <div class="feat"><div class="fi">📢</div><div class="ft">Addresses Both</div><div class="fs">Joint sitting</div></div>
+      <div class="feat"><div class="fi">📜</div><div class="ft">Ordinance Art 123</div><div class="fs">When not in session</div></div>
+      <div class="feat"><div class="fi">✍️</div><div class="ft">Nominates 12</div><div class="fs">RS — Art 80</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ QUALIFICATIONS -->
+<div class="sec">⑤ Qualifications &amp; Disqualifications</div>
+<div class="map-card mc5">
+  <svg id="svgQual" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc emerald">
+    <div class="pc-label">Article 84 + RPA 1951</div>
+    <h3>✅ Qualifications to be MP</h3>
+    <div style="margin-bottom:10px;padding:10px;border-radius:9px;background:var(--emerald-lt);border:1px solid rgba(10,102,64,.25);">
+      <div style="font-size:10px;font-weight:800;color:var(--emerald);margin-bottom:6px;">COMMON FOR BOTH HOUSES</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;">
+        <span class="chip ok">✅ Citizen of India</span>
+        <span class="chip ok">✅ Oath (3rd Schedule)</span>
+        <span class="chip ok">✅ Registered Elector</span>
+        <span class="chip ok">✅ SC/ST for reserved seats</span>
+      </div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">LS: 25+ years · RS: 30+ years</div><div class="vs">Minimum age requirement</div></div>
+      <div class="vitem"><div class="vt">Cannot sit/vote before Oath</div><div class="vs">Penalty ₹500/day if violated</div></div>
+    </div>
+  </div>
+  <div class="pc ruby">
+    <div class="pc-label">Article 102 + RPA 1951</div>
+    <h3>❌ Disqualifications</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🏢 Office of Profit</div><div class="vs">Salary/perks from govt — conflict of interest</div></div>
+      <div class="vitem"><div class="vt">🌍 Foreign Citizenship</div><div class="vs">Or voluntarily acquired foreign allegiance</div></div>
+      <div class="vitem"><div class="vt">🧠 Unsound Mind</div><div class="vs">Declared by competent court</div></div>
+      <div class="vitem"><div class="vt">💸 Undischarged Insolvent</div><div class="vs">Bankrupt, not yet discharged</div></div>
+    </div>
+    <div style="margin-top:8px;padding:9px;border-radius:8px;background:var(--gold-lt);border:1px solid rgba(196,154,26,.3);">
+      <div style="font-size:9px;font-weight:800;color:var(--gold);margin-bottom:4px;">RPA 1951 EXTRAS</div>
+      <div style="font-size:9px;color:var(--muted);line-height:1.7;font-family:'JetBrains Mono',monospace;">Election offences · Corruption<br>Promoting enmity · Social crimes</div>
+    </div>
+  </div>
+</div>
+
+<div class="pc gold" style="margin-bottom:18px;">
+  <div class="pc-label">Prelims Favourite</div>
+  <h3>💼 Office of Profit — Deep Dive</h3>
+  <div class="g3" style="margin-bottom:0;">
+    <div style="padding:12px;border-radius:9px;background:var(--gold-lt);border:1.5px solid rgba(196,154,26,.3);">
+      <div style="font-size:10px;font-weight:800;color:var(--gold);margin-bottom:6px;">📖 DEFINITION</div>
+      <div style="font-size:10px;line-height:1.6;"><strong>Not defined in Constitution.</strong> Any office under govt giving salary, perks, or benefits.</div>
+    </div>
+    <div style="padding:12px;border-radius:9px;background:var(--saffron-lt);border:1.5px solid rgba(232,97,10,.2);">
+      <div style="font-size:10px;font-weight:800;color:var(--saffron);margin-bottom:6px;">🎯 PURPOSE</div>
+      <div style="font-size:10px;line-height:1.6;">Prevent <strong>conflict of interest</strong> between legislative role and executive office</div>
+    </div>
+    <div style="padding:12px;border-radius:9px;background:var(--emerald-lt);border:1.5px solid rgba(10,102,64,.2);">
+      <div style="font-size:10px;font-weight:800;color:var(--emerald);margin-bottom:6px;">⚖️ KEY LAW</div>
+      <div style="font-size:10px;line-height:1.6;">Parliament (Prevention of Disqualification) Act, 1959 · SC upheld 55 exemptions (2006)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑥ ANTI-DEFECTION -->
+<div class="sec">⑥ Anti-Defection — 10th Schedule</div>
+<div class="map-card mc1">
+  <svg id="svgDefect" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc violet">
+    <div class="pc-label">10th Schedule — Grounds</div>
+    <h3>🔄 When Defection Occurs</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🚪 Voluntarily Leaving Party</div><div class="vs">Formal resignation or deemed voluntary resignation</div></div>
+      <div class="vitem"><div class="vt">🗳️ Voting Against Party Whip</div><div class="vs">Defies party direction without sanction</div></div>
+      <div class="vitem"><div class="vt">📩 Abstaining Against Direction</div><div class="vs">Not voting when instructed to vote</div></div>
+    </div>
+    <div style="margin-top:10px;padding:10px;border-radius:9px;background:var(--violet-lt);border:1px solid rgba(90,26,138,.2);">
+      <div style="font-size:10px;font-weight:800;color:var(--violet);margin-bottom:4px;">⚡ Exception — Merger</div>
+      <div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);">2/3 of party members merge with another party → NOT defection</div>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Judicial Review</div>
+    <h3>⚖️ Who Decides &amp; Kihoto Case</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+      <div style="padding:10px;border-radius:9px;background:var(--navy-lt);text-align:center;border:1px solid rgba(15,45,94,.2);">
+        <div style="font-size:18px;">🏠</div>
+        <div style="font-size:11px;font-weight:700;color:var(--navy);margin-top:4px;">LS → Speaker</div>
+      </div>
+      <div style="padding:10px;border-radius:9px;background:var(--violet-lt);text-align:center;border:1px solid rgba(90,26,138,.2);">
+        <div style="font-size:18px;">🗺️</div>
+        <div style="font-size:11px;font-weight:700;color:var(--violet);margin-top:4px;">RS → Chairman</div>
+      </div>
+    </div>
+    <div style="padding:12px;border-radius:9px;background:var(--teal-lt);border:1.5px solid rgba(10,112,112,.2);text-align:center;margin-bottom:8px;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--teal);">Kihoto Hollohan, 1992</div>
+      <div style="font-size:8px;font-family:'JetBrains Mono',monospace;color:var(--muted);">DECISION IS JUDICIALLY REVIEWABLE</div>
+    </div>
+    <div class="callout">
+      <div class="callout-title">⭐ What it means</div>
+      <div class="callout-body">Speaker/Chairman's ruling can be challenged in HC/SC — but only after the decision, not during proceedings.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦ BILLS & POWERS -->
+<div class="sec">⑦ Bills, Powers &amp; Privileges</div>
+<div class="map-card mc2">
+  <svg id="svgBills" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2" style="margin-bottom:18px;">
+  <div class="pc gold">
+    <div class="pc-label">Types of Bills</div>
+    <h3>📋 Bills in Parliament</h3>
+    <table class="ctbl">
+      <thead><tr><th>BILL TYPE</th><th>ORIGIN</th><th>RS POWER</th></tr></thead>
+      <tbody>
+        <tr><td>Ordinary Bill</td><td>Either House</td><td><span class="tag yes">Full Powers</span></td></tr>
+        <tr><td>Money Bill</td><td>LS Only</td><td><span class="tag warn">14-day delay max</span></td></tr>
+        <tr><td>Const. Amendment</td><td>Either House</td><td><span class="tag yes">Equal Powers</span></td></tr>
+        <tr><td>Financial Bill</td><td>LS Only</td><td><span class="tag warn">Limited role</span></td></tr>
+      </tbody>
+    </table>
+    <div class="callout warn" style="margin-top:8px;">
+      <div class="callout-title">⭐ RS Special Power — Art 249</div>
+      <div class="callout-body">RS can pass resolution (2/3 majority) to empower Parliament to legislate on a State List subject</div>
+    </div>
+  </div>
+  <div class="pc emerald">
+    <div class="pc-label">Parliamentary Privileges — Art 105</div>
+    <h3>🔒 Privileges &amp; Immunity</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🗣️ Freedom of Speech</div><div class="vs">Absolute immunity for speeches inside House — cannot be sued</div></div>
+      <div class="vitem"><div class="vt">🔒 Freedom from Arrest</div><div class="vs">40 days before + during + 40 days after session. Civil cases only — NOT criminal.</div></div>
+      <div class="vitem"><div class="vt">📢 Punish for Contempt</div><div class="vs">Breach of privilege = contempt of House</div></div>
+      <div class="vitem"><div class="vt">⚖️ Art 122 — No Court Interference</div><div class="vs">Courts cannot question Parliamentary proceedings</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑧ QUICK REVISION -->
+<div class="sec">⑧ Prelims Quick Revision — Memory Chain</div>
+<div class="map-card mc4">
+  <svg id="svgRevision" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="phase-row">
+  <div class="phase-box" style="border-color:var(--saffron);background:rgba(232,97,10,.04);">
+    <div class="phase-num" style="color:var(--saffron);">Art 79</div>
+    <div class="phase-title">Parliament = P + LS + RS</div>
+    <div class="phase-sub">CONSTITUTIONAL BASIS</div>
+    <div style="font-size:10px;line-height:1.7;color:var(--muted);margin-top:8px;">LS = People · RS = States<br>President → Part, not member</div>
+    <span class="pill saffron" style="margin-top:8px;display:inline-block;">Foundation</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--navy);background:rgba(15,45,94,.04);">
+    <div class="phase-num" style="color:var(--navy);">3Ds</div>
+    <div class="phase-title">Debate · Decide · Deliver</div>
+    <div class="phase-sub">PARLIAMENTARY FUNCTIONS</div>
+    <div style="font-size:10px;line-height:1.7;color:var(--muted);margin-top:8px;">Laws · Budget · Oversight<br>Amendments · Emergency</div>
+    <span class="pill navy" style="margin-top:8px;display:inline-block;">Powers</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--emerald);background:rgba(10,102,64,.04);">
+    <div class="phase-num" style="color:var(--emerald);">Art 102</div>
+    <div class="phase-title">Disqualify → 10th Sched.</div>
+    <div class="phase-sub">MEMBER RULES</div>
+    <div style="font-size:10px;line-height:1.7;color:var(--muted);margin-top:8px;">OoP · Citizenship · Defection<br>RPA · Insolvency · Foreign</div>
+    <span class="pill emerald" style="margin-top:8px;display:inline-block;">Safeguards</span>
+  </div>
+</div>
+
+<div class="keystone">
+  <div class="keystone-icon">🏛️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">Parliament is India's <strong style="color:#fde8d8;">supreme legislative body</strong> — combining popular will (LS) with federal balance (RS), moderated by the President. Key Prelims tension: <strong style="color:#fde8d8;">LS reflects majority democracy; RS protects federalism</strong>. Every rule — disqualification, anti-defection, privileges — exists to keep this balance intact.</div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="kpill">📜 Art 79–122</span>
+      <span class="kpill">🗳️ LS = 5yr · RS = Permanent</span>
+      <span class="kpill">💰 Money Bill → LS Only</span>
+      <span class="kpill">🔄 10th Schedule</span>
+      <span class="kpill">💼 Office of Profit = Conflict</span>
+      <span class="kpill">⚖️ Kihoto 1992</span>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a||{}))e.setAttribute(k,v);return e;}
+
+function setSVGSize(svg,w,h){
+  svg.setAttribute('viewBox',`0 0 ${w} ${h}`);
+  svg.setAttribute('height',h);
+  svg.style.height=h+'px';
+}
+
+// ─── SHARED HELPERS ───────────────────────────────────────────────
+function node(svg, cx, cy, w, h, fill, lines, sub, emoji) {
+  const x = cx - w/2, y = cy - h/2, rx = 9;
+  const tc = '#fff';
+  const g = document.createElementNS(NS,'g');
+  g.appendChild(el('rect',{x:x+2,y:y+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.1)'}));
+  g.appendChild(el('rect',{x,y,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.5'}));
+  const linesArr = Array.isArray(lines)?lines:[lines];
+  const lh = 13;
+  const totalTH = (emoji?16:0) + linesArr.length*lh + (sub?11:0);
+  let ty = cy - totalTH/2 + (emoji?8:0);
+  if(emoji){
+    const et=el('text',{x:cx,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'13',fill:tc});
+    et.textContent=emoji; g.appendChild(et); ty+=16;
+  }
+  linesArr.forEach((l,i)=>{
+    const t=el('text',{x:cx,y:ty+i*lh,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'10.5','font-weight':'700','font-family':'Outfit,sans-serif',fill:tc});
+    t.textContent=l; g.appendChild(t);
+  });
+  if(sub){
+    const s=el('text',{x:cx,y:ty+linesArr.length*lh+1,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'7.5','font-family':'JetBrains Mono,monospace',fill:'rgba(255,255,255,0.5)'});
+    s.textContent=sub; g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+
+// Curved connector between two centre-points
+function conn(svg, x1, y1, x2, y2, col, dashed) {
+  col = col||'rgba(150,120,50,0.35)';
+  const mx=(x1+x2)/2, my=(y1+y2)/2;
+  const d = `M${x1},${y1} C${x1},${my} ${x2},${my} ${x2},${y2}`;
+  svg.appendChild(el('path',{d,stroke:col,'stroke-width':'1.8',fill:'none',
+    'stroke-dasharray':dashed?'5 3':'none',opacity:'0.75'}));
+  // small arrowhead at end
+  const ang=Math.atan2(y2-my,x2-mx);
+  const ax=x2-7*Math.cos(ang), ay=y2-7*Math.sin(ang);
+  const lx=ax+4*Math.cos(ang+Math.PI/2), ly=ay+4*Math.sin(ang+Math.PI/2);
+  const rx2=ax+4*Math.cos(ang-Math.PI/2), ry2=ay+4*Math.sin(ang-Math.PI/2);
+  svg.appendChild(el('polygon',{points:`${lx},${ly} ${rx2},${ry2} ${x2},${y2}`,fill:col}));
+}
+
+// Horizontal arrow (left→right)
+function harrow(svg,x1,y,x2,col){
+  col=col||'rgba(150,120,50,0.5)';
+  svg.appendChild(el('line',{x1,y1:y,x2:x2-6,y2:y,stroke:col,'stroke-width':'2'}));
+  svg.appendChild(el('polygon',{points:`${x2-6},${y-4} ${x2-6},${y+4} ${x2},${y}`,fill:col}));
+}
+
+function hlabel(svg,x,y,text){
+  const t=el('text',{x,y,'text-anchor':'middle','font-size':'8','font-family':'JetBrains Mono,monospace',
+    'letter-spacing':'2',fill:'rgba(120,100,60,0.35)'});
+  t.textContent=text; svg.appendChild(t);
+}
+
+// ════════════════════════════════════════
+// MASTER FLOW — 2-row horizontal pipeline
+// Row 1: steps 1-4  |  Row 2: steps 5-8
+// ════════════════════════════════════════
+(function(){
+  const svg = document.getElementById('svgMaster');
+  const W=980, NW=180, NH=56, PAD=28, GAP=28;
+  const ROW_GAP = 80; // vertical gap between rows
+
+  const steps=[
+    {fill:'#1a1710',emoji:'🏛️',label:'What Is Parliament',    sub:'Art 79 — P + LS + RS'},
+    {fill:'#0f2d5e',emoji:'📊',label:'Composition',          sub:'LS 543 · RS 245'},
+    {fill:'#5a1a8a',emoji:'📅',label:'Term & Sessions',      sub:'LS 5yr · RS Permanent'},
+    {fill:'#0a6640',emoji:'✅',label:'Qualifications',       sub:'Art 84 + RPA 1951'},
+    {fill:'#b01a1a',emoji:'❌',label:'Disqualification',     sub:'Art 102 + OoP + RPA'},
+    {fill:'#5a1a8a',emoji:'🔄',label:'Anti-Defection',       sub:'10th Schedule · 52nd CAA'},
+    {fill:'#c49a1a',emoji:'📋',label:'Bills & Powers',       sub:'Money · Ordinary · CAA'},
+    {fill:'#0a7070',emoji:'🔒',label:'Privileges',           sub:'Art 105 · Art 122'},
+  ];
+
+  // split into two rows of 4
+  const row1 = steps.slice(0,4);
+  const row2 = steps.slice(4,8);
+  const totalW = 4*(NW+GAP)-GAP + PAD*2;
+  const totalH = PAD + NH + ROW_GAP + NH + PAD + 22;
+  setSVGSize(svg, totalW, totalH);
+
+  // calculate x positions for each row
+  const rowX = (i) => PAD + i*(NW+GAP) + NW/2;
+  const r1y = PAD + NH/2;
+  const r2y = PAD + NH + ROW_GAP + NH/2;
+
+  // Row 1 nodes + arrows
+  row1.forEach((s,i)=>{
+    if(i>0) harrow(svg, rowX(i-1)+NW/2, r1y, rowX(i)-NW/2, s.fill+'99');
+    // step badge
+    svg.appendChild(el('rect',{x:rowX(i)-NW/2-2,y:r1y-NH/2-2,width:18,height:18,rx:5,ry:5,fill:s.fill}));
+    const bn=el('text',{x:rowX(i)-NW/2+7,y:r1y-NH/2+9,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'9','font-weight':'800','font-family':'JetBrains Mono,monospace',fill:'#fff'});
+    bn.textContent=String(i+1); svg.appendChild(bn);
+    node(svg, rowX(i), r1y, NW, NH, s.fill, [s.label], s.sub, s.emoji);
+  });
+
+  // Arrow from end of row1 to start of row2 (wrap connector)
+  const endX = rowX(3)+NW/2, midY=(r1y+r2y)/2;
+  const startX2 = rowX(0)-NW/2;
+  svg.appendChild(el('path',{
+    d:`M${endX},${r1y} C${endX+24},${r1y} ${endX+24},${midY} ${endX+24},${midY} C${endX+24},${r2y} ${startX2-24},${r2y} ${startX2},${r2y}`,
+    stroke:'rgba(150,120,50,0.45)','stroke-width':'2',fill:'none'
+  }));
+  svg.appendChild(el('polygon',{
+    points:`${startX2},${r2y-5} ${startX2},${r2y+5} ${startX2+8},${r2y}`,
+    fill:'rgba(150,120,50,0.45)'
+  }));
+
+  // Row 2 nodes + arrows
+  row2.forEach((s,i)=>{
+    if(i>0) harrow(svg, rowX(i-1)+NW/2, r2y, rowX(i)-NW/2, s.fill+'99');
+    svg.appendChild(el('rect',{x:rowX(i)-NW/2-2,y:r2y-NH/2-2,width:18,height:18,rx:5,ry:5,fill:s.fill}));
+    const bn=el('text',{x:rowX(i)-NW/2+7,y:r2y-NH/2+9,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'9','font-weight':'800','font-family':'JetBrains Mono,monospace',fill:'#fff'});
+    bn.textContent=String(i+5); svg.appendChild(bn);
+    node(svg, rowX(i), r2y, NW, NH, s.fill, [s.label], s.sub, s.emoji);
+  });
+
+  hlabel(svg, totalW/2, totalH-6, 'MASTER FLOW — 8 TOPICS · 2 ROWS · LEFT-TO-RIGHT');
+})();
+
+// ════════════════════════════════════════
+// WHAT IS PARLIAMENT — hub-and-spoke: root centre,
+// 3 branches L/M/R, each with 2 sub-nodes arranged vertically beside them
+// ════════════════════════════════════════
+(function(){
+  const svg=document.getElementById('svgParl');
+  const W=960;
+  // Positions: root at centre-left cluster
+  // Layout: root (left), 3 branch columns spread horizontally, each with 2 sub-items stacked
+  const RW=220, RH=54;
+  const BW=180, BH=44;
+  const SW=165, SH=36;
+
+  const PAD=24;
+  const rootCX=W/2, rootCY=54;
+  const branchY=rootCY+RH/2+50; // branch heads Y (centre)
+  const sub1Y=branchY+BH/2+32;
+  const sub2Y=sub1Y+SH+22;
+
+  const totalH=sub2Y+SH/2+PAD+18;
+  setSVGSize(svg, W, totalH);
+
+  const cols=[
+    {cx:170, fill:'#e8610a', label:['President'], sub:'Summons·Prorogue·Dissolve', emoji:'🎖️',
+     subs:[{fill:'#b85010',l:'Nominates 12 RS',s:'Art 80 — Art, Lit, Science'},
+           {fill:'#904010',l:'Art 123 Ordinance',s:'When Parliament not in session'}]},
+    {cx:480, fill:'#0f2d5e', label:['Lok Sabha'], sub:'People · Direct · FPTP', emoji:'🏠',
+     subs:[{fill:'#1a4a80',l:'Max 550 · Present 543',s:'530 States + 20 UTs'},
+           {fill:'#0a2060',l:'Age 25 · 5yr · Dissolvable',s:'First-Past-The-Post'}]},
+    {cx:790, fill:'#5a1a8a', label:['Rajya Sabha'], sub:'States · Indirect · PR-STV', emoji:'🗺️',
+     subs:[{fill:'#7a3aaa',l:'Max 250 · Present 245',s:'238 elected + 12 nominated'},
+           {fill:'#4a0a7a',l:'Age 30 · 6yr · Permanent',s:'1/3 retire every 2 years'}]},
+  ];
+
+  // Root
+  node(svg, rootCX, rootCY, RW, RH, '#1a1710', ['Parliament','Article 79'], 'Three-Part Institution', '🏛️');
+
+  cols.forEach(col=>{
+    // root → branch
+    conn(svg, rootCX, rootCY+RH/2, col.cx, branchY-BH/2, `${col.fill}55`);
+    node(svg, col.cx, branchY, BW, BH, col.fill, col.label, col.sub, col.emoji);
+    // branch → sub-items
+    col.subs.forEach((s,si)=>{
+      const sy = si===0 ? sub1Y : sub2Y;
+      conn(svg, col.cx, branchY+BH/2, col.cx, sy-SH/2, `${col.fill}44`);
+      node(svg, col.cx, sy, SW, SH, s.fill, [s.l], s.s);
+    });
+  });
+  hlabel(svg, W/2, totalH-6, 'PARLIAMENT — THREE PARTS AND THEIR ROLES');
+})();
+
+// ════════════════════════════════════════
+// COMPOSITION — 2×4 grid layout (LS left column, RS right column)
+// Root headers at top of each column, 4 items per column
+// ════════════════════════════════════════
+(function(){
+  const svg=document.getElementById('svgComp');
+  const W=920;
+  const RW=200, RH=48;
+  const IW=185, IH=38;
+  const PAD=22, COL_GAP=60, ITEM_GAP=18;
+
+  // Two columns: lx and rx are the column centres
+  const lx=W/4, rx=3*W/4;
+  const rootY=PAD+RH/2;
+  const item1Y=rootY+RH/2+36;
+
+  const trees=[
+    {cx:lx, fill:'#0f2d5e', emoji:'🏠', label:['LOK SABHA'], sub:'Lower House · Direct',
+     items:[
+       {fill:'#0f2d5e',l:'Max Strength: 550',s:'530 States + 20 UTs seats'},
+       {fill:'#1a4a80',l:'Present: 543',s:'Active after 104th CAA'},
+       {fill:'#0a3060',l:'Age 25 · FPTP',s:'Direct election method'},
+       {fill:'#b01a1a',l:'5-Year Term · Dissolvable',s:'President can dissolve'},
+     ]},
+    {cx:rx, fill:'#5a1a8a', emoji:'🗺️', label:['RAJYA SABHA'], sub:'Upper House · Indirect',
+     items:[
+       {fill:'#5a1a8a',l:'Max Strength: 250',s:'Constitutional ceiling'},
+       {fill:'#7a3aaa',l:'Present: 245',s:'238 elected + 12 nominated'},
+       {fill:'#4a0a7a',l:'Age 30 · PR-STV',s:'Indirect by MLAs'},
+       {fill:'#0a6640',l:'Permanent · Never Dissolved',s:'1/3 retire every 2 years'},
+     ]},
+  ];
+
+  const itemYs = trees[0].items.map((_,i)=> item1Y + i*(IH+ITEM_GAP) + IH/2);
+  const totalH = itemYs[itemYs.length-1] + IH/2 + PAD + 18;
+  setSVGSize(svg, W, totalH);
+
+  // vertical divider
+  svg.appendChild(el('line',{x1:W/2,y1:12,x2:W/2,y2:totalH-14,
+    stroke:'rgba(200,170,110,0.2)','stroke-width':'1','stroke-dasharray':'5 4'}));
+
+  trees.forEach(tree=>{
+    node(svg, tree.cx, rootY, RW, RH, tree.fill, tree.label, tree.sub, tree.emoji);
+    tree.items.forEach((item,i)=>{
+      conn(svg, tree.cx, rootY+RH/2, tree.cx, itemYs[i]-IH/2, `${tree.fill}44`);
+      node(svg, tree.cx, itemYs[i], IW, IH, item.fill, [item.l], item.s);
+    });
+  });
+  hlabel(svg, W/2, totalH-6, 'LOK SABHA vs RAJYA SABHA — COMPOSITION BREAKDOWN');
+})();
+
+// ════════════════════════════════════════
+// TERM & SESSIONS — root top-centre, two branches below,
+// items spread horizontally (not vertically) beside each branch
+// ════════════════════════════════════════
+(function(){
+  const svg=document.getElementById('svgTerm');
+  const W=960;
+  const RW=260, RH=52;
+  const BW=185, BH=44;
+  const IW=175, IH=38;
+
+  const PAD=22;
+  const rootCX=W/2, rootCY=PAD+RH/2;
+  const branchY=rootCY+RH/2+46;   // branch centres Y
+
+  // For each branch, items arranged in a 2-column sub-grid
+  const lx=240, rx=720;
+
+  // Items stacked under each branch with a vertical gap
+  const item1Y=branchY+BH/2+30;
+  const item2Y=item1Y+IH+18;
+  const item3Y=item2Y+IH+18;
+  const totalH=item3Y+IH/2+PAD+18;
+  setSVGSize(svg, W, totalH);
+
+  node(svg, rootCX, rootCY, RW, RH, '#1a1710', ['Term & Sessions'], 'How Parliament sits & dissolves', '🏛️');
+
+  // vertical separator
+  svg.appendChild(el('line',{x1:W/2,y1:rootCY+RH/2+10,x2:W/2,y2:totalH-14,
+    stroke:'rgba(200,170,110,0.18)','stroke-width':'1','stroke-dasharray':'5 4'}));
+
+  const branches=[
+    {cx:lx, fill:'#0f2d5e', emoji:'📅', label:['LOK SABHA'], sub:'5 Years · Dissolvable',
+     items:[
+       {fill:'#e8610a', l:'Normal Term: 5 Years', s:'From date of first sitting'},
+       {fill:'#b01a1a', l:'Dissolved by President', s:'On advice of Prime Minister'},
+       {fill:'#5a1a8a', l:'Emergency Extension', s:'Art 352 — +1yr at a time'},
+     ]},
+    {cx:rx, fill:'#5a1a8a', emoji:'♾️', label:['RAJYA SABHA'], sub:'Permanent · Never Dissolved',
+     items:[
+       {fill:'#5a1a8a', l:'Never Dissolved', s:'Continuous permanent chamber'},
+       {fill:'#7a3aaa', l:'1/3 Retire Every 2 Years', s:'Staggered — ensures continuity'},
+       {fill:'#0a6640', l:'Each Member: 6 Years', s:'Full term post election'},
+     ]},
+  ];
+
+  const iYs=[item1Y,item2Y,item3Y];
+
+  branches.forEach(branch=>{
+    conn(svg, rootCX, rootCY+RH/2, branch.cx, branchY-BH/2, `${branch.fill}55`);
+    node(svg, branch.cx, branchY, BW, BH, branch.fill, branch.label, branch.sub, branch.emoji);
+    branch.items.forEach((item,i)=>{
+      conn(svg, branch.cx, branchY+BH/2, branch.cx, iYs[i]-IH/2, `${branch.fill}44`);
+      node(svg, branch.cx, iYs[i], IW, IH, item.fill, [item.l], item.s);
+    });
+  });
+  hlabel(svg, W/2, totalH-6, 'TERM — LOK SABHA (DISSOLVABLE) vs RAJYA SABHA (PERMANENT)');
+})();
+
+// ════════════════════════════════════════
+// QUALIFICATIONS — root top, two branches (left=QUAL, right=DISQUAL)
+// 4 items each, staggered horizontally so they look balanced not crowded
+// ════════════════════════════════════════
+(function(){
+  const svg=document.getElementById('svgQual');
+  const W=960;
+  const RW=250, RH=52;
+  const BW=195, BH=44;
+  const IW=178, IH=38;
+
+  const PAD=22;
+  const rootCX=W/2, rootCY=PAD+RH/2;
+  const branchY=rootCY+RH/2+46;
+  const lx=240, rx=720;
+  const item1Y=branchY+BH/2+28;
+  const itemGap=IH+16;
+  const totalH=item1Y+3*itemGap+IH/2+PAD+18;
+  setSVGSize(svg, W, totalH);
+
+  node(svg, rootCX, rootCY, RW, RH, '#1a1710', ['Membership Rules'], 'Who can be an MP?', '👤');
+  svg.appendChild(el('line',{x1:W/2,y1:rootCY+RH/2+10,x2:W/2,y2:totalH-14,
+    stroke:'rgba(200,170,110,0.18)','stroke-width':'1','stroke-dasharray':'5 4'}));
+
+  const branches=[
+    {cx:lx, fill:'#0a6640', emoji:'✅', label:['QUALIFICATIONS'], sub:'Art 84 + RPA 1951',
+     items:[
+       {fill:'#0a6640',l:'Citizen of India',s:'Art 84(a)'},
+       {fill:'#1a7050',l:'Oath — 3rd Schedule',s:'Before sitting in House'},
+       {fill:'#0a5030',l:'Age: LS 25 · RS 30',s:'Minimum age requirement'},
+       {fill:'#228040',l:'Registered Elector',s:'RPA 1951 requirement'},
+     ]},
+    {cx:rx, fill:'#b01a1a', emoji:'❌', label:['DISQUALIFICATIONS'], sub:'Art 102 + RPA 1951',
+     items:[
+       {fill:'#b01a1a',l:'Office of Profit',s:'Art 102(1)(a) — conflict of interest'},
+       {fill:'#c03030',l:'Foreign Citizenship',s:'Or acquired foreign allegiance'},
+       {fill:'#901010',l:'Unsound Mind (court)',s:'Declared by competent court'},
+       {fill:'#a82020',l:'Undischarged Insolvent',s:'Bankrupt, not yet discharged'},
+     ]},
+  ];
+
+  const iYs = Array.from({length:4},(_,i)=>item1Y+i*itemGap);
+  branches.forEach(branch=>{
+    conn(svg, rootCX, rootCY+RH/2, branch.cx, branchY-BH/2, `${branch.fill}55`);
+    node(svg, branch.cx, branchY, BW, BH, branch.fill, branch.label, branch.sub, branch.emoji);
+    branch.items.forEach((item,i)=>{
+      conn(svg, branch.cx, branchY+BH/2, branch.cx, iYs[i]-IH/2, `${branch.fill}44`);
+      node(svg, branch.cx, iYs[i], IW, IH, item.fill, [item.l], item.s);
+    });
+  });
+  hlabel(svg, W/2, totalH-6, 'QUALIFICATIONS vs DISQUALIFICATIONS — ART 84 AND ART 102');
+})();
+
+// ════════════════════════════════════════
+// ANTI-DEFECTION — root at top, 3 branches spread below
+// items stacked under each branch (vertical) — 3 branches × 3 items
+// ════════════════════════════════════════
+(function(){
+  const svg=document.getElementById('svgDefect');
+  const W=960;
+  const RW=280, RH=52;
+  const BW=195, BH=44;
+  const IW=178, IH=38;
+
+  const PAD=22;
+  const rootCX=W/2, rootCY=PAD+RH/2;
+  const branchY=rootCY+RH/2+46;
+  const lx=150, mx=480, rx=810;
+  const item1Y=branchY+BH/2+28;
+  const itemGap=IH+18;
+  const totalH=item1Y+2*itemGap+IH/2+PAD+18;
+  setSVGSize(svg, W, totalH);
+
+  node(svg, rootCX, rootCY, RW, RH, '#1a1710', ['Anti-Defection','10th Schedule'], 'Added by 52nd CAA, 1985', '🔄');
+
+  const cols=[
+    {cx:lx, fill:'#5a1a8a', emoji:'🚪', label:['GROUNDS'], sub:'When defection occurs',
+     items:[
+       {fill:'#5a1a8a',l:'Voluntarily Leaving Party',s:'Formal/deemed resignation'},
+       {fill:'#7a3aaa',l:'Voting Against Whip',s:'Defies party direction'},
+       {fill:'#4a0a7a',l:'Abstaining Against Direction',s:'Not voting = defection'},
+     ]},
+    {cx:mx, fill:'#0f2d5e', emoji:'⚖️', label:['WHO DECIDES'], sub:'Speaker / Chairman',
+     items:[
+       {fill:'#0f2d5e',l:'LS → Speaker',s:'Lok Sabha cases'},
+       {fill:'#1a4a80',l:'RS → Chairman (VP)',s:'Rajya Sabha cases'},
+       {fill:'#0a6070',l:'Kihoto Hollohan 1992',s:'Judicially reviewable after decision'},
+     ]},
+    {cx:rx, fill:'#0a6640', emoji:'🤝', label:['EXCEPTIONS'], sub:'Not defection',
+     items:[
+       {fill:'#0a6640',l:'2/3 Party Merger',s:'Legitimate merger — exempt'},
+       {fill:'#228040',l:'Speaker/Deputy Speaker',s:'Election — no whip applies'},
+       {fill:'#0a5030',l:'Court Declared Void',s:'Original election set aside'},
+     ]},
+  ];
+
+  const iYs=[item1Y, item1Y+itemGap, item1Y+2*itemGap];
+
+  cols.forEach(col=>{
+    conn(svg, rootCX, rootCY+RH/2, col.cx, branchY-BH/2, `${col.fill}55`);
+    node(svg, col.cx, branchY, BW, BH, col.fill, col.label, col.sub, col.emoji);
+    col.items.forEach((item,i)=>{
+      conn(svg, col.cx, branchY+BH/2, col.cx, iYs[i]-IH/2, `${col.fill}44`);
+      node(svg, col.cx, iYs[i], IW, IH, item.fill, [item.l], item.s);
+    });
+  });
+  hlabel(svg, W/2, totalH-6, '10TH SCHEDULE — GROUNDS · DECISION MAKERS · EXCEPTIONS');
+})();
+
+// ════════════════════════════════════════
+// BILLS & POWERS — 2-column horizontal grid layout
+// Left col: Bill types (4). Right col: Powers & privileges (4)
+// Connected from a root node at top
+// ════════════════════════════════════════
+(function(){
+  const svg=document.getElementById('svgBills');
+  const W=960;
+  const RW=260, RH=52;
+  const IW=195, IH=44;
+  const PAD=22;
+
+  const rootCX=W/2, rootCY=PAD+RH/2;
+  const lx=245, rx=715;
+  const branchY=rootCY+RH/2+46;
+  const BW=195, BH=44;
+  const item1Y=branchY+BH/2+28;
+  const itemGap=IH+16;
+  const totalH=item1Y+3*itemGap+IH/2+PAD+18;
+  setSVGSize(svg, W, totalH);
+
+  node(svg, rootCX, rootCY, RW, RH, '#1a1710', ['Bills & Powers'], 'Parliamentary Legislative Authority', '🏛️');
+
+  svg.appendChild(el('line',{x1:W/2,y1:rootCY+RH/2+10,x2:W/2,y2:totalH-14,
+    stroke:'rgba(200,170,110,0.18)','stroke-width':'1','stroke-dasharray':'5 4'}));
+
+  const cols=[
+    {cx:lx, fill:'#c49a1a', emoji:'📋', label:['TYPES OF BILLS'], sub:'Legislative Process',
+     items:[
+       {fill:'#c49a1a',l:'Ordinary Bill',s:'Either House · RS has full powers'},
+       {fill:'#e8610a',l:'Money Bill (Art 110)',s:'LS only · RS delays 14 days max'},
+       {fill:'#0f2d5e',l:'Constitutional Amendment',s:'Art 368 · Both Houses equal'},
+       {fill:'#8a5a10',l:'Financial Bill',s:'LS only · limited RS role'},
+     ]},
+    {cx:rx, fill:'#0a7070', emoji:'⚡', label:['SPECIAL POWERS'], sub:'Art 105 · 108 · 122 · 249',
+     items:[
+       {fill:'#0a6640',l:'Art 249 — RS Special Power',s:'2/3 majority → legislate on State List'},
+       {fill:'#5a1a8a',l:'Joint Sitting (Art 108)',s:'LS dominance resolves deadlock'},
+       {fill:'#0a7070',l:'Art 105 — Speech Immunity',s:'Absolute immunity inside House'},
+       {fill:'#b01a1a',l:'Art 122 — Bar on Courts',s:'Courts cannot question proceedings'},
+     ]},
+  ];
+
+  const iYs=Array.from({length:4},(_,i)=>item1Y+i*itemGap);
+  cols.forEach(col=>{
+    conn(svg, rootCX, rootCY+RH/2, col.cx, branchY-BH/2, `${col.fill}55`);
+    node(svg, col.cx, branchY, BW, BH, col.fill, col.label, col.sub, col.emoji);
+    col.items.forEach((item,i)=>{
+      conn(svg, col.cx, branchY+BH/2, col.cx, iYs[i]-IH/2, `${col.fill}44`);
+      node(svg, col.cx, iYs[i], IW, IH, item.fill, [item.l], item.s);
+    });
+  });
+  hlabel(svg, W/2, totalH-6, 'BILLS · SPECIAL POWERS · PRIVILEGES — BALANCED LAYOUT');
+})();
+
+// ════════════════════════════════════════
+// REVISION — 3-column flat layout, headers at top, items in rows below
+// No single root — 3 columns side by side as a reference grid
+// ════════════════════════════════════════
+(function(){
+  const svg=document.getElementById('svgRevision');
+  const W=960;
+  const CW=210, CH=44;
+  const IW=200, IH=38;
+  const PAD=22;
+  const itemGap=16;
+
+  const lx=160, mx=480, rx=800;
+  const headY=PAD+CH/2;
+  const item1Y=headY+CH/2+30;
+
+  const cols=[
+    {cx:lx, fill:'#e8610a', emoji:'🏛️', label:['STRUCTURE'], sub:'Foundation',
+     items:[
+       {fill:'#e8610a',l:'Art 79: P + LS + RS'},
+       {fill:'#b05010',l:'LS = People · RS = States'},
+       {fill:'#803010',l:'President: Integral, not member'},
+       {fill:'#602010',l:'RS first constituted 1952'},
+     ]},
+    {cx:mx, fill:'#0f2d5e', emoji:'👤', label:['MEMBERSHIP'], sub:'Qualifications & Rules',
+     items:[
+       {fill:'#0f2d5e',l:'Art 84: Citizenship, Age, Oath'},
+       {fill:'#b01a1a',l:'Art 102: OoP, Insolvency, Foreign'},
+       {fill:'#5a1a8a',l:'10th Sched: Anti-Defection'},
+       {fill:'#0a6640',l:'Kihoto Hollohan 1992'},
+     ]},
+    {cx:rx, fill:'#0a6640', emoji:'⚡', label:['POWERS'], sub:'Legislative Supremacy',
+     items:[
+       {fill:'#0a6640',l:'Money Bill → LS Only'},
+       {fill:'#c49a1a',l:'Art 249: RS on State List'},
+       {fill:'#0a7070',l:'Art 105: Privilege & Immunity'},
+       {fill:'#b01a1a',l:'Art 122: Courts barred'},
+     ]},
+  ];
+
+  const iYs=Array.from({length:4},(_,i)=>item1Y+i*(IH+itemGap)+IH/2);
+  const totalH=iYs[3]+IH/2+PAD+18;
+  setSVGSize(svg, W, totalH);
+
+  // Column dividers
+  [W/3, 2*W/3].forEach(x=>{
+    svg.appendChild(el('line',{x1:x,y1:10,x2:x,y2:totalH-14,
+      stroke:'rgba(200,170,110,0.15)','stroke-width':'1','stroke-dasharray':'4 4'}));
+  });
+
+  cols.forEach(col=>{
+    node(svg, col.cx, headY, CW, CH, col.fill, col.label, col.sub, col.emoji);
+    col.items.forEach((item,i)=>{
+      conn(svg, col.cx, headY+CH/2, col.cx, iYs[i]-IH/2, `${col.fill}44`);
+      node(svg, col.cx, iYs[i], IW, IH, item.fill, [item.l], null);
+    });
+  });
+  hlabel(svg, W/2, totalH-6, 'STRUCTURE · MEMBERSHIP · POWERS — PRELIMS QUICK REVISION');
+})();
+</script>
+</body>
+</html>

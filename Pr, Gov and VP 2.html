@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>President · Governor · Veto · Pardon — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f4ef;
+  --ink:#1a1510;
+  --paper:#fffefb;
+  --gold:#c8920a;
+  --gold-lt:#fef3d0;
+  --amber:#d9600a;
+  --amber-lt:#fde8d4;
+  --blue:#1a3d8f;
+  --blue-lt:#dce6f9;
+  --green:#1a6a3a;
+  --green-lt:#d4eedd;
+  --red:#b81a1a;
+  --red-lt:#fadddd;
+  --purple:#5a1a8a;
+  --purple-lt:#ead4f9;
+  --teal:#0a6060;
+  --teal-lt:#d4eeee;
+  --muted:#8a7a60;
+  --border:#e0d8c8;
+  --card:#fffdf7;
+  --shadow:rgba(100,80,40,0.12);
+}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  min-height:100vh;
+  background-image:
+    radial-gradient(ellipse 800px 600px at 10% 5%,rgba(200,146,10,0.06) 0%,transparent 65%),
+    radial-gradient(ellipse 600px 800px at 90% 80%,rgba(26,61,143,0.05) 0%,transparent 65%);
+}
+
+/* ── LAYOUT ── */
+.page{max-width:1380px;margin:0 auto;padding:0 24px 80px;}
+
+/* ── HEADER ── */
+.hdr{text-align:center;padding:52px 20px 18px;position:relative;}
+.hdr-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.hdr h1{font-family:'Crimson Pro',serif;font-size:clamp(32px,5vw,58px);font-weight:700;line-height:1.1;color:var(--ink);}
+.hdr h1 em{color:var(--gold);font-style:italic;}
+.hdr-sub{margin-top:6px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1.5px;}
+.hdr::after{content:'';display:block;width:100px;height:3px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:16px auto 0;border-radius:3px;}
+
+/* ── SECTION LABELS ── */
+.sec{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3.5px;color:var(--gold);text-transform:uppercase;margin:36px 0 16px;display:flex;align-items:center;gap:12px;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── MAP CARD WRAPPER ── */
+.svg-wrap{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:24px;box-shadow:0 2px 20px var(--shadow);position:relative;}
+.svg-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:20px 20px 0 0;}
+.sv1::before{background:linear-gradient(90deg,var(--gold),var(--amber));}
+.sv2::before{background:linear-gradient(90deg,var(--blue),var(--purple));}
+.sv3::before{background:linear-gradient(90deg,var(--red),var(--amber));}
+.sv4::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+.sv5::before{background:linear-gradient(90deg,var(--purple),var(--blue));}
+.svg-wrap svg{display:block;width:100%;}
+
+/* ── GRID PANELS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:24px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;}
+.g32{display:grid;grid-template-columns:3fr 2fr;gap:18px;margin-bottom:24px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}.g32{grid-template-columns:1fr;}}
+@media(max-width:620px){.g2,.g3,.g4,.g32{grid-template-columns:1fr;}}
+
+/* ── PANEL CARDS ── */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px 18px 16px;position:relative;overflow:hidden;box-shadow:0 1px 12px var(--shadow);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.blue::before{background:var(--blue);}
+.pc.green::before{background:var(--green);}
+.pc.red::before{background:var(--red);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.amber::before{background:var(--amber);}
+.pc.dark::before{background:var(--ink);}
+.pc-tag{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Crimson Pro',serif;font-size:17px;font-weight:600;margin-bottom:10px;line-height:1.3;display:flex;align-items:center;gap:6px;}
+
+/* ── TAGS/PILLS ── */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:9.5px;font-weight:600;margin:2px;font-family:'JetBrains Mono',monospace;}
+.p-gold{background:var(--gold-lt);color:var(--gold);}
+.p-blue{background:var(--blue-lt);color:var(--blue);}
+.p-green{background:var(--green-lt);color:var(--green);}
+.p-red{background:var(--red-lt);color:var(--red);}
+.p-purple{background:var(--purple-lt);color:var(--purple);}
+.p-amber{background:var(--amber-lt);color:var(--amber);}
+.p-teal{background:var(--teal-lt);color:var(--teal);}
+
+/* ── TRAP / NOTE BOXES ── */
+.trap{padding:10px 13px;border-radius:9px;border-left:3px solid var(--red);background:var(--red-lt);margin:8px 0;font-size:10.5px;font-weight:600;color:var(--red);}
+.note{padding:10px 13px;border-radius:9px;border-left:3px solid var(--green);background:var(--green-lt);margin:8px 0;font-size:10.5px;font-weight:600;color:var(--green);}
+.info{padding:10px 13px;border-radius:9px;border-left:3px solid var(--blue);background:var(--blue-lt);margin:8px 0;font-size:10.5px;font-weight:600;color:var(--blue);}
+.warn{padding:10px 13px;border-radius:9px;border-left:3px solid var(--gold);background:var(--gold-lt);margin:8px 0;font-size:10.5px;font-weight:600;color:var(--gold);}
+
+/* ── VLIST ── */
+.vlist{display:flex;flex-direction:column;gap:7px;margin-top:4px;}
+.vi{padding:8px 11px;border-radius:8px;background:rgba(180,160,120,0.06);border:1px solid var(--border);font-size:11px;}
+.vi .vt{font-weight:700;font-size:11px;margin-bottom:1px;}
+.vi .vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ── STAT BOXES ── */
+.stats{display:flex;gap:10px;margin:10px 0;}
+.stat{flex:1;text-align:center;padding:12px 6px;border-radius:10px;background:rgba(180,160,120,0.06);border:1px solid var(--border);}
+.sn{font-family:'Crimson Pro',serif;font-size:28px;font-weight:700;line-height:1;}
+.sl{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:3px;}
+.ss{font-size:10px;font-weight:600;margin-top:2px;}
+
+/* ── TABLE ── */
+.tbl{width:100%;border-collapse:collapse;font-size:11px;margin-top:8px;}
+.tbl th{background:var(--ink);color:#fffdf7;padding:8px 11px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.8px;}
+.tbl td{padding:9px 11px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tr:nth-child(even) td{background:rgba(180,160,120,0.04);}
+.tbl td:first-child{font-weight:700;color:var(--amber);}
+.ok{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:var(--green-lt);color:var(--green);}
+.no{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:var(--red-lt);color:var(--red);}
+
+/* ── KEYSTONE ── */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:26px 30px;margin:24px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;box-shadow:0 4px 30px rgba(0,0,0,0.2);}
+.kicon{font-size:40px;flex:0 0 auto;}
+.ktitle{font-family:'Crimson Pro',serif;font-size:22px;font-style:italic;margin-bottom:6px;}
+.ksub{font-size:11px;color:#c8b880;line-height:1.7;}
+.kpills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.kp{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.12);font-size:10px;font-family:'JetBrains Mono',monospace;border:1px solid rgba(255,255,255,0.08);}
+
+/* ── COMPARE ROW ── */
+.cmprow{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:start;margin:10px 0;}
+.cmpside{padding:12px;border-radius:10px;border:1.5px solid var(--border);}
+.cmpvs{display:flex;align-items:center;justify-content:center;}
+.vs-badge{background:var(--ink);color:#f5e8c0;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;font-family:'JetBrains Mono',monospace;flex-shrink:0;}
+
+/* ── FLOW ROW ── */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:10px 0;}
+.fn{padding:6px 12px;border-radius:7px;font-size:10.5px;font-weight:600;border:1.5px solid;}
+.farr{font-size:16px;color:var(--muted);}
+.fn-gold{border-color:var(--gold);background:var(--gold-lt);color:var(--gold);}
+.fn-blue{border-color:var(--blue);background:var(--blue-lt);color:var(--blue);}
+.fn-green{border-color:var(--green);background:var(--green-lt);color:var(--green);}
+.fn-red{border-color:var(--red);background:var(--red-lt);color:var(--red);}
+.fn-purple{border-color:var(--purple);background:var(--purple-lt);color:var(--purple);}
+.fn-amber{border-color:var(--amber);background:var(--amber-lt);color:var(--amber);}
+
+/* ── FORMULA BOX ── */
+.formula{background:rgba(26,61,143,0.05);border:1.5px solid var(--blue-lt);border-radius:10px;padding:14px 18px;text-align:center;margin:10px 0;}
+.f-title{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:8px;}
+.f-eq{font-family:'Crimson Pro',serif;font-size:18px;color:var(--blue);font-weight:600;line-height:1.5;}
+
+/* ── TRAP GRID ── */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+@media(max-width:620px){.trap-grid{grid-template-columns:1fr;}}
+.tg-item{padding:9px 12px;border-radius:8px;font-size:10.5px;font-weight:600;display:flex;align-items:flex-start;gap:7px;}
+.tg-yes{background:var(--green-lt);color:var(--green);border:1px solid rgba(26,106,58,0.2);}
+.tg-no{background:var(--red-lt);color:var(--red);border:1px solid rgba(184,26,26,0.2);}
+.tg-warn{background:var(--gold-lt);color:var(--gold);border:1px solid rgba(200,146,10,0.2);}
+
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ══ HEADER ══ -->
+<div class="hdr">
+  <div class="hdr-tag">Indian Polity · Constitutional Law · UPSC Prelims</div>
+  <h1>President · Governor · <em>Veto · Pardon</em></h1>
+  <div class="hdr-sub">Election → Vote Value → Veto Powers → Bills → Pardoning — One Connected Flow</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 1 — MASTER FLOW
+═══════════════════════════════════════════════════════ -->
+<div class="sec">① Master Flow — The Big Picture</div>
+<div class="svg-wrap sv1">
+<svg viewBox="0 0 1300 110" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<defs>
+  <marker id="arr" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+    <polygon points="0 0, 8 3.5, 0 7" fill="#c8920a" opacity="0.7"/>
+  </marker>
+  <filter id="blur"><feGaussianBlur stdDeviation="2"/></filter>
+</defs>
+
+<!-- background glows -->
+<ellipse cx="200" cy="55" rx="130" ry="40" fill="rgba(200,146,10,0.07)" filter="url(#blur)"/>
+<ellipse cx="650" cy="55" rx="130" ry="40" fill="rgba(26,61,143,0.06)" filter="url(#blur)"/>
+<ellipse cx="1100" cy="55" rx="130" ry="40" fill="rgba(26,106,58,0.06)" filter="url(#blur)"/>
+
+<!-- connecting lines -->
+<line x1="176" y1="55" x2="218" y2="55" stroke="#c8920a" stroke-width="1.8" opacity="0.5" marker-end="url(#arr)"/>
+<line x1="356" y1="55" x2="398" y2="55" stroke="#c8920a" stroke-width="1.8" opacity="0.5" marker-end="url(#arr)"/>
+<line x1="536" y1="55" x2="578" y2="55" stroke="#c8920a" stroke-width="1.8" opacity="0.5" marker-end="url(#arr)"/>
+<line x1="716" y1="55" x2="758" y2="55" stroke="#c8920a" stroke-width="1.8" opacity="0.5" marker-end="url(#arr)"/>
+<line x1="896" y1="55" x2="938" y2="55" stroke="#c8920a" stroke-width="1.8" opacity="0.5" marker-end="url(#arr)"/>
+<line x1="1076" y1="55" x2="1118" y2="55" stroke="#c8920a" stroke-width="1.8" opacity="0.5" marker-end="url(#arr)"/>
+
+<!-- Node helper macro inline -->
+<!-- Node 1: Election -->
+<rect x="24" y="20" width="152" height="70" rx="12" fill="#1a3d8f" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+<text x="100" y="42" text-anchor="middle" font-size="14" fill="white" font-weight="700">🗳️</text>
+<text x="100" y="60" text-anchor="middle" font-size="11.5" font-weight="700" fill="white">Election</text>
+<text x="100" y="75" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">Indirect · EC</text>
+
+<!-- Node 2: Vote Value -->
+<rect x="224" y="20" width="152" height="70" rx="12" fill="#c8920a" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+<text x="300" y="42" text-anchor="middle" font-size="14" fill="white" font-weight="700">🧮</text>
+<text x="300" y="60" text-anchor="middle" font-size="11.5" font-weight="700" fill="white">Vote Value</text>
+<text x="300" y="75" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">MLA + MP formula</text>
+
+<!-- Node 3: Winning -->
+<rect x="404" y="20" width="152" height="70" rx="12" fill="#d9600a" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+<text x="480" y="42" text-anchor="middle" font-size="14" fill="white" font-weight="700">🎯</text>
+<text x="480" y="60" text-anchor="middle" font-size="11.5" font-weight="700" fill="white">Electoral Quota</text>
+<text x="480" y="75" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">Total/2 + 1</text>
+
+<!-- Node 4: Disputes -->
+<rect x="584" y="20" width="152" height="70" rx="12" fill="#5a1a8a" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+<text x="660" y="42" text-anchor="middle" font-size="14" fill="white" font-weight="700">⚖️</text>
+<text x="660" y="60" text-anchor="middle" font-size="11.5" font-weight="700" fill="white">Disputes</text>
+<text x="660" y="75" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">SC decides · Art.71</text>
+
+<!-- Node 5: Veto -->
+<rect x="764" y="20" width="152" height="70" rx="12" fill="#b81a1a" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+<text x="840" y="42" text-anchor="middle" font-size="14" fill="white" font-weight="700">✋</text>
+<text x="840" y="60" text-anchor="middle" font-size="11.5" font-weight="700" fill="white">Veto Powers</text>
+<text x="840" y="75" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">Absolute·Suspensive·Pocket</text>
+
+<!-- Node 6: Bills -->
+<rect x="944" y="20" width="152" height="70" rx="12" fill="#0a6060" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+<text x="1020" y="42" text-anchor="middle" font-size="14" fill="white" font-weight="700">📜</text>
+<text x="1020" y="60" text-anchor="middle" font-size="11.5" font-weight="700" fill="white">Bills</text>
+<text x="1020" y="75" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">Ordinary·Money·Const.</text>
+
+<!-- Node 7: Pardon -->
+<rect x="1124" y="20" width="152" height="70" rx="12" fill="#1a6a3a" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+<text x="1200" y="42" text-anchor="middle" font-size="14" fill="white" font-weight="700">🕊️</text>
+<text x="1200" y="60" text-anchor="middle" font-size="11.5" font-weight="700" fill="white">Pardon Powers</text>
+<text x="1200" y="75" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">Art.72 vs Art.161</text>
+</svg>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 2 — ELECTION: PRESIDENT vs GOVERNOR
+═══════════════════════════════════════════════════════ -->
+<div class="sec">② Election — President vs Governor</div>
+
+<!-- Mind map SVG for election comparison -->
+<div class="svg-wrap sv2">
+<svg viewBox="0 0 1280 310" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<defs>
+  <marker id="arr2" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+    <polygon points="0 0, 7 3, 0 6" fill="#1a3d8f" opacity="0.7"/>
+  </marker>
+  <marker id="arr3" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+    <polygon points="0 0, 7 3, 0 6" fill="#b81a1a" opacity="0.7"/>
+  </marker>
+</defs>
+
+<!-- ═══ LEFT COLUMN: PRESIDENT ═══ -->
+<!-- Header tile -->
+<rect x="20" y="14" width="220" height="82" rx="13" fill="#1a3d8f"/>
+<text x="130" y="44" text-anchor="middle" font-size="18" fill="white">🇮🇳</text>
+<text x="130" y="66" text-anchor="middle" font-size="14" font-weight="700" fill="white">PRESIDENT</text>
+<text x="130" y="83" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">Indirectly Elected · Art. 54–55</text>
+
+<!-- Arrow: President header → child nodes -->
+<line x1="130" y1="96" x2="130" y2="114" stroke="#1a3d8f" stroke-width="1.5" opacity="0.5" marker-end="url(#arr2)"/>
+
+<!-- Three children stacked -->
+<!-- Child 1: Electoral College -->
+<rect x="20" y="118" width="220" height="52" rx="10" fill="#1a3d8f" fill-opacity="0.09" stroke="#1a3d8f" stroke-width="1.3"/>
+<text x="130" y="140" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1a3d8f">✔ Electoral College</text>
+<text x="130" y="157" text-anchor="middle" font-size="9.5" fill="#1a3d8f">Elected MPs (LS+RS) + Elected MLAs</text>
+
+<line x1="130" y1="170" x2="130" y2="186" stroke="#1a3d8f" stroke-width="1.3" opacity="0.4" marker-end="url(#arr2)"/>
+
+<!-- Child 2: Method -->
+<rect x="20" y="190" width="220" height="52" rx="10" fill="#c8920a" fill-opacity="0.09" stroke="#c8920a" stroke-width="1.3"/>
+<text x="130" y="212" text-anchor="middle" font-size="11.5" font-weight="700" fill="#c8920a">⚙️ Method: PR + STV</text>
+<text x="130" y="229" text-anchor="middle" font-size="9.5" fill="#c8920a">Proportional Rep · Secret Ballot</text>
+
+<line x1="130" y1="242" x2="130" y2="258" stroke="#1a3d8f" stroke-width="1.3" opacity="0.4" marker-end="url(#arr2)"/>
+
+<!-- Child 3: Delhi + Puducherry -->
+<rect x="20" y="262" width="220" height="34" rx="10" fill="#1a3d8f" fill-opacity="0.09" stroke="#1a3d8f" stroke-width="1.3"/>
+<text x="130" y="283" text-anchor="middle" font-size="11" font-weight="700" fill="#1a3d8f">✔ Delhi &amp; Puducherry MLAs included</text>
+
+<!-- ═══ CENTRE DIVIDER COMPARISON ═══ -->
+<line x1="640" y1="14" x2="640" y2="296" stroke="rgba(180,160,120,0.25)" stroke-width="1.5" stroke-dasharray="6 4"/>
+<!-- VS badge -->
+<rect x="612" y="138" width="56" height="30" rx="15" fill="#1a1510"/>
+<text x="640" y="158" text-anchor="middle" font-size="11" font-weight="700" fill="#f5e8c0" font-family="JetBrains Mono">VS</text>
+
+<!-- ═══ CENTRE COMPARISON ROWS ═══ -->
+<!-- Row labels -->
+<text x="640" y="28" text-anchor="middle" font-size="9" fill="rgba(26,61,143,0.5)" font-family="JetBrains Mono" letter-spacing="2">PRESIDENT</text>
+<text x="640" y="42" text-anchor="middle" font-size="9" fill="rgba(184,26,26,0.5)" font-family="JetBrains Mono" letter-spacing="2">vs GOVERNOR</text>
+
+<!-- Row 1: How selected -->
+<rect x="270" y="60" width="340" height="36" rx="8" fill="#1a3d8f" fill-opacity="0.07" stroke="#1a3d8f" stroke-width="1"/>
+<text x="440" y="82" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1a3d8f">🗳️ Indirectly Elected by Electoral College</text>
+
+<rect x="670" y="60" width="340" height="36" rx="8" fill="#b81a1a" fill-opacity="0.07" stroke="#b81a1a" stroke-width="1"/>
+<text x="840" y="82" text-anchor="middle" font-size="10.5" font-weight="700" fill="#b81a1a">👤 Appointed by President of India</text>
+
+<!-- Row 2: Authority -->
+<rect x="270" y="108" width="340" height="36" rx="8" fill="#1a3d8f" fill-opacity="0.07" stroke="#1a3d8f" stroke-width="1"/>
+<text x="440" y="130" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1a3d8f">🏛️ Head of Union Executive</text>
+
+<rect x="670" y="108" width="340" height="36" rx="8" fill="#b81a1a" fill-opacity="0.07" stroke="#b81a1a" stroke-width="1"/>
+<text x="840" y="130" text-anchor="middle" font-size="10.5" font-weight="700" fill="#b81a1a">🏛️ Head of State Executive</text>
+
+<!-- Row 3: Term -->
+<rect x="270" y="156" width="340" height="36" rx="8" fill="#1a3d8f" fill-opacity="0.07" stroke="#1a3d8f" stroke-width="1"/>
+<text x="440" y="178" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1a3d8f">⏱️ 5-Year Fixed Term · Art. 56</text>
+
+<rect x="670" y="156" width="340" height="36" rx="8" fill="#b81a1a" fill-opacity="0.07" stroke="#b81a1a" stroke-width="1"/>
+<text x="840" y="178" text-anchor="middle" font-size="10.5" font-weight="700" fill="#b81a1a">⏱️ 5 Yrs · President's Pleasure Doctrine</text>
+
+<!-- Row 4: Origin -->
+<rect x="270" y="204" width="340" height="36" rx="8" fill="#1a3d8f" fill-opacity="0.07" stroke="#1a3d8f" stroke-width="1"/>
+<text x="440" y="226" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1a3d8f">📜 GOI Act 1935 → Constitution</text>
+
+<rect x="670" y="204" width="340" height="36" rx="8" fill="#5a1a8a" fill-opacity="0.07" stroke="#5a1a8a" stroke-width="1"/>
+<text x="840" y="222" text-anchor="middle" font-size="10.5" font-weight="700" fill="#5a1a8a">📜 One Gov can serve Multiple States</text>
+<text x="840" y="236" text-anchor="middle" font-size="9" fill="rgba(90,26,138,0.6)" font-family="JetBrains Mono">7th Constitutional Amendment</text>
+
+<!-- Row 5: SC ruling -->
+<rect x="270" y="252" width="340" height="34" rx="8" fill="#c8920a" fill-opacity="0.07" stroke="#c8920a" stroke-width="1"/>
+<text x="440" y="274" text-anchor="middle" font-size="10.5" font-weight="700" fill="#c8920a">⚖️ SC decides election disputes · Art. 71</text>
+
+<rect x="670" y="252" width="340" height="34" rx="8" fill="#b81a1a" fill-opacity="0.07" stroke="#b81a1a" stroke-width="1"/>
+<text x="840" y="270" text-anchor="middle" font-size="10.5" font-weight="700" fill="#b81a1a">⚖️ SC 1979: Not a Central Employee</text>
+<text x="840" y="283" text-anchor="middle" font-size="9" fill="rgba(184,26,26,0.6)" font-family="JetBrains Mono">Independent constitutional post</text>
+
+<!-- ═══ RIGHT COLUMN: GOVERNOR ═══ -->
+<!-- Header tile -->
+<rect x="1040" y="14" width="220" height="82" rx="13" fill="#b81a1a"/>
+<text x="1150" y="44" text-anchor="middle" font-size="18" fill="white">🏛️</text>
+<text x="1150" y="66" text-anchor="middle" font-size="14" font-weight="700" fill="white">GOVERNOR</text>
+<text x="1150" y="83" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">Not Elected · Art. 155–156</text>
+
+<!-- Arrow: Governor header → child nodes -->
+<line x1="1150" y1="96" x2="1150" y2="114" stroke="#b81a1a" stroke-width="1.5" opacity="0.5" marker-end="url(#arr3)"/>
+
+<!-- Three children stacked -->
+<rect x="1040" y="118" width="220" height="52" rx="10" fill="#b81a1a" fill-opacity="0.09" stroke="#b81a1a" stroke-width="1.3"/>
+<text x="1150" y="140" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b81a1a">👤 Appointed by President</text>
+<text x="1150" y="157" text-anchor="middle" font-size="9.5" fill="#b81a1a">No election whatsoever</text>
+
+<line x1="1150" y1="170" x2="1150" y2="186" stroke="#b81a1a" stroke-width="1.3" opacity="0.4" marker-end="url(#arr3)"/>
+
+<rect x="1040" y="190" width="220" height="52" rx="10" fill="#5a1a8a" fill-opacity="0.09" stroke="#5a1a8a" stroke-width="1.3"/>
+<text x="1150" y="212" text-anchor="middle" font-size="11.5" font-weight="700" fill="#5a1a8a">🗺️ Can hold Multiple States</text>
+<text x="1150" y="229" text-anchor="middle" font-size="9.5" fill="#5a1a8a">7th Amendment · Simultaneously</text>
+
+<line x1="1150" y1="242" x2="1150" y2="258" stroke="#b81a1a" stroke-width="1.3" opacity="0.4" marker-end="url(#arr3)"/>
+
+<rect x="1040" y="262" width="220" height="34" rx="10" fill="#b81a1a" fill-opacity="0.09" stroke="#b81a1a" stroke-width="1.3"/>
+<text x="1150" y="283" text-anchor="middle" font-size="11" font-weight="700" fill="#b81a1a">⚠️ Pleasure Doctrine — removable anytime</text>
+</svg>
+</div>
+
+<!-- ══ UPSC TRAP box + Nomination details ══ -->
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-tag">Electoral College — Inclusions &amp; Exclusions</div>
+    <h3>✅ Who Votes for President</h3>
+    <div class="cmprow">
+      <div class="cmpside" style="background:var(--green-lt);border-color:rgba(26,106,58,0.25);">
+        <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:6px;">✅ INCLUDED</div>
+        <div class="vlist">
+          <div class="vi" style="background:rgba(26,106,58,0.06);border-color:rgba(26,106,58,0.2);"><div class="vt">Elected MPs (LS)</div></div>
+          <div class="vi" style="background:rgba(26,106,58,0.06);border-color:rgba(26,106,58,0.2);"><div class="vt">Elected MPs (RS)</div></div>
+          <div class="vi" style="background:rgba(26,106,58,0.06);border-color:rgba(26,106,58,0.2);"><div class="vt">Elected MLAs — States</div></div>
+          <div class="vi" style="background:rgba(26,106,58,0.06);border-color:rgba(26,106,58,0.2);"><div class="vt">Elected MLAs — Delhi</div></div>
+          <div class="vi" style="background:rgba(26,106,58,0.06);border-color:rgba(26,106,58,0.2);"><div class="vt">Elected MLAs — Puducherry</div></div>
+        </div>
+      </div>
+      <div class="cmpvs"><div class="vs-badge">vs</div></div>
+      <div class="cmpside" style="background:var(--red-lt);border-color:rgba(184,26,26,0.25);">
+        <div style="font-size:11px;font-weight:700;color:var(--red);margin-bottom:6px;">❌ NOT INCLUDED</div>
+        <div class="vlist">
+          <div class="vi" style="background:rgba(184,26,26,0.06);border-color:rgba(184,26,26,0.2);"><div class="vt">Nominated MPs</div><div class="vs">Biggest UPSC trap</div></div>
+          <div class="vi" style="background:rgba(184,26,26,0.06);border-color:rgba(184,26,26,0.2);"><div class="vt">Nominated MLAs</div></div>
+          <div class="vi" style="background:rgba(184,26,26,0.06);border-color:rgba(184,26,26,0.2);"><div class="vt">MLC Members</div><div class="vs">Legislative Council</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="trap">⚠️ Election cannot be challenged if Electoral College is incomplete</div>
+  </div>
+
+  <div class="pc gold">
+    <div class="pc-tag">Nomination Details</div>
+    <h3>📋 President — Candidacy Requirements</h3>
+    <div class="stats">
+      <div class="stat">
+        <div class="sn" style="color:var(--gold);">50</div>
+        <div class="ss">Proposers</div>
+        <div class="sl">REQUIRED</div>
+      </div>
+      <div class="stat">
+        <div class="sn" style="color:var(--amber);">50</div>
+        <div class="ss">Seconders</div>
+        <div class="sl">REQUIRED</div>
+      </div>
+      <div class="stat">
+        <div class="sn" style="color:var(--blue);">₹15K</div>
+        <div class="ss">Security Deposit</div>
+        <div class="sl">AMOUNT</div>
+      </div>
+    </div>
+    <div class="info">📌 Method: Proportional Representation + Single Transferable Vote + Secret Ballot</div>
+    <div class="warn">🔑 Governor: No election. Appointed by President directly. Pleasure doctrine applies.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 3 — VOTE VALUE FORMULAS
+═══════════════════════════════════════════════════════ -->
+<div class="sec">③ Vote Value — Weighted Formulas</div>
+
+<div class="svg-wrap sv2">
+<svg viewBox="0 0 1280 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<defs>
+  <marker id="arr5" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+    <polygon points="0 0, 7 3, 0 6" fill="#c8920a" opacity="0.7"/>
+  </marker>
+</defs>
+
+<!-- ── WHY WEIGHTED ── -->
+<rect x="18" y="55" width="186" height="110" rx="12" fill="#1a1510"/>
+<text x="111" y="84" text-anchor="middle" font-size="13" font-weight="700" fill="#f5e8c0">⚖️ Why Weighted?</text>
+<text x="111" y="103" text-anchor="middle" font-size="10" fill="#c8b880">Balance Union &amp;</text>
+<text x="111" y="119" text-anchor="middle" font-size="10" fill="#c8b880">States Equally</text>
+<text x="111" y="140" text-anchor="middle" font-size="8.5" fill="rgba(200,184,128,0.5)" font-family="JetBrains Mono">Population Parity</text>
+<text x="111" y="155" text-anchor="middle" font-size="8.5" fill="rgba(200,184,128,0.4)" font-family="JetBrains Mono">Art. 55(2)</text>
+
+<!-- Arrow 1 -->
+<line x1="206" y1="110" x2="248" y2="110" stroke="#c8920a" stroke-width="1.8" opacity="0.6" marker-end="url(#arr5)"/>
+
+<!-- ══ MLA VOTE VALUE BOX ══ -->
+<rect x="254" y="20" width="300" height="200" rx="14" fill="#1a3d8f" fill-opacity="0.07" stroke="#1a3d8f" stroke-width="1.8"/>
+<!-- Title bar -->
+<rect x="254" y="20" width="300" height="36" rx="14" fill="#1a3d8f" fill-opacity="0.15"/>
+<rect x="254" y="40" width="300" height="16" fill="#1a3d8f" fill-opacity="0.15"/>
+<text x="404" y="43" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1a3d8f">MLA Vote Value</text>
+<!-- Fraction area -->
+<!-- Numerator -->
+<text x="404" y="90" text-anchor="middle" font-size="15" fill="#1a3d8f" font-family="Crimson Pro, serif" font-weight="600">Population of State</text>
+<!-- Dividing line -->
+<line x1="274" y1="108" x2="534" y2="108" stroke="#1a3d8f" stroke-width="2"/>
+<!-- Denominator -->
+<text x="404" y="132" text-anchor="middle" font-size="15" fill="#1a3d8f" font-family="Crimson Pro, serif" font-weight="600">Total Elected MLAs × 1000</text>
+<!-- Note -->
+<text x="404" y="165" text-anchor="middle" font-size="9.5" fill="rgba(26,61,143,0.55)" font-family="JetBrains Mono">Numerator ÷ 1000</text>
+<text x="404" y="180" text-anchor="middle" font-size="9.5" fill="rgba(26,61,143,0.55)" font-family="JetBrains Mono">keeps values manageable</text>
+<text x="404" y="200" text-anchor="middle" font-size="9" fill="rgba(26,61,143,0.35)" font-family="JetBrains Mono">Art. 55(2)(a)</text>
+
+<!-- Arrow 2 -->
+<line x1="556" y1="110" x2="598" y2="110" stroke="#c8920a" stroke-width="1.8" opacity="0.6" marker-end="url(#arr5)"/>
+
+<!-- ══ MP VOTE VALUE BOX ══ -->
+<rect x="604" y="20" width="300" height="200" rx="14" fill="#c8920a" fill-opacity="0.07" stroke="#c8920a" stroke-width="1.8"/>
+<rect x="604" y="20" width="300" height="36" rx="14" fill="#c8920a" fill-opacity="0.15"/>
+<rect x="604" y="40" width="300" height="16" fill="#c8920a" fill-opacity="0.15"/>
+<text x="754" y="43" text-anchor="middle" font-size="12.5" font-weight="700" fill="#c8920a">MP Vote Value</text>
+<!-- Numerator -->
+<text x="754" y="90" text-anchor="middle" font-size="15" fill="#c8920a" font-family="Crimson Pro, serif" font-weight="600">Total Value of All MLA Votes</text>
+<!-- Dividing line -->
+<line x1="624" y1="108" x2="884" y2="108" stroke="#c8920a" stroke-width="2"/>
+<!-- Denominator -->
+<text x="754" y="132" text-anchor="middle" font-size="15" fill="#c8920a" font-family="Crimson Pro, serif" font-weight="600">Total Elected MPs (LS + RS)</text>
+<!-- Note -->
+<text x="754" y="165" text-anchor="middle" font-size="9.5" fill="rgba(200,146,10,0.55)" font-family="JetBrains Mono">Sum of all state MLA values</text>
+<text x="754" y="180" text-anchor="middle" font-size="9.5" fill="rgba(200,146,10,0.55)" font-family="JetBrains Mono">divided equally across MPs</text>
+<text x="754" y="200" text-anchor="middle" font-size="9" fill="rgba(200,146,10,0.35)" font-family="JetBrains Mono">Art. 55(2)(b)</text>
+
+<!-- Arrow 3 -->
+<line x1="906" y1="110" x2="948" y2="110" stroke="#c8920a" stroke-width="1.8" opacity="0.6" marker-end="url(#arr5)"/>
+
+<!-- ══ WINNING QUOTA BOX ══ -->
+<rect x="954" y="20" width="308" height="200" rx="14" fill="#1a6a3a" fill-opacity="0.07" stroke="#1a6a3a" stroke-width="1.8"/>
+<rect x="954" y="20" width="308" height="36" rx="14" fill="#1a6a3a" fill-opacity="0.15"/>
+<rect x="954" y="40" width="308" height="16" fill="#1a6a3a" fill-opacity="0.15"/>
+<text x="1108" y="43" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1a6a3a">🎯 Electoral Quota (Winning)</text>
+<!-- Numerator -->
+<text x="1108" y="90" text-anchor="middle" font-size="15" fill="#1a6a3a" font-family="Crimson Pro, serif" font-weight="600">Total No. of Valid Votes Polled</text>
+<!-- Dividing line -->
+<line x1="974" y1="108" x2="1242" y2="108" stroke="#1a6a3a" stroke-width="2"/>
+<!-- Denominator: 1+1 -->
+<text x="1108" y="132" text-anchor="middle" font-size="15" fill="#1a6a3a" font-family="Crimson Pro, serif" font-weight="600">1 + 1</text>
+<!-- +1 outside fraction -->
+<text x="1218" y="108" text-anchor="middle" font-size="18" fill="#1a6a3a" font-family="Crimson Pro, serif" font-weight="700">+ 1</text>
+<!-- Note -->
+<text x="1108" y="165" text-anchor="middle" font-size="9.5" fill="rgba(26,106,58,0.55)" font-family="JetBrains Mono">Denominator is (1+1), not 2</text>
+<text x="1108" y="180" text-anchor="middle" font-size="9.5" fill="rgba(26,106,58,0.55)" font-family="JetBrains Mono">then +1 added outside fraction</text>
+<text x="1108" y="200" text-anchor="middle" font-size="9" fill="rgba(26,106,58,0.35)" font-family="JetBrains Mono">Single Transferable Vote · STV</text>
+</svg>
+</div>
+
+<!-- Disputes -->
+<div class="pc purple" style="margin-bottom:24px;">
+  <div class="pc-tag">Art. 71 — Disputes in Election</div>
+  <h3>⚖️ Election Dispute — Key Rules</h3>
+  <div class="g3" style="margin-bottom:0;">
+    <div class="vi"><div class="vt">Supreme Court decides</div><div class="vs">Exclusively · No other court</div></div>
+    <div class="vi"><div class="vt">Acts done remain valid</div><div class="vs">Even if election declared void</div></div>
+    <div class="vi"><div class="vt">Incomplete College</div><div class="vs">Cannot be ground for challenge</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 4 — VETO POWERS
+═══════════════════════════════════════════════════════ -->
+<div class="sec">④ Veto Powers — President's Options</div>
+
+<div class="svg-wrap sv3">
+<svg viewBox="0 0 1280 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<defs>
+  <marker id="arrV" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+    <polygon points="0 0, 7 3, 0 6" fill="#b81a1a" opacity="0.6"/>
+  </marker>
+  <marker id="arrVg" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+    <polygon points="0 0, 7 3, 0 6" fill="#1a6a3a" opacity="0.6"/>
+  </marker>
+  <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+
+<!-- Central: President receives Bill -->
+<rect x="510" y="110" width="260" height="80" rx="14" fill="#1a1510" filter="url(#glow)"/>
+<text x="640" y="138" text-anchor="middle" font-size="15" font-weight="700" fill="#f5e8c0">✋ President</text>
+<text x="640" y="157" text-anchor="middle" font-size="11" fill="#c8b880">Receives a Bill</text>
+<text x="640" y="173" text-anchor="middle" font-size="9" fill="rgba(200,184,128,0.5)" font-family="JetBrains Mono">What can he do?</text>
+
+<!-- Spoke 1: Absolute Veto (top-left) -->
+<path d="M520,118 C420,90 320,80 250,80" stroke="#b81a1a" stroke-width="1.5" fill="none" opacity="0.5" marker-end="url(#arrV)"/>
+<rect x="30" y="38" width="215" height="84" rx="12" fill="#b81a1a" fill-opacity="0.08" stroke="#b81a1a" stroke-width="1.5"/>
+<text x="138" y="65" text-anchor="middle" font-size="13" font-weight="700" fill="#b81a1a">❌ Absolute Veto</text>
+<text x="138" y="83" text-anchor="middle" font-size="10" fill="#b81a1a">Reject permanently</text>
+<text x="138" y="99" text-anchor="middle" font-size="9" fill="rgba(184,26,26,0.6)" font-family="JetBrains Mono">Rare · Discretionary</text>
+<text x="138" y="113" text-anchor="middle" font-size="8.5" fill="rgba(184,26,26,0.5)" font-family="JetBrains Mono">Private Bills mainly</text>
+
+<!-- Spoke 2: Suspensive Veto (mid-left) -->
+<path d="M512,150 C420,150 330,165 250,170" stroke="#d9600a" stroke-width="1.5" fill="none" opacity="0.5" marker-end="url(#arrV)"/>
+<rect x="30" y="134" width="215" height="96" rx="12" fill="#d9600a" fill-opacity="0.08" stroke="#d9600a" stroke-width="1.5"/>
+<text x="138" y="160" text-anchor="middle" font-size="13" font-weight="700" fill="#d9600a">🔄 Suspensive Veto</text>
+<text x="138" y="178" text-anchor="middle" font-size="10" fill="#d9600a">Return for reconsideration</text>
+<text x="138" y="195" text-anchor="middle" font-size="9.5" fill="#d9600a">If passed again → Must assent</text>
+<text x="138" y="211" text-anchor="middle" font-size="9" fill="rgba(217,96,10,0.6)" font-family="JetBrains Mono">❌ Not for Money Bill</text>
+<text x="138" y="224" text-anchor="middle" font-size="9" fill="rgba(217,96,10,0.6)" font-family="JetBrains Mono">❌ Not for Const. Amend.</text>
+
+<!-- Spoke 3: Pocket Veto (bottom-left) -->
+<path d="M520,182 C420,210 330,240 250,250" stroke="#5a1a8a" stroke-width="1.5" fill="none" opacity="0.5" marker-end="url(#arrV)"/>
+<rect x="30" y="230" width="215" height="46" rx="12" fill="#5a1a8a" fill-opacity="0.08" stroke="#5a1a8a" stroke-width="1.5"/>
+<text x="138" y="253" text-anchor="middle" font-size="13" font-weight="700" fill="#5a1a8a">⏳ Pocket Veto</text>
+<text x="138" y="270" text-anchor="middle" font-size="9.5" fill="#5a1a8a">No time limit → Simply defer</text>
+
+<!-- Spoke 4: Assent (top-right) -->
+<path d="M762,118 C862,90 962,80 1030,80" stroke="#1a6a3a" stroke-width="1.5" fill="none" opacity="0.5" marker-end="url(#arrVg)"/>
+<rect x="1035" y="38" width="215" height="84" rx="12" fill="#1a6a3a" fill-opacity="0.08" stroke="#1a6a3a" stroke-width="1.5"/>
+<text x="1143" y="65" text-anchor="middle" font-size="13" font-weight="700" fill="#1a6a3a">✅ Assent</text>
+<text x="1143" y="83" text-anchor="middle" font-size="10" fill="#1a6a3a">Bill becomes law</text>
+<text x="1143" y="99" text-anchor="middle" font-size="9" fill="rgba(26,106,58,0.6)" font-family="JetBrains Mono">Standard path</text>
+<text x="1143" y="113" text-anchor="middle" font-size="8.5" fill="rgba(26,106,58,0.5)" font-family="JetBrains Mono">No time limit to do so!</text>
+
+<!-- Spoke 5: No Qualified Veto (right) -->
+<path d="M762,150 C862,150 962,165 1030,170" stroke="#c8920a" stroke-width="1.5" fill="none" opacity="0.5"/>
+<rect x="1035" y="134" width="215" height="70" rx="12" fill="#c8920a" fill-opacity="0.08" stroke="#c8920a" stroke-width="1.5"/>
+<text x="1143" y="162" text-anchor="middle" font-size="13" font-weight="700" fill="#c8920a">❌ No Qualified Veto</text>
+<text x="1143" y="181" text-anchor="middle" font-size="10" fill="#c8920a">India ≠ USA</text>
+<text x="1143" y="197" text-anchor="middle" font-size="9" fill="rgba(200,146,10,0.6)" font-family="JetBrains Mono">Exists in USA (2/3 override)</text>
+
+<!-- Spoke 6: Const. Amendment = No veto -->
+<path d="M762,178 C862,210 962,240 1030,248" stroke="#0a6060" stroke-width="1.5" fill="none" opacity="0.5"/>
+<rect x="1035" y="224" width="215" height="52" rx="12" fill="#0a6060" fill-opacity="0.08" stroke="#0a6060" stroke-width="1.5"/>
+<text x="1143" y="247" text-anchor="middle" font-size="13" font-weight="700" fill="#0a6060">🔒 Const. Amendment</text>
+<text x="1143" y="265" text-anchor="middle" font-size="9.5" fill="#0a6060">Must assent · 24th Amendment</text>
+
+<!-- Zail Singh callout -->
+<rect x="480" y="205" width="320" height="36" rx="8" fill="rgba(90,26,138,0.07)" stroke="rgba(90,26,138,0.25)" stroke-width="1.2"/>
+<text x="640" y="220" text-anchor="middle" font-size="10.5" font-weight="700" fill="#5a1a8a">📌 Pocket Veto — Zail Singh Case (1986–87)</text>
+<text x="640" y="234" text-anchor="middle" font-size="9" fill="rgba(90,26,138,0.7)" font-family="JetBrains Mono">No time prescribed → Can hold bill indefinitely</text>
+</svg>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 5 — BILLS: PRESIDENT'S OPTIONS
+═══════════════════════════════════════════════════════ -->
+<div class="sec">⑤ President &amp; Bills — Decision Matrix</div>
+
+<div class="g2">
+  <div class="pc red">
+    <div class="pc-tag">Bills — What President Can Do</div>
+    <h3>📜 Bill Types vs Presidential Action</h3>
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>BILL TYPE</th>
+          <th>ASSENT</th>
+          <th>REJECT</th>
+          <th>RETURN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ordinary Bill</td>
+          <td><span class="ok">✅ Yes</span></td>
+          <td><span class="ok">✅ Yes</span></td>
+          <td><span class="ok">✅ Yes</span></td>
+        </tr>
+        <tr>
+          <td>Money Bill</td>
+          <td><span class="ok">✅ Yes</span></td>
+          <td><span class="ok">✅ Yes</span></td>
+          <td><span class="no">❌ NO</span></td>
+        </tr>
+        <tr>
+          <td>Const. Amend.</td>
+          <td><span class="ok">✅ Must</span></td>
+          <td><span class="no">❌ NO</span></td>
+          <td><span class="no">❌ NO</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="trap">⚠️ Ordinary bill returned → Parliament passes again → President MUST assent</div>
+  </div>
+
+  <div class="pc teal">
+    <div class="pc-tag">Art. 201 — State Bills via Governor</div>
+    <h3>🏛️ President over State Bills</h3>
+    <div class="flow">
+      <div class="fn fn-amber">Governor Reserves Bill</div>
+      <span class="farr">→</span>
+      <div class="fn fn-blue">Goes to President</div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">✅ Assent</div><div class="vs">Bill becomes state law</div></div>
+      <div class="vi"><div class="vt">⏳ Withhold assent</div><div class="vs">Permanently stalled</div></div>
+      <div class="vi"><div class="vt">🔄 Return (if not money bill)</div><div class="vs">For reconsideration</div></div>
+    </div>
+    <div class="trap">⚠️ If State passes again → President is NOT bound to assent (unlike central bills!)</div>
+    <div class="note">📌 Key difference from central: Second passage doesn't compel presidential assent</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 6 — PARDONING POWERS
+═══════════════════════════════════════════════════════ -->
+<div class="sec">⑥ Pardoning Powers — Art. 72 vs Art. 161</div>
+
+<div class="svg-wrap sv4">
+<svg viewBox="0 0 1280 260" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<defs>
+  <marker id="arrP1" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+    <polygon points="0 0, 7 3, 0 6" fill="#1a3d8f" opacity="0.6"/>
+  </marker>
+  <marker id="arrP2" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+    <polygon points="0 0, 7 3, 0 6" fill="#b81a1a" opacity="0.6"/>
+  </marker>
+</defs>
+
+<!-- PRESIDENT (Art. 72) LEFT -->
+<rect x="30" y="80" width="200" height="100" rx="13" fill="#1a3d8f"/>
+<text x="130" y="112" text-anchor="middle" font-size="16" fill="white">🕊️</text>
+<text x="130" y="133" text-anchor="middle" font-size="13" font-weight="700" fill="white">PRESIDENT</text>
+<text x="130" y="150" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="JetBrains Mono">Article 72</text>
+<text x="130" y="168" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono">Wider Powers</text>
+
+<!-- President's 3 exclusive powers -->
+<path d="M232,110 C290,110 310,70 350,65" stroke="#1a3d8f" stroke-width="1.5" fill="none" opacity="0.5" marker-end="url(#arrP1)"/>
+<path d="M232,130 C290,130 310,130 350,130" stroke="#1a3d8f" stroke-width="1.5" fill="none" opacity="0.5" marker-end="url(#arrP1)"/>
+<path d="M232,155 C290,155 310,195 350,200" stroke="#1a3d8f" stroke-width="1.5" fill="none" opacity="0.5" marker-end="url(#arrP1)"/>
+
+<rect x="356" y="30" width="180" height="56" rx="10" fill="#1a3d8f" fill-opacity="0.1" stroke="#1a3d8f" stroke-width="1.2"/>
+<text x="446" y="56" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1a3d8f">✅ Union Law Offences</text>
+<text x="446" y="74" text-anchor="middle" font-size="9" fill="rgba(26,61,143,0.65)" font-family="JetBrains Mono">Central legislation crimes</text>
+
+<rect x="356" y="102" width="180" height="56" rx="10" fill="#c8920a" fill-opacity="0.1" stroke="#c8920a" stroke-width="1.2"/>
+<text x="446" y="128" text-anchor="middle" font-size="11.5" font-weight="700" fill="#c8920a">✅ Court-Martial</text>
+<text x="446" y="146" text-anchor="middle" font-size="9" fill="rgba(200,146,10,0.65)" font-family="JetBrains Mono">Military tribunal sentences</text>
+
+<rect x="356" y="174" width="180" height="56" rx="10" fill="#1a6a3a" fill-opacity="0.1" stroke="#1a6a3a" stroke-width="1.2"/>
+<text x="446" y="198" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1a6a3a">✅ Death Sentence</text>
+<text x="446" y="216" text-anchor="middle" font-size="9" fill="rgba(26,106,58,0.65)" font-family="JetBrains Mono">Exclusive presidential power</text>
+
+<!-- Shared centre zone -->
+<rect x="570" y="60" width="140" height="140" rx="14" fill="#1a1510"/>
+<text x="640" y="97" text-anchor="middle" font-size="14" fill="#f5e8c0" font-weight="700">Shared</text>
+<text x="640" y="115" text-anchor="middle" font-size="10" fill="#c8b880">State Law</text>
+<text x="640" y="131" text-anchor="middle" font-size="10" fill="#c8b880">Offences</text>
+<text x="640" y="152" text-anchor="middle" font-size="9" fill="rgba(200,184,128,0.5)" font-family="JetBrains Mono">Both can pardon</text>
+<text x="640" y="167" text-anchor="middle" font-size="9" fill="rgba(200,184,128,0.5)" font-family="JetBrains Mono">if involved</text>
+<text x="640" y="183" text-anchor="middle" font-size="9" fill="rgba(200,184,128,0.5)" font-family="JetBrains Mono">their domain</text>
+
+<!-- GOVERNOR RIGHT -->
+<rect x="1050" y="80" width="200" height="100" rx="13" fill="#b81a1a"/>
+<text x="1150" y="112" text-anchor="middle" font-size="16" fill="white">🏛️</text>
+<text x="1150" y="133" text-anchor="middle" font-size="13" font-weight="700" fill="white">GOVERNOR</text>
+<text x="1150" y="150" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="JetBrains Mono">Article 161</text>
+<text x="1150" y="168" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono">Narrower Powers</text>
+
+<!-- Governor's exclusions -->
+<path d="M1048,110 C990,110 970,70 930,65" stroke="#b81a1a" stroke-width="1.5" fill="none" opacity="0.5" marker-end="url(#arrP2)"/>
+<path d="M1048,155 C990,155 970,200 930,205" stroke="#b81a1a" stroke-width="1.5" fill="none" opacity="0.5" marker-end="url(#arrP2)"/>
+
+<rect x="744" y="30" width="180" height="56" rx="10" fill="#1a6a3a" fill-opacity="0.1" stroke="#1a6a3a" stroke-width="1.2"/>
+<text x="834" y="56" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1a6a3a">✅ State Law Offences</text>
+<text x="834" y="74" text-anchor="middle" font-size="9" fill="rgba(26,106,58,0.65)" font-family="JetBrains Mono">State legislation crimes</text>
+
+<rect x="744" y="175" width="180" height="56" rx="10" fill="#b81a1a" fill-opacity="0.1" stroke="#b81a1a" stroke-width="1.2"/>
+<text x="834" y="198" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b81a1a">❌ Death Sentence</text>
+<text x="834" y="216" text-anchor="middle" font-size="9" fill="rgba(184,26,26,0.65)" font-family="JetBrains Mono">Cannot pardon · Cannot commute</text>
+
+<!-- Bottom note -->
+<text x="640" y="250" text-anchor="middle" font-size="9" fill="rgba(184,26,26,0.65)" font-family="JetBrains Mono" letter-spacing="1.5">❌ GOVERNOR CANNOT: Pardon death sentence · Pardon court-martial sentences</text>
+</svg>
+</div>
+
+<!-- Pardon types table -->
+<div class="pc green" style="margin-bottom:24px;">
+  <div class="pc-tag">5 Types of Pardoning Relief</div>
+  <h3>🕊️ Types of Pardon — Know All Five</h3>
+  <table class="tbl">
+    <thead>
+      <tr><th>TERM</th><th>MEANING</th><th>KEY DETAIL</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pardon</td><td>Complete removal of sentence &amp; conviction</td><td>Cleanest form — wipes slate</td></tr>
+      <tr><td>Commutation</td><td>Change to a lighter punishment</td><td>Death → Life → Simple imprisonment</td></tr>
+      <tr><td>Remission</td><td>Reduce the period of punishment</td><td>Sentence unchanged, duration cut</td></tr>
+      <tr><td>Respite</td><td>Lesser punishment due to special conditions</td><td>Pregnancy, disability, first offence</td></tr>
+      <tr><td>Reprieve</td><td>Temporary stay of execution</td><td>Pending appeal or review</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 7 — UPSC TRAPS
+═══════════════════════════════════════════════════════ -->
+<div class="sec">⑦ Ultra-Important UPSC Traps</div>
+
+<div class="svg-wrap sv5">
+<svg viewBox="0 0 1280 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<!-- Background -->
+<rect x="0" y="0" width="1280" height="200" fill="rgba(90,26,138,0.03)"/>
+<!-- Title -->
+<text x="640" y="28" text-anchor="middle" font-size="12" font-weight="700" fill="#5a1a8a" font-family="JetBrains Mono" letter-spacing="2">⚠️ PRELIMS TRAPS — NEVER GET THESE WRONG</text>
+
+<!-- 8 trap nodes in 2 rows of 4 -->
+<!-- Row 1 -->
+<rect x="30" y="44" width="270" height="60" rx="10" fill="#b81a1a" fill-opacity="0.07" stroke="#b81a1a" stroke-width="1.2"/>
+<text x="165" y="68" text-anchor="middle" font-size="11" font-weight="700" fill="#b81a1a">❌ Nominated MPs don't vote</text>
+<text x="165" y="85" text-anchor="middle" font-size="9" fill="rgba(184,26,26,0.6)" font-family="JetBrains Mono">Electoral College trap #1</text>
+<text x="165" y="98" text-anchor="middle" font-size="9" fill="rgba(184,26,26,0.5)" font-family="JetBrains Mono">Most common wrong answer</text>
+
+<rect x="320" y="44" width="270" height="60" rx="10" fill="#b81a1a" fill-opacity="0.07" stroke="#b81a1a" stroke-width="1.2"/>
+<text x="455" y="68" text-anchor="middle" font-size="11" font-weight="700" fill="#b81a1a">❌ MLC members don't vote</text>
+<text x="455" y="85" text-anchor="middle" font-size="9" fill="rgba(184,26,26,0.6)" font-family="JetBrains Mono">Legislative Council excluded</text>
+<text x="455" y="98" text-anchor="middle" font-size="9" fill="rgba(184,26,26,0.5)" font-family="JetBrains Mono">Electoral College trap #2</text>
+
+<rect x="610" y="44" width="270" height="60" rx="10" fill="#5a1a8a" fill-opacity="0.07" stroke="#5a1a8a" stroke-width="1.2"/>
+<text x="745" y="68" text-anchor="middle" font-size="11" font-weight="700" fill="#5a1a8a">⏳ No time limit for assent</text>
+<text x="745" y="85" text-anchor="middle" font-size="9" fill="rgba(90,26,138,0.6)" font-family="JetBrains Mono">Pocket veto is legal &amp; valid</text>
+<text x="745" y="98" text-anchor="middle" font-size="9" fill="rgba(90,26,138,0.5)" font-family="JetBrains Mono">Zail Singh case (1987)</text>
+
+<rect x="900" y="44" width="350" height="60" rx="10" fill="#b81a1a" fill-opacity="0.07" stroke="#b81a1a" stroke-width="1.2"/>
+<text x="1075" y="68" text-anchor="middle" font-size="11" font-weight="700" fill="#b81a1a">❌ No veto on Const. Amendment</text>
+<text x="1075" y="85" text-anchor="middle" font-size="9" fill="rgba(184,26,26,0.6)" font-family="JetBrains Mono">President MUST assent · 24th Amendment</text>
+<text x="1075" y="98" text-anchor="middle" font-size="9" fill="rgba(184,26,26,0.5)" font-family="JetBrains Mono">Cannot return or reject</text>
+
+<!-- Row 2 -->
+<rect x="30" y="120" width="270" height="60" rx="10" fill="#1a6a3a" fill-opacity="0.07" stroke="#1a6a3a" stroke-width="1.2"/>
+<text x="165" y="144" text-anchor="middle" font-size="11" font-weight="700" fill="#1a6a3a">✅ President → Death sentence</text>
+<text x="165" y="161" text-anchor="middle" font-size="9" fill="rgba(26,106,58,0.6)" font-family="JetBrains Mono">Governor CANNOT pardon death</text>
+<text x="165" y="174" text-anchor="middle" font-size="9" fill="rgba(26,106,58,0.5)" font-family="JetBrains Mono">Critical Art. 72 vs 161</text>
+
+<rect x="320" y="120" width="270" height="60" rx="10" fill="#1a6a3a" fill-opacity="0.07" stroke="#1a6a3a" stroke-width="1.2"/>
+<text x="455" y="144" text-anchor="middle" font-size="11" font-weight="700" fill="#1a6a3a">✅ President → Court-martial</text>
+<text x="455" y="161" text-anchor="middle" font-size="9" fill="rgba(26,106,58,0.6)" font-family="JetBrains Mono">Governor has NO jurisdiction</text>
+<text x="455" y="174" text-anchor="middle" font-size="9" fill="rgba(26,106,58,0.5)" font-family="JetBrains Mono">Military sentences only Pres.</text>
+
+<rect x="610" y="120" width="270" height="60" rx="10" fill="#c8920a" fill-opacity="0.07" stroke="#c8920a" stroke-width="1.2"/>
+<text x="745" y="144" text-anchor="middle" font-size="11" font-weight="700" fill="#c8920a">⚠️ Gov. can't return Money Bill</text>
+<text x="745" y="161" text-anchor="middle" font-size="9" fill="rgba(200,146,10,0.6)" font-family="JetBrains Mono">Governor → only assent/reject</text>
+<text x="745" y="174" text-anchor="middle" font-size="9" fill="rgba(200,146,10,0.5)" font-family="JetBrains Mono">Same as President rule</text>
+
+<rect x="900" y="120" width="350" height="60" rx="10" fill="#1a3d8f" fill-opacity="0.07" stroke="#1a3d8f" stroke-width="1.2"/>
+<text x="1075" y="144" text-anchor="middle" font-size="11" font-weight="700" fill="#1a3d8f">🔒 SC decides election disputes</text>
+<text x="1075" y="161" text-anchor="middle" font-size="9" fill="rgba(26,61,143,0.6)" font-family="JetBrains Mono">Art. 71 · No other court</text>
+<text x="1075" y="174" text-anchor="middle" font-size="9" fill="rgba(26,61,143,0.5)" font-family="JetBrains Mono">Acts done remain valid even if void</text>
+</svg>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 8 — CONNECTED LOGIC KEYSTONE
+═══════════════════════════════════════════════════════ -->
+<div class="sec">⑧ Final Connected Logic</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-tag">President — Core Logic</div>
+    <h3>🇮🇳 Why Indirect Election?</h3>
+    <div class="flow">
+      <div class="fn fn-blue">Nominal Executive</div>
+      <span class="farr">→</span>
+      <div class="fn fn-gold">Real power = PM</div>
+      <span class="farr">→</span>
+      <div class="fn fn-green">Parliamentary system</div>
+    </div>
+    <div class="info">📌 Direct election would clash with parliamentary democracy — mandate conflict with PM</div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vi"><div class="vt">Represents both Union &amp; States</div><div class="vs">Weighted voting achieves federal balance</div></div>
+      <div class="vi"><div class="vt">Acts mostly on PM's advice</div><div class="vs">But retains key discretionary roles</div></div>
+      <div class="vi"><div class="vt">Key discretionary roles</div><div class="vs">Veto · Ordinance · Pardon · Emergency</div></div>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-tag">Governor — Core Logic</div>
+    <h3>🏛️ Appointed Link — Centre ↔ State</h3>
+    <div class="flow">
+      <div class="fn fn-red">Central Appointee</div>
+      <span class="farr">→</span>
+      <div class="fn fn-amber">State Executive Head</div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vi"><div class="vt">No election whatsoever</div><div class="vs">Pure central appointment · Pleasure doctrine</div></div>
+      <div class="vi"><div class="vt">Limited veto power</div><div class="vs">Can reserve bills for President</div></div>
+      <div class="vi"><div class="vt">Limited pardon power</div><div class="vs">Only state offences · No death sentence</div></div>
+      <div class="vi"><div class="vt">Not a Central employee</div><div class="vs">SC ruling 1979 — independent constitutional post</div></div>
+    </div>
+    <div class="trap">⚠️ If State re-passes reserved bill → President NOT bound to assent</div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="kicon">⚖️</div>
+  <div style="flex:1;">
+    <div class="ktitle">The Core Connecting Idea</div>
+    <div class="ksub">
+      India's parliamentary system creates a <strong style="color:#f5e8c0;">nominal executive</strong> at both Union (President) and State (Governor) levels. Both are heads of state with ceremonial primacy but real power resting with elected cabinets.<br>
+      The President's <strong style="color:#f5e8c0;">indirect election</strong> ensures federal balance. The Governor's <strong style="color:#f5e8c0;">appointment</strong> ensures central linkage. Both powers — veto and pardon — are <strong style="color:#f5e8c0;">safety valves</strong> in the constitutional machinery.
+    </div>
+    <div class="kpills">
+      <span class="kp">🗳️ Indirect Election</span>
+      <span class="kp">🧮 Weighted Votes</span>
+      <span class="kp">✋ 3 Vetoes</span>
+      <span class="kp">📜 Bill Matrix</span>
+      <span class="kp">🕊️ Art. 72 vs 161</span>
+      <span class="kp">⚖️ SC decides disputes</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /page -->
+</body>
+</html>

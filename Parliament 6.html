@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legislative Procedure in Parliament — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#12100e;--paper:#f8f6f1;--gold:#b87c10;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#e0d4b8;
+  --card:#fffdf7;--card2:#f4efe3;--sky:#1a5878;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:
+  radial-gradient(ellipse 900px 500px at 10% 5%,rgba(184,124,16,0.05) 0%,transparent 60%),
+  radial-gradient(ellipse 700px 700px at 90% 95%,rgba(26,58,138,0.04) 0%,transparent 60%);
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 28px 100px;}
+.header{text-align:center;padding:48px 16px 24px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,4.5vw,50px);line-height:1.1;}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:100px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue),var(--purple));margin:16px auto 0;border-radius:4px;}
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:36px 0 16px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+@media(max-width:960px){.g3{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr;}}
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(184,124,16,0.12);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.blue::before{background:var(--blue);}
+.pc.green::before{background:var(--green);}
+.pc.red::before{background:var(--red);}
+.pc.purple::before{background:var(--purple);}
+.pc.amber::before{background:var(--amber);}
+.pc.teal::before{background:var(--teal);}
+.pc.sky::before{background:var(--sky);}
+.pc.dark-top::before{background:var(--ink);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.mc5::before{background:linear-gradient(90deg,var(--sky),var(--blue),var(--purple));}
+.mc6::before{background:linear-gradient(90deg,var(--gold),var(--amber),var(--red));}
+.map-card svg{display:block;width:100%;}
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.chip.ok{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.chip.warn{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.25);color:var(--gold);}
+.chip.bad{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.chip.info{background:rgba(26,58,138,0.07);border-color:rgba(26,58,138,0.2);color:var(--blue);}
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;line-height:1;}
+.stat-lbl{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+.callout{padding:12px 14px;border-radius:10px;margin:8px 0;}
+.callout.green{background:rgba(26,106,58,0.06);border:1.5px solid rgba(26,106,58,0.2);}
+.callout.red{background:rgba(176,26,26,0.06);border:1.5px solid rgba(176,26,26,0.2);}
+.callout.gold{background:rgba(184,124,16,0.07);border:1.5px solid rgba(184,124,16,0.2);}
+.callout.blue{background:rgba(26,58,138,0.06);border:1.5px solid rgba(26,58,138,0.2);}
+.callout-title{font-size:11px;font-weight:800;margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.6;}
+.readings-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px;}
+@media(max-width:640px){.readings-row{grid-template-columns:1fr;}}
+.read-box{border-radius:14px;padding:16px;border:2px solid;position:relative;overflow:hidden;}
+.read-num{font-family:'Playfair Display',serif;font-size:52px;font-weight:800;line-height:1;opacity:0.1;position:absolute;top:4px;right:12px;}
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;}
+.phase-title{font-size:12px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'DM Mono',monospace;margin-bottom:8px;color:var(--muted);}
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;}
+.tag.yes{background:#d4edda;color:#155724;}
+.tag.no{background:#f8d7da;color:#721c24;}
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:40px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <div class="header-sup">Indian Polity · Parliament · UPSC Prelims</div>
+  <h1>Legislative Procedure in Parliament — <em>Mind Map</em></h1>
+  <div class="header-sub">Bill → Readings → Both Houses → President's Assent → Act &nbsp;·&nbsp; Money Bill · Joint Sitting</div>
+</div>
+
+<!-- 0: MASTER FLOW -->
+<div class="sec-label">Master Flow — The Complete Journey</div>
+<div class="map-card mc1">
+  <svg id="svgMaster" viewBox="0 0 1340 100" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- 1: TYPES -->
+<div class="sec-label">① Types of Bills</div>
+<div class="map-card mc2">
+  <svg id="svgTypes" viewBox="0 0 1340 310" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">Based on Who Introduces</div>
+    <h3>🔵 Public Bill &nbsp;vs&nbsp; 🔴 Private Bill</h3>
+    <div class="stat-row">
+      <div class="stat-box" style="border-color:rgba(26,58,138,0.3);">
+        <div class="stat-num" style="color:var(--blue);">7</div>
+        <div class="stat-sub">Days Notice</div>
+        <div class="stat-lbl">PUBLIC BILL · MINISTER</div>
+      </div>
+      <div class="stat-box" style="border-color:rgba(176,26,26,0.3);">
+        <div class="stat-num" style="color:var(--red);">1</div>
+        <div class="stat-sub">Month Notice</div>
+        <div class="stat-lbl">PRIVATE BILL · ANY MP</div>
+      </div>
+    </div>
+    <div class="callout red">
+      <div class="callout-title" style="color:var(--red);">⚠️ Key Difference</div>
+      <div class="callout-body">Defeat of <strong>Public Bill</strong> → may indicate loss of confidence.<br>Defeat of <strong>Private Bill</strong> → does NOT affect government stability.</div>
+    </div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">Based on Subject Matter</div>
+    <h3>📋 Four Categories</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">① Ordinary Bill</div><div class="vs">General legislation · Either House · Art. 108 applies</div></div>
+      <div class="vitem"><div class="vt">② Money Bill — Art. 110</div><div class="vs">Exclusively taxation/borrowing · Only Lok Sabha · Speaker certifies</div></div>
+      <div class="vitem"><div class="vt">③ Financial Bill — Art. 117</div><div class="vs">Two sub-types: 117(1) and 117(3)</div></div>
+      <div class="vitem"><div class="vt">④ Constitutional Amendment — Art. 368</div><div class="vs">Special majority · No joint sitting possible</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 2: THREE READINGS -->
+<div class="sec-label">② Ordinary Bill — Three Readings</div>
+<div class="map-card mc3">
+  <svg id="svgReadings" viewBox="0 0 1340 120" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+<div class="readings-row">
+  <div class="read-box" style="border-color:rgba(26,58,138,0.3);background:rgba(26,58,138,0.03);">
+    <div class="read-num" style="color:var(--blue);">1</div>
+    <div class="pc-label" style="color:var(--blue);">First Reading</div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:15px;color:var(--blue);margin-bottom:8px;">📖 Introduction Stage</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Introduction + Gazette Publication</div></div>
+      <div class="vitem"><div class="vt">No Discussion on Merits</div><div class="vs">Purely formal stage</div></div>
+      <div class="vitem"><div class="vt">Leave of House Required</div></div>
+    </div>
+  </div>
+  <div class="read-box" style="border-color:rgba(184,124,16,0.35);background:rgba(184,124,16,0.04);">
+    <div class="read-num" style="color:var(--gold);">2</div>
+    <div class="pc-label" style="color:var(--gold);">Second Reading — ★ MOST IMPORTANT</div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:15px;color:var(--gold);margin-bottom:8px;">🔍 Scrutiny Stage</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">General Discussion</div><div class="vs">Principles of the Bill debated</div></div>
+      <div class="vitem"><div class="vt">Committee Stage</div><div class="vs">Clause-by-clause scrutiny</div></div>
+      <div class="vitem"><div class="vt">Consideration Stage</div><div class="vs">Voting on clauses + amendments</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip warn">⭐ Most Critical Stage</span></div>
+  </div>
+  <div class="read-box" style="border-color:rgba(26,106,58,0.3);background:rgba(26,106,58,0.03);">
+    <div class="read-num" style="color:var(--green);">3</div>
+    <div class="pc-label" style="color:var(--green);">Third Reading</div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:15px;color:var(--green);margin-bottom:8px;">✅ Final Vote</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Final Debate</div><div class="vs">Overall Bill discussed</div></div>
+      <div class="vitem"><div class="vt">No Amendments Allowed</div><div class="vs">Bill voted upon as a whole</div></div>
+      <div class="vitem"><div class="vt">If Passed → Sent to 2nd House</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip ok">→ Moves to Second House</span></div>
+  </div>
+</div>
+
+<!-- 3: SECOND HOUSE + DEADLOCK -->
+<div class="sec-label">③ Second House Options & Deadlock Resolution</div>
+<div class="map-card mc4">
+  <svg id="svgDeadlock" viewBox="0 0 1340 310" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+<div class="g2">
+  <div class="pc purple">
+    <div class="pc-label">Second House May…</div>
+    <h3>🏛️ Four Possible Outcomes</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">① Pass as It Is</div><div class="vs">→ Directly to President for assent</div></div>
+      <div class="vitem"><div class="vt">② Pass with Amendments</div><div class="vs">→ Returned to 1st House for concurrence</div></div>
+      <div class="vitem" style="background:rgba(176,26,26,0.06);border-color:rgba(176,26,26,0.15);">
+        <div class="vt" style="color:var(--red);">③ Reject the Bill</div>
+        <div class="vs">→ <strong>Deadlock</strong> — Joint Sitting (Art. 108) invoked</div>
+      </div>
+      <div class="vitem" style="background:rgba(176,26,26,0.06);border-color:rgba(176,26,26,0.15);">
+        <div class="vt" style="color:var(--red);">④ Take No Action for 6 Months</div>
+        <div class="vs">→ Deemed <strong>Deadlock</strong></div>
+      </div>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">Deadlock Triggers</div>
+    <h3>⚡ When Art. 108 Activates</h3>
+    <div style="margin-bottom:10px;">
+      <span class="chip bad">Bill Rejected</span>
+      <span class="chip bad">Amendments not agreed</span>
+      <span class="chip bad">No action for 6 months</span>
+    </div>
+    <div class="callout gold">
+      <div class="callout-title" style="color:var(--gold);">🔔 Resolution: Joint Sitting (Art. 108)</div>
+      <div class="callout-body">President summons joint sitting. Presided by: Speaker → Deputy Speaker → Deputy Chairman RS → Elected Member.<br>⚠️ <strong>RS Chairman NEVER presides</strong></div>
+    </div>
+    <div class="stat-row" style="margin-top:10px;">
+      <div class="stat-box"><div class="stat-num" style="color:var(--red);">3</div><div class="stat-sub">Times Invoked</div><div class="stat-lbl">SINCE 1950</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--purple);">1/10</div><div class="stat-sub">Quorum Required</div><div class="stat-lbl">TOTAL MEMBERS</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 4: JOINT SITTING -->
+<div class="sec-label">④ Joint Sitting — Article 108 Deep Dive</div>
+<div class="map-card mc5">
+  <svg id="svgJoint" viewBox="0 0 1340 280" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+<div class="g3">
+  <div class="pc sky">
+    <div class="pc-label">Historical Invocations — Only 3</div>
+    <h3>📜 Rare but Decisive</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">1961 — Dowry Prohibition Bill</div><div class="vs">First ever joint sitting in independent India</div></div>
+      <div class="vitem"><div class="vt">1978 — Banking Service Commission Repeal</div><div class="vs">Second invocation</div></div>
+      <div class="vitem"><div class="vt">2002 — Prevention of Terrorism Bill (POTA)</div><div class="vs">Most recent invocation</div></div>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Procedure & Rules</div>
+    <h3>⚙️ How Joint Sitting Works</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Summoned by President</div></div>
+      <div class="vitem"><div class="vt">Lok Sabha Rules of Procedure Apply</div><div class="vs">Not Rajya Sabha rules</div></div>
+      <div class="vitem"><div class="vt">Simple Majority Required</div><div class="vs">Of members present & voting</div></div>
+      <div class="vitem"><div class="vt">Quorum = 1/10 of total members</div></div>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">NOT Applicable For</div>
+    <h3>❌ Two Big Exclusions</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin:4px 0 10px;">
+      <span class="chip bad">❌ Money Bills (Art. 110)</span>
+      <span class="chip bad">❌ Constitutional Amendment Bills (Art. 368)</span>
+    </div>
+    <div class="callout red">
+      <div class="callout-title" style="color:var(--red);">⚠️ UPSC Trap Alert</div>
+      <div class="callout-body">Art. 108 ONLY for Ordinary Bills. RS Chairman never chairs. LS Rules (not RS Rules) apply.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 5: PRESIDENT'S ASSENT -->
+<div class="sec-label">⑤ President's Assent — Ordinary Bill</div>
+<div class="map-card mc6">
+  <svg id="svgAssent" viewBox="0 0 1340 170" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+<div class="phase-row">
+  <div class="phase-box" style="border-color:var(--green);background:rgba(26,106,58,0.04);">
+    <div class="phase-num" style="color:var(--green);">✅</div>
+    <div class="phase-title">Give Assent</div>
+    <div class="phase-sub">President signs the Bill</div>
+    <div style="font-size:10px;margin-top:6px;color:var(--muted);">Bill becomes an <strong>Act</strong> — law enacted</div>
+    <span class="chip ok" style="margin-top:8px;">LAW ENACTED</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--gold);background:rgba(184,124,16,0.04);">
+    <div class="phase-num" style="color:var(--gold);">↩️</div>
+    <div class="phase-title">Return for Reconsideration</div>
+    <div class="phase-sub">With or without a message</div>
+    <div style="font-size:10px;margin-top:6px;color:var(--muted);">If Parliament passes again → President <strong>MUST give assent</strong></div>
+    <span class="chip warn" style="margin-top:8px;">SUSPENSIVE VETO</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--red);background:rgba(176,26,26,0.04);">
+    <div class="phase-num" style="color:var(--red);">🚫</div>
+    <div class="phase-title">Withhold Assent</div>
+    <div class="phase-sub">Absolute veto — Bill ends</div>
+    <div style="font-size:10px;margin-top:6px;color:var(--muted);"><strong>Pocket Veto</strong> = Take no action</div>
+    <span class="chip bad" style="margin-top:8px;">BILL LAPSED</span>
+  </div>
+</div>
+
+<!-- 6: MONEY BILL -->
+<div class="sec-label">⑥ Money Bill — Article 110 Special Procedure</div>
+<div class="map-card mc1">
+  <svg id="svgMoney" viewBox="0 0 1340 310" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-label">What Qualifies as a Money Bill (Art. 110)?</div>
+    <h3>💰 Must Deal EXCLUSIVELY With…</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;">
+      <span class="pill gold">Taxation</span>
+      <span class="pill gold">Borrowing by Union</span>
+      <span class="pill gold">Custody of CFI</span>
+      <span class="pill gold">Withdrawal from CFI</span>
+      <span class="pill gold">Expenditure charged on CFI</span>
+      <span class="pill gold">Receipts &amp; Audit</span>
+      <span class="pill gold">Incidental Matters</span>
+    </div>
+    <div class="callout red">
+      <div class="callout-title" style="color:var(--red);">⚠️ NOT a Money Bill if ONLY contains:</div>
+      <div class="callout-body">Fines · Fees · Local body taxes — these alone do not qualify.</div>
+    </div>
+    <div class="callout blue" style="margin-top:8px;">
+      <div class="callout-title" style="color:var(--blue);">🔒 Speaker's Certificate = FINAL</div>
+      <div class="callout-body">Not subject to judicial review.</div>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Special Procedure Rules</div>
+    <h3>📋 What Makes It Different</h3>
+    <div class="vlist">
+      <div class="vitem" style="background:rgba(26,106,58,0.05);border-color:rgba(26,106,58,0.15);">
+        <div class="vt" style="color:var(--green);">✅ Introduced ONLY in Lok Sabha</div>
+        <div class="vs">Never in Rajya Sabha</div>
+      </div>
+      <div class="vitem" style="background:rgba(26,106,58,0.05);border-color:rgba(26,106,58,0.15);">
+        <div class="vt" style="color:var(--green);">✅ Only by a Minister</div>
+        <div class="vs">Private members cannot introduce Money Bills</div>
+      </div>
+      <div class="vitem" style="background:rgba(26,106,58,0.05);border-color:rgba(26,106,58,0.15);">
+        <div class="vt" style="color:var(--green);">✅ President's Recommendation Required Before Introduction</div>
+      </div>
+      <div class="vitem" style="background:rgba(176,26,26,0.05);border-color:rgba(176,26,26,0.15);">
+        <div class="vt" style="color:var(--red);">❌ RS Cannot Amend or Reject</div>
+        <div class="vs">RS can only recommend · LS may accept/reject</div>
+      </div>
+      <div class="vitem" style="background:rgba(176,26,26,0.05);border-color:rgba(176,26,26,0.15);">
+        <div class="vt" style="color:var(--red);">❌ RS Must Return Within 14 Days</div>
+        <div class="vs">Otherwise deemed passed by LS alone</div>
+      </div>
+      <div class="vitem" style="background:rgba(176,26,26,0.05);border-color:rgba(176,26,26,0.15);">
+        <div class="vt" style="color:var(--red);">❌ President Cannot Return Money Bill</div>
+      </div>
+      <div class="vitem" style="background:rgba(176,26,26,0.05);border-color:rgba(176,26,26,0.15);">
+        <div class="vt" style="color:var(--red);">❌ No Joint Sitting for Money Bill</div>
+      </div>
+    </div>
+    <div class="callout red" style="margin-top:10px;">
+      <div class="callout-title" style="color:var(--red);">🔥 Government Stability Trigger</div>
+      <div class="callout-body">Money Bill defeated in LS → Government <strong>MUST resign</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- 7: FINANCIAL BILLS -->
+<div class="sec-label">⑦ Financial Bills — Article 117 (Two Sub-Types)</div>
+<div class="g2">
+  <div class="pc teal">
+    <div class="pc-label">Financial Bill Type I — Art. 117(1)</div>
+    <h3>📑 Money Bill Matters + Other Provisions</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Contains Art. 110 matters + other matters too</div></div>
+      <div class="vitem"><div class="vt">Introduced Only in Lok Sabha</div></div>
+      <div class="vitem"><div class="vt">President Recommendation Before Introduction</div></div>
+      <div class="vitem"><div class="vt">Rajya Sabha CAN Amend or Reject</div><div class="vs">Unlike Money Bills</div></div>
+      <div class="vitem"><div class="vt">Joint Sitting IS Possible</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip info">≠ Money Bill &nbsp; ≠ Ordinary Bill</span></div>
+  </div>
+  <div class="pc sky">
+    <div class="pc-label">Financial Bill Type II — Art. 117(3)</div>
+    <h3>📑 Involves Expenditure from CFI</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Involves expenditure charged from CFI</div></div>
+      <div class="vitem"><div class="vt">Can Be Introduced in EITHER House</div><div class="vs">No LS-only restriction</div></div>
+      <div class="vitem"><div class="vt">President Recommendation at Consideration Stage</div><div class="vs">Not at introduction stage</div></div>
+      <div class="vitem"><div class="vt">Both Houses Have Equal Powers</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip info">Similar to Ordinary Bill + CFI element</span></div>
+  </div>
+</div>
+
+<!-- 8: COMPARISON TABLE -->
+<div class="sec-label">⑧ Master Comparison Table</div>
+<div class="pc dark-top">
+  <div class="pc-label">All Bill Types Side-by-Side</div>
+  <h3 style="font-family:'Playfair Display',serif;font-size:17px;margin-bottom:14px;">⚖️ Ordinary vs Money vs Financial vs Constitutional Amendment</h3>
+  <div style="overflow-x:auto;">
+    <table class="ctable">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Ordinary Bill</th>
+          <th>Money Bill (110)</th>
+          <th>Fin. Bill I (117-1)</th>
+          <th>Fin. Bill II (117-3)</th>
+          <th>Const. Amendment (368)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Where Introduced?</td><td>Either House</td><td>Only Lok Sabha</td><td>Only Lok Sabha</td><td>Either House</td><td>Either House</td></tr>
+        <tr><td>Minister Only?</td><td><span class="tag no">No</span></td><td><span class="tag yes">Yes</span></td><td><span class="tag yes">Yes</span></td><td><span class="tag no">No</span></td><td><span class="tag no">No</span></td></tr>
+        <tr><td>Pres. Recommendation</td><td><span class="tag no">Not Required</span></td><td><span class="tag yes">Before Intro.</span></td><td><span class="tag yes">Before Intro.</span></td><td><span class="tag yes">Consideration Stage</span></td><td><span class="tag no">Not Required</span></td></tr>
+        <tr><td>Speaker Certification</td><td><span class="tag no">No</span></td><td><span class="tag yes">Yes (Final)</span></td><td><span class="tag no">No</span></td><td><span class="tag no">No</span></td><td><span class="tag no">No</span></td></tr>
+        <tr><td>RS Powers</td><td>Amend / Reject</td><td>Recommend only (14 days)</td><td>Amend / Reject</td><td>Amend / Reject</td><td>Amend / Reject</td></tr>
+        <tr><td>Joint Sitting (Art. 108)</td><td><span class="tag yes">Yes</span></td><td><span class="tag no">No</span></td><td><span class="tag yes">Yes</span></td><td><span class="tag yes">Yes</span></td><td><span class="tag no">No</span></td></tr>
+        <tr><td>President Can Return?</td><td><span class="tag yes">Yes</span></td><td><span class="tag no">No</span></td><td><span class="tag yes">Yes</span></td><td><span class="tag yes">Yes</span></td><td><span class="tag no">No</span></td></tr>
+        <tr><td>Majority Required</td><td>Simple</td><td>Simple</td><td>Simple</td><td>Simple</td><td>Special (Art. 368)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 9: PRELIMS TRAPS -->
+<div class="sec-label">⑨ 🔥 High-Probability Prelims Traps</div>
+<div class="map-card mc2">
+  <svg id="svgTraps" viewBox="0 0 1340 240" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+<div class="g3">
+  <div class="pc red">
+    <div class="pc-label">Money Bill Traps</div>
+    <h3>💰 Most Common Errors</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;">
+      <span class="chip bad">❌ Fines ≠ Money Bill</span>
+      <span class="chip bad">❌ Local Taxes ≠ Money Bill</span>
+      <span class="chip bad">❌ RS cannot reject Money Bill</span>
+      <span class="chip bad">❌ President CANNOT return Money Bill</span>
+      <span class="chip bad">❌ No Joint Sitting for Money Bill</span>
+    </div>
+    <div class="callout gold">
+      <div class="callout-title" style="color:var(--gold);">✅ Correct:</div>
+      <div class="callout-body">Must deal <strong>EXCLUSIVELY</strong> with Art. 110. Speaker's certificate = absolutely final.</div>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Joint Sitting Traps</div>
+    <h3>🏛️ Art. 108 Common Errors</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;">
+      <span class="chip bad">❌ RS Chairman never presides</span>
+      <span class="chip bad">❌ Not for Money Bills</span>
+      <span class="chip bad">❌ Not for Const. Amendment Bills</span>
+      <span class="chip bad">❌ Quorum = 1/10 (not 1/4)</span>
+    </div>
+    <div class="callout blue">
+      <div class="callout-title" style="color:var(--blue);">✅ Correct:</div>
+      <div class="callout-body">Speaker → Dy Speaker → Dy Chairman RS → Elected member. LS Rules apply. Simple majority.</div>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Procedure Traps</div>
+    <h3>📋 General Errors</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;">
+      <span class="chip warn">⚠️ 2nd Reading = Most Important</span>
+      <span class="chip warn">⚠️ 3rd Reading: No amendments</span>
+      <span class="chip warn">⚠️ 6 months delay = Deadlock</span>
+      <span class="chip warn">⚠️ Joint Sitting invoked only 3×</span>
+    </div>
+    <div class="callout green">
+      <div class="callout-title" style="color:var(--green);">✅ Correct:</div>
+      <div class="callout-body">If President returns Ordinary Bill and Parliament passes again → Must give assent.</div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">⚖️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">India's legislative procedure balances bicameral democracy with constitutional checks. <strong style="color:#f5d78a;">Ordinary Bills — equal voice for both Houses. Money Bills — Lok Sabha primacy. Constitutional Amendments — special consensus.</strong><br>The President is a constitutional check: suspensive veto on Ordinary Bills, zero veto on Money Bills. Joint Sitting resolves deadlocks, but only for Ordinary Bills.</div>
+    <div class="keystone-pills">
+      <span class="kpill">📜 Bicameral Balance</span>
+      <span class="kpill">💰 Money Bill: LS Primacy</span>
+      <span class="kpill">🏛️ Joint Sitting: Rare Tool</span>
+      <span class="kpill">👁️ 3 Readings System</span>
+      <span class="kpill">🔐 Speaker = Final Arbiter</span>
+      <span class="kpill">⚡ Suspensive Veto</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+// ─── SVG UTILITY ───────────────────────────────────────────────────────────
+const NS = 'http://www.w3.org/2000/svg';
+function svgEl(tag, attrs) {
+  const e = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  return e;
+}
+function getDefs(svg) {
+  let d = svg.querySelector('defs');
+  if (!d) { d = svgEl('defs', {}); svg.insertBefore(d, svg.firstChild); }
+  return d;
+}
+function addArrow(svg, id, color) {
+  const defs = getDefs(svg);
+  const m = svgEl('marker', { id, markerWidth: '8', markerHeight: '8', refX: '6', refY: '4', orient: 'auto' });
+  m.appendChild(svgEl('path', { d: 'M0,1 L0,7 L7,4 z', fill: color }));
+  defs.appendChild(m);
+}
+
+// Draw a rounded-rect node with emoji (optional), 1-2 lines of text, and sub-text
+// All text is precisely centred inside the box
+function node(svg, cx, cy, w, h, fill, label1, label2, sub, emoji) {
+  const rx = 10;
+  // Drop-shadow
+  svg.appendChild(svgEl('rect', { x: cx - w/2 + 2, y: cy - h/2 + 3, width: w, height: h, rx, fill: 'rgba(0,0,0,0.1)' }));
+  // Box
+  svg.appendChild(svgEl('rect', { x: cx - w/2, y: cy - h/2, width: w, height: h, rx, fill, stroke: 'rgba(255,255,255,0.22)', 'stroke-width': '1.5' }));
+
+  // Calculate vertical layout inside box
+  const hasEmoji = !!emoji;
+  const hasLabel2 = !!label2;
+  const hasSub = !!sub;
+  const lineH = 14;   // px per text line
+  const emojiH = hasEmoji ? 18 : 0;
+  const subH = hasSub ? 12 : 0;
+  const label2H = hasLabel2 ? lineH : 0;
+  const totalH = emojiH + lineH + label2H + subH;
+  let ty = cy - totalH / 2 + (hasEmoji ? emojiH / 2 : lineH / 2);
+
+  if (hasEmoji) {
+    const em = svgEl('text', { x: cx, y: ty, 'text-anchor': 'middle', 'dominant-baseline': 'middle', 'font-size': '15', fill: '#fff' });
+    em.textContent = emoji;
+    svg.appendChild(em);
+    ty += emojiH;
+  }
+
+  // label1
+  const t1 = svgEl('text', { x: cx, y: ty, 'text-anchor': 'middle', 'dominant-baseline': 'middle', 'font-size': '11', 'font-weight': '700', 'font-family': 'Nunito,sans-serif', fill: '#fff' });
+  t1.textContent = label1;
+  svg.appendChild(t1);
+  ty += lineH;
+
+  if (hasLabel2) {
+    const t2 = svgEl('text', { x: cx, y: ty, 'text-anchor': 'middle', 'dominant-baseline': 'middle', 'font-size': '10', 'font-weight': '700', 'font-family': 'Nunito,sans-serif', fill: '#fff' });
+    t2.textContent = label2;
+    svg.appendChild(t2);
+    ty += lineH;
+  }
+
+  if (hasSub) {
+    const ts = svgEl('text', { x: cx, y: ty, 'text-anchor': 'middle', 'dominant-baseline': 'middle', 'font-size': '8', 'font-family': 'DM Mono,monospace', fill: 'rgba(255,255,255,0.52)' });
+    ts.textContent = sub;
+    svg.appendChild(ts);
+  }
+}
+
+function arrow(svg, x1, y1, x2, y2, color, markerId, dashed) {
+  const ln = svgEl('line', { x1, y1, x2, y2, stroke: color, 'stroke-width': '2', opacity: '0.8', 'stroke-dasharray': dashed ? '6 4' : 'none' });
+  if (markerId) ln.setAttribute('marker-end', `url(#${markerId})`);
+  svg.appendChild(ln);
+}
+
+// Smooth cubic bezier curve between two points
+function bezier(svg, x1, y1, x2, y2, color, dashed) {
+  const mx = (x1 + x2) / 2;
+  const d = `M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`;
+  svg.appendChild(svgEl('path', { d, stroke: color, 'stroke-width': '1.8', fill: 'none', 'stroke-dasharray': dashed ? '5 4' : 'none', opacity: '0.65' }));
+}
+
+// Vertical bezier (from top cx,cy to bottom cx2,cy2 going via own midpoint)
+function vbezier(svg, x1, y1, x2, y2, color) {
+  const my = (y1 + y2) / 2;
+  const d = `M${x1},${y1} C${x1},${my} ${x2},${my} ${x2},${y2}`;
+  svg.appendChild(svgEl('path', { d, stroke: color, 'stroke-width': '1.7', fill: 'none', 'stroke-dasharray': '5 4', opacity: '0.55' }));
+}
+
+function label(svg, x, y, text, size, color, anchor, bold) {
+  const t = svgEl('text', { x, y, 'text-anchor': anchor || 'middle', 'dominant-baseline': 'middle', 'font-size': size || '8', 'font-family': 'DM Mono,monospace', fill: color || 'rgba(120,100,60,0.45)', 'font-weight': bold ? '700' : '400', 'letter-spacing': '1.5' });
+  t.textContent = text;
+  svg.appendChild(t);
+}
+
+// ─── 0. MASTER FLOW ────────────────────────────────────────────────────────
+(function () {
+  const svg = document.getElementById('svgMaster');
+  addArrow(svg, 'aG', '#b87c10');
+  svg.appendChild(svgEl('rect', { x: 0, y: 0, width: 1340, height: 100, fill: 'rgba(248,246,241,0.3)' }));
+
+  // 9 nodes spread evenly across 1340 wide, y=52, node w=126 h=62
+  const NW = 126, NH = 62, Y = 52;
+  const items = [
+    { fill: '#1a1208', e: '📋', l1: 'Bill', l2: null, s: 'Introduced' },
+    { fill: '#1a3a8a', e: '📖', l1: '1st Reading', l2: null, s: 'No Discussion' },
+    { fill: '#b87c10', e: '🔍', l1: '2nd Reading', l2: null, s: '★ Critical Stage' },
+    { fill: '#1a6a3a', e: '✅', l1: '3rd Reading', l2: null, s: 'Final Vote' },
+    { fill: '#5a1a8a', e: '🏛️', l1: '2nd House', l2: null, s: '3 Readings Again' },
+    { fill: '#b01a1a', e: '⚡', l1: 'Deadlock?', l2: null, s: '→ Art. 108' },
+    { fill: '#0a6070', e: '🤝', l1: 'Joint Sitting', l2: null, s: 'Art. 108' },
+    { fill: '#d46a10', e: '✍️', l1: 'President', l2: null, s: 'Assent' },
+    { fill: '#1a6a3a', e: '📜', l1: 'ACT', l2: null, s: 'Law Enacted' },
+  ];
+  const total = items.length;
+  const gap = (1340 - 20) / total;
+  items.forEach((it, i) => {
+    const cx = 10 + gap * i + gap / 2;
+    if (i < total - 1) {
+      const nx = 10 + gap * (i + 1) + gap / 2;
+      arrow(svg, cx + NW / 2, Y, nx - NW / 2, Y, '#b87c10', 'aG', false);
+    }
+    node(svg, cx, Y, NW, NH, it.fill, it.l1, it.l2, it.s, it.e);
+  });
+  label(svg, 670, 10, 'INTRODUCTION → THREE READINGS → BOTH HOUSES → JOINT SITTING (IF DEADLOCK) → PRESIDENT → ACT', 7.5, 'rgba(120,100,60,0.4)', 'middle');
+})();
+
+// ─── 1. TYPES OF BILLS ─────────────────────────────────────────────────────
+(function () {
+  const svg = document.getElementById('svgTypes');
+  svg.appendChild(svgEl('rect', { x: 0, y: 0, width: 1340, height: 310, fill: 'rgba(248,246,241,0.3)' }));
+
+  // Root node top-centre
+  node(svg, 670, 44, 230, 52, '#1a1208', 'Types of Bills', null, '4 Categories', '📋');
+
+  // Mid-row: two category nodes
+  const cats = [
+    { cx: 290, fill: '#1a3a8a', l1: 'By Introducer', l2: null, s: 'Public vs Private' },
+    { cx: 1050, fill: '#b87c10', l1: 'By Subject', l2: null, s: 'Ordinary·Money·Fin·Const' },
+  ];
+  cats.forEach(c => {
+    vbezier(svg, 670, 70, c.cx, 100, '#aaaaaa');
+    node(svg, c.cx, 128, 200, 52, c.fill, c.l1, c.l2, c.s, null);
+  });
+
+  // Left sub-nodes: Public & Private — well-spaced at y=228
+  [
+    { cx: 140, fill: '#1a3a8a', l1: '🔵 Public Bill', s: 'Minister · 7 days' },
+    { cx: 420, fill: '#b01a1a', l1: '🔴 Private Bill', s: 'Any MP · 1 month' },
+  ].forEach(n => {
+    vbezier(svg, 290, 154, n.cx, 200, '#1a3a8a55');
+    node(svg, n.cx, 228, 200, 52, n.fill, n.l1, null, n.s, null);
+  });
+
+  // Right sub-nodes: 4 types — spread across right half at y=228
+  [
+    { cx: 750,  fill: '#0a6070', l1: 'Ordinary Bill',  s: 'Art.108 applies' },
+    { cx: 930,  fill: '#b87c10', l1: 'Money Bill',     s: 'Art.110 · Only LS' },
+    { cx: 1110, fill: '#5a1a8a', l1: 'Financial Bill', s: 'Art.117(1) & (3)' },
+    { cx: 1280, fill: '#b01a1a', l1: 'Const. Amend.',  s: 'Art.368 · No JS' },
+  ].forEach(n => {
+    vbezier(svg, 1050, 154, n.cx, 200, '#b87c1055');
+    node(svg, n.cx, 228, 160, 52, n.fill, n.l1, null, n.s, null);
+  });
+
+  label(svg, 670, 296, '⚠️  NO JOINT SITTING FOR CONSTITUTIONAL AMENDMENT BILLS OR MONEY BILLS', 8, 'rgba(176,26,26,0.5)', 'middle');
+})();
+
+// ─── 2. THREE READINGS ─────────────────────────────────────────────────────
+(function () {
+  const svg = document.getElementById('svgReadings');
+  addArrow(svg, 'aB', '#1a3a8a');
+  svg.appendChild(svgEl('rect', { x: 0, y: 0, width: 1340, height: 120, fill: 'rgba(248,246,241,0.3)' }));
+
+  // 7 nodes in a single horizontal row — y=62, NW=160, spread evenly
+  const NW = 155, NH = 64, Y = 62;
+  const stages = [
+    { fill: '#1a1208', e: '📋', l1: 'Bill',          s: 'Either House' },
+    { fill: '#1a3a8a', e: '📖', l1: '1st Reading',   s: 'Gazette · No Discussion' },
+    { fill: '#b87c10', e: '🔍', l1: '2nd Reading',   s: '★ MOST CRITICAL' },
+    { fill: '#8a6010', e: '🔬', l1: 'Committee',     s: 'Clause-by-clause' },
+    { fill: '#6a5010', e: '🗳️', l1: 'Consideration', s: 'Vote on clauses' },
+    { fill: '#1a6a3a', e: '📢', l1: '3rd Reading',   s: 'Final debate' },
+    { fill: '#145228', e: '✅', l1: 'Bill Passed',   s: '→ 2nd House' },
+  ];
+  const total = stages.length;
+  const startX = 14;
+  const gap = (1340 - 28) / total;
+  stages.forEach((s, i) => {
+    const cx = startX + gap * i + gap / 2;
+    if (i < total - 1) {
+      const nx = startX + gap * (i + 1) + gap / 2;
+      arrow(svg, cx + NW / 2, Y, nx - NW / 2, Y, '#1a3a8a88', 'aB', false);
+    }
+    node(svg, cx, Y, NW, NH, s.fill, s.l1, null, s.s, s.e);
+  });
+
+  // Bracket around 2nd reading sub-stages (nodes 2,3,4 → indices 2,3,4)
+  const bracketStartX = startX + gap * 2;
+  const bracketEndX = startX + gap * 5;
+  const bx = bracketStartX + 4;
+  const bw = bracketEndX - bracketStartX - 8;
+  svg.appendChild(svgEl('rect', { x: bx, y: 26, width: bw, height: 72, rx: 10, fill: 'none', stroke: '#b87c10', 'stroke-width': '1.8', 'stroke-dasharray': '6 3', opacity: '0.45' }));
+  label(svg, bx + bw / 2, 17, '← 2ND READING: THREE SUB-STAGES →', 7.5, 'rgba(184,124,16,0.55)', 'middle');
+})();
+
+// ─── 3. DEADLOCK ────────────────────────────────────────────────────────────
+(function () {
+  const svg = document.getElementById('svgDeadlock');
+  addArrow(svg, 'aR', '#b01a1a');
+  addArrow(svg, 'aP', '#5a1a8a');
+  addArrow(svg, 'aT', '#0a6070');
+  addArrow(svg, 'aG', '#1a6a3a');
+  svg.appendChild(svgEl('rect', { x: 0, y: 0, width: 1340, height: 310, fill: 'rgba(248,246,241,0.3)' }));
+
+  // Row 1: Bill Passed (1st House) → 2nd House
+  const NW1 = 180, NH1 = 56;
+  node(svg, 140, 55, NW1, NH1, '#1a3a8a', 'Bill Passed', null, '1st House passes', '📋');
+  arrow(svg, 140 + NW1/2, 55, 380 - NW1/2 + 10, 55, '#1a3a8a', 'aP', false);
+  node(svg, 420, 55, NW1, NH1, '#5a1a8a', '2nd House', null, 'RS or LS', '🏛️');
+
+  // Row 2: 4 outcome nodes spread at y=165
+  const opts = [
+    { cx: 110,  fill: '#1a6a3a', l1: '① Pass As Is',     s: '→ President directly' },
+    { cx: 360,  fill: '#0a6070', l1: '② Pass + Amend',   s: '→ Back to 1st House' },
+    { cx: 620,  fill: '#b01a1a', l1: '③ Reject',         s: '→ Deadlock triggered' },
+    { cx: 870,  fill: '#b01a1a', l1: '④ No Action (6m)', s: '→ Deadlock triggered' },
+  ];
+  opts.forEach(o => {
+    vbezier(svg, 420, 83, o.cx, 137, '#5a1a8a44');
+    node(svg, o.cx, 165, 205, 54, o.fill, o.l1, null, o.s, null);
+  });
+
+  // Row 3: Deadlock → Joint Sitting → Resolved (y=255)
+  // Two red dashed arrows from opts[2] and opts[3] converging to Joint Sitting
+  bezier(svg, 620, 192, 1060, 230, '#b01a1a66', true);
+  bezier(svg, 870, 192, 1060, 230, '#b01a1a66', true);
+
+  node(svg, 1110, 258, 210, 56, '#0a6070', 'Joint Sitting', null, 'Art.108 · By President', '🤝');
+  arrow(svg, 1215, 258, 1280, 258, '#0a6070', 'aT', false);
+  node(svg, 1320, 258, 80, 52, '#1a6a3a', 'Resolved', null, 'Passed', '✅');
+
+  label(svg, 670, 300, 'DEADLOCK = REJECTION OR 6-MONTH INACTION  →  PRESIDENT SUMMONS JOINT SITTING (ART. 108)', 8, 'rgba(120,100,60,0.4)', 'middle');
+})();
+
+// ─── 4. JOINT SITTING ──────────────────────────────────────────────────────
+(function () {
+  const svg = document.getElementById('svgJoint');
+  svg.appendChild(svgEl('rect', { x: 0, y: 0, width: 1340, height: 280, fill: 'rgba(248,246,241,0.3)' }));
+
+  // Central root node
+  node(svg, 670, 52, 260, 56, '#1a1208', 'Joint Sitting (Art. 108)', null, 'Both Houses sit together', '🤝');
+
+  // 6 spoke nodes in a semicircle-like arrangement at y=160, evenly spaced
+  const spokes = [
+    { cx: 110,  fill: '#1a5878', l1: 'Summoned By',      s: 'President of India',         e: '🇮🇳' },
+    { cx: 320,  fill: '#b87c10', l1: 'Presided By',      s: 'Speaker (1st Priority)',     e: '⚖️' },
+    { cx: 530,  fill: '#5a1a8a', l1: 'If Speaker Absent',s: 'Dy Spkr → Dy Chrmn RS',     e: '🔄' },
+    { cx: 760,  fill: '#0a6070', l1: 'Quorum',           s: '1/10 of total members',      e: '📊' },
+    { cx: 990,  fill: '#1a6a3a', l1: 'Majority',         s: 'Simple (present + voting)',  e: '✅' },
+    { cx: 1210, fill: '#b01a1a', l1: 'NOT Applicable',   s: 'Money Bill · Const. Amend.', e: '❌' },
+  ];
+  spokes.forEach(s => {
+    bezier(svg, 670, 80, s.cx, 132, '#aaaaaa44', true);
+    node(svg, s.cx, 162, 195, 58, s.fill, s.l1, null, s.s, s.e);
+  });
+
+  // Bottom strip with presiding order
+  svg.appendChild(svgEl('rect', { x: 80, y: 224, width: 1180, height: 36, rx: 8, fill: 'rgba(90,26,138,0.07)', stroke: 'rgba(90,26,138,0.2)', 'stroke-width': '1.5' }));
+  const bt = svgEl('text', { x: 670, y: 242, 'text-anchor': 'middle', 'dominant-baseline': 'middle', 'font-size': '10.5', 'font-weight': '700', 'font-family': 'Nunito,sans-serif', fill: '#5a1a8a' });
+  bt.textContent = '🚫  RS Chairman NEVER presides  ·  LS Rules apply  ·  Invoked only 3 times: 1961 · 1978 · 2002';
+  svg.appendChild(bt);
+})();
+
+// ─── 5. PRESIDENT'S ASSENT ─────────────────────────────────────────────────
+(function () {
+  const svg = document.getElementById('svgAssent');
+  addArrow(svg, 'aA', '#1a3a8a');
+  addArrow(svg, 'aA2', '#1a6a3a');
+  svg.appendChild(svgEl('rect', { x: 0, y: 0, width: 1340, height: 170, fill: 'rgba(248,246,241,0.3)' }));
+
+  const Y = 85;
+  // Bill arrives node
+  node(svg, 145, Y, 200, 58, '#1a3a8a', 'Bill Passed', null, 'Reaches President', '✍️');
+
+  // Branch point is right edge of above node
+  const bpX = 245;
+
+  // Three outcome nodes: staggered vertically to avoid overlap
+  // Give Assent y=50, Return y=85, Withhold y=120
+  const outcomes = [
+    { cx: 560,  cy: 48,  fill: '#1a6a3a', l1: 'Give Assent',       s: 'Bill → ACT immediately', e: '✅' },
+    { cx: 800,  cy: 85,  fill: '#b87c10', l1: 'Return for Reconsideration', s: 'Suspensive Veto', e: '↩️' },
+    { cx: 560,  cy: 128, fill: '#b01a1a', l1: 'Withhold Assent',   s: 'Pocket Veto · Bill lapsed', e: '🚫' },
+  ];
+  outcomes.forEach(o => {
+    bezier(svg, bpX, Y, o.cx - 95, o.cy, '#d46a1055', true);
+    node(svg, o.cx, o.cy, 200, 54, o.fill, o.l1, null, o.s, o.e);
+  });
+
+  // "If returned & passed again" arrow from Return node rightward
+  arrow(svg, 900, 85, 1020, 85, '#b87c1077', 'aA2', true);
+  node(svg, 1160, 85, 220, 54, '#1a6a3a', 'Passed Again →', null, 'MUST give assent', '⚡');
+
+  label(svg, 670, 158, '⚠️  PRESIDENT CANNOT RETURN MONEY BILL  ·  IF ORDINARY BILL PASSED AGAIN → MUST ASSENT', 8, 'rgba(120,100,60,0.4)', 'middle');
+})();
+
+// ─── 6. MONEY BILL FLOW ────────────────────────────────────────────────────
+(function () {
+  const svg = document.getElementById('svgMoney');
+  addArrow(svg, 'aM', '#b87c10');
+  svg.appendChild(svgEl('rect', { x: 0, y: 0, width: 1340, height: 310, fill: 'rgba(248,246,241,0.3)' }));
+
+  // Top row: 6-step flow at y=80
+  const NW = 185, NH = 58, Y = 80;
+  const steps = [
+    { fill: '#b87c10', e: '📋', l1: 'Minister Introduces', s: 'Only LS · Pres. Rec.' },
+    { fill: '#d46a10', e: '🔒', l1: 'Speaker Certifies',   s: 'As Money Bill (Final)' },
+    { fill: '#1a3a8a', e: '✅', l1: 'Lok Sabha Passes',    s: '3 Readings' },
+    { fill: '#5a1a8a', e: '⏱️', l1: '→ Rajya Sabha',       s: 'Must return in 14 Days' },
+    { fill: '#0a6070', e: '💬', l1: 'RS Recommends Only',  s: 'Cannot Amend / Reject' },
+    { fill: '#1a6a3a', e: '✍️', l1: 'President Assents',   s: 'Cannot Return it' },
+  ];
+  const gap = (1340 - 30) / steps.length;
+  steps.forEach((s, i) => {
+    const cx = 15 + gap * i + gap / 2;
+    if (i < steps.length - 1) {
+      const nx = 15 + gap * (i + 1) + gap / 2;
+      arrow(svg, cx + NW/2, Y, nx - NW/2, Y, '#b87c10', 'aM', false);
+    }
+    node(svg, cx, Y, NW, NH, s.fill, s.l1, null, s.s, s.e);
+  });
+
+  // Bottom row: 4 restriction badges at y=195
+  // Spread across full width with good breathing room
+  const restrX = [180, 480, 780, 1100];
+  const restrItems = [
+    { fill: 'rgba(176,26,26,0.13)', l1: '❌ No Joint Sitting',      s: 'Art.108 not applicable', tc: '#b01a1a' },
+    { fill: 'rgba(176,26,26,0.13)', l1: '❌ Pres. Cannot Return',   s: 'Unlike Ordinary Bill',   tc: '#b01a1a' },
+    { fill: 'rgba(176,26,26,0.13)', l1: '❌ RS Cannot Reject',      s: 'Only recommend changes', tc: '#b01a1a' },
+    { fill: 'rgba(184,124,16,0.13)',l1: '⚠️ LS Defeat = Resign',    s: 'Govt must resign',       tc: '#b87c10' },
+  ];
+  restrItems.forEach((r, i) => {
+    const cx = restrX[i];
+    svg.appendChild(svgEl('rect', { x: cx - 104, y: 165, width: 208, height: 54, rx: 10, fill: r.fill, stroke: r.tc === '#b01a1a' ? 'rgba(176,26,26,0.25)' : 'rgba(184,124,16,0.3)', 'stroke-width': '1.5' }));
+    const t1 = svgEl('text', { x: cx, y: 188, 'text-anchor': 'middle', 'dominant-baseline': 'middle', 'font-size': '10.5', 'font-weight': '800', 'font-family': 'Nunito,sans-serif', fill: r.tc });
+    t1.textContent = r.l1; svg.appendChild(t1);
+    const t2 = svgEl('text', { x: cx, y: 206, 'text-anchor': 'middle', 'dominant-baseline': 'middle', 'font-size': '8', 'font-family': 'DM Mono,monospace', fill: r.tc === '#b01a1a' ? 'rgba(176,26,26,0.6)' : 'rgba(184,124,16,0.7)' });
+    t2.textContent = r.s; svg.appendChild(t2);
+  });
+
+  label(svg, 670, 298, 'MONEY BILL: LOK SABHA PRIMACY  ·  RAJYA SABHA = ADVISORY ROLE ONLY  ·  ART. 108 NOT APPLICABLE', 8, 'rgba(176,26,26,0.45)', 'middle');
+})();
+
+// ─── 9. PRELIMS TRAPS ──────────────────────────────────────────────────────
+(function () {
+  const svg = document.getElementById('svgTraps');
+  svg.appendChild(svgEl('rect', { x: 0, y: 0, width: 1340, height: 240, fill: 'rgba(248,246,241,0.3)' }));
+
+  // Root
+  node(svg, 670, 44, 310, 52, '#1a1208', '🔥 UPSC Prelims: High-Value Traps', null, 'Common Mistakes to Avoid', null);
+
+  // 8 trap nodes in TWO rows of 4 — row1 y=138, row2 y=200
+  // Row 1: 4 nodes
+  const row1 = [
+    { cx: 120,  fill: '#b01a1a', l1: 'Fines ≠ Money Bill',     s: 'Art.110 exclusively' },
+    { cx: 400,  fill: '#b01a1a', l1: 'RS Chrmn ≠ Presides',    s: 'Never chairs JS' },
+    { cx: 680,  fill: '#b01a1a', l1: 'No JS for Money Bills',  s: 'Art.108 not applicable' },
+    { cx: 960,  fill: '#b01a1a', l1: 'No JS for Const. Amend.',s: 'Art.368 excluded' },
+  ];
+  const row2 = [
+    { cx: 120,  fill: '#b87c10', l1: '6 months = Deadlock',    s: 'Even without rejection' },
+    { cx: 400,  fill: '#b87c10', l1: 'Pres. Must Assent 2nd',  s: 'Cannot veto again' },
+    { cx: 680,  fill: '#1a3a8a', l1: '2nd Reading = ★ Most',   s: 'Clause-by-clause stage' },
+    { cx: 960,  fill: '#1a6a3a', l1: 'LS Rules at JS',         s: 'Not RS Rules' },
+  ];
+
+  [...row1, ...row2].forEach((t, i) => {
+    const isRow1 = i < 4;
+    const cy = isRow1 ? 142 : 202;
+    bezier(svg, 670, 70, t.cx, isRow1 ? 114 : 174, '#aaaaaa3a', true);
+    node(svg, t.cx, cy, 218, 50, t.fill, t.l1, null, t.s, null);
+  });
+
+  label(svg, 670, 233, 'STUDY THESE CAREFULLY — FREQUENTLY TESTED IN UPSC PRELIMS', 8, 'rgba(120,100,60,0.4)', 'middle');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parliamentary & Cabinet Committees — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --cream:#faf8f3;--ink:#1a1614;
+  --gold:#c4952a;--gold-lt:#f7e9c3;--gold-mid:#e8c46a;
+  --rust:#c44a2a;--rust-lt:#fae8e3;
+  --navy:#1a3560;--navy-lt:#e3e9f5;
+  --teal:#0f7a6e;--teal-lt:#e3f5f2;
+  --purple:#6a2a8a;--purple-lt:#f0e3f8;
+  --olive:#4a6a1a;--olive-lt:#eaf3e0;
+  --border:#e4dcca;--border-dark:#c8b898;
+  --muted:#8a7a60;--card:#fffdf8;
+  --shadow:rgba(60,40,10,0.10);
+}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:
+  radial-gradient(ellipse 1200px 600px at 20% 5%,rgba(196,149,42,0.07) 0%,transparent 60%),
+  radial-gradient(ellipse 800px 800px at 90% 95%,rgba(26,53,96,0.05) 0%,transparent 60%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 28px 120px;}
+
+/* ── HEADER ── */
+.header{text-align:center;padding:52px 20px 28px;position:relative;}
+.header-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:14px;}
+.header-eyebrow::before,.header-eyebrow::after{content:'';width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));}
+.header-eyebrow::after{background:linear-gradient(90deg,var(--gold),transparent);}
+.header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,58px);font-weight:700;line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:10px;font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:1.5px;}
+.header-rule{display:flex;align-items:center;gap:12px;justify-content:center;margin:18px auto 0;}
+.header-rule span{width:100px;height:2px;background:linear-gradient(90deg,transparent,var(--gold));}
+.header-rule span:last-child{background:linear-gradient(90deg,var(--gold),transparent);}
+.header-rule svg{fill:var(--gold);width:18px;height:18px;}
+
+/* ── SECTION LABEL ── */
+.sec{display:flex;align-items:center;gap:14px;margin:38px 0 18px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3.5px;color:var(--gold);text-transform:uppercase;font-weight:700;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+.sec .snum{background:var(--ink);color:#fff;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;flex:0 0 22px;}
+
+/* ── KEYSTONE BANNER ── */
+.keystone{background:var(--ink);color:var(--gold-lt);border-radius:20px;padding:28px 36px;margin:0 0 32px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.keystone-icon{font-size:40px;flex:0 0 auto;}
+.keystone-body{flex:1;}
+.keystone-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;margin-bottom:6px;color:var(--gold-mid);}
+.keystone-text{font-size:12px;line-height:1.7;color:rgba(247,233,195,0.75);}
+.keystone-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.kchip{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.08);border:1px solid rgba(196,149,42,0.4);font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--gold-mid);}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g1x2{display:grid;grid-template-columns:1fr 2fr;gap:18px;margin-bottom:20px;}
+@media(max-width:1000px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g1x2{grid-template-columns:1fr;}}
+
+/* ── PANEL CARDS ── */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:18px;padding:20px;position:relative;overflow:hidden;transition:box-shadow 0.25s,transform 0.2s;}
+.pc:hover{box-shadow:0 8px 32px var(--shadow);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:18px 18px 0 0;}
+.pc.cg::before{background:linear-gradient(90deg,var(--rust),var(--gold));}
+.pc.cn::before{background:linear-gradient(90deg,var(--navy),#2a60b0);}
+.pc.ct::before{background:linear-gradient(90deg,var(--teal),#1ab8a0);}
+.pc.cp::before{background:linear-gradient(90deg,var(--purple),#a04ac0);}
+.pc.co::before{background:linear-gradient(90deg,var(--olive),#7ab030);}
+.pc.cr::before{background:linear-gradient(90deg,var(--rust),#e07050);}
+.pc.cdk::before{background:linear-gradient(90deg,var(--ink),#3a3020);}
+.pc-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* ── MAP CARD ── */
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc.mc-gold::before{background:linear-gradient(90deg,var(--rust),var(--gold),var(--olive));}
+.mc.mc-navy::before{background:linear-gradient(90deg,var(--navy),var(--purple),var(--teal));}
+.mc.mc-teal::before{background:linear-gradient(90deg,var(--teal),var(--olive),var(--navy));}
+.mc.mc-rust::before{background:linear-gradient(90deg,var(--rust),var(--gold));}
+.mc svg{display:block;width:100%;}
+
+/* ── VLIST ── */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vi{padding:9px 13px;border-radius:10px;background:rgba(196,149,42,0.04);border:1px solid var(--border);font-size:11px;line-height:1.5;}
+.vi .vt{font-weight:700;font-size:12px;color:var(--ink);margin-bottom:2px;}
+.vi .vs{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);}
+
+/* ── PILL ── */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:9.5px;font-weight:700;margin:2px 2px 2px 0;font-family:'JetBrains Mono',monospace;letter-spacing:0.2px;}
+.pill.pg{background:var(--gold-lt);color:#7a5010;}
+.pill.pn{background:var(--navy-lt);color:var(--navy);}
+.pill.pt{background:var(--teal-lt);color:var(--teal);}
+.pill.pp{background:var(--purple-lt);color:var(--purple);}
+.pill.pr{background:var(--rust-lt);color:var(--rust);}
+.pill.po{background:var(--olive-lt);color:var(--olive);}
+
+/* ── STAT ── */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat{flex:1;padding:12px 10px;border-radius:12px;border:1.5px solid var(--border);text-align:center;background:rgba(196,149,42,0.04);}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;line-height:1;}
+.stat-t{font-weight:700;font-size:11px;margin-top:3px;}
+.stat-s{font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--muted);margin-top:2px;}
+
+/* ── CHIP ── */
+.chip{display:inline-block;padding:4px 10px;border-radius:7px;font-size:9.5px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip-ok{background:rgba(74,106,26,0.07);border-color:rgba(74,106,26,0.25);color:var(--olive);}
+.chip-warn{background:rgba(196,74,42,0.07);border-color:rgba(196,74,42,0.25);color:var(--rust);}
+.chip-neu{background:rgba(196,149,42,0.08);border-color:rgba(196,149,42,0.3);color:var(--gold);}
+
+/* ── TRAP BOX ── */
+.trap-box{background:linear-gradient(135deg,#1a1614 0%,#2a2018 100%);border:1.5px solid rgba(196,149,42,0.35);border-radius:18px;padding:24px 28px;margin:0 0 24px;color:var(--gold-lt);}
+.trap-box h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--gold-mid);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.trap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;}
+.trap-item{background:rgba(255,255,255,0.04);border:1px solid rgba(196,149,42,0.2);border-radius:10px;padding:10px 14px;display:flex;align-items:flex-start;gap:10px;}
+.trap-bullet{color:var(--gold);font-size:14px;margin-top:1px;flex:0 0 auto;}
+.trap-text{font-size:11px;line-height:1.55;color:rgba(247,233,195,0.8);}
+
+/* ── TABLE ── */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:var(--gold-lt);padding:9px 12px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable th:first-child{border-radius:8px 0 0 0;}
+.ctable th:last-child{border-radius:0 8px 0 0;}
+.ctable td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(196,149,42,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--rust);}
+
+/* ── FLOW CHAIN ── */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:10px 0;}
+.fn{padding:6px 12px;border-radius:8px;font-size:11px;font-weight:700;border:1.5px solid;}
+.farr{font-size:16px;color:var(--muted);}
+
+/* ── DIVIDER ── */
+.div-rule{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border-dark),transparent);margin:8px 0 12px;}
+
+/* ── PHASE ── */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px;}
+@media(max-width:640px){.phases{grid-template-columns:1fr;}}
+.phase{padding:18px;border-radius:14px;border:2px solid;text-align:center;}
+.phase-n{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;}
+.phase-t{font-size:12px;font-weight:700;margin:4px 0;}
+.phase-s{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);}
+
+/* ── ANIMATION ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.anim{animation:fadeUp 0.55s ease forwards;}
+.anim:nth-child(1){animation-delay:0.05s;}
+.anim:nth-child(2){animation-delay:0.12s;}
+.anim:nth-child(3){animation-delay:0.19s;}
+.anim:nth-child(4){animation-delay:0.26s;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ══════════ HEADER ══════════ -->
+<div class="header">
+  <div class="header-eyebrow">Indian Polity · UPSC Prelims · Key Topic</div>
+  <h1>Parliamentary &amp; Cabinet<br><em>Committees</em></h1>
+  <div class="header-sub">Parliament makes laws → Committees do detail work → Cabinet Committees coordinate executive</div>
+  <div class="header-rule">
+    <span></span>
+    <svg viewBox="0 0 20 20"><polygon points="10,2 12.5,8 19,8.5 14.5,13 16,19.5 10,16 4,19.5 5.5,13 1,8.5 7.5,8"/></svg>
+    <span></span>
+  </div>
+</div>
+
+<!-- ══════════ MASTER FLOW ══════════ -->
+<div class="sec"><span class="snum">0</span>Master Flow — The Big Picture</div>
+
+<div class="mc mc-gold">
+  <svg id="svgMaster" viewBox="0 0 1380 110" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;height:auto;"></svg>
+</div>
+
+<!-- ══════════ SECTION 1: PARLIAMENTARY COMMITTEES ══════════ -->
+<div class="sec"><span class="snum">1</span>Parliamentary Committees — Overview</div>
+
+<div class="g2">
+  <div class="pc cn">
+    <div class="pc-label">Constitutional Basis</div>
+    <h3>📜 Basic Framework</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Mentioned in Constitution</div><div class="vs">But composition & tenure NOT detailed</div></div>
+      <div class="vi"><div class="vt">Governed By</div><div class="vs">Rules of Procedure of both Houses</div></div>
+      <div class="vi"><div class="vt">Appointed / Elected by House</div><div class="vs">Or nominated by Speaker / Chairman</div></div>
+      <div class="vi"><div class="vt">Work Under</div><div class="vs">Speaker (LS) or Chairman (RS)</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;background:rgba(196,74,42,0.07);border:1px dashed var(--rust);border-radius:8px;font-size:10.5px;color:var(--rust);font-weight:700;">
+      ⚠️ Consultative Committees are NOT Parliamentary Committees
+    </div>
+  </div>
+
+  <div class="pc cg">
+    <div class="pc-label">Types</div>
+    <h3>🏛️ Two Categories</h3>
+    <div class="g2" style="gap:12px;margin-bottom:0;">
+      <div style="padding:14px;border-radius:12px;background:rgba(196,149,42,0.07);border:1.5px solid rgba(196,149,42,0.25);">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--gold);">Standing</div>
+        <div style="font-size:11px;font-weight:700;margin:4px 0;">Permanent Committees</div>
+        <div style="font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;">Reconstituted every year<br>Work continuously<br>Ongoing functions</div>
+        <div style="margin-top:8px;"><span class="chip chip-neu">Permanent</span></div>
+      </div>
+      <div style="padding:14px;border-radius:12px;background:rgba(26,53,96,0.05);border:1.5px solid rgba(26,53,96,0.15);">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--navy);">Ad Hoc</div>
+        <div style="font-size:11px;font-weight:700;margin:4px 0;">Temporary Committees</div>
+        <div style="font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;">Cease after task done<br>Inquiry or Advisory<br>Select / Joint Committees</div>
+        <div style="margin-top:8px;"><span class="chip chip-warn">Temporary</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 2: FINANCIAL COMMITTEES ══════════ -->
+<div class="sec"><span class="snum">2</span>Financial Committees — The Big Three</div>
+
+<div class="mc mc-navy">
+  <svg id="svgFin" viewBox="0 0 1380 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;height:auto;"></svg>
+</div>
+
+<div class="g3">
+  <!-- Estimates -->
+  <div class="pc cr">
+    <div class="pc-label">Largest Committee · 1950</div>
+    <h3>📊 Estimates Committee</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-n" style="color:var(--rust);">30</div><div class="stat-t">Members</div><div class="stat-s">ALL FROM LOK SABHA</div></div>
+      <div class="stat"><div class="stat-n" style="color:var(--gold);">1921</div><div class="stat-t">Origin Year</div><div class="stat-s">PRE-INDEPENDENCE</div></div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Elected annually by PR-STV</div></div>
+      <div class="vi"><div class="vt">Set up on John Mathai's recommendation</div></div>
+      <div class="vi"><div class="vt">Functions: Examine budget, suggest economies, suggest alternative policies</div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="chip chip-warn">⚠️ Only LS members</span><span class="chip chip-warn">⚠️ Ministers cannot join</span></div>
+  </div>
+
+  <!-- PAC -->
+  <div class="pc cn">
+    <div class="pc-label">Oldest · 1921 via GOI Act 1919</div>
+    <h3>🔍 Public Accounts Committee</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-n" style="color:var(--navy);">22</div><div class="stat-t">Members</div><div class="stat-s">15 LS + 7 RS</div></div>
+      <div class="stat"><div class="stat-n" style="color:var(--teal);">1967</div><div class="stat-t">Since</div><div class="stat-s">OPP. CHAIRMAN</div></div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">CAG assists PAC</div></div>
+      <div class="vi"><div class="vt">Chairman from Opposition (since 1967)</div></div>
+      <div class="vi"><div class="vt">Examines CAG reports, ensures money spent properly</div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="chip chip-warn">⚠️ Ministers cannot join</span></div>
+  </div>
+
+  <!-- CPU -->
+  <div class="pc ct">
+    <div class="pc-label">1964 · Krishna Menon Recommendation</div>
+    <h3>🏭 Committee on Public Undertakings</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-n" style="color:var(--teal);">22</div><div class="stat-t">Members</div><div class="stat-s">15 LS + 7 RS</div></div>
+      <div class="stat"><div class="stat-n" style="color:var(--olive);">PSU</div><div class="stat-t">Focus Area</div><div class="stat-s">PUBLIC ENTERPRISES</div></div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Examines reports & accounts of PSUs</div></div>
+      <div class="vi"><div class="vt">Advisory in nature — not binding</div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="chip chip-warn">⚠️ Ministers cannot join</span></div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 3: DEPARTMENTAL STANDING COMMITTEES ══════════ -->
+<div class="sec"><span class="snum">3</span>Departmental Standing Committees</div>
+
+<div class="pc cdk" style="margin-bottom:20px;">
+  <div style="display:flex;align-items:center;gap:28px;flex-wrap:wrap;">
+    <div style="text-align:center;flex:0 0 auto;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:700;color:var(--gold);line-height:1;">24</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:2px;">TOTAL COMMITTEES</div>
+    </div>
+    <div style="flex:1;min-width:200px;">
+      <div class="div-rule"></div>
+      <div class="g2" style="margin-bottom:0;gap:12px;">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--gold-mid);margin-bottom:6px;">Composition</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="kchip">31 Members each</span>
+            <span class="kchip">21 from LS</span>
+            <span class="kchip">10 from RS</span>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--gold-mid);margin-bottom:6px;">Distribution</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="kchip">8 under RS</span>
+            <span class="kchip">16 under LS</span>
+            <span class="kchip">1-year term</span>
+          </div>
+        </div>
+      </div>
+      <div class="div-rule" style="margin-top:10px;"></div>
+      <div style="font-size:11px;line-height:1.6;color:rgba(247,233,195,0.65);">Examine: <strong style="color:var(--gold-mid);">Bills · Demands for Grants · Ministry Performance</strong> — Ministers CANNOT be members</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 4: OTHER COMMITTEES MAP ══════════ -->
+<div class="sec"><span class="snum">4</span>Other Important Parliamentary Committees</div>
+
+<div class="mc mc-teal">
+  <svg id="svgOther" viewBox="0 0 1380 260" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;height:auto;"></svg>
+</div>
+
+<div class="g4">
+  <div class="pc cg">
+    <div class="pc-label">Rules & Procedure</div>
+    <h3>📋 Rules Committee</h3>
+    <div style="font-size:11px;line-height:1.6;color:var(--muted);">Recommends procedural changes in the Rules of Procedure of the House.</div>
+  </div>
+  <div class="pc cn">
+    <div class="pc-label">Time Allocation</div>
+    <h3>⏱️ Business Advisory</h3>
+    <div style="font-size:11px;line-height:1.6;color:var(--muted);">Allocates time for legislative business across the session calendar.</div>
+  </div>
+  <div class="pc ct">
+    <div class="pc-label">Delegated Legislation</div>
+    <h3>⚖️ Subordinate Legislation</h3>
+    <div style="font-size:11px;line-height:1.6;color:var(--muted);">Examines rules made by the executive. Ensures no excess delegation of legislative power.</div>
+  </div>
+  <div class="pc cp">
+    <div class="pc-label">Minister Accountability</div>
+    <h3>📌 Govt Assurances</h3>
+    <div style="font-size:11px;line-height:1.6;color:var(--muted);">Tracks promises made by ministers on the floor of the House.</div>
+  </div>
+  <div class="pc cr">
+    <div class="pc-label">Member Conduct</div>
+    <h3>🛡️ Committee on Privileges</h3>
+    <div style="font-size:11px;line-height:1.6;color:var(--muted);">Deals with breach of privilege cases involving MPs and their rights.</div>
+  </div>
+  <div class="pc co">
+    <div class="pc-label">MP Conduct</div>
+    <h3>🧭 Ethics Committee</h3>
+    <div style="font-size:11px;line-height:1.6;color:var(--muted);">Oversees conduct of Members of Parliament. Investigates ethical violations.</div>
+  </div>
+  <div class="pc cg">
+    <div class="pc-label">Public Voice</div>
+    <h3>📩 Committee on Petitions</h3>
+    <div style="font-size:11px;line-height:1.6;color:var(--muted);">Reviews petitions submitted from the public on matters of concern.</div>
+  </div>
+  <div class="pc cn">
+    <div class="pc-label">Oversight</div>
+    <h3>🔗 Offices of Profit</h3>
+    <div style="font-size:11px;line-height:1.6;color:var(--muted);">Joint Committee. Examines offices of profit held by MPs under Article 102.</div>
+  </div>
+</div>
+
+<div class="g3">
+  <div class="pc ct">
+    <div class="pc-label">Social Justice</div>
+    <h3>👥 Welfare of SC/ST</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-n" style="color:var(--teal);">30</div><div class="stat-t">Members</div><div class="stat-s">20 LS + 10 RS</div></div>
+    </div>
+    <div style="font-size:11px;color:var(--muted);">Oversees welfare policies and their implementation for Scheduled Castes & Tribes.</div>
+  </div>
+  <div class="pc cp">
+    <div class="pc-label">Gender Representation</div>
+    <h3>👩 Empowerment of Women</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-n" style="color:var(--purple);">30</div><div class="stat-t">Members</div><div class="stat-s">20 LS + 10 RS</div></div>
+    </div>
+    <div style="font-size:11px;color:var(--muted);">Examines measures taken for welfare and empowerment of women in India.</div>
+  </div>
+  <div class="pc co">
+    <div class="pc-label">Parliament Resources</div>
+    <h3>📚 Library Committee</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-n" style="color:var(--olive);">9</div><div class="stat-t">Members</div><div class="stat-s">6 LS + 3 RS</div></div>
+    </div>
+    <div style="font-size:11px;color:var(--muted);">Oversees the Parliament library, its resources, and member access to information.</div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 5: CABINET COMMITTEES ══════════ -->
+<div class="sec"><span class="snum">5</span>Cabinet Committees — Executive Side</div>
+
+<div class="mc mc-rust">
+  <svg id="svgCabinet" viewBox="0 0 1380 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;height:auto;"></svg>
+</div>
+
+<div class="g2" style="margin-bottom:20px;">
+  <div class="pc cg">
+    <div class="pc-label">Legal Basis</div>
+    <h3>⚖️ Nature of Cabinet Committees</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Extra-Constitutional</div><div class="vs">Not mentioned in the Constitution</div></div>
+      <div class="vi"><div class="vt">Based on Article 77(3)</div><div class="vs">Transaction of Business Rules, 1961</div></div>
+      <div class="vi"><div class="vt">Set up by Prime Minister</div><div class="vs">PM often chairs them</div></div>
+      <div class="vi"><div class="vt">Usually 3–8 members</div><div class="vs">Senior Cabinet Ministers</div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="chip chip-warn">⚠️ Extra-constitutional</span><span class="chip chip-ok">✅ Reduce Cabinet workload</span></div>
+  </div>
+
+  <div class="pc cn">
+    <div class="pc-label">Types</div>
+    <h3>🔀 Standing vs Ad Hoc</h3>
+    <div class="g2" style="gap:12px;margin-bottom:0;">
+      <div style="padding:14px;border-radius:12px;background:rgba(196,149,42,0.07);border:1.5px solid rgba(196,149,42,0.25);">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--gold);">Standing</div>
+        <div style="font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:4px;">Permanent<br>Recurring policy areas<br>e.g. CCS, CCPA, CCEA</div>
+        <span class="chip chip-neu" style="margin-top:6px;display:inline-block;">Permanent</span>
+      </div>
+      <div style="padding:14px;border-radius:12px;background:rgba(26,53,96,0.05);border:1.5px solid rgba(26,53,96,0.15);">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--navy);">Ad Hoc</div>
+        <div style="font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:4px;">Temporary<br>Specific issue / task<br>Dissolved when done</div>
+        <span class="chip chip-warn" style="margin-top:6px;display:inline-block;">Temporary</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ IMPORTANT CABINET COMMITTEES ══════════ -->
+<div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2.5px;color:var(--muted);margin-bottom:12px;text-transform:uppercase;">Key Cabinet Committees</div>
+
+<div class="g2" style="margin-bottom:14px;">
+  <div class="pc cr" style="border-left:4px solid var(--rust);">
+    <div class="pc-label">Nicknamed "Super Cabinet"</div>
+    <h3>🏛️ CC on Political Affairs</h3>
+    <div style="font-size:12px;line-height:1.65;">Deals with major domestic &amp; foreign policy decisions. The most powerful Cabinet Committee — called the <strong>"Super Cabinet"</strong>.</div>
+    <div style="margin-top:10px;"><span class="chip chip-warn">Highest Authority</span></div>
+  </div>
+  <div class="pc ct">
+    <div class="pc-label">National Security</div>
+    <h3>🛡️ CC on Security (CCS)</h3>
+    <div style="font-size:12px;line-height:1.65;">Deals with all matters of national security and strategic affairs. PM + Defence Minister + key security ministers.</div>
+    <div style="margin-top:10px;"><span class="pill pt">PM + Defence</span><span class="pill pt">MEA · Home · Finance</span></div>
+  </div>
+</div>
+
+<div class="g3">
+  <div class="pc co">
+    <div class="pc-label">Economic Policy</div>
+    <h3>💹 CC on Economic Affairs</h3>
+    <div style="font-size:11px;line-height:1.6;color:var(--muted);">Coordinates economic policy across ministries. Key decisions on infrastructure, prices, and development.</div>
+  </div>
+  <div class="pc cn">
+    <div class="pc-label">Special Composition</div>
+    <h3>👔 Appointment Committee (ACC)</h3>
+    <div style="font-size:12px;margin-bottom:8px;font-weight:700;">Members: <span style="color:var(--navy);">PM + Home Minister only</span></div>
+    <div style="font-size:11px;line-height:1.6;color:var(--muted);">Approves high-level appointments in government and statutory bodies.</div>
+    <div style="margin-top:8px;"><span class="chip chip-warn">⚠️ Only 2 members — PM + HM</span></div>
+  </div>
+  <div class="pc cp">
+    <div class="pc-label">Legislature Coordination</div>
+    <h3>📜 CC on Parliamentary Affairs</h3>
+    <div style="font-size:11px;line-height:1.6;color:var(--muted);">Manages government's legislative business in Parliament. Coordinates session agenda between government and Parliament.</div>
+  </div>
+</div>
+
+<div class="g2" style="margin-bottom:20px;">
+  <div class="pc cg">
+    <div class="pc-label">Economy</div>
+    <h3>📈 CC on Investment &amp; Growth</h3>
+    <div style="font-size:11px;line-height:1.6;color:var(--muted);">Promotes domestic and foreign investment. Fast-tracks large infrastructure and economic growth projects.</div>
+  </div>
+  <div class="pc co">
+    <div class="pc-label">Human Development</div>
+    <h3>🎓 CC on Employment &amp; Skills</h3>
+    <div style="font-size:11px;line-height:1.6;color:var(--muted);">Addresses employment generation and skill development priorities across government schemes.</div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 6: CABINET SECRETARIAT ══════════ -->
+<div class="sec"><span class="snum">6</span>Cabinet Secretariat &amp; Administrative Reforms</div>
+
+<div class="g2">
+  <div class="pc cn">
+    <div class="pc-label">Support Machinery</div>
+    <h3>🏢 Cabinet Secretariat</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Functions under Prime Minister</div></div>
+      <div class="vi"><div class="vt">Headed by Cabinet Secretary</div><div class="vs">Seniormost IAS officer in India</div></div>
+      <div class="vi"><div class="vt">Cabinet Secretary = Ex-officio Chairman</div><div class="vs">Of the Civil Services Board</div></div>
+    </div>
+    <div class="div-rule" style="margin-top:10px;"></div>
+    <div style="font-size:11px;font-weight:700;margin-bottom:6px;">Functions:</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <span class="chip chip-neu">Sets Cabinet Agenda</span>
+      <span class="chip chip-neu">Secretariat Assistance</span>
+      <span class="chip chip-neu">Inter-Ministry Coordination</span>
+    </div>
+  </div>
+  <div class="pc cg">
+    <div class="pc-label">Reform Timeline</div>
+    <h3>🔄 Administrative Reform Context</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">1950 — N. Gopalaswami Ayyangar</div><div class="vs">Suggested grouping of ministries</div></div>
+      <div class="vi"><div class="vt">1st ARC Recommendation</div><div class="vs">Dedicated minister + secretary for admin reforms</div></div>
+      <div class="vi"><div class="vt">1970 — Dept. of Personnel created</div><div class="vs">Separate personnel management</div></div>
+      <div class="vi"><div class="vt">1985 — Brought under PM</div><div class="vs">Prime Minister's direct oversight</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 7: COMPARISON TABLE ══════════ -->
+<div class="sec"><span class="snum">7</span>Parliamentary vs Cabinet Committees — Quick Comparison</div>
+
+<div class="mc mc-gold" style="padding:0;">
+  <div style="padding:24px;">
+    <table class="ctable" style="border-radius:10px;overflow:hidden;">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Parliamentary Committees</th>
+          <th>Cabinet Committees</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Constitutional Basis</td><td>Mentioned (not detailed) in Constitution</td><td>Extra-constitutional — Article 77(3)</td></tr>
+        <tr><td>Set Up By</td><td>Speaker / Chairman / House</td><td>Prime Minister</td></tr>
+        <tr><td>Works Under</td><td>Speaker (LS) / Chairman (RS)</td><td>Prime Minister</td></tr>
+        <tr><td>Members</td><td>MPs (Ministers excluded from financial committees)</td><td>Cabinet Ministers (PM often chairs)</td></tr>
+        <tr><td>Purpose</td><td>Scrutiny of laws, budget, executive</td><td>Coordinate executive decisions, reduce Cabinet workload</td></tr>
+        <tr><td>Governed By</td><td>Rules of Procedure</td><td>Transaction of Business Rules, 1961</td></tr>
+        <tr><td>Types</td><td>Standing + Ad Hoc</td><td>Standing + Ad Hoc</td></tr>
+        <tr><td>Reports To</td><td>House</td><td>Prime Minister / Cabinet</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 8: HIGH-PROBABILITY TRAPS ══════════ -->
+<div class="sec"><span class="snum">8</span>High-Probability Prelims Traps 🔥</div>
+
+<div class="trap-box">
+  <h3>🎯 Never Get These Wrong</h3>
+  <div class="trap-grid">
+    <div class="trap-item"><div class="trap-bullet">🔴</div><div class="trap-text"><strong>PAC Chairman from Opposition</strong> — since 1967. Convention, not law.</div></div>
+    <div class="trap-item"><div class="trap-bullet">🔴</div><div class="trap-text"><strong>Estimates Committee = Only Lok Sabha</strong> — All 30 members from LS only. No RS.</div></div>
+    <div class="trap-item"><div class="trap-bullet">🔴</div><div class="trap-text"><strong>Ministers CANNOT join</strong> PAC, Estimates, or CPU — any financial committee.</div></div>
+    <div class="trap-item"><div class="trap-bullet">🔴</div><div class="trap-text"><strong>Departmental Standing Committees = 24</strong> (not 21, not 28 — exactly 24).</div></div>
+    <div class="trap-item"><div class="trap-bullet">🔴</div><div class="trap-text"><strong>Cabinet Committees = Extra-constitutional</strong> — NOT in the Constitution.</div></div>
+    <div class="trap-item"><div class="trap-bullet">🔴</div><div class="trap-text"><strong>Appointment Committee = PM + Home Minister only</strong> — Just 2 members.</div></div>
+    <div class="trap-item"><div class="trap-bullet">🔴</div><div class="trap-text"><strong>Cabinet Secretariat under PM</strong> — Headed by Cabinet Secretary (seniormost IAS).</div></div>
+    <div class="trap-item"><div class="trap-bullet">🔴</div><div class="trap-text"><strong>Article 77(3)</strong> → Transaction of Business Rules → basis for Cabinet Committees.</div></div>
+    <div class="trap-item"><div class="trap-bullet">🔴</div><div class="trap-text"><strong>CAG assists PAC</strong> — not the Estimates Committee. CAG + PAC work together.</div></div>
+    <div class="trap-item"><div class="trap-bullet">🔴</div><div class="trap-text"><strong>Subordinate Legislation Committee</strong> = examines delegated/executive-made rules.</div></div>
+    <div class="trap-item"><div class="trap-bullet">🔴</div><div class="trap-text"><strong>CPU (1964)</strong> based on <strong>Krishna Menon Committee</strong> recommendation.</div></div>
+    <div class="trap-item"><div class="trap-bullet">🔴</div><div class="trap-text"><strong>Estimates Committee origin = 1921</strong>, set up in independent India on <strong>John Mathai's</strong> recommendation.</div></div>
+  </div>
+</div>
+
+<!-- ══════════ CONNECTED FLOW ══════════ -->
+<div class="sec"><span class="snum">9</span>Full Connected Flow</div>
+
+<div class="mc mc-gold" style="padding:0;">
+  <svg id="svgConnected" viewBox="0 0 1380 100" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;height:auto;"></svg>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone" style="margin-top:32px;">
+  <div class="keystone-icon">⚖️</div>
+  <div class="keystone-body">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-text">Parliament makes laws and controls the executive. But it can't do detailed work in plenary — so <strong style="color:var(--gold-mid);">Committees</strong> do the scrutiny. On the executive side, full Cabinet is too large for quick decisions — so <strong style="color:var(--gold-mid);">Cabinet Committees</strong> coordinate. Both systems reduce overload and enable depth — but through different mechanisms and different constitutional bases.</div>
+    <div class="keystone-chips">
+      <span class="kchip">📜 Parliament → Committees → Scrutiny</span>
+      <span class="kchip">🏛️ Cabinet → CC → Coordination</span>
+      <span class="kchip">⚖️ Financial Control via PAC + CAG</span>
+      <span class="kchip">🔒 No Ministers in Financial Committees</span>
+      <span class="kchip">🌐 Extra-Constitutional Cabinet Committees</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const mid_x=(x1+x2)/2;
+  const p=se('path',{
+    d:`M${x1},${y1} C${mid_x},${y1} ${mid_x},${y2} ${x2},${y2}`,
+    stroke:color||'#aaa','stroke-width':w||1.5,fill:'none',
+    'stroke-dasharray':dashed?'5 4':'none',opacity:'0.65'
+  });
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,stroke,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  // shadow
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  // main rect
+  const r=se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:stroke||'rgba(255,255,255,0.2)','stroke-width':'1.5'});
+  g.appendChild(r);
+  // top accent
+  const acc=se('rect',{x:x-w/2,y:y-h/2,width:w,height:4,rx:rx,ry:rx,fill:'rgba(255,255,255,0.2)'});
+  g.appendChild(acc);
+
+  const linesArr=Array.isArray(lines)?lines:[lines];
+  let ty=y-(linesArr.length-1)*7-(sub?5:0)-(emoji?10:0);
+
+  if(emoji){
+    const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'16',fill:textCol});
+    em.textContent=emoji;g.appendChild(em);ty+=20;
+  }
+
+  linesArr.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*14.5,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Outfit,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+
+  if(sub){
+    const s=se('text',{x,y:ty+linesArr.length*14.5+2,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'JetBrains Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.5)':'rgba(30,20,10,0.4)'});
+    s.textContent=sub;g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgMaster');
+  const bg=se('rect',{x:0,y:0,width:1380,height:110,fill:'rgba(250,248,243,0.6)'});
+  svg.appendChild(bg);
+
+  const steps=[
+    {x:80, label:['Parliament','Makes Laws'], sub:'Supreme Legislature', fill:'#1a3560', emoji:'🏛️'},
+    {x:240, label:['Committees','Scrutinize'], sub:'Detailed work', fill:'#c4952a', emoji:'🔍'},
+    {x:400, label:['Financial','Committees'], sub:'Budget control', fill:'#c44a2a', emoji:'💰'},
+    {x:560, label:['Standing','Committees'], sub:'24 Dept. Committees', fill:'#0f7a6e', emoji:'📊'},
+    {x:720, label:['Cabinet','Coordinates'], sub:'Executive side', fill:'#6a2a8a', emoji:'⚙️'},
+    {x:880, label:['Cabinet','Committees'], sub:'Extra-constitutional', fill:'#4a6a1a', emoji:'🔀'},
+    {x:1040, label:['Cabinet','Secretariat'], sub:'Under PM', fill:'#1a3560', emoji:'📋'},
+    {x:1200, label:['Admin','Reforms'], sub:'Gopalaswami → 1st ARC', fill:'#c44a2a', emoji:'🔄'},
+    {x:1330, label:['Effective','Governance'], sub:'Laws + Policy', fill:'#0f7a6e', emoji:'✅'},
+  ];
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const nx=steps[i+1].x;
+      // arrow line
+      const ax=s.x+66, bx=nx-66;
+      svg.appendChild(se('line',{x1:ax,y1:55,x2:bx,y2:55,stroke:'#c4952a55','stroke-width':'2'}));
+      // arrowhead
+      const ah=se('polygon',{points:`${bx+1},51 ${bx+9},55 ${bx+1},59`,fill:'#c4952a88'});
+      svg.appendChild(ah);
+    }
+  });
+
+  steps.forEach(s=>{
+    node(svg,s.x,55,124,72,s.fill,'rgba(255,255,255,0.15)',s.label,s.sub,s.emoji);
+  });
+
+  const t=se('text',{x:690,y:102,'text-anchor':'middle','font-size':'8.5','font-family':'JetBrains Mono,monospace','letter-spacing':'3','fill':'rgba(120,95,50,0.4)'});
+  t.textContent='MASTER FLOW: PARLIAMENT → COMMITTEES → EXECUTIVE COORDINATION → GOVERNANCE';
+  svg.appendChild(t);
+})();
+
+// ─── FINANCIAL COMMITTEES MIND MAP ───
+(function(){
+  const svg=document.getElementById('svgFin');
+  const bg=se('rect',{x:0,y:0,width:1380,height:200,fill:'rgba(250,248,243,0.5)'});
+  svg.appendChild(bg);
+
+  // Central node
+  node(svg,690,100,220,56,'#1a3560','rgba(255,255,255,0.15)',['Financial Committees'],'Parliamentary Oversight','💰');
+
+  const branches=[
+    {x:140, y:65, fill:'#c44a2a', lines:['Estimates','Committee'], sub:'30 members · LS only', emoji:'📊'},
+    {x:140, y:155, fill:'#b87030', lines:['Origin: 1921','John Mathai'], sub:'Suggests economies', emoji:'📅'},
+    {x:690, y:175, fill:'#6a2a8a', lines:['Ministers CANNOT','be Members'], sub:'All 3 committees', emoji:'🚫'},
+    {x:1240, y:65, fill:'#1a3560', lines:['Public Accounts','Committee (PAC)'], sub:'22 members · 15+7', emoji:'🔍'},
+    {x:1240, y:155, fill:'#0f7a6e', lines:['CPU (1964)','Krishna Menon'], sub:'22 members · PSUs', emoji:'🏭'},
+  ];
+
+  // edges
+  edge(svg,580,100,255,65,'#c44a2a44',true,1.8);
+  edge(svg,580,100,255,155,'#b8703044',true,1.8);
+  edge(svg,690,128,690,152,'#6a2a8a44',true,1.8);
+  edge(svg,800,100,1125,65,'#1a356044',true,1.8);
+  edge(svg,800,100,1125,155,'#0f7a6e44',true,1.8);
+
+  branches.forEach(b=>{
+    node(svg,b.x,b.y,220,54,b.fill,'rgba(255,255,255,0.15)',b.lines,b.sub,b.emoji);
+  });
+
+  // PAC special badge
+  const badge=se('rect',{x:1116,y:14,width:248,height:20,rx:5,fill:'rgba(15,122,110,0.15)',stroke:'rgba(15,122,110,0.4)','stroke-width':'1'});
+  svg.appendChild(badge);
+  const bt=se('text',{x:1240,y:24,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9','font-family':'JetBrains Mono,monospace',fill:'#0f7a6e','font-weight':'700'});
+  bt.textContent='Chairman from Opposition since 1967';
+  svg.appendChild(bt);
+})();
+
+// ─── OTHER COMMITTEES MAP ───
+(function(){
+  const svg=document.getElementById('svgOther');
+  const bg=se('rect',{x:0,y:0,width:1380,height:260,fill:'rgba(250,248,243,0.5)'});
+  svg.appendChild(bg);
+
+  node(svg,690,130,240,58,'#0f7a6e','rgba(255,255,255,0.15)',['Other Important','Committees'],'Ad hoc, Advisory, Oversight','🏛️');
+
+  const left=[
+    {x:160, y:55,  fill:'#1a3560', lines:['Rules Committee'],        sub:'Procedural changes',     emoji:'📋'},
+    {x:160, y:130, fill:'#c4952a', lines:['Business Advisory'],       sub:'Time allocation',        emoji:'⏱️'},
+    {x:160, y:205, fill:'#0f7a6e', lines:['Subordinate Legislation'], sub:'Executive rules check',  emoji:'⚖️'},
+  ];
+  const right=[
+    {x:1220, y:55,  fill:'#c44a2a', lines:['Govt. Assurances'],      sub:'Tracks minister promises', emoji:'📌'},
+    {x:1220, y:130, fill:'#6a2a8a', lines:['Committee on Privileges'],sub:'Breach of privilege',     emoji:'🛡️'},
+    {x:1220, y:205, fill:'#4a6a1a', lines:['Ethics Committee'],       sub:'MP conduct oversight',    emoji:'🧭'},
+  ];
+  const bot=[
+    {x:440,  y:230, fill:'#1a3560', lines:['Petitions Committee'],   sub:'Public petitions',        emoji:'📩'},
+    {x:690,  y:230, fill:'#0f7a6e', lines:['SC/ST Welfare','30 members (20+10)'], sub:'', emoji:'👥'},
+    {x:940,  y:230, fill:'#6a2a8a', lines:['Women Empowerment','30 members (20+10)'], sub:'', emoji:'👩'},
+  ];
+
+  left.forEach(n=>{
+    edge(svg,571,130,n.x+115,n.y,'#1a356044',true,1.5);
+    node(svg,n.x,n.y,220,48,n.fill,'rgba(255,255,255,0.15)',n.lines,n.sub,n.emoji);
+  });
+  right.forEach(n=>{
+    edge(svg,809,130,n.x-115,n.y,'#c44a2a44',true,1.5);
+    node(svg,n.x,n.y,220,48,n.fill,'rgba(255,255,255,0.15)',n.lines,n.sub,n.emoji);
+  });
+  bot.forEach(n=>{
+    edge(svg,690,159,n.x,n.y-28,'#0f7a6e44',true,1.5);
+    node(svg,n.x,n.y,220,48,n.fill,'rgba(255,255,255,0.15)',n.lines,n.sub,n.emoji);
+  });
+})();
+
+// ─── CABINET COMMITTEES MAP ───
+(function(){
+  const svg=document.getElementById('svgCabinet');
+  const bg=se('rect',{x:0,y:0,width:1380,height:200,fill:'rgba(250,248,243,0.5)'});
+  svg.appendChild(bg);
+
+  node(svg,690,100,240,56,'#1a1614','rgba(255,255,255,0.1)',['Cabinet Committees'],'Extra-Constitutional · PM Sets Up','🏛️');
+
+  const items=[
+    {x:130,  y:60,  fill:'#c44a2a', lines:['CC on Political','Affairs (CCPA)'],   sub:'"Super Cabinet"',       emoji:'🔴'},
+    {x:130,  y:155, fill:'#1a3560', lines:['CC on Security','(CCS)'],             sub:'PM + Defence + HM',     emoji:'🛡️'},
+    {x:450,  y:175, fill:'#c4952a', lines:['Appointment Comm.','(ACC)'],          sub:'PM + Home Min. only',   emoji:'👔'},
+    {x:930,  y:175, fill:'#4a6a1a', lines:['CC on Economic','Affairs (CCEA)'],    sub:'Economic policy',       emoji:'💹'},
+    {x:1250, y:60,  fill:'#6a2a8a', lines:['CC on Parliamentary','Affairs'],      sub:'Legislature mgmt.',     emoji:'📜'},
+    {x:1250, y:155, fill:'#0f7a6e', lines:['CC on Investment','& Growth'],        sub:'Economic development',  emoji:'📈'},
+  ];
+
+  edge(svg,571,100,250,60,'#c44a2a44',true,1.8);
+  edge(svg,571,100,250,155,'#1a356044',true,1.8);
+  edge(svg,640,128,550,155,'#c4952a44',true,1.8);
+  edge(svg,740,128,830,155,'#4a6a1a44',true,1.8);
+  edge(svg,809,100,1130,60,'#6a2a8a44',true,1.8);
+  edge(svg,809,100,1130,155,'#0f7a6e44',true,1.8);
+
+  items.forEach(it=>{
+    node(svg,it.x,it.y,230,54,it.fill,'rgba(255,255,255,0.15)',it.lines,it.sub,it.emoji);
+  });
+
+  // Note about ACC
+  const nb=se('rect',{x:296,y:152,width:260,height:18,rx:4,fill:'rgba(196,74,42,0.12)',stroke:'rgba(196,74,42,0.35)','stroke-width':'1'});
+  svg.appendChild(nb);
+  const nt=se('text',{x:426,y:161,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'JetBrains Mono,monospace',fill:'#c44a2a','font-weight':'700'});
+  nt.textContent='⚠️ Only 2 members: PM + Home Minister';
+  svg.appendChild(nt);
+})();
+
+// ─── CONNECTED FLOW ───
+(function(){
+  const svg=document.getElementById('svgConnected');
+  const bg=se('rect',{x:0,y:0,width:1380,height:100,fill:'rgba(250,248,243,0.6)'});
+  svg.appendChild(bg);
+
+  const chain=[
+    {x:82,  fill:'#1a3560', text:['Parliament','Passes Laws']},
+    {x:248, fill:'#c4952a', text:['Committees','Scrutinize']},
+    {x:418, fill:'#c44a2a', text:['Financial','Control: PAC']},
+    {x:590, fill:'#0f7a6e', text:['Policy Review','Dept. Committees']},
+    {x:762, fill:'#6a2a8a', text:['Executive','Coordinates']},
+    {x:932, fill:'#4a6a1a', text:['Cabinet Comms.','Decide Faster']},
+    {x:1102,fill:'#1a3560', text:['Cabinet Secy.','Supports PM']},
+    {x:1280,fill:'#c44a2a', text:['Admin Reforms','Strengthen System']},
+  ];
+
+  chain.forEach((c,i)=>{
+    if(i<chain.length-1){
+      const nx=chain[i+1].x;
+      svg.appendChild(se('line',{x1:c.x+72,y1:50,x2:nx-72,y2:50,stroke:'#c4952a55','stroke-width':'1.8'}));
+      svg.appendChild(se('polygon',{points:`${nx-72},46 ${nx-64},50 ${nx-72},54`,fill:'#c4952a88'}));
+    }
+    node(svg,c.x,50,136,60,c.fill,'rgba(255,255,255,0.12)',c.text,'','');
+  });
+
+  const t=se('text',{x:690,y:92,'text-anchor':'middle','font-size':'8','font-family':'JetBrains Mono,monospace','letter-spacing':'2.5','fill':'rgba(120,95,50,0.4)'});
+  t.textContent='COMPLETE FLOW: LEGISLATION → SCRUTINY → FINANCIAL CONTROL → EXECUTIVE COORDINATION → REFORM';
+  svg.appendChild(t);
+})();
+</script>
+</body>
+</html>

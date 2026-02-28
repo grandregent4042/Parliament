@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emergency Provisions — Part XVIII Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f4ee;--surface:#fffdf8;--surface2:#f0ece2;--border:#e0d8c8;
+  --ink:#1a1510;--muted:#7a6e5a;--faint:#c8bfa8;
+  --red:#c0392b;--red-lt:#fdf0ee;--red-mid:#e8a09a;
+  --amber:#c07010;--amber-lt:#fdf5e8;--amber-mid:#e8c080;
+  --green:#1a7a3a;--green-lt:#edf7f0;--green-mid:#90c8a0;
+  --blue:#1a3a8a;--blue-lt:#eef1fb;--blue-mid:#90a8e0;
+  --purple:#6a1a9a;--purple-lt:#f4edfb;--purple-mid:#c090e0;
+  --teal:#0a6878;--teal-lt:#edf6f8;--teal-mid:#80c0cc;
+  --gold:#9a6a10;--gold-lt:#faf0d8;
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden;line-height:1.5;}
+body::before{content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 800px 600px at 10% 5%,rgba(192,57,43,0.04) 0%,transparent 60%),
+    radial-gradient(ellipse 600px 600px at 90% 95%,rgba(26,58,138,0.04) 0%,transparent 60%);
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1380px;margin:0 auto;padding:0 28px 120px;}
+
+.header{text-align:center;padding:52px 16px 20px;}
+.header-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--amber);text-transform:uppercase;margin-bottom:12px;}
+.header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,56px);line-height:1.05;color:var(--ink);font-weight:700;}
+.header h1 em{font-style:italic;color:var(--red);}
+.header-sub{margin-top:8px;font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:1.5px;}
+.header-line{width:120px;height:3px;background:linear-gradient(90deg,var(--red),var(--amber),var(--blue));margin:14px auto 0;border-radius:3px;}
+.header-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;background:var(--surface);border:1.5px solid var(--border);font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin:10px 3px 0;}
+
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:3.5px;color:var(--amber);text-transform:uppercase;margin:34px 0 14px;display:flex;align-items:center;gap:14px;}
+.sec-label::before{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--border));}
+.sec-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:18px;}
+@media(max-width:960px){.g3{grid-template-columns:1fr 1fr;}.g2x1{grid-template-columns:1fr;}}
+@media(max-width:600px){.g2,.g3,.g2x1{grid-template-columns:1fr;}}
+
+.pc{background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:18px;position:relative;overflow:hidden;transition:box-shadow .25s,transform .2s;}
+.pc:hover{box-shadow:0 8px 32px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.pc.red::before{background:linear-gradient(90deg,var(--red),#e05040);}
+.pc.amber::before{background:linear-gradient(90deg,var(--amber),#e09020);}
+.pc.green::before{background:linear-gradient(90deg,var(--green),#20a050);}
+.pc.blue::before{background:linear-gradient(90deg,var(--blue),#2858c0);}
+.pc.purple::before{background:linear-gradient(90deg,var(--purple),#9030c0);}
+.pc.teal::before{background:linear-gradient(90deg,var(--teal),#1098a8);}
+.pc.gold::before{background:linear-gradient(90deg,var(--gold),#c09020);}
+.pc.dark::before{background:linear-gradient(90deg,var(--ink),#404040);}
+.pc-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;line-height:1.25;}
+
+.map-card{background:var(--surface);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;position:relative;margin-bottom:22px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;}
+.map-card.mc-red::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc-blue::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc-green::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card.mc-amber::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.map-card svg{display:block;width:100%;height:auto;}
+
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px 8px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--surface2);}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;line-height:1;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:600;margin-top:3px;}
+.stat-label{font-size:8px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:2px;}
+
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--surface2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:700;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+.impact-chain{display:flex;align-items:center;flex-wrap:wrap;gap:6px;padding:6px 0;margin:8px 0;}
+.ic-node{padding:6px 11px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:14px;color:var(--faint);}
+
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 12px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:1px;}
+.ctable th:first-child{border-radius:8px 0 0 0;}
+.ctable th:last-child{border-radius:0 8px 0 0;}
+.ctable td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.025);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.tag{display:inline-block;padding:2px 8px;border-radius:5px;font-size:9px;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.tag.ok{background:var(--green-lt);color:var(--green);}
+.tag.na{background:var(--red-lt);color:var(--red);}
+.tag.am{background:var(--amber-lt);color:var(--amber);}
+
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;}
+.phase-title{font-size:12px;font-weight:700;margin:5px 0 3px;}
+.phase-sub{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);}
+
+.callout{padding:11px 14px;border-radius:10px;border:1.5px solid;margin:8px 0;}
+.callout-title{font-size:11px;font-weight:700;margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.6;}
+.callout.red{background:var(--red-lt);border-color:var(--red-mid);}
+.callout.red .callout-title{color:var(--red);}
+.callout.green{background:var(--green-lt);border-color:var(--green-mid);}
+.callout.green .callout-title{color:var(--green);}
+.callout.amber{background:var(--amber-lt);border-color:var(--amber-mid);}
+.callout.amber .callout-title{color:var(--amber);}
+
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:26px 32px;margin:24px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.keystone-icon{font-size:40px;flex:0 0 auto;}
+.keystone-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:600;margin-bottom:6px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'JetBrains Mono',monospace;border:1px solid rgba(255,255,255,0.15);}
+
+.chip{display:inline-block;padding:3px 9px;border-radius:7px;font-size:9.5px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip.good{background:var(--green-lt);border-color:var(--green-mid);color:var(--green);}
+.chip.bad{background:var(--red-lt);border-color:var(--red-mid);color:var(--red);}
+.chip.neu{background:var(--amber-lt);border-color:var(--amber-mid);color:var(--amber);}
+
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--surface2);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:700;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:2px;}
+
+.divline{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:8px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-eyebrow">Indian Polity · Part XVIII · Articles 352–360 · UPSC</div>
+  <h1>Emergency Provisions — <em>Mind Map</em></h1>
+  <div class="header-sub">Federal → Unitary · 3 Types · 44th Amendment Safeguards · Fundamental Rights Impact</div>
+  <div class="header-line"></div>
+  <div style="margin-top:14px;">
+    <span class="header-tag">📜 Art 352 · National Emergency</span>
+    <span class="header-tag">🏛️ Art 356 · President's Rule</span>
+    <span class="header-tag">💰 Art 360 · Financial Emergency</span>
+    <span class="header-tag">⚖️ 44th Amendment Shield</span>
+  </div>
+</div>
+
+<!-- ① MASTER FLOW -->
+<div class="sec-label">① Master Flow — The Emergency Life-Cycle</div>
+<div class="map-card mc-red">
+  <svg id="svgMaster" viewBox="0 0 1200 110" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- ② ORIGINS -->
+<div class="sec-label">② Origins — Where Did It Come From?</div>
+<div class="g2">
+  <div class="pc amber">
+    <div class="pc-label">Constitutional Borrowing</div>
+    <h3>📜 Sources of Emergency Provisions</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🇬🇧 Govt. of India Act, 1935</div><div class="vs">Strong Centre framework — emergency powers concept</div></div>
+      <div class="vitem"><div class="vt">🇩🇪 Weimar Constitution (Germany)</div><div class="vs">Suspension of Fundamental Rights during emergency</div></div>
+    </div>
+    <div class="callout amber" style="margin-top:12px;">
+      <div class="callout-title">👉 The Core Effect</div>
+      <div class="callout-body">Federal structure becomes <strong>quasi-unitary</strong> without any constitutional amendment. Centre gains overwhelming power over states.</div>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">Constitutional Placement — Part XVIII</div>
+    <h3>📐 Articles 352 → 356 → 360</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--red);">352</div><div class="stat-sub">National Emergency</div><div class="stat-label">WAR / AGGRESSION / REBELLION</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--amber);">356</div><div class="stat-sub">President's Rule</div><div class="stat-label">STATE MACHINERY FAILS</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--green);">360</div><div class="stat-sub">Financial Emergency</div><div class="stat-label">NEVER DECLARED YET</div></div>
+    </div>
+    <div style="padding:10px 12px;border-radius:9px;background:var(--blue-lt);border:1.5px solid var(--blue-mid);margin-top:10px;font-size:11px;font-weight:700;color:var(--blue);">
+      ⚡ Prelims Trick: Always remember 352 → 356 → 360 in order
+    </div>
+  </div>
+</div>
+
+<!-- ③ THREE TYPES -->
+<div class="sec-label">③ Three Types of Emergency — Grounds &amp; Key Facts</div>
+<div class="map-card mc-red">
+  <svg id="svgTypes" viewBox="0 0 1200 320" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc red">
+    <div class="pc-label">Article 352</div>
+    <h3>🔴 National Emergency</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">⚔️ War</div><div class="vs">External armed conflict</div></div>
+      <div class="vitem"><div class="vt">🛡️ External Aggression</div><div class="vs">Imminent danger — even before actual war</div></div>
+      <div class="vitem"><div class="vt">🔫 Armed Rebellion</div><div class="vs">44th Amendment changed "internal disturbance"</div></div>
+    </div>
+    <div class="divline"></div>
+    <div class="pc-label" style="margin-top:6px;">Declared 3 Times</div>
+    <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:4px;">
+      <span class="chip neu">1962 China War</span>
+      <span class="chip neu">1971 Pakistan War</span>
+      <span class="chip bad">1975 Internal</span>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Article 356</div>
+    <h3>🟡 President's Rule</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">💥 Constitutional Machinery Fails</div><div class="vs">State cannot be governed per Constitution</div></div>
+      <div class="vitem"><div class="vt">👨‍⚖️ Governor's Report</div><div class="vs">Or President's own satisfaction</div></div>
+      <div class="vitem"><div class="vt">🏛️ Parliament Takes Over</div><div class="vs">Centre legislates; Governor administers</div></div>
+    </div>
+    <div class="callout amber" style="margin-top:8px;">
+      <div class="callout-title">SR Bommai Case, 1994</div>
+      <div class="callout-body">Floor test mandatory before dissolution. President's Rule subject to judicial review.</div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Article 360</div>
+    <h3>🟢 Financial Emergency</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">💸 Threat to Financial Stability</div><div class="vs">Of India or any state's credit</div></div>
+      <div class="vitem"><div class="vt">💰 Pay Cuts Possible</div><div class="vs">Even SC / HC judges' salaries</div></div>
+      <div class="vitem"><div class="vt">📋 Financial Directions</div><div class="vs">Centre can direct states on finances</div></div>
+    </div>
+    <div style="padding:10px 12px;margin-top:10px;border-radius:9px;background:rgba(26,122,58,0.07);border:1.5px dashed var(--green-mid);text-align:center;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--green);">NEVER DECLARED</div>
+      <div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);">IN INDIA'S ENTIRE HISTORY</div>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 44TH AMENDMENT -->
+<div class="sec-label">④ 44th Amendment Safeguards — The Most Important Check</div>
+<div class="map-card mc-blue">
+  <svg id="svgSafeguards" viewBox="0 0 1200 230" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">44th Amendment, 1978 — Key Changes</div>
+    <h3>🛡️ What Changed After 1975 Misuse</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">📋 Cabinet Must Write</div><div class="vs">Written recommendation — not just PM alone</div></div>
+      <div class="vitem"><div class="vt">⏱️ 1 Month Approval</div><div class="vs">Parliament must approve (was 2 months earlier)</div></div>
+      <div class="vitem"><div class="vt">🗳️ Special Majority</div><div class="vs">2/3 present + voting AND absolute majority of house</div></div>
+      <div class="vitem"><div class="vt">📅 6-Month Extensions</div><div class="vs">Valid 6 months; renewable indefinitely</div></div>
+      <div class="vitem"><div class="vt">⚔️ Armed Rebellion</div><div class="vs">Replaced "internal disturbance" — higher threshold</div></div>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Revocation Mechanism</div>
+    <h3>🔓 How Emergency Ends</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">👑 President's Own Will</div><div class="vs">Can revoke anytime by proclamation</div></div>
+      <div class="vitem"><div class="vt">🏛️ Lok Sabha Simple Majority</div><div class="vs">Lower house can force revocation</div></div>
+      <div class="vitem"><div class="vt">1/10 Members Rule</div><div class="vs">Can demand special LS sitting within 14 days</div></div>
+    </div>
+    <div class="impact-chain" style="margin-top:12px;flex-wrap:wrap;">
+      <div class="ic-node" style="border-color:var(--purple);background:var(--purple-lt);color:var(--purple);font-size:9px;">1/10 Members</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--blue);background:var(--blue-lt);color:var(--blue);font-size:9px;">14-Day Notice</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:var(--green-lt);color:var(--green);font-size:9px;">Special Sitting</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--red);background:var(--red-lt);color:var(--red);font-size:9px;">Revoked</div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ JUDICIAL REVIEW -->
+<div class="sec-label">⑤ Judicial Review — Evolution of Courts' Role</div>
+<div class="phase-row">
+  <div class="phase-box" style="border-color:var(--red);background:var(--red-lt);">
+    <div class="phase-num" style="color:var(--red);">38th</div>
+    <div class="phase-title">Amendment, 1975</div>
+    <div class="phase-sub">Made emergency non-justiciable</div>
+    <div style="font-size:10px;margin-top:8px;color:var(--muted);line-height:1.6;">Emergency proclamation immune from courts. Judicial oversight completely barred.</div>
+    <span class="chip bad" style="margin-top:8px;display:inline-block;">❌ Courts Barred</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--amber);background:var(--amber-lt);">
+    <div class="phase-num" style="color:var(--amber);">44th</div>
+    <div class="phase-title">Amendment, 1978</div>
+    <div class="phase-sub">Restored judicial review</div>
+    <div style="font-size:10px;margin-top:8px;color:var(--muted);line-height:1.6;">Corrected 38th Amendment. Courts can review if emergency proclaimed in bad faith.</div>
+    <span class="chip good" style="margin-top:8px;display:inline-block;">✅ Review Restored</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--green);background:var(--green-lt);">
+    <div class="phase-num" style="color:var(--green);">1980</div>
+    <div class="phase-title">Minerva Mills Case</div>
+    <div class="phase-sub">SC defines grounds for review</div>
+    <div style="font-size:10px;margin-top:8px;color:var(--muted);line-height:1.6;">Challenge valid on: <strong>Mala fide · Irrelevance · Absurdity</strong>. Judicial review = basic structure.</div>
+    <span class="chip good" style="margin-top:8px;display:inline-block;">✅ Grounds Defined</span>
+  </div>
+</div>
+<div class="callout red">
+  <div class="callout-title">⚖️ ADM Jabalpur Case, 1976 — The Dark Chapter</div>
+  <div class="callout-body">During 1975 Emergency, SC ruled courts cannot protect personal liberty (HC writs barred). <strong>Justice H.R. Khanna</strong> — the lone dissenter — said even during emergency Art 21 cannot be suspended. He was later superseded for CJI. 44th Amendment corrected this: Art 20 &amp; 21 can never be suspended. Formally overruled in KS Puttaswamy Case (2017).</div>
+</div>
+
+<!-- ⑥ EFFECTS ON CENTRE–STATE -->
+<div class="sec-label">⑥ Effects of National Emergency — Centre–State Power Shift</div>
+<div class="map-card mc-amber">
+  <svg id="svgEffects" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc red">
+    <div class="pc-label">Executive Effects</div>
+    <h3>⚙️ Centre Takes Command</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Centre Directs States</div><div class="vs">On any matter — all three lists</div></div>
+      <div class="vitem"><div class="vt">States Not Suspended</div><div class="vs">Continue but under full Central control</div></div>
+      <div class="vitem"><div class="vt">Governors as Agents</div><div class="vs">Act on Centre's behalf entirely</div></div>
+    </div>
+    <span class="chip bad" style="margin-top:8px;">Federalism suspended de facto</span>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Legislative Effects</div>
+    <h3>📜 Parliament Expands Power</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">State List Laws</div><div class="vs">Parliament legislates on all 66 State List subjects</div></div>
+      <div class="vitem"><div class="vt">State Legislatures Continue</div><div class="vs">Not suspended — but overridden by Parliament</div></div>
+      <div class="vitem"><div class="vt">Laws Lapse After 6 Months</div><div class="vs">Post-emergency end — unless re-enacted</div></div>
+      <div class="vitem"><div class="vt">Presidential Ordinances</div><div class="vs">On state subjects during Parliament recess</div></div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Financial &amp; Term Effects</div>
+    <h3>💰 Revenue &amp; Assembly Terms</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Revenue Redistribution</div><div class="vs">Centre–State fiscal sharing altered (temporary)</div></div>
+      <div class="vitem"><div class="vt">LS Life +1 Year</div><div class="vs">Extended one year at a time during emergency</div></div>
+      <div class="vitem"><div class="vt">Cap: 6 Months Post-End</div><div class="vs">LS extension cannot exceed 6 months after emergency</div></div>
+      <div class="vitem"><div class="vt">State Assemblies Too</div><div class="vs">Parliament can similarly extend state assembly terms</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦ FUNDAMENTAL RIGHTS -->
+<div class="sec-label">⑦ Effect on Fundamental Rights — Art 358 vs 359</div>
+<div class="map-card mc-blue">
+  <svg id="svgFR" viewBox="0 0 1200 230" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">Article 358</div>
+    <h3>🔵 Automatic Suspension of Art 19</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Suspends All 6 Freedoms (Art 19)</div><div class="vs">Speech, assembly, movement, profession, etc.</div></div>
+      <div class="vitem"><div class="vt">Automatic — No Extra Order</div><div class="vs">Takes effect the moment emergency is proclaimed</div></div>
+      <div class="vitem"><div class="vt">44th Amend: Only External Emergency</div><div class="vs">Does NOT apply during armed rebellion</div></div>
+      <div class="vitem"><div class="vt">Applies to Whole Country Only</div><div class="vs">Cannot be geographically limited</div></div>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Article 359</div>
+    <h3>🟣 Presidential Order for Other FRs</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Suspends Right to Move Court</div><div class="vs">For enforcement of specified Fundamental Rights</div></div>
+      <div class="vitem"><div class="vt">Needs Presidential Order</div><div class="vs">Not automatic — Parliament specifies which FRs</div></div>
+      <div class="vitem"><div class="vt">Art 20 &amp; 21 — NEVER Suspended</div><div class="vs">Right to Life + criminal protections — sacrosanct</div></div>
+      <div class="vitem"><div class="vt">Both Types of Emergency</div><div class="vs">Applies to external + armed rebellion both</div></div>
+      <div class="vitem"><div class="vt">Whole or Part of Country</div><div class="vs">Can be geographically limited — unlike Art 358</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON TABLE -->
+<div class="pc dark" style="margin-bottom:20px;background:rgba(18,15,10,0.02);border-color:rgba(18,15,10,0.1);">
+  <div class="pc-label">Prelims Quick Reference</div>
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:18px;margin-bottom:14px;">⚡ Art 358 vs Art 359 — Exam Comparison Table</h3>
+  <table class="ctable" style="border-radius:10px;overflow:hidden;">
+    <thead>
+      <tr><th>Dimension</th><th>Article 358</th><th>Article 359</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Which Emergency?</td><td>Only External (War / Aggression)</td><td>National Emergency — Both types</td></tr>
+      <tr><td>What Suspends?</td><td>Art 19 — Six Freedoms</td><td>Right to move court for specified FRs</td></tr>
+      <tr><td>How Triggered?</td><td><span class="tag ok">Automatic</span></td><td><span class="tag am">Presidential Order needed</span></td></tr>
+      <tr><td>Geographic Scope</td><td>Whole Country only</td><td>Whole or Part of Country</td></tr>
+      <tr><td>Art 20 &amp; 21?</td><td>Not applicable (Art 19 only)</td><td><span class="tag na">Can NEVER be suspended</span></td></tr>
+      <tr><td>44th Amendment Effect</td><td>Armed rebellion excluded</td><td>Art 20 &amp; 21 explicitly protected</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ⑧ LANDMARK CASES -->
+<div class="sec-label">⑧ Landmark Cases — The Legal Evolution</div>
+<div class="g2">
+  <div class="pc red">
+    <div class="pc-label">ADM Jabalpur vs Shivkant Shukla, 1976</div>
+    <h3>⚖️ The Dark Precedent</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">SC Ruled: No Habeas Corpus</div><div class="vs">Courts cannot protect personal liberty during emergency</div></div>
+      <div class="vitem"><div class="vt">HC Writs Completely Barred</div><div class="vs">Fundamental right to life reduced to nothing</div></div>
+      <div class="vitem"><div class="vt">Justice H.R. Khanna — Sole Dissent</div><div class="vs">Art 21 cannot be taken away — cost him the CJI position</div></div>
+    </div>
+    <div class="callout red" style="margin-top:8px;">
+      <div class="callout-title">📌 Formally overruled — KS Puttaswamy (2017)</div>
+      <div class="callout-body">Art 20 &amp; 21 now explicitly inviolable. Privacy is a fundamental right.</div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Minerva Mills vs Union of India, 1980</div>
+    <h3>✅ Courts Reclaim Authority</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Emergency Proclamation Challengeable</div><div class="vs">SC can review — judicial review = basic structure</div></div>
+      <div class="vitem"><div class="vt">Three Grounds</div><div class="vs">1️⃣ Mala fide · 2️⃣ Irrelevance · 3️⃣ Absurdity</div></div>
+      <div class="vitem"><div class="vt">38th Amendment Struck Down</div><div class="vs">Immune-from-review clause held unconstitutional</div></div>
+    </div>
+    <div class="callout green" style="margin-top:8px;">
+      <div class="callout-title">📌 SR Bommai Case, 1994</div>
+      <div class="callout-body">Art 356 tamed: floor test mandatory, President's Rule now requires judicial scrutiny.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑨ AMENDMENT TIMELINE -->
+<div class="sec-label">⑨ Amendment &amp; Case History — The Safeguard Story</div>
+<div class="map-card mc-green">
+  <svg id="svgTimeline" viewBox="0 0 1200 170" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- ⑩ PRELIMS QUICK REF -->
+<div class="sec-label">⑩ Prelims Quick Reference — Numbers at a Glance</div>
+<div class="g2x1">
+  <div class="pc gold">
+    <div class="pc-label">Must-Remember Numbers — Art 352</div>
+    <h3>🧠 The Key Figures</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">⏱️</div><div class="ft">1 Month</div><div class="fs">Parliament approval window</div></div>
+      <div class="feat"><div class="fi">📅</div><div class="ft">6 Months</div><div class="fs">Each extension period</div></div>
+      <div class="feat"><div class="fi">🗳️</div><div class="ft">Special Majority</div><div class="fs">2/3 + Absolute majority</div></div>
+      <div class="feat"><div class="fi">👥</div><div class="ft">1/10 Members</div><div class="fs">Demand special LS sitting</div></div>
+      <div class="feat"><div class="fi">📆</div><div class="ft">14 Days</div><div class="fs">Special sitting notice period</div></div>
+      <div class="feat"><div class="fi">🔄</div><div class="ft">30 Days</div><div class="fs">After LS reconstitution (if RS approved)</div></div>
+    </div>
+    <div class="divline"></div>
+    <div class="pc-label" style="margin-top:8px;">Three Declarations in History</div>
+    <div class="impact-chain" style="margin-top:4px;flex-wrap:wrap;">
+      <div class="ic-node" style="border-color:var(--amber);background:var(--amber-lt);color:var(--amber);font-size:9px;">1962 China War</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--amber);background:var(--amber-lt);color:var(--amber);font-size:9px;">1971 Pakistan War</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--red);background:var(--red-lt);color:var(--red);font-size:9px;">1975 Internal</div>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Absolute Safeguards</div>
+    <h3>🔒 What Can NEVER Be Suspended</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Article 20</div><div class="vs">No ex-post-facto conviction · No double jeopardy · No self-incrimination</div></div>
+      <div class="vitem"><div class="vt">Article 21</div><div class="vs">Right to Life &amp; Personal Liberty — absolutely inviolable</div></div>
+    </div>
+    <div style="margin-top:10px;padding:12px;border-radius:9px;background:rgba(10,104,120,0.07);border:1.5px solid var(--teal-mid);text-align:center;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--teal);font-weight:700;letter-spacing:1.5px;">44TH AMENDMENT GUARANTEE</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;color:var(--teal);margin-top:6px;line-height:1.5;">"Even when everything else bends,<br>Art 20 &amp; 21 stand firm."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑪ BIG PICTURE FLOW -->
+<div class="sec-label">⑪ Big Picture — Federal → Unitary → Federal</div>
+<div class="map-card mc-red" style="margin-bottom:16px;">
+  <svg id="svgBigPic" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2" style="margin-bottom:20px;">
+  <div class="pc green">
+    <div class="pc-label">Post 44th Amendment — What's Protected</div>
+    <h3>✅ Safeguards Now in Place</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:4px;">
+      <span class="chip good">✅ Cabinet must write recommendation</span>
+      <span class="chip good">✅ 1-month tighter approval window</span>
+      <span class="chip good">✅ Art 20 &amp; 21 inviolable</span>
+      <span class="chip good">✅ Armed rebellion = higher bar</span>
+      <span class="chip good">✅ Judicial review restored</span>
+      <span class="chip good">✅ LS can force revocation</span>
+      <span class="chip good">✅ Art 19 only in external emergency</span>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">Pre-44th Amendment — Historical Weaknesses</div>
+    <h3>⚠️ What Could Be Misused</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:4px;">
+      <span class="chip bad">❌ PM alone could recommend</span>
+      <span class="chip bad">❌ "Internal disturbance" was vague</span>
+      <span class="chip bad">❌ Courts had no review power</span>
+      <span class="chip bad">❌ 2-month approval window</span>
+      <span class="chip bad">❌ Art 19 suspended even internally</span>
+      <span class="chip bad">❌ 1975 Emergency — ADM Jabalpur</span>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🇮🇳</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">India's Constitution permits a temporary transformation from <strong style="color:#f5d78a;">federal to quasi-unitary</strong> during existential crises. The 44th Amendment (1978) built robust democratic safeguards after the 1975 Emergency. The central balance: <em>Centre must be strong in a crisis — but never at the cost of Art 20 &amp; 21.</em></div>
+    <div class="keystone-pills">
+      <span class="kpill">352 → 356 → 360</span>
+      <span class="kpill">44th = Safeguard</span>
+      <span class="kpill">Art 20 &amp; 21 Inviolable</span>
+      <span class="kpill">Minerva Mills</span>
+      <span class="kpill">ADM Jabalpur → Corrected</span>
+      <span class="kpill">Federal → Unitary → Federal</span>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+const NS = 'http://www.w3.org/2000/svg';
+
+/* ── helpers ─────────────────────────────────────── */
+function el(tag, a) {
+  const e = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(a)) e.setAttribute(k, v);
+  return e;
+}
+
+/* S-curve connector */
+function conn(svg, x1, y1, x2, y2, col, dash, w) {
+  const mx = (x1 + x2) / 2;
+  svg.appendChild(el('path', {
+    d: `M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke: col || '#bbb', 'stroke-width': w || 1.8,
+    fill: 'none', 'stroke-dasharray': dash ? '5 4' : 'none', opacity: '0.72'
+  }));
+}
+
+/* straight horizontal */
+function hline(svg, x1, x2, y, col, w) {
+  svg.appendChild(el('line', { x1, y1: y, x2, y2: y, stroke: col, 'stroke-width': w || 2 }));
+}
+
+/*
+  Draw rounded-rect node centred at (cx,cy).
+  lines[] — text rows; sub — small sub-line; emoji — shown above lines
+  tc — text colour (default #fff)
+*/
+function node(svg, cx, cy, w, h, fill, lines, sub, emoji, tc, rx) {
+  tc = tc || '#fff'; rx = rx || 10;
+  const g = document.createElementNS(NS, 'g');
+  g.appendChild(el('rect', { x: cx-w/2+2, y: cy-h/2+3, width: w, height: h, rx, ry: rx, fill: 'rgba(0,0,0,0.09)' }));
+  g.appendChild(el('rect', { x: cx-w/2,   y: cy-h/2,   width: w, height: h, rx, ry: rx, fill, stroke: 'rgba(255,255,255,0.22)', 'stroke-width': '1.5' }));
+
+  const lh = 15;
+  const blockH = lines.length * lh + (sub ? 13 : 0) + (emoji ? 18 : 0);
+  let ty = cy - blockH / 2 + (emoji ? 9 : 0);
+
+  if (emoji) {
+    const e = el('text', { x: cx, y: ty, 'text-anchor': 'middle', 'dominant-baseline': 'middle', 'font-size': '14', fill: tc });
+    e.textContent = emoji; g.appendChild(e); ty += 18;
+  }
+  lines.forEach((ln, i) => {
+    const t = el('text', { x: cx, y: ty + i * lh, 'text-anchor': 'middle', 'dominant-baseline': 'middle', 'font-size': '11', 'font-weight': '700', 'font-family': 'Plus Jakarta Sans,sans-serif', fill: tc });
+    t.textContent = ln; g.appendChild(t);
+  });
+  if (sub) {
+    const s = el('text', { x: cx, y: ty + lines.length * lh, 'text-anchor': 'middle', 'dominant-baseline': 'middle', 'font-size': '8.5', 'font-family': 'JetBrains Mono,monospace', fill: tc === '#fff' ? 'rgba(255,255,255,0.52)' : 'rgba(0,0,0,0.4)' });
+    s.textContent = sub; g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+
+function caption(svg, x, y, txt, col) {
+  const t = el('text', { x, y, 'text-anchor': 'middle', 'font-size': '8', 'font-weight': '600', 'font-family': 'JetBrains Mono,monospace', 'letter-spacing': '2', fill: col || 'rgba(120,100,60,0.38)' });
+  t.textContent = txt; svg.appendChild(t);
+}
+
+/* ══════════════════════════════════════════════════════
+   MASTER FLOW  — 8 boxes in a straight row
+   viewBox 1200 × 110
+   8 nodes × 130px wide + 7 gaps × 14px = 1138px total
+   margin each side = (1200 - 1138) / 2 = 31
+   centres: 31 + 65 = 96, then +144 each
+   ══════════════════════════════════════════════════════ */
+(function () {
+  const svg = document.getElementById('svgMaster');
+  const W = 1200, H = 110, NW = 130, NH = 72, GAP = 14, CY = 56;
+  const total = 8 * NW + 7 * GAP;
+  const ox = (W - total) / 2 + NW / 2;
+  const step = NW + GAP;
+
+  svg.appendChild(el('rect', { x: 0, y: 0, width: W, height: H, fill: 'rgba(248,244,238,0.5)' }));
+
+  const steps = [
+    { fill: '#1a7a3a', lines: ['Federal India'],    sub: 'Normal federal state',    e: '🇮🇳' },
+    { fill: '#c07010', lines: ['Crisis Arises'],    sub: 'War/Rebellion/Fiscal',    e: '⚡' },
+    { fill: '#c0392b', lines: ['Proclaimed'],       sub: 'Art 352 / 356 / 360',    e: '📜' },
+    { fill: '#5a1a8a', lines: ['Parl. Approves'],   sub: 'Sp. Majority · 1 Month', e: '🏛️' },
+    { fill: '#c07010', lines: ['Fed → Unitary'],    sub: 'Centre gains power',     e: '🔄' },
+    { fill: '#1a3a8a', lines: ['Crisis Managed'],   sub: 'Centre directs states',  e: '⚙️' },
+    { fill: '#0a6878', lines: ['Revocation'],       sub: 'President / LS majority',e: '🔓' },
+    { fill: '#1a7a3a', lines: ['Federalism Back'],  sub: 'Constitution prevails',  e: '✅' },
+  ];
+
+  steps.forEach((s, i) => {
+    const cx = ox + i * step;
+    if (i < steps.length - 1) hline(svg, cx + NW/2, cx + NW/2 + GAP, CY, '#c8b87888', 2);
+    node(svg, cx, CY, NW, NH, s.fill, s.lines, s.sub, s.e);
+  });
+  caption(svg, W/2, 104, 'EMERGENCY LIFE-CYCLE: FEDERAL → UNITARY → FEDERAL');
+})();
+
+/* ══════════════════════════════════════════════════════
+   THREE TYPES
+   viewBox 1200 × 320
+   Root  (600, 46)
+   Type nodes row Y=142:  left=200, mid=600, right=1000
+   Sub-nodes row Y=255: spread within each third
+   ══════════════════════════════════════════════════════ */
+(function () {
+  const svg = document.getElementById('svgTypes');
+  const W = 1200, H = 320;
+  svg.appendChild(el('rect', { x: 0, y: 0, width: W, height: H, fill: 'rgba(248,244,238,0.5)' }));
+
+  const RX = 600, RY = 46;
+  node(svg, RX, RY, 260, 58, '#1a1510', ['Emergency Provisions', 'Part XVIII — Arts 352·356·360'], null, '⚖️');
+
+  /* ── 3 type nodes ── */
+  const types = [
+    { cx: 200,  cy: 148, fill: '#c0392b', lines: ['Art 352', 'National Emergency'],  sub: 'War · Aggression · Armed Rebellion', e: '🔴' },
+    { cx: 600,  cy: 148, fill: '#c07010', lines: ['Art 356', "President's Rule"],     sub: 'Constitutional machinery failure',   e: '🟡' },
+    { cx: 1000, cy: 148, fill: '#1a7a3a', lines: ['Art 360', 'Financial Emergency'], sub: 'Never declared in India',             e: '🟢' },
+  ];
+  types.forEach(t => {
+    conn(svg, RX, RY + 29, t.cx, t.cy - 34, '#c8b87888', true, 1.8);
+    node(svg, t.cx, t.cy, 220, 70, t.fill, t.lines, t.sub, t.e);
+  });
+
+  /* ── Sub for Art 352 — 3 children evenly in [40..360] ── */
+  [[80, 'War', 'External armed conflict', '⚔️', '#8a1010'],
+   [200, 'Ext. Aggression', 'Even before actual war', '🛡️', '#a02020'],
+   [320, 'Armed Rebellion', '44th Amend. raised bar', '🔫', '#b83030']
+  ].forEach(([cx, l1, l2, e, f]) => {
+    conn(svg, 200, 183, cx, 237, '#c0392b55', true, 1.5);
+    node(svg, cx, 252, 114, 44, f, [l1], l2, e);
+  });
+
+  /* ── Sub for Art 356 — 2 children ── */
+  [[530, "Gov's Report", 'Or Pres. satisfaction', '📋', '#8a5000'],
+   [670, 'Parl. Takes Over', 'Centre legislates', '🏛️', '#a06010']
+  ].forEach(([cx, l1, l2, e, f]) => {
+    conn(svg, 600, 183, cx, 237, '#c0701055', true, 1.5);
+    node(svg, cx, 252, 120, 44, f, [l1], l2, e);
+  });
+
+  /* ── Sub for Art 360 — 2 children ── */
+  [[930, 'Pay Cuts OK', 'Even SC/HC judges', '💸', '#0a5028'],
+   [1070, 'Fin. Directions', 'Centre directs states', '📊', '#1a7a3a']
+  ].forEach(([cx, l1, l2, e, f]) => {
+    conn(svg, 1000, 183, cx, 237, '#1a7a3a55', true, 1.5);
+    node(svg, cx, 252, 120, 44, f, [l1], l2, e);
+  });
+
+  caption(svg, W/2, 308, 'THREE TYPES · PRELIMS FAVOURITE — 352 · 356 · 360');
+})();
+
+/* ══════════════════════════════════════════════════════
+   44TH AMENDMENT — root + 8 spokes in 2 rows × 4 cols
+   viewBox 1200 × 230
+   root at (600, 46)
+   Row 1 Y=142, Row 2 Y=196
+   4 cols: 110, 390, 670, 950  — each node 150px wide
+   ══════════════════════════════════════════════════════ */
+(function () {
+  const svg = document.getElementById('svgSafeguards');
+  const W = 1200, H = 230, NW = 150, NH = 46;
+  svg.appendChild(el('rect', { x: 0, y: 0, width: W, height: H, fill: 'rgba(248,244,238,0.5)' }));
+
+  const RX = 600, RY = 44;
+  node(svg, RX, RY, 280, 56, '#1a3a8a', ['44th Amendment, 1978', 'The Democratic Safeguard'], null, '🛡️');
+
+  const cols = [110, 390, 670, 950];
+  const rows = [142, 196];
+
+  const items = [
+    [0,0,'#1a3a8a', ['Cabinet Must Write'],   'Written recommendation req.',  '📋'],
+    [0,1,'#2848a0', ['1-Month Approval'],     'Was 2 months earlier',         '⏱️'],
+    [0,2,'#5a1a8a', ['Special Majority'],     '2/3 + absolute majority',      '🗳️'],
+    [0,3,'#0a6878', ['6-Month Extensions'],   'Renewable indefinitely',       '📅'],
+    [1,0,'#c0392b', ['Art 20 & 21 Safe'],     'Can never be suspended',       '🔒'],
+    [1,1,'#1a7a3a', ['Armed Rebellion'],      'Higher bar than before',       '⚡'],
+    [1,2,'#c07010', ['Judicial Review'],      'Courts can intervene',         '⚖️'],
+    [1,3,'#6a1a9a', ['LS Can Revoke'],        'Simple majority sufficient',   '🏛️'],
+  ];
+
+  items.forEach(([r, c, fill, lines, sub, e]) => {
+    const cx = cols[c], cy = rows[r];
+    conn(svg, RX, RY + 28, cx, cy - NH/2, '#1a3a8a44', true, 1.5);
+    node(svg, cx, cy, NW, NH, fill, lines, sub, e);
+  });
+
+  caption(svg, W/2, 222, 'EIGHT MAJOR SAFEGUARDS · 44TH AMENDMENT, 1978');
+})();
+
+/* ══════════════════════════════════════════════════════
+   EFFECTS — root + 3 branch nodes + 3 leaf nodes each
+   viewBox 1200 × 300
+   root (600, 46), branches Y=140, leaves Y=245
+   branch cx: 190, 600, 1010
+   leaves per branch spread ±70 from branch cx
+   ══════════════════════════════════════════════════════ */
+(function () {
+  const svg = document.getElementById('svgEffects');
+  const W = 1200, H = 300;
+  svg.appendChild(el('rect', { x: 0, y: 0, width: W, height: H, fill: 'rgba(248,244,238,0.5)' }));
+
+  const RX = 600, RY = 46;
+  node(svg, RX, RY, 300, 56, '#c07010', ['Effects of Art 352 Emergency', 'Centre–State Power Shift'], null, '🔄');
+
+  const branches = [
+    { cx: 190,  cy: 140, fill: '#c0392b', lines: ['Executive'],   sub: 'Centre commands states', e: '⚙️',
+      kids: [
+        { cx: 65,  fill: '#8a1010', l: ['Centre Directs'], s: 'All subject lists' },
+        { cx: 190, fill: '#a02020', l: ['States Continue'],s: 'Not suspended' },
+        { cx: 315, fill: '#b83030', l: ['Govs as Agents'], s: 'Act for Centre' },
+      ]
+    },
+    { cx: 600,  cy: 140, fill: '#c07010', lines: ['Legislative'],  sub: 'Parliament expands', e: '📜',
+      kids: [
+        { cx: 490, fill: '#8a5000', l: ['State List Laws'],  s: 'Parliament legislates' },
+        { cx: 600, fill: '#a06010', l: ['Lapse 6 Months'],   s: 'After emergency ends' },
+        { cx: 710, fill: '#b87020', l: ['Pres. Ordinances'], s: 'On state subjects' },
+      ]
+    },
+    { cx: 1010, cy: 140, fill: '#1a7a3a', lines: ['Financial', '& Terms'],  sub: 'Revenue + assemblies', e: '💰',
+      kids: [
+        { cx: 885,  fill: '#0a5028', l: ['Revenue Changed'], s: 'Temp. redistribution' },
+        { cx: 1010, fill: '#1a7a3a', l: ['LS +1 Year'],      s: 'Extended per year' },
+        { cx: 1135, fill: '#2a8a48', l: ['Assem. Extended'], s: 'Parl. extends terms' },
+      ]
+    },
+  ];
+
+  branches.forEach(b => {
+    conn(svg, RX, RY + 28, b.cx, b.cy - 32, '#c8b87888', true, 1.8);
+    node(svg, b.cx, b.cy, 200, 56, b.fill, b.lines, b.sub, b.e);
+    b.kids.forEach(k => {
+      conn(svg, b.cx, b.cy + 28, k.cx, 227, b.fill + '55', true, 1.4);
+      node(svg, k.cx, 242, 118, 42, k.fill, k.l, k.s);
+    });
+  });
+
+  caption(svg, W/2, 290, 'EXECUTIVE · LEGISLATIVE · FINANCIAL & TERM EFFECTS');
+})();
+
+/* ══════════════════════════════════════════════════════
+   FUNDAMENTAL RIGHTS — Art 358 vs 359
+   viewBox 1200 × 230
+   Shared root (600, 44)
+   Two sub-roots: 358 at (270, 118), 359 at (930, 118)
+   4 leaf nodes each in single row Y=196
+   Leaves 358: 70,190,310,430  /  359: 770,890,1010,1130
+   ══════════════════════════════════════════════════════ */
+(function () {
+  const svg = document.getElementById('svgFR');
+  const W = 1200, H = 230;
+  svg.appendChild(el('rect', { x: 0, y: 0, width: W, height: H, fill: 'rgba(248,244,238,0.5)' }));
+
+  /* shared root */
+  node(svg, 600, 44, 280, 56, '#1a1510', ['Fundamental Rights & Emergency', 'Articles 358 & 359'], null, '⚖️');
+
+  /* Art 358 sub-root */
+  conn(svg, 600, 72, 270, 94, '#1a3a8a66', true, 1.8);
+  node(svg, 270, 118, 210, 46, '#1a3a8a', ['Article 358'], 'Automatic · External only', '🔵');
+
+  /* Art 358 leaves */
+  [[70,'Suspends Art 19','Six freedoms','#1a2a7a'],
+   [190,'Automatic','No order needed','#1a3a8a'],
+   [310,'External Only','War / Aggression','#2a4aaa'],
+   [430,'Whole Country','Cannot be partial','#0a2060']
+  ].forEach(([cx,l,s,f]) => {
+    conn(svg, 270, 141, cx, 174, '#1a3a8a55', true, 1.4);
+    node(svg, cx, 188, 112, 42, f, [l], s);
+  });
+
+  /* separator */
+  svg.appendChild(el('line', { x1: 600, y1: 76, x2: 600, y2: 222, stroke: 'rgba(200,180,140,0.22)', 'stroke-width': '1.5', 'stroke-dasharray': '5 3' }));
+
+  /* Art 359 sub-root */
+  conn(svg, 600, 72, 930, 94, '#6a1a9a66', true, 1.8);
+  node(svg, 930, 118, 210, 46, '#6a1a9a', ['Article 359'], 'Pres. Order · Both emergencies', '🟣');
+
+  /* Art 359 leaves */
+  [[770,'Right to Court','Spec. FRs suspended','#5a0a8a'],
+   [890,'Pres. Order','Not automatic','#6a1a9a'],
+   [1010,'Art 20 & 21','Can NEVER suspend','#8a3aba'],
+   [1130,'Partial Country','Geo-limited OK','#4a0a7a']
+  ].forEach(([cx,l,s,f]) => {
+    conn(svg, 930, 141, cx, 174, '#6a1a9a55', true, 1.4);
+    node(svg, cx, 188, 112, 42, f, [l], s);
+  });
+
+  caption(svg, 300, 222, 'ART 358 — AUTOMATIC', 'rgba(26,58,138,0.42)');
+  caption(svg, 900, 222, 'ART 359 — PRESIDENTIAL ORDER', 'rgba(106,26,154,0.42)');
+})();
+
+/* ══════════════════════════════════════════════════════
+   TIMELINE
+   viewBox 1200 × 170
+   8 events evenly spaced, alternate up/down labels
+   Event X: 80, 251, 422, 593, 724, 856, 987, 1120
+   (Spread across [80..1120], gap ≈ 149)
+   ══════════════════════════════════════════════════════ */
+(function () {
+  const svg = document.getElementById('svgTimeline');
+  const W = 1200, H = 170, TY = 84;
+  svg.appendChild(el('rect', { x: 0, y: 0, width: W, height: H, fill: 'rgba(248,244,238,0.5)' }));
+
+  hline(svg, 60, W - 60, TY, '#e0d8c8', 3);
+
+  const events = [
+    { x: 80,   year:'1950', lbl:'Constitution',       sub:'Art 352–360 enacted',      fill:'#1a3a8a', up:true  },
+    { x: 248,  year:'1962', lbl:'First Emergency',    sub:'China War',                fill:'#c0392b', up:false },
+    { x: 416,  year:'1971', lbl:'Second Emergency',   sub:'Pakistan War',             fill:'#c07010', up:true  },
+    { x: 584,  year:'1975', lbl:'Third Emergency',    sub:'Internal · Controversial', fill:'#7a1010', up:false },
+    { x: 720,  year:'1976', lbl:'ADM Jabalpur',       sub:'FRs barred by SC',         fill:'#5a1a8a', up:true  },
+    { x: 856,  year:'1978', lbl:'44th Amendment',     sub:'Major safeguards',         fill:'#1a7a3a', up:false },
+    { x: 992,  year:'1980', lbl:'Minerva Mills',      sub:'Judicial review back',     fill:'#0a6878', up:true  },
+    { x: 1120, year:'1994', lbl:'SR Bommai',          sub:'Art 356 tamed',            fill:'#9a6a10', up:false },
+  ];
+
+  events.forEach(e => {
+    const sg = e.up ? -1 : 1;
+    svg.appendChild(el('line', { x1: e.x, y1: TY, x2: e.x, y2: TY + sg * 22, stroke: e.fill, 'stroke-width': '2' }));
+    svg.appendChild(el('circle', { cx: e.x, cy: TY, r: 7, fill: e.fill, stroke: '#fff', 'stroke-width': '2' }));
+
+    [[TY + sg*30, e.year, '9', '700', 'JetBrains Mono,monospace', e.fill],
+     [TY + sg*43, e.lbl,  '10','700', 'Plus Jakarta Sans,sans-serif', '#1a1510'],
+     [TY + sg*56, e.sub,  '7.5','400','JetBrains Mono,monospace', '#7a6e5a'],
+    ].forEach(([y, txt, fs, fw, ff, fc]) => {
+      const t = el('text', { x: e.x, y, 'text-anchor': 'middle', 'dominant-baseline': 'middle', 'font-size': fs, 'font-weight': fw, 'font-family': ff, fill: fc });
+      t.textContent = txt; svg.appendChild(t);
+    });
+  });
+})();
+
+/* ══════════════════════════════════════════════════════
+   BIG PICTURE — 8 steps, straight row with arrows
+   viewBox 1200 × 120
+   Same spacing logic as master flow
+   ══════════════════════════════════════════════════════ */
+(function () {
+  const svg = document.getElementById('svgBigPic');
+  const W = 1200, H = 120, NW = 126, NH = 72, GAP = 14, CY = 60;
+  const total = 8 * NW + 7 * GAP;
+  const ox = (W - total) / 2 + NW / 2;
+  const step = NW + GAP;
+
+  svg.appendChild(el('rect', { x: 0, y: 0, width: W, height: H, fill: 'rgba(248,244,238,0.5)' }));
+
+  /* arrowhead marker */
+  const defs = el('defs', {});
+  const m = el('marker', { id: 'arr', markerWidth: '7', markerHeight: '7', refX: '5', refY: '3.5', orient: 'auto' });
+  m.appendChild(el('path', { d: 'M0,0 L0,7 L7,3.5 z', fill: '#c8b878' }));
+  defs.appendChild(m); svg.appendChild(defs);
+
+  const steps = [
+    { fill:'#1a7a3a', lines:['Federal India'],    sub:'Normal state',          e:'🇮🇳' },
+    { fill:'#c07010', lines:['Crisis Hits'],       sub:'War/Rebellion/Fiscal', e:'⚡' },
+    { fill:'#c0392b', lines:['Emergency'],         sub:'Art 352 Declared',     e:'📜' },
+    { fill:'#5a1a8a', lines:['Quasi-Unitary'],     sub:'Centre supreme',       e:'🔄' },
+    { fill:'#0a6878', lines:['44th Safeguards'],   sub:'Parliament checks',    e:'🛡️' },
+    { fill:'#1a3a8a', lines:['Art 20 & 21 Hold'], sub:'Liberty intact',       e:'🔒' },
+    { fill:'#6a1a9a', lines:['Revocation'],        sub:'Crisis over',          e:'🔓' },
+    { fill:'#1a7a3a', lines:['Fed. Returns'],      sub:'Constitution prevails',e:'⚖️' },
+  ];
+
+  steps.forEach((s, i) => {
+    const cx = ox + i * step;
+    if (i < steps.length - 1) {
+      svg.appendChild(el('path', {
+        d: `M${cx + NW/2 + 2},${CY} L${cx + NW/2 + GAP - 2},${CY}`,
+        stroke: '#c8b878', 'stroke-width': '2', fill: 'none', 'marker-end': 'url(#arr)'
+      }));
+    }
+    node(svg, cx, CY, NW, NH, s.fill, s.lines, s.sub, s.e);
+  });
+
+  caption(svg, W/2, 110, 'THE COMPLETE STORY: FEDERAL → UNITARY → FEDERAL');
+})();
+</script>
+</body>
+</html>

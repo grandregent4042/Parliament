@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devices of Parliamentary Proceedings — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f9f7f2;
+  --paper:#fffefb;
+  --ink:#1a1614;
+  --gold:#c8922a;
+  --gold-lt:#f5e2b8;
+  --amber:#d4621a;
+  --green:#1f6b3c;
+  --blue:#1a3d7c;
+  --purple:#5c1d8a;
+  --teal:#0a6270;
+  --red:#a8181a;
+  --sky:#1a5a88;
+  --muted:#7a6a52;
+  --border:#e0d4b8;
+  --card:#fffdf6;
+  --card2:#f5f0e4;
+  --shadow:rgba(100,80,40,0.10);
+}
+
+body{
+  font-family:'Outfit',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 1000px 600px at 10% 5%, rgba(200,146,42,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 800px 700px at 90% 95%, rgba(26,61,124,0.06) 0%, transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 28px 120px;}
+
+/* ── HEADER ── */
+.header{text-align:center;padding:52px 20px 28px;position:relative;}
+.header-eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:5px;
+  color:var(--gold);text-transform:uppercase;margin-bottom:14px;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.header-eyebrow::before,.header-eyebrow::after{content:'';display:inline-block;width:40px;height:1px;background:var(--gold);opacity:0.5;}
+.header h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(30px,5.5vw,58px);
+  font-weight:700;line-height:1.08;color:var(--ink);
+}
+.header h1 span{font-style:italic;color:var(--gold);}
+.header-desc{
+  margin-top:10px;font-size:13px;color:var(--muted);
+  font-family:'JetBrains Mono',monospace;letter-spacing:0.8px;
+  max-width:700px;margin-left:auto;margin-right:auto;
+}
+.header-rule{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin:22px auto 0;
+}
+.header-rule span{width:80px;height:2.5px;background:linear-gradient(90deg,transparent,var(--gold));border-radius:4px;}
+.header-rule span:last-child{background:linear-gradient(90deg,var(--gold),transparent);}
+.header-rule .dot{width:8px;height:8px;background:var(--gold);border-radius:50%;}
+
+/* ── SECTION LABELS ── */
+.sec-label{
+  font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;
+  color:var(--gold);text-transform:uppercase;
+  margin:40px 0 16px;
+  display:flex;align-items:center;gap:14px;
+}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
+.sec-label::before{background:linear-gradient(90deg,transparent,var(--border));}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:13px;margin-bottom:20px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:1100px){.g4,.g5{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:900px){.g3{grid-template-columns:1fr 1fr;}.g2x1{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g5,.g2x1{grid-template-columns:1fr;}}
+
+/* ── PANEL CARDS ── */
+.pc{
+  background:var(--card);border:1.5px solid var(--border);
+  border-radius:16px;padding:18px 20px;position:relative;overflow:hidden;
+  transition:box-shadow 0.25s,transform 0.25s;
+  box-shadow:0 2px 10px var(--shadow);
+}
+.pc:hover{box-shadow:0 8px 32px var(--shadow);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.amber::before{background:var(--amber);}
+
+.pc-eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2.5px;
+  color:var(--muted);text-transform:uppercase;margin-bottom:7px;
+}
+.pc h3{
+  font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;
+  margin-bottom:12px;display:flex;align-items:center;gap:8px;line-height:1.25;
+}
+
+/* ── MAP CARD ── */
+.map-card{
+  background:var(--card);border:1.5px solid var(--border);
+  border-radius:20px;overflow:hidden;position:relative;
+  margin-bottom:22px;box-shadow:0 2px 10px var(--shadow);
+}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;border-radius:20px 20px 0 0;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--sky));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--sky),var(--blue),var(--purple));}
+.map-card svg{display:block;width:100%;}
+
+/* ── PILLS ── */
+.pill{
+  display:inline-flex;align-items:center;padding:3px 10px;
+  border-radius:20px;font-size:10px;font-weight:600;margin:2px;
+  font-family:'JetBrains Mono',monospace;
+}
+.pill.gold{background:rgba(200,146,42,0.13);color:var(--gold);}
+.pill.green{background:rgba(31,107,60,0.13);color:var(--green);}
+.pill.blue{background:rgba(26,61,124,0.13);color:var(--blue);}
+.pill.amber{background:rgba(212,98,26,0.13);color:var(--amber);}
+.pill.red{background:rgba(168,24,26,0.13);color:var(--red);}
+.pill.purple{background:rgba(92,29,138,0.13);color:var(--purple);}
+.pill.teal{background:rgba(10,98,112,0.13);color:var(--teal);}
+
+/* ── CHIPS ── */
+.chip{
+  display:inline-block;padding:3px 9px;border-radius:6px;
+  font-size:9.5px;font-weight:700;border:1.5px solid;margin:2px;
+  font-family:'JetBrains Mono',monospace;
+}
+.chip.ok{background:rgba(31,107,60,0.07);border-color:rgba(31,107,60,0.25);color:var(--green);}
+.chip.warn{background:rgba(168,24,26,0.07);border-color:rgba(168,24,26,0.25);color:var(--red);}
+.chip.neu{background:rgba(200,146,42,0.07);border-color:rgba(200,146,42,0.25);color:var(--gold);}
+
+/* ── VLIST ── */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;line-height:1.4;}
+.vitem .vt{font-weight:700;margin-bottom:2px;font-size:11.5px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ── STAT BOX ── */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px 8px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;line-height:1;}
+.stat-label{font-size:8.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:2px;}
+.stat-sub{font-size:10.5px;font-weight:600;margin-top:3px;color:var(--ink);}
+
+/* ── TABLE ── */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable thead tr{background:var(--ink);}
+.ctable th{color:#fff;padding:9px 11px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:1px;font-weight:500;}
+.ctable td{padding:9px 11px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(200,146,42,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+
+/* ── FLOW CHAIN ── */
+.flow-chain{display:flex;align-items:center;flex-wrap:wrap;gap:0;margin:12px 0;}
+.fc-node{
+  padding:7px 13px;border-radius:8px;font-size:10.5px;font-weight:600;
+  border:1.5px solid;white-space:nowrap;
+}
+.fc-arr{font-size:18px;color:var(--muted);margin:0 5px;flex:0 0 auto;}
+
+/* ── PHASE BOXES ── */
+.phase-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0 20px;}
+@media(max-width:900px){.phase-row{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{
+  padding:18px 16px;border-radius:14px;border:2px solid;text-align:center;
+  background:var(--card);box-shadow:0 2px 10px var(--shadow);
+  transition:box-shadow 0.2s,transform 0.2s;
+}
+.phase-box:hover{box-shadow:0 6px 24px var(--shadow);transform:translateY(-2px);}
+.phase-num{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;line-height:1;}
+.phase-title{font-size:12.5px;font-weight:700;margin:5px 0 3px;}
+.phase-sub{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:8px;}
+.phase-list{font-size:9.5px;line-height:1.8;color:var(--muted);}
+
+/* ── KEYSTONE ── */
+.keystone{
+  background:var(--ink);color:#f0e8d0;border-radius:20px;
+  padding:28px 36px;margin:24px 0;
+  display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap;
+  box-shadow:0 4px 20px rgba(20,15,5,0.15);
+}
+.keystone-icon{font-size:38px;flex:0 0 auto;margin-top:2px;}
+.keystone-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;margin-bottom:7px;color:#f5dfa0;}
+.keystone-body{font-size:12px;color:#c8b880;line-height:1.7;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kpill{
+  padding:4px 13px;border-radius:20px;
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);
+  font-size:10px;font-family:'JetBrains Mono',monospace;color:#f0e8d0;
+  letter-spacing:0.3px;
+}
+
+/* ── TRAP CARD ── */
+.trap-card{
+  background:linear-gradient(135deg,rgba(168,24,26,0.04) 0%, rgba(200,146,42,0.04) 100%);
+  border:1.5px solid rgba(168,24,26,0.2);border-radius:14px;
+  padding:16px 20px;margin:6px 0;
+}
+.trap-title{font-size:11px;font-weight:700;color:var(--red);margin-bottom:6px;font-family:'JetBrains Mono',monospace;}
+.trap-list{display:flex;flex-wrap:wrap;gap:6px;}
+
+/* ── CONNECT ROW ── */
+.connect-row{
+  display:flex;align-items:center;gap:0;flex-wrap:nowrap;
+  overflow-x:auto;padding:14px 18px;
+  background:var(--card2);border:1px solid var(--border);border-radius:12px;
+  scrollbar-width:none;
+}
+.connect-row::-webkit-scrollbar{display:none;}
+.cr-node{
+  flex:0 0 auto;padding:8px 14px;border-radius:10px;
+  font-size:10.5px;font-weight:600;border:1.5px solid;
+  white-space:nowrap;text-align:center;line-height:1.3;
+}
+.cr-arr{flex:0 0 auto;font-size:20px;color:var(--muted);margin:0 4px;}
+
+/* ── BADGE TAG ── */
+.btag{
+  display:inline-block;padding:2px 8px;border-radius:5px;
+  font-size:9px;font-weight:700;font-family:'JetBrains Mono',monospace;
+}
+.btag.yes{background:#dff2e5;color:#1a6a3c;}
+.btag.no{background:#fde8e8;color:#a8181a;}
+.btag.yellow{background:#fff7d4;color:#8a6010;}
+
+/* ── COLOR SWATCH ── */
+.swatch{
+  display:inline-block;width:12px;height:12px;border-radius:3px;
+  border:1px solid rgba(0,0,0,0.15);vertical-align:middle;margin-right:5px;
+}
+
+/* ── SECTION DIVIDER ── */
+.sdiv{
+  width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--border),transparent);
+  margin:8px 0;
+}
+
+/* animate-in */
+.fade-in{
+  opacity:0;transform:translateY(16px);
+  animation:fadeUp 0.55s ease forwards;
+}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+.fade-in:nth-child(1){animation-delay:0.05s;}
+.fade-in:nth-child(2){animation-delay:0.12s;}
+.fade-in:nth-child(3){animation-delay:0.18s;}
+.fade-in:nth-child(4){animation-delay:0.24s;}
+.fade-in:nth-child(5){animation-delay:0.30s;}
+.fade-in:nth-child(6){animation-delay:0.36s;}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ══════════ HEADER ══════════ -->
+<div class="header">
+  <div class="header-eyebrow">Indian Polity &nbsp;·&nbsp; UPSC Prelims &nbsp;·&nbsp; Parliament</div>
+  <h1>Devices of <span>Parliamentary</span> Proceedings</h1>
+  <div class="header-desc">Question Hour → Zero Hour → Motions → Closures → Confidence → Resolutions — the complete flow</div>
+  <div class="header-rule"><span></span><div class="dot"></div><span></span></div>
+</div>
+
+<!-- ══════════ MASTER FLOW ══════════ -->
+<div class="sec-label">Master Flow — How Parliament Works Daily</div>
+<div class="map-card mc1">
+  <svg id="svgFlow" viewBox="0 0 1380 120" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ══════════ SECTION 1: QUESTION HOUR ══════════ -->
+<div class="sec-label">① Question Hour — First Hour of Every Sitting</div>
+<div class="g2 fade-in">
+  <div class="pc gold">
+    <div class="pc-eyebrow">Origin · Rules of Procedure</div>
+    <h3>❓ Question Hour</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--gold);">1st</div>
+        <div class="stat-sub">Hour of Sitting</div>
+        <div class="stat-label">EVERY SESSION</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">1892</div>
+        <div class="stat-sub">Indian Councils Act</div>
+        <div class="stat-label">ORIGIN</div>
+      </div>
+    </div>
+    <p style="font-size:11px;color:var(--muted);margin-top:8px;line-height:1.6;">Ministers answer MPs' questions. Mentioned in <strong>Rules of Procedure</strong>, not Constitution. Primary tool of executive accountability.</p>
+  </div>
+  <div class="pc blue">
+    <div class="pc-eyebrow">Types of Questions — Colour Coded</div>
+    <h3>📋 4 Types of Questions</h3>
+    <table class="ctable">
+      <thead><tr>
+        <th>TYPE</th><th>ANSWER</th><th>SUPPLEMENTARY?</th><th>COLOUR</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>Starred ⭐</td>
+          <td>Oral</td>
+          <td><span class="btag yes">Yes</span></td>
+          <td><span class="swatch" style="background:#4caf50;"></span>Green</td>
+        </tr>
+        <tr>
+          <td>Unstarred</td>
+          <td>Written</td>
+          <td><span class="btag no">No</span></td>
+          <td><span class="swatch" style="background:#f5f5f5;border:1px solid #ccc;"></span>White</td>
+        </tr>
+        <tr>
+          <td>Short Notice</td>
+          <td>Oral &lt;10 days</td>
+          <td><span class="btag yes">Yes</span></td>
+          <td><span class="swatch" style="background:#ffccbc;"></span>Lt. Pink</td>
+        </tr>
+        <tr>
+          <td>Private Member</td>
+          <td>To Pvt. Member</td>
+          <td>—</td>
+          <td><span class="swatch" style="background:#ffeb3b;"></span>Yellow</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 2: ZERO HOUR ══════════ -->
+<div class="sec-label">② Zero Hour — Informal but Impactful</div>
+<div class="g3 fade-in">
+  <div class="pc amber">
+    <div class="pc-eyebrow">Informal Device</div>
+    <h3>⏰ Zero Hour</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">1962</div>
+        <div class="stat-sub">Started</div>
+        <div class="stat-label">PRACTICE BEGAN</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vitem"><div class="vt">Immediately after Question Hour</div><div class="vs">Begins at 12:00 noon, hence the name</div></div>
+      <div class="vitem"><div class="vt">Urgent public matters raised</div><div class="vs">No advance notice required</div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="chip warn">❌ Not in Constitution</span>
+      <span class="chip warn">❌ Not in Rules</span>
+      <span class="chip ok">✅ Informal convention</span>
+    </div>
+  </div>
+  <div class="pc gold" style="grid-column:span 2;">
+    <div class="pc-eyebrow">Question Hour vs Zero Hour — Key Distinction</div>
+    <h3>⚖️ Comparison</h3>
+    <div class="g2" style="margin-bottom:0;">
+      <div style="padding:12px;border-radius:10px;background:rgba(26,61,124,0.05);border:1.5px solid rgba(26,61,124,0.18);">
+        <div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:8px;">📜 Question Hour</div>
+        <div class="vlist">
+          <div class="vitem"><div class="vt">Mentioned in Rules of Procedure</div></div>
+          <div class="vitem"><div class="vt">Pre-scheduled, advance notice</div></div>
+          <div class="vitem"><div class="vt">Oral + Written answers</div></div>
+        </div>
+      </div>
+      <div style="padding:12px;border-radius:10px;background:rgba(212,98,26,0.05);border:1.5px solid rgba(212,98,26,0.18);">
+        <div style="font-size:12px;font-weight:700;color:var(--amber);margin-bottom:8px;">⏰ Zero Hour</div>
+        <div class="vlist">
+          <div class="vitem"><div class="vt">NOT in Constitution or Rules</div></div>
+          <div class="vitem"><div class="vt">Spontaneous, no notice required</div></div>
+          <div class="vitem"><div class="vt">Oral discussions only</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 3: MOTIONS ══════════ -->
+<div class="sec-label">③ Motions — Formal Proposals for House Decision</div>
+<div class="map-card mc2">
+  <svg id="svgMotions" viewBox="0 0 1380 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3 fade-in">
+  <div class="pc blue">
+    <div class="pc-eyebrow">Type A</div>
+    <h3>🧱 Substantive Motion</h3>
+    <p style="font-size:11px;color:var(--muted);margin-bottom:10px;">Independent, self-contained proposal. Deals with a specific issue directly.</p>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Impeachment of President</div><div class="vs">Most significant example</div></div>
+      <div class="vitem"><div class="vt">Removal of CEC / CAG</div><div class="vs">Constitutional officers</div></div>
+      <div class="vitem"><div class="vt">Vote of Thanks (Address)</div><div class="vs">On Presidential address</div></div>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-eyebrow">Type B</div>
+    <h3>🔄 Substitute Motion</h3>
+    <p style="font-size:11px;color:var(--muted);margin-bottom:10px;">Replaces the original motion entirely. Moves in lieu of the original.</p>
+    <div class="vitem"><div class="vt">Replaces original motion</div><div class="vs">Voted instead of the original</div></div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-eyebrow">Type C</div>
+    <h3>⚙️ Subsidiary Motion</h3>
+    <p style="font-size:11px;color:var(--muted);margin-bottom:10px;">Depends on another motion. 3 sub-types:</p>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Ancillary Motion</div><div class="vs">To proceed with business</div></div>
+      <div class="vitem"><div class="vt">Superseding Motion</div><div class="vs">Replaces during debate</div></div>
+      <div class="vitem"><div class="vt">Amendment</div><div class="vs">Modifies part of original</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 4: CLOSURE MOTION ══════════ -->
+<div class="sec-label">④ Closure Motion — Cutting Short Debate</div>
+<div class="g4 fade-in">
+  <div class="pc green">
+    <div class="pc-eyebrow">Closure Type 1</div>
+    <h3>✂️ Simple Closure</h3>
+    <p style="font-size:11px;color:var(--muted);line-height:1.6;">Motion "That the question be now put." Ends all debate immediately. Most straightforward form.</p>
+  </div>
+  <div class="pc teal">
+    <div class="pc-eyebrow">Closure Type 2</div>
+    <h3>📦 By Compartments</h3>
+    <p style="font-size:11px;color:var(--muted);line-height:1.6;">Bill divided into compartments. Each part debated and voted together in groups.</p>
+  </div>
+  <div class="pc sky">
+    <div class="pc-eyebrow">Closure Type 3</div>
+    <h3>🦘 Kangaroo Closure</h3>
+    <p style="font-size:11px;color:var(--muted);line-height:1.6;">Only important clauses debated. Unimportant clauses "leap over" — like a kangaroo jumping.</p>
+    <span class="chip neu">Speaker selects clauses</span>
+  </div>
+  <div class="pc red">
+    <div class="pc-eyebrow">Closure Type 4</div>
+    <h3>⚔️ Guillotine Closure</h3>
+    <p style="font-size:11px;color:var(--muted);line-height:1.6;">All undiscussed clauses voted together at deadline. Time limit applied ruthlessly.</p>
+    <span class="chip warn">⚠️ Most severe form</span>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 5: KEY MOTIONS ══════════ -->
+<div class="sec-label">⑤ Critical Motions — High Prelims Weightage</div>
+<div class="map-card mc3">
+  <svg id="svgCritical" viewBox="0 0 1380 340" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2 fade-in">
+  <!-- Adjournment Motion -->
+  <div class="pc red">
+    <div class="pc-eyebrow">Rule — Lok Sabha Only</div>
+    <h3>🚨 Adjournment Motion</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--red);">50</div><div class="stat-sub">Members Support</div><div class="stat-label">REQUIRED</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--amber);">2.5</div><div class="stat-sub">Hours Minimum</div><div class="stat-label">DISCUSSION</div></div>
+    </div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vitem"><div class="vt">Interrupts normal business</div><div class="vs">Very disruptive — serious intent required</div></div>
+      <div class="vitem"><div class="vt">Definite urgent public matter only</div><div class="vs">Recent, specific, NOT general discussion</div></div>
+      <div class="vitem"><div class="vt">Cannot be court-adjudicated matter</div><div class="vs">Sub-judice matters excluded</div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="chip warn">❌ Only in Lok Sabha</span>
+      <span class="chip warn">❌ Not Rajya Sabha</span>
+    </div>
+  </div>
+  <!-- No Confidence Motion -->
+  <div class="pc purple">
+    <div class="pc-eyebrow">Article 75 · Rule 198</div>
+    <h3>🗳️ No-Confidence Motion</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--purple);">50</div><div class="stat-sub">Members Support</div><div class="stat-label">TO ADMIT</div></div>
+    </div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vitem"><div class="vt">Based on Collective Responsibility</div><div class="vs">Article 75 — CoM responsible to Lok Sabha</div></div>
+      <div class="vitem"><div class="vt">Only in Lok Sabha</div><div class="vs">Targets entire Council of Ministers</div></div>
+      <div class="vitem"><div class="vt">If passed → Government MUST resign</div><div class="vs">Strongest parliamentary device</div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="chip warn">❌ NOT in Constitution directly</span>
+      <span class="chip neu">📜 Rule 198</span>
+    </div>
+  </div>
+</div>
+
+<div class="g3 fade-in">
+  <div class="pc gold">
+    <div class="pc-eyebrow">Confidence Motion</div>
+    <h3>✅ Confidence Motion</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Government proves majority</div><div class="vs">Self-initiated or by President's request</div></div>
+      <div class="vitem"><div class="vt">If fails → Government falls</div><div class="vs">Same consequence as No-Confidence</div></div>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-eyebrow">Censure Motion</div>
+    <h3>📢 Censure Motion</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Expresses disapproval of policy</div><div class="vs">Must state specific reasons</div></div>
+      <div class="vitem"><div class="vt">Can target individual minister</div><div class="vs">Not just full cabinet — this is key difference</div></div>
+      <div class="vitem"><div class="vt" style="color:var(--red);">If passed → NO resignation required</div><div class="vs">⚠️ Key difference from No-Confidence!</div></div>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-eyebrow">Motion of Thanks</div>
+    <h3>🏛️ Motion of Thanks</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">On President's Address</div><div class="vs">First session after election + every fiscal year</div></div>
+      <div class="vitem"><div class="vt">Discussed in BOTH houses</div><div class="vs">Lok Sabha and Rajya Sabha</div></div>
+      <div class="vitem"><div class="vt" style="color:var(--red);">Failure = Government defeat</div><div class="vs">Treated as vote of no-confidence</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 6: CALLING ATTENTION + PRIVILEGE ══════════ -->
+<div class="sec-label">⑥ Other Important Devices</div>
+<div class="g3 fade-in">
+  <div class="pc green">
+    <div class="pc-eyebrow">Indian Innovation · 1954</div>
+    <h3>📣 Calling Attention Motion</h3>
+    <p style="font-size:11px;color:var(--muted);margin-bottom:10px;line-height:1.6;">Draws minister's attention to urgent matter of public importance. Less severe than adjournment motion.</p>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Indian Parliamentary Innovation</div><div class="vs">Not found in British Parliament</div></div>
+      <div class="vitem"><div class="vt">Minister replies but no debate</div><div class="vs">Not a full discussion device</div></div>
+    </div>
+    <span class="chip ok">✅ Both Houses</span>
+  </div>
+  <div class="pc sky">
+    <div class="pc-eyebrow">House Privilege Protection</div>
+    <h3>⚖️ Privilege Motion</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Minister breached House privilege</div><div class="vs">e.g., withholding facts, misleading</div></div>
+      <div class="vitem"><div class="vt">Aimed at censuring minister</div><div class="vs">Serious accusation device</div></div>
+      <div class="vitem"><div class="vt">Privilege Committee examines</div><div class="vs">Can lead to suspension</div></div>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-eyebrow">Rule Violation</div>
+    <h3>📌 Point of Order</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Raised when rules violated</div><div class="vs">During proceedings</div></div>
+      <div class="vitem"><div class="vt">Suspends proceedings immediately</div><div class="vs">No debate allowed</div></div>
+      <div class="vitem"><div class="vt">Speaker decides</div><div class="vs">Decision is final</div></div>
+    </div>
+    <span class="chip warn">❌ No debate on Point of Order</span>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 7: DISCUSSIONS WITHOUT VOTING ══════════ -->
+<div class="sec-label">⑦ Discussions Without Voting</div>
+<div class="g3 fade-in">
+  <div class="pc gold">
+    <div class="pc-eyebrow">Short Duration Discussion</div>
+    <h3>⏱️ 2-Hour Discussion</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--gold);">1953</div><div class="stat-sub">Started</div><div class="stat-label">YEAR</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--amber);">2</div><div class="stat-sub">Days/Week</div><div class="stat-label">ALLOWED</div></div>
+    </div>
+    <span class="chip warn">❌ No Voting</span>
+  </div>
+  <div class="pc amber">
+    <div class="pc-eyebrow">Half-Hour Discussion</div>
+    <h3>🔔 Half-Hour Discussion</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--amber);">3</div><div class="stat-sub">Days/Week</div><div class="stat-label">SPEAKER ALLOWS</div></div>
+    </div>
+    <p style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.6;">For matters of sufficient public importance. Based on recent questions/answers for elaboration.</p>
+    <span class="chip warn">❌ No Voting</span>
+  </div>
+  <div class="pc teal">
+    <div class="pc-eyebrow">Special Channel</div>
+    <h3>📬 Special Mention</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Rajya Sabha → Special Mention</div><div class="vs">For matters not fitting other devices</div></div>
+      <div class="vitem"><div class="vt">Lok Sabha → Rule 377 Notice</div><div class="vs">Equivalent mechanism</div></div>
+    </div>
+    <span class="chip ok">✅ Both Houses (different names)</span>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 8: MISC MOTIONS + RESOLUTIONS ══════════ -->
+<div class="sec-label">⑧ Miscellaneous Motions & Resolutions</div>
+<div class="g2 fade-in">
+  <div class="pc purple">
+    <div class="pc-eyebrow">Procedural Motions</div>
+    <h3>🗂️ Other Motions</h3>
+    <table class="ctable">
+      <thead><tr><th>MOTION</th><th>PURPOSE</th><th>STATUS</th></tr></thead>
+      <tbody>
+        <tr><td>No-Day-Yet-Named</td><td>Admitted, date not fixed</td><td><span class="btag yellow">Pending</span></td></tr>
+        <tr><td>Dilatory Motion</td><td>Seeks adjournment of debate</td><td><span class="btag yellow">Speaker decides</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pc sky">
+    <div class="pc-eyebrow">Independent Proposal</div>
+    <h3>📜 Resolutions</h3>
+    <p style="font-size:11px;color:var(--muted);margin-bottom:10px;line-height:1.6;">All resolutions are substantive motions. Self-contained independent proposals.</p>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Private Member's Resolution</div><div class="vs">Moved on Fridays only</div></div>
+      <div class="vitem"><div class="vt">Government Resolution</div><div class="vs">By ministers, government business</div></div>
+      <div class="vitem"><div class="vt">Statutory Resolution</div><div class="vs">Derived from Constitution or Act</div></div>
+    </div>
+    <span class="chip warn">⚠️ Cannot withdraw without House permission</span>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 9: COMPARISON TABLE ══════════ -->
+<div class="sec-label">⑨ No-Confidence vs Censure — The Critical Difference</div>
+<div class="pc blue fade-in">
+  <div class="pc-eyebrow">Prelims Trap Comparison</div>
+  <h3>⚔️ No-Confidence vs Censure Motion</h3>
+  <table class="ctable">
+    <thead><tr>
+      <th>PARAMETER</th><th>NO-CONFIDENCE MOTION</th><th>CENSURE MOTION</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td>Target</td>
+        <td>Entire Council of Ministers</td>
+        <td>Can target individual minister OR CoM</td>
+      </tr>
+      <tr>
+        <td>If Passed</td>
+        <td><span class="btag no">Govt. MUST resign</span></td>
+        <td><span class="btag yellow">No resignation required</span></td>
+      </tr>
+      <tr>
+        <td>Reasons Needed</td>
+        <td>No reasons required</td>
+        <td>Must state specific reasons</td>
+      </tr>
+      <tr>
+        <td>House</td>
+        <td>Only Lok Sabha</td>
+        <td>Both Houses</td>
+      </tr>
+      <tr>
+        <td>Legal Basis</td>
+        <td>Rule 198 + Article 75</td>
+        <td>Rules of Procedure</td>
+      </tr>
+      <tr>
+        <td>Members to Move</td>
+        <td>50 members support</td>
+        <td>No minimum specified</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════ SECTION 10: YOUTH PARLIAMENT ══════════ -->
+<div class="sec-label">⑩ Youth Parliament</div>
+<div class="pc green fade-in">
+  <div class="pc-eyebrow">Ministry of Parliamentary Affairs</div>
+  <h3>🎓 Youth Parliament Programme</h3>
+  <div class="g3" style="margin-bottom:0;">
+    <div class="vitem"><div class="vt">Recommended by</div><div class="vs">Fourth All India Whips Conference</div></div>
+    <div class="vitem"><div class="vt">Implemented by</div><div class="vs">Ministry of Parliamentary Affairs</div></div>
+    <div class="vitem"><div class="vt">Purpose</div><div class="vs">Teaches parliamentary practice to youth</div></div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 11: CONNECTED FLOW ══════════ -->
+<div class="sec-label">⑪ Full Connected Flow — Parliamentary Logic</div>
+<div class="map-card mc4 fade-in">
+  <svg id="svgFullFlow" viewBox="0 0 1380 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ══════════ SECTION 12: TRAPS ══════════ -->
+<div class="sec-label">🔥 High-Probability Prelims Traps</div>
+<div class="g2 fade-in">
+  <div class="trap-card">
+    <div class="trap-title">⚠️ TRAPS — Remember These</div>
+    <div class="trap-list">
+      <span class="chip warn">Zero Hour ≠ Rules/Constitution</span>
+      <span class="chip warn">Adjournment Motion: Lok Sabha only</span>
+      <span class="chip warn">Censure ≠ Resignation</span>
+      <span class="chip warn">Motion of Thanks failure = Govt. defeat</span>
+      <span class="chip warn">No-Confidence: 50 members needed</span>
+      <span class="chip warn">Guillotine ≠ Kangaroo closure</span>
+      <span class="chip warn">Starred = Oral, Unstarred = Written</span>
+      <span class="chip warn">Collective Responsibility = Article 75</span>
+    </div>
+  </div>
+  <div class="trap-card" style="border-color:rgba(26,61,124,0.2);background:rgba(26,61,124,0.03);">
+    <div class="trap-title" style="color:var(--blue);">✅ POSITIVES — Remember These</div>
+    <div class="trap-list">
+      <span class="chip ok">Calling Attention = Indian innovation 1954</span>
+      <span class="chip ok">Zero Hour started in 1962</span>
+      <span class="chip ok">Short Discussion = 1953, 2-hour rule</span>
+      <span class="chip ok">Question Hour origin = 1892</span>
+      <span class="chip ok">Private Member's Resolution = Fridays</span>
+      <span class="chip ok">Rajya Sabha = Special Mention</span>
+      <span class="chip ok">Lok Sabha = Rule 377 Notice</span>
+      <span class="chip ok">Statutory Resolution = from Constitution/Act</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ KEYSTONE ══════════ -->
+<div class="keystone fade-in">
+  <div class="keystone-icon">🏛️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Connecting Idea</div>
+    <div class="keystone-body">Parliament uses these devices in a logical sequence: <strong style="color:#f5dfa0;">Question Hour</strong> for accountability → <strong style="color:#f5dfa0;">Zero Hour</strong> for urgency → <strong style="color:#f5dfa0;">Calling Attention/Adjournment</strong> for serious issues → <strong style="color:#f5dfa0;">Closure</strong> when debate drags → <strong style="color:#f5dfa0;">Confidence/No-Confidence</strong> when stability is questioned → <strong style="color:#f5dfa0;">Censure</strong> for disapproval → <strong style="color:#f5dfa0;">Motion of Thanks</strong> on Presidential address → <strong style="color:#f5dfa0;">Resolution</strong> for independent decisions.</div>
+    <div class="keystone-pills">
+      <span class="kpill">📋 Question Hour</span>
+      <span class="kpill">⏰ Zero Hour</span>
+      <span class="kpill">🚨 Adjournment</span>
+      <span class="kpill">⚔️ No-Confidence</span>
+      <span class="kpill">📢 Censure</span>
+      <span class="kpill">📜 Resolution</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const C={
+  gold:'#c8922a',amber:'#d4621a',green:'#1f6b3c',blue:'#1a3d7c',
+  purple:'#5c1d8a',teal:'#0a6270',red:'#a8181a',sky:'#1a5a88',
+  ink:'#1a1614',muted:'#7a6a52',border:'#e0d4b8'
+};
+
+function el(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a||{}))e.setAttribute(k,v);return e;}
+
+function curve(svg,x1,y1,x2,y2,col,dash,w){
+  const mx=(x1+x2)/2;
+  const p=el('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:col||C.muted,'stroke-width':w||2,fill:'none',
+    'stroke-dasharray':dash?'5 4':'none',opacity:'0.65'});
+  svg.appendChild(p);
+}
+
+function line(svg,x1,y1,x2,y2,col,w,dash){
+  const p=el('path',{d:`M${x1},${y1} L${x2},${y2}`,
+    stroke:col||C.muted,'stroke-width':w||2,fill:'none',
+    'stroke-dasharray':dash?'5 4':'none',opacity:'0.65'});
+  svg.appendChild(p);
+  // arrow head
+  const angle=Math.atan2(y2-y1,x2-x1);
+  const ax=x2-12*Math.cos(angle),ay=y2-12*Math.sin(angle);
+  const ar=el('polygon',{
+    points:`${x2},${y2} ${ax-6*Math.sin(angle)},${ay+6*Math.cos(angle)} ${ax+6*Math.sin(angle)},${ay-6*Math.cos(angle)}`,
+    fill:col||C.muted,opacity:'0.65'
+  });
+  svg.appendChild(ar);
+}
+
+function roundRect(svg,x,y,w,h,fill,stroke,rx){
+  rx=rx||10;
+  svg.appendChild(el('rect',{x:x-w/2+3,y:y-h/2+4,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.07)'}));
+  svg.appendChild(el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:stroke||'rgba(255,255,255,0.25)','stroke-width':'1.5'}));
+}
+
+function label(svg,x,y,lines,sub,fill,size,subSize){
+  fill=fill||'#fff'; size=size||11; subSize=subSize||8.5;
+  const totalH=(lines.length-1)*14+(sub?13:0);
+  let ty=y-totalH/2;
+  lines.forEach((l,i)=>{
+    const t=el('text',{x,y:ty+i*14,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':size,'font-weight':'700','font-family':'Outfit,sans-serif',fill});
+    t.textContent=l; svg.appendChild(t);
+  });
+  if(sub){
+    const s=el('text',{x,y:ty+lines.length*14,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':subSize,'font-family':'JetBrains Mono,monospace',
+      fill:fill==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.42)'});
+    s.textContent=sub; svg.appendChild(s);
+  }
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,rx){
+  roundRect(svg,x,y,w,h,fill,'rgba(255,255,255,0.2)',rx);
+  label(svg,x,y,lines,sub,'#fff',11,8.5);
+}
+
+function centerNode(svg,x,y,w,h,fill,lines,sub){
+  svg.appendChild(el('rect',{x:x-w/2+3,y:y-h/2+4,width:w,height:h,rx:14,ry:14,fill:'rgba(0,0,0,0.12)'}));
+  svg.appendChild(el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx:14,ry:14,fill,stroke:'rgba(255,255,255,0.3)','stroke-width':'2'}));
+  label(svg,x,y,lines,sub,'#fff',12,9);
+}
+
+// ── MASTER FLOW ──
+(function(){
+  const svg=document.getElementById('svgFlow');
+  svg.setAttribute('viewBox','0 0 1380 120');
+  svg.appendChild(el('rect',{x:0,y:0,width:1380,height:120,fill:'rgba(249,247,242,0.3)'}));
+
+  const steps=[
+    {x:82,  col:C.amber,  label:['Question','Hour'],   sub:'1st Hour · 1892'},
+    {x:232, col:C.gold,   label:['Zero Hour'],          sub:'12:00 Noon · 1962'},
+    {x:382, col:C.blue,   label:['Calling','Attention'],sub:'Indian Innovation'},
+    {x:532, col:C.red,    label:['Adjournment','Motion'],sub:'Lok Sabha · 50 Mbrs'},
+    {x:682, col:C.teal,   label:['Closure','Motion'],   sub:'End Debate'},
+    {x:832, col:C.purple, label:['Confidence /','No-Conf.'],sub:'Stability Test'},
+    {x:982, col:C.amber,  label:['Censure','Motion'],   sub:'Policy Disapproval'},
+    {x:1132,col:C.green,  label:['Motion of','Thanks'],  sub:'Presidential Address'},
+    {x:1282,col:C.sky,    label:['Resolution'],          sub:'Independent Decision'},
+  ];
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const nx=steps[i+1].x;
+      line(svg,s.x+65,60,nx-65,60,C.border,2);
+    }
+    node(svg,s.x,60,128,56,s.col,s.label,s.sub);
+  });
+
+  const t=el('text',{x:690,y:110,'text-anchor':'middle','font-size':'8','font-family':'JetBrains Mono,monospace',
+    'letter-spacing':'3.5',fill:'rgba(122,106,82,0.45)'});
+  t.textContent='DAILY FLOW: QUESTION HOUR → URGENT DISCUSSION → DEBATE CONTROL → GOVERNMENT STABILITY → DECISION';
+  svg.appendChild(t);
+})();
+
+// ── MOTIONS MIND MAP ──
+(function(){
+  const svg=document.getElementById('svgMotions');
+  svg.setAttribute('viewBox','0 0 1380 280');
+  svg.appendChild(el('rect',{x:0,y:0,width:1380,height:280,fill:'rgba(249,247,242,0.3)'}));
+
+  const cx=690, cy=140;
+  centerNode(svg,cx,cy,200,58,[C.blue],['Motions','(Parliamentary)'],'Formal proposals for House decision');
+
+  const branches=[
+    // Left branch - Substantive
+    {x:180,y:80,  col:C.blue,  w:190,h:50, label:['Substantive Motion'], sub:'Independent proposal'},
+    {x:90,y:168,  col:'#1a3d6a',w:150,h:44, label:['Impeachment'], sub:'of President'},
+    {x:260,y:168, col:'#1a3d6a',w:150,h:44, label:['Remove CEC/CAG'], sub:'Constitutional officers'},
+
+    // Middle bottom - Substitute
+    {x:690,y:228, col:C.purple, w:200,h:50, label:['Substitute Motion'], sub:'Replaces original entirely'},
+
+    // Right branch - Subsidiary
+    {x:1200,y:80,  col:C.teal,   w:190,h:50, label:['Subsidiary Motion'], sub:'Depends on original'},
+    {x:1080,y:168, col:'#0a5a68',w:155,h:44, label:['Ancillary'], sub:'Proceed with business'},
+    {x:1240,y:168, col:'#0a5a68',w:155,h:44, label:['Superseding'], sub:'Replaces during debate'},
+    {x:1370,y:168, col:'#0a5a68',w:140,h:44, label:['Amendment'], sub:'Modifies part'},
+  ];
+
+  // Connections
+  curve(svg,cx-100,cy-10,180,105,C.blue,true,1.8);
+  line(svg,180,105,90,145,C.blue,1.5,true);
+  line(svg,180,105,260,145,C.blue,1.5,true);
+
+  curve(svg,cx,cy+29,cx,205,C.purple,true,1.8);
+
+  curve(svg,cx+100,cy-10,1200,105,C.teal,true,1.8);
+  line(svg,1200,105,1080,145,C.teal,1.5,true);
+  line(svg,1200,105,1240,145,C.teal,1.5,true);
+  line(svg,1200,105,1340,145,C.teal,1.5,true);
+
+  branches.forEach(b=>node(svg,b.x,b.y,b.w,b.h,b.col,b.label,b.sub));
+  centerNode(svg,cx,cy,200,58,C.ink,['Motions','(Parliamentary)'],'Formal proposals for House decision');
+})();
+
+// ── CRITICAL MOTIONS MAP ──
+(function(){
+  const svg=document.getElementById('svgCritical');
+  svg.setAttribute('viewBox','0 0 1380 340');
+  svg.appendChild(el('rect',{x:0,y:0,width:1380,height:340,fill:'rgba(249,247,242,0.3)'}));
+
+  const cx=690, cy=170;
+  centerNode(svg,cx,cy,210,60,C.ink,['Critical Motions'],'Government Accountability Devices');
+
+  const nodes=[
+    {x:130, y:80,  col:C.red,    w:210,h:58, lines:['No-Confidence Motion'],   sub:'Lok Sabha · 50 Mbrs · Art.75'},
+    {x:130, y:185, col:C.amber,  w:210,h:58, lines:['Adjournment Motion'],      sub:'Lok Sabha Only · 50 Mbrs'},
+    {x:130, y:285, col:C.sky,    w:210,h:58, lines:['Calling Attention'],       sub:'Indian Innovation · 1954'},
+    {x:690, y:56,  col:C.purple, w:210,h:58, lines:['Confidence Motion'],       sub:'Prove Majority · Govt. Request'},
+    {x:690, y:284, col:C.teal,   w:210,h:58, lines:['Point of Order'],          sub:'Rule Violation · No Debate'},
+    {x:1250,y:80,  col:C.gold,   w:210,h:58, lines:['Motion of Thanks'],        sub:'Presidential Address · Both Houses'},
+    {x:1250,y:185, col:C.green,  w:210,h:58, lines:['Censure Motion'],          sub:'Disapproval · No Resignation'},
+    {x:1250,y:285, col:C.blue,   w:210,h:58, lines:['Privilege Motion'],        sub:'Breach of Privilege'},
+  ];
+
+  nodes.forEach(n=>{
+    const fx=n.x<cx?cx-105:cx+105;
+    const fy=n.y<cy?cy-20:(n.y>cy?cy+20:cy);
+    const tx=n.x<cx?n.x+105:(n.x>cx?n.x-105:n.x);
+    curve(svg,fx,fy,tx,n.y,n.col+'88',true,1.8);
+    node(svg,n.x,n.y,n.w,n.h,n.col,n.lines,n.sub);
+  });
+  centerNode(svg,cx,cy,210,60,C.ink,['Critical Motions'],'Government Accountability Devices');
+})();
+
+// ── FULL CONNECTED FLOW ──
+(function(){
+  const svg=document.getElementById('svgFullFlow');
+  svg.setAttribute('viewBox','0 0 1380 200');
+  svg.appendChild(el('rect',{x:0,y:0,width:1380,height:200,fill:'rgba(249,247,242,0.3)'}));
+
+  const row1=[
+    {x:80,  y:70,  col:C.amber, lines:['Question Hour'], sub:'Executive accountability'},
+    {x:230, y:70,  col:C.gold,  lines:['Zero Hour'],     sub:'Urgent matters'},
+    {x:390, y:70,  col:C.green, lines:['Calling Attention'],sub:'Draw attention'},
+    {x:550, y:70,  col:C.red,   lines:['Adjournment'],   sub:'Serious disruption'},
+    {x:710, y:70,  col:C.sky,   lines:['Point of Order'],sub:'Rule violations'},
+    {x:870, y:70,  col:C.teal,  lines:['Closure Motion'],sub:'End long debates'},
+    {x:1040,y:70,  col:C.purple,lines:['Confidence /','No-Conf.'],sub:'Stability test'},
+    {x:1210,y:70,  col:C.amber, lines:['Censure'],       sub:'Disapproval'},
+    {x:1340,y:70,  col:C.blue,  lines:['Resolution'],    sub:'Final decision'},
+  ];
+
+  for(let i=0;i<row1.length-1;i++){
+    const s=row1[i], nx=row1[i+1].x;
+    line(svg,s.x+70,s.y,nx-70,s.y,C.border,2);
+  }
+  row1.forEach(n=>node(svg,n.x,n.y,n.x===1040?150:130,n.y===70?58:52,n.col,n.lines,n.sub));
+
+  // Labels at bottom
+  const labels=[
+    {x:310, text:'RAISE ISSUES'},
+    {x:700, text:'CONTROL DEBATE'},
+    {x:1120,text:'DECIDE FATE'},
+  ];
+  labels.forEach(lb=>{
+    const t=el('text',{x:lb.x,y:165,'text-anchor':'middle','font-size':'8.5',
+      'font-family':'JetBrains Mono,monospace','letter-spacing':'3',
+      fill:'rgba(122,106,82,0.45)'});
+    t.textContent=lb.text; svg.appendChild(t);
+  });
+
+  // bracket lines
+  [[80,550],[550,870],[870,1380]].forEach(([sx,ex],i)=>{
+    svg.appendChild(el('line',{x1:sx,y1:150,x2:ex,y2:150,
+      stroke:'rgba(200,175,130,0.3)','stroke-width':'1.5'}));
+  });
+})();
+</script>
+</body>
+</html>

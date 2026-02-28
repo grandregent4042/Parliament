@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajya Sabha vs Lok Sabha — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f5f2ec;--ink:#18140f;--paper:#fdfaf4;
+  --gold:#c49a2a;--gold-lt:#f7e9b8;
+  --saffron:#d95510;--navy:#1b3068;--navy-lt:#d8e3f7;
+  --green:#1a5e3c;--green-lt:#d4ede3;
+  --red:#8c1818;--red-lt:#f5d8d8;
+  --purple:#4e1570;--purple-lt:#ecdaf5;
+  --teal:#0b5465;--teal-lt:#ceeaf5;
+  --muted:#7a6e5a;--border:#dcd2bb;--card:#fffef8;
+}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);
+  background-image:
+    radial-gradient(ellipse 900px 500px at 10% 8%,rgba(196,154,42,0.07) 0%,transparent 60%),
+    radial-gradient(ellipse 700px 700px at 90% 92%,rgba(27,48,104,0.06) 0%,transparent 60%);}
+.page{max-width:1360px;margin:0 auto;padding:0 24px 100px;}
+
+.hdr{text-align:center;padding:48px 20px 22px;}
+.hdr-sup{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.hdr h1{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,54px);line-height:1.05;}
+.hdr h1 em{font-style:italic;color:var(--saffron);}
+.hdr-sub{margin-top:8px;font-size:11.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:1.5px;}
+.hdr::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--saffron),var(--gold),var(--navy));margin:14px auto 0;border-radius:4px;}
+
+.slabel{display:flex;align-items:center;gap:14px;margin:34px 0 14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:3.5px;color:var(--gold);text-transform:uppercase;}
+.slabel::before,.slabel::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:18px;}
+@media(max-width:860px){.g3{grid-template-columns:1fr 1fr;}}
+@media(max-width:580px){.g2,.g3{grid-template-columns:1fr;}}
+
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:15px;padding:18px 20px;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:15px 15px 0 0;}
+.pc.navy::before{background:var(--navy);}
+.pc.saffron::before{background:var(--saffron);}
+.pc.gold::before{background:var(--gold);}
+.pc.green::before{background:var(--green);}
+.pc.red::before{background:var(--red);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc-lbl{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;margin-bottom:12px;line-height:1.2;}
+
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:20px;position:relative;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;border-radius:18px 18px 0 0;}
+.mc.c-navy::before{background:linear-gradient(90deg,var(--navy),var(--teal));}
+.mc.c-saffron::before{background:linear-gradient(90deg,var(--saffron),var(--gold));}
+.mc.c-green::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+.mc.c-split::before{background:linear-gradient(90deg,var(--navy),#888,var(--saffron));}
+.mc.c-red::before{background:linear-gradient(90deg,var(--red),var(--purple));}
+.mc.c-gold::before{background:linear-gradient(90deg,var(--gold),var(--saffron));}
+.mc svg{display:block;width:100%;}
+
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:7px;font-size:10px;font-weight:600;margin:2px;font-family:'JetBrains Mono',monospace;border:1.5px solid;}
+.chip.navy{background:var(--navy-lt);color:var(--navy);border-color:rgba(27,48,104,0.2);}
+.chip.saffron{background:rgba(217,85,16,0.08);color:var(--saffron);border-color:rgba(217,85,16,0.2);}
+.chip.green{background:var(--green-lt);color:var(--green);border-color:rgba(26,94,60,0.2);}
+.chip.red{background:var(--red-lt);color:var(--red);border-color:rgba(140,24,24,0.2);}
+.chip.gold{background:var(--gold-lt);color:#7a5a08;border-color:rgba(196,154,42,0.25);}
+.chip.purple{background:var(--purple-lt);color:var(--purple);border-color:rgba(78,21,112,0.2);}
+.chip.teal{background:var(--teal-lt);color:var(--teal);border-color:rgba(11,84,101,0.2);}
+
+.vlist{display:flex;flex-direction:column;gap:6px;margin:8px 0;}
+.vi{padding:8px 12px;border-radius:9px;background:rgba(250,246,236,0.85);border:1px solid var(--border);}
+.vi .vt{font-weight:700;font-size:11.5px;margin-bottom:1px;}
+.vi .vs{font-size:9.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:17px;padding:26px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.ks-icon{font-size:38px;flex:0 0 auto;}
+.ks-title{font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;margin-bottom:5px;}
+.ks-body{font-size:11.5px;color:#c8b880;line-height:1.7;}
+.ks-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kp{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10.5px;font-family:'JetBrains Mono',monospace;}
+
+.trap{background:rgba(140,24,24,0.04);border:1.5px solid rgba(140,24,24,0.18);border-radius:12px;padding:14px 16px;margin-bottom:8px;}
+.trap-title{font-size:11px;font-weight:800;color:var(--red);margin-bottom:6px;}
+
+.callout{padding:10px 13px;border-radius:9px;border-left:4px solid;margin:8px 0;}
+.callout-title{font-size:11px;font-weight:700;margin-bottom:3px;}
+.callout-body{font-size:10.5px;color:var(--muted);line-height:1.5;}
+
+.phase{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;}
+.phase-title{font-size:12px;font-weight:700;margin:4px 0 2px;}
+.phase-sub{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);}
+
+.art{display:inline-flex;padding:2px 9px;border-radius:5px;font-size:10px;font-family:'JetBrains Mono',monospace;font-weight:700;background:var(--gold-lt);color:#7a5a08;border:1.5px solid rgba(196,154,42,0.3);margin:2px;}
+
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{padding:9px 11px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.2px;background:var(--ink);color:#f5e8c0;}
+.ctable td{padding:8px 11px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:hover td{background:rgba(196,154,42,0.03);}
+.ctable td:first-child{font-weight:700;}
+.yes{color:var(--green);font-weight:700;}
+.no{color:var(--red);font-weight:700;}
+.both{color:var(--navy);font-weight:700;}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="hdr">
+  <div class="hdr-sup">Indian Polity · Parliament · UPSC Prelims</div>
+  <h1>Rajya Sabha <em>vs</em> Lok Sabha</h1>
+  <div class="hdr-sub">Equal Powers · LS Dominance · RS Special Powers · Prelims Traps</div>
+</div>
+
+<div class="slabel">The Big Picture — One Connected Story</div>
+<div class="mc c-split">
+  <svg id="svgMaster" viewBox="0 0 1312 96" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="slabel">① Why Rajya Sabha Exists</div>
+<div class="mc c-navy">
+  <svg id="svgWhy" viewBox="0 0 1312 210" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="slabel">② Where Both Houses Are Equal</div>
+<div class="mc c-navy">
+  <svg id="svgEqual" viewBox="0 0 1312 320" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="slabel">③ Where Lok Sabha is Stronger</div>
+<div class="mc c-saffron">
+  <svg id="svgLS" viewBox="0 0 1312 310" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="pc gold" style="margin-bottom:18px;">
+  <div class="pc-lbl">Joint Sitting Rule</div>
+  <h3>🤝 When Does Joint Sitting Apply?</h3>
+  <div class="g2" style="margin-bottom:0;">
+    <div>
+      <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:6px;">✅ Applies to:</div>
+      <div class="vlist">
+        <div class="vi"><div class="vt">Ordinary Bills (deadlock between Houses)</div></div>
+        <div class="vi"><div class="vt">Financial Bills (other than Money Bills)</div></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:700;color:var(--red);margin-bottom:6px;">❌ Does NOT Apply to:</div>
+      <div class="vlist">
+        <div class="vi" style="background:var(--red-lt);"><div class="vt">Money Bills — LS alone decides</div></div>
+        <div class="vi" style="background:var(--red-lt);"><div class="vt">Constitutional Amendment Bills — must pass both separately</div></div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:10px;padding:9px 12px;background:rgba(196,154,42,0.09);border-radius:9px;border:1.5px solid rgba(196,154,42,0.25);font-size:11px;font-weight:700;">
+    🏛️ LS Speaker presides over Joint Sitting — RS Chairman does NOT preside
+  </div>
+</div>
+
+<div class="slabel">④ Special Powers of Rajya Sabha</div>
+<div class="mc c-green">
+  <svg id="svgRS" viewBox="0 0 1312 290" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="slabel">⑤ Full Power Comparison</div>
+<div class="pc navy" style="margin-bottom:20px;">
+  <div class="pc-lbl">Head-to-Head Matrix</div>
+  <h3>📊 LS vs RS — Every Key Area</h3>
+  <div style="overflow-x:auto;">
+    <table class="ctable">
+      <thead><tr><th>AREA</th><th>LOK SABHA</th><th>RAJYA SABHA</th><th>VERDICT</th></tr></thead>
+      <tbody>
+        <tr><td>Ordinary Bills</td><td>Full power</td><td>Full power</td><td class="both">⚖️ Equal</td></tr>
+        <tr><td>Constitutional Amendment</td><td>Full power (separately)</td><td>Full power (separately)</td><td class="both">⚖️ Equal</td></tr>
+        <tr><td>Money Bills — Introduce</td><td class="yes">✅ Only LS can introduce</td><td class="no">❌ Cannot introduce</td><td class="yes">LS Dominant</td></tr>
+        <tr><td>Money Bills — Pass</td><td class="yes">✅ LS alone decides</td><td class="no">❌ Recommend only (14 days)</td><td class="yes">LS Dominant</td></tr>
+        <tr><td>Demands for Grants</td><td class="yes">✅ Vote, approve, cut</td><td class="no">❌ Discuss only</td><td class="yes">LS Dominant</td></tr>
+        <tr><td>No-Confidence Motion</td><td class="yes">✅ Can introduce &amp; pass</td><td class="no">❌ Cannot introduce</td><td class="yes">LS Dominant</td></tr>
+        <tr><td>Joint Sitting Chair</td><td class="yes">✅ LS Speaker presides</td><td class="no">❌ RS Chairman excluded</td><td class="yes">LS edge</td></tr>
+        <tr><td>Emergency Revocation</td><td class="yes">✅ LS passes resolution</td><td class="no">❌ RS cannot revoke</td><td class="yes">LS Dominant</td></tr>
+        <tr><td>President — Election</td><td>Elected members vote</td><td>Elected members vote</td><td class="both">⚖️ Equal</td></tr>
+        <tr><td>President — Impeachment</td><td>Can initiate</td><td>Can initiate</td><td class="both">⚖️ Equal</td></tr>
+        <tr><td>VP — Election</td><td>Members vote</td><td>Members vote</td><td class="both">⚖️ Equal</td></tr>
+        <tr><td>VP — Removal</td><td>Only concurs</td><td class="yes">✅ RS ALONE initiates (Art 67)</td><td class="yes">RS Special</td></tr>
+        <tr><td>State List Legislation</td><td>Only after RS resolves</td><td class="yes">✅ Art 249 — 2/3rd P&amp;V</td><td class="yes">RS Special</td></tr>
+        <tr><td>All India Services</td><td class="no">❌ No role at all</td><td class="yes">✅ Art 312 — RS alone</td><td class="yes">RS Exclusive</td></tr>
+        <tr><td>Emergency (LS dissolved)</td><td>Dissolved — absent</td><td class="yes">✅ RS alone approves (352/356/360)</td><td class="yes">RS Exclusive</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="slabel">🔥 High-Probability Prelims Traps</div>
+<div class="mc c-red">
+  <svg id="svgTraps" viewBox="0 0 1312 230" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2" style="margin-top:4px;">
+  <div>
+    <div class="trap"><div class="trap-title">⚠️ Trap 1 — RS &amp; Money Bills</div>RS CANNOT amend a Money Bill — only recommend. Deemed passed if RS doesn't return within 14 days. Speaker's certification is FINAL and unchallengeable.</div>
+    <div class="trap"><div class="trap-title">⚠️ Trap 2 — Joint Sitting Exclusions</div>NO Joint Sitting for Money Bills. NO Joint Sitting for Constitutional Amendment Bills. Only resolves deadlocks on Ordinary + Financial Bills.</div>
+    <div class="trap"><div class="trap-title">⚠️ Trap 3 — Art 249 Majority</div>2/3rd of members PRESENT &amp; VOTING — NOT 2/3rd of total membership. This distinction is a frequent MCQ trap.</div>
+    <div class="trap"><div class="trap-title">⚠️ Trap 4 — VP vs President Removal</div>President impeachment → can start in EITHER House. VP removal → ONLY RS initiates (Art 67). LS only concurs for VP.</div>
+  </div>
+  <div>
+    <div class="trap"><div class="trap-title">⚠️ Trap 5 — No-Confidence Motion</div>ONLY Lok Sabha can pass No-Confidence Motion. Art 75 — ministers collectively responsible to LS alone. RS motion does NOT topple the government.</div>
+    <div class="trap"><div class="trap-title">⚠️ Trap 6 — Emergency &amp; LS Dissolution</div>If LS is dissolved, RS ALONE can approve Emergency proclamation. Stays effective until new LS. Applies to all 3 emergencies (352, 356, 360).</div>
+    <div class="trap"><div class="trap-title">⚠️ Trap 7 — All India Services</div>RS ALONE creates All India Services (Art 312). IAS, IPS — created by RS resolution. LS has absolutely NO role in this process.</div>
+    <div class="trap"><div class="trap-title">⚠️ Trap 8 — Permanent vs Dissolved</div>RS is PERMANENT — can NEVER be dissolved. LS CAN be dissolved by the President on PM's advice. This drives the RS emergency power.</div>
+  </div>
+</div>
+
+<div class="slabel">⑦ Mental Model</div>
+<div class="g3" style="margin-bottom:18px;">
+  <div class="phase" style="border-color:var(--saffron);background:rgba(217,85,16,0.04);">
+    <div class="phase-num" style="color:var(--saffron);">LS</div>
+    <div class="phase-title">People's House</div>
+    <div class="phase-sub">DEMOCRATIC MANDATE</div>
+    <div style="font-size:10.5px;margin-top:8px;line-height:1.6;color:var(--muted);">Financial control · No-confidence · Elected directly · Government accountability</div>
+    <span class="chip saffron" style="margin-top:8px;display:inline-flex;">⚡ Power of Purse</span>
+  </div>
+  <div class="phase" style="border-color:var(--navy);background:rgba(27,48,104,0.04);">
+    <div class="phase-num" style="color:var(--navy);">RS</div>
+    <div class="phase-title">States' House</div>
+    <div class="phase-sub">FEDERAL SAFEGUARD</div>
+    <div style="font-size:10.5px;margin-top:8px;line-height:1.6;color:var(--muted);">Represents states · Permanent · Art 249/312/67 · Emergency guard</div>
+    <span class="chip navy" style="margin-top:8px;display:inline-flex;">🏛️ Federal Balance</span>
+  </div>
+  <div class="phase" style="border-color:var(--green);background:rgba(26,94,60,0.04);">
+    <div class="phase-num" style="color:var(--green);">Both</div>
+    <div class="phase-title">Co-equal</div>
+    <div class="phase-sub">BICAMERAL CHECKS</div>
+    <div style="font-size:10.5px;margin-top:8px;line-height:1.6;color:var(--muted);">Ordinary bills · Constitutional amendments · President election/removal</div>
+    <span class="chip green" style="margin-top:8px;display:inline-flex;">⚖️ Together</span>
+  </div>
+</div>
+
+<div class="keystone">
+  <div class="ks-icon">🇮🇳</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Core Connecting Idea</div>
+    <div class="ks-body">India's Parliament has a deliberate <strong style="color:#f7e9b8;">asymmetry</strong>. Lok Sabha = democratic mandate + financial power. Rajya Sabha = federal balance + institutional continuity. Together they ensure both <strong style="color:#f7e9b8;">majority will</strong> and <strong style="color:#f7e9b8;">federal safeguard</strong>. India rejected the US equal-state model — choosing population-based representation: <em>unity over symmetry</em>.</div>
+    <div class="ks-pills">
+      <span class="kp">⚡ LS = Power of Purse</span>
+      <span class="kp">🏛️ RS = States' Voice</span>
+      <span class="kp">🔒 RS = Continuity</span>
+      <span class="kp">⚖️ Together = Checks</span>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(attrs))e.setAttribute(k,v);return e;}
+
+// Add arrowhead marker to an svg element (once)
+function addDefs(svg,id,color){
+  let defs=svg.querySelector('defs');
+  if(!defs){defs=el('defs',{});svg.insertBefore(defs,svg.firstChild);}
+  const m=el('marker',{id,markerWidth:'7',markerHeight:'7',refX:'6',refY:'3.5',orient:'auto'});
+  m.appendChild(el('polygon',{points:'0 0,7 3.5,0 7',fill:color||'rgba(140,110,50,0.5)'}));
+  defs.appendChild(m);
+}
+
+// Draw a filled rounded-rect node with 1-3 lines of text + optional subtext
+// All text is centered and sized to fit within w × h
+function node(svg,cx,cy,w,h,fill,lines,sub,rx){
+  rx=rx||9;
+  // shadow
+  svg.appendChild(el('rect',{x:cx-w/2+2,y:cy-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.13)'}));
+  // box
+  svg.appendChild(el('rect',{x:cx-w/2,y:cy-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.2)','stroke-width':'1.5'}));
+  // text layout
+  const lineH=15, subH=sub?12:0;
+  const totalH=lines.length*lineH+subH;
+  let ty=cy-totalH/2+lineH/2;
+  lines.forEach((ln,i)=>{
+    const t=el('text',{x:cx,y:ty+i*lineH,'text-anchor':'middle','dominant-baseline':'central',
+      'font-size':'11.5','font-weight':'700','font-family':'Outfit,sans-serif',fill:'#fff'});
+    t.textContent=ln;svg.appendChild(t);
+  });
+  if(sub){
+    const s=el('text',{x:cx,y:ty+lines.length*lineH,'text-anchor':'middle','dominant-baseline':'central',
+      'font-size':'8.8','font-family':'JetBrains Mono,monospace',fill:'rgba(255,255,255,0.55)'});
+    s.textContent=sub;svg.appendChild(s);
+  }
+}
+
+function seg(svg,x1,y1,x2,y2,color,dashed,mid){
+  let d;
+  if(mid==='h'){// horizontal then vertical
+    d=`M${x1},${y1} H${(x1+x2)/2} V${y2} H${x2}`;
+  } else {
+    d=`M${x1},${y1} L${x2},${y2}`;
+  }
+  svg.appendChild(el('path',{d,stroke:color||'rgba(140,110,50,0.38)','stroke-width':'1.6',fill:'none',
+    'stroke-dasharray':dashed?'5 4':'none','marker-end':'url(#arr)'}));
+}
+
+function lbl(svg,x,y,text,opts){
+  opts=opts||{};
+  const t=el('text',{x,y,'text-anchor':opts.anchor||'middle','font-size':opts.fs||'9',
+    'font-weight':opts.fw||'600','font-family':opts.font||'JetBrains Mono,monospace',
+    fill:opts.fill||'rgba(90,70,30,0.45)','letter-spacing':opts.ls||'1'});
+  t.textContent=text;svg.appendChild(t);
+}
+
+function bg(svg,w,h){
+  svg.appendChild(el('rect',{x:0,y:0,width:w,height:h,fill:'rgba(253,250,244,0.35)'}));
+}
+
+// ══════════════════════════════════════
+// 0. MASTER FLOW — horizontal strip
+// ══════════════════════════════════════
+(()=>{
+  const svg=document.getElementById('svgMaster');
+  addDefs(svg,'arr','rgba(140,110,50,0.55)');
+  bg(svg,1312,96);
+  const steps=[
+    {l:['Why RS','Exists'],       f:'#1b3068'},
+    {l:['Equal','Powers'],        f:'#1a5e3c'},
+    {l:['LS','Dominant'],         f:'#d95510'},
+    {l:['RS Special','Powers'],   f:'#8c1818'},
+    {l:['Art 249','312 · 67'],    f:'#4e1570'},
+    {l:['Emergency','Guard'],     f:'#0b5465'},
+    {l:['Permanent','House'],     f:'#18140f'},
+    {l:['Prelims','Traps 🔥'],    f:'#c49a2a'},
+  ];
+  const nW=136,nH=54,gap=20;
+  const tot=steps.length*nW+(steps.length-1)*gap;
+  const sx=(1312-tot)/2+nW/2;
+  const cy=46;
+  steps.forEach((s,i)=>{
+    const cx=sx+i*(nW+gap);
+    if(i<steps.length-1){
+      const nx=sx+(i+1)*(nW+gap);
+      svg.appendChild(el('line',{x1:cx+nW/2,y1:cy,x2:nx-nW/2,y2:cy,
+        stroke:'rgba(160,130,60,0.4)','stroke-width':'1.8','marker-end':'url(#arr)'}));
+    }
+    node(svg,cx,cy,nW,nH,s.f,s.l,null,8);
+  });
+  lbl(svg,656,88,'MASTER FLOW: THE CONNECTED STORY OF INDIA\'S PARLIAMENT',
+    {fs:'8',fw:'600',fill:'rgba(100,80,30,0.4)',ls:'1.5'});
+})();
+
+
+// ══════════════════════════════════════
+// 1. WHY RS — center + 3 left + 3 right, horizontal spokes
+// ══════════════════════════════════════
+(()=>{
+  const svg=document.getElementById('svgWhy');
+  addDefs(svg,'arr','rgba(27,48,104,0.5)');
+  bg(svg,1312,210);
+
+  const cx=656,cy=105;
+  node(svg,cx,cy,196,52,'#1b3068',['Rajya Sabha','Exists Because…'],null,11);
+
+  const nW=172,nH=50;
+  const leftX=192; // center of left nodes
+  const rightX=1120;
+  const ys=[45,105,165];
+
+  const left=[
+    {l:['Represents','the States'],   s:'Federal chamber',        f:'#1b3068'},
+    {l:['Permanent','House'],         s:'Never dissolved',         f:'#0b5465'},
+    {l:['Continuity','in Govt.'],     s:'Even if LS dissolved',    f:'#1a5e3c'},
+  ];
+  const right=[
+    {l:['Not US Model','(No Equal Seats)'],s:'Population-based instead',f:'#8c1818'},
+    {l:['Unity Over','Symmetry'],          s:'Design philosophy',         f:'#4e1570'},
+    {l:['6-yr Term','1/3 retire/2yr'],     s:'Staggered rotation',        f:'#c49a2a'},
+  ];
+
+  left.forEach((n,i)=>{
+    svg.appendChild(el('line',{x1:cx-98,y1:cy,x2:leftX+nW/2,y2:ys[i],
+      stroke:'rgba(27,48,104,0.32)','stroke-width':'1.5','stroke-dasharray':'5 4'}));
+    node(svg,leftX,ys[i],nW,nH,n.f,n.l,n.s,8);
+  });
+  right.forEach((n,i)=>{
+    svg.appendChild(el('line',{x1:cx+98,y1:cy,x2:rightX-nW/2,y2:ys[i],
+      stroke:'rgba(27,48,104,0.32)','stroke-width':'1.5','stroke-dasharray':'5 4'}));
+    node(svg,rightX,ys[i],nW,nH,n.f,n.l,n.s,8);
+  });
+
+  lbl(svg,656,200,'RAJYA SABHA\'S CONSTITUTIONAL RATIONALE',
+    {fs:'8.5',fill:'rgba(27,48,104,0.4)',ls:'1.5'});
+})();
+
+
+// ══════════════════════════════════════
+// 2. EQUAL POWERS — title + 4-col × 3-row grid
+// ══════════════════════════════════════
+(()=>{
+  const svg=document.getElementById('svgEqual');
+  addDefs(svg,'arr','rgba(27,48,104,0.5)');
+  bg(svg,1312,320);
+
+  node(svg,656,30,580,42,'#1b3068',['⚖️  Equal Powers — Both Houses Must Agree'],null,9);
+
+  const items=[
+    {l:['Ordinary','Bills'],              s:'Both must pass',          f:'#1b3068'},
+    {l:['Constitutional','Amendments'],   s:'Each House separately',   f:'#1b3068'},
+    {l:['Financial Bills','(Non-Money)'], s:'Not Money Bills',         f:'#0b5465'},
+    {l:['President','Election'],          s:'Elected members, both',   f:'#1a5e3c'},
+    {l:['President','Impeachment'],       s:'Either House initiates',  f:'#1a5e3c'},
+    {l:['CJI & SC/HC','Judge Removal'],   s:'Both agree needed',       f:'#8c1818'},
+    {l:['CEC & CAG','Removal'],           s:'Both Houses',             f:'#8c1818'},
+    {l:['Ordinance','Approval'],          s:'Both must approve',       f:'#4e1570'},
+    {l:['Emergency','Approval'],          s:'Both (if in session)',    f:'#4e1570'},
+    {l:['PM & Ministers','Selection'],    s:'Both part of process',    f:'#c49a2a'},
+    {l:['UPSC / SC','Jurisdiction'],      s:'Enlargement by both',     f:'#c49a2a'},
+    {l:['★ VP Removal','RS Initiates'],   s:'RS alone starts, LS concurs',f:'#d95510'},
+  ];
+
+  const cols=4, nW=282, nH=52, cGap=18, rGap=18;
+  const gridW=cols*nW+(cols-1)*cGap;
+  const sx=(1312-gridW)/2+nW/2;
+  const sy=82;
+
+  items.forEach((item,i)=>{
+    const col=i%cols, row=Math.floor(i/cols);
+    const cx=sx+col*(nW+cGap), cy=sy+row*(nH+rGap);
+    node(svg,cx,cy,nW,nH,item.f,item.l,item.s,8);
+  });
+
+  lbl(svg,656,308,'NO BILL / RESOLUTION PASSES WITHOUT BOTH HOUSES AGREEING — IN ALL THESE AREAS',
+    {fs:'8.5',fill:'rgba(27,48,104,0.4)',ls:'1'});
+})();
+
+
+// ══════════════════════════════════════
+// 3. LS DOMINANT — root → 2 branches → leaves (well-spaced tree)
+// ══════════════════════════════════════
+(()=>{
+  const svg=document.getElementById('svgLS');
+  addDefs(svg,'arr','rgba(217,85,16,0.55)');
+  bg(svg,1312,310);
+
+  const rootCX=656, rootCY=32;
+  node(svg,rootCX,rootCY,360,44,'#d95510',['⚡  Lok Sabha is STRONGER in These Areas'],null,9);
+
+  // Branch 1: Financial Supremacy (left)
+  const b1x=310, b1y=108;
+  node(svg,b1x,b1y,220,48,'#8c1818',['Financial','Supremacy'],null,9);
+  svg.appendChild(el('line',{x1:rootCX,y1:rootCY+22,x2:b1x,y2:b1y-24,
+    stroke:'rgba(217,85,16,0.4)','stroke-width':'1.8','stroke-dasharray':'5 4'}));
+
+  // Branch 2: Political Supremacy (right)
+  const b2x=1002, b2y=108;
+  node(svg,b2x,b2y,220,48,'#d95510',['Political','Supremacy'],null,9);
+  svg.appendChild(el('line',{x1:rootCX,y1:rootCY+22,x2:b2x,y2:b2y-24,
+    stroke:'rgba(217,85,16,0.4)','stroke-width':'1.8','stroke-dasharray':'5 4'}));
+
+  // Financial leaves — 3 columns × 2 rows under b1
+  const finLeaves=[
+    {l:['Money Bill','Intro — LS Only'],    s:'Art. 110 · RS cannot',       f:'#8c1818'},
+    {l:['RS Only','Recommends'],            s:'14-day limit then auto-pass', f:'#8c1818'},
+    {l:['Speaker','Certifies Bill'],        s:'Final — unchallengeable',    f:'#7a1010'},
+    {l:['No Joint Sitting','(Money Bill)'], s:'LS alone decides',           f:'#7a1010'},
+    {l:['Demands for','Grants'],            s:'RS can only discuss',        f:'#6a0808'},
+    {l:['Emergency','Revocation'],          s:'LS passes resolution',       f:'#6a0808'},
+  ];
+  const fLCols=3, fLW=160, fLH=50, fLcGap=14, fLrGap=14;
+  const fLgridW=fLCols*fLW+(fLCols-1)*fLcGap;
+  const fLsx=b1x-fLgridW/2+fLW/2;
+  finLeaves.forEach((leaf,i)=>{
+    const col=i%fLCols, row=Math.floor(i/fLCols);
+    const lx=fLsx+col*(fLW+fLcGap), ly=190+row*(fLH+fLrGap);
+    svg.appendChild(el('line',{x1:b1x,y1:b1y+24,x2:lx,y2:ly-fLH/2,
+      stroke:'rgba(140,24,24,0.28)','stroke-width':'1.3','stroke-dasharray':'4 3'}));
+    node(svg,lx,ly,fLW,fLH,leaf.f,leaf.l,leaf.s,7);
+  });
+
+  // Political leaves — 2 columns × 2 rows under b2
+  const polLeaves=[
+    {l:['No-Confidence','Motion — LS Only'], s:'Art. 75 collective resp.',  f:'#d95510'},
+    {l:['Govt. Falls','If LS Votes No'],      s:'RS motion irrelevant',      f:'#d95510'},
+    {l:['Joint Sitting','LS Speaker Chairs'], s:'RS Chairman excluded',      f:'#b04010'},
+    {l:['Collective Resp.','To LS Only'],     s:'Ministers answerable to LS',f:'#b04010'},
+  ];
+  const pLCols=2, pLW=218, pLH=50, pLcGap=16, pLrGap=14;
+  const pLgridW=pLCols*pLW+(pLCols-1)*pLcGap;
+  const pLsx=b2x-pLgridW/2+pLW/2;
+  polLeaves.forEach((leaf,i)=>{
+    const col=i%pLCols, row=Math.floor(i/pLCols);
+    const lx=pLsx+col*(pLW+pLcGap), ly=190+row*(pLH+pLrGap);
+    svg.appendChild(el('line',{x1:b2x,y1:b2y+24,x2:lx,y2:ly-pLH/2,
+      stroke:'rgba(217,85,16,0.28)','stroke-width':'1.3','stroke-dasharray':'4 3'}));
+    node(svg,lx,ly,pLW,pLH,leaf.f,leaf.l,leaf.s,7);
+  });
+
+  lbl(svg,656,300,'LOK SABHA CONTROLS FINANCE & GOVERNMENT ACCOUNTABILITY',
+    {fs:'8.5',fill:'rgba(217,85,16,0.45)',ls:'1'});
+})();
+
+
+// ══════════════════════════════════════
+// 4. RS SPECIAL POWERS — title + 4-column blocks
+// ══════════════════════════════════════
+(()=>{
+  const svg=document.getElementById('svgRS');
+  addDefs(svg,'arr','rgba(26,94,60,0.5)');
+  bg(svg,1312,290);
+
+  node(svg,656,30,560,42,'#1a5e3c',['🔴  Rajya Sabha\'s Exclusive & Special Powers'],null,9);
+
+  const cols=[
+    {
+      hdr:{l:['Article 249','State List Law'],      s:'RS empowers Parliament',   f:'#1a5e3c'},
+      d1: {l:['2/3rd Majority','Present & Voting'], s:'NOT of total members ⚠️',  f:'#1a5e3c'},
+      d2: {l:['Valid 1 Year','(Renewable)'],         s:'Annual renewal possible',  f:'#1a5e3c'},
+    },
+    {
+      hdr:{l:['Article 312','All India Services'],  s:'RS alone authorises',      f:'#0b5465'},
+      d1: {l:['IAS / IPS / IFS','Created by RS'],   s:'Serve Centre & States',    f:'#0b5465'},
+      d2: {l:['LS has','Zero Role'],                s:'RS exclusive power',        f:'#0b5465'},
+    },
+    {
+      hdr:{l:['Article 67','VP Removal'],           s:'RS alone can initiate',    f:'#4e1570'},
+      d1: {l:['Resolution','Starts in RS'],         s:'LS only concurs',           f:'#4e1570'},
+      d2: {l:['Compare: President','Either House'], s:'Art 61 — no RS monopoly',  f:'#4e1570'},
+    },
+    {
+      hdr:{l:['Emergency Guard','352 / 356 / 360'], s:'If LS is dissolved',        f:'#8c1818'},
+      d1: {l:['RS Alone','Approves Proclamation'],  s:'Continuity function',       f:'#8c1818'},
+      d2: {l:['RS Permanent','Never Dissolved'],    s:'Always safeguards',         f:'#8c1818'},
+    },
+  ];
+
+  const nCols=4, bW=278, hH=52, dH=48, cGap=22;
+  const gridW=nCols*bW+(nCols-1)*cGap;
+  const sx=(1312-gridW)/2+bW/2;
+  const hY=106, d1Y=178, d2Y=236;
+
+  cols.forEach((col,i)=>{
+    const bx=sx+i*(bW+cGap);
+    // connector from title
+    svg.appendChild(el('line',{x1:656,y1:51,x2:bx,y2:hY-hH/2,
+      stroke:'rgba(26,94,60,0.2)','stroke-width':'1.1','stroke-dasharray':'4 4'}));
+    node(svg,bx,hY,bW-8,hH,col.hdr.f,col.hdr.l,col.hdr.s,8);
+    // d1
+    svg.appendChild(el('line',{x1:bx,y1:hY+hH/2,x2:bx,y2:d1Y-dH/2,
+      stroke:'rgba(26,94,60,0.3)','stroke-width':'1.4','stroke-dasharray':'4 3'}));
+    node(svg,bx,d1Y,bW-16,dH,col.d1.f,col.d1.l,col.d1.s,7);
+    // d2
+    svg.appendChild(el('line',{x1:bx,y1:d1Y+dH/2,x2:bx,y2:d2Y-dH/2,
+      stroke:'rgba(26,94,60,0.3)','stroke-width':'1.4','stroke-dasharray':'4 3'}));
+    node(svg,bx,d2Y,bW-16,dH,col.d2.f,col.d2.l,col.d2.s,7);
+  });
+
+  lbl(svg,656,280,'THESE POWERS MAKE RAJYA SABHA INDISPENSABLE — NOT MERELY A REVISING CHAMBER',
+    {fs:'8.5',fill:'rgba(26,94,60,0.45)',ls:'1'});
+})();
+
+
+// ══════════════════════════════════════
+// 6. PRELIMS TRAPS — title + 4-col × 2-row grid
+// ══════════════════════════════════════
+(()=>{
+  const svg=document.getElementById('svgTraps');
+  addDefs(svg,'arr','rgba(140,24,24,0.55)');
+  bg(svg,1312,230);
+
+  node(svg,656,28,500,40,'#8c1818',['🔥  High-Probability Prelims Traps'],null,9);
+
+  const traps=[
+    {l:['RS Cannot','Amend Money Bill'],     s:'Only recommends · 14 days',    f:'#8c1818'},
+    {l:['No Joint Sitting','Money/CA Bills'],s:'Only Ordinary Bill deadlock',  f:'#8c1818'},
+    {l:['Art 249 =','2/3rd P & V'],          s:'NOT 2/3rd of total members',   f:'#8c1818'},
+    {l:['VP Removal','RS Alone Starts'],     s:'LS only concurs (Art 67)',      f:'#4e1570'},
+    {l:['No-Confidence','Only in LS'],       s:'RS motion doesn\'t topple govt',f:'#d95510'},
+    {l:['Emergency','RS if LS dissolved'],   s:'Arts 352/356/360',              f:'#d95510'},
+    {l:['IAS/IPS','Created by RS'],          s:'Art 312 · LS has NO role',      f:'#0b5465'},
+    {l:['RS Permanent','LS Can Dissolve'],   s:'Fundamental difference',        f:'#1a5e3c'},
+  ];
+
+  const cols=4, nW=280, nH=56, cGap=18, rGap=16;
+  const gridW=cols*nW+(cols-1)*cGap;
+  const sx=(1312-gridW)/2+nW/2;
+  const sy=82;
+
+  traps.forEach((trap,i)=>{
+    const col=i%cols, row=Math.floor(i/cols);
+    const cx=sx+col*(nW+cGap), cy=sy+row*(nH+rGap);
+    svg.appendChild(el('line',{x1:656,y1:48,x2:cx,y2:cy-nH/2,
+      stroke:'rgba(140,24,24,0.14)','stroke-width':'1.1','stroke-dasharray':'4 4'}));
+    node(svg,cx,cy,nW,nH,trap.f,trap.l,trap.s,8);
+  });
+
+  lbl(svg,656,222,'MEMORISE ALL 8 — THESE APPEAR REPEATEDLY IN PRELIMS MCQs',
+    {fs:'8.5',fill:'rgba(140,24,24,0.45)',ls:'1'});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lok Sabha & Parliament — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0f0e0c;
+  --paper:#f9f7f2;
+  --gold:#9a6f0a;
+  --gold-lt:#f0dfa0;
+  --amber:#c05a00;
+  --saffron:#e87020;
+  --green:#135c38;
+  --navy:#0d2a5e;
+  --indigo:#2e1b7a;
+  --teal:#075060;
+  --crimson:#8a0c1a;
+  --violet:#4a0a78;
+  --muted:#6b5c40;
+  --border:#e0d4b0;
+  --card:#fffef8;
+  --card2:#f5f0e2;
+  --stripe1:#e8f4ec;
+  --stripe2:#e8eef8;
+}
+body{font-family:'Outfit',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 800px 600px at 10% 5%, rgba(154,111,10,0.05) 0%,transparent 60%),
+    radial-gradient(ellipse 700px 700px at 90% 95%, rgba(13,42,94,0.05) 0%,transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 28px 120px;}
+
+/* HEADER */
+.header{text-align:center;padding:50px 16px 18px;position:relative;}
+.header-eyebrow{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:14px;}
+.header-eyebrow::before,.header-eyebrow::after{content:'';width:40px;height:1px;background:var(--gold-lt);}
+.header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5.5vw,58px);line-height:1.05;color:var(--ink);font-weight:700;}
+.header h1 em{font-style:italic;color:var(--saffron);}
+.header-sub{margin-top:10px;font-size:11px;color:var(--muted);font-family:'Space Mono',monospace;letter-spacing:1.2px;}
+.header-bar{width:100px;height:5px;background:linear-gradient(90deg,var(--saffron),var(--gold),var(--navy));margin:16px auto 0;border-radius:5px;}
+
+/* SECTION LABELS */
+.sec-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3.5px;color:var(--gold);text-transform:uppercase;margin:36px 0 16px;display:flex;align-items:center;gap:14px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.sec-label .sn{background:var(--ink);color:var(--gold-lt);width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:9px;flex:0 0 22px;}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:960px){.g3,.g4{grid-template-columns:1fr 1fr;}.g2x1{grid-template-columns:1fr;}}
+@media(max-width:600px){.g2,.g3,.g4,.g2x1{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow 0.25s,transform 0.25s;}
+.pc:hover{box-shadow:0 8px 32px rgba(154,111,10,0.12);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--saffron),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.navy::before{background:var(--navy);}
+.pc.indigo::before{background:var(--indigo);}
+.pc.teal::before{background:var(--teal);}
+.pc.crimson::before{background:var(--crimson);}
+.pc.violet::before{background:var(--violet);}
+.pc.saffron::before{background:var(--saffron);}
+.pc-label{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* MAP CARDS */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;border-radius:20px 20px 0 0;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--saffron),var(--gold),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--navy),var(--indigo),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--crimson),var(--saffron),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--navy));}
+.map-card svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:9.5px;font-weight:700;margin:2px;font-family:'Space Mono',monospace;}
+.pill.gold{background:rgba(154,111,10,0.12);color:var(--gold);}
+.pill.green{background:rgba(19,92,56,0.12);color:var(--green);}
+.pill.navy{background:rgba(13,42,94,0.12);color:var(--navy);}
+.pill.amber{background:rgba(192,90,0,0.12);color:var(--amber);}
+.pill.indigo{background:rgba(46,27,122,0.12);color:var(--indigo);}
+.pill.teal{background:rgba(7,80,96,0.12);color:var(--teal);}
+.pill.crimson{background:rgba(138,12,26,0.12);color:var(--crimson);}
+.pill.violet{background:rgba(74,10,120,0.12);color:var(--violet);}
+.pill.saffron{background:rgba(232,112,32,0.12);color:var(--saffron);}
+
+/* STAT BOXES */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:13px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;line-height:1;}
+.stat-label{font-size:8.5px;font-family:'Space Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:700;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'Space Mono',monospace;}
+
+/* ALERT / CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;margin:8px 0;}
+.callout.warn{background:rgba(138,12,26,0.06);border:1.5px solid rgba(138,12,26,0.2);}
+.callout.ok{background:rgba(19,92,56,0.06);border:1.5px solid rgba(19,92,56,0.2);}
+.callout.note{background:rgba(13,42,94,0.06);border:1.5px solid rgba(13,42,94,0.2);}
+.callout-title{font-size:11px;font-weight:700;margin-bottom:3px;}
+.callout.warn .callout-title{color:var(--crimson);}
+.callout.ok .callout-title{color:var(--green);}
+.callout.note .callout-title{color:var(--navy);}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.55;}
+
+/* CHIPS */
+.chip{display:inline-block;padding:4px 10px;border-radius:7px;font-size:9.5px;font-weight:700;border:1.5px solid;margin:2px;font-family:'Space Mono',monospace;}
+.chip.prob{background:rgba(138,12,26,0.07);border-color:rgba(138,12,26,0.2);color:var(--crimson);}
+.chip.ok{background:rgba(19,92,56,0.07);border-color:rgba(19,92,56,0.2);color:var(--green);}
+.chip.neu{background:rgba(154,111,10,0.07);border-color:rgba(154,111,10,0.2);color:var(--gold);}
+
+/* FEAT GRID */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:17px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:700;}
+.feat .fs{font-size:8.5px;color:var(--muted);font-family:'Space Mono',monospace;margin-top:2px;}
+
+/* IMPACT CHAIN */
+.impact-chain{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.ic-node{padding:6px 11px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:16px;color:var(--muted);flex:0 0 auto;margin:0 3px;}
+
+/* PHASE BOXES */
+.phase-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0;}
+@media(max-width:720px){.phase-row{grid-template-columns:1fr 1fr;}}
+.phase-box{padding:16px 14px;border-radius:13px;border:2px solid;text-align:center;transition:transform 0.2s;}
+.phase-box:hover{transform:translateY(-2px);}
+.phase-num{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;}
+.phase-title{font-size:11.5px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:8.5px;font-family:'Space Mono',monospace;margin-bottom:8px;color:var(--muted);}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:26px 32px;margin:24px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.keystone-icon{font-size:38px;flex:0 0 auto;}
+.keystone-title{font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;margin-bottom:5px;color:#f5d78a;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.65;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'Space Mono',monospace;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(154,111,10,0.025);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+
+/* AMENDMENT TAG */
+.amend-tag{display:inline-block;padding:2px 8px;border-radius:5px;font-size:9px;font-weight:700;font-family:'Space Mono',monospace;}
+.amend-tag.a{background:rgba(13,42,94,0.1);color:var(--navy);}
+.amend-tag.b{background:rgba(192,90,0,0.1);color:var(--amber);}
+.amend-tag.c{background:rgba(19,92,56,0.1);color:var(--green);}
+
+/* SIDE BADGE */
+.badge{display:inline-block;padding:3px 9px;border-radius:6px;font-size:8.5px;font-weight:700;font-family:'Space Mono',monospace;}
+
+/* WHIP BOX */
+.whip-row{display:flex;flex-direction:column;gap:8px;margin:10px 0;}
+.whip-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:9px;border:1.5px solid var(--border);background:var(--card2);}
+.whip-lines{display:flex;gap:3px;}
+.whip-line{width:3px;height:22px;border-radius:2px;}
+.whip-text{flex:1;}
+.whip-title{font-size:11px;font-weight:700;}
+.whip-sub{font-size:9px;color:var(--muted);font-family:'Space Mono',monospace;}
+
+/* TRAP CARDS */
+.trap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:10px 0;}
+@media(max-width:800px){.trap-grid{grid-template-columns:1fr 1fr;}}
+.trap{padding:12px 14px;border-radius:10px;background:rgba(138,12,26,0.04);border:1.5px dashed rgba(138,12,26,0.25);}
+.trap-q{font-size:10.5px;font-weight:700;color:var(--crimson);margin-bottom:4px;}
+.trap-a{font-size:10px;color:var(--ink);line-height:1.5;}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:30px;margin:12px 0;}
+.timeline::before{content:'';position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--saffron),var(--navy));}
+.tl-item{position:relative;margin-bottom:14px;}
+.tl-dot{position:absolute;left:-26px;top:6px;width:14px;height:14px;border-radius:50%;border:2.5px solid var(--card);box-shadow:0 0 0 2px;}
+.tl-item:nth-child(1) .tl-dot{background:var(--saffron);box-shadow:0 0 0 2px var(--saffron);}
+.tl-item:nth-child(2) .tl-dot{background:var(--amber);box-shadow:0 0 0 2px var(--amber);}
+.tl-item:nth-child(3) .tl-dot{background:var(--gold);box-shadow:0 0 0 2px var(--gold);}
+.tl-item:nth-child(4) .tl-dot{background:var(--green);box-shadow:0 0 0 2px var(--green);}
+.tl-item:nth-child(5) .tl-dot{background:var(--navy);box-shadow:0 0 0 2px var(--navy);}
+.tl-item:nth-child(6) .tl-dot{background:var(--indigo);box-shadow:0 0 0 2px var(--indigo);}
+.tl-content{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.tl-year{font-size:9px;font-family:'Space Mono',monospace;color:var(--muted);margin-bottom:2px;}
+.tl-title{font-size:11.5px;font-weight:700;}
+.tl-desc{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.5;}
+
+/* 106 CAA special layout */
+.art-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0;}
+.art-item{padding:10px;border-radius:9px;border:1.5px solid var(--border);background:var(--card2);text-align:center;}
+.art-num{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--navy);}
+.art-name{font-size:10px;font-weight:700;margin:2px 0;}
+.art-desc{font-size:8.5px;color:var(--muted);font-family:'Space Mono',monospace;}
+
+/* DIV LINE */
+.div-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:10px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-eyebrow">Indian Polity · Parliament · UPSC Prelims</div>
+  <h1>Lok Sabha &amp; Parliament — <em>Mind Map</em></h1>
+  <div class="header-sub">Constituencies → Elections → Leadership → Whip → Amendments → Traps</div>
+  <div class="header-bar"></div>
+</div>
+
+<!-- ═══ SECTION 0: MASTER FLOW ═══ -->
+<div class="sec-label"><span class="sn">0</span>Master Flow — Election to Functioning Parliament</div>
+<div class="map-card mc1">
+  <svg id="svgMasterFlow" viewBox="0 0 1380 140" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ═══ SECTION 1: CONSTITUENCIES ═══ -->
+<div class="sec-label"><span class="sn">1</span>Territorial Constituencies — How Lok Sabha Is Divided</div>
+
+<div class="map-card mc2">
+  <svg id="svgConst" viewBox="0 0 1380 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-label">Two Key Principles</div>
+    <h3>⚖️ Constituency Formation Rules</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;">
+      <div style="padding:14px;border-radius:11px;background:rgba(154,111,10,0.07);border:1.5px solid rgba(154,111,10,0.2);text-align:center;">
+        <div style="font-size:28px;margin-bottom:6px;">🗺️</div>
+        <div style="font-size:11.5px;font-weight:800;">Uniform Pop–Seat Ratio</div>
+        <div style="font-size:9px;font-family:'Space Mono',monospace;color:var(--muted);margin-top:4px;">ACROSS STATES</div>
+      </div>
+      <div style="padding:14px;border-radius:11px;background:rgba(13,42,94,0.07);border:1.5px solid rgba(13,42,94,0.2);text-align:center;">
+        <div style="font-size:28px;margin-bottom:6px;">🏛️</div>
+        <div style="font-size:11.5px;font-weight:800;">Equal Representation</div>
+        <div style="font-size:9px;font-family:'Space Mono',monospace;color:var(--muted);margin-top:4px;">WITHIN EACH STATE</div>
+      </div>
+    </div>
+    <div class="callout note" style="margin-top:10px;">
+      <div class="callout-title">📌 Principle</div>
+      <div class="callout-body">"One person, one value" — ensures every vote carries equal weight irrespective of geography.</div>
+    </div>
+  </div>
+
+  <div class="pc navy">
+    <div class="pc-label">Seat Freeze — Delimitation History</div>
+    <h3>🔒 Amendments That Froze Seats</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt"><span class="amend-tag a">42nd CAA 1976</span> → Froze seats till 2000</div>
+        <div class="vs">Based on 1971 census data</div>
+      </div>
+      <div class="vitem">
+        <div class="vt"><span class="amend-tag b">84th CAA 2001</span> → Extended freeze till 2026</div>
+        <div class="vs">To promote population control measures</div>
+      </div>
+    </div>
+    <div class="callout warn" style="margin-top:8px;">
+      <div class="callout-title">⚠️ Key Distinction</div>
+      <div class="callout-body">Seats are frozen till 2026, BUT internal constituency boundaries can still be adjusted (Delimitation Commission's work).</div>
+    </div>
+    <div class="impact-chain" style="margin-top:8px;">
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(192,90,0,0.07);color:var(--amber);">Census Data</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--navy);background:rgba(13,42,94,0.07);color:var(--navy);">Delimitation</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(19,92,56,0.07);color:var(--green);">Constituency Seats</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 2: RESERVATION ═══ -->
+<div class="sec-label"><span class="sn">2</span>Reservation System — SC/ST &amp; Special Provisions</div>
+
+<div class="map-card mc3">
+  <svg id="svgReserv" viewBox="0 0 1380 190" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc crimson">
+    <div class="pc-label">SC/ST Reservation</div>
+    <h3>🏳️ How SC/ST Seats Work</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">📊</div><div class="ft">Based on Population</div><div class="fs">Proportional to SC/ST %, census</div></div>
+      <div class="feat"><div class="fi">🗳️</div><div class="ft">All Voters Vote</div><div class="fs">No separate electorate system</div></div>
+      <div class="feat"><div class="fi">🏛️</div><div class="ft">Can Contest General</div><div class="fs">SC/ST can also run on general seats</div></div>
+      <div class="feat"><div class="fi">📜</div><div class="ft">Art 330 &amp; 332</div><div class="fs">Constitutional basis for reservation</div></div>
+    </div>
+    <div class="callout note" style="margin-top:8px;">
+      <div class="callout-title">🔑 Prelims Key</div>
+      <div class="callout-body">India uses "reserved constituencies" not "separate electorates" — a crucial distinction from pre-independence era.</div>
+    </div>
+  </div>
+
+  <div class="pc amber">
+    <div class="pc-label">104th CAA 2019</div>
+    <h3>📜 Anglo-Indian &amp; SC/ST Extension</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">🟢 Extended SC/ST Reservation</div>
+        <div class="vs">Art 330 &amp; 332 — till Jan 25, 2030 (25 more years)</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🔴 Abolished Anglo-Indian Nomination</div>
+        <div class="vs">Art 331 removed — ended nominated Anglo-Indian seats in LS</div>
+      </div>
+    </div>
+    <div class="stat-row" style="margin-top:10px;">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">2030</div>
+        <div class="stat-sub">SC/ST Extended Till</div>
+        <div class="stat-label">JAN 25, 2030</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--crimson);">331</div>
+        <div class="stat-sub">Article Removed</div>
+        <div class="stat-label">ANGLO-INDIAN NOMINATION</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 3: VOTING AGE ═══ -->
+<div class="sec-label"><span class="sn">3</span>Voting Age Reduction — 61st Amendment</div>
+
+<div class="g2">
+  <div class="pc saffron">
+    <div class="pc-label">61st Constitutional Amendment, 1988</div>
+    <h3>🗳️ Voting Age Reduced</h3>
+    <div style="display:flex;align-items:center;justify-content:center;gap:28px;margin:14px 0;flex-wrap:wrap;">
+      <div style="text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:var(--muted);line-height:1;text-decoration:line-through;">21</div>
+        <div style="font-size:9px;font-family:'Space Mono',monospace;color:var(--muted);">BEFORE 1988</div>
+      </div>
+      <div style="font-size:40px;color:var(--saffron);">→</div>
+      <div style="text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:var(--saffron);line-height:1;">18</div>
+        <div style="font-size:9px;font-family:'Space Mono',monospace;color:var(--saffron);">AFTER 61st CAA</div>
+      </div>
+    </div>
+    <div class="callout ok">
+      <div class="callout-title">✅ Impact</div>
+      <div class="callout-body">Enfranchised millions of young Indians (18–21 age group) in electoral democracy. Part of Art 326 amendment.</div>
+    </div>
+  </div>
+
+  <div class="pc green">
+    <div class="pc-label">Court Non-Interference Doctrine</div>
+    <h3>⚖️ N.P. Ponnuswami Case (1952)</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">📌 "Election Process Doctrine"</div>
+        <div class="vs">Landmark SC case establishing judicial limits</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🚫 Courts Cannot Interfere</div>
+        <div class="vs">Once election process starts, courts step back</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">📋 Challenge Route</div>
+        <div class="vs">Only via election petition after results declared</div>
+      </div>
+    </div>
+    <div class="impact-chain" style="margin-top:10px;">
+      <div class="ic-node" style="border-color:var(--green);background:rgba(19,92,56,0.07);color:var(--green);">Election Starts</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--gold);background:rgba(154,111,10,0.07);color:var(--gold);">No Court Writ</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--navy);background:rgba(13,42,94,0.07);color:var(--navy);">Post-Result Petition</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 4: PARLIAMENT SECRETARIAT ═══ -->
+<div class="sec-label"><span class="sn">4</span>Parliament Secretariat — Art 98 &amp; Internal Leadership</div>
+
+<div class="map-card mc4">
+  <svg id="svgParl" viewBox="0 0 1380 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc teal">
+    <div class="pc-label">Art 98 — Secretariat</div>
+    <h3>🏛️ Secretarial Structure</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Separate Staff</div><div class="vs">Each House has its own secretariat</div></div>
+      <div class="vitem"><div class="vt">Secretary-General</div><div class="vs">Heads the secretariat — highest official</div></div>
+      <div class="vitem"><div class="vt">Appointed By</div><div class="vs">Presiding Officer (Speaker/Chairman)</div></div>
+      <div class="vitem"><div class="vt">Rules by Parliament</div><div class="vs">Recruitment &amp; service conditions set by Parliament</div></div>
+    </div>
+  </div>
+
+  <div class="pc navy">
+    <div class="pc-label">Leader of the House</div>
+    <h3>🔵 Floor Leadership</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">Lok Sabha → Prime Minister</div>
+        <div class="vs">Usually the PM leads the lower house</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Rajya Sabha → PM-Nominated Minister</div>
+        <div class="vs">A minister chosen by PM leads upper house</div>
+      </div>
+    </div>
+    <div class="callout note" style="margin-top:8px;">
+      <div class="callout-title">📌 Conceptual Parallel</div>
+      <div class="callout-body">Equivalent to the "majority leader" role in US Congress — manages government's floor business.</div>
+    </div>
+  </div>
+
+  <div class="pc crimson">
+    <div class="pc-label">Leader of Opposition — Very Important</div>
+    <h3>🔴 LoP Status &amp; Powers</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Recognized Since 1969</div><div class="vs">Formal recognition in political practice</div></div>
+      <div class="vitem"><div class="vt">Statutory Status Since 1977</div><div class="vs">Salary &amp; Allowances of Leaders of Opposition Act</div></div>
+      <div class="vitem"><div class="vt">10% Seats Required</div><div class="vs">Party must win minimum 55 seats (10% of 543)</div></div>
+      <div class="vitem"><div class="vt">Rank = Cabinet Minister</div><div class="vs">Called "Alternative Prime Minister"</div></div>
+    </div>
+    <div class="callout warn" style="margin-top:8px;">
+      <div class="callout-title">⚠️ Prelims Trap</div>
+      <div class="callout-body">10% rule is convention-based, NOT in the Constitution. It flows from the 1977 statute.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 5: WHIP SYSTEM ═══ -->
+<div class="sec-label"><span class="sn">5</span>Whip System — Party Discipline Mechanism</div>
+
+<div class="map-card mc1">
+  <svg id="svgWhip" viewBox="0 0 1380 170" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc indigo">
+    <div class="pc-label">Three Types of Whips</div>
+    <h3>📋 Whip Hierarchy</h3>
+    <div class="whip-row">
+      <div class="whip-item" style="border-color:rgba(46,27,122,0.2);background:rgba(46,27,122,0.04);">
+        <div class="whip-lines">
+          <div class="whip-line" style="background:var(--indigo);"></div>
+        </div>
+        <div class="whip-text">
+          <div class="whip-title">One-Line Whip</div>
+          <div class="whip-sub">Just attend — informational notice</div>
+        </div>
+        <span class="badge" style="background:rgba(46,27,122,0.1);color:var(--indigo);">LOW</span>
+      </div>
+      <div class="whip-item" style="border-color:rgba(192,90,0,0.2);background:rgba(192,90,0,0.04);">
+        <div class="whip-lines">
+          <div class="whip-line" style="background:var(--amber);"></div>
+          <div class="whip-line" style="background:var(--amber);"></div>
+        </div>
+        <div class="whip-text">
+          <div class="whip-title">Two-Line Whip</div>
+          <div class="whip-sub">Attend + follow specific instruction</div>
+        </div>
+        <span class="badge" style="background:rgba(192,90,0,0.1);color:var(--amber);">MED</span>
+      </div>
+      <div class="whip-item" style="border-color:rgba(138,12,26,0.25);background:rgba(138,12,26,0.05);">
+        <div class="whip-lines">
+          <div class="whip-line" style="background:var(--crimson);"></div>
+          <div class="whip-line" style="background:var(--crimson);"></div>
+          <div class="whip-line" style="background:var(--crimson);"></div>
+        </div>
+        <div class="whip-text">
+          <div class="whip-title">Three-Line Whip</div>
+          <div class="whip-sub">Compulsory vote as directed — strictest</div>
+        </div>
+        <span class="badge" style="background:rgba(138,12,26,0.1);color:var(--crimson);">HIGH</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc violet">
+    <div class="pc-label">Whip + 10th Schedule Connection</div>
+    <h3>⚖️ Anti-Defection Implications</h3>
+    <div class="callout warn">
+      <div class="callout-title">⚠️ NOT in Constitution</div>
+      <div class="callout-body">Whip system is entirely convention-based — not mentioned in the Constitution, a parliamentary convention borrowed from Westminster.</div>
+    </div>
+    <div style="margin-top:10px;">
+      <div style="font-size:11px;font-weight:700;margin-bottom:8px;">Purpose of Whip System:</div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;">
+        <span class="pill indigo">✅ Party Discipline</span>
+        <span class="pill navy">✅ Ensure Attendance</span>
+        <span class="pill violet">✅ Voting Alignment</span>
+        <span class="pill crimson">⚠️ Violating = Defection Risk</span>
+      </div>
+    </div>
+    <div class="impact-chain" style="margin-top:10px;">
+      <div class="ic-node" style="border-color:var(--crimson);background:rgba(138,12,26,0.07);color:var(--crimson);">Violate 3-Line</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(192,90,0,0.07);color:var(--amber);">10th Schedule</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--navy);background:rgba(13,42,94,0.07);color:var(--navy);">Disqualification</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 6: 106th CAA ═══ -->
+<div class="sec-label"><span class="sn">6</span>106th Constitutional Amendment 2023 — Women's Reservation</div>
+
+<div class="map-card mc2">
+  <svg id="svg106" viewBox="0 0 1380 185" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc violet">
+    <div class="pc-label">Nari Shakti Vandan Adhiniyam</div>
+    <h3>👩 106th CAA — Key Articles</h3>
+    <div class="art-grid">
+      <div class="art-item">
+        <div class="art-num">330A</div>
+        <div class="art-name">1/3 LS Seats for Women</div>
+        <div class="art-desc">Includes SC/ST women quota</div>
+      </div>
+      <div class="art-item">
+        <div class="art-num">332A</div>
+        <div class="art-name">1/3 State Assembly Seats</div>
+        <div class="art-desc">All Vidhan Sabhas covered</div>
+      </div>
+      <div class="art-item">
+        <div class="art-num">239AA</div>
+        <div class="art-name">1/3 Delhi Assembly</div>
+        <div class="art-desc">NCT of Delhi included</div>
+      </div>
+      <div class="art-item">
+        <div class="art-num">334A</div>
+        <div class="art-name">After Delimitation</div>
+        <div class="art-desc">15-year review clause</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc indigo">
+    <div class="pc-label">Key Features — 106th CAA</div>
+    <h3>📋 What It Does &amp; Does Not</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">✅ Includes SC/ST Women</div><div class="vs">Reservation within reserved seats too</div></div>
+      <div class="vitem"><div class="vt">🔄 Rotational Basis</div><div class="vs">Seats rotate after each delimitation</div></div>
+      <div class="vitem"><div class="vt">📆 Review After 15 Years</div><div class="vs">Parliament can extend via Art 334A</div></div>
+      <div class="vitem"><div class="vt">⏳ NOT Yet in Effect</div><div class="vs">Awaits next delimitation exercise</div></div>
+    </div>
+    <div class="callout warn" style="margin-top:8px;">
+      <div class="callout-title">⚠️ Critical Prelims Trap</div>
+      <div class="callout-body">106th CAA is passed but NOT yet operative. It becomes effective only after the next delimitation (expected post-2026 census).</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 7: AMENDMENTS TIMELINE ═══ -->
+<div class="sec-label"><span class="sn">7</span>Constitutional Amendments Timeline — Quick Reference</div>
+
+<div class="g2">
+  <div class="pc navy">
+    <div class="pc-label">Chronological Order</div>
+    <h3>📅 Amendments — Quick Timeline</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">42nd CAA · 1976</div>
+          <div class="tl-title">Seat Freeze — Till 2000</div>
+          <div class="tl-desc">Froze LS &amp; assembly seats based on 1971 census</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">61st CAA · 1988</div>
+          <div class="tl-title">Voting Age: 21 → 18</div>
+          <div class="tl-desc">Art 326 amended; millions of youth enfranchised</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">84th CAA · 2001</div>
+          <div class="tl-title">Seat Freeze Extended — Till 2026</div>
+          <div class="tl-desc">Population control incentive; delimitation deferred</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">104th CAA · 2019</div>
+          <div class="tl-title">SC/ST Extended + Anglo-Indian Removed</div>
+          <div class="tl-desc">Art 330/332 till 2030 · Art 331 abolished</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">106th CAA · 2023</div>
+          <div class="tl-title">Women's Reservation — 1/3 Seats</div>
+          <div class="tl-desc">Nari Shakti Vandan Adhiniyam · Post-delimitation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc">
+    <div class="pc-label">Comparison Table</div>
+    <h3>📊 RS vs LS — Key Differences</h3>
+    <div style="overflow-x:auto;">
+    <table class="ctable">
+      <thead>
+        <tr><th>Feature</th><th>Lok Sabha</th><th>Rajya Sabha</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Election System</td><td>FPTP (First Past the Post)</td><td>PR-STV (Proportional)</td></tr>
+        <tr><td>Voters</td><td>General public</td><td>Elected MLAs of State</td></tr>
+        <tr><td>Term</td><td>5 years (full)</td><td>6 years per member</td></tr>
+        <tr><td>Dissolution</td><td>Can be dissolved</td><td>Permanent — never dissolved</td></tr>
+        <tr><td>Leader of House</td><td>Prime Minister</td><td>PM-nominated Minister</td></tr>
+        <tr><td>Money Bills</td><td>Originates here</td><td>Only recommends</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 8: HIGH-PROBABILITY TRAPS ═══ -->
+<div class="sec-label"><span class="sn">8</span>High-Probability Prelims Traps — Must Know</div>
+
+<div class="trap-grid">
+  <div class="trap">
+    <div class="trap-q">❓ Is the 10% LoP rule in the Constitution?</div>
+    <div class="trap-a">❌ NO — it's a convention from the 1977 Statute, not in the Constitution. Many fall for this!</div>
+  </div>
+  <div class="trap">
+    <div class="trap-q">❓ Is Whip a constitutional provision?</div>
+    <div class="trap-a">❌ NO — it's entirely convention-based, borrowed from Westminster. Not in Constitution.</div>
+  </div>
+  <div class="trap">
+    <div class="trap-q">❓ Is 106th CAA (Women Reservation) in effect?</div>
+    <div class="trap-a">❌ NOT YET — awaits next delimitation. Passed but not operative as of 2023.</div>
+  </div>
+  <div class="trap">
+    <div class="trap-q">❓ Who appoints Secretary-General of Parliament?</div>
+    <div class="trap-a">✅ Presiding Officer (Speaker for LS, Chairman for RS) — NOT the President or PM.</div>
+  </div>
+  <div class="trap">
+    <div class="trap-q">❓ Did 104th CAA abolish SC/ST reservation?</div>
+    <div class="trap-a">❌ NO — it EXTENDED SC/ST reservation to 2030 while removing Anglo-Indian nomination (Art 331).</div>
+  </div>
+  <div class="trap">
+    <div class="trap-q">❓ How are election disputes challenged?</div>
+    <div class="trap-a">✅ ONLY via election petition after results (Ponnuswami, 1952). No court writ during election.</div>
+  </div>
+</div>
+
+<!-- ═══ COMPLETE CONNECTED FLOW ═══ -->
+<div class="sec-label"><span class="sn">9</span>Complete Flow — From Constituency to Parliament Functioning</div>
+
+<div class="map-card mc3">
+  <svg id="svgFinalFlow" viewBox="0 0 1380 300" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🏛️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">India's parliamentary system moves from constituency formation → reservations → elections → court deference → secretariat → floor leaders → whip discipline → constitutional amendments. <strong style="color:#f5d78a;">The gap between legal provisions and conventions is the biggest exam trap — Whip, LoP 10% rule, and 106th CAA are all "not in Constitution" or "not yet operative."</strong></div>
+    <div class="keystone-pills">
+      <span class="kpill">🗳️ FPTP Elections</span>
+      <span class="kpill">📜 Convention ≠ Constitution</span>
+      <span class="kpill">⏳ Passed ≠ In Effect</span>
+      <span class="kpill">📊 10% = 55 Seats</span>
+      <span class="kpill">🔒 Seats Frozen 2026</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function curve(svg,x1,y1,x2,y2,color,dashed,w){
+  const mx=(x1+x2)/2;
+  const p=se('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':w||1.8,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.65'});
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  // shadow
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,fill:'rgba(0,0,0,0.08)'}));
+  // main
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,fill,stroke:'rgba(255,255,255,0.15)','stroke-width':'1.5'}));
+  
+  let totalLines = (emoji?1:0) + lines.length + (sub?1:0);
+  let lineH = 14;
+  let totalH = totalLines * lineH;
+  let startY = y - totalH/2 + lineH/2;
+  
+  let cy = startY;
+  if(emoji){
+    const em=se('text',{x,y:cy,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});
+    em.textContent=emoji;g.appendChild(em);cy+=lineH+2;
+  }
+  lines.forEach((l)=>{
+    const t=se('text',{x,y:cy,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Outfit,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);cy+=lineH;
+  });
+  if(sub){
+    const s=se('text',{x,y:cy,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'Space Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.38)'});
+    s.textContent=sub;g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+
+function arrow(svg,x1,y1,x2,y2,color){
+  const id='arr'+Math.random().toString(36).slice(2);
+  let defs=svg.querySelector('defs');
+  if(!defs){defs=se('defs',{});svg.insertBefore(defs,svg.firstChild);}
+  const m=se('marker',{id,markerWidth:'7',markerHeight:'7',refX:'5',refY:'3.5',orient:'auto'});
+  m.appendChild(se('path',{d:'M0,0 L0,7 L7,3.5 z',fill:color||'#888'}));
+  defs.appendChild(m);
+  const l=se('line',{x1,y1,x2,y2,stroke:color||'#888','stroke-width':'2','marker-end':`url(#${id})`});
+  svg.appendChild(l);
+}
+
+// ── MASTER FLOW ──
+(()=>{
+  const svg=document.getElementById('svgMasterFlow');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:140,fill:'rgba(249,247,242,0.5)'}));
+  
+  const steps=[
+    {x:90,  fill:'#9a6f0a', label:['Territorial','Constituencies'], sub:'How LS is divided', emoji:'🗺️'},
+    {x:255, fill:'#c05a00', label:['Reservation','SC/ST + Women'], sub:'104th & 106th CAA', emoji:'📋'},
+    {x:420, fill:'#0d2a5e', label:['Voting Age 18','61st CAA 1988'], sub:'Art 326 amended', emoji:'🗳️'},
+    {x:590, fill:'#135c38', label:['Elections','FPTP System'], sub:'Ponnuswami doctrine', emoji:'🏛️'},
+    {x:755, fill:'#075060', label:['Parliament','Secretariat'], sub:'Art 98 — Sec. Gen.', emoji:'📜'},
+    {x:920, fill:'#8a0c1a', label:['Leader of','House + LoP'], sub:'10% rule (1977)', emoji:'👥'},
+    {x:1085,fill:'#2e1b7a', label:['Whip System','3 Types'], sub:'Convention, not law', emoji:'📊'},
+    {x:1270,fill:'#4a0a78', label:['Functioning','Parliament'], sub:'Democracy in action', emoji:'⚡'},
+  ];
+  
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const nx=steps[i+1].x;
+      arrow(svg,s.x+70,70,nx-70,70,s.fill+'88');
+    }
+  });
+  steps.forEach(s=>{
+    node(svg,s.x,70,135,72,s.fill,s.label,s.sub,s.emoji);
+  });
+  
+  const t=se('text',{x:690,y:126,'text-anchor':'middle','font-size':'8.5','font-family':'Space Mono,monospace','letter-spacing':'3',fill:'rgba(100,80,40,0.4)'});
+  t.textContent='COMPLETE ELECTION-TO-PARLIAMENT FLOW';
+  svg.appendChild(t);
+})();
+
+// ── CONSTITUENCIES SVG ──
+(()=>{
+  const svg=document.getElementById('svgConst');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:200,fill:'rgba(249,247,242,0.5)'}));
+  
+  // Root
+  node(svg,690,100,220,60,'#0d2a5e',['Constituency','Formation'],'Territorial Division','🗺️');
+  
+  const items=[
+    {x:160,y:55,fill:'#9a6f0a',label:['Uniform Pop-Seat','Ratio Across States'],sub:'Equal value per vote',emoji:'⚖️'},
+    {x:160,y:150,fill:'#c05a00',label:['Equal Representation','Within Each State'],sub:'No state-level bias',emoji:'📊'},
+    {x:420,y:55,fill:'#135c38',label:['42nd CAA 1976','Seats Frozen → 2000'],sub:'1971 census base',emoji:'🔒'},
+    {x:420,y:150,fill:'#075060',label:['84th CAA 2001','Extended → 2026'],sub:'Population control',emoji:'📅'},
+    {x:960,y:55,fill:'#8a0c1a',label:['543 Total Seats','Lok Sabha'],sub:'Current composition',emoji:'🏛️'},
+    {x:960,y:150,fill:'#2e1b7a',label:['Boundary Adjust','Still Allowed'],sub:'Delimitation continues',emoji:'✏️'},
+    {x:1210,y:55,fill:'#4a0a78',label:['Delimitation','Commission'],sub:'ECI-supervised',emoji:'🔍'},
+    {x:1210,y:150,fill:'#075060',label:['Post-2026','New Delimitation'],sub:'Expected census-based',emoji:'📆'},
+  ];
+  
+  items.forEach(n=>{
+    const fx=n.x<690?600:780;
+    const toX=n.x+(n.x<690?80:-80);
+    curve(svg,fx,100,toX,n.y,n.fill+'55',true,1.6);
+    node(svg,n.x,n.y,190,50,n.fill,n.label,n.sub,n.emoji);
+  });
+})();
+
+// ── RESERVATION SVG ──
+(()=>{
+  const svg=document.getElementById('svgReserv');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:190,fill:'rgba(249,247,242,0.5)'}));
+  
+  node(svg,690,95,220,58,'#8a0c1a',['Reservation','System'],'SC/ST + Women','📋');
+  
+  const left=[
+    {x:160,y:45,fill:'#8a0c1a',label:['Population-Based','SC/ST Seats'],sub:'Art 330 & 332',emoji:'📊'},
+    {x:160,y:120,fill:'#c05a00',label:['All Voters Vote','No Separate Electorate'],sub:'Key distinction',emoji:'🗳️'},
+    {x:160,y:175,fill:'#9a6f0a',label:['SC/ST can contest','General Seats Too'],sub:'Not restricted',emoji:'✅'},
+  ];
+  const right=[
+    {x:1210,y:45,fill:'#2e1b7a',label:['104th CAA 2019','Extended to 2030'],sub:'Art 330/332 renewed',emoji:'📜'},
+    {x:1210,y:120,fill:'#4a0a78',label:['Art 331 Removed','Anglo-Indian Gone'],sub:'104th CAA',emoji:'🚫'},
+    {x:1210,y:175,fill:'#075060',label:['106th CAA 2023','1/3 Women Seats'],sub:'Post-delimitation',emoji:'👩'},
+  ];
+  
+  left.forEach(n=>{
+    curve(svg,602,95,n.x+84,n.y,'#8a0c1a44',true,1.5);
+    node(svg,n.x,n.y,164,46,n.fill,n.label,n.sub,n.emoji);
+  });
+  right.forEach(n=>{
+    curve(svg,778,95,n.x-84,n.y,'#2e1b7a44',true,1.5);
+    node(svg,n.x,n.y,164,46,n.fill,n.label,n.sub,n.emoji);
+  });
+  
+  // MIDDLE: stat boxes
+  node(svg,440,95,170,52,'#135c38',['43 SC Seats','(approx)'],null,'🏛️');
+  node(svg,940,95,170,52,'#075060',['47 ST Seats','(approx)'],null,'🏔️');
+  curve(svg,778,95,525,95,'#13345044',false,1.4);
+  curve(svg,600,95,855,95,'#13345044',false,1.4);
+})();
+
+// ── PARLIAMENT SVG ──
+(()=>{
+  const svg=document.getElementById('svgParl');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:200,fill:'rgba(249,247,242,0.5)'}));
+  
+  node(svg,690,100,220,58,'#0f0e0c',['Parliament','Leadership'],'Art 98 + Conventions','🏛️','#f5e8c0');
+  
+  const all=[
+    {x:150,y:55,fill:'#075060',label:['Separate','Secretariat'],sub:'Each House its own',emoji:'🏢'},
+    {x:150,y:148,fill:'#0d2a5e',label:['Secretary-General','Appointed by'],sub:'Presiding Officer',emoji:'👤'},
+    {x:390,y:55,fill:'#135c38',label:['Art 98','Secretarial Staff'],sub:'Parliament decides rules',emoji:'📜'},
+    {x:390,y:148,fill:'#8a0c1a',label:['LS Leader','→ PM Usually'],sub:'Majority leader equivalent',emoji:'🔵'},
+    {x:990,y:55,fill:'#8a0c1a',label:['Leader of Opp.','Rec. 1969 · Stat 1977'],sub:'10% seats = 55 LS seats',emoji:'🔴'},
+    {x:990,y:148,fill:'#c05a00',label:['LoP Rank','= Cabinet Minister'],sub:'"Alternative PM"',emoji:'⚖️'},
+    {x:1240,y:55,fill:'#2e1b7a',label:['RS Leader','PM-Nominated Min.'],sub:'Manages upper house',emoji:'🏛️'},
+    {x:1240,y:148,fill:'#4a0a78',label:['10% Rule','Convention-Based'],sub:'NOT in Constitution',emoji:'⚠️'},
+  ];
+  
+  all.forEach(n=>{
+    const fx=n.x<690?600:780;
+    curve(svg,fx,100,n.x+(n.x<690?82:-82),n.y,n.fill+'44',true,1.4);
+    node(svg,n.x,n.y,172,48,n.fill,n.label,n.sub,n.emoji);
+  });
+})();
+
+// ── WHIP SVG ──
+(()=>{
+  const svg=document.getElementById('svgWhip');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:170,fill:'rgba(249,247,242,0.5)'}));
+  
+  node(svg,690,85,200,58,'#2e1b7a',['Whip System','Party Discipline'],'Convention-based','📋');
+  
+  // Left: whip types
+  const left=[
+    {x:160,y:38,fill:'#4a0a78',label:['One-Line Whip','Attend Only'],sub:'Informational',emoji:'1️⃣'},
+    {x:160,y:96,fill:'#2e1b7a',label:['Two-Line Whip','Attend + Instruction'],sub:'Moderate enforcement',emoji:'2️⃣'},
+    {x:160,y:152,fill:'#8a0c1a',label:['Three-Line Whip','Compulsory Vote'],sub:'Strictest — defection risk',emoji:'3️⃣'},
+  ];
+  left.forEach(n=>{
+    curve(svg,592,85,n.x+84,n.y,'#2e1b7a55',true,1.5);
+    node(svg,n.x,n.y,164,46,n.fill,n.label,n.sub,n.emoji);
+  });
+  
+  // Right: consequences & links
+  const right=[
+    {x:1200,y:38,fill:'#075060',label:['NOT in Constitution','Westminster Convention'],sub:'Borrowed from UK',emoji:'📜'},
+    {x:1200,y:96,fill:'#135c38',label:['Purpose','Party Discipline'],sub:'Attendance + voting',emoji:'⚙️'},
+    {x:1200,y:152,fill:'#c05a00',label:['10th Schedule Link','Anti-Defection Law'],sub:'Violate = disqualify',emoji:'⚠️'},
+  ];
+  right.forEach(n=>{
+    curve(svg,788,85,n.x-84,n.y,'#c05a0055',true,1.5);
+    node(svg,n.x,n.y,164,46,n.fill,n.label,n.sub,n.emoji);
+  });
+  
+  // Middle: impact node
+  node(svg,455,85,155,48,'#8a0c1a',['Violate Whip','→ Defection'],null,'🚨');
+  node(svg,925,85,155,48,'#0d2a5e',['Issued by','Party Whip Officer'],null,'📮');
+})();
+
+// ── 106th CAA SVG ──
+(()=>{
+  const svg=document.getElementById('svg106');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:185,fill:'rgba(249,247,242,0.5)'}));
+  
+  node(svg,690,92,240,58,'#4a0a78',['106th CAA 2023','Nari Shakti Vandan'],null,'👩','#fff');
+  
+  const left=[
+    {x:150,y:40,fill:'#4a0a78',label:['Art 330A','1/3 LS Seats Women'],sub:'Including SC/ST women',emoji:'🏛️'},
+    {x:150,y:105,fill:'#2e1b7a',label:['Art 332A','State Assemblies'],sub:'All Vidhan Sabhas',emoji:'🏘️'},
+    {x:150,y:162,fill:'#0d2a5e',label:['Art 239AA','Delhi Assembly'],sub:'NCT Delhi included',emoji:'🏙️'},
+  ];
+  const right=[
+    {x:1210,y:40,fill:'#075060',label:['Art 334A','Post-Delimitation'],sub:'After next delimitation',emoji:'📅'},
+    {x:1210,y:105,fill:'#135c38',label:['Rotational Basis','Every Delimitation'],sub:'Seats rotate cyclically',emoji:'🔄'},
+    {x:1210,y:162,fill:'#c05a00',label:['15-Year Review','Extendable by Parl.'],sub:'Not permanent',emoji:'⏳'},
+  ];
+  
+  left.forEach(n=>{
+    curve(svg,572,92,n.x+82,n.y,'#4a0a7855',true,1.5);
+    node(svg,n.x,n.y,162,46,n.fill,n.label,n.sub,n.emoji);
+  });
+  right.forEach(n=>{
+    curve(svg,808,92,n.x-82,n.y,'#07506055',true,1.5);
+    node(svg,n.x,n.y,162,46,n.fill,n.label,n.sub,n.emoji);
+  });
+  
+  // Center warning
+  node(svg,455,92,160,48,'#8a0c1a',['NOT yet','Operative'],null,'⚠️');
+  node(svg,925,92,160,48,'#9a6f0a',['Awaits','Delimitation'],null,'⏳');
+})();
+
+// ── FINAL FULL FLOW ──
+(()=>{
+  const svg=document.getElementById('svgFinalFlow');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:300,fill:'rgba(249,247,242,0.5)'}));
+  
+  // Title row at top
+  const t=se('text',{x:690,y:18,'text-anchor':'middle','font-size':'9','font-family':'Space Mono,monospace','letter-spacing':'3',fill:'rgba(80,60,20,0.4)'});
+  t.textContent='FULL CONNECTED FLOW: TERRITORY → RESERVATION → VOTE → ELECTION → PARLIAMENT → LEADERSHIP → DISCIPLINE → REFORM';
+  svg.appendChild(t);
+  
+  // Row 1: main sequence
+  const row1=[
+    {x:90,  y:80, fill:'#9a6f0a', label:['Territorial','Constituencies'], sub:'Uniform pop-seat ratio', emoji:'🗺️'},
+    {x:270, y:80, fill:'#8a0c1a', label:['SC/ST Reservation','104th CAA 2019'], sub:'Till Jan 2030', emoji:'📋'},
+    {x:460, y:80, fill:'#0d2a5e', label:['Voting Age 18','61st CAA 1988'], sub:'Art 326 amended', emoji:'🗳️'},
+    {x:650, y:80, fill:'#135c38', label:['FPTP Elections','Ponnuswami 1952'], sub:'Courts defer', emoji:'🏛️'},
+    {x:840, y:80, fill:'#075060', label:['Parliament','Secretariat Art 98'], sub:'Sec-Gen by Presiding Off.', emoji:'📜'},
+    {x:1040,y:80, fill:'#8a0c1a', label:['Leader of House','Leader of Opposition'], sub:'10% seats = LoP (1977)', emoji:'👥'},
+    {x:1240,y:80, fill:'#2e1b7a', label:['Whip System','3 Types'], sub:'Convention, not law', emoji:'📋'},
+  ];
+  
+  row1.forEach((s,i)=>{
+    if(i<row1.length-1){
+      const nx=row1[i+1];
+      arrow(svg,s.x+80,s.y,nx.x-80,nx.y,s.fill+'99');
+    }
+  });
+  row1.forEach(s=>node(svg,s.x,s.y,155,60,s.fill,s.label,s.sub,s.emoji));
+  
+  // Row 2: amendments branching down
+  const row2=[
+    {x:90,  y:215, fill:'#c05a00', label:['42nd CAA 1976','Seats Frozen 2000'], sub:'1971 census base', emoji:'🔒'},
+    {x:270, y:215, fill:'#c05a00', label:['84th CAA 2001','Extended to 2026'], sub:'Population control', emoji:'📅'},
+    {x:460, y:215, fill:'#4a0a78', label:['106th CAA 2023','1/3 Women Seats'], sub:'Post-delimitation only', emoji:'👩'},
+    {x:650, y:215, fill:'#075060', label:['Art 330/332','Art 330A/332A'], sub:'SC/ST + Women arts', emoji:'📜'},
+    {x:840, y:215, fill:'#135c38', label:['LoP Acts 1977','Statutory Role'], sub:'Cabinet rank pay', emoji:'⚖️'},
+    {x:1040,y:215, fill:'#9a6f0a', label:['10th Schedule','Anti-Defection'], sub:'Whip violation = out', emoji:'⚠️'},
+    {x:1240,y:215, fill:'#0d2a5e', label:['Robust Democracy','Constitution Works'], sub:'Legal ≠ Always Real', emoji:'🇮🇳'},
+  ];
+  
+  row1.forEach((s,i)=>{
+    const r2=row2[i];
+    if(r2){
+      curve(svg,s.x,s.y+30,r2.x,r2.y-28,s.fill+'44',true,1.4);
+    }
+  });
+  row2.forEach((s,i)=>{
+    if(i<row2.length-1){
+      const nx=row2[i+1];
+      arrow(svg,s.x+76,s.y,nx.x-76,nx.y,s.fill+'66');
+    }
+  });
+  row2.forEach(s=>node(svg,s.x,s.y,148,56,s.fill,s.label,s.sub,s.emoji));
+  
+  // Row labels
+  const r1label=se('text',{x:18,y:80,'text-anchor':'start','dominant-baseline':'middle','font-size':'8','font-family':'Space Mono,monospace','letter-spacing':'1',fill:'rgba(80,60,20,0.35)',transform:'rotate(-90,18,80)'});
+  r1label.textContent='MAIN FLOW';
+  svg.appendChild(r1label);
+  const r2label=se('text',{x:18,y:215,'text-anchor':'start','dominant-baseline':'middle','font-size':'8','font-family':'Space Mono,monospace','letter-spacing':'1',fill:'rgba(80,60,20,0.35)',transform:'rotate(-90,18,215)'});
+  r2label.textContent='AMENDMENTS';
+  svg.appendChild(r2label);
+})();
+</script>
+</body>
+</html>

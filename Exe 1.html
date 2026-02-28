@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive in India — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#12100e;--paper:#f8f5ef;--gold:#b87c10;--gold-lt:#f5d78a;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf5;--card2:#f2ede0;--sky:#1a5878;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 900px 500px at 15% 10%,rgba(184,124,16,0.06) 0%,transparent 60%),
+  radial-gradient(ellipse 700px 700px at 85% 90%,rgba(26,58,138,0.05) 0%,transparent 60%);
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 24px 100px;}
+
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,50px);line-height:1.1;}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:14px auto 0;border-radius:4px;}
+
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:36px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+@media(max-width:900px){.g3{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr;}}
+
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.amber::before{background:var(--amber);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:10px;line-height:1.3;}
+
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--sky),var(--blue));}
+.map-card svg{display:block;width:100%;}
+
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+.chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.chip.ok{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.chip.warn{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:24px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:40px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.kpill{display:inline-block;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;margin:3px;}
+
+.flow-chain{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 0;}
+.fc-node{padding:7px 14px;border-radius:9px;font-size:11px;font-weight:700;border:1.5px solid;}
+.fc-arr{font-size:20px;color:var(--muted);}
+
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:9px 12px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:800;color:var(--amber);}
+
+.art-badge{display:inline-block;padding:4px 10px;border-radius:8px;background:rgba(26,58,138,0.1);border:1.5px solid rgba(26,58,138,0.25);color:var(--blue);font-family:'DM Mono',monospace;font-size:10px;font-weight:700;margin:2px;}
+
+.trap-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:9px;background:rgba(176,26,26,0.05);border:1px solid rgba(176,26,26,0.15);margin:5px 0;}
+.trap-text{font-size:11px;line-height:1.5;}
+.trap-text strong{color:var(--red);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <div class="header-sup">Indian Polity · UPSC Prelims · Executive</div>
+  <h1>Executive in India — <em>Mind Map</em></h1>
+  <div class="header-sub">President · PM · Governor · CM · Council of Ministers · Constitutional Articles</div>
+</div>
+
+<!-- 1. BIG PICTURE -->
+<div class="sec-label">① Big Picture — Parliamentary System Structure</div>
+<div class="map-card mc1">
+  <svg id="svgBig" viewBox="0 0 1320 210" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">Union Level</div>
+    <h3>🏛️ Union Executive</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--blue);font-size:16px;">President</div><div class="stat-label">NOMINAL HEAD</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--amber);font-size:15px;">Prime Minister</div><div class="stat-label">REAL EXECUTIVE</div></div>
+    </div>
+    <div class="flow-chain">
+      <div class="fc-node" style="border-color:var(--blue);background:rgba(26,58,138,0.07);color:var(--blue);">Lok Sabha Majority</div>
+      <div class="fc-arr">→</div>
+      <div class="fc-node" style="border-color:var(--amber);background:rgba(212,106,16,0.07);color:var(--amber);">PM Appointed</div>
+      <div class="fc-arr">→</div>
+      <div class="fc-node" style="border-color:var(--green);background:rgba(26,106,58,0.07);color:var(--green);">CoM Formed</div>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">State Level</div>
+    <h3>🏛️ State Executive</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--amber);font-size:16px;">Governor</div><div class="stat-label">NOMINAL HEAD</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--green);font-size:15px;">Chief Minister</div><div class="stat-label">REAL EXECUTIVE</div></div>
+    </div>
+    <div class="flow-chain">
+      <div class="fc-node" style="border-color:var(--amber);background:rgba(212,106,16,0.07);color:var(--amber);">Assembly Majority</div>
+      <div class="fc-arr">→</div>
+      <div class="fc-node" style="border-color:var(--green);background:rgba(26,106,58,0.07);color:var(--green);">CM Appointed</div>
+      <div class="fc-arr">→</div>
+      <div class="fc-node" style="border-color:var(--teal);background:rgba(10,96,112,0.07);color:var(--teal);">CoM Formed</div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. ARTICLES -->
+<div class="sec-label">② Constitutional Articles — Mirror Pattern</div>
+<div class="map-card mc2">
+  <svg id="svgArticles" viewBox="0 0 1320 250" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">Union — PM Articles</div>
+    <h3>📜 Articles 74–88</h3>
+    <table class="ctable">
+      <tr><th>Article</th><th>Provision</th></tr>
+      <tr><td>Art. 74</td><td>CoM <strong>aids & advises</strong> President</td></tr>
+      <tr><td>Art. 75</td><td>PM appointed by President; other ministers on PM's advice</td></tr>
+      <tr><td>Art. 77</td><td>Government business in <strong>President's name</strong></td></tr>
+      <tr><td>Art. 78</td><td>PM's duty to <strong>inform President</strong></td></tr>
+      <tr><td>Art. 88</td><td>Ministers can speak in <strong>either House</strong></td></tr>
+    </table>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">State — CM Articles</div>
+    <h3>📜 Articles 163–167</h3>
+    <table class="ctable">
+      <tr><th>Article</th><th>Provision</th></tr>
+      <tr><td>Art. 163</td><td>CoM <strong>aids & advises</strong> Governor</td></tr>
+      <tr><td>Art. 164</td><td>CM appointed by <strong>Governor</strong></td></tr>
+      <tr><td>Art. 167</td><td>CM's duty to <strong>inform Governor</strong></td></tr>
+    </table>
+    <div style="margin-top:14px;padding:10px 12px;background:rgba(184,124,16,0.08);border-radius:10px;border:1.5px solid rgba(184,124,16,0.3);">
+      <div style="font-size:11px;font-weight:800;color:var(--gold);margin-bottom:7px;">⚡ Memory Trick — Mirror Pattern</div>
+      <span class="art-badge">74 ↔ 163 Advice</span>
+      <span class="art-badge">75 ↔ 164 Appoint</span>
+      <span class="art-badge">78 ↔ 167 Inform</span>
+    </div>
+  </div>
+</div>
+
+<!-- 3. APPOINTMENT -->
+<div class="sec-label">③ Appointment Logic — How PM & CM Get Appointed</div>
+<div class="map-card mc3">
+  <svg id="svgAppoint" viewBox="0 0 1320 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc gold">
+    <div class="pc-label">No Fixed Procedure</div>
+    <h3>📋 Convention Rules</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">No specific procedure in Constitution</div><div class="vs">Convention fills the gap</div></div>
+      <div class="vitem"><div class="vt">Leader of majority → PM/CM</div><div class="vs">By established convention</div></div>
+      <div class="vitem"><div class="vt">Hung House → President/Gov. Discretion</div><div class="vs">Most tested scenario in exams</div></div>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">Membership Rules</div>
+    <h3>🗳️ Eligibility</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Either House — Lok Sabha or Rajya Sabha</div><div class="vs">No restriction on which house</div></div>
+      <div class="vitem"><div class="vt">Non-member allowed</div><div class="vs">Must get elected within <strong>6 months</strong></div></div>
+      <div class="vitem"><div class="vt">Confidence within 1 month</div><div class="vs">If no clear majority on appointment</div></div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Oath & Term</div>
+    <h3>⚖️ Tenure Facts</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">PM oath — by President</div><div class="vs">Office + Secrecy</div></div>
+      <div class="vitem"><div class="vt">CM oath — by Governor</div><div class="vs">Office + Secrecy</div></div>
+      <div class="vitem"><div class="vt">Term = NOT fixed in Constitution</div><div class="vs">Holds during pleasure of Pres./Gov.</div></div>
+      <div class="vitem"><div class="vt">Practically = majority support</div><div class="vs">Real survival condition</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. COUNCIL OF MINISTERS -->
+<div class="sec-label">④ Council of Ministers — Power Structure</div>
+<div class="map-card mc4">
+  <svg id="svgCoM" viewBox="0 0 1320 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc purple">
+    <div class="pc-label">PM/CM — Head of CoM</div>
+    <h3>👑 Powers over Council</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Recommends all ministerial appointments</div><div class="vs">President/Governor bound by PM/CM's advice</div></div>
+      <div class="vitem"><div class="vt">Allocates & reshuffles portfolios</div><div class="vs">Complete discretion over who gets what</div></div>
+      <div class="vitem"><div class="vt">Can ask minister to resign</div><div class="vs">Or advise President/Governor to dismiss</div></div>
+      <div class="vitem"><div class="vt">Presides over CoM meetings</div><div class="vs">Sets agenda and steers decisions</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;background:rgba(176,26,26,0.07);border-radius:8px;border:1px dashed var(--red);">
+      <span style="font-size:11px;font-weight:800;color:var(--red);">🔥 Death/Resignation of PM/CM → Entire CoM dissolves</span>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Collective Responsibility</div>
+    <h3>⚖️ CoM as a Unit</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Union CoM — responsible to Lok Sabha</div><div class="vs">Article 75(3) — must maintain majority</div></div>
+      <div class="vitem"><div class="vt">State CoM — responsible to Vidhan Sabha</div><div class="vs">Article 164(2) — state lower house</div></div>
+      <div class="vitem"><div class="vt">No-Confidence Motion passed?</div><div class="vs">Entire government falls immediately</div></div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="chip warn">❌ NOT to Upper House (Rajya Sabha)</span>
+      <span class="chip ok">✅ Lower House ONLY</span>
+    </div>
+  </div>
+</div>
+
+<!-- 5. RELATIONSHIP -->
+<div class="sec-label">⑤ Nominal Head ↔ Real Executive Relationship</div>
+<div class="map-card mc5">
+  <svg id="svgRelation" viewBox="0 0 1320 190" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">President ↔ Prime Minister</div>
+    <h3>🤝 Union Relationship</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">President can ask for reconsideration</div><div class="vs">But only ONCE — must accept final advice</div></div>
+      <div class="vitem"><div class="vt">PM must communicate CoM decisions</div><div class="vs">Art. 78 — ongoing obligation</div></div>
+      <div class="vitem"><div class="vt">PM submits matters if President asks</div><div class="vs">Art. 78(b) obligation</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip neu">⚡ President = Constitutional Head · PM = Real Power</span></div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Governor ↔ Chief Minister</div>
+    <h3>🤝 State Relationship</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Governor has discretion in some cases</div><div class="vs">Hung assembly, President's Rule recommendation</div></div>
+      <div class="vitem"><div class="vt">CM must communicate CoM decisions</div><div class="vs">Art. 167 — mirror of Art. 78</div></div>
+      <div class="vitem"><div class="vt">Governor = Centre's Agent in states</div><div class="vs">Source of federalism tension</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip neu">⚡ Governor = Centre's Agent · CM = Real State Power</span></div>
+  </div>
+</div>
+
+<!-- 6. ADDITIONAL POWERS -->
+<div class="sec-label">⑥ Additional Powers — PM vs CM Comparison</div>
+<div class="map-card mc1">
+  <svg id="svgPowers" viewBox="0 0 1320 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">Prime Minister — Additional Powers</div>
+    <h3>🇮🇳 PM's Special Role</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Advises on summoning Parliament</div><div class="vs">Also proroguing & convening sessions</div></div>
+      <div class="vitem"><div class="vt">Can recommend dissolution of Lok Sabha</div><div class="vs">Triggers fresh general elections</div></div>
+      <div class="vitem"><div class="vt">Chairman — NITI Aayog</div><div class="vs">National policy planning body (replaced PC)</div></div>
+      <div class="vitem"><div class="vt">Chairman — National Integration Council</div><div class="vs">Communal harmony & national integrity</div></div>
+      <div class="vitem"><div class="vt">Chairman — Inter-State Council</div><div class="vs">Centre-State coordination body</div></div>
+      <div class="vitem"><div class="vt">Shapes Foreign Policy</div><div class="vs">Principal international spokesperson</div></div>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Chief Minister — Additional Powers</div>
+    <h3>🏛️ CM's Special Role</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Advises on summoning/proroguing Assembly</div><div class="vs">Controls state legislative calendar</div></div>
+      <div class="vitem"><div class="vt">Can recommend dissolution of Assembly</div><div class="vs">Advises Governor; triggers state polls</div></div>
+      <div class="vitem"><div class="vt">Chairman — State Planning Board</div><div class="vs">State-level development planning</div></div>
+      <div class="vitem"><div class="vt">Member — Inter-State Council</div><div class="vs">Represents state at national level</div></div>
+      <div class="vitem"><div class="vt">Crisis manager of state</div><div class="vs">Law & order, floods, disasters</div></div>
+      <div class="vitem"><div class="vt">Political head of state services</div><div class="vs">IAS, IPS officers deployed in state</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 7. MEMORY FLOW -->
+<div class="sec-label">⑦ Complete Memory Flow — The Parliamentary Cycle</div>
+<div class="map-card mc2">
+  <svg id="svgMemory" viewBox="0 0 1320 120" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- 8. PRELIMS TRAPS -->
+<div class="sec-label">⑧ High-Probability Prelims Traps</div>
+<div class="g2">
+  <div class="pc red">
+    <div class="pc-label">Common Wrong Answers — Avoid These</div>
+    <h3>⚠️ Trap Cards</h3>
+    <div class="trap-item"><span style="font-size:16px;">🚨</span><div class="trap-text"><strong>No specific constitutional procedure</strong> for appointment — it's by convention, not codified</div></div>
+    <div class="trap-item"><span style="font-size:16px;">🚨</span><div class="trap-text">Non-member must become member within <strong>6 months</strong> — (not 3, not 1 year)</div></div>
+    <div class="trap-item"><span style="font-size:16px;">🚨</span><div class="trap-text">Ministers hold office during <strong>pleasure of President/Governor</strong> — not fixed term</div></div>
+    <div class="trap-item"><span style="font-size:16px;">🚨</span><div class="trap-text">Collective responsibility only to <strong>Lower House</strong> — NOT Rajya Sabha/Vidhan Parishad</div></div>
+    <div class="trap-item"><span style="font-size:16px;">🚨</span><div class="trap-text">President can only return advice <strong>once</strong> — must accept on second presentation</div></div>
+    <div class="trap-item"><span style="font-size:16px;">🚨</span><div class="trap-text">Resignation of PM/CM collapses <strong>entire Council</strong> — not just the individual</div></div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Quick-Fire Must-Know Facts</div>
+    <h3>⚡ Always Correct</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">PM salary → decided by Parliament</div><div class="vs">CM salary → State Legislature decides</div></div>
+      <div class="vitem"><div class="vt">Art. 88 → Minister speaks in EITHER house</div><div class="vs">Even if not member of that house</div></div>
+      <div class="vitem"><div class="vt">PM is Chairman of NITI Aayog</div><div class="vs">Replaced Planning Commission in 2015</div></div>
+      <div class="vitem"><div class="vt">CoM = Cabinet + MoS + Deputy Ministers</div><div class="vs">Three-tier structure</div></div>
+      <div class="vitem"><div class="vt">Cabinet Committee on Security — PM leads</div><div class="vs">Nuclear decisions effectively with PM</div></div>
+      <div class="vitem"><div class="vt">PM can be from Rajya Sabha</div><div class="vs">No vote in Lok Sabha — yet wields real power</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">⚖️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The One-Line Core Understanding</div>
+    <div class="keystone-sub">
+      <strong style="color:#f5d78a;">President/Governor = Constitutional Head (nominal) · PM/CM = Political & Real Executive · CoM = Power Structure · Lower House Majority = Survival Key</strong><br>
+      India's parliamentary democracy runs on an elegant paradox — the head of state signs everything but decides nothing on their own. Real power flows from numbers on the floor of the lower house.
+    </div>
+    <div style="margin-top:12px;">
+      <span class="kpill">⚖️ Nominal vs Real</span>
+      <span class="kpill">📜 74 ↔ 163 Mirror</span>
+      <span class="kpill">🗳️ Lower House = Power</span>
+      <span class="kpill">🔥 PM = Keystone</span>
+      <span class="kpill">⏱️ 6 months rule</span>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a||{}))e.setAttribute(k,v);return e;}
+
+function ensureDefs(svg){let d=svg.querySelector('defs');if(!d){d=se('defs');svg.insertBefore(d,svg.firstChild);}return d;}
+
+function curve(svg,x1,y1,x2,y2,col,dashed,w){
+  const d=`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`;
+  svg.appendChild(se('path',{d,stroke:col||'#bba060','stroke-width':w||1.8,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.6'}));
+}
+
+function arrow(svg,x1,y1,x2,y2,col){
+  const id='ar'+Math.random().toString(36).slice(2,7);
+  const defs=ensureDefs(svg);
+  const m=se('marker',{id,markerWidth:'8',markerHeight:'6',refX:'7',refY:'3',orient:'auto'});
+  m.appendChild(se('path',{d:'M0,0 L7,3 L0,6 z',fill:col||'#b87c10'}));
+  defs.appendChild(m);
+  svg.appendChild(se('line',{x1,y1,x2,y2,stroke:col||'#b87c10','stroke-width':'2','marker-end':`url(#${id})`}));
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,tc,rx){
+  tc=tc||'#fff';rx=rx||10;
+  const g=se('g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.1)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.2)','stroke-width':'1.5'}));
+  let ty=y-(lines.length*7)-(sub?4:0)-(emoji?10:0);
+  if(emoji){const e=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:tc});e.textContent=emoji;g.appendChild(e);ty+=17;}
+  lines.forEach((l,i)=>{const t=se('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10.5','font-weight':'700','font-family':'Nunito,sans-serif',fill:tc});t.textContent=l;g.appendChild(t);});
+  if(sub){const s=se('text',{x,y:ty+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:tc==='#fff'?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.4)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+function lbl(svg,x,y,text,col){
+  const t=se('text',{x,y,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace','letter-spacing':'1.5',fill:col||'rgba(120,100,60,0.45)'});
+  t.textContent=text.toUpperCase();svg.appendChild(t);
+}
+
+// ── BIG PICTURE ──
+(function(){
+  const svg=document.getElementById('svgBig');
+  // Central
+  node(svg,660,105,210,58,'#12100e',['Parliamentary India'],'"Parliamentary System"','🇮🇳');
+  // Left: Union
+  const ul=[
+    {x:120,y:65,fill:'#1a3a8a',l:['President'],s:'Nominal — Union',e:'👑'},
+    {x:120,y:155,fill:'#d46a10',l:['Prime Minister'],s:'Real Executive — Union',e:'⭐'},
+  ];
+  const uCoM={x:380,y:105,fill:'#5a1a8a',l:['CoM (Union)'],s:'Art.74 — Advises Pres.',e:'⚙️'};
+  ul.forEach(n=>{curve(svg,555,105,n.x+80,n.y,'#1a3a8a55',true);node(svg,n.x,n.y,150,50,n.fill,n.l,n.s,n.e);});
+  curve(svg,555,105,uCoM.x+75,uCoM.y,'#5a1a8a44',true,1.5);node(svg,uCoM.x,uCoM.y,145,50,uCoM.fill,uCoM.l,uCoM.s,uCoM.e);
+  svg.appendChild(se('line',{x1:660,y1:10,x2:660,y2:200,stroke:'rgba(200,180,140,0.2)','stroke-width':'1.5','stroke-dasharray':'5 4'}));
+  // Right: State
+  const sl=[
+    {x:1195,y:65,fill:'#b87c10',l:['Governor'],s:'Nominal — State',e:'🏛️'},
+    {x:1195,y:155,fill:'#1a6a3a',l:['Chief Minister'],s:'Real Executive — State',e:'⭐'},
+  ];
+  const sCoM={x:940,y:105,fill:'#0a6070',l:['CoM (State)'],s:'Art.163 — Advises Gov.',e:'⚙️'};
+  sl.forEach(n=>{curve(svg,765,105,n.x-75,n.y,'#b87c1055',true);node(svg,n.x,n.y,150,50,n.fill,n.l,n.s,n.e);});
+  curve(svg,765,105,sCoM.x-72,sCoM.y,'#0a607044',true,1.5);node(svg,sCoM.x,sCoM.y,145,50,sCoM.fill,sCoM.l,sCoM.s,sCoM.e);
+  lbl(svg,250,198,'Responsible → Lok Sabha','rgba(26,58,138,0.45)');
+  lbl(svg,1060,198,'Responsible → Vidhan Sabha','rgba(184,124,16,0.45)');
+})();
+
+// ── ARTICLES ──
+(function(){
+  const svg=document.getElementById('svgArticles');
+  node(svg,320,125,200,56,'#1a3a8a',['Union Articles','74 · 75 · 77 · 78 · 88'],'PM & CoM','📜');
+  const uA=[
+    {x:80,y:60,fill:'#1a3a8a',l:['Art. 74'],s:'CoM advises Pres.',e:'📝'},
+    {x:80,y:130,fill:'#2a4aaa',l:['Art. 75'],s:'PM & Ministers Appt.',e:'📝'},
+    {x:80,y:200,fill:'#3a5aba',l:['Art. 77'],s:"Business in Pres. name",e:'📝'},
+    {x:320,y:210,fill:'#4a6aca',l:['Art. 78'],s:'PM informs Pres.',e:'📝'},
+    {x:540,y:200,fill:'#5a7ada',l:['Art. 88'],s:'Ministers — any House',e:'📝'},
+  ];
+  uA.forEach(n=>{
+    if(n.x<320)curve(svg,225,125,n.x+65,n.y,'#1a3a8a55',true,1.5);
+    else if(n.x>320)curve(svg,415,125,n.x-65,n.y,'#1a3a8a55',true,1.5);
+    else curve(svg,320,154,320,n.y-26,'#1a3a8a55',true,1.5);
+    node(svg,n.x,n.y,120,42,n.fill,n.l,n.s,n.e);
+  });
+  svg.appendChild(se('line',{x1:660,y1:10,x2:660,y2:240,stroke:'rgba(200,180,140,0.2)','stroke-width':'1.5','stroke-dasharray':'5 4'}));
+  node(svg,1000,125,200,56,'#b87c10',['State Articles','163 · 164 · 167'],'CM & CoM','📜');
+  const sA=[
+    {x:790,y:70,fill:'#b87c10',l:['Art. 163'],s:'CoM advises Gov.',e:'📝'},
+    {x:790,y:165,fill:'#c88a20',l:['Art. 164'],s:'CM appointed by Gov.',e:'📝'},
+    {x:1240,y:70,fill:'#d49830',l:['Art. 167'],s:'CM informs Gov.',e:'📝'},
+  ];
+  sA.forEach(n=>{
+    const fx=n.x<1000?905:1095;
+    curve(svg,fx,125,n.x+(n.x<1000?65:-65),n.y,'#b87c1055',true,1.5);
+    node(svg,n.x,n.y,140,48,n.fill,n.l,n.s,n.e);
+  });
+  // mirror line
+  const p=se('path',{d:'M100,238 Q660,260 1220,238',stroke:'rgba(184,124,16,0.3)','stroke-width':'1.5','stroke-dasharray':'4 3',fill:'none'});
+  svg.appendChild(p);
+  lbl(svg,660,248,'74↔163 · 75↔164 · 78↔167  (Mirror Pattern)','rgba(184,124,16,0.5)');
+})();
+
+// ── APPOINTMENT ──
+(function(){
+  const svg=document.getElementById('svgAppoint');
+  const steps=[
+    {x:90,fill:'#1a6a3a',l:['Elections'],s:'Voters decide',e:'🗳️'},
+    {x:255,fill:'#1a3a8a',l:['Majority','Identified'],s:'Lok Sabha / Assembly',e:'✅'},
+    {x:420,fill:'#b87c10',l:['Party Leader','Identified'],s:'By convention',e:'👤'},
+    {x:585,fill:'#d46a10',l:['Pres./Gov.','Invites'],s:'Discretion if hung',e:'📨'},
+    {x:750,fill:'#5a1a8a',l:['Oath','Administered'],s:'By Pres./Gov.',e:'🤝'},
+    {x:915,fill:'#0a6070',l:['Confidence','Proved (1mo)'],s:'If no clear majority',e:'⚡'},
+    {x:1080,fill:'#b01a1a',l:['CoM Formed'],s:'PM/CM advises on picks',e:'⚙️'},
+    {x:1235,fill:'#1a5878',l:['Govt. Runs'],s:'Till majority lost',e:'🏛️'},
+  ];
+  steps.forEach((n,i)=>{
+    node(svg,n.x,65,150,58,n.fill,n.l,n.s,n.e);
+    if(i<steps.length-1)arrow(svg,n.x+75,65,steps[i+1].x-75,65,'#b87c10');
+  });
+  const r=se('rect',{x:580,y:115,width:360,height:30,rx:8,ry:8,fill:'rgba(176,26,26,0.07)',stroke:'rgba(176,26,26,0.2)','stroke-width':'1.2','stroke-dasharray':'4 3'});
+  svg.appendChild(r);
+  const t=se('text',{x:760,y:133,'text-anchor':'middle','font-size':'10.5','font-weight':'800',fill:'#b01a1a','font-family':'Nunito,sans-serif'});
+  t.textContent='⚠️  Non-member → must get elected within 6 months';
+  svg.appendChild(t);
+})();
+
+// ── CoM ──
+(function(){
+  const svg=document.getElementById('svgCoM');
+  node(svg,660,120,200,56,'#12100e',['Council of Ministers'],'The Executive Engine','⚙️');
+  const left=[
+    {x:115,y:55,fill:'#1a3a8a',l:['Appoints All','Ministers'],s:'On PM/CM advice',e:'✍️'},
+    {x:115,y:130,fill:'#5a1a8a',l:['Allocates','Portfolios'],s:'Full discretion',e:'📁'},
+    {x:115,y:205,fill:'#b01a1a',l:['Dismisses','Ministers'],s:'Asks to resign',e:'🚫'},
+    {x:365,y:205,fill:'#d46a10',l:['PM/CM Resigns','→ All Fall'],s:'CoM dissolved',e:'🔥'},
+  ];
+  left.forEach(n=>{curve(svg,560,120,n.x+75,n.y,'#5a1a8a55',true,1.5);node(svg,n.x,n.y,210,50,n.fill,n.l,n.s,n.e);});
+  // Separator
+  svg.appendChild(se('line',{x1:660,y1:10,x2:660,y2:230,stroke:'rgba(200,180,140,0.15)','stroke-width':'1','stroke-dasharray':'5 4'}));
+  const right=[
+    {x:1205,y:55,fill:'#1a6a3a',l:['Responsible to','Lok Sabha'],s:'Union — Art. 75(3)',e:'🏛️'},
+    {x:1205,y:130,fill:'#1a5878',l:['Responsible to','Vidhan Sabha'],s:'State — Art. 164(2)',e:'🏛️'},
+    {x:1205,y:205,fill:'#b01a1a',l:['No-Conf. Motion','→ Govt. Falls'],s:'Entire CoM collapses',e:'⚡'},
+    {x:950,y:205,fill:'#b87c10',l:['NOT to Upper','House'],s:'Rajya Sabha excluded',e:'⚠️'},
+  ];
+  right.forEach(n=>{curve(svg,760,120,n.x-75,n.y,'#1a6a3a55',true,1.5);node(svg,n.x,n.y,205,50,n.fill,n.l,n.s,n.e);});
+  lbl(svg,280,232,'PM/CM Powers in CoM','rgba(90,26,138,0.45)');
+  lbl(svg,1060,232,'Collective Responsibility','rgba(26,106,58,0.45)');
+})();
+
+// ── RELATION ──
+(function(){
+  const svg=document.getElementById('svgRelation');
+  node(svg,300,95,200,56,'#1a3a8a',['President','↕️','Prime Minister'],'Union — Art. 74, 75, 78','🤝');
+  const uR=[
+    {x:70,y:50,fill:'#1a3a8a',l:['Returns Advice','Once Only'],s:'Must accept 2nd time',e:'↩️'},
+    {x:70,y:150,fill:'#2a4aaa',l:['Art.78 PM','Informs Pres.'],s:'All CoM decisions',e:'📋'},
+    {x:500,y:50,fill:'#3a5aba',l:['PM Advises','Dissolution'],s:'Parliament & Lok Sabha',e:'🏛️'},
+    {x:500,y:150,fill:'#4a6aca',l:['PM Advises','Summoning'],s:'Prorogue, convene',e:'📨'},
+  ];
+  uR.forEach(n=>{const fx=n.x<300?200:400;curve(svg,fx,95,n.x+(n.x<300?70:-70),n.y,'#1a3a8a55',true,1.5);node(svg,n.x,n.y,150,50,n.fill,n.l,n.s,n.e);});
+  svg.appendChild(se('line',{x1:660,y1:10,x2:660,y2:180,stroke:'rgba(200,180,140,0.2)','stroke-width':'1.5','stroke-dasharray':'5 4'}));
+  node(svg,1020,95,200,56,'#b87c10',['Governor','↕️','Chief Minister'],'State — Art. 163, 164, 167','🤝');
+  const sR=[
+    {x:790,y:50,fill:'#b87c10',l:['Gov. Discretion'],s:'Hung assembly, Art.356',e:'⚖️'},
+    {x:790,y:150,fill:'#c88a20',l:['Art.167 CM','Informs Gov.'],s:'All CoM decisions',e:'📋'},
+    {x:1250,y:50,fill:'#d49830',l:["Centre's Agent"],s:'Federalism tension',e:'🏛️'},
+    {x:1250,y:150,fill:'#e0a840',l:['CM Advises','Assembly'],s:'Sessions & dissolution',e:'📨'},
+  ];
+  sR.forEach(n=>{const fx=n.x<1020?920:1120;curve(svg,fx,95,n.x+(n.x<1020?70:-70),n.y,'#b87c1055',true,1.5);node(svg,n.x,n.y,145,50,n.fill,n.l,n.s,n.e);});
+})();
+
+// ── POWERS ──
+(function(){
+  const svg=document.getElementById('svgPowers');
+  node(svg,330,44,190,52,'#1a3a8a',['Prime Minister','Powers'],'Union Executive','🇮🇳');
+  const pm=[
+    {x:70,y:120,fill:'#1a3a8a',l:['Parliament','Summoning'],s:'Advises President',e:'🏛️'},
+    {x:220,y:120,fill:'#2a4a9a',l:['Dissolve','Lok Sabha'],s:'Recommends dissolution',e:'⚡'},
+    {x:370,y:120,fill:'#3a5aaa',l:['NITI Aayog','Chairman'],s:'Policy planning',e:'📊'},
+    {x:70,y:200,fill:'#4a6aba',l:['Nat. Integ.','Council Chair'],s:'Social harmony',e:'🤝'},
+    {x:220,y:200,fill:'#5a7aca',l:['Inter-State','Council Chair'],s:'Centre-State coord.',e:'🔗'},
+    {x:370,y:200,fill:'#1a5878',l:['Foreign Policy','Shaper'],s:'International role',e:'🌍'},
+    {x:570,y:160,fill:'#0a4868',l:['Ruling Party','Leader'],s:'Political + Exec. head',e:'🎯'},
+  ];
+  pm.forEach(n=>{curve(svg,330,70,n.x+(n.x<330?65:-65),n.y,'#1a3a8a44',true,1.5);node(svg,n.x,n.y,138,46,n.fill,n.l,n.s,n.e);});
+  svg.appendChild(se('line',{x1:660,y1:10,x2:660,y2:230,stroke:'rgba(200,180,140,0.2)','stroke-width':'1.5','stroke-dasharray':'5 4'}));
+  node(svg,990,44,190,52,'#b87c10',['Chief Minister','Powers'],'State Executive','🏛️');
+  const cm=[
+    {x:750,y:120,fill:'#b87c10',l:['Assembly','Summon/Prorogue'],s:'Controls calendar',e:'🏛️'},
+    {x:900,y:120,fill:'#c88a20',l:['Dissolve','Assembly'],s:'Advises Governor',e:'⚡'},
+    {x:1050,y:120,fill:'#d49830',l:['State Planning','Board Chair'],s:'State development',e:'📊'},
+    {x:750,y:200,fill:'#e0a840',l:['Inter-State','Council Member'],s:'Represents state',e:'🔗'},
+    {x:900,y:200,fill:'#b06010',l:['Crisis','Manager'],s:'Law, order, disasters',e:'🚨'},
+    {x:1050,y:200,fill:'#a05010',l:['State Services','Political Head'],s:'IAS, IPS oversight',e:'👮'},
+    {x:1240,y:160,fill:'#904010',l:['Local Govt.','Oversight'],s:'ULBs & Panchayats',e:'🏘️'},
+  ];
+  cm.forEach(n=>{curve(svg,990,70,n.x+(n.x<990?65:-65),n.y,'#b87c1044',true,1.5);node(svg,n.x,n.y,138,46,n.fill,n.l,n.s,n.e);});
+  lbl(svg,330,232,'Prime Minister Powers','rgba(26,58,138,0.4)');
+  lbl(svg,990,232,'Chief Minister Powers','rgba(184,124,16,0.4)');
+})();
+
+// ── MEMORY FLOW ──
+(function(){
+  const svg=document.getElementById('svgMemory');
+  const steps=[
+    {x:80,fill:'#1a6a3a',l:['Elections'],s:'Voters decide',e:'🗳️'},
+    {x:240,fill:'#1a3a8a',l:['Majority'],s:'Party wins lower house',e:'✅'},
+    {x:400,fill:'#b87c10',l:['PM/CM'],s:'Leader identified',e:'👤'},
+    {x:560,fill:'#d46a10',l:['Appointed'],s:'By Pres./Gov.',e:'✍️'},
+    {x:720,fill:'#5a1a8a',l:['CoM Formed'],s:'Advises nominal head',e:'⚙️'},
+    {x:880,fill:'#0a6070',l:['Responsible to','Lower House'],s:'Collective resp.',e:'🏛️'},
+    {x:1060,fill:'#b01a1a',l:['Majority Lost','→ Falls'],s:'No-conf. motion',e:'⚡'},
+    {x:1230,fill:'#1a5878',l:['New Govt.'],s:'Cycle repeats',e:'🔄'},
+  ];
+  steps.forEach((n,i)=>{
+    node(svg,n.x,60,145,56,n.fill,n.l,n.s,n.e);
+    if(i<steps.length-1)arrow(svg,n.x+72,60,steps[i+1].x-72,60,'#b87c10');
+  });
+  lbl(svg,660,108,'Complete Parliamentary Cycle','rgba(120,100,60,0.4)');
+})();
+</script>
+</body>
+</html>

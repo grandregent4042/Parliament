@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Presiding Officers of Parliament — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f4ef;
+  --ink:#1a1510;
+  --gold:#c8920a;
+  --gold-lt:#f5e4b0;
+  --amber:#d4660a;
+  --green:#1a6040;
+  --blue:#1a3a7a;
+  --purple:#5a1a7a;
+  --teal:#0a5868;
+  --red:#a01818;
+  --muted:#7a6a50;
+  --border:#ddd0b0;
+  --card:#fffdf8;
+  --card2:#f2ede2;
+  --shadow:0 2px 16px rgba(100,80,30,0.10);
+  --shadow2:0 4px 28px rgba(100,80,30,0.16);
+}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden;line-height:1.5;}
+body::before{content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse 800px 600px at 10% 5%,rgba(200,146,10,0.06),transparent 60%),
+             radial-gradient(ellipse 600px 600px at 90% 95%,rgba(26,58,122,0.06),transparent 60%);
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:0 20px 80px;}
+
+/* HEADER */
+.header{text-align:center;padding:48px 16px 24px;}
+.header-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,56px);font-weight:700;line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-top:8px;letter-spacing:1px;}
+.header-bar{width:120px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:16px auto 0;border-radius:4px;}
+
+/* SECTION LABEL */
+.sec-lbl{display:flex;align-items:center;gap:14px;margin:36px 0 16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;}
+.sec-lbl::before,.sec-lbl::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* PANEL CARD */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pc:hover{box-shadow:var(--shadow2);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.blue::before{background:var(--blue);}
+.pc.green::before{background:var(--green);}
+.pc.red::before{background:var(--red);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.amber::before{background:var(--amber);}
+.pc.dark::before{background:var(--ink);}
+.pc-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.pc h3{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* MAP CARD */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:22px;box-shadow:var(--shadow);}
+.map-card svg{display:block;width:100%;}
+
+/* PILL */
+.pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.gold{background:rgba(200,146,10,0.12);color:var(--gold);}
+.pill.blue{background:rgba(26,58,122,0.12);color:var(--blue);}
+.pill.green{background:rgba(26,96,64,0.12);color:var(--green);}
+.pill.red{background:rgba(160,24,24,0.12);color:var(--red);}
+.pill.purple{background:rgba(90,26,122,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,88,104,0.12);color:var(--teal);}
+.pill.amber{background:rgba(212,102,10,0.12);color:var(--amber);}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vitem{padding:8px 11px;border-radius:8px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:700;margin-bottom:1px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* STAT BOX */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px 8px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;line-height:1;}
+.stat-label{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;font-weight:600;margin-top:1px;}
+
+/* CHIP */
+.chip{display:inline-block;padding:3px 9px;border-radius:6px;font-size:9px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip.ok{background:rgba(26,96,64,0.07);border-color:rgba(26,96,64,0.2);color:var(--green);}
+.chip.bad{background:rgba(160,24,24,0.07);border-color:rgba(160,24,24,0.2);color:var(--red);}
+.chip.warn{background:rgba(200,146,10,0.07);border-color:rgba(200,146,10,0.2);color:var(--gold);}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 32px;margin:20px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.keystone-icon{font-size:40px;flex:0 0 auto;}
+.keystone-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;margin-bottom:4px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.kpills{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'JetBrains Mono',monospace;}
+
+/* TIMELINE */
+.timeline{position:relative;margin:16px 0 24px;padding-left:28px;}
+.timeline::before{content:'';position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--gold),var(--blue));}
+.t-item{position:relative;margin-bottom:14px;}
+.t-dot{position:absolute;left:-23px;top:10px;width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid var(--bg);}
+.t-card{background:var(--card2);border:1px solid var(--border);border-radius:9px;padding:9px 12px;}
+.t-year{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--gold);margin-bottom:2px;}
+.t-text{font-size:11px;font-weight:600;}
+.t-sub{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* FLOW */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.fn{padding:6px 12px;border-radius:8px;font-size:11px;font-weight:600;border:1.5px solid;}
+.farr{font-size:16px;color:var(--muted);}
+
+/* COMPARE TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#f5e8c0;padding:9px 12px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(200,146,10,0.025);}
+.ctable td:first-child{font-weight:700;color:var(--amber);font-family:'JetBrains Mono',monospace;font-size:10px;}
+
+/* TRAP BOX */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+@media(max-width:600px){.trap-grid{grid-template-columns:1fr;}}
+.trap-item{padding:9px 12px;border-radius:9px;background:rgba(160,24,24,0.05);border:1.5px solid rgba(160,24,24,0.15);font-size:11px;}
+.trap-item strong{color:var(--red);font-size:10px;display:block;margin-bottom:2px;font-family:'JetBrains Mono',monospace;}
+
+/* ANIMATE */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.section{animation:fadeUp .5s ease both;}
+
+/* SVG default text */
+.svgtext{font-family:'Outfit',sans-serif;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header section">
+  <div class="header-eyebrow">Indian Polity · Parliament · UPSC Prelims</div>
+  <h1>Presiding Officers of <em>Parliament</em></h1>
+  <div class="header-sub">History → Election → Powers → Removal → Comparison · Full Connected Flow</div>
+  <div class="header-bar"></div>
+</div>
+
+<!-- ① BASIC STRUCTURE -->
+<div class="sec-lbl">① Basic Structure — Parliament's Architecture</div>
+<div class="map-card section">
+<svg viewBox="0 0 1280 250" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M1,1 L7,4 L1,7" stroke="#c8920a" stroke-width="1.2" fill="none"/></marker>
+    <marker id="arr2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M1,1 L7,4 L1,7" stroke="#1a3a7a" stroke-width="1.2" fill="none"/></marker>
+  </defs>
+
+  <!-- Parliament root — centred -->
+  <rect x="440" y="18" width="400" height="52" rx="12" fill="#1a1510"/>
+  <text x="640" y="40" text-anchor="middle" fill="#f5e8c0" font-size="14" font-weight="700">🏛️ Parliament of India</text>
+  <text x="640" y="58" text-anchor="middle" fill="#c8b060" font-size="9" font-family="JetBrains Mono,monospace" letter-spacing="1">TWO HOUSES · TWO PRESIDING OFFICERS</text>
+
+  <!-- Lok Sabha branch — left side, well spaced -->
+  <path d="M560,70 C560,95 310,95 310,110" stroke="#c8920a" stroke-width="1.8" stroke-dasharray="5 3" fill="none" marker-end="url(#arr)"/>
+  <rect x="155" y="108" width="310" height="50" rx="10" fill="#c8920a"/>
+  <text x="310" y="128" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">🏠 Lok Sabha</text>
+  <text x="310" y="145" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="9" font-family="JetBrains Mono,monospace">LOWER HOUSE · HOUSE OF THE PEOPLE</text>
+
+  <!-- LS sub-nodes — evenly spaced, no overlap -->
+  <line x1="228" y1="158" x2="180" y2="188" stroke="#c8920a" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="60" y="186" width="240" height="42" rx="8" fill="rgba(200,146,10,0.12)" stroke="#c8920a" stroke-width="1.5"/>
+  <text x="180" y="203" text-anchor="middle" fill="#1a1510" font-size="11" font-weight="700">👤 Speaker</text>
+  <text x="180" y="219" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">ELECTED BY LS MEMBERS · ART.93</text>
+
+  <line x1="392" y1="158" x2="430" y2="188" stroke="#c8920a" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="310" y="186" width="240" height="42" rx="8" fill="rgba(200,146,10,0.07)" stroke="#c8920a" stroke-width="1"/>
+  <text x="430" y="203" text-anchor="middle" fill="#1a1510" font-size="11" font-weight="700">👤 Deputy Speaker</text>
+  <text x="430" y="219" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">ELECTED AFTER SPEAKER</text>
+
+  <!-- Rajya Sabha branch — right side -->
+  <path d="M720,70 C720,95 970,95 970,110" stroke="#1a3a7a" stroke-width="1.8" stroke-dasharray="5 3" fill="none" marker-end="url(#arr2)"/>
+  <rect x="815" y="108" width="310" height="50" rx="10" fill="#1a3a7a"/>
+  <text x="970" y="128" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">🏛️ Rajya Sabha</text>
+  <text x="970" y="145" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="9" font-family="JetBrains Mono,monospace">UPPER HOUSE · COUNCIL OF STATES</text>
+
+  <!-- RS sub-nodes — evenly spaced -->
+  <line x1="888" y1="158" x2="850" y2="188" stroke="#1a3a7a" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="730" y="186" width="240" height="42" rx="8" fill="rgba(26,58,122,0.12)" stroke="#1a3a7a" stroke-width="1.5"/>
+  <text x="850" y="203" text-anchor="middle" fill="#1a1510" font-size="11" font-weight="700">👤 Chairman</text>
+  <text x="850" y="219" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">VICE-PRESIDENT (EX-OFFICIO)</text>
+
+  <line x1="1052" y1="158" x2="1090" y2="188" stroke="#1a3a7a" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="970" y="186" width="240" height="42" rx="8" fill="rgba(26,58,122,0.07)" stroke="#1a3a7a" stroke-width="1"/>
+  <text x="1090" y="203" text-anchor="middle" fill="#1a1510" font-size="11" font-weight="700">👤 Deputy Chairman</text>
+  <text x="1090" y="219" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">ELECTED BY RS MEMBERS · ART.90</text>
+
+  <!-- Panel note — bottom centre, no overlap -->
+  <text x="640" y="244" text-anchor="middle" fill="rgba(90,26,122,0.6)" font-size="9" font-family="JetBrains Mono,monospace" letter-spacing="1.5">📋 BACKUP: PANEL OF CHAIRPERSONS (LS) · PANEL OF VICE-CHAIRPERSONS (RS) · Nominated by respective presiding officers</text>
+</svg>
+</div>
+
+<!-- ② HISTORICAL BACKGROUND -->
+<div class="sec-lbl">② Historical Background</div>
+<div class="g2 section">
+  <div class="pc gold">
+    <div class="pc-label">Pre-Independence Timeline</div>
+    <h3>📜 Origins & Firsts</h3>
+    <div class="timeline">
+      <div class="t-item"><div class="t-dot" style="background:var(--amber)"></div>
+        <div class="t-card"><div class="t-year">1919</div><div class="t-text">Government of India Act</div><div class="t-sub">Origin of the Office of Speaker</div></div></div>
+      <div class="t-item"><div class="t-dot" style="background:var(--gold)"></div>
+        <div class="t-card"><div class="t-year">Pre-1921</div><div class="t-text">Governor-General presided</div><div class="t-sub">No separate Speaker</div></div></div>
+      <div class="t-item"><div class="t-dot" style="background:var(--blue)"></div>
+        <div class="t-card"><div class="t-year">1921</div><div class="t-text">First Speaker: Frederic Whyte</div><div class="t-sub">First Deputy Speaker: Sachidanand Sinha</div></div></div>
+      <div class="t-item"><div class="t-dot" style="background:var(--green)"></div>
+        <div class="t-card"><div class="t-year">1925</div><div class="t-text">Vithalbhai J. Patel 🏆</div><div class="t-sub">First Indian & first elected Speaker</div></div></div>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">Post-Independence Firsts</div>
+    <h3>🇮🇳 Independent India</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--gold)">G.V.</div>
+        <div class="stat-sub">Mavalankar</div>
+        <div class="stat-label">1ST LS SPEAKER</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue)">A.A.</div>
+        <div class="stat-sub">Ayyangar</div>
+        <div class="stat-label">1ST DEPUTY SPEAKER</div>
+      </div>
+    </div>
+    <div style="margin-top:14px;">
+      <div class="pc-label" style="margin-bottom:6px;">Speaker Pro-Tem — Exam Favourite ⭐</div>
+      <div class="flow">
+        <div class="fn" style="border-color:var(--amber);background:rgba(212,102,10,0.08);color:var(--amber);font-size:10px;">New LS Formed</div>
+        <div class="farr">→</div>
+        <div class="fn" style="border-color:var(--gold);background:rgba(200,146,10,0.08);color:var(--gold);font-size:10px;">Old Speaker Vacates</div>
+        <div class="farr">→</div>
+        <div class="fn" style="border-color:var(--blue);background:rgba(26,58,122,0.08);color:var(--blue);font-size:10px;">President Appoints Pro-Tem</div>
+      </div>
+      <div class="vlist" style="margin-top:8px;">
+        <div class="vitem"><div class="vt">👤 Usually senior-most member</div><div class="vs">Administers oath to MPs · Conducts Speaker election</div></div>
+        <div class="vitem"><div class="vt">⏱️ Temporary office only</div><div class="vs">Until new Speaker is elected</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ③ SPEAKER vs CHAIRMAN COMPARISON -->
+<div class="sec-lbl">③ Speaker vs Chairman — Core Comparison</div>
+<div class="map-card section">
+<svg viewBox="0 0 1280 350" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+
+  <!-- Divider -->
+  <line x1="640" y1="20" x2="640" y2="336" stroke="#ddd0b0" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+  <!-- Column headers -->
+  <rect x="80" y="18" width="480" height="44" rx="10" fill="#c8920a"/>
+  <text x="320" y="35" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">🏠 Speaker (Lok Sabha)</text>
+  <text x="320" y="53" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="9" font-family="JetBrains Mono,monospace">ART. 93–94</text>
+
+  <rect x="720" y="18" width="480" height="44" rx="10" fill="#1a3a7a"/>
+  <text x="960" y="35" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">🏛️ Chairman (Rajya Sabha)</text>
+  <text x="960" y="53" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="9" font-family="JetBrains Mono,monospace">ART. 89–90 · VICE-PRESIDENT EX-OFFICIO</text>
+
+  <!-- Row labels col: x=14, width=82 -->
+  <!-- Row 1: Position y=78 -->
+  <rect x="14" y="78" width="82" height="52" rx="8" fill="rgba(200,146,10,0.08)" stroke="#ddd0b0" stroke-width="1"/>
+  <text x="55" y="100" text-anchor="middle" fill="#7a6a50" font-size="8" font-family="JetBrains Mono,monospace" font-weight="700">POSITION</text>
+  <text x="55" y="116" text-anchor="middle" fill="#7a6a50" font-size="7.5" font-family="JetBrains Mono,monospace">HOW?</text>
+
+  <rect x="104" y="78" width="520" height="52" rx="8" fill="rgba(200,146,10,0.04)" stroke="#ddd0b0" stroke-width="1"/>
+  <text x="364" y="100" text-anchor="middle" fill="#1a1510" font-size="11" font-weight="600">Elected by Lok Sabha members</text>
+  <text x="364" y="118" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Popular election from within the House</text>
+
+  <rect x="654" y="78" width="612" height="52" rx="8" fill="rgba(26,58,122,0.04)" stroke="#ddd0b0" stroke-width="1"/>
+  <text x="960" y="100" text-anchor="middle" fill="#1a1510" font-size="11" font-weight="600">Vice-President of India (Ex-Officio)</text>
+  <text x="960" y="118" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Automatic — no separate election needed</text>
+
+  <!-- Row 2: Tenure y=138 -->
+  <rect x="14" y="138" width="82" height="52" rx="8" fill="rgba(200,146,10,0.08)" stroke="#ddd0b0" stroke-width="1"/>
+  <text x="55" y="160" text-anchor="middle" fill="#7a6a50" font-size="8" font-family="JetBrains Mono,monospace" font-weight="700">TENURE</text>
+  <text x="55" y="176" text-anchor="middle" fill="#7a6a50" font-size="7.5" font-family="JetBrains Mono,monospace">ART. 94</text>
+
+  <rect x="104" y="138" width="520" height="52" rx="8" fill="rgba(200,146,10,0.04)" stroke="#ddd0b0" stroke-width="1"/>
+  <text x="364" y="160" text-anchor="middle" fill="#1a1510" font-size="11" font-weight="600">Life of LS · continues post-dissolution</text>
+  <text x="364" y="178" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Until just before first sitting of new LS</text>
+
+  <rect x="654" y="138" width="612" height="52" rx="8" fill="rgba(26,58,122,0.04)" stroke="#ddd0b0" stroke-width="1"/>
+  <text x="960" y="160" text-anchor="middle" fill="#1a1510" font-size="11" font-weight="600">Continues as long as VP (Art. 67)</text>
+  <text x="960" y="178" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Removed only if VP is removed</text>
+
+  <!-- Row 3: Removal y=198 -->
+  <rect x="14" y="198" width="82" height="58" rx="8" fill="rgba(160,24,24,0.08)" stroke="rgba(160,24,24,0.2)" stroke-width="1"/>
+  <text x="55" y="222" text-anchor="middle" fill="#a01818" font-size="8" font-family="JetBrains Mono,monospace" font-weight="700">REMOVAL</text>
+  <text x="55" y="238" text-anchor="middle" fill="#a01818" font-size="7.5" font-family="JetBrains Mono,monospace">HOW?</text>
+
+  <rect x="104" y="198" width="520" height="58" rx="8" fill="rgba(160,24,24,0.04)" stroke="rgba(160,24,24,0.1)" stroke-width="1"/>
+  <text x="364" y="220" text-anchor="middle" fill="#1a1510" font-size="11" font-weight="600">Majority of ALL THEN members · 14 days notice</text>
+  <text x="364" y="238" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Cannot preside during removal motion</text>
+  <text x="364" y="250" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Resigns to Deputy Speaker</text>
+
+  <rect x="654" y="198" width="612" height="58" rx="8" fill="rgba(26,58,122,0.04)" stroke="rgba(26,58,122,0.1)" stroke-width="1"/>
+  <text x="960" y="220" text-anchor="middle" fill="#1a1510" font-size="11" font-weight="600">Only if Vice-President is removed</text>
+  <text x="960" y="238" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">May participate in removal debate</text>
+  <text x="960" y="250" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">but CANNOT vote</text>
+
+  <!-- Row 4: Voting y=264 -->
+  <rect x="14" y="264" width="82" height="52" rx="8" fill="rgba(26,96,64,0.08)" stroke="rgba(26,96,64,0.2)" stroke-width="1"/>
+  <text x="55" y="286" text-anchor="middle" fill="#1a6040" font-size="8" font-family="JetBrains Mono,monospace" font-weight="700">VOTING</text>
+  <text x="55" y="302" text-anchor="middle" fill="#1a6040" font-size="7.5" font-family="JetBrains Mono,monospace">RIGHTS</text>
+
+  <rect x="104" y="264" width="520" height="52" rx="8" fill="rgba(26,96,64,0.04)" stroke="rgba(26,96,64,0.1)" stroke-width="1"/>
+  <text x="364" y="286" text-anchor="middle" fill="#1a1510" font-size="11" font-weight="600">Does NOT vote in first instance</text>
+  <text x="364" y="303" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Has CASTING VOTE (only in case of tie) ⚠️</text>
+
+  <rect x="654" y="264" width="612" height="52" rx="8" fill="rgba(26,96,64,0.04)" stroke="rgba(26,96,64,0.1)" stroke-width="1"/>
+  <text x="960" y="286" text-anchor="middle" fill="#1a1510" font-size="11" font-weight="600">Does NOT vote in first instance</text>
+  <text x="960" y="303" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Has CASTING VOTE in tie — Same rule as Speaker</text>
+
+  <!-- Footer note -->
+  <text x="640" y="340" text-anchor="middle" fill="rgba(120,100,60,0.5)" font-size="8" font-family="JetBrains Mono,monospace" letter-spacing="1.5">⚠️ CASTING VOTE = EXTRA VOTE USED ONLY TO BREAK A DEADLOCK TIE</text>
+</svg>
+</div>
+
+<!-- ④ POWERS OF THE SPEAKER -->
+<div class="sec-lbl">④ Powers of the Speaker — Highly Important</div>
+<div class="map-card section">
+<svg viewBox="0 0 1280 330" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+  <defs>
+    <marker id="spkarr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L6,3.5 L0,7" stroke="#c8920a" stroke-width="1.2" fill="none"/></marker>
+  </defs>
+
+  <!-- Root — centred at top -->
+  <rect x="440" y="16" width="400" height="56" rx="12" fill="#c8920a"/>
+  <text x="640" y="40" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">⚡ Powers of Speaker (Lok Sabha)</text>
+  <text x="640" y="58" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="9" font-family="JetBrains Mono,monospace" letter-spacing="1">GUARDIAN · INTERPRETER · PRESIDING AUTHORITY</text>
+
+  <!-- Row 1: 4 nodes evenly across width. Each node width=260, gap=20 -->
+  <!-- Node positions (centre-x): 150, 430, 710, 990; rect x = cx-130 -->
+
+  <!-- Connector lines from root bottom to row 1 nodes -->
+  <line x1="640" y1="72" x2="150" y2="118" stroke="#c8920a" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#spkarr)"/>
+  <line x1="640" y1="72" x2="430" y2="118" stroke="#c8920a" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#spkarr)"/>
+  <line x1="640" y1="72" x2="710" y2="118" stroke="#c8920a" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#spkarr)"/>
+  <line x1="640" y1="72" x2="990" y2="118" stroke="#c8920a" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#spkarr)"/>
+
+  <!-- Row 1 Node 1: Guardian of House -->
+  <rect x="20" y="116" width="260" height="58" rx="10" fill="rgba(200,146,10,0.09)" stroke="#c8920a" stroke-width="1.5"/>
+  <text x="150" y="138" text-anchor="middle" fill="#1a1510" font-size="12" font-weight="700">🏛️ Guardian of House</text>
+  <text x="150" y="155" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Privileges · Order · Decorum</text>
+  <text x="150" y="168" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Maintains decorum in LS</text>
+
+  <!-- Row 1 Node 2: Final Interpreter -->
+  <rect x="300" y="116" width="260" height="58" rx="10" fill="rgba(200,146,10,0.09)" stroke="#c8920a" stroke-width="1.5"/>
+  <text x="430" y="138" text-anchor="middle" fill="#1a1510" font-size="12" font-weight="700">⚖️ Final Interpreter</text>
+  <text x="430" y="155" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Constitution &amp; Rules inside House</text>
+  <text x="430" y="168" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Rulings are authoritative</text>
+
+  <!-- Row 1 Node 3: Money Bill FINAL -->
+  <rect x="580" y="116" width="260" height="58" rx="10" fill="rgba(160,24,24,0.08)" stroke="#a01818" stroke-width="1.8"/>
+  <text x="710" y="138" text-anchor="middle" fill="#1a1510" font-size="12" font-weight="700">📜 Money Bill — FINAL</text>
+  <text x="710" y="155" text-anchor="middle" fill="#a01818" font-size="9" font-family="JetBrains Mono,monospace" font-weight="700">Decision CONCLUSIVE · Art. 110</text>
+  <text x="710" y="168" text-anchor="middle" fill="#a01818" font-size="9" font-family="JetBrains Mono,monospace">Chairman has NO role here ⚠️</text>
+
+  <!-- Row 1 Node 4: Joint Sitting -->
+  <rect x="860" y="116" width="260" height="58" rx="10" fill="rgba(160,24,24,0.08)" stroke="#a01818" stroke-width="1.8"/>
+  <text x="990" y="138" text-anchor="middle" fill="#1a1510" font-size="12" font-weight="700">🤝 Presides Joint Sitting</text>
+  <text x="990" y="155" text-anchor="middle" fill="#a01818" font-size="9" font-family="JetBrains Mono,monospace" font-weight="700">Art. 108 · NOT the Chairman ⚠️</text>
+  <text x="990" y="168" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Deadlock between two Houses</text>
+
+  <!-- Connector lines root to row 2 -->
+  <line x1="640" y1="72" x2="150" y2="222" stroke="#c8920a" stroke-width="1.2" stroke-dasharray="3 4" opacity="0.6" marker-end="url(#spkarr)"/>
+  <line x1="640" y1="72" x2="430" y2="222" stroke="#c8920a" stroke-width="1.2" stroke-dasharray="3 4" opacity="0.6" marker-end="url(#spkarr)"/>
+  <line x1="640" y1="72" x2="710" y2="222" stroke="#c8920a" stroke-width="1.2" stroke-dasharray="3 4" opacity="0.6" marker-end="url(#spkarr)"/>
+  <line x1="640" y1="72" x2="990" y2="222" stroke="#c8920a" stroke-width="1.2" stroke-dasharray="3 4" opacity="0.6" marker-end="url(#spkarr)"/>
+
+  <!-- Row 2: 4 more nodes -->
+  <!-- Row 2 Node 1: Quorum Adjournment -->
+  <rect x="20" y="220" width="260" height="58" rx="10" fill="rgba(200,146,10,0.07)" stroke="#c8920a" stroke-width="1.2"/>
+  <text x="150" y="242" text-anchor="middle" fill="#1a1510" font-size="12" font-weight="700">🔢 Quorum Adjournment</text>
+  <text x="150" y="258" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">If less than 1/10th total strength</text>
+  <text x="150" y="271" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Adjourns House</text>
+
+  <!-- Row 2 Node 2: Anti-Defection -->
+  <rect x="300" y="220" width="260" height="58" rx="10" fill="rgba(200,146,10,0.07)" stroke="#c8920a" stroke-width="1.2"/>
+  <text x="430" y="242" text-anchor="middle" fill="#1a1510" font-size="12" font-weight="700">🔗 Anti-Defection</text>
+  <text x="430" y="258" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Decides disqualification</text>
+  <text x="430" y="271" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Subject to Judicial Review</text>
+
+  <!-- Row 2 Node 3: Secret Sittings -->
+  <rect x="580" y="220" width="260" height="58" rx="10" fill="rgba(200,146,10,0.07)" stroke="#c8920a" stroke-width="1.2"/>
+  <text x="710" y="242" text-anchor="middle" fill="#1a1510" font-size="12" font-weight="700">🔒 Secret Sittings</text>
+  <text x="710" y="258" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Power to allow secret sittings</text>
+  <text x="710" y="271" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">At request of any member/PM</text>
+
+  <!-- Row 2 Node 4: Salary CFI + Committee -->
+  <rect x="860" y="220" width="260" height="58" rx="10" fill="rgba(26,96,64,0.07)" stroke="#1a6040" stroke-width="1.2"/>
+  <text x="990" y="242" text-anchor="middle" fill="#1a1510" font-size="12" font-weight="700">👥 Committees + CFI</text>
+  <text x="990" y="258" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Appoints committee chairpersons</text>
+  <text x="990" y="271" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Salary from Consolidated Fund</text>
+
+  <!-- Bottom note bar -->
+  <rect x="20" y="293" width="1240" height="28" rx="7" fill="rgba(160,24,24,0.06)" stroke="rgba(160,24,24,0.2)" stroke-width="1"/>
+  <text x="640" y="312" text-anchor="middle" fill="#a01818" font-size="9.5" font-family="JetBrains Mono,monospace" font-weight="700" letter-spacing="1">⚠️ CHAIRMAN CANNOT DO: Decide Money Bill · Preside Joint Sitting — These two powers belong exclusively to the Speaker</text>
+</svg>
+</div>
+
+<!-- ⑤ SPEAKER vs CHAIRMAN EXCLUSIVE POWERS -->
+<div class="sec-lbl">⑤ Exclusive Powers — What Only Speaker Can Do</div>
+<div class="g2 section">
+  <div class="pc amber">
+    <div class="pc-label">Speaker Only (Not Chairman)</div>
+    <h3>🌟 Exclusive Speaker Powers</h3>
+    <div class="vlist">
+      <div class="vitem" style="border-left:3px solid var(--amber);"><div class="vt">💰 Decides Money Bill</div><div class="vs">Decision is FINAL under Art. 110 · Chairman has NO role</div></div>
+      <div class="vitem" style="border-left:3px solid var(--amber);"><div class="vt">🤝 Presides Joint Sitting</div><div class="vs">Art. 108 · Deadlock between two Houses · Chairman excluded</div></div>
+      <div class="vitem" style="border-left:3px solid var(--amber);"><div class="vt">🏠 Elected from within LS</div><div class="vs">Active election process · Not automatic like Chairman</div></div>
+    </div>
+    <div style="margin-top:10px;padding:10px 12px;background:rgba(212,102,10,0.07);border-radius:8px;border:1px dashed var(--amber);">
+      <span style="font-size:10px;font-weight:700;color:var(--amber);">⭐ RANKING: Speaker = 7th rank (along with CJI)</span>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">Chairman's Unique Aspect</div>
+    <h3>🏛️ Chairman's Special Position</h3>
+    <div class="vlist">
+      <div class="vitem" style="border-left:3px solid var(--blue);"><div class="vt">🔗 Acts as link — RS & President</div><div class="vs">Broader constitutional role as VP</div></div>
+      <div class="vitem" style="border-left:3px solid var(--blue);"><div class="vt">❌ Cannot preside removal discussion</div><div class="vs">May participate · Cannot vote during own removal</div></div>
+      <div class="vitem" style="border-left:3px solid var(--blue);"><div class="vt">💰 Salary from CFI</div><div class="vs">Same protection as Speaker — independent</div></div>
+    </div>
+    <div style="margin-top:10px;padding:10px 12px;background:rgba(26,58,122,0.07);border-radius:8px;border:1px dashed var(--blue);">
+      <span style="font-size:10px;font-weight:700;color:var(--blue);">⭐ Chairman = VP position rank (no separate ranking)</span>
+    </div>
+  </div>
+</div>
+
+<!-- ⑥ DEPUTY SPEAKER & DEPUTY CHAIRMAN -->
+<div class="sec-lbl">⑥ Deputy Speaker & Deputy Chairman</div>
+<div class="map-card section">
+<svg viewBox="0 0 1280 290" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+  <defs>
+    <marker id="da1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L6,3.5 L0,7" stroke="#c8920a" stroke-width="1.2" fill="none"/></marker>
+    <marker id="da2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L6,3.5 L0,7" stroke="#1a3a7a" stroke-width="1.2" fill="none"/></marker>
+  </defs>
+
+  <!-- Vertical separator -->
+  <line x1="640" y1="12" x2="640" y2="278" stroke="var(--border)" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+  <!-- ═══ LEFT: Deputy Speaker ═══ -->
+  <rect x="30" y="14" width="578" height="48" rx="10" fill="#c8920a"/>
+  <text x="319" y="34" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">👤 Deputy Speaker (Art. 93)</text>
+  <text x="319" y="51" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="9" font-family="JetBrains Mono,monospace">ELECTED AFTER SPEAKER · DATE FIXED BY SPEAKER</text>
+
+  <!-- DS: 3 detail nodes, node width=174, spaced at x=30,214,398; centres=117,301,485 -->
+  <line x1="173" y1="62" x2="117" y2="96" stroke="#c8920a" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#da1)"/>
+  <rect x="30" y="94" width="174" height="52" rx="8" fill="rgba(200,146,10,0.08)" stroke="#c8920a" stroke-width="1.2"/>
+  <text x="117" y="114" text-anchor="middle" fill="#1a1510" font-size="10.5" font-weight="700">📋 Presides in Absence</text>
+  <text x="117" y="129" text-anchor="middle" fill="#7a6a50" font-size="8.5" font-family="JetBrains Mono,monospace">When Speaker absent</text>
+  <text x="117" y="141" text-anchor="middle" fill="#7a6a50" font-size="8.5" font-family="JetBrains Mono,monospace">Also Joint Sitting (if Speaker absent)</text>
+
+  <line x1="319" y1="62" x2="301" y2="96" stroke="#c8920a" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#da1)"/>
+  <rect x="214" y="94" width="174" height="52" rx="8" fill="rgba(200,146,10,0.08)" stroke="#c8920a" stroke-width="1.2"/>
+  <text x="301" y="114" text-anchor="middle" fill="#1a1510" font-size="10.5" font-weight="700">⚖️ Removal — Art. 94</text>
+  <text x="301" y="129" text-anchor="middle" fill="#7a6a50" font-size="8.5" font-family="JetBrains Mono,monospace">Same as Speaker process</text>
+  <text x="301" y="141" text-anchor="middle" fill="#7a6a50" font-size="8.5" font-family="JetBrains Mono,monospace">14 days notice required</text>
+
+  <line x1="465" y1="62" x2="485" y2="96" stroke="#c8920a" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#da1)"/>
+  <rect x="398" y="94" width="174" height="52" rx="8" fill="rgba(200,146,10,0.08)" stroke="#c8920a" stroke-width="1.2"/>
+  <text x="485" y="114" text-anchor="middle" fill="#1a1510" font-size="10.5" font-weight="700">💰 Salary from CFI</text>
+  <text x="485" y="129" text-anchor="middle" fill="#7a6a50" font-size="8.5" font-family="JetBrains Mono,monospace">Consolidated Fund — same</text>
+  <text x="485" y="141" text-anchor="middle" fill="#7a6a50" font-size="8.5" font-family="JetBrains Mono,monospace">Casting vote only in tie</text>
+
+  <!-- Convention note — fits within left half 30–608 -->
+  <rect x="30" y="162" width="578" height="44" rx="8" fill="rgba(90,26,122,0.07)" stroke="rgba(90,26,122,0.25)" stroke-width="1.5"/>
+  <text x="319" y="180" text-anchor="middle" fill="#5a1a7a" font-size="10.5" font-weight="700">🏛️ Convention since 11th LS: Deputy Speaker from Opposition</text>
+  <text x="319" y="197" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Consensus practice · not constitutionally mandated</text>
+
+  <!-- ═══ RIGHT: Deputy Chairman ═══ -->
+  <rect x="672" y="14" width="578" height="48" rx="10" fill="#1a3a7a"/>
+  <text x="961" y="34" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">👤 Deputy Chairman (RS)</text>
+  <text x="961" y="51" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="9" font-family="JetBrains Mono,monospace">ELECTED BY RAJYA SABHA MEMBERS · ART. 90</text>
+
+  <!-- DC: 3 detail nodes, width=174, x start=672,856,1040; centres=759,943,1127 -->
+  <line x1="815" y1="62" x2="759" y2="96" stroke="#1a3a7a" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#da2)"/>
+  <rect x="672" y="94" width="174" height="52" rx="8" fill="rgba(26,58,122,0.08)" stroke="#1a3a7a" stroke-width="1.2"/>
+  <text x="759" y="114" text-anchor="middle" fill="#1a1510" font-size="10.5" font-weight="700">🎯 Chairman's Duties</text>
+  <text x="759" y="129" text-anchor="middle" fill="#7a6a50" font-size="8.5" font-family="JetBrains Mono,monospace">When office vacant</text>
+  <text x="759" y="141" text-anchor="middle" fill="#7a6a50" font-size="8.5" font-family="JetBrains Mono,monospace">Or VP acts as President</text>
+
+  <line x1="961" y1="62" x2="943" y2="96" stroke="#1a3a7a" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#da2)"/>
+  <rect x="856" y="94" width="174" height="52" rx="8" fill="rgba(26,58,122,0.08)" stroke="#1a3a7a" stroke-width="1.2"/>
+  <text x="943" y="114" text-anchor="middle" fill="#1a1510" font-size="10.5" font-weight="700">⚖️ Removal — Art. 90</text>
+  <text x="943" y="129" text-anchor="middle" fill="#7a6a50" font-size="8.5" font-family="JetBrains Mono,monospace">Majority of then RS members</text>
+  <text x="943" y="141" text-anchor="middle" fill="#7a6a50" font-size="8.5" font-family="JetBrains Mono,monospace">Effective immediately</text>
+
+  <line x1="1107" y1="62" x2="1127" y2="96" stroke="#1a3a7a" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#da2)"/>
+  <rect x="1040" y="94" width="174" height="52" rx="8" fill="rgba(26,58,122,0.08)" stroke="#1a3a7a" stroke-width="1.2"/>
+  <text x="1127" y="114" text-anchor="middle" fill="#1a1510" font-size="10.5" font-weight="700">🗳️ Voting Rights</text>
+  <text x="1127" y="129" text-anchor="middle" fill="#7a6a50" font-size="8.5" font-family="JetBrains Mono,monospace">No first instance vote</text>
+  <text x="1127" y="141" text-anchor="middle" fill="#7a6a50" font-size="8.5" font-family="JetBrains Mono,monospace">Casting vote only in tie</text>
+
+  <!-- DC info note — fits within right half 672–1250 -->
+  <rect x="672" y="162" width="578" height="44" rx="8" fill="rgba(10,88,104,0.07)" stroke="rgba(10,88,104,0.25)" stroke-width="1.5"/>
+  <text x="961" y="180" text-anchor="middle" fill="#0a5868" font-size="10.5" font-weight="700">🔗 When VP acts as President → DC presides Rajya Sabha</text>
+  <text x="961" y="197" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Constitutional backup chain — RS is never without a presiding officer</text>
+
+  <!-- Bottom full-width panel backup -->
+  <rect x="30" y="222" width="1220" height="44" rx="8" fill="rgba(90,26,122,0.05)" stroke="rgba(90,26,122,0.2)" stroke-width="1.5"/>
+  <text x="640" y="240" text-anchor="middle" fill="#5a1a7a" font-size="10.5" font-weight="700">📋 Backup Chain: If both Speaker &amp; Deputy Speaker absent → Panel of Chairpersons presides (nominated by Speaker)</text>
+  <text x="640" y="258" text-anchor="middle" fill="#7a6a50" font-size="9" font-family="JetBrains Mono,monospace">Same for RS: Panel of Vice-Chairpersons (nominated by Chairman) · If offices VACANT → President appoints a member to preside</text>
+</svg>
+</div>
+
+<!-- ⑦ PARTY NEUTRALITY -->
+<div class="sec-lbl">⑦ Party Neutrality — India vs Britain</div>
+<div class="g2 section">
+  <div class="pc gold">
+    <div class="pc-label">Indian Practice</div>
+    <h3>🇮🇳 Speaker in India</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Expected to be impartial in chair</div><div class="vs">Constitutional expectation of neutrality</div></div>
+      <div class="vitem"><div class="vt">Remains party member</div><div class="vs">Does not resign from political party</div></div>
+      <div class="vitem"><div class="vt">Contested elections</div><div class="vs">Speaker's seat is often contested</div></div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="chip warn">⚠️ Partial Neutrality</span>
+      <span class="chip warn">Party ties maintained</span>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">British Practice</div>
+    <h3>🇬🇧 Speaker in UK (Contrast)</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Resigns from political party</div><div class="vs">Complete severance from party affiliation</div></div>
+      <div class="vitem"><div class="vt">Completely neutral</div><div class="vs">Non-partisan by convention and practice</div></div>
+      <div class="vitem"><div class="vt">Re-elected unopposed</div><div class="vs">Other parties don't contest Speaker's seat</div></div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="chip ok">✅ Full Neutrality</span>
+      <span class="chip ok">Bipartisan support</span>
+    </div>
+  </div>
+</div>
+
+<!-- ⑧ FULL CONNECTED FLOW -->
+<div class="sec-lbl">⑧ Full Connected Flow — Election to Function</div>
+<div class="map-card section">
+<svg viewBox="0 0 1280 190" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+  <defs>
+    <marker id="flowarr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0.5 L8,4.5 L0,8.5" stroke="#c8920a" stroke-width="1.5" fill="none"/></marker>
+  </defs>
+
+  <rect x="0" y="0" width="1280" height="190" fill="rgba(250,245,238,0.4)" rx="0"/>
+
+  <!-- 8 nodes, each width=138, gaps=14. Total=(8×138)+(7×14)=1104+98=1202. Start x=39 -->
+  <!-- Centres: 108, 260, 412, 564, 716, 868, 1020, 1172 -->
+
+  <rect x="39" y="24" width="138" height="56" rx="10" fill="#1a1510"/>
+  <text x="108" y="47" text-anchor="middle" fill="#f5e8c0" font-size="10.5" font-weight="700">1. New LS</text>
+  <text x="108" y="63" text-anchor="middle" fill="#c8b060" font-size="8" font-family="JetBrains Mono,monospace">Formed</text>
+
+  <line x1="177" y1="52" x2="191" y2="52" stroke="#c8920a" stroke-width="2" marker-end="url(#flowarr)"/>
+
+  <rect x="191" y="24" width="138" height="56" rx="10" fill="#d4660a"/>
+  <text x="260" y="47" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="700">2. Pro-Tem</text>
+  <text x="260" y="63" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="8" font-family="JetBrains Mono,monospace">Pres. appoints</text>
+
+  <line x1="329" y1="52" x2="343" y2="52" stroke="#c8920a" stroke-width="2" marker-end="url(#flowarr)"/>
+
+  <rect x="343" y="24" width="138" height="56" rx="10" fill="#c8920a"/>
+  <text x="412" y="47" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="700">3. Speaker</text>
+  <text x="412" y="63" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="8" font-family="JetBrains Mono,monospace">Elected by LS</text>
+
+  <line x1="481" y1="52" x2="495" y2="52" stroke="#c8920a" stroke-width="2" marker-end="url(#flowarr)"/>
+
+  <rect x="495" y="24" width="138" height="56" rx="10" fill="#1a3a7a"/>
+  <text x="564" y="47" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="700">4. Order &amp; Rules</text>
+  <text x="564" y="63" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="8" font-family="JetBrains Mono,monospace">Maintains House</text>
+
+  <line x1="633" y1="52" x2="647" y2="52" stroke="#c8920a" stroke-width="2" marker-end="url(#flowarr)"/>
+
+  <rect x="647" y="24" width="138" height="56" rx="10" fill="#a01818"/>
+  <text x="716" y="47" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="700">5. Money Bill</text>
+  <text x="716" y="63" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="8" font-family="JetBrains Mono,monospace">Decides — Final</text>
+
+  <line x1="785" y1="52" x2="799" y2="52" stroke="#c8920a" stroke-width="2" marker-end="url(#flowarr)"/>
+
+  <rect x="799" y="24" width="138" height="56" rx="10" fill="#5a1a7a"/>
+  <text x="868" y="47" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="700">6. Defection</text>
+  <text x="868" y="63" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="8" font-family="JetBrains Mono,monospace">Handles cases</text>
+
+  <line x1="937" y1="52" x2="951" y2="52" stroke="#c8920a" stroke-width="2" marker-end="url(#flowarr)"/>
+
+  <rect x="951" y="24" width="138" height="56" rx="10" fill="#0a5868"/>
+  <text x="1020" y="47" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="700">7. Joint Sitting</text>
+  <text x="1020" y="63" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="8" font-family="JetBrains Mono,monospace">Presides Art.108</text>
+
+  <line x1="1089" y1="52" x2="1103" y2="52" stroke="#c8920a" stroke-width="2" marker-end="url(#flowarr)"/>
+
+  <rect x="1103" y="24" width="138" height="56" rx="10" fill="#1a6040"/>
+  <text x="1172" y="47" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="700">8. Deputy+Panel</text>
+  <text x="1172" y="63" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="8" font-family="JetBrains Mono,monospace">Support structure</text>
+
+  <!-- Bottom: RS flow note split into 2 lines that fit -->
+  <rect x="39" y="96" width="1202" height="54" rx="8" fill="rgba(26,58,122,0.06)" stroke="rgba(26,58,122,0.15)" stroke-width="1.5"/>
+  <text x="640" y="115" text-anchor="middle" fill="#1a3a7a" font-size="10.5" font-weight="700">🏛️ Rajya Sabha: Chairman (VP, ex-officio) → Presides RS → Links RS to President</text>
+  <text x="640" y="132" text-anchor="middle" fill="#a01818" font-size="9.5" font-family="JetBrains Mono,monospace" font-weight="700">⚠️ BUT: Cannot decide Money Bill · Cannot preside Joint Sitting — these powers belong to Speaker ONLY</text>
+  <text x="640" y="144" text-anchor="middle" fill="#7a6a50" font-size="8.5" font-family="JetBrains Mono,monospace">Deputy Chairman presides when VP absent · Panel of Vice-Chairpersons as further backup</text>
+
+  <!-- Step label row -->
+  <text x="108" y="180" text-anchor="middle" fill="rgba(200,146,10,0.5)" font-size="7.5" font-family="JetBrains Mono,monospace">STEP 1</text>
+  <text x="260" y="180" text-anchor="middle" fill="rgba(200,146,10,0.5)" font-size="7.5" font-family="JetBrains Mono,monospace">STEP 2</text>
+  <text x="412" y="180" text-anchor="middle" fill="rgba(200,146,10,0.5)" font-size="7.5" font-family="JetBrains Mono,monospace">STEP 3</text>
+  <text x="564" y="180" text-anchor="middle" fill="rgba(200,146,10,0.5)" font-size="7.5" font-family="JetBrains Mono,monospace">STEP 4</text>
+  <text x="716" y="180" text-anchor="middle" fill="rgba(200,146,10,0.5)" font-size="7.5" font-family="JetBrains Mono,monospace">STEP 5</text>
+  <text x="868" y="180" text-anchor="middle" fill="rgba(200,146,10,0.5)" font-size="7.5" font-family="JetBrains Mono,monospace">STEP 6</text>
+  <text x="1020" y="180" text-anchor="middle" fill="rgba(200,146,10,0.5)" font-size="7.5" font-family="JetBrains Mono,monospace">STEP 7</text>
+  <text x="1172" y="180" text-anchor="middle" fill="rgba(200,146,10,0.5)" font-size="7.5" font-family="JetBrains Mono,monospace">STEP 8</text>
+</svg>
+</div>
+
+<!-- ⑨ HIGH PROBABILITY TRAPS -->
+<div class="sec-lbl">⑨ Prelims Traps — High Probability ⚠️</div>
+<div class="pc red section" style="margin-bottom:18px;">
+  <div class="pc-label">Exam Traps — Memorise These</div>
+  <h3>🔥 Common Mistakes in Prelims</h3>
+  <div class="trap-grid">
+    <div class="trap-item"><strong>TRAP 01: Chairman ≠ Speaker</strong>Chairman of RS = Vice-President (EX-OFFICIO) · Not elected separately</div>
+    <div class="trap-item"><strong>TRAP 02: Money Bill</strong>ONLY Speaker decides if a bill is a Money Bill · Chairman has NO role in this</div>
+    <div class="trap-item"><strong>TRAP 03: Joint Sitting</strong>Speaker presides Art. 108 Joint Sitting · Chairman does NOT preside</div>
+    <div class="trap-item"><strong>TRAP 04: Speaker after Dissolution</strong>Speaker continues EVEN AFTER LS dissolution · Until new LS first meeting</div>
+    <div class="trap-item"><strong>TRAP 05: Casting Vote</strong>Casting vote is used ONLY in case of tie · Not a first-instance vote</div>
+    <div class="trap-item"><strong>TRAP 06: Removal Majority</strong>Removal needs majority of "all the THEN members" · Not simple majority of present</div>
+    <div class="trap-item"><strong>TRAP 07: Pro-Tem</strong>Speaker Pro-Tem appointed by PRESIDENT · Not elected by members</div>
+    <div class="trap-item"><strong>TRAP 08: Anti-Defection</strong>Speaker/Chairman decides disqualification · Subject to Judicial Review — NOT final</div>
+  </div>
+  <div style="margin-top:14px;padding:12px;background:rgba(160,24,24,0.07);border-radius:9px;border:1px dashed var(--red);">
+    <span style="font-size:11px;font-weight:700;color:var(--red);">🎯 Quick Recap: Speaker Pro-Tem (Pres. appoints) → administers oath → elects Speaker → Speaker manages → decides Money Bill → handles defection → presides Joint Sitting → Deputy supports → Panel backs up → Chairman runs RS but has NO Money Bill / Joint Sitting power</span>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone section">
+  <div class="keystone-icon">⚖️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Idea — Presiding Officers of Parliament</div>
+    <div class="keystone-sub">Two Houses, two different mechanisms: <strong style="color:#f5d78a;">Speaker (elected) guards Lok Sabha; Chairman (VP, ex-officio) presides Rajya Sabha.</strong> The Speaker alone holds the decisive powers of Money Bill certification and Joint Sitting presidency — making the office constitutionally superior in legislative procedure. Both are protected by salary from CFI and impartiality norms, but India's practice diverges from Britain's complete neutrality.</div>
+    <div class="kpills">
+      <span class="kpill">🏠 Speaker = Elected Guardian</span>
+      <span class="kpill">🏛️ Chairman = VP (Auto)</span>
+      <span class="kpill">💰 Money Bill → Speaker Only</span>
+      <span class="kpill">🤝 Joint Sitting → Speaker Only</span>
+      <span class="kpill">⚖️ CFI Salary = Independence</span>
+      <span class="kpill">🗳️ Casting Vote = Tie Breaker</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+</body>
+</html>

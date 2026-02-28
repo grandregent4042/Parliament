@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parliament Sessions & Procedures — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f0ede6;--paper:#faf8f3;--ink:#1a1612;
+  --gold:#c9922a;--gold-lt:#f5e4c0;--gold-dim:#e8c87a;
+  --red:#b52a2a;--red-lt:#fce8e8;
+  --blue:#1c3f7a;--blue-lt:#e4ecf8;
+  --green:#1e6642;--green-lt:#e2f0e9;
+  --purple:#5a1f8c;--purple-lt:#ede0f8;
+  --teal:#0d5c6e;--teal-lt:#ddf0f4;
+  --amber:#c76b12;--amber-lt:#fcebd8;
+  --muted:#7a6f60;--border:#d8cfb8;
+  --card:#fffdf7;
+}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 1200px 600px at 10% 5%,rgba(201,146,42,0.07),transparent 60%),
+    radial-gradient(ellipse 800px 800px at 90% 95%,rgba(28,63,122,0.06),transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+
+.page{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:0 28px 120px;}
+
+/* HEADER */
+.hdr{text-align:center;padding:52px 20px 28px;}
+.hdr-tag{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:14px;}
+.hdr h1{font-family:'Libre Baskerville',serif;font-size:clamp(28px,4.5vw,52px);line-height:1.1;color:var(--ink);}
+.hdr h1 em{font-style:italic;color:var(--gold);}
+.hdr-desc{margin-top:10px;font-size:12px;color:var(--muted);font-family:'IBM Plex Mono',monospace;letter-spacing:1.5px;}
+.hdr-rule{display:flex;align-items:center;gap:16px;margin:18px auto 0;width:fit-content;}
+.hdr-rule::before,.hdr-rule::after{content:'';width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--gold-dim));}
+.hdr-rule span{font-size:18px;}
+
+/* SECTION DIVIDERS */
+.secdiv{display:flex;align-items:center;gap:14px;margin:40px 0 18px;}
+.secdiv::before,.secdiv::after{content:'';flex:1;height:1px;background:var(--border);}
+.secdiv-inner{display:flex;align-items:center;gap:8px;white-space:nowrap;}
+.secdiv-num{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--gold);padding:3px 8px;border:1px solid var(--gold);border-radius:4px;}
+.secdiv-title{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* CARDS */
+.card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:18px 20px;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;inset:0 0 auto 0;height:3px;border-radius:14px 14px 0 0;}
+.card.c-gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.card.c-red::before{background:var(--red);}
+.card.c-blue::before{background:var(--blue);}
+.card.c-green::before{background:var(--green);}
+.card.c-purple::before{background:var(--purple);}
+.card.c-teal::before{background:var(--teal);}
+.card.c-amber::before{background:var(--amber);}
+.card-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.card h3{font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:7px;line-height:1.35;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;margin:2px;font-family:'IBM Plex Mono',monospace;}
+.pill-gold{background:rgba(201,146,42,0.12);color:var(--amber);border:1px solid rgba(201,146,42,0.25);}
+.pill-blue{background:var(--blue-lt);color:var(--blue);border:1px solid rgba(28,63,122,0.2);}
+.pill-red{background:var(--red-lt);color:var(--red);border:1px solid rgba(181,42,42,0.2);}
+.pill-green{background:var(--green-lt);color:var(--green);border:1px solid rgba(30,102,66,0.2);}
+.pill-purple{background:var(--purple-lt);color:var(--purple);border:1px solid rgba(90,31,140,0.2);}
+.pill-teal{background:var(--teal-lt);color:var(--teal);border:1px solid rgba(13,92,110,0.2);}
+
+/* STAT BOX */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat{flex:1;padding:12px 10px;border-radius:10px;border:1.5px solid var(--border);background:rgba(240,237,230,0.5);text-align:center;}
+.stat-n{font-family:'Libre Baskerville',serif;font-size:28px;font-weight:700;line-height:1;}
+.stat-l{font-size:9px;font-family:'IBM Plex Mono',monospace;color:var(--muted);margin-top:3px;line-height:1.3;}
+
+/* VLIST */
+.vl{display:flex;flex-direction:column;gap:7px;}
+.vi{padding:8px 12px;border-radius:8px;background:rgba(240,237,230,0.6);border:1px solid var(--border);font-size:11px;}
+.vi strong{display:block;font-weight:700;font-size:11px;}
+.vi span{font-size:9px;color:var(--muted);font-family:'IBM Plex Mono',monospace;}
+
+/* TRAP BOXES */
+.trap{padding:9px 13px;border-radius:8px;border:1.5px solid rgba(181,42,42,0.25);background:rgba(181,42,42,0.05);margin:6px 0;font-size:11px;display:flex;gap:8px;align-items:flex-start;}
+.trap .ti{flex:0 0 auto;font-size:14px;}
+.trap strong{color:var(--red);font-weight:700;}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:9px;background:rgba(201,146,42,0.07);border:1.5px solid rgba(201,146,42,0.25);margin:8px 0;}
+.callout-t{font-size:11px;font-weight:700;color:var(--amber);margin-bottom:3px;}
+.callout-b{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e4c0;border-radius:18px;padding:26px 32px;margin:24px 0;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;}
+.ks-icon{font-size:40px;}
+.ks-title{font-family:'Libre Baskerville',serif;font-size:20px;font-style:italic;margin-bottom:7px;}
+.ks-body{font-size:11px;color:#c8b47a;line-height:1.7;}
+.ks-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.ks-tag{padding:3px 12px;border-radius:20px;background:rgba(255,255,255,0.08);font-size:10px;font-family:'IBM Plex Mono',monospace;color:#f5e4c0;}
+
+/* FLOW CHAIN */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:0;margin:10px 0;}
+.fn{padding:6px 12px;border-radius:7px;font-size:10px;font-weight:700;border:1.5px solid;font-family:'Outfit',sans-serif;white-space:nowrap;}
+.fa{font-size:16px;color:var(--muted);padding:0 4px;flex:0 0 auto;}
+
+/* MAP WRAPPER */
+.svgwrap{background:var(--card);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:20px;position:relative;}
+.svgwrap::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;}
+.svgwrap.sw-gold::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--gold-dim));}
+.svgwrap.sw-blue::before{background:linear-gradient(90deg,var(--blue),#3a6fbf,var(--teal));}
+.svgwrap.sw-red::before{background:linear-gradient(90deg,var(--red),var(--amber));}
+.svgwrap.sw-green::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+.svgwrap.sw-purple::before{background:linear-gradient(90deg,var(--purple),var(--blue));}
+.svgwrap svg{display:block;width:100%;}
+
+/* COMPARE TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#f5e4c0;padding:8px 12px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(240,237,230,0.4);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;font-family:'IBM Plex Mono',monospace;}
+.tag-ok{background:#d4edda;color:#155724;}
+.tag-no{background:#f8d7da;color:#721c24;}
+
+/* BADGE */
+.badge{display:inline-block;padding:2px 9px;border-radius:5px;font-size:9px;font-weight:700;font-family:'IBM Plex Mono',monospace;}
+
+/* HIGHLIGHT BOX */
+.hibox{padding:14px 16px;border-radius:11px;border:2px solid;margin:10px 0;}
+
+/* ANIMATE */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.hdr{animation:fadeUp 0.7s ease both;}
+.svgwrap{animation:fadeUp 0.5s ease both;}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ════════ HEADER ════════ -->
+<div class="hdr">
+  <div class="hdr-tag">Indian Polity · Parliament · UPSC Prelims</div>
+  <h1>Parliament Sessions<br><em>&amp; Procedures</em></h1>
+  <div class="hdr-desc">Summoning → Sitting → Voting → Dissolution → Lapse of Bills</div>
+  <div class="hdr-rule"><span>⚖️</span></div>
+</div>
+
+<!-- ════════ MASTER FLOW ════════ -->
+<div class="secdiv"><div class="secdiv-inner"><span class="secdiv-num">00</span><span class="secdiv-title">Master Flow — The Big Picture</span></div></div>
+
+<div class="svgwrap sw-gold">
+  <svg id="svgMaster" viewBox="0 0 1260 110" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ════════ S1 SUMMONING ════════ -->
+<div class="secdiv"><div class="secdiv-inner"><span class="secdiv-num">01</span><span class="secdiv-title">Summoning — Article 85</span></div></div>
+
+<div class="g3">
+  <div class="card c-gold">
+    <div class="card-label">Constitutional Basis</div>
+    <h3>📜 Who Summons?</h3>
+    <div class="vl">
+      <div class="vi"><strong>President of India</strong><span>Summons each House of Parliament</span></div>
+      <div class="vi"><strong>At Least Twice a Year</strong><span>Both Houses must sit ≥ 2 sessions annually</span></div>
+      <div class="vi"><strong>Max Gap = 6 Months</strong><span>Between two sessions — not sittings</span></div>
+    </div>
+    <div class="trap" style="margin-top:10px;"><div class="ti">⚠️</div><div><strong>No minimum sitting days</strong> mentioned in Constitution</div></div>
+  </div>
+  <div class="card c-blue">
+    <div class="card-label">Annual Calendar</div>
+    <h3>📅 3 Sessions Per Year</h3>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-n" style="color:var(--amber);">Feb</div>
+        <div class="stat-l">Budget<br>Session<br>Feb–May</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:var(--blue);">Jul</div>
+        <div class="stat-l">Monsoon<br>Session<br>Jul–Sep</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:var(--green);">Nov</div>
+        <div class="stat-l">Winter<br>Session<br>Nov–Dec</div>
+      </div>
+    </div>
+  </div>
+  <div class="card c-teal">
+    <div class="card-label">Quick Key</div>
+    <h3>🔑 6-Month Rule</h3>
+    <div class="hibox" style="border-color:var(--teal);background:var(--teal-lt);">
+      <div style="font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:var(--teal);text-align:center;">≤ 6 months</div>
+      <div style="text-align:center;font-size:10px;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-top:4px;">Gap between sessions<br>(not sittings!)</div>
+    </div>
+    <div class="callout" style="margin-top:8px;">
+      <div class="callout-t">💡 Exam Trap</div>
+      <div class="callout-b">6-month rule = gap between SESSIONS, not individual sittings</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ S2 SESSION TERMINOLOGY ════════ -->
+<div class="secdiv"><div class="secdiv-inner"><span class="secdiv-num">02</span><span class="secdiv-title">Session vs Sitting vs Adjournment vs Prorogation</span></div></div>
+
+<div class="svgwrap sw-blue">
+  <svg id="svgTerms" viewBox="0 0 1260 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g4">
+  <div class="card c-gold">
+    <div class="card-label">Sitting</div>
+    <h3>🕐 One Working Day</h3>
+    <div class="vl">
+      <div class="vi"><strong>Morning</strong><span>11:00 AM – 1:00 PM</span></div>
+      <div class="vi"><strong>Afternoon</strong><span>2:00 PM – 6:00 PM</span></div>
+    </div>
+  </div>
+  <div class="card c-amber">
+    <div class="card-label">Adjournment</div>
+    <h3>⏸️ Temporary Suspension</h3>
+    <div class="vl">
+      <div class="vi"><strong>Done by Presiding Officer</strong><span>Not the President</span></div>
+      <div class="vi"><strong>Hours or Days</strong><span>Business resumes after</span></div>
+      <div class="vi"><strong>Business does NOT lapse</strong><span>Work continues next sitting</span></div>
+    </div>
+  </div>
+  <div class="card c-purple">
+    <div class="card-label">Adj. Sine Die</div>
+    <h3>🔚 Indefinite Suspension</h3>
+    <div class="vl">
+      <div class="vi"><strong>No date fixed for next</strong><span>Indefinite termination of sitting</span></div>
+      <div class="vi"><strong>Business does NOT lapse</strong><span>Session not yet over</span></div>
+    </div>
+  </div>
+  <div class="card c-red">
+    <div class="card-label">Prorogation</div>
+    <h3>🔴 Session Ends</h3>
+    <div class="vl">
+      <div class="vi"><strong>Done by President</strong><span>Ends the entire session</span></div>
+      <div class="vi"><strong>Bills don't lapse</strong><span>But notices (except bill intro) do</span></div>
+      <div class="vi"><strong>Can happen mid-session</strong><span>Even while House is sitting</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ S3 DISSOLUTION & RECESS ════════ -->
+<div class="secdiv"><div class="secdiv-inner"><span class="secdiv-num">03</span><span class="secdiv-title">Recess, Dissolution &amp; Lame Duck Session</span></div></div>
+
+<div class="g3">
+  <div class="card c-teal">
+    <div class="card-label">Recess</div>
+    <h3>⏳ Gap Between Sessions</h3>
+    <div class="hibox" style="border-color:var(--teal);background:var(--teal-lt);text-align:center;padding:16px;">
+      <div style="font-size:24px;">Prorogation</div>
+      <div style="font-size:22px;color:var(--muted);">↕</div>
+      <div style="font-size:24px;">Next Session</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--teal);margin-top:8px;letter-spacing:1px;">= RECESS</div>
+    </div>
+  </div>
+  <div class="card c-red">
+    <div class="card-label">Dissolution — Lok Sabha Only</div>
+    <h3>💥 Only LS Can Dissolve</h3>
+    <div class="vl">
+      <div class="vi"><strong>Rajya Sabha is Permanent</strong><span>Never dissolved — continues always</span></div>
+      <div class="vi"><strong>LS Auto-dissolves</strong><span>After 5 years</span></div>
+      <div class="vi"><strong>President can dissolve LS</strong><span>Before 5 years too</span></div>
+    </div>
+    <div class="trap"><div class="ti">🚨</div><div><strong>Big Trap:</strong> Prorogation ≠ Dissolution</div></div>
+  </div>
+  <div class="card c-gold">
+    <div class="card-label">Lame Duck Session</div>
+    <h3>🦆 Last Session of LS</h3>
+    <div class="callout">
+      <div class="callout-t">Definition</div>
+      <div class="callout-b">Last session of the outgoing Lok Sabha. Members not re-elected are called <strong style="color:var(--amber);">Lame Ducks</strong>.</div>
+    </div>
+    <div class="vl" style="margin-top:8px;">
+      <div class="vi"><strong>After general elections</strong><span>Before new House is constituted</span></div>
+      <div class="vi"><strong>Lame Duck members</strong><span>Defeated / not contesting</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ S4 QUORUM & LANGUAGE ════════ -->
+<div class="secdiv"><div class="secdiv-inner"><span class="secdiv-num">04</span><span class="secdiv-title">Quorum, Language &amp; Special Participants</span></div></div>
+
+<div class="g2">
+  <div class="card c-blue">
+    <div class="card-label">Quorum — Very Important</div>
+    <h3>🔢 Minimum Members</h3>
+    <div class="hibox" style="border-color:var(--blue);background:var(--blue-lt);text-align:center;padding:18px;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:42px;font-weight:700;color:var(--blue);">1/10th</div>
+      <div style="font-size:11px;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-top:4px;">of total members (incl. Presiding Officer)</div>
+    </div>
+    <div class="vl" style="margin-top:10px;">
+      <div class="vi"><strong>LS: 55 members</strong><span>1/10th of 550 total</span></div>
+      <div class="vi"><strong>RS: 25 members</strong><span>1/10th of 250 total</span></div>
+      <div class="vi"><strong>No quorum → Adjournment</strong><span>Presiding Officer adjourns/suspends</span></div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:16px;">
+    <div class="card c-green">
+      <div class="card-label">Language</div>
+      <h3>🗣️ Official Languages</h3>
+      <div class="vl">
+        <div class="vi"><strong>Hindi &amp; English</strong><span>Official working languages of Parliament</span></div>
+        <div class="vi"><strong>Mother Tongue</strong><span>Member may speak with permission</span></div>
+        <div class="vi"><strong>Official Languages Act 1963</strong><span>English continues alongside Hindi</span></div>
+      </div>
+    </div>
+    <div class="card c-purple">
+      <div class="card-label">Special Participants</div>
+      <h3>👤 Ministers &amp; AG</h3>
+      <div class="vl">
+        <div class="vi"><strong>Can speak in BOTH Houses</strong><span>Also in committees</span></div>
+        <div class="vi"><strong>Cannot vote</strong><span>Unless they are a member of that House</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ S5 VOTING ════════ -->
+<div class="secdiv"><div class="secdiv-inner"><span class="secdiv-num">05</span><span class="secdiv-title">Voting in Parliament</span></div></div>
+
+<div class="svgwrap sw-purple">
+  <svg id="svgVote" viewBox="0 0 1260 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="card c-blue">
+    <div class="card-label">General Voting Rule</div>
+    <h3>🗳️ How Votes Work</h3>
+    <div class="vl">
+      <div class="vi"><strong>Simple Majority</strong><span>Majority of members present and voting</span></div>
+      <div class="vi"><strong>Presiding Officer</strong><span>Does NOT vote initially — only casting vote in a tie</span></div>
+      <div class="vi"><strong>Valid despite vacancies</strong><span>Proceedings valid even with vacancies or unauthorised votes</span></div>
+    </div>
+    <div class="trap" style="margin-top:8px;"><div class="ti">⚠️</div><div><strong>Speaker's casting vote:</strong> used only in TIE — Speaker doesn't vote first</div></div>
+  </div>
+  <div class="card c-gold">
+    <div class="card-label">Methods of Voting</div>
+    <h3>📊 5 Methods</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;">
+      <span class="pill pill-gold">🔊 Voice Vote</span>
+      <span class="pill pill-blue">🗳️ Secret Ballot</span>
+      <span class="pill pill-green">📝 Slips / Lobby</span>
+      <span class="pill pill-purple">✋ Physical Count</span>
+      <span class="pill pill-red">⚖️ Casting Vote</span>
+    </div>
+    <div style="margin-top:12px;">
+      <table class="ctable">
+        <tr><th>Type</th><th>Majority Required</th></tr>
+        <tr><td>Ordinary Bills</td><td>Simple (present &amp; voting)</td></tr>
+        <tr><td>Constitutional Amendment</td><td>Special Majority</td></tr>
+        <tr><td>Impeachment</td><td>Effective / Special Majority</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ S6 LAPSE OF BILLS ════════ -->
+<div class="secdiv"><div class="secdiv-inner"><span class="secdiv-num">06</span><span class="secdiv-title">Lapsing of Bills — Exam Favourite</span></div></div>
+
+<div class="svgwrap sw-red">
+  <svg id="svgLapse" viewBox="0 0 1260 320" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="card c-red">
+    <div class="card-label">Bill LAPSES</div>
+    <h3>❌ When Bill Dies</h3>
+    <div class="vl">
+      <div class="vi"><strong>Pending in Lok Sabha</strong><span>At the time of LS dissolution</span></div>
+      <div class="vi"><strong>Passed by LS, Pending in RS</strong><span>If LS is dissolved → bill lapses</span></div>
+    </div>
+    <div class="trap" style="margin-top:8px;"><div class="ti">🔴</div><div>Both bills TIED to LS fate — dissolution kills them</div></div>
+  </div>
+  <div class="card c-green">
+    <div class="card-label">Bill Does NOT Lapse</div>
+    <h3>✅ When Bill Survives</h3>
+    <div class="vl">
+      <div class="vi"><strong>Pending only in Rajya Sabha</strong><span>RS is permanent — never dissolves</span></div>
+      <div class="vi"><strong>Passed by both Houses</strong><span>Returned by President for reconsideration</span></div>
+      <div class="vi"><strong>Awaiting President's assent</strong><span>Both Houses already passed it</span></div>
+      <div class="vi"><strong>Joint sitting already notified</strong><span>Before LS dissolution</span></div>
+    </div>
+    <div class="trap" style="margin-top:8px;border-color:rgba(30,102,66,0.3);background:rgba(30,102,66,0.05);"><div class="ti">✅</div><div style="color:var(--green);"><strong>RS is permanent → Bills pending only there survive</strong></div></div>
+  </div>
+</div>
+
+<!-- ════════ S7 HIGH-PROB TRAPS ════════ -->
+<div class="secdiv"><div class="secdiv-inner"><span class="secdiv-num">07</span><span class="secdiv-title">High-Probability Prelims Traps</span></div></div>
+
+<div class="svgwrap sw-red">
+  <svg id="svgTraps" viewBox="0 0 1260 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="card c-red">
+    <div class="card-label">Classic Wrong Answers</div>
+    <h3>🎯 Common Traps — Memorise</h3>
+    <div class="vl">
+      <div class="trap"><div class="ti">❌</div><div><strong>"6 months = gap between sittings"</strong> — No! It's between SESSIONS</div></div>
+      <div class="trap"><div class="ti">❌</div><div><strong>"Constitution specifies min sitting days"</strong> — No! Not mentioned</div></div>
+      <div class="trap"><div class="ti">❌</div><div><strong>"Prorogation = Dissolution"</strong> — They are completely different!</div></div>
+      <div class="trap"><div class="ti">❌</div><div><strong>"Speaker votes first"</strong> — No, Speaker only uses casting vote on tie</div></div>
+      <div class="trap"><div class="ti">❌</div><div><strong>"RS bills lapse on LS dissolution"</strong> — Only LS bills lapse; RS is permanent</div></div>
+    </div>
+  </div>
+  <div class="card c-green">
+    <div class="card-label">Quick-Fire Correct Facts</div>
+    <h3>✅ Always Remember</h3>
+    <div class="vl">
+      <div class="vi"><strong>6-month rule</strong><span>Between sessions (not sittings)</span></div>
+      <div class="vi"><strong>Only LS dissolves</strong><span>RS is permanent; never dissolved</span></div>
+      <div class="vi"><strong>Quorum = 1/10th</strong><span>Including the Presiding Officer</span></div>
+      <div class="vi"><strong>Prorogation by President</strong><span>Adjournment by Presiding Officer</span></div>
+      <div class="vi"><strong>AG can speak but not vote</strong><span>Unless member of that House</span></div>
+      <div class="vi"><strong>RS-only bills don't lapse</strong><span>RS permanence protects them</span></div>
+      <div class="vi"><strong>Joint sitting notified → bill lives</strong><span>Even if LS dissolves after notification</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ KEYSTONE ════════ -->
+<div class="keystone">
+  <div class="ks-icon">⚖️</div>
+  <div>
+    <div class="ks-title">The Core Connecting Logic</div>
+    <div class="ks-body">
+      Parliament's session lifecycle flows from <strong style="color:var(--gold-dim);">Presidential summoning → sittings → adjournment → prorogation → recess → re-summoning</strong>. 
+      The critical asymmetry: <strong style="color:var(--gold-dim);">Lok Sabha can die (dissolution) but Rajya Sabha lives forever</strong> — 
+      this explains ALL lapsing rules. Bills tied to LS fate lapse; bills anchored in RS survive. 
+      Voting requires only a simple majority of present-and-voting members; the Speaker is the tiebreaker, not a voter.
+    </div>
+    <div class="ks-tags">
+      <span class="ks-tag">📜 Art. 85 = Summoning</span>
+      <span class="ks-tag">RS = Permanent</span>
+      <span class="ks-tag">LS dissolves = bills lapse</span>
+      <span class="ks-tag">1/10th = quorum</span>
+      <span class="ks-tag">Speaker = casting only</span>
+      <span class="ks-tag">President = prorogues</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /page -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs){
+  const e=document.createElementNS(NS,tag);
+  for(const[k,v]of Object.entries(attrs))e.setAttribute(k,v);
+  return e;
+}
+function txt(svg,x,y,str,opts){
+  const t=el('text',{x,y,'text-anchor':opts.anchor||'middle','dominant-baseline':'middle',
+    'font-size':opts.size||11,'font-weight':opts.bold?'700':'400',
+    'font-family':opts.mono?'IBM Plex Mono,monospace':'Outfit,sans-serif',
+    fill:opts.fill||'#1a1612',...(opts.extra||{})});
+  t.textContent=str;svg.appendChild(t);return t;
+}
+function curve(svg,x1,y1,x2,y2,col,dash){
+  const mx=(x1+x2)/2;
+  const p=el('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:col||'#b8a88a','stroke-width':'1.8',fill:'none','stroke-dasharray':dash||'none',opacity:'0.6'});
+  svg.appendChild(p);
+}
+function line(svg,x1,y1,x2,y2,col,dash){
+  svg.appendChild(el('line',{x1,y1,x2,y2,stroke:col||'#b8a88a','stroke-width':'1.8',
+    'stroke-dasharray':dash||'none',opacity:'0.65'}));
+}
+function roundRect(svg,x,y,w,h,r,fill,stroke){
+  svg.appendChild(el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx:r||8,ry:r||8,fill,
+    stroke:stroke||'rgba(255,255,255,0.2)','stroke-width':'1.5'}));
+}
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textFill){
+  textFill=textFill||'#fff';
+  const g=document.createElementNS(NS,'g');
+  // shadow
+  g.appendChild(el('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx:9,ry:9,fill:'rgba(0,0,0,0.1)'}));
+  g.appendChild(el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx:9,ry:9,fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.5'}));
+  let base=y;
+  const total=(emoji?18:0)+lines.length*14+(sub?12:0);
+  let cy=y-total/2+7;
+  if(emoji){
+    const e=el('text',{x,y:cy,'text-anchor':'middle','dominant-baseline':'middle','font-size':'15',fill:textFill});
+    e.textContent=emoji;g.appendChild(e);cy+=18;
+  }
+  lines.forEach((l,i)=>{
+    const t=el('text',{x,y:cy+i*14,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'10.5','font-weight':'700','font-family':'Outfit,sans-serif',fill:textFill});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){
+    const s=el('text',{x,y:cy+lines.length*14,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'8.5','font-family':'IBM Plex Mono,monospace',fill:textFill==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.4)'});
+    s.textContent=sub;g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+
+// ─── MASTER FLOW ───
+(()=>{
+  const svg=document.getElementById('svgMaster');
+  svg.setAttribute('viewBox','0 0 1260 110');
+  const bg=el('rect',{x:0,y:0,width:1260,height:110,fill:'rgba(255,253,247,0.4)'});
+  svg.appendChild(bg);
+
+  const steps=[
+    {x:80,  label:'President\nSummons', sub:'Art.85', fill:'#c9922a', emoji:'📜'},
+    {x:240, label:'Session\nBegins', sub:'First sitting', fill:'#1c3f7a', emoji:'🏛️'},
+    {x:400, label:'House\nSits', sub:'Working days', fill:'#1e6642', emoji:'⚖️'},
+    {x:555, label:'Adjournment /\nSine Die', sub:'By Speaker', fill:'#5a1f8c', emoji:'⏸️'},
+    {x:715, label:'Prorogation', sub:'By President', fill:'#b52a2a', emoji:'🔴'},
+    {x:870, label:'Recess', sub:'Gap period', fill:'#0d5c6e', emoji:'⏳'},
+    {x:1025,label:'LS Dissolved\nor Next Session', sub:'If dissolved → lapse', fill:'#c76b12', emoji:'💥'},
+    {x:1185,label:'Bills\n& Votes', sub:'Lapse rules apply', fill:'#1c3f7a', emoji:'📋'},
+  ];
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const x1=s.x+68,x2=steps[i+1].x-68,y=55;
+      line(svg,x1,y,x2,y,'#c9922a44');
+      const arx=x1+(x2-x1)*0.6;
+      svg.appendChild(Object.assign(el('polygon',{}),{innerHTML:''}) );
+      const arr=el('polygon',{points:`${arx-4},${y-4} ${arx+5},${y} ${arx-4},${y+4}`,fill:'#c9922a55'});
+      svg.appendChild(arr);
+    }
+  });
+  steps.forEach(s=>{node(svg,s.x,55,128,72,s.fill,s.label.split('\n'),s.sub,s.emoji);});
+})();
+
+// ─── TERMS DIAGRAM ───
+(()=>{
+  const svg=document.getElementById('svgTerms');
+  svg.setAttribute('viewBox','0 0 1260 280');
+  const bg=el('rect',{x:0,y:0,width:1260,height:280,fill:'rgba(255,253,247,0.3)'});svg.appendChild(bg);
+
+  // Timeline bar
+  svg.appendChild(el('rect',{x:40,y:128,width:1180,height:8,rx:4,fill:'#ddd0b0'}));
+  svg.appendChild(el('rect',{x:40,y:128,width:1180,height:8,rx:4,fill:'url(#tgrad)'}));
+  const dg=el('linearGradient',{id:'tgrad',x1:'0',y1:'0',x2:'1',y2:'0'});
+  [['0%','#c9922a'],['40%','#1c3f7a'],['70%','#b52a2a'],['100%','#1e6642']].forEach(([o,c])=>{
+    const s=el('stop',{offset:o,'stop-color':c});dg.appendChild(s);
+  });
+  let defs=el('defs',{});defs.appendChild(dg);svg.insertBefore(defs,svg.firstChild);
+
+  // Timeline events
+  const events=[
+    {x:100,  y_line:132, dir:'up',   label:'Session Starts', sub:'President summons', fill:'#c9922a', emoji:'📜'},
+    {x:310,  y_line:132, dir:'down', label:'Adj. (hours/days)',sub:'By Speaker',fill:'#5a1f8c',emoji:'⏸️'},
+    {x:520,  y_line:132, dir:'up',   label:'Adj. Sine Die', sub:'Indefinite | no lapse', fill:'#c76b12', emoji:'🔚'},
+    {x:730,  y_line:132, dir:'down', label:'Prorogation',   sub:'Session ends (Pres.)', fill:'#b52a2a', emoji:'🔴'},
+    {x:940,  y_line:132, dir:'up',   label:'Recess',        sub:'Between sessions',fill:'#0d5c6e', emoji:'⏳'},
+    {x:1160, y_line:132, dir:'down', label:'Next Session',  sub:'Re-summoned',fill:'#1e6642', emoji:'▶️'},
+  ];
+
+  events.forEach(ev=>{
+    const ny= ev.dir==='up' ? 50 : 220;
+    const lineY1=ev.dir==='up'?ny+40:ny-40;
+    line(svg,ev.x,lineY1,ev.x,ev.dir==='up'?ev.y_line-4:ev.y_line+4,'#c9922a55','4 3');
+    svg.appendChild(el('circle',{cx:ev.x,cy:ev.y_line+(ev.dir==='up'?-4:4),r:5,fill:ev.fill,stroke:'#fff','stroke-width':'2'}));
+    node(svg,ev.x,ny,160,60,ev.fill,[ev.label],ev.sub,ev.emoji);
+  });
+
+  // Bracket below for "Recess"
+  svg.appendChild(el('rect',{x:735,y:142,width:195,height:14,rx:4,fill:'rgba(13,92,110,0.15)',stroke:'#0d5c6e','stroke-width':'1','stroke-dasharray':'3 2'}));
+  const bt=el('text',{x:832,y:149,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'IBM Plex Mono,monospace',fill:'#0d5c6e','font-weight':'600'});
+  bt.textContent='RECESS PERIOD';svg.appendChild(bt);
+
+  // Label at bottom
+  const lab=el('text',{x:630,y:268,'text-anchor':'middle','font-size':'8','font-family':'IBM Plex Mono,monospace',fill:'rgba(122,111,96,0.5)','letter-spacing':'3'});
+  lab.textContent='SESSION LIFECYCLE TIMELINE';svg.appendChild(lab);
+})();
+
+// ─── VOTING ───
+(()=>{
+  const svg=document.getElementById('svgVote');
+  svg.setAttribute('viewBox','0 0 1260 200');
+  const bg=el('rect',{x:0,y:0,width:1260,height:200,fill:'rgba(255,253,247,0.3)'});svg.appendChild(bg);
+
+  // Center root
+  node(svg,630,100,180,58,'#1c3f7a',['Voting in','Parliament'],'How decisions are made','🗳️');
+
+  const lefts=[
+    {x:120, y:55, fill:'#1e6642', label:['Simple Majority'],    sub:'Present & voting', emoji:'✅'},
+    {x:300, y:30, fill:'#c9922a', label:['Special Majority'],   sub:'Constitutional amendments', emoji:'📜'},
+    {x:120, y:158,fill:'#b52a2a', label:['Casting Vote'],       sub:'Speaker only — on tie', emoji:'⚖️'},
+  ];
+  const rights=[
+    {x:1140,y:55, fill:'#5a1f8c', label:['Voice Vote'],         sub:'Ayes vs Noes', emoji:'🔊'},
+    {x:960, y:30, fill:'#0d5c6e', label:['Secret Ballot'],      sub:'For elections', emoji:'🗳️'},
+    {x:1140,y:158,fill:'#c76b12', label:['Physical Count'],     sub:'Lobby division', emoji:'✋'},
+  ];
+
+  lefts.forEach(n=>{
+    curve(svg,n.x+78,n.y,542,100,n.fill+'55');
+    node(svg,n.x,n.y,148,50,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+  rights.forEach(n=>{
+    curve(svg,718,100,n.x-78,n.y,n.fill+'55');
+    node(svg,n.x,n.y,148,50,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  const w=el('text',{x:630,y:187,'text-anchor':'middle','font-size':'8','font-family':'IBM Plex Mono,monospace',fill:'rgba(122,111,96,0.5)','letter-spacing':'3'});
+  w.textContent='VALID EVEN IF VACANCIES EXIST OR UNAUTHORISED VOTES OCCUR';svg.appendChild(w);
+})();
+
+// ─── LAPSE OF BILLS ───
+(()=>{
+  const svg=document.getElementById('svgLapse');
+  svg.setAttribute('viewBox','0 0 1260 320');
+  const bg=el('rect',{x:0,y:0,width:1260,height:320,fill:'rgba(255,253,247,0.3)'});svg.appendChild(bg);
+
+  // Root
+  node(svg,630,50,200,56,'#1a1612',['Lapse of Bills','on LS Dissolution'],'Critical exam topic','📋','#f5e4c0');
+
+  // Two branches
+  // LEFT: LAPSE
+  const lapseRoot={x:280,y:150,fill:'#b52a2a',label:['Bill','LAPSES ❌'],sub:'Tied to LS fate'};
+  curve(svg,540,78,lapseRoot.x+80,lapseRoot.y,'#b52a2a77');
+  node(svg,lapseRoot.x,lapseRoot.y,155,58,lapseRoot.fill,lapseRoot.label,lapseRoot.sub,'💀');
+
+  const lapseCases=[
+    {x:80,  y:250, label:['Pending', 'in LS'], sub:'At time of dissolution'},
+    {x:280, y:250, label:['Passed LS,','Pending RS'], sub:'LS dissolves → dies'},
+  ];
+  lapseCases.forEach(n=>{
+    line(svg,lapseRoot.x,lapseRoot.y+29,n.x,n.y-29,'#b52a2a55','4 3');
+    node(svg,n.x,n.y,172,54,'#b52a2a',n.label,n.sub,'❌');
+  });
+
+  // RIGHT: NO LAPSE
+  const noRoot={x:970,y:150,fill:'#1e6642',label:['Bill','SURVIVES ✅'],sub:'Survives dissolution'};
+  curve(svg,720,78,noRoot.x-80,noRoot.y,'#1e664277');
+  node(svg,noRoot.x,noRoot.y,160,58,noRoot.fill,noRoot.label,noRoot.sub,'💚');
+
+  const noLapseCases=[
+    {x:740, y:250, label:['Pending only','in RS'], sub:'RS is permanent'},
+    {x:920, y:250, label:['Returned by','President'], sub:'Both Houses passed'},
+    {x:1100,y:250, label:['Awaiting','Pres. Assent'], sub:'Bill already passed'},
+    {x:1190,y:190, label:['Joint Sitting','Notified'], sub:'Before dissolution'},
+  ];
+  noLapseCases.forEach(n=>{
+    if(n.y===190){
+      line(svg,noRoot.x,noRoot.y+29,n.x,n.y-25,'#1e664255','4 3');
+    } else {
+      line(svg,noRoot.x,noRoot.y+29,n.x,n.y-29,'#1e664255','4 3');
+    }
+    node(svg,n.x,n.y-( n.y===190?0:0),165,50,'#1e6642',n.label,n.sub,'✅');
+  });
+
+  // Divider
+  line(svg,630,90,630,305,'#ddd0b0aa','6 4');
+  const dt=el('text',{x:630,y:310,'text-anchor':'middle','font-size':'8','font-family':'IBM Plex Mono,monospace',fill:'rgba(122,111,96,0.5)','letter-spacing':'2'});
+  dt.textContent='LS DISSOLUTION ─ WHAT HAPPENS?';svg.appendChild(dt);
+})();
+
+// ─── TRAPS DIAGRAM ───
+(()=>{
+  const svg=document.getElementById('svgTraps');
+  svg.setAttribute('viewBox','0 0 1260 240');
+  const bg=el('rect',{x:0,y:0,width:1260,height:240,fill:'rgba(255,253,247,0.3)'});svg.appendChild(bg);
+
+  node(svg,630,50,200,52,'#b52a2a',['⚠️ Prelims Traps'],null,null,'#fff');
+
+  const traps=[
+    {x:100, y:150, wrong:'6 mo = gap between sittings', right:'Between SESSIONS', fill:'#b52a2a'},
+    {x:320, y:150, wrong:'Min sitting days in Const.', right:'NOT mentioned in Constitution', fill:'#c76b12'},
+    {x:540, y:150, wrong:'Prorogation = Dissolution', right:'Totally DIFFERENT!', fill:'#5a1f8c'},
+    {x:760, y:150, wrong:'Speaker votes first', right:'Only CASTING vote on tie', fill:'#1c3f7a'},
+    {x:980, y:150, wrong:'RS bills lapse on dissolution', right:'RS is permanent, bills survive', fill:'#1e6642'},
+    {x:1185,y:150, wrong:'AG can vote in both Houses', right:'Can SPEAK, cannot VOTE', fill:'#0d5c6e'},
+  ];
+
+  traps.forEach(t=>{
+    curve(svg,t.x,t.y-35,630,76,t.fill+'44');
+    // wrong card
+    svg.appendChild(el('rect',{x:t.x-82,y:t.y-34,width:164,height:90,rx:8,fill:'rgba(255,253,247,0.9)',stroke:t.fill,'stroke-width':'2'}));
+    svg.appendChild(el('rect',{x:t.x-82,y:t.y-34,width:164,height:22,rx:'8 8 0 0' ,fill:t.fill}));
+    const wl=el('text',{x:t.x,y:t.y-23,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-weight':'700','font-family':'IBM Plex Mono,monospace',fill:'#fff'});
+    wl.textContent='❌ WRONG';svg.appendChild(wl);
+    const wt=el('text',{x:t.x,y:t.y+8,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9','font-weight':'700','font-family':'Outfit,sans-serif',fill:t.fill});
+    wt.textContent=t.wrong.length>22?t.wrong.slice(0,22)+'…':t.wrong;svg.appendChild(wt);
+    const rt=el('text',{x:t.x,y:t.y+28,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'IBM Plex Mono,monospace',fill:'#1e6642'});
+    rt.textContent='✓ '+t.right.slice(0,20);svg.appendChild(rt);
+    if(t.right.length>20){
+      const rt2=el('text',{x:t.x,y:t.y+40,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'IBM Plex Mono,monospace',fill:'#1e6642'});
+      rt2.textContent=t.right.slice(20);svg.appendChild(rt2);
+    }
+  });
+
+  const lab=el('text',{x:630,y:230,'text-anchor':'middle','font-size':'8','font-family':'IBM Plex Mono,monospace',fill:'rgba(122,111,96,0.5)','letter-spacing':'3'});
+  lab.textContent='HIGH-PROBABILITY TRAPS — MEMORISE CORRECTIONS';svg.appendChild(lab);
+})();
+</script>
+</body>
+</html>

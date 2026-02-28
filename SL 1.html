@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>State Legislatures — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0f0e0c;
+  --paper:#f9f6f0;
+  --warm:#f4ede0;
+  --gold:#c8930a;
+  --gold-lt:#f7e4a8;
+  --amber:#d46a10;
+  --blue:#1a3f8f;
+  --blue-lt:#e8edf9;
+  --green:#145a32;
+  --green-lt:#e4f0e8;
+  --purple:#5c1a8a;
+  --purple-lt:#efe6f9;
+  --teal:#0a5a6e;
+  --teal-lt:#e2f0f4;
+  --red:#9e1a1a;
+  --red-lt:#f9e4e4;
+  --orange:#c45010;
+  --orange-lt:#fdf0e4;
+  --border:#e2d9c8;
+  --muted:#8a7a62;
+  --card:#fffcf6;
+  --shadow:0 2px 16px rgba(15,14,12,0.07);
+  --shadow-hover:0 8px 32px rgba(15,14,12,0.12);
+}
+
+body{font-family:'Outfit',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 1000px 600px at 10% 5%,rgba(200,147,10,0.05) 0%,transparent 60%),
+    radial-gradient(ellipse 800px 800px at 90% 95%,rgba(26,63,143,0.04) 0%,transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+
+.wrap{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:48px 20px 24px;position:relative;}
+.header-kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5.5vw,54px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:10px;font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:1.2px;}
+.header-rule{display:flex;align-items:center;gap:16px;margin:18px auto 0;max-width:400px;}
+.header-rule::before,.header-rule::after{content:'';flex:1;height:1.5px;background:linear-gradient(90deg,transparent,var(--border));}
+.header-rule span{width:8px;height:8px;border-radius:50%;background:var(--gold);flex:0 0 auto;}
+
+/* SECTION LABELS */
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;margin:36px 0 16px;display:flex;align-items:center;gap:14px;}
+.sec-label .sl-num{background:var(--gold);color:#fff;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;flex:0 0 auto;}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
+.g1x2{display:grid;grid-template-columns:1fr 2fr;gap:16px;margin-bottom:18px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:18px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}.g1x2,.g2x1{grid-template-columns:1fr;}}
+@media(max-width:600px){.g2,.g3,.g4,.g1x2,.g2x1{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;box-shadow:var(--shadow);}
+.pc:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.blue::before{background:var(--blue);}
+.pc.green::before{background:var(--green);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.orange::before{background:var(--orange);}
+.pc.ink::before{background:var(--ink);}
+
+.pc-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:6px;line-height:1.3;}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vitem{padding:8px 11px;border-radius:8px;background:var(--warm);border:1px solid var(--border);font-size:11px;line-height:1.5;}
+.vitem .vt{font-weight:700;margin-bottom:1px;}
+.vitem .vs{font-size:9.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:9.5px;font-weight:700;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.gold{background:rgba(200,147,10,0.12);color:#9a7000;}
+.pill.blue{background:rgba(26,63,143,0.1);color:var(--blue);}
+.pill.green{background:rgba(20,90,50,0.1);color:var(--green);}
+.pill.purple{background:rgba(92,26,138,0.1);color:var(--purple);}
+.pill.teal{background:rgba(10,90,110,0.1);color:var(--teal);}
+.pill.red{background:rgba(158,26,26,0.1);color:var(--red);}
+.pill.orange{background:rgba(196,80,16,0.1);color:var(--orange);}
+.pill.ink{background:rgba(15,14,12,0.07);color:var(--ink);}
+
+/* CHIPS */
+.chip-ok{display:inline-block;padding:3px 9px;border-radius:6px;font-size:9.5px;font-weight:700;background:rgba(20,90,50,0.08);border:1.5px solid rgba(20,90,50,0.2);color:var(--green);margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip-bad{display:inline-block;padding:3px 9px;border-radius:6px;font-size:9.5px;font-weight:700;background:rgba(158,26,26,0.08);border:1.5px solid rgba(158,26,26,0.2);color:var(--red);margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip-neu{display:inline-block;padding:3px 9px;border-radius:6px;font-size:9.5px;font-weight:700;background:rgba(200,147,10,0.08);border:1.5px solid rgba(200,147,10,0.2);color:#8a6000;margin:2px;font-family:'JetBrains Mono',monospace;}
+
+/* STAT */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px 10px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--warm);}
+.stat-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;line-height:1;}
+.stat-label{font-size:8.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;font-weight:700;margin-top:2px;}
+
+/* MAP CARD (SVG wrapper) */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;position:relative;margin-bottom:24px;box-shadow:var(--shadow);}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;z-index:2;}
+.mc-blue::before{background:linear-gradient(90deg,var(--blue),var(--purple));}
+.mc-green::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+.mc-gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.mc-red::before{background:linear-gradient(90deg,var(--red),var(--orange));}
+.mc-purple::before{background:linear-gradient(90deg,var(--purple),var(--blue));}
+.mc-full::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue),var(--purple),var(--green));}
+.map-card svg{display:block;width:100%;}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:16px;padding:24px 28px;margin:24px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;box-shadow:0 8px 40px rgba(15,14,12,0.18);}
+.keystone-icon{font-size:40px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:6px;color:#f7e4a8;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.kpills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'JetBrains Mono',monospace;border:1px solid rgba(255,255,255,0.1);}
+
+/* FLOW CHAIN */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:10px 0;}
+.fn{padding:6px 12px;border-radius:8px;font-size:10.5px;font-weight:700;border:1.5px solid;}
+.fa{font-size:16px;color:var(--muted);}
+
+/* TRAP CARD */
+.trap-card{background:rgba(158,26,26,0.04);border:1.5px solid rgba(158,26,26,0.18);border-radius:12px;padding:14px 16px;margin:4px 0;}
+.trap-title{font-size:11px;font-weight:800;color:var(--red);margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.trap-grid{display:flex;flex-wrap:wrap;gap:5px;}
+
+/* COMPARE TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#f5e8c0;padding:9px 12px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:1px;}
+.ctable th:first-child{border-radius:8px 0 0 0;}
+.ctable th:last-child{border-radius:0 8px 0 0;}
+.ctable td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(200,147,10,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--blue);}
+.table-wrap{border-radius:8px;overflow:hidden;border:1.5px solid var(--border);}
+
+/* PHASE ROW */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.pbox{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.pnum{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;}
+.ptitle{font-size:12px;font-weight:800;margin:4px 0;}
+.psub{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:8px;}
+.pbody{font-size:10px;line-height:1.7;color:var(--muted);}
+
+/* CALLOUT */
+.callout{padding:10px 14px;border-radius:9px;background:rgba(20,90,50,0.06);border:1.5px solid rgba(20,90,50,0.18);margin:8px 0;}
+.callout-t{font-size:10.5px;font-weight:800;color:var(--green);margin-bottom:3px;}
+.callout-b{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* badge inside text */
+.badge{display:inline-block;padding:2px 7px;border-radius:5px;font-size:8.5px;font-weight:800;font-family:'JetBrains Mono',monospace;}
+.badge.ok{background:#d4edda;color:#145a32;}
+.badge.warn{background:#fde8d8;color:#9e3a10;}
+.badge.info{background:var(--blue-lt);color:var(--blue);}
+
+/* DIVIDER */
+.div-line{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:8px 0;}
+
+/* ANIMATION */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.anim{animation:fadeUp 0.5s ease forwards;}
+.anim-2{animation:fadeUp 0.5s ease 0.1s forwards;opacity:0;}
+.anim-3{animation:fadeUp 0.5s ease 0.2s forwards;opacity:0;}
+
+/* Article badge */
+.art{display:inline-block;background:var(--ink);color:var(--gold-lt);padding:2px 8px;border-radius:5px;font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;margin-left:4px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header anim">
+  <div class="header-kicker">Indian Polity · Part VI · Articles 168–212 · UPSC Prelims</div>
+  <h1>State <em>Legislatures</em> — Mind Map</h1>
+  <div class="header-sub">Structure → Types → Powers → Qualifications → Disqualification → Key Traps</div>
+  <div class="header-rule"><span></span></div>
+</div>
+
+<!-- ══ SECTION 0: MASTER STRUCTURE SVG ══ -->
+<div class="sec-label"><span class="sl-num">00</span> Master Structure — One Connected System</div>
+
+<div class="map-card mc-full anim-2">
+  <svg id="svgMaster" viewBox="0 0 1280 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 1: BASIC STRUCTURE ══ -->
+<div class="sec-label"><span class="sl-num">01</span> Basic Structure <span class="art">Art. 168</span></div>
+
+<div class="g3 anim-3">
+  <div class="pc blue">
+    <div class="pc-label">Component 1</div>
+    <h3>🏛️ Governor</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Constitutional Head</div><div class="vs">Part of state legislature</div></div>
+      <div class="vitem"><div class="vt">Summons & Prorogues</div><div class="vs">Sessions + dissolves assembly</div></div>
+      <div class="vitem"><div class="vt">Decides Disqualifications</div><div class="vs">With Election Commission advice</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="pill blue">Art. 168</span></div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">Component 2</div>
+    <h3>🗳️ Legislative Assembly</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Vidhan Sabha</div><div class="vs">Lower / only house — All states</div></div>
+      <div class="vitem"><div class="vt">Directly Elected</div><div class="vs">Universal adult franchise</div></div>
+      <div class="vitem"><div class="vt">60–500 Members</div><div class="vs">Max 500, Min 60 (exceptions)</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="pill gold">EVERY STATE</span></div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Component 3</div>
+    <h3>📜 Legislative Council</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Vidhan Parishad</div><div class="vs">Upper house — Only 6 states</div></div>
+      <div class="vitem"><div class="vt">Indirectly Elected + Nominated</div><div class="vs">Permanent, not dissolvable</div></div>
+      <div class="vitem"><div class="vt">Max 1/3rd of Assembly; Min 40</div><div class="vs">6-year term per member</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="pill purple">OPTIONAL</span></div>
+  </div>
+</div>
+
+<!-- ══ SECTION 2: UNICAMERAL vs BICAMERAL ══ -->
+<div class="sec-label"><span class="sl-num">02</span> Types of State Legislature</div>
+
+<div class="g2">
+  <div class="pc teal">
+    <div class="pc-label">Type A — Most States</div>
+    <h3>1️⃣ Unicameral Legislature</h3>
+    <div style="padding:12px;border-radius:10px;background:rgba(10,90,110,0.06);border:1.5px solid rgba(10,90,110,0.15);margin-bottom:10px;text-align:center;">
+      <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:var(--teal);">Governor + Assembly Only</div>
+      <div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);">MOST STATES IN INDIA</div>
+    </div>
+    <div style="font-size:11px;color:var(--muted);line-height:1.6;">Single legislative chamber; faster law-making; no second-chamber delays. All legislation passes through Assembly alone.</div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Type B — 6 States Only</div>
+    <h3>2️⃣ Bicameral Legislature</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;">
+      <span class="pill purple">Andhra Pradesh</span>
+      <span class="pill purple">Telangana</span>
+      <span class="pill purple">Maharashtra</span>
+      <span class="pill purple">Karnataka</span>
+      <span class="pill purple">Uttar Pradesh</span>
+      <span class="pill purple">Bihar</span>
+    </div>
+    <div class="callout">
+      <div class="callout-t">⚖️ Creation / Abolition — Art. 169</div>
+      <div class="callout-b">Assembly → Special Majority resolution → Parliament passes by Simple Majority → <strong>Not a Constitutional Amendment</strong> (Art. 368 not required)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 3: ASSEMBLY vs COUNCIL COMPARISON ══ -->
+<div class="sec-label"><span class="sl-num">03</span> Vidhan Sabha vs Vidhan Parishad — Full Comparison</div>
+
+<div class="map-card mc-blue" style="padding:20px 20px 16px;">
+  <svg id="svgCompare" viewBox="0 0 1240 270" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="table-wrap" style="margin-bottom:18px;">
+  <table class="ctable">
+    <thead><tr>
+      <th>FEATURE</th>
+      <th>VIDHAN SABHA (Assembly)</th>
+      <th>VIDHAN PARISHAD (Council)</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>Election</td><td>Direct — universal adult franchise</td><td>Indirect + Nominated (1/6th)</td></tr>
+      <tr><td>Strength</td><td>Max 500 · Min 60</td><td>Max 1/3rd of Assembly · Min 40</td></tr>
+      <tr><td>Term</td><td>5 years (dissoluble)</td><td>6 years per member (permanent body)</td></tr>
+      <tr><td>Retirement</td><td>All at once (or dissolution)</td><td>1/3rd every 2 years</td></tr>
+      <tr><td>Money Bill</td><td>Can originate here only</td><td>Cannot reject — 14-day delay max</td></tr>
+      <tr><td>Ordinary Bill</td><td>Passes it first</td><td>Can delay max 4 months (3+1)</td></tr>
+      <tr><td>Joint Sitting</td><td colspan="2" style="color:var(--red);font-weight:700;">❌ No joint sitting provision in state legislature</td></tr>
+      <tr><td>Presiding Officer</td><td>Speaker + Deputy Speaker</td><td>Chairman + Deputy Chairman</td></tr>
+      <tr><td>Anti-Defection</td><td>Decided by Speaker</td><td>Decided by Chairman</td></tr>
+      <tr><td>Money Bill — Who Decides?</td><td>Speaker certifies</td><td>Cannot question Speaker's decision</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ SECTION 4: COUNCIL COMPOSITION ══ -->
+<div class="sec-label"><span class="sl-num">04</span> Council Composition — The 5/6 + 1/6 Rule</div>
+
+<div class="map-card mc-purple" style="padding:6px 0 0;">
+  <svg id="svgCouncil" viewBox="0 0 1280 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 5: QUALIFICATIONS ══ -->
+<div class="sec-label"><span class="sl-num">05</span> Qualifications & Disqualifications</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">To Become a Member — Qualifications</div>
+    <h3>✅ Who Can Be a Member?</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--gold);">25</div>
+        <div class="stat-sub">Assembly</div>
+        <div class="stat-label">MIN AGE (YRS)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--purple);">30</div>
+        <div class="stat-sub">Council</div>
+        <div class="stat-label">MIN AGE (YRS)</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">🇮🇳 Citizen of India</div><div class="vs">Must take oath to Constitution</div></div>
+      <div class="vitem"><div class="vt">📋 RPA 1951</div><div class="vs">Must be elector in the state</div></div>
+      <div class="vitem"><div class="vt">🏘️ SC/ST Reserved Seats</div><div class="vs">Must belong to that category</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px;border-radius:8px;background:rgba(20,90,50,0.07);border:1px dashed rgba(20,90,50,0.25);">
+      <span style="font-size:10px;font-weight:700;color:var(--green);">📌 Oath: Before Governor or person appointed by Governor</span>
+    </div>
+    <div style="margin-top:6px;font-size:10px;color:var(--red);font-weight:700;">⚠️ ₹500 penalty per day if sitting/voting without taking oath</div>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-label">Grounds for Removal — Disqualification</div>
+    <h3>❌ Disqualification Grounds</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Office of Profit</div><div class="vs">Constitutional ground</div></div>
+      <div class="vitem"><div class="vt">Unsound Mind / Insolvent</div><div class="vs">Constitutional ground</div></div>
+      <div class="vitem"><div class="vt">Foreign Citizenship</div><div class="vs">Constitutional ground</div></div>
+      <div class="vitem"><div class="vt">Criminal Conviction 2+ yrs</div><div class="vs">RPA 1951</div></div>
+      <div class="vitem"><div class="vt">Election Offences</div><div class="vs">RPA 1951</div></div>
+      <div class="vitem"><div class="vt">Failure to File Expenses</div><div class="vs">RPA 1951</div></div>
+      <div class="vitem"><div class="vt">Dismissed for Corruption</div><div class="vs">RPA 1951</div></div>
+    </div>
+    <div style="margin-top:8px;padding:9px 11px;border-radius:8px;background:rgba(158,26,26,0.07);border:1px solid rgba(158,26,26,0.2);">
+      <div style="font-size:10.5px;font-weight:800;color:var(--red);margin-bottom:3px;">⚖️ Who Decides?</div>
+      <div style="font-size:10px;color:var(--muted);">Governor decides (after Election Commission opinion) → Subject to judicial review</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 6: ANTI-DEFECTION & VACATION ══ -->
+<div class="sec-label"><span class="sl-num">06</span> Anti-Defection (10th Schedule) & Vacation of Seats</div>
+
+<div class="g2">
+  <div class="pc orange">
+    <div class="pc-label">10th Schedule — Anti-Defection Law</div>
+    <h3>🔀 Anti-Defection</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Assembly → Speaker Decides</div><div class="vs">NOT the Governor</div></div>
+      <div class="vitem"><div class="vt">Council → Chairman Decides</div><div class="vs">NOT the Governor</div></div>
+      <div class="vitem">
+        <div class="vt">Kihoto Hollohan Case</div>
+        <div class="vs">Subject to judicial review — SC upheld validity of 10th Schedule</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:9px 11px;border-radius:8px;background:rgba(196,80,16,0.07);border:1.5px solid rgba(196,80,16,0.2);">
+      <div style="font-size:10.5px;font-weight:800;color:var(--orange);">🔥 KEY TRAP: Anti-defection ≠ Governor. Always Speaker/Chairman.</div>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">When Does a Seat Become Vacant?</div>
+    <h3>🪑 Vacation of Seats</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip-bad">Double Membership</span>
+      <span class="chip-bad">Disqualification</span>
+      <span class="chip-bad">Resignation → Speaker/Chairman</span>
+      <span class="chip-bad">Absent 60 consecutive days</span>
+      <span class="chip-bad">Election declared void</span>
+      <span class="chip-bad">Becomes President / VP</span>
+      <span class="chip-bad">Becomes Governor</span>
+    </div>
+    <div style="margin-top:10px;font-size:10px;color:var(--muted);line-height:1.6;">Salaries fixed by State Legislature. Charged on <strong>Consolidated Fund of the State</strong>.</div>
+  </div>
+</div>
+
+<!-- ══ SECTION 7: POWERS SVG ══ -->
+<div class="sec-label"><span class="sl-num">07</span> Powers — Assembly vs Council</div>
+
+<div class="map-card mc-gold">
+  <svg id="svgPowers" viewBox="0 0 1280 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 8: SPECIAL PROVISIONS ══ -->
+<div class="sec-label"><span class="sl-num">08</span> Special Provisions — Assembly Exclusive</div>
+
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-label">Reserved Seats</div>
+    <h3>🏘️ SC/ST Reservation</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Proportional reservation</div><div class="vs">In all state assemblies</div></div>
+      <div class="vitem"><div class="vt">Only in Assembly</div><div class="vs">Not in Council</div></div>
+      <div class="vitem"><div class="vt">Parliament determines manner</div><div class="vs">Of delimitation of constituencies</div></div>
+    </div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">Term Extensions</div>
+    <h3>🔒 National Emergency</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Normal Term: 5 Years</div><div class="vs">Dissoluble by Governor</div></div>
+      <div class="vitem"><div class="vt">During Emergency: Extend 1 yr at a time</div><div class="vs">Parliament can extend term</div></div>
+      <div class="vitem"><div class="vt">Max 6 months after emergency ends</div><div class="vs">Then must hold elections</div></div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Territorial Constituencies</div>
+    <h3>🗺️ Delimitation</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Readjustment after Census</div><div class="vs">Assembly seats re-drawn</div></div>
+      <div class="vitem"><div class="vt">Parliament sets manner</div><div class="vs">Of delimitation</div></div>
+      <div class="vitem"><div class="vt">Money Bill → Assembly Only</div><div class="vs">Cannot originate in Council</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 9: PRESIDING OFFICERS ══ -->
+<div class="sec-label"><span class="sl-num">09</span> Presiding Officers & Their Roles</div>
+
+<div class="map-card mc-green">
+  <svg id="svgPresiding" viewBox="0 0 1280 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 10: FULL FLOW + KEY TRAPS ══ -->
+<div class="sec-label"><span class="sl-num">10</span> High-Probability Prelims Traps 🔥</div>
+
+<div class="trap-card">
+  <div class="trap-title">🔥 Classic UPSC Traps — Memorise These</div>
+  <div class="trap-grid">
+    <span class="chip-bad">Council max = 1/3rd of Assembly</span>
+    <span class="chip-bad">Council min = 40 (NOT less)</span>
+    <span class="chip-bad">Council is PERMANENT body</span>
+    <span class="chip-bad">No joint sitting in states</span>
+    <span class="chip-bad">Money Bill: Assembly ONLY</span>
+    <span class="chip-bad">1/6 nominated by Governor to Council</span>
+    <span class="chip-bad">Anti-defection: Speaker/Chairman — NOT Governor</span>
+    <span class="chip-bad">Disqualification (other): Governor + EC advice</span>
+    <span class="chip-bad">Assembly min 60 — exceptions exist (Goa 40)</span>
+    <span class="chip-bad">Art.169: Simple majority in Parliament</span>
+    <span class="chip-bad">Council delay: 14 days (Money) · 4 months (Ordinary)</span>
+    <span class="chip-bad">Kihoto Hollohan: Judicial review OK for anti-defection</span>
+  </div>
+</div>
+
+<div class="g2" style="margin-top:16px;">
+  <div class="pc red">
+    <div class="pc-label">Common Confusion — Assembly Minimums</div>
+    <h3>⚠️ Exception States</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Goa — 40 seats</div><div class="vs">Assembly below usual minimum of 60</div></div>
+      <div class="vitem"><div class="vt">Mizoram — 40 seats</div><div class="vs">Hill state exception</div></div>
+      <div class="vitem"><div class="vt">Sikkim — 32 seats</div><div class="vs">Smallest assembly in India</div></div>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">Council Composition — What is 1/6 Nominated?</div>
+    <h3>📋 Governor Nominates</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Literature & Science</div><div class="vs">Experts in these fields</div></div>
+      <div class="vitem"><div class="vt">Art & Cooperative Movement</div><div class="vs">Distinguished persons</div></div>
+      <div class="vitem"><div class="vt">Social Service</div><div class="vs">Eminent practitioners</div></div>
+    </div>
+    <div style="margin-top:6px;font-size:10px;color:var(--muted);">Mirrors Rajya Sabha nominated seats logic — expertise over electoral politics.</div>
+  </div>
+</div>
+
+<!-- ══ KEYSTONE ══ -->
+<div class="keystone">
+  <div class="keystone-icon">⚖️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">State Legislature = Governor + Assembly (mandatory) + Council (optional in 6 states). Assembly is directly elected, powerful, and dominant — especially in finance. Council is advisory, permanent, and delays. Speaker/Chairman manage procedures; Governor is constitutional head. Anti-defection = Speaker/Chairman, not Governor. The entire system mirrors Parliament but Assembly is always supreme within states.</div>
+    <div class="kpills">
+      <span class="kpill">🏛️ Art. 168–212</span>
+      <span class="kpill">🗳️ Assembly = Dominant</span>
+      <span class="kpill">📜 Council = Permanent</span>
+      <span class="kpill">⚡ Speaker Decides Anti-Defection</span>
+      <span class="kpill">💸 Governor Decides Disqualification</span>
+      <span class="kpill">🔗 Mirrors Parliament</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function curve(svg,x1,y1,x2,y2,color,dashed,w){
+  const mx=(x1+x2)/2;
+  const p=se('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':w||1.8,fill:'none','stroke-dasharray':dashed?'5 3':'none',opacity:'0.65'});
+  svg.appendChild(p);
+}
+function line(svg,x1,y1,x2,y2,color,w){
+  svg.appendChild(se('line',{x1,y1,x2,y2,stroke:color||'#ccc','stroke-width':w||1.5,opacity:'0.5'}));
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx,border){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  // shadow
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.09)'}));
+  // main
+  const r=se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill});
+  if(border)r.setAttribute('stroke',border),r.setAttribute('stroke-width','1.5');
+  g.appendChild(r);
+  let ty=y-((lines.length-1)*7.5)-(sub?5:0)-(emoji?11:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'15',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=20;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11.5','font-weight':'700','font-family':'Outfit,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*15+1,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'JetBrains Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.4)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+function label(svg,x,y,text,color,size,family){
+  const t=se('text',{x,y,'text-anchor':'middle','font-size':size||9,'font-family':family||'JetBrains Mono,monospace',fill:color||'rgba(120,100,60,0.4)','letter-spacing':'2','font-weight':'500'});
+  t.textContent=text;svg.appendChild(t);
+}
+
+// ── MASTER FLOW ──
+(function(){
+  const svg=document.getElementById('svgMaster');
+  svg.style.background='rgba(249,246,240,0.4)';
+  const steps=[
+    {x:80,  fill:'#1a3f8f', label:['Governor'],         sub:'Art. 168',           emoji:'🏛️'},
+    {x:240, fill:'#c8930a', label:['Vidhan Sabha'],      sub:'Direct Election',    emoji:'🗳️'},
+    {x:400, fill:'#5c1a8a', label:['Vidhan Parishad'],   sub:'6 States Only',      emoji:'📜'},
+    {x:560, fill:'#145a32', label:['Speaker/Chairman'],  sub:'Presiding Officers', emoji:'⚖️'},
+    {x:720, fill:'#0a5a6e', label:['Legislation'],       sub:'Bills & Finance',    emoji:'📋'},
+    {x:880, fill:'#9e1a1a', label:['Disqualification'],  sub:'Governor + EC',      emoji:'❌'},
+    {x:1040,fill:'#c45010', label:['Anti-Defection'],    sub:'Speaker / Chairman', emoji:'🔀'},
+    {x:1200,fill:'#0f0e0c', label:['Judicial Review'],   sub:'Courts can review',  emoji:'⚖️'},
+  ];
+  for(let i=0;i<steps.length-1;i++){
+    const s=steps[i],n=steps[i+1];
+    curve(svg,s.x+70,90,n.x-70,90,'#c8930a',false,2);
+  }
+  steps.forEach(s=>node(svg,s.x,90,130,72,s.fill,[s.label[0]],s.sub,s.emoji));
+  label(svg,640,20,'STATE LEGISLATURE — MASTER FLOW (Art. 168–212)','rgba(120,100,60,0.35)',9);
+  label(svg,640,170,'GOVERNOR + ASSEMBLY (+ COUNCIL) → BILLS → OVERSIGHT → ACCOUNTABILITY','rgba(26,63,143,0.3)',8);
+})();
+
+// ── COMPARE SVG ──
+(function(){
+  const svg=document.getElementById('svgCompare');
+  svg.style.background='rgba(249,246,240,0.3)';
+  const cw=1240;
+
+  // centre root
+  node(svg,cw/2,50,280,46,'#0f0e0c',['Assembly vs Council'],'Key Differences',null);
+
+  // Assembly nodes (left side)
+  const aNodes=[
+    {x:120,y:140, fill:'#c8930a', label:['Directly Elected'],     sub:'Universal franchise'},
+    {x:120,y:200, fill:'#1a3f8f', label:['Max 500 · Min 60'],     sub:'Dissoluble body'},
+    {x:280,y:155, fill:'#145a32', label:['5-Year Term'],           sub:'Can be dissolved'},
+    {x:280,y:225, fill:'#9e1a1a', label:['Speaker Presides'],      sub:'Decides Money Bill'},
+    {x:440,y:130, fill:'#0a5a6e', label:['Originates Money Bill'], sub:'Council cannot'},
+  ];
+  aNodes.forEach(n=>{
+    curve(svg,n.x+(n.x>500?-80:80),n.y,cw/2-140,50,'#c8930a55',true,1.5);
+    node(svg,n.x,n.y,190,44,n.fill,[n.label[0]],n.sub,'',undefined,8);
+  });
+
+  // Council nodes (right side)
+  const cNodes=[
+    {x:1120,y:140, fill:'#5c1a8a', label:['Indirect + Nominated'],  sub:'1/6 by Governor'},
+    {x:1120,y:200, fill:'#7a3a10', label:['Max 1/3rd · Min 40'],    sub:'Permanent body'},
+    {x:960, y:155, fill:'#006060', label:['6-Year Term (members)'],  sub:'1/3rd retires each 2yr'},
+    {x:960, y:225, fill:'#3a0a6a', label:['Chairman Presides'],      sub:'Council decisions'},
+    {x:800, y:130, fill:'#9e1a1a', label:['Delays only (max 4mo)'], sub:'No Money Bill power'},
+  ];
+  cNodes.forEach(n=>{
+    curve(svg,cw/2+140,50,n.x+(n.x>620?-80:80),n.y,'#5c1a8a55',true,1.5);
+    node(svg,n.x,n.y,190,44,n.fill,[n.label[0]],n.sub,'',undefined,8);
+  });
+
+  // labels
+  label(svg,240,260,'VIDHAN SABHA (ASSEMBLY)','rgba(200,147,10,0.5)',9);
+  label(svg,1000,260,'VIDHAN PARISHAD (COUNCIL)','rgba(92,26,138,0.5)',9);
+  line(svg,cw/2,74,cw/2,265,'rgba(200,180,140,0.2)',1);
+})();
+
+// ── COUNCIL COMPOSITION ──
+(function(){
+  const svg=document.getElementById('svgCouncil');
+  svg.style.background='rgba(249,246,240,0.3)';
+
+  // root
+  node(svg,640,45,260,48,'#5c1a8a',['Council Composition'],'5/6 Elected + 1/6 Nominated');
+
+  // Elected (5/6) — left branches
+  node(svg,640,100,2,0,'rgba(0,0,0,0)',[]); // spacer
+
+  const elected=[
+    {x:140, y:155, fill:'#1a3f8f', label:['1/3rd'], sub:'By Local Bodies',     emoji:'🏘️'},
+    {x:310, y:155, fill:'#145a32', label:['1/3rd'], sub:'By MLAs',             emoji:'🗳️'},
+    {x:480, y:155, fill:'#c8930a', label:['1/12th'],sub:'By Graduates',        emoji:'🎓'},
+    {x:640, y:155, fill:'#0a5a6e', label:['1/12th'],sub:'By Teachers',         emoji:'📚'},
+  ];
+  elected.forEach(n=>{
+    curve(svg,550,70,n.x,n.y-24,'#5c1a8a55',true,1.5);
+    node(svg,n.x,n.y,150,50,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  // Nominated (1/6) — right branch
+  const nom={x:950, y:130, fill:'#9e1a1a'};
+  curve(svg,730,70,nom.x-80,nom.y-24,'#9e1a1a55',true,1.5);
+  node(svg,nom.x,nom.y,180,48,nom.fill,['1/6 Nominated'],'Governor appoints','🏛️');
+
+  // sub-nodes of nominated
+  const nsubs=[
+    {x:820,y:200,  label:'Literature & Science'},
+    {x:950,y:200,  label:'Art & Cooperatives'},
+    {x:1100,y:200, label:'Social Service'},
+  ];
+  nsubs.forEach(n=>{
+    line(svg,nom.x,nom.y+24,n.x,n.y-18,'#9e1a1a44',1.2);
+    node(svg,n.x,n.y,170,36,'#7a2a2a',[n.label],'','',undefined,7);
+  });
+
+  // Elected label
+  const br=se('rect',{x:60,y:120,width:650,height:14,rx:4,ry:4,fill:'rgba(92,26,138,0.06)'});
+  svg.appendChild(br);
+  label(svg,385,128,'5/6 INDIRECTLY ELECTED','rgba(92,26,138,0.4)',8);
+  label(svg,950,128,'1/6 NOMINATED','rgba(158,26,26,0.4)',8);
+
+  label(svg,640,214,'TOTAL: STRENGTH FIXED BY PARLIAMENT | MAX = 1/3rd OF ASSEMBLY | MIN = 40','rgba(120,100,60,0.3)',8);
+})();
+
+// ── POWERS SVG ──
+(function(){
+  const svg=document.getElementById('svgPowers');
+  svg.style.background='rgba(249,246,240,0.3)';
+
+  // root
+  node(svg,640,45,260,46,'#c8930a',['Legislative Powers'],'What Can Assembly & Council Do?');
+
+  // Money Bill chain
+  const mchain=[
+    {x:120, y:140, fill:'#145a32', label:['Money Bill'],     sub:'Originates here',      emoji:'💰'},
+    {x:300, y:140, fill:'#1a3f8f', label:['Assembly Passes'],sub:'Speaker certifies',   emoji:'✅'},
+    {x:480, y:140, fill:'#9e1a1a', label:['Sent to Council'],sub:'Council CANNOT reject',emoji:'📬'},
+    {x:640, y:140, fill:'#c45010', label:['14-day delay max'],sub:'Council can only delay',emoji:'⏱️'},
+    {x:820, y:140, fill:'#145a32', label:['Returns to Assm.'],sub:'Deemed passed',       emoji:'🔄'},
+  ];
+  mchain.forEach((n,i)=>{
+    if(i<mchain.length-1){
+      curve(svg,n.x+80,140,mchain[i+1].x-80,140,'#c8930a66',false,2);
+    }
+    curve(svg,n.x+(n.x<640?60:-60),140,600+(n.x>640?80:-80),67,'#c8930a44',true,1.3);
+    node(svg,n.x,n.y,150,48,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  // Ordinary bill boxes
+  const ochain=[
+    {x:1000,y:115, fill:'#5c1a8a', label:['Ordinary Bill'],  sub:'Either house',   emoji:'📋'},
+    {x:1000,y:180, fill:'#3a1060', label:['Council delays'], sub:'Max 4 months',   emoji:'⏳'},
+  ];
+  ochain.forEach(n=>{
+    curve(svg,760,70,n.x-70,n.y,'#5c1a8a55',true,1.5);
+    node(svg,n.x,n.y,170,44,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+  line(svg,1000,137,1000,158,'#5c1a8a55',1.5);
+
+  const no=se('rect',{x:1080,y:148,width:160,height:32,rx:8,ry:8,fill:'rgba(158,26,26,0.1)',stroke:'rgba(158,26,26,0.3)','stroke-width':'1.5'});
+  svg.appendChild(no);
+  const nt=se('text',{x:1160,y:163,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10','font-weight':'800','font-family':'Outfit,sans-serif',fill:'#9e1a1a'});
+  nt.textContent='❌ No Joint Sitting'; svg.appendChild(nt);
+
+  label(svg,440,210,'MONEY BILL FLOW: ASSEMBLY ONLY → COUNCIL CANNOT REJECT → 14-DAY MAX DELAY','rgba(200,147,10,0.4)',8);
+  label(svg,1000,210,'ORDINARY BILL','rgba(92,26,138,0.35)',8);
+})();
+
+// ── PRESIDING OFFICERS SVG ──
+(function(){
+  const svg=document.getElementById('svgPresiding');
+  svg.style.background='rgba(249,246,240,0.3)';
+
+  node(svg,640,50,260,46,'#0f0e0c',['Presiding Officers'],'Assembly & Council');
+
+  // Assembly side
+  const aoff=[
+    {x:160, y:135, fill:'#c8930a', label:['Speaker'],          sub:'Certifies Money Bill',  emoji:'⚖️'},
+    {x:340, y:135, fill:'#1a3f8f', label:['Deputy Speaker'],   sub:'Assists Speaker',       emoji:'🤝'},
+    {x:510, y:135, fill:'#145a32', label:['Panel of Chairs'],  sub:'When Speaker absent',   emoji:'🗳️'},
+  ];
+  aoff.forEach(n=>{
+    curve(svg,560,73,n.x+70,n.y-23,'#c8930a55',true,1.4);
+    node(svg,n.x,n.y,160,46,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  // Council side
+  const coff=[
+    {x:770,  y:135, fill:'#5c1a8a', label:['Chairman'],          sub:'Anti-defection in Council', emoji:'🏛️'},
+    {x:950,  y:135, fill:'#7a3a10', label:['Deputy Chairman'],   sub:'Assists Chairman',          emoji:'🤝'},
+    {x:1120, y:135, fill:'#0a5a6e', label:['Panel of VP'],       sub:'Vice-Chairpersons',         emoji:'📋'},
+  ];
+  coff.forEach(n=>{
+    curve(svg,720,73,n.x-70,n.y-23,'#5c1a8a55',true,1.4);
+    node(svg,n.x,n.y,160,46,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  line(svg,640,73,640,168,'rgba(200,180,140,0.2)',1);
+  label(svg,335,170,'ASSEMBLY PRESIDING OFFICERS','rgba(200,147,10,0.4)',8);
+  label(svg,940,170,'COUNCIL PRESIDING OFFICERS','rgba(92,26,138,0.4)',8);
+})();
+</script>
+</body>
+</html>

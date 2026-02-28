@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parliamentary Privileges & Sovereignty — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#12100e;--paper:#f6f4f0;--gold:#b87c10;--gold-lt:#f5d78a;
+  --amber:#c45c10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf7;--card2:#f2ede0;--sky:#1a5878;--crimson:#8a0a0a;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 800px 500px at 10% 5%, rgba(184,124,16,0.07) 0%,transparent 60%),
+  radial-gradient(ellipse 600px 600px at 90% 95%, rgba(26,58,138,0.05) 0%,transparent 60%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,48px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--crimson),var(--amber),var(--blue));margin:14px auto 0;border-radius:4px;}
+
+/* SECTION LABELS */
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+.g1x2{display:grid;grid-template-columns:1fr 2fr;gap:18px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}.g2x1,.g1x2{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g2x1,.g1x2{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(184,124,16,0.10);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.dark::before{background:var(--ink);}
+.pc.crimson::before{background:var(--crimson);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* MAP CARDS */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:28px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--crimson),var(--amber),var(--gold));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--sky),var(--green));}
+.map-card.mc6::before{background:linear-gradient(90deg,var(--crimson),var(--purple),var(--blue));}
+.map-card svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(196,92,16,0.12);color:var(--amber);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,96,112,0.12);color:var(--teal);}
+.pill.red{background:rgba(176,26,26,0.12);color:var(--red);}
+.pill.sky{background:rgba(26,88,120,0.12);color:var(--sky);}
+
+/* STAT BOXES */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* CHIPS */
+.ps-chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.prob{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.ps-chip.sol{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.ps-chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+.ps-chip.blue{background:rgba(26,58,138,0.07);border-color:rgba(26,58,138,0.2);color:var(--blue);}
+.ps-chip.warn{background:rgba(196,92,16,0.07);border-color:rgba(196,92,16,0.2);color:var(--amber);}
+
+/* FEAT GRID */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;}
+.tag.ok{background:#d4edda;color:#155724;}
+.tag.na{background:#f8d7da;color:#721c24;}
+.tag.neutral{background:#e2e8f0;color:#2d3748;}
+
+/* VERTICAL LIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* FLOW */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.flow-node{padding:6px 12px;border-radius:8px;font-size:11px;font-weight:700;border:1.5px solid;}
+.flow-arr{font-size:18px;color:var(--muted);}
+
+/* IMPACT CHAIN */
+.impact-chain{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:6px 0;margin:8px 0;}
+.ic-node{padding:7px 12px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:14px;color:var(--muted);flex:0 0 auto;margin:0 4px;}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;letter-spacing:0.4px;}
+
+/* PHASE ROW */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;}
+.phase-title{font-size:12px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'DM Mono',monospace;margin-bottom:8px;}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;background:rgba(176,26,26,0.06);border:1.5px solid rgba(176,26,26,0.2);margin:8px 0;}
+.callout.warn{background:rgba(196,92,16,0.06);border-color:rgba(196,92,16,0.2);}
+.callout.green{background:rgba(26,106,58,0.06);border-color:rgba(26,106,58,0.2);}
+.callout-title{font-size:11px;font-weight:800;color:var(--red);margin-bottom:3px;}
+.callout.warn .callout-title{color:var(--amber);}
+.callout.green .callout-title{color:var(--green);}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* TRAP CARD */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.trap-item{padding:10px 12px;border-radius:10px;background:rgba(176,26,26,0.05);border:1.5px solid rgba(176,26,26,0.15);font-size:10px;line-height:1.5;}
+.trap-item strong{display:block;font-size:11px;color:var(--red);margin-bottom:2px;}
+
+/* WARN BADGE */
+.warn-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:6px;background:rgba(196,92,16,0.1);border:1px solid rgba(196,92,16,0.25);font-size:10px;font-weight:700;color:var(--amber);font-family:'DM Mono',monospace;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Polity · Parliament · UPSC Prelims High-Probability</div>
+  <h1>Parliamentary Privileges &amp; <em>Sovereignty</em></h1>
+  <div class="header-sub">Why They Exist → What They Include → Who Gets Them → Breach → Sovereignty Limits</div>
+</div>
+
+<!-- SECTION 0: MASTER FLOW -->
+<div class="sec-label">Master Flow — The Connected Story</div>
+
+<div class="map-card mc1">
+  <svg id="svgFlow" viewBox="0 0 1360 130" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- SECTION 1: WHAT ARE PRIVILEGES -->
+<div class="sec-label">① What Are Parliamentary Privileges & Who Gets Them</div>
+
+<div class="map-card mc2">
+  <svg id="svgWho" viewBox="0 0 1360 230" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-label">Definition</div>
+    <h3>⚖️ Parliamentary Privileges — What Are They?</h3>
+    <p style="font-size:11px;line-height:1.7;color:var(--muted);margin-bottom:10px;">Special <strong>rights, immunities and exemptions</strong> enjoyed by both Houses of Parliament, their committees, and their members — to ensure independent and effective functioning.</p>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">2</div>
+        <div class="stat-sub">Houses</div>
+        <div class="stat-label">LOK & RAJYA</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">∞</div>
+        <div class="stat-sub">Committees</div>
+        <div class="stat-label">ALL INCLUDED</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--green);">MPs</div>
+        <div class="stat-sub">Members</div>
+        <div class="stat-label">INDIVIDUALLY</div>
+      </div>
+    </div>
+    <div class="callout warn" style="margin-top:10px;">
+      <div class="callout-title warn">⚠️ Critical Prelims Trap!</div>
+      <div class="callout-body">Extends to <strong>Attorney General of India</strong> (can participate in House proceedings) — but <strong>NOT to the President</strong>, even though President is formally part of Parliament.</div>
+    </div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">Source — Article 105</div>
+    <h3>📜 Where Do Privileges Come From?</h3>
+    <p style="font-size:10px;color:var(--muted);margin-bottom:8px;">Originally Art. 105 only mentioned two things. Today privileges flow from multiple sources:</p>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">📜 Constitution (Art. 105)</div><div class="vs">Freedom of speech + Publication of proceedings</div></div>
+      <div class="vitem"><div class="vt">🏛️ Parliamentary Laws</div><div class="vs">Enacted by Parliament itself</div></div>
+      <div class="vitem"><div class="vt">📋 Rules of Procedure</div><div class="vs">Internal house rules</div></div>
+      <div class="vitem"><div class="vt">📖 Parliamentary Conventions</div><div class="vs">Evolved over time</div></div>
+      <div class="vitem"><div class="vt">⚖️ Judicial Interpretations</div><div class="vs">Court rulings on scope</div></div>
+    </div>
+    <div class="callout" style="margin-top:8px;">
+      <div class="callout-title">⚠️ No Comprehensive Code Yet</div>
+      <div class="callout-body">No single law codifies all privileges — a long-standing gap in Indian parliamentary law.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: TYPES OF PRIVILEGES -->
+<div class="sec-label">② Types of Privileges — Collective vs Individual</div>
+
+<div class="map-card mc3">
+  <svg id="svgTypes" viewBox="0 0 1360 310" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <!-- Collective -->
+  <div class="pc amber">
+    <div class="pc-label">A — Collective Privileges (of the House)</div>
+    <h3>🏛️ What the House as a Whole Can Do</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">📰</div><div class="ft">Publish Reports</div><div class="fs">Debates & proceedings</div></div>
+      <div class="feat"><div class="fi">🔒</div><div class="ft">Secret Sittings</div><div class="vs">Exclude strangers</div></div>
+      <div class="feat"><div class="fi">📋</div><div class="ft">Regulate Procedure</div><div class="fs">Own internal rules</div></div>
+      <div class="feat"><div class="fi">🔨</div><div class="ft">Punish Breach</div><div class="fs">Members & outsiders</div></div>
+      <div class="feat"><div class="fi">👥</div><div class="ft">Witness Attendance</div><div class="fs">Compel appearance</div></div>
+      <div class="feat"><div class="fi">📢</div><div class="ft">Member Arrest Info</div><div class="fs">Immediate notification</div></div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="ps-chip sol">✅ Courts cannot inquire into proceedings</span>
+      <span class="ps-chip sol">✅ No arrest inside premises without Speaker's permission</span>
+    </div>
+  </div>
+
+  <!-- Individual -->
+  <div class="pc purple">
+    <div class="pc-label">B — Individual Privileges (of Members)</div>
+    <h3>👤 What Each MP Enjoys</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">🗣️ Freedom of Speech</div>
+        <div style="font-size:10px;margin-top:3px;line-height:1.5;">No court action for anything <strong>said or voted</strong> inside Parliament. <strong>Absolute</strong> inside House (Article 105(1)).</div>
+        <div class="vs" style="margin-top:2px;">Subject to constitutional limits outside House</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🚫 Freedom from Arrest</div>
+        <div style="font-size:10px;margin-top:3px;line-height:1.5;">No arrest in <strong>civil cases</strong> during session, <strong>40 days before</strong> &amp; <strong>40 days after</strong>.</div>
+        <div class="callout" style="margin-top:5px;padding:6px 8px;">
+          <div class="callout-title">⚠️ NOT applicable in:</div>
+          <div class="callout-body">Criminal cases · Preventive detention cases</div>
+        </div>
+      </div>
+      <div class="vitem">
+        <div class="vt">⚖️ Exemption from Jury Service</div>
+        <div style="font-size:10px;margin-top:3px;">Can refuse to appear as <strong>witness</strong> during session.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: BREACH OF PRIVILEGE -->
+<div class="sec-label">③ Breach of Privilege — What Happens When Violated</div>
+
+<div class="map-card mc3">
+  <svg id="svgBreach" viewBox="0 0 1360 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc red">
+    <div class="pc-label">What Triggers a Breach</div>
+    <h3>🚨 Breach of Privilege</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Disrespecting or Attacking Privileges</div><div class="vs">Contempt of Parliament</div></div>
+      <div class="vitem"><div class="vt">Obstructing a Member</div><div class="vs">Physical or functional obstruction</div></div>
+      <div class="vitem"><div class="vt">Publishing Distorted Proceedings</div><div class="vs">Misrepresenting debates or votes</div></div>
+      <div class="vitem"><div class="vt">Misbehaviour Inside House</div><div class="vs">Conduct unbecoming of Parliament</div></div>
+    </div>
+    <div class="impact-chain" style="margin-top:10px;">
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.08);color:var(--red);">Violation</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(196,92,16,0.08);color:var(--amber);">Breach Motion</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--purple);background:rgba(90,26,138,0.08);color:var(--purple);">Privilege Comm.</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.08);color:var(--blue);">House Punishes</div>
+    </div>
+  </div>
+
+  <div class="pc crimson">
+    <div class="pc-label">Punishment Powers</div>
+    <h3>🔨 How the House Can Punish</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);font-size:18px;">⚠️</div>
+        <div class="stat-sub">Admonition</div>
+        <div class="stat-label">MILD WARNING</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--red);font-size:18px;">🔒</div>
+        <div class="stat-sub">Imprisonment</div>
+        <div class="stat-label">DURING SESSION</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--purple);font-size:18px;">⛔</div>
+        <div class="stat-sub">Suspension</div>
+        <div class="stat-label">FROM HOUSE</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:10px 12px;background:rgba(26,58,138,0.05);border-radius:9px;border:1px solid rgba(26,58,138,0.15);">
+      <div style="font-size:11px;font-weight:800;color:var(--blue);margin-bottom:4px;">⚖️ Courts Cannot Override</div>
+      <div style="font-size:10px;color:var(--muted);line-height:1.5;">Parliamentary proceedings and punishments are <strong>beyond judicial review</strong> — courts cannot inquire into them (Article 122).</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: PARLIAMENTARY SOVEREIGNTY -->
+<div class="sec-label">④ Parliamentary Sovereignty — Is Indian Parliament Supreme?</div>
+
+<div class="map-card mc6">
+  <svg id="svgSov" viewBox="0 0 1360 260" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">Britain vs India</div>
+    <h3>🌐 Sovereignty — A Tale of Two Systems</h3>
+    <table class="ctable">
+      <thead>
+        <tr><th>Feature</th><th>Britain 🇬🇧</th><th>India 🇮🇳</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Constitution</td><td><span class="tag neutral">Unwritten/Flexible</span></td><td><span class="tag ok">Written & Supreme</span></td></tr>
+        <tr><td>Judicial Review</td><td><span class="tag na">No</span></td><td><span class="tag ok">Yes — SC can strike laws</span></td></tr>
+        <tr><td>Fundamental Rights</td><td><span class="tag na">No codified FRs</span></td><td><span class="tag ok">Part III — Enforceable</span></td></tr>
+        <tr><td>Federal Structure</td><td><span class="tag na">Unitary</span></td><td><span class="tag ok">Federal (quasi)</span></td></tr>
+        <tr><td>Parliament Sovereign?</td><td><span class="tag ok">YES — Absolute</span></td><td><span class="tag na">NO — Limited</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-label">Why India is NOT Fully Sovereign</div>
+    <h3>⚖️ 4 Constitutional Limits</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">📜 Written Constitution</div><div class="vs">Parliament must operate within it — cannot override it</div></div>
+      <div class="vitem"><div class="vt">🏛️ Federal Structure</div><div class="vs">Powers divided between Centre & States — neither is absolute</div></div>
+      <div class="vitem"><div class="vt">⚖️ Judicial Review</div><div class="vs">Supreme Court can strike down parliamentary legislation</div></div>
+      <div class="vitem"><div class="vt">🛡️ Fundamental Rights</div><div class="vs">Part III rights limit Parliament's legislative power</div></div>
+    </div>
+    <div style="margin-top:10px;padding:10px 12px;background:rgba(90,26,138,0.06);border-radius:9px;border:1.5px dashed rgba(90,26,138,0.25);">
+      <span style="font-size:11px;font-weight:800;color:var(--purple);">🎯 Parliament is supreme in legislative matters — but subject to the Constitution.</span>
+    </div>
+  </div>
+</div>
+
+<div class="pc teal" style="margin-bottom:20px;">
+  <div class="pc-label">Comparison Insight — High Prelims Value</div>
+  <h3>🔍 Indian Parliament Closer to U.S. Congress Model</h3>
+  <div class="g2" style="margin-bottom:0;">
+    <div style="padding:12px;border-radius:10px;background:rgba(26,58,138,0.05);border:1.5px solid rgba(26,58,138,0.15);">
+      <div style="font-size:12px;font-weight:800;color:var(--blue);margin-bottom:6px;">🇺🇸 U.S. Congress (Similar to India)</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;">
+        <span class="pill blue">Constitution is Supreme</span>
+        <span class="pill blue">Judicial Review Exists</span>
+        <span class="pill blue">Written Federal Constitution</span>
+        <span class="pill blue">Courts Can Strike Laws</span>
+      </div>
+    </div>
+    <div style="padding:12px;border-radius:10px;background:rgba(196,92,16,0.05);border:1.5px solid rgba(196,92,16,0.15);">
+      <div style="font-size:12px;font-weight:800;color:var(--amber);margin-bottom:6px;">🇬🇧 British Parliament (UNLIKE India)</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;">
+        <span class="pill amber">Parliament IS Sovereign</span>
+        <span class="pill amber">No Judicial Review</span>
+        <span class="pill amber">No Written Constitution</span>
+        <span class="pill amber">No Legal Limits</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: PRELIMS TRAPS -->
+<div class="sec-label">⑤ 🔥 High-Probability Prelims Traps</div>
+
+<div class="map-card mc1">
+  <svg id="svgTraps" viewBox="0 0 1360 190" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="pc red">
+  <div class="pc-label">Must-Know for Prelims</div>
+  <h3>🎯 Most Tested Facts — Don't Get Trapped!</h3>
+  <div class="trap-grid">
+    <div class="trap-item"><strong>Trap 1 — Article Number</strong>Art. 105 → Parliamentary Privileges. Not 106, not 104.</div>
+    <div class="trap-item"><strong>Trap 2 — AG Included, President Not</strong>AG of India gets privileges. President does NOT, despite being part of Parliament.</div>
+    <div class="trap-item"><strong>Trap 3 — Civil Cases Only</strong>Freedom from arrest applies ONLY to civil cases — NOT criminal or preventive detention.</div>
+    <div class="trap-item"><strong>Trap 4 — The 40-Day Rule</strong>40 days BEFORE + 40 days AFTER + during session = protected period for civil arrest.</div>
+    <div class="trap-item"><strong>Trap 5 — Courts & Proceedings</strong>Courts CANNOT inquire into parliamentary proceedings. Article 122 protects them.</div>
+    <div class="trap-item"><strong>Trap 6 — Sovereignty Myth</strong>Indian Parliament is NOT sovereign like British Parliament. Constitution is supreme.</div>
+    <div class="trap-item"><strong>Trap 7 — Limits on Sovereignty</strong>Judicial Review + Fundamental Rights + Written Constitution + Federalism = 4 limits.</div>
+    <div class="trap-item"><strong>Trap 8 — No Comprehensive Code</strong>No single law codifies all privileges yet — still based on multiple sources.</div>
+  </div>
+</div>
+
+<!-- SECTION 6: FULL CONNECTED FLOW -->
+<div class="sec-label">⑥ Full Connected Flow — The Complete Story</div>
+
+<div class="map-card mc4">
+  <svg id="svgFull" viewBox="0 0 1360 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🏛️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">Privileges exist to protect Parliament's independence. They're given to Houses, Committees, Members, and the AG — covering speech immunity and arrest immunity. If violated, the House punishes. <strong style="color:#f5d78a;">But Parliament itself is limited by the Constitution — therefore Indian Parliament ≠ British sovereign Parliament.</strong></div>
+    <div class="keystone-pills">
+      <span class="kpill">📜 Art. 105</span>
+      <span class="kpill">🛡️ Immunity</span>
+      <span class="kpill">⚖️ Judicial Review</span>
+      <span class="kpill">🏛️ Not Sovereign</span>
+      <span class="kpill">🔥 Prelims Trap Zone</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const p=se('path',{d:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':w||2,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.7'});
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.1)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.2)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7.5)-(sub?5:0)-(emoji?10:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'15',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=18;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.4)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+// MASTER FLOW
+(function(){
+  const svg=document.getElementById('svgFlow');
+  const bg=se('rect',{x:0,y:0,width:1360,height:130,fill:'rgba(250,245,238,0.4)'});svg.appendChild(bg);
+  const steps=[
+    {x:85,  label:['Privileges','Exist'], sub:'To protect independence', fill:'#8a0a0a', emoji:'🛡️'},
+    {x:255, label:['Given to','Houses+AG'], sub:'Not to President', fill:'#b87c10', emoji:'🏛️'},
+    {x:430, label:['Speech','Immunity'], sub:'Art. 105 — Absolute', fill:'#1a3a8a', emoji:'🗣️'},
+    {x:600, label:['Arrest','Immunity'], sub:'Civil only · 40-day rule', fill:'#5a1a8a', emoji:'⛓️'},
+    {x:770, label:['If Violated','→ Breach'], sub:'House Punishes', fill:'#b01a1a', emoji:'🚨'},
+    {x:950, label:['Parliament','Limited'], sub:'By Constitution', fill:'#0a6070', emoji:'⚖️'},
+    {x:1120,label:['Judicial','Review'], sub:'Courts can strike laws', fill:'#1a6a3a', emoji:'⚖️'},
+    {x:1280,label:['Indian ≠','British Sov.'], sub:'Constitution is Supreme', fill:'#1a5878', emoji:'🌐'},
+  ];
+  steps.forEach((s,i)=>{if(i<steps.length-1) edge(svg,s.x+72,65,steps[i+1].x-72,65,'#b87c10',false,1.8);});
+  steps.forEach(s=>node(svg,s.x,65,135,70,s.fill,s.label,s.sub,s.emoji));
+  const t=se('text',{x:680,y:16,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'3','fill':'rgba(120,100,60,0.4)'});
+  t.textContent='MASTER FLOW: PRIVILEGES → TYPES → BREACH → SOVEREIGNTY';svg.appendChild(t);
+})();
+
+// WHO GETS THEM
+(function(){
+  const svg=document.getElementById('svgWho');
+  svg.setAttribute('viewBox','0 0 1360 230');
+  node(svg,680,100,230,62,'#1a1208',['Parliamentary Privileges','Article 105'],'Special Rights & Immunities','🏛️');
+
+  const items=[
+    {x:150, y:55,  fill:'#b87c10', label:['Lok Sabha'],         sub:'Lower House',            emoji:'🏛️'},
+    {x:150, y:130, fill:'#1a3a8a', label:['Rajya Sabha'],        sub:'Upper House',            emoji:'🏛️'},
+    {x:150, y:205, fill:'#5a1a8a', label:['Committees'],         sub:'Parliamentary Comms.',   emoji:'📋'},
+    {x:450, y:55,  fill:'#0a6070', label:['MPs — Members'],      sub:'Individual privileges',  emoji:'👤'},
+    {x:450, y:180, fill:'#1a6a3a', label:['Attorney General'],   sub:'Can participate in House',emoji:'⚖️'},
+    {x:980, y:55,  fill:'#8a0a0a', label:['President'],          sub:'NOT included ⚠️',        emoji:'❌'},
+    {x:980, y:135, fill:'#1a3a8a', label:['Speech Freedom'],     sub:'Art. 105(1) — Absolute', emoji:'🗣️'},
+    {x:980, y:205, fill:'#5a1a8a', label:['Arrest Immunity'],    sub:'Civil cases only',       emoji:'🛡️'},
+    {x:1230,y:90,  fill:'#c45c10', label:['40-Day Rule'],        sub:'Before+After+During',    emoji:'📅'},
+    {x:1230,y:180, fill:'#b01a1a', label:['No Comprehensive','Law Yet'], sub:'Multiple sources',emoji:'📜'},
+  ];
+  items.forEach(n=>{
+    const fx=n.x<680?590:770;
+    const toX=n.x+(n.x<680?75:-75);
+    edge(svg,fx,100,toX,n.y,'#b87c1044',true,1.5);
+    node(svg,n.x,n.y,n.label.length>1?165:170,46,n.fill,n.label,n.sub,n.emoji);
+  });
+  const warn=se('text',{x:680,y:218,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace',fill:'rgba(176,26,26,0.6)','letter-spacing':'1.5'});
+  warn.textContent='⚠️ ATTORNEY GENERAL INCLUDED · PRESIDENT EXCLUDED — HIGH PROBABILITY PRELIMS TRAP';
+  svg.appendChild(warn);
+})();
+
+// TYPES OF PRIVILEGES — Balanced tree
+(function(){
+  const svg=document.getElementById('svgTypes');
+  svg.setAttribute('viewBox','0 0 1360 310');
+  const W=1360, half=W/2;
+
+  node(svg,half,38,260,54,'#1a1208',['Types of Parliamentary Privileges'],'Collective (House) vs Individual (Members)','📋');
+
+  // Left root: Collective
+  node(svg,320,110,200,50,'#c45c10',['Collective Privileges'],'Of the House as a Whole','🏛️');
+  edge(svg,550,38,420,86,'#c45c1066',false,1.8);
+
+  const collective=[
+    {x:90,  y:190, fill:'#c45c10', label:['Publish Reports'], sub:'Debates & proceedings'},
+    {x:270, y:190, fill:'#8a4010', label:['Secret Sittings'],  sub:'Exclude strangers'},
+    {x:450, y:190, fill:'#7a4020', label:['Regulate Procedure'],sub:'Internal rules'},
+    {x:90,  y:270, fill:'#8a1010', label:['Punish Breach'],   sub:'Members & outsiders'},
+    {x:270, y:270, fill:'#5a3010', label:['Witness Attendance'],sub:'Compel appearance'},
+    {x:450, y:270, fill:'#4a4020', label:['Arrest Notification'],sub:'Immediate info req.'},
+  ];
+  collective.forEach(n=>{
+    edge(svg,320,138,n.x,n.y-25,'#c45c1044',true,1.4);
+    node(svg,n.x,n.y,165,44,n.fill,[n.label[0]],n.sub,'');
+  });
+
+  // Right root: Individual
+  node(svg,1040,110,200,50,'#5a1a8a',['Individual Privileges'],'Of Each Member','👤');
+  edge(svg,810,38,940,86,'#5a1a8a66',false,1.8);
+
+  const individual=[
+    {x:800,  y:190, fill:'#5a1a8a', label:['Freedom of Speech'], sub:'Art.105(1) — Absolute'},
+    {x:990,  y:190, fill:'#1a3a8a', label:['Freedom from Arrest'],sub:'Civil only · 40-day rule'},
+    {x:1200, y:190, fill:'#0a6070', label:['Jury Exemption'],     sub:'Refuse witness duty'},
+    {x:800,  y:270, fill:'#8a0a0a', label:['Court Cannot Act'],   sub:'On speech/vote in House'},
+    {x:990,  y:270, fill:'#3a0a6a', label:['No Criminal Cover'],  sub:'Arrest OK — crime cases'},
+    {x:1200, y:270, fill:'#1a5a3a', label:['Premises Protected'], sub:'No arrest without Speaker'},
+  ];
+  individual.forEach(n=>{
+    edge(svg,1040,138,n.x,n.y-25,'#5a1a8a44',true,1.4);
+    node(svg,n.x,n.y,175,44,n.fill,[n.label[0]],n.sub,'');
+  });
+
+  // divider
+  svg.appendChild(se('line',{x1:680,y1:80,x2:680,y2:298,stroke:'rgba(200,180,140,0.2)','stroke-width':'1.5','stroke-dasharray':'6 4'}));
+  const lt=se('text',{x:320,y:303,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(196,92,16,0.45)','letter-spacing':'2'});lt.textContent='COLLECTIVE — HOUSE';svg.appendChild(lt);
+  const rt=se('text',{x:1040,y:303,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(90,26,138,0.45)','letter-spacing':'2'});rt.textContent='INDIVIDUAL — MEMBER';svg.appendChild(rt);
+})();
+
+// BREACH FLOW
+(function(){
+  const svg=document.getElementById('svgBreach');
+  svg.setAttribute('viewBox','0 0 1360 180');
+
+  node(svg,680,90,220,56,'#b01a1a',['Breach of Privilege'],'Disrespect · Obstruction · Attack','🚨');
+
+  const triggers=[
+    {x:120, y:55,  fill:'#8a0a0a', label:['Disrespect'], sub:'Contempt of Parliament'},
+    {x:290, y:50,  fill:'#b01a1a', label:['Obstruction'], sub:'Of member\'s duties'},
+    {x:460, y:60,  fill:'#8a3a10', label:['Distort Proceedings'],sub:'False publication'},
+  ];
+  const punishments=[
+    {x:900, y:55,  fill:'#5a1a8a', label:['Admonition'],   sub:'Mild warning'},
+    {x:1070,y:50,  fill:'#1a3a8a', label:['Suspension'],   sub:'From the House'},
+    {x:1240,y:60,  fill:'#8a0a0a', label:['Imprisonment'],  sub:'During session'},
+  ];
+
+  triggers.forEach(n=>{
+    edge(svg,590,90,n.x+80,n.y,'#b01a1a44',true,1.4);
+    node(svg,n.x,n.y,165,44,n.fill,[n.label[0]],n.sub,'');
+  });
+  punishments.forEach(n=>{
+    edge(svg,770,90,n.x-80,n.y,'#5a1a8a44',true,1.4);
+    node(svg,n.x,n.y,165,44,n.fill,[n.label[0]],n.sub,'');
+  });
+
+  const la=se('text',{x:380,y:170,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(176,26,26,0.45)','letter-spacing':'2'});la.textContent='TRIGGERS';svg.appendChild(la);
+  const ra=se('text',{x:1070,y:170,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(90,26,138,0.45)','letter-spacing':'2'});ra.textContent='PUNISHMENTS';svg.appendChild(ra);
+  svg.appendChild(se('line',{x1:680,y1:20,x2:680,y2:165,stroke:'rgba(200,180,140,0.2)','stroke-width':'1.5','stroke-dasharray':'5 4'}));
+})();
+
+// SOVEREIGNTY COMPARISON
+(function(){
+  const svg=document.getElementById('svgSov');
+  svg.setAttribute('viewBox','0 0 1360 260');
+  const half=680;
+
+  // Britain side
+  node(svg,230,46,260,54,'#c45c10',['British Parliament'],'Fully Sovereign Model','🇬🇧');
+  const brit=[
+    {x:80,  y:135, fill:'#c45c10', label:['No Written'],      sub:'Constitution'},
+    {x:220, y:135, fill:'#b87c10', label:['No Judicial'],      sub:'Review of laws'},
+    {x:380, y:135, fill:'#8a5010', label:['Parliament'],       sub:'Absolutely Supreme'},
+    {x:80,  y:215, fill:'#7a4010', label:['Unitary State'],    sub:'No federal division'},
+    {x:220, y:215, fill:'#6a3a10', label:['Courts Cannot'],    sub:'Question Parliament'},
+    {x:380, y:215, fill:'#c45c10', label:['Laws = Valid'],     sub:'Always'},
+  ];
+  brit.forEach(n=>{edge(svg,230,76,n.x,n.y-25,'#c45c1055',true,1.3);node(svg,n.x,n.y,140,44,n.fill,[n.label[0]],n.sub,'');});
+
+  // India side
+  node(svg,1130,46,260,54,'#1a3a8a',['Indian Parliament'],'NOT Fully Sovereign','🇮🇳');
+  const india=[
+    {x:880, y:135, fill:'#1a3a8a', label:['Written Constitution'],sub:'Art.13 — Laws void'},
+    {x:1030,y:135, fill:'#5a1a8a', label:['Judicial Review'],sub:'SC can strike laws'},
+    {x:1200,y:135, fill:'#0a6070', label:['Fundamental Rights'],sub:'Part III limits'},
+    {x:880, y:215, fill:'#8a0a0a', label:['Federal Structure'],sub:'Powers divided'},
+    {x:1030,y:215, fill:'#1a6a3a', label:['Constitution Supreme'],sub:'Not Parliament'},
+    {x:1200,y:215, fill:'#3a0a6a', label:['Closer to US',],sub:'Congress model'},
+  ];
+  india.forEach(n=>{edge(svg,1130,76,n.x,n.y-25,'#1a3a8a55',true,1.3);node(svg,n.x,n.y,148,44,n.fill,[n.label[0]],n.sub,'');});
+
+  // centre divider
+  svg.appendChild(se('line',{x1:half,y1:10,x2:half,y2:250,stroke:'rgba(200,180,140,0.3)','stroke-width':'1.5','stroke-dasharray':'6 4'}));
+  const vs=se('text',{x:half,y:137,'text-anchor':'middle','font-size':'20','font-weight':'800','font-family':'Playfair Display,serif',fill:'rgba(100,80,40,0.4)'});vs.textContent='VS';svg.appendChild(vs);
+
+  const lt=se('text',{x:230,y:252,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(196,92,16,0.45)','letter-spacing':'2'});lt.textContent='FULLY SOVEREIGN';svg.appendChild(lt);
+  const rt=se('text',{x:1130,y:252,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(26,58,138,0.45)','letter-spacing':'2'});rt.textContent='NOT SOVEREIGN — CONSTITUTION SUPREME';svg.appendChild(rt);
+})();
+
+// PRELIMS TRAPS RADIAL
+(function(){
+  const svg=document.getElementById('svgTraps');
+  svg.setAttribute('viewBox','0 0 1360 190');
+  node(svg,680,95,230,60,'#b01a1a',['🔥 Prelims Traps'],'High-Probability MCQ Zone','⚠️');
+
+  const traps=[
+    {x:90,  y:50,  fill:'#8a0a0a', label:['Article 105'],      sub:'Not 104/106'},
+    {x:260, y:40,  fill:'#b01a1a', label:['AG Included'],       sub:'President NOT included'},
+    {x:440, y:50,  fill:'#8a3a10', label:['Civil Cases Only'],  sub:'Arrest immunity'},
+    {x:620, y:35,  fill:'#c45c10', label:['40-Day Rule'],       sub:'Before+After session'},
+    {x:90,  y:150, fill:'#5a0a5a', label:['Courts Excluded'],   sub:'Art.122 — proceedings'},
+    {x:260, y:155, fill:'#3a0a6a', label:['No Sovereign'],      sub:'India ≠ Britain'},
+    {x:440, y:150, fill:'#1a3a8a', label:['4 Limits'],          sub:'Written+Federal+JR+FR'},
+    {x:620, y:155, fill:'#0a6050', label:['No Code Yet'],       sub:'Multiple sources only'},
+    {x:900, y:50,  fill:'#7a1a1a', label:['Speech Absolute'],   sub:'Inside House only'},
+    {x:1070,y:40,  fill:'#1a5878', label:['US Congress Model'], sub:'Not British model'},
+    {x:1240,y:50,  fill:'#3a6a1a', label:['House Punishes'],    sub:'Admonition/Imprison'},
+    {x:1070,y:150, fill:'#4a1a6a', label:['Preventive Det.'],   sub:'No arrest immunity'},
+    {x:1240,y:150, fill:'#5a3a10', label:['No Jury Duty'],      sub:'During session exempt'},
+  ];
+  traps.forEach(n=>{
+    const fromX=n.x<680?596:764;
+    const fromY=n.y<95?88:103;
+    edge(svg,fromX,fromY,n.x+(n.x<680?73:-73),n.y,'#b01a1a44',true,1.3);
+    node(svg,n.x,n.y,155,44,n.fill,[n.label[0]],n.sub,'');
+  });
+  svg.appendChild(se('line',{x1:680,y1:10,x2:680,y2:180,stroke:'rgba(200,180,140,0.15)','stroke-width':'1','stroke-dasharray':'4 3'}));
+})();
+
+// FULL CONNECTED FLOW
+(function(){
+  const svg=document.getElementById('svgFull');
+  svg.setAttribute('viewBox','0 0 1360 200');
+  const bg=se('rect',{x:0,y:0,width:1360,height:200,fill:'rgba(250,245,238,0.3)'});svg.appendChild(bg);
+
+  const steps=[
+    {x:100, y:100, fill:'#8a0a0a', label:['Privileges','Exist'],      sub:'Purpose: Independence',  emoji:'🛡️', w:150, h:72},
+    {x:290, y:65,  fill:'#b87c10', label:['Houses &','Committees'],   sub:'Collective body',        emoji:'🏛️', w:140, h:62},
+    {x:290, y:148, fill:'#c45c10', label:['Members &','AG of India'], sub:'Individual rights',      emoji:'👤', w:140, h:62},
+    {x:490, y:100, fill:'#1a3a8a', label:['Speech','Immunity'],       sub:'Art.105 — Absolute',     emoji:'🗣️', w:140, h:72},
+    {x:660, y:100, fill:'#5a1a8a', label:['Arrest','Immunity'],       sub:'Civil · 40-day rule',    emoji:'⛓️', w:140, h:72},
+    {x:840, y:100, fill:'#b01a1a', label:['If Violated','→ Breach'],  sub:'House punishes',         emoji:'🚨', w:150, h:72},
+    {x:1030,y:100, fill:'#0a6070', label:['Parliament','Limited'],    sub:'By Constitution',        emoji:'⚖️', w:150, h:72},
+    {x:1210,y:100, fill:'#1a5878', label:['Not Sovereign','Like UK'],  sub:'India≠British model',   emoji:'🌐', w:150, h:72},
+  ];
+
+  // Main horizontal edges
+  edge(svg,175,100,220,65,'#b87c1066',false,1.6);
+  edge(svg,175,100,220,148,'#c45c1066',false,1.6);
+  edge(svg,360,65,420,100,'#b87c1066',false,1.6);
+  edge(svg,360,148,420,100,'#c45c1066',false,1.6);
+  for(let i=3;i<steps.length-1;i++){
+    edge(svg,steps[i].x+steps[i].w/2,100,steps[i+1].x-steps[i+1].w/2,100,'#b87c10',false,1.6);
+  }
+
+  steps.forEach(s=>node(svg,s.x,s.y,s.w,s.h,s.fill,s.label,s.sub,s.emoji));
+
+  const t=se('text',{x:680,y:185,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'2.5','fill':'rgba(120,100,60,0.4)'});
+  t.textContent='COMPLETE STORY: PRIVILEGES EXIST → WHO GETS THEM → TYPES → BREACH → SOVEREIGNTY LIMITS';
+  svg.appendChild(t);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emergency Provisions — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#12100e;--paper:#f8f5ef;--gold:#b87c10;--gold-lt:#f5d78a;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf5;--card2:#f2ede0;--sky:#1a5878;--orange:#c45010;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 900px 500px at 15% 10%,rgba(184,124,16,0.06) 0%,transparent 60%),
+  radial-gradient(ellipse 700px 700px at 85% 90%,rgba(26,58,138,0.05) 0%,transparent 60%);
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(24px,4.5vw,46px);line-height:1.1;}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--red),var(--amber),var(--blue));margin:14px auto 0;border-radius:4px;}
+
+/* SECTION LABEL */
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.dark::before{background:var(--ink);}
+.pc.orange::before{background:var(--orange);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* MAP CARDS */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:28px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--sky),var(--green));}
+.map-card svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,96,112,0.12);color:var(--teal);}
+.pill.red{background:rgba(176,26,26,0.12);color:var(--red);}
+.pill.sky{background:rgba(26,88,120,0.12);color:var(--sky);}
+.pill.orange{background:rgba(196,80,16,0.12);color:var(--orange);}
+
+/* STAT BOX */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* CHIPS */
+.ps-chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.prob{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.ps-chip.sol{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.ps-chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+.ps-chip.blue{background:rgba(26,58,138,0.07);border-color:rgba(26,58,138,0.2);color:var(--blue);}
+
+/* FEAT GRID */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* IMPACT CHAIN */
+.impact-chain{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.ic-node{padding:6px 11px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:16px;color:var(--muted);}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;background:rgba(184,124,16,0.06);border:1.5px solid rgba(184,124,16,0.2);margin:8px 0;}
+.callout-title{font-size:11px;font-weight:800;color:var(--amber);margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* PHASE ROW */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0 20px;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;}
+.phase-title{font-size:12px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'DM Mono',monospace;margin-bottom:8px;}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;letter-spacing:0.4px;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:9px 12px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;}
+.tag.ok{background:#d4edda;color:#155724;}
+.tag.na{background:#f8d7da;color:#721c24;}
+.tag.ne{background:#fff3cd;color:#856404;}
+
+/* UNIQUE FACTS */
+.uf-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px;}
+@media(max-width:640px){.uf-grid{grid-template-columns:1fr;}}
+.uf-box{padding:12px;border-radius:10px;border:1.5px solid;text-align:center;}
+.uf-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;}
+.uf-text{font-size:10px;font-weight:700;margin-top:4px;}
+.uf-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:2px;}
+
+.div-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:10px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Polity · Emergency Provisions · UPSC Prelims</div>
+  <h1>Emergency Provisions — <em>Complete Mind Map</em></h1>
+  <div class="header-sub">Art. 352 (National) · Art. 356 (President's Rule) · Art. 360 (Financial) · Comparison</div>
+</div>
+
+<!-- ════ SECTION 0: MASTER FLOW ════ -->
+<div class="sec-label">Master Overview — Three Emergency Articles</div>
+
+<div class="map-card mc1">
+  <svg id="svgMaster" viewBox="0 0 1340 140" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- ════ SECTION 1: FINANCIAL EMERGENCY ════ -->
+<div class="sec-label">① Financial Emergency — Article 360</div>
+
+<div class="map-card mc3">
+  <svg id="svgFin" viewBox="0 0 1340 320" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- Financial Emergency Detail Cards -->
+<div class="g3">
+  <div class="pc gold">
+    <div class="pc-label">Grounds — Art. 360</div>
+    <h3>💰 When Can It Be Declared?</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Financial Stability of India</div><div class="vs">Threatened</div></div>
+      <div class="vitem"><div class="vt">Credit of India</div><div class="vs">Threatened</div></div>
+      <div class="vitem"><div class="vt">Any Part of India</div><div class="vs">Facing economic instability</div></div>
+    </div>
+    <div class="callout" style="margin-top:10px;">
+      <div class="callout-title">⚡ Key Contrast</div>
+      <div class="callout-body">Unlike 352 (war) or 356 (state breakdown), Art. 360 is purely about economic instability</div>
+    </div>
+  </div>
+
+  <div class="pc amber">
+    <div class="pc-label">Parliamentary Process</div>
+    <h3>🏛️ Approval Mechanism</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">2</div>
+        <div class="stat-sub">Months</div>
+        <div class="stat-label">APPROVAL TIME</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">Simple</div>
+        <div class="stat-sub">Majority</div>
+        <div class="stat-label">BOTH HOUSES</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">Lok Sabha Dissolved?</div><div class="vs">Survives 30 days after reconstitution if RS approves</div></div>
+    </div>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-label">Duration & Revocation</div>
+    <h3>⏳ How Long Does It Last?</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--purple);">∞</div>
+        <div class="stat-sub">Indefinite</div>
+        <div class="stat-label">DURATION</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--red);">0</div>
+        <div class="stat-sub">Times Used</div>
+        <div class="stat-label">HISTORICAL FACT</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">No 6-month renewal needed</div><div class="vs">Unlike Art. 352 and 356</div></div>
+      <div class="vitem"><div class="vt">Ends only when President revokes</div><div class="vs">No automatic expiry</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="g2">
+  <div class="pc red">
+    <div class="pc-label">Effects of Financial Emergency</div>
+    <h3>⚡ Powers of Centre</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">📋</div><div class="ft">Financial Propriety</div><div class="fs">Directs states to follow standards</div></div>
+      <div class="feat"><div class="fi">✂️</div><div class="ft">Salary Cuts — States</div><div class="fs">State employees reduced</div></div>
+      <div class="feat"><div class="fi">✂️</div><div class="ft">Salary Cuts — Union</div><div class="fs">Central employees reduced</div></div>
+      <div class="feat"><div class="fi">⚖️</div><div class="ft">Judges' Salaries</div><div class="fs">SC + HC judges can be cut</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;background:rgba(176,26,26,0.06);border-radius:8px;border:1px dashed var(--red);">
+      <span style="font-size:10px;font-weight:800;color:var(--red);">⚠️ PRELIMS TRAP: Only Art. 360 allows salary cuts of Supreme Court judges</span>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="ps-chip prob">💰 Money Bills reserved for President</span>
+    </div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">Judicial Review History</div>
+    <h3>⚖️ Constitutional Amendments</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:var(--red);">38th</span>
+          <div><div class="vt">Made it Immune</div><div class="vs">No judicial review allowed</div></div>
+        </div>
+      </div>
+      <div class="vitem">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:var(--green);">44th</span>
+          <div><div class="vt">Restored Judicial Review</div><div class="vs">Courts can examine proclamation</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="callout">
+      <div class="callout-title">🏆 Historical Note (Prelims Gold)</div>
+      <div class="callout-body">Never declared in India — not even during the 1991 economic crisis. Modelled after the US National Recovery Act (1933).</div>
+    </div>
+    <div class="impact-chain" style="margin-top:8px;">
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.07);color:var(--red);font-size:9px;">38th Amend.</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,106,16,0.07);color:var(--amber);font-size:9px;">No Review</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.07);color:var(--green);font-size:9px;">44th Amend.</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.07);color:var(--blue);font-size:9px;">Review Restored</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SECTION 2: THREE-WAY COMPARISON ════ -->
+<div class="sec-label">② Connect All Three Emergencies — Comparative Map</div>
+
+<div class="map-card mc2">
+  <svg id="svgCompare" viewBox="0 0 1340 560" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- Three Article Cards Side by Side -->
+<div class="g3">
+  <div class="pc red">
+    <div class="pc-label">Article 352</div>
+    <h3>⚔️ National Emergency</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--red);">Special</div>
+        <div class="stat-sub">Majority</div>
+        <div class="stat-label">REQUIRED</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">1</div>
+        <div class="stat-sub">Month</div>
+        <div class="stat-label">APPROVAL</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">Ground</div><div class="vs">War · External Aggression · Armed Rebellion</div></div>
+      <div class="vitem"><div class="vt">Duration</div><div class="vs">6 months at a time · No max limit</div></div>
+      <div class="vitem"><div class="vt">FR Impact</div><div class="vs">Art. 19 suspended · Art. 359 applies</div></div>
+      <div class="vitem"><div class="vt">Assembly</div><div class="vs">State assemblies remain; Lok Sabha extended</div></div>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="ps-chip prob">⚠️ Affects Fundamental Rights</span>
+      <span class="ps-chip blue">🔑 Only one with Special Majority</span>
+    </div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">Article 356</div>
+    <h3>🏛️ President's Rule</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">Simple</div>
+        <div class="stat-sub">Majority</div>
+        <div class="stat-label">REQUIRED</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">2</div>
+        <div class="stat-sub">Months</div>
+        <div class="stat-label">APPROVAL</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">Ground</div><div class="vs">State constitutional breakdown</div></div>
+      <div class="vitem"><div class="vt">Duration</div><div class="vs">6 months at a time · Max 3 years</div></div>
+      <div class="vitem"><div class="vt">FR Impact</div><div class="vs">No direct FR suspension</div></div>
+      <div class="vitem"><div class="vt">Assembly</div><div class="vs">State Assembly dissolved/suspended</div></div>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="ps-chip blue">🏛 Only one that dissolves State Assembly</span>
+      <span class="ps-chip sol">3 Year Max — Unique to 356</span>
+    </div>
+  </div>
+
+  <div class="pc gold">
+    <div class="pc-label">Article 360</div>
+    <h3>💰 Financial Emergency</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--gold);">Simple</div>
+        <div class="stat-sub">Majority</div>
+        <div class="stat-label">REQUIRED</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">2</div>
+        <div class="stat-sub">Months</div>
+        <div class="stat-label">APPROVAL</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">Ground</div><div class="vs">Financial stability / credit threatened</div></div>
+      <div class="vitem"><div class="vt">Duration</div><div class="vs">Indefinite · No renewal needed</div></div>
+      <div class="vitem"><div class="vt">FR Impact</div><div class="vs">No direct FR suspension</div></div>
+      <div class="vitem"><div class="vt">Salary Cuts</div><div class="vs">Even SC + HC judges affected</div></div>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="ps-chip neu">💰 Only one allowing Judge salary cuts</span>
+      <span class="ps-chip prob">Never declared in history</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SECTION 3: COMPARISON TABLE ════ -->
+<div class="sec-label">③ Side-by-Side Comparison Table</div>
+
+<div class="pc dark" style="background:rgba(18,16,14,0.02);border-color:rgba(18,16,14,0.12);margin-bottom:20px;padding:0;overflow:hidden;">
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th style="width:16%;">Feature</th>
+        <th style="width:28%;background:#7a1a1a;">⚔️ National (352)</th>
+        <th style="width:28%;background:#1a2a6a;">🏛️ President's Rule (356)</th>
+        <th style="width:28%;background:#7a5a10;">💰 Financial (360)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ground</td>
+        <td>War / External Aggression / Armed Rebellion</td>
+        <td>State constitutional breakdown</td>
+        <td>Financial instability / credit threat</td>
+      </tr>
+      <tr>
+        <td>Majority</td>
+        <td><strong style="color:var(--red);">Special Majority</strong> ⭐</td>
+        <td>Simple Majority</td>
+        <td>Simple Majority</td>
+      </tr>
+      <tr>
+        <td>Approval Time</td>
+        <td>1 Month</td>
+        <td>2 Months</td>
+        <td>2 Months</td>
+      </tr>
+      <tr>
+        <td>Duration</td>
+        <td>6 months at a time</td>
+        <td>6 months at a time</td>
+        <td><strong style="color:var(--purple);">Indefinite</strong> ⭐</td>
+      </tr>
+      <tr>
+        <td>Max Period</td>
+        <td>No limit</td>
+        <td><strong style="color:var(--blue);">3 Years</strong> ⭐</td>
+        <td>No limit</td>
+      </tr>
+      <tr>
+        <td>Judicial Review</td>
+        <td><span class="tag ok">Yes</span> (44th Amend.)</td>
+        <td><span class="tag ok">Yes</span> (Bommai Case)</td>
+        <td><span class="tag ok">Yes</span> (44th Amend.)</td>
+      </tr>
+      <tr>
+        <td>FR Impact</td>
+        <td><strong style="color:var(--red);">Art. 19 + 359</strong> ⭐</td>
+        <td>No direct FR suspension</td>
+        <td>No direct FR suspension</td>
+      </tr>
+      <tr>
+        <td>State Assembly</td>
+        <td>Continues</td>
+        <td><strong style="color:var(--blue);">Dissolved / Suspended</strong> ⭐</td>
+        <td>Continues</td>
+      </tr>
+      <tr>
+        <td>Salary Cuts</td>
+        <td>No direct provision</td>
+        <td>No direct provision</td>
+        <td><strong style="color:var(--gold);">Yes — even judges</strong> ⭐</td>
+      </tr>
+      <tr>
+        <td>Historical Use</td>
+        <td>1962, 1971, 1975</td>
+        <td>100+ times</td>
+        <td><strong style="color:var(--red);">Never declared</strong> ⭐</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════ SECTION 4: ULTRA-IMPORTANT DIFFERENCES ════ -->
+<div class="sec-label">④ Ultra-Important Differences — UPSC Favourite Traps</div>
+
+<div class="map-card mc4">
+  <svg id="svgUF" viewBox="0 0 1340 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="uf-grid">
+  <div class="uf-box" style="border-color:rgba(176,26,26,0.3);background:rgba(176,26,26,0.04);">
+    <div class="uf-num" style="color:var(--red);">① FR</div>
+    <div class="uf-text">Only National Emergency (352) affects Fundamental Rights</div>
+    <div class="uf-sub">Art.19 suspended + Art.359 applies</div>
+  </div>
+  <div class="uf-box" style="border-color:rgba(26,58,138,0.3);background:rgba(26,58,138,0.04);">
+    <div class="uf-num" style="color:var(--blue);">② SA</div>
+    <div class="uf-text">Only President's Rule (356) dissolves State Assembly</div>
+    <div class="uf-sub">State governance taken over by Centre</div>
+  </div>
+  <div class="uf-box" style="border-color:rgba(184,124,16,0.3);background:rgba(184,124,16,0.04);">
+    <div class="uf-num" style="color:var(--gold);">③ 💰</div>
+    <div class="uf-text">Only Financial Emergency (360) allows salary cuts of judges</div>
+    <div class="uf-sub">SC + HC judge salaries can be reduced</div>
+  </div>
+  <div class="uf-box" style="border-color:rgba(176,26,26,0.3);background:rgba(176,26,26,0.04);">
+    <div class="uf-num" style="color:var(--red);">④ SM</div>
+    <div class="uf-text">Special majority required only for Article 352</div>
+    <div class="uf-sub">356 and 360 need only Simple Majority</div>
+  </div>
+  <div class="uf-box" style="border-color:rgba(26,58,138,0.3);background:rgba(26,58,138,0.04);">
+    <div class="uf-num" style="color:var(--blue);">⑤ 3Y</div>
+    <div class="uf-text">Max 3 years limit exists only for Article 356</div>
+    <div class="uf-sub">352 and 360 have no maximum limit</div>
+  </div>
+  <div class="uf-box" style="border-color:rgba(184,124,16,0.3);background:rgba(184,124,16,0.04);">
+    <div class="uf-num" style="color:var(--gold);">⑥ ∅</div>
+    <div class="uf-text">Financial Emergency has NEVER been used in India</div>
+    <div class="uf-sub">Not even during 1991 economic crisis</div>
+  </div>
+</div>
+
+<!-- ════ SECTION 5: MENTAL MAP ════ -->
+<div class="sec-label">⑤ Final Mental Map — Quick Recall</div>
+
+<div class="map-card mc5">
+  <svg id="svgMental" viewBox="0 0 1340 250" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="phase-row">
+  <div class="phase-box" style="border-color:var(--red);background:rgba(176,26,26,0.04);">
+    <div class="phase-num" style="color:var(--red);">⚔️ 352</div>
+    <div class="phase-title">Security Crisis</div>
+    <div class="phase-sub" style="color:var(--muted);">National Emergency</div>
+    <div style="font-size:10px;margin-top:8px;line-height:1.8;color:var(--ink);">Centre becomes dominant<br>FR impacted (Art.19+359)<br>Special majority needed</div>
+    <span class="pill red" style="margin-top:8px;">War / Aggression / Rebellion</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--blue);background:rgba(26,58,138,0.04);">
+    <div class="phase-num" style="color:var(--blue);">🏛️ 356</div>
+    <div class="phase-title">Political Crisis</div>
+    <div class="phase-sub" style="color:var(--muted);">President's Rule</div>
+    <div style="font-size:10px;margin-top:8px;line-height:1.8;color:var(--ink);">President runs state<br>Assembly dissolved/suspended<br>Max 3-year limit</div>
+    <span class="pill blue" style="margin-top:8px;">State Breakdown</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--gold);background:rgba(184,124,16,0.04);">
+    <div class="phase-num" style="color:var(--gold);">💰 360</div>
+    <div class="phase-title">Economic Crisis</div>
+    <div class="phase-sub" style="color:var(--muted);">Financial Emergency</div>
+    <div style="font-size:10px;margin-top:8px;line-height:1.8;color:var(--ink);">Centre controls money discipline<br>Judges' salaries can be cut<br>Never used in India</div>
+    <span class="pill gold" style="margin-top:8px;">Financial Instability</span>
+  </div>
+</div>
+
+<!-- COMMON THREADS -->
+<div class="pc dark" style="background:rgba(18,16,14,0.03);border-color:rgba(18,16,14,0.15);margin-bottom:20px;">
+  <h3 style="font-family:'Playfair Display',serif;font-size:15px;margin-bottom:10px;">🔗 All Three Share These Common Threads</h3>
+  <div class="g3" style="margin-bottom:0;">
+    <div style="padding:12px;border-radius:10px;background:rgba(26,58,138,0.06);border:1.5px solid rgba(26,58,138,0.2);text-align:center;">
+      <div style="font-size:20px;margin-bottom:6px;">🏛️</div>
+      <div style="font-size:11px;font-weight:800;color:var(--blue);">Parliamentary Approval</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:4px;">All need approval from both houses of Parliament</div>
+    </div>
+    <div style="padding:12px;border-radius:10px;background:rgba(26,106,58,0.06);border:1.5px solid rgba(26,106,58,0.2);text-align:center;">
+      <div style="font-size:20px;margin-bottom:6px;">⚖️</div>
+      <div style="font-size:11px;font-weight:800;color:var(--green);">Judicial Review</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:4px;">All subject to judicial scrutiny after the 44th Amendment</div>
+    </div>
+    <div style="padding:12px;border-radius:10px;background:rgba(212,106,16,0.06);border:1.5px solid rgba(212,106,16,0.2);text-align:center;">
+      <div style="font-size:20px;margin-bottom:6px;">🔄</div>
+      <div style="font-size:11px;font-weight:800;color:var(--amber);">Presidential Revocation</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:4px;">All can be revoked by the President at any time</div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">⚡</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">Three types of emergencies — Security, Political, Financial — form India's constitutional safety net. <strong style="color:#f5d78a;">352 is most powerful (affects FRs), 356 is most used (100+ times), 360 is most unique (never used).</strong><br>Remember: Only 352 needs Special Majority. Only 356 has a 3-year cap. Only 360 cuts judges' salaries.</div>
+    <div class="keystone-pills">
+      <span class="kpill">⚔️ 352 → Security</span>
+      <span class="kpill">🏛️ 356 → Political</span>
+      <span class="kpill">💰 360 → Economic</span>
+      <span class="kpill">44th Amendment → Review Restored</span>
+      <span class="kpill">Bommai Case → 356 Safeguard</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const p=se('path',{d:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,
+    stroke:color||'#aaa','stroke-width':w||2,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.7'});
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.1)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.25)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*8)-(sub?5:0)-(emoji?10:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'15',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=18;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.35)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+// ─── MASTER OVERVIEW ───
+(function(){
+  const svg=document.getElementById('svgMaster');
+  const bg=se('rect',{x:0,y:0,width:1340,height:140,fill:'rgba(250,245,238,0.5)'});
+  svg.appendChild(bg);
+
+  const steps=[
+    {x:80, label:'Constitution of India', sub:'Emergency Provisions', fill:'#12100e', emoji:'🇮🇳'},
+    {x:270, label:'Art. 352', sub:'National Emergency', fill:'#8a1a1a', emoji:'⚔️'},
+    {x:450, label:'Security Crisis', sub:'War/Aggression/Rebellion', fill:'#b01a1a', emoji:'🛡️'},
+    {x:630, label:'Art. 356', sub:"President's Rule", fill:'#1a2a7a', emoji:'🏛️'},
+    {x:810, label:'Political Crisis', sub:'State breakdown', fill:'#1a3a8a', emoji:'⚖️'},
+    {x:990, label:'Art. 360', sub:'Financial Emergency', fill:'#7a5a10', emoji:'💰'},
+    {x:1170, label:'Economic Crisis', sub:'Financial instability', fill:'#b87c10', emoji:'📉'},
+    {x:1290, label:'All 3: Judicial Review + Parl. Approval + Presidential Revocation', sub:'44th Amendment safeguards', fill:'#1a6a3a', emoji:'🔗'},
+  ];
+
+  for(let i=0;i<steps.length-1;i++){
+    edge(svg,steps[i].x+62,70,steps[i+1].x-62,70,'#b87c10',false,2);
+  }
+  steps.forEach(s=>{
+    const lines=s.label.length>20?[s.label.substring(0,s.label.lastIndexOf(' ',20)),s.label.substring(s.label.lastIndexOf(' ',20)+1)]:[s.label];
+    node(svg,s.x,70,122,64,s.fill,lines,s.sub,s.emoji);
+  });
+
+  const t=se('text',{x:670,y:18,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'3','fill':'rgba(120,100,60,0.45)'});
+  t.textContent='MASTER OVERVIEW: THREE EMERGENCY ARTICLES UNDER THE CONSTITUTION';
+  svg.appendChild(t);
+})();
+
+// ─── FINANCIAL EMERGENCY MINDMAP ───
+(function(){
+  const svg=document.getElementById('svgFin');
+  const bg=se('rect',{x:0,y:0,width:1340,height:320,fill:'rgba(250,245,238,0.5)'});
+  svg.appendChild(bg);
+
+  // Central node
+  node(svg,670,160,220,60,'#7a5a10',['Article 360','Financial Emergency'],'Economic Crisis Provisions','💰');
+
+  const branches=[
+    {x:130,y:55, fill:'#8a6010', label:['Grounds'], sub:'Financial stability/credit', emoji:'🎯', side:'L'},
+    {x:130,y:135, fill:'#b87c10', label:['Approval'], sub:'2 months · Simple majority', emoji:'🏛️', side:'L'},
+    {x:130,y:210, fill:'#d46a10', label:['Duration'], sub:'Indefinite · No renewal', emoji:'⏳', side:'L'},
+    {x:130,y:285, fill:'#7a4010', label:['Judicial Review'], sub:'38th ❌ → 44th ✅', emoji:'⚖️', side:'L'},
+    {x:1210,y:55, fill:'#5a1a8a', label:['Cut Salaries'], sub:'State + Union + Judges', emoji:'✂️', side:'R'},
+    {x:1210,y:135, fill:'#1a3a8a', label:['Money Bills'], sub:'Reserved for President', emoji:'📋', side:'R'},
+    {x:1210,y:210, fill:'#b01a1a', label:['LS Dissolved?'], sub:'Survives 30 days if RS approves', emoji:'🔄', side:'R'},
+    {x:1210,y:285, fill:'#1a6a3a', label:['Never Used'], sub:'1991 crisis — still not invoked', emoji:'📜', side:'R'},
+  ];
+
+  branches.forEach(b=>{
+    const fromX=b.side==='L'?560:780;
+    edge(svg,fromX,160,b.side==='L'?b.x+85:b.x-85,b.y,'#b87c1055',true,1.8);
+    node(svg,b.x,b.y,162,50,b.fill,[b.label[0]],b.sub,b.emoji);
+  });
+
+  const t=se('text',{x:670,y:16,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'3','fill':'rgba(120,80,10,0.5)'});
+  t.textContent='ARTICLE 360 — FINANCIAL EMERGENCY: GROUNDS · PROCESS · EFFECTS · HISTORY';
+  svg.appendChild(t);
+})();
+
+// ─── THREE-WAY COMPARISON ───
+(function(){
+  const svg=document.getElementById('svgCompare');
+  const VH=560;
+  svg.setAttribute('viewBox',`0 0 1340 ${VH}`);
+  const bg=se('rect',{x:0,y:0,width:1340,height:VH,fill:'rgba(250,245,238,0.5)'});
+  svg.appendChild(bg);
+
+  const hdr=se('text',{x:670,y:18,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'3','fill':'rgba(120,100,60,0.45)'});
+  hdr.textContent='CONNECTING ALL THREE EMERGENCIES — KEY FEATURES COMPARISON';
+  svg.appendChild(hdr);
+
+  // Root
+  node(svg,670,58,300,50,'#12100e',['Three Emergency Provisions'],'Art. 352 · 356 · 360','⚡');
+
+  // Three columns: Art 352 | Art 356 | Art 360
+  const COLS=[
+    {ax:220,  fill:'#8a1a1a', label:'Article 352', sub:'National Emergency',  emoji:'⚔️',
+     subs:[
+       {fill:'#c01a1a', label:'Special Majority',  sub:'Only Art.352 needs this',   emoji:'⭐'},
+       {fill:'#d03030', label:'FR Affected',        sub:'Art.19 + 359 suspended',   emoji:'⚠️'},
+       {fill:'#8a1a1a', label:'No Max Limit',       sub:'Can continue indefinitely', emoji:'∞'},
+     ]},
+    {ax:670,  fill:'#1a2a7a', label:'Article 356', sub:"President's Rule",    emoji:'🏛️',
+     subs:[
+       {fill:'#1a3a8a', label:'Dissolves Assembly', sub:'Only Art.356 does this',   emoji:'🔨'},
+       {fill:'#2a4aaa', label:'Max 3 Years',         sub:'Unique cap to Art.356',    emoji:'📅'},
+       {fill:'#1a2a7a', label:'100+ Times Used',     sub:'Most used emergency',      emoji:'📊'},
+     ]},
+    {ax:1120, fill:'#7a5a10', label:'Article 360', sub:'Financial Emergency', emoji:'💰',
+     subs:[
+       {fill:'#b87c10', label:'Judges Salary Cut',   sub:'SC + HC judges affected',  emoji:'⚖️'},
+       {fill:'#d46a10', label:'Indefinite Duration', sub:'No renewal needed',        emoji:'⏳'},
+       {fill:'#7a4010', label:'Never Declared',      sub:'Not even in 1991',         emoji:'🚫'},
+     ]},
+  ];
+
+  const artY=165, subStartY=265, subGap=72, NW=200, NH=54;
+
+  COLS.forEach(col=>{
+    // edge: root → article
+    edge(svg,670,83,col.ax,artY-27,'rgba(100,80,50,0.3)',true,1.8);
+    // article node
+    node(svg,col.ax,artY,NW,NH,col.fill,[col.label],col.sub,col.emoji);
+    // sub-nodes stacked vertically
+    col.subs.forEach((s,i)=>{
+      const sy=subStartY+i*subGap;
+      edge(svg,col.ax,artY+NH/2,col.ax,sy-NH/2+4,'rgba(100,80,50,0.25)',true,1.5);
+      node(svg,col.ax,sy,NW,NH,s.fill,[s.label],s.sub,s.emoji);
+    });
+  });
+
+  // Common thread at bottom
+  const commonY=VH-30;
+  svg.appendChild(se('line',{x1:60,y1:commonY-14,x2:1280,y2:commonY-14,stroke:'rgba(26,106,58,0.3)','stroke-width':'1.5','stroke-dasharray':'8 4'}));
+  [
+    {x:230,  text:'🏛️ All need Parliamentary Approval'},
+    {x:670,  text:'⚖️ All have Judicial Review (after 44th Amend.)'},
+    {x:1110, text:'🔄 All revocable by President'},
+  ].forEach(c=>{
+    const t=se('text',{x:c.x,y:commonY+2,'text-anchor':'middle','font-size':'9.5','font-weight':'700','font-family':'Nunito,sans-serif',fill:'#1a6a3a'});
+    t.textContent=c.text; svg.appendChild(t);
+  });
+  const tl=se('text',{x:670,y:commonY-20,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(26,106,58,0.5)','letter-spacing':'2'});
+  tl.textContent='COMMON TO ALL THREE EMERGENCIES'; svg.appendChild(tl);
+})();
+
+// ─── ULTRA-IMPORTANT DIFFERENCES MAP ───
+(function(){
+  const svg=document.getElementById('svgUF');
+  const bg=se('rect',{x:0,y:0,width:1340,height:280,fill:'rgba(250,245,238,0.5)'});
+  svg.appendChild(bg);
+
+  const t=se('text',{x:670,y:16,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'3','fill':'rgba(120,100,60,0.45)'});
+  t.textContent='6 ULTRA-IMPORTANT DIFFERENCES — UPSC PRELIMS TRAPS';
+  svg.appendChild(t);
+
+  node(svg,670,80,250,50,'#12100e',['UPSC Trap Points'],'What only each article does','🎯');
+
+  const traps=[
+    {x:120, y:200, fill:'#8a1a1a', label:['Only 352 →'], sub:'Affects Fundamental Rights', emoji:'⚠️'},
+    {x:310, y:200, fill:'#1a2a7a', label:['Only 356 →'], sub:'Dissolves State Assembly', emoji:'🔨'},
+    {x:500, y:200, fill:'#b87c10', label:['Only 360 →'], sub:"Cuts Judges' Salaries", emoji:'✂️'},
+    {x:690, y:200, fill:'#8a1a1a', label:['Only 352 →'], sub:'Needs Special Majority', emoji:'⭐'},
+    {x:880, y:200, fill:'#1a2a7a', label:['Only 356 →'], sub:'Has 3-Year Max Limit', emoji:'📅'},
+    {x:1070,y:200, fill:'#b87c10', label:['Only 360 →'], sub:'Never been declared', emoji:'🚫'},
+    {x:1240,y:200, fill:'#1a6a3a', label:['All Three →'], sub:'Parliamentary + Judicial', emoji:'🔗'},
+  ];
+
+  traps.forEach(tr=>{
+    edge(svg,670,105,tr.x,tr.y-26,'rgba(100,80,50,0.25)',true,1.5);
+    node(svg,tr.x,tr.y,155,50,tr.fill,[tr.label[0]],tr.sub,tr.emoji);
+  });
+
+  const labels=[
+    {x:120, txt:'ART 19+359', col:'#b01a1a'},
+    {x:310, txt:'STATE BODY', col:'#1a3a8a'},
+    {x:500, txt:'SC+HC JUDGES', col:'#b87c10'},
+    {x:690, txt:'PARLIAMENT', col:'#b01a1a'},
+    {x:880, txt:'TIME LIMIT', col:'#1a3a8a'},
+    {x:1070,txt:'UNUSED', col:'#b87c10'},
+    {x:1240,txt:'COMMON', col:'#1a6a3a'},
+  ];
+  labels.forEach(l=>{
+    const t=se('text',{x:l.x,y:260,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace','letter-spacing':'1',fill:l.col+'99','font-weight':'700'});
+    t.textContent=l.txt;svg.appendChild(t);
+  });
+})();
+
+// ─── MENTAL MAP ───
+(function(){
+  const svg=document.getElementById('svgMental');
+  // Taller viewBox for 3 evenly spaced rows
+  svg.setAttribute('viewBox','0 0 1340 250');
+  const bg=se('rect',{x:0,y:0,width:1340,height:250,fill:'rgba(250,245,238,0.5)'});
+  svg.appendChild(bg);
+
+  // Row y-positions: evenly spaced with header at top
+  const ROW=[75, 140, 205];
+  const nodeH=46, nodeHFinal=68;
+
+  // Column x-centers
+  const C=[130, 340, 570, 800, 1200];
+  // col widths: 150, 165, 165, 165, 210
+  const W=[150, 165, 165, 160, 210];
+
+  // Column headers
+  const headers=['ARTICLE','EFFECT','MAJORITY / DURATION','UNIQUE FEATURE','OUTCOME'];
+  headers.forEach((h,i)=>{
+    const t=se('text',{x:C[i],y:18,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace','letter-spacing':'2',fill:'rgba(120,100,60,0.6)','font-weight':'700'});
+    t.textContent=h; svg.appendChild(t);
+  });
+
+  // Vertical separator lines between columns
+  [238,460,690,940].forEach(lx=>{
+    svg.appendChild(se('line',{x1:lx,y1:28,x2:lx,y2:232,stroke:'rgba(200,180,140,0.2)','stroke-width':'1','stroke-dasharray':'4 3'}));
+  });
+
+  // Data rows — each row aligned on same y
+  const rows=[
+    {
+      col0:{fill:'#8a1a1a', label:['⚔️ Art.352'], sub:'National Emergency'},
+      col1:{fill:'#b01a1a', label:['Centre Dominates'], sub:'FRs impacted', emoji:'⚔️'},
+      col2:{fill:'#5a1010', label:['Special Majority'], sub:'Only for Art.352', emoji:'⭐'},
+      col3:{fill:'#6a1010', label:['Art.19 Suspended'], sub:'352 only', emoji:'🚫'},
+    },
+    {
+      col0:{fill:'#1a2a7a', label:['🏛️ Art.356'], sub:"President's Rule"},
+      col1:{fill:'#1a3a8a', label:['President Runs State'], sub:'Assembly dissolved', emoji:'🏛️'},
+      col2:{fill:'#0a2060', label:['Simple Majority'], sub:'For 356 and 360', emoji:'🗳️'},
+      col3:{fill:'#0a1a50', label:['3-Year Max'], sub:'356 only', emoji:'📅'},
+    },
+    {
+      col0:{fill:'#7a5a10', label:['💰 Art.360'], sub:'Financial Emergency'},
+      col1:{fill:'#b87c10', label:['Money Discipline'], sub:'Judges salary cut possible', emoji:'💰'},
+      col2:{fill:'#5a4010', label:['Indefinite'], sub:'Only 360 — no renewal', emoji:'⏳'},
+      col3:{fill:'#4a3010', label:['Never Declared'], sub:'360 only', emoji:'∅'},
+    },
+  ];
+
+  rows.forEach((row,ri)=>{
+    const y=ROW[ri];
+    // Draw arrows between columns
+    [0,1,2,3].forEach(ci=>{
+      if(ci<3) edge(svg, C[ci]+W[ci]/2+2, y, C[ci+1]-W[ci+1]/2-2, y, 'rgba(100,80,50,0.3)',true,1.5);
+    });
+    // Arrow from col3 to final node
+    edge(svg, C[3]+W[3]/2+2, y, C[4]-W[4]/2-2, 140, 'rgba(26,106,58,0.4)',true,1.8);
+
+    const colKeys=['col0','col1','col2','col3'];
+    colKeys.forEach((k,ci)=>{
+      const n=row[k];
+      node(svg,C[ci],y,W[ci],nodeH,n.fill,n.label,n.sub,n.emoji||null);
+    });
+  });
+
+  // Final convergence node — tall enough for 2 lines
+  node(svg,C[4],140,W[4],nodeHFinal,'#1a6a3a',['Safe Democratic','Governance'],'44th Amend. Safeguards','🇮🇳');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SLC · RS · LS · SLA — Legislative Houses Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f5f0;--surface:#ffffff;--surface2:#f2ede4;--ink:#1a1510;
+  --muted:#8a7a60;--border:#e0d8c8;
+  --ls:#1a3a8a;--rs:#0a6070;--sla:#1a6a3a;--slc:#5a1a8a;
+  --gold:#b87c10;--amber:#d46a10;--red:#b01a1a;--green:#1a6a3a;
+  --ls-lt:#dde8ff;--rs-lt:#d4eef2;--sla-lt:#d4eddc;--slc-lt:#ead4f5;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;}
+.header{
+  background:linear-gradient(135deg,#1a1510 0%,#2c2018 50%,#1a1510 100%);
+  color:#f5e8c0;padding:40px 24px 32px;text-align:center;position:relative;overflow:hidden;
+}
+.header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 800px 400px at 50% 50%,rgba(184,124,16,0.15) 0%,transparent 70%);pointer-events:none;}
+.h-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:#b87c10;text-transform:uppercase;margin-bottom:10px;}
+.h-title{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,52px);line-height:1.1;}
+.h-title em{font-style:italic;color:#f5d78a;}
+.h-sub{margin-top:8px;font-family:'DM Mono',monospace;font-size:11px;color:rgba(245,232,192,0.5);letter-spacing:1.5px;}
+.h-rule{width:100px;height:3px;background:linear-gradient(90deg,var(--ls),var(--rs),var(--sla),var(--slc));margin:14px auto 0;border-radius:3px;}
+.wrap{max-width:1400px;margin:0 auto;padding:0 24px 80px;}
+.sec{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:36px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px;}
+@media(max-width:900px){.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.g2,.g4{grid-template-columns:1fr;}}
+.pc{background:var(--surface);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;border-radius:16px 16px 0 0;}
+.pc.ls::before{background:var(--ls);}
+.pc.rs::before{background:var(--rs);}
+.pc.sla::before{background:var(--sla);}
+.pc.slc::before{background:var(--slc);}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.dark::before{background:var(--ink);}
+.pc.red::before{background:var(--red);}
+.chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:9.5px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.chip.yes{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.25);color:var(--green);}
+.chip.no{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.25);color:var(--red);}
+.stat-row{display:flex;gap:8px;margin:10px 0;}
+.stat{flex:1;padding:10px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--surface2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;line-height:1;}
+.stat-lbl{font-size:8.5px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:2px;}
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vi{padding:8px 11px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);font-size:11px;}
+.vi .vt{font-weight:700;font-size:11px;}
+.vi .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:1px;}
+.hh{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.hh-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex:0 0 38px;}
+.hh-icon.ls{background:var(--ls-lt);}
+.hh-icon.rs{background:var(--rs-lt);}
+.hh-icon.sla{background:var(--sla-lt);}
+.hh-icon.slc{background:var(--slc-lt);}
+.hh-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;}
+.hh-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:800;line-height:1.1;}
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#f5e8c0;padding:9px 12px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable th:first-child{border-radius:8px 0 0 0;}
+.ctable th:last-child{border-radius:0 8px 0 0;}
+.ctable td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle;line-height:1.4;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);font-size:10.5px;}
+.ctable td.ls-c{color:var(--ls);font-weight:700;}
+.ctable td.rs-c{color:var(--rs);font-weight:700;}
+.ctable td.sla-c{color:var(--sla);font-weight:700;}
+.ctable td.slc-c{color:var(--slc);font-weight:700;}
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 28px;margin:20px 0;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.ks-title{font-family:'Playfair Display',serif;font-size:19px;font-style:italic;margin-bottom:5px;}
+.ks-body{font-size:11px;color:#c8b880;line-height:1.65;}
+.kpill{padding:4px 11px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'DM Mono',monospace;display:inline-block;margin:3px 3px 0 0;}
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:600px){.trap-grid{grid-template-columns:1fr;}}
+.trap{padding:11px 14px;border-radius:10px;background:var(--surface2);border:1.5px solid var(--border);display:flex;gap:10px;align-items:flex-start;}
+.trap-icon{font-size:15px;flex:0 0 auto;margin-top:1px;}
+.trap-text{font-size:11px;font-weight:600;line-height:1.4;}
+.trap-sub{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:10px 0;}
+.fn{padding:6px 12px;border-radius:8px;font-size:10.5px;font-weight:700;border:1.5px solid;}
+.fa{font-size:15px;color:var(--muted);}
+.scard{background:var(--surface);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:20px;position:relative;}
+.scard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;pointer-events:none;}
+.scard.s1::before{background:linear-gradient(90deg,var(--ls),var(--rs),var(--sla),var(--slc));}
+.scard.s2::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.scard.s3::before{background:linear-gradient(90deg,var(--ls),var(--slc));}
+.scard.s4::before{background:linear-gradient(90deg,var(--red),var(--amber));}
+.scard svg{display:block;width:100%;}
+.pow{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:700;border:2px solid;}
+.pow.hi{background:rgba(26,106,58,0.1);border-color:var(--sla);color:var(--sla);}
+.pow.lo{background:rgba(176,26,26,0.07);border-color:var(--red);color:var(--red);}
+.pow.med{background:rgba(26,58,138,0.08);border-color:var(--ls);color:var(--ls);}
+.pc, .scard{animation:fadeUp 0.4s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.g4 .pc:nth-child(1){animation-delay:0.05s;}
+.g4 .pc:nth-child(2){animation-delay:0.1s;}
+.g4 .pc:nth-child(3){animation-delay:0.15s;}
+.g4 .pc:nth-child(4){animation-delay:0.2s;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="h-sup">Indian Polity · UPSC · Legislative Houses</div>
+  <h1 class="h-title"><em>SLC · RS · LS · SLA</em></h1>
+  <div class="h-sub">Upper vs Lower House · State vs Union · Powers · Permanency · Special Roles</div>
+  <div class="h-rule"></div>
+</div>
+
+<div class="wrap">
+
+<!-- ══ 0. BIG PICTURE FLOW ══ -->
+<div class="sec">Master Overview — Union vs State · Upper vs Lower</div>
+
+<div class="scard s1">
+  <svg viewBox="0 0 1300 210" xmlns="http://www.w3.org/2000/svg" style="font-family:'Inter',sans-serif;">
+    <defs>
+      <marker id="arr" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#aaa"/></marker>
+      <marker id="blu" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#1a3a8a"/></marker>
+      <marker id="tea" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#0a6070"/></marker>
+      <marker id="pur" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#5a1a8a"/></marker>
+      <marker id="grn" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#1a6a3a"/></marker>
+    </defs>
+
+    <!-- Background zones -->
+    <rect x="16" y="26" width="618" height="165" rx="14" fill="rgba(26,58,138,0.04)" stroke="rgba(26,58,138,0.12)" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <rect x="666" y="26" width="618" height="165" rx="14" fill="rgba(26,106,58,0.04)" stroke="rgba(26,106,58,0.12)" stroke-width="1.5" stroke-dasharray="5 3"/>
+
+    <text x="325" y="19" text-anchor="middle" font-size="9" font-family="DM Mono,monospace" fill="rgba(26,58,138,0.5)" letter-spacing="3" font-weight="700">UNION LEVEL</text>
+    <text x="975" y="19" text-anchor="middle" font-size="9" font-family="DM Mono,monospace" fill="rgba(26,106,58,0.5)" letter-spacing="3" font-weight="700">STATE LEVEL</text>
+
+    <line x1="646" y1="16" x2="646" y2="196" stroke="rgba(200,170,120,0.25)" stroke-width="1.5" stroke-dasharray="5 4"/>
+
+    <!-- Rajya Sabha -->
+    <rect x="50" y="44" width="230" height="120" rx="12" fill="#0a6070" filter="drop-shadow(0 3px 8px rgba(10,96,112,0.2))"/>
+    <text x="165" y="76" text-anchor="middle" font-size="22" fill="white">🏛️</text>
+    <text x="165" y="97" text-anchor="middle" font-size="14.5" font-weight="800" fill="white">Rajya Sabha</text>
+    <text x="165" y="114" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.65)" font-family="DM Mono,monospace">UPPER · UNION</text>
+    <text x="165" y="131" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.85)">Represents States</text>
+    <text x="165" y="147" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Permanent · 6yr · Cannot Abolish</text>
+
+    <!-- Power badge RS -->
+    <rect x="50" y="170" width="230" height="18" rx="6" fill="rgba(10,96,112,0.15)" stroke="rgba(10,96,112,0.3)" stroke-width="1"/>
+    <text x="165" y="183" text-anchor="middle" font-size="9" fill="#0a6070" font-weight="700" font-family="DM Mono,monospace">Art.249 · Art.312 · Federal Guardian</text>
+
+    <!-- vs arrow -->
+    <text x="316" y="112" text-anchor="middle" font-size="11" fill="#aaa" font-family="DM Mono,monospace">⇌</text>
+    <text x="316" y="126" text-anchor="middle" font-size="8" fill="var(--muted)" font-family="DM Mono,monospace">LS &gt; RS</text>
+    <text x="316" y="136" text-anchor="middle" font-size="8" fill="var(--muted)" font-family="DM Mono,monospace">finance</text>
+
+    <!-- Lok Sabha -->
+    <rect x="355" y="44" width="240" height="120" rx="12" fill="#1a3a8a" filter="drop-shadow(0 3px 8px rgba(26,58,138,0.2))"/>
+    <text x="475" y="76" text-anchor="middle" font-size="22" fill="white">⚡</text>
+    <text x="475" y="97" text-anchor="middle" font-size="14.5" font-weight="800" fill="white">Lok Sabha</text>
+    <text x="475" y="114" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.65)" font-family="DM Mono,monospace">LOWER · UNION</text>
+    <text x="475" y="131" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.85)">Represents Nation · Direct</text>
+    <text x="475" y="147" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Dissolves · 5yr · MOST POWERFUL</text>
+
+    <rect x="355" y="170" width="240" height="18" rx="6" fill="rgba(26,58,138,0.15)" stroke="rgba(26,58,138,0.3)" stroke-width="1"/>
+    <text x="475" y="183" text-anchor="middle" font-size="9" fill="#1a3a8a" font-weight="700" font-family="DM Mono,monospace">Money Bills · No-Confidence · Budget</text>
+
+    <!-- State Council -->
+    <rect x="690" y="44" width="230" height="120" rx="12" fill="#5a1a8a" filter="drop-shadow(0 3px 8px rgba(90,26,138,0.2))"/>
+    <text x="805" y="76" text-anchor="middle" font-size="22" fill="white">🏛️</text>
+    <text x="805" y="97" text-anchor="middle" font-size="14.5" font-weight="800" fill="white">State Council</text>
+    <text x="805" y="114" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.65)" font-family="DM Mono,monospace">UPPER · STATE (SLC)</text>
+    <text x="805" y="131" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.85)">Teachers · Grads · Local Bodies</text>
+    <text x="805" y="147" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Abolishable · 6yr · Art.169</text>
+
+    <rect x="690" y="170" width="230" height="18" rx="6" fill="rgba(90,26,138,0.15)" stroke="rgba(90,26,138,0.3)" stroke-width="1"/>
+    <text x="805" y="183" text-anchor="middle" font-size="9" fill="#5a1a8a" font-weight="700" font-family="DM Mono,monospace">Weakest · No Special Powers</text>
+
+    <!-- SLA -->
+    <rect x="990" y="44" width="270" height="120" rx="12" fill="#1a6a3a" filter="drop-shadow(0 3px 8px rgba(26,106,58,0.2))"/>
+    <text x="1125" y="76" text-anchor="middle" font-size="22" fill="white">⚡</text>
+    <text x="1125" y="97" text-anchor="middle" font-size="14.5" font-weight="800" fill="white">State Assembly</text>
+    <text x="1125" y="114" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.65)" font-family="DM Mono,monospace">LOWER · STATE (SLA)</text>
+    <text x="1125" y="131" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.85)">Represents State People · Direct</text>
+    <text x="1125" y="147" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Dissolves · 5yr · DOMINANT</text>
+
+    <rect x="990" y="170" width="270" height="18" rx="6" fill="rgba(26,106,58,0.15)" stroke="rgba(26,106,58,0.3)" stroke-width="1"/>
+    <text x="1125" y="183" text-anchor="middle" font-size="9" fill="#1a6a3a" font-weight="700" font-family="DM Mono,monospace">State Finances · No-Confidence · Creates SLC</text>
+
+    <!-- vs arrow state -->
+    <text x="960" y="112" text-anchor="middle" font-size="11" fill="#aaa" font-family="DM Mono,monospace">⇌</text>
+    <text x="960" y="126" text-anchor="middle" font-size="8" fill="var(--muted)" font-family="DM Mono,monospace">SLA &gt; SLC</text>
+    <text x="960" y="136" text-anchor="middle" font-size="8" fill="var(--muted)" font-family="DM Mono,monospace">all matters</text>
+
+    <text x="648" y="202" text-anchor="middle" font-size="8.5" font-family="DM Mono,monospace" fill="rgba(180,130,20,0.55)" letter-spacing="1">LOWER HOUSES = DIRECTLY ELECTED = FINANCIAL CONTROL = GOVERNMENT SURVIVAL</text>
+  </svg>
+</div>
+
+<!-- ══ 1. FOUR HOUSES PANELS ══ -->
+<div class="sec">① The Four Houses — Detail Panels</div>
+
+<div class="g4">
+  <div class="pc ls">
+    <div class="hh">
+      <div class="hh-icon ls">⚡</div>
+      <div>
+        <div class="hh-label">Lower House · Union</div>
+        <div class="hh-name" style="color:var(--ls)">Lok Sabha</div>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-num" style="color:var(--ls)">543</div><div class="stat-lbl">Elected Seats</div></div>
+      <div class="stat"><div class="stat-num" style="color:var(--ls)">5yr</div><div class="stat-lbl">Term</div></div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Represents the Nation</div><div class="vs">Direct election by citizens</div></div>
+      <div class="vi"><div class="vt">Money Bills originate here</div><div class="vs">Financial supremacy</div></div>
+      <div class="vi"><div class="vt">No-Confidence Motion</div><div class="vs">Can remove the government</div></div>
+      <div class="vi"><div class="vt">Can be dissolved</div><div class="vs">Not permanent</div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="pow hi">★ Most Powerful</span></div>
+  </div>
+
+  <div class="pc rs">
+    <div class="hh">
+      <div class="hh-icon rs">🏛️</div>
+      <div>
+        <div class="hh-label">Upper House · Union</div>
+        <div class="hh-name" style="color:var(--rs)">Rajya Sabha</div>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-num" style="color:var(--rs)">250</div><div class="stat-lbl">Max Seats</div></div>
+      <div class="stat"><div class="stat-num" style="color:var(--rs)">6yr</div><div class="stat-lbl">Term</div></div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Represents States</div><div class="vs">Elected by State Assemblies</div></div>
+      <div class="vi"><div class="vt">Equal except Finance</div><div class="vs">Cannot reject Money Bill</div></div>
+      <div class="vi"><div class="vt">Art. 249 · Art. 312</div><div class="vs">State List · All India Services</div></div>
+      <div class="vi"><div class="vt">Cannot be abolished</div><div class="vs">1/3 retire every 2 years</div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="pow med">Federal Guardian</span></div>
+  </div>
+
+  <div class="pc sla">
+    <div class="hh">
+      <div class="hh-icon sla">⚡</div>
+      <div>
+        <div class="hh-label">Lower House · State (SLA)</div>
+        <div class="hh-name" style="color:var(--sla)">State Assembly</div>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-num" style="color:var(--sla)">500</div><div class="stat-lbl">Max Seats</div></div>
+      <div class="stat"><div class="stat-num" style="color:var(--sla)">5yr</div><div class="stat-lbl">Term</div></div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Represents State People</div><div class="vs">Direct election</div></div>
+      <div class="vi"><div class="vt">State Money Bills here</div><div class="vs">Dominates state finances</div></div>
+      <div class="vi"><div class="vt">No-Confidence Motion</div><div class="vs">Removes state government</div></div>
+      <div class="vi"><div class="vt">Creates / Abolishes SLC</div><div class="vs">Via Art. 169 resolution</div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="pow hi">★ Dominant in State</span></div>
+  </div>
+
+  <div class="pc slc">
+    <div class="hh">
+      <div class="hh-icon slc">🏛️</div>
+      <div>
+        <div class="hh-label">Upper House · State (SLC)</div>
+        <div class="hh-name" style="color:var(--slc)">State Council</div>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-num" style="color:var(--slc)">1/3</div><div class="stat-lbl">of SLA size</div></div>
+      <div class="stat"><div class="stat-num" style="color:var(--slc)">6yr</div><div class="stat-lbl">Term</div></div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Special Groups ★ Unique</div><div class="vs">Teachers, graduates, local bodies, MLAs</div></div>
+      <div class="vi"><div class="vt">1/6 Nominated</div><div class="vs">By Governor</div></div>
+      <div class="vi"><div class="vt">Cannot vote on budget</div><div class="vs">Weakest financial role</div></div>
+      <div class="vi"><div class="vt">Can be abolished</div><div class="vs">Art. 169 — SLA resolution</div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="pow lo">Weakest House</span></div>
+  </div>
+</div>
+
+<!-- ══ 2. WHO ELECTS WHOM ══ -->
+<div class="sec">② Representation — Who Elects Whom</div>
+
+<div class="scard s2">
+  <svg viewBox="0 0 1300 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Inter',sans-serif;">
+    <!-- Electorate row -->
+    <rect x="30" y="16" width="190" height="52" rx="10" fill="#d46a10"/>
+    <text x="125" y="37" text-anchor="middle" font-size="13" fill="white">🏘️</text>
+    <text x="125" y="55" text-anchor="middle" font-size="11" font-weight="800" fill="white">People of State</text>
+
+    <rect x="390" y="16" width="195" height="52" rx="10" fill="#1a1510"/>
+    <text x="487" y="37" text-anchor="middle" font-size="13" fill="white">🇮🇳</text>
+    <text x="487" y="55" text-anchor="middle" font-size="11" font-weight="800" fill="white">People of India</text>
+
+    <rect x="650" y="16" width="200" height="52" rx="10" fill="#1a6a3a"/>
+    <text x="750" y="37" text-anchor="middle" font-size="13" fill="white">🏛️</text>
+    <text x="750" y="55" text-anchor="middle" font-size="11" font-weight="800" fill="white">State Assemblies</text>
+
+    <rect x="920" y="16" width="200" height="52" rx="10" fill="#5a1a8a"/>
+    <text x="1020" y="37" text-anchor="middle" font-size="13" fill="white">👨‍🏫</text>
+    <text x="1020" y="55" text-anchor="middle" font-size="11" font-weight="800" fill="white">Special Groups</text>
+
+    <rect x="1130" y="16" width="140" height="52" rx="10" fill="#8a6a30"/>
+    <text x="1200" y="37" text-anchor="middle" font-size="13" fill="white">👤</text>
+    <text x="1200" y="55" text-anchor="middle" font-size="11" font-weight="800" fill="white">Governor</text>
+
+    <!-- Connection arrows -->
+    <!-- People of State → SLA -->
+    <path d="M125,68 C125,130 152,140 152,168" stroke="#1a6a3a" stroke-width="2" stroke-dasharray="5 3" fill="none" opacity="0.7" marker-end="url(#grn)"/>
+    <!-- People of India → LS -->
+    <path d="M487,68 C487,120 390,148 390,168" stroke="#1a3a8a" stroke-width="2" stroke-dasharray="5 3" fill="none" opacity="0.7" marker-end="url(#blu)"/>
+    <!-- State Assemblies → RS -->
+    <path d="M750,68 C750,120 680,148 680,168" stroke="#0a6070" stroke-width="2" stroke-dasharray="5 3" fill="none" opacity="0.7" marker-end="url(#tea)"/>
+    <!-- State Assemblies → SLC partial -->
+    <path d="M780,68 C780,120 920,148 920,168" stroke="#5a1a8a" stroke-width="1.5" stroke-dasharray="4 3" fill="none" opacity="0.5" marker-end="url(#pur)"/>
+    <!-- Special Groups → SLC -->
+    <path d="M1020,68 C1020,120 1000,148 990,168" stroke="#5a1a8a" stroke-width="1.5" stroke-dasharray="4 3" fill="none" opacity="0.5" marker-end="url(#pur)"/>
+    <!-- Governor → SLC (nominated) -->
+    <path d="M1200,68 C1200,120 1090,148 1060,168" stroke="#5a1a8a" stroke-width="1.5" stroke-dasharray="4 3" fill="none" opacity="0.4" marker-end="url(#pur)"/>
+
+    <!-- House nodes -->
+    <rect x="50" y="168" width="200" height="85" rx="12" fill="#1a6a3a" filter="drop-shadow(0 3px 10px rgba(26,106,58,0.2))"/>
+    <text x="150" y="197" text-anchor="middle" font-size="18" fill="white">⚡</text>
+    <text x="150" y="217" text-anchor="middle" font-size="13" font-weight="800" fill="white">State Assembly</text>
+    <text x="150" y="233" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">DIRECT ELECTION</text>
+    <text x="150" y="247" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">State Citizens</text>
+
+    <rect x="295" y="168" width="200" height="85" rx="12" fill="#1a3a8a" filter="drop-shadow(0 3px 10px rgba(26,58,138,0.2))"/>
+    <text x="395" y="197" text-anchor="middle" font-size="18" fill="white">⚡</text>
+    <text x="395" y="217" text-anchor="middle" font-size="13" font-weight="800" fill="white">Lok Sabha</text>
+    <text x="395" y="233" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">DIRECT ELECTION</text>
+    <text x="395" y="247" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Entire Nation</text>
+
+    <rect x="565" y="168" width="200" height="85" rx="12" fill="#0a6070" filter="drop-shadow(0 3px 10px rgba(10,96,112,0.2))"/>
+    <text x="665" y="197" text-anchor="middle" font-size="18" fill="white">🏛️</text>
+    <text x="665" y="217" text-anchor="middle" font-size="13" font-weight="800" fill="white">Rajya Sabha</text>
+    <text x="665" y="233" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">INDIRECT ELECTION</text>
+    <text x="665" y="247" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">States at Union</text>
+
+    <rect x="840" y="168" width="210" height="85" rx="12" fill="#5a1a8a" filter="drop-shadow(0 3px 10px rgba(90,26,138,0.2))"/>
+    <text x="945" y="197" text-anchor="middle" font-size="18" fill="white">🏛️</text>
+    <text x="945" y="217" text-anchor="middle" font-size="13" font-weight="800" fill="white">State Council</text>
+    <text x="945" y="233" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">MIXED (Indirect + Nominated)</text>
+    <text x="945" y="247" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Teachers · Grads · Locals</text>
+
+    <!-- Unique note -->
+    <rect x="1090" y="182" width="190" height="56" rx="10" fill="rgba(90,26,138,0.09)" stroke="rgba(90,26,138,0.3)" stroke-width="1.5"/>
+    <text x="1185" y="203" text-anchor="middle" font-size="11" font-weight="800" fill="#5a1a8a">★ SLC is Unique</text>
+    <text x="1185" y="219" text-anchor="middle" font-size="9" fill="#5a1a8a" font-family="DM Mono,monospace">Teacher &amp; Graduate</text>
+    <text x="1185" y="233" text-anchor="middle" font-size="9" fill="#5a1a8a" font-family="DM Mono,monospace">representation exists</text>
+    <line x1="1050" y1="208" x2="1090" y2="208" stroke="rgba(90,26,138,0.35)" stroke-width="1.5" stroke-dasharray="3 2"/>
+
+    <text x="648" y="275" text-anchor="middle" font-size="8.5" font-family="DM Mono,monospace" fill="rgba(120,100,60,0.5)" letter-spacing="1">LOWER HOUSES = DIRECTLY ELECTED · UPPER HOUSES = INDIRECTLY ELECTED</text>
+  </svg>
+</div>
+
+<!-- ══ 3. FINANCIAL POWERS ══ -->
+<div class="sec">③ Financial Powers — Money Bill Rules</div>
+
+<div class="scard s3">
+  <svg viewBox="0 0 1300 230" xmlns="http://www.w3.org/2000/svg" style="font-family:'Inter',sans-serif;">
+    <text x="648" y="22" text-anchor="middle" font-size="9.5" font-family="DM Mono,monospace" fill="rgba(180,130,20,0.7)" letter-spacing="2.5">MONEY BILL FLOW — WHERE CAN IT ORIGINATE?</text>
+
+    <!-- LS - Money Bill origin -->
+    <rect x="60" y="34" width="240" height="60" rx="11" fill="#1a3a8a" filter="drop-shadow(0 2px 8px rgba(26,58,138,0.2))"/>
+    <text x="180" y="60" text-anchor="middle" font-size="13" font-weight="800" fill="white">✅ Lok Sabha</text>
+    <text x="180" y="78" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="DM Mono,monospace">Origin ONLY here (Union)</text>
+
+    <!-- RS - cannot -->
+    <rect x="360" y="34" width="220" height="60" rx="11" fill="rgba(176,26,26,0.07)" stroke="#b01a1a" stroke-width="1.5"/>
+    <text x="470" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="#b01a1a">❌ Rajya Sabha</text>
+    <text x="470" y="78" text-anchor="middle" font-size="9.5" fill="#b01a1a" font-family="DM Mono,monospace">Only recommend · 14 days</text>
+
+    <!-- Arrow -->
+    <path d="M300,64 L360,64" stroke="#b87c10" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+
+    <!-- SLA - Money Bill origin -->
+    <rect x="720" y="34" width="240" height="60" rx="11" fill="#1a6a3a" filter="drop-shadow(0 2px 8px rgba(26,106,58,0.2))"/>
+    <text x="840" y="60" text-anchor="middle" font-size="13" font-weight="800" fill="white">✅ State Assembly</text>
+    <text x="840" y="78" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="DM Mono,monospace">Origin ONLY here (State)</text>
+
+    <!-- SLC - cannot -->
+    <rect x="1020" y="34" width="220" height="60" rx="11" fill="rgba(176,26,26,0.07)" stroke="#b01a1a" stroke-width="1.5"/>
+    <text x="1130" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="#b01a1a">❌ State Council</text>
+    <text x="1130" y="78" text-anchor="middle" font-size="9.5" fill="#b01a1a" font-family="DM Mono,monospace">Only delay · 14 days max</text>
+
+    <path d="M960,64 L1020,64" stroke="#b87c10" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+
+    <!-- Speaker note -->
+    <rect x="560" y="34" width="150" height="60" rx="11" fill="rgba(184,124,16,0.08)" stroke="rgba(184,124,16,0.3)" stroke-width="1.5"/>
+    <text x="635" y="58" text-anchor="middle" font-size="11" font-weight="700" fill="#b87c10">🔨 Speaker</text>
+    <text x="635" y="74" text-anchor="middle" font-size="9" fill="#b87c10" font-family="DM Mono,monospace">Certifies · Final</text>
+    <text x="635" y="86" text-anchor="middle" font-size="9" fill="#b87c10" font-family="DM Mono,monospace">Word · No appeal</text>
+
+    <!-- Ordinary Bill delay comparison -->
+    <text x="648" y="118" text-anchor="middle" font-size="9.5" font-family="DM Mono,monospace" fill="rgba(180,130,20,0.7)" letter-spacing="2.5">ORDINARY BILL — DELAY POWERS OF UPPER HOUSES</text>
+
+    <rect x="80" y="130" width="290" height="72" rx="11" fill="rgba(10,96,112,0.07)" stroke="#0a6070" stroke-width="1.5"/>
+    <text x="225" y="152" text-anchor="middle" font-size="12" font-weight="800" fill="#0a6070">🏛️ Rajya Sabha</text>
+    <text x="225" y="175" text-anchor="middle" font-size="22" font-weight="900" fill="#0a6070" font-family="DM Mono,monospace">6 months</text>
+    <text x="225" y="195" text-anchor="middle" font-size="9.5" fill="rgba(10,96,112,0.7)">Can delay Ordinary Bill max</text>
+
+    <rect x="430" y="130" width="290" height="72" rx="11" fill="rgba(90,26,138,0.07)" stroke="#5a1a8a" stroke-width="1.5"/>
+    <text x="575" y="152" text-anchor="middle" font-size="12" font-weight="800" fill="#5a1a8a">🏛️ State Council</text>
+    <text x="575" y="175" text-anchor="middle" font-size="22" font-weight="900" fill="#5a1a8a" font-family="DM Mono,monospace">4 months</text>
+    <text x="575" y="195" text-anchor="middle" font-size="9.5" fill="rgba(90,26,138,0.7)">Can delay Ordinary Bill max</text>
+
+    <rect x="780" y="130" width="460" height="72" rx="11" fill="rgba(176,26,26,0.06)" stroke="rgba(176,26,26,0.25)" stroke-width="1.5"/>
+    <text x="1010" y="155" text-anchor="middle" font-size="12" font-weight="800" fill="#b01a1a">⚠️ SLC Cannot Vote on Budget Demands</text>
+    <text x="1010" y="174" text-anchor="middle" font-size="10.5" fill="#b01a1a">State Council excluded from state budget approval</text>
+    <text x="1010" y="193" text-anchor="middle" font-size="9" fill="rgba(176,26,26,0.7)" font-family="DM Mono,monospace">SLC = Financially the Weakest of all 4 Houses</text>
+  </svg>
+</div>
+
+<!-- ══ 4. COMPARISON TABLE ══ -->
+<div class="sec">④ Powers Comparison — All 4 Houses</div>
+
+<div class="pc gold" style="margin-bottom:18px;padding:0;overflow:hidden;">
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>Power / Feature</th>
+        <th style="color:#9ec8ff">⚡ Lok Sabha</th>
+        <th style="color:#9ee8f0">🏛️ Rajya Sabha</th>
+        <th style="color:#9ef0b0">⚡ State Assembly</th>
+        <th style="color:#d0a0f5">🏛️ State Council</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>No-Confidence Motion</td>
+        <td><span class="chip yes">✅ Yes</span></td>
+        <td><span class="chip no">❌ No</span></td>
+        <td><span class="chip yes">✅ Yes</span></td>
+        <td><span class="chip no">❌ No</span></td>
+      </tr>
+      <tr>
+        <td>Money Bill Origin</td>
+        <td><span class="chip yes">✅ Only Here</span></td>
+        <td><span class="chip no">❌ Cannot</span></td>
+        <td><span class="chip yes">✅ Only Here</span></td>
+        <td><span class="chip no">❌ Cannot</span></td>
+      </tr>
+      <tr>
+        <td>Budget Demands Vote</td>
+        <td><span class="chip yes">✅ Yes</span></td>
+        <td><span class="chip no">❌ No</span></td>
+        <td><span class="chip yes">✅ Yes</span></td>
+        <td><span class="chip no">❌ No</span></td>
+      </tr>
+      <tr>
+        <td>Dissolve / Permanent</td>
+        <td class="ls-c">Dissolves (5yr)</td>
+        <td class="rs-c">Permanent ♾️</td>
+        <td class="sla-c">Dissolves (5yr)</td>
+        <td class="slc-c">Permanent*</td>
+      </tr>
+      <tr>
+        <td>Can be Abolished</td>
+        <td><span class="chip no">❌ Never</span></td>
+        <td><span class="chip no">❌ Never</span></td>
+        <td><span class="chip no">❌ No</span></td>
+        <td><span class="chip yes">✅ Art. 169</span></td>
+      </tr>
+      <tr>
+        <td>Delay Ordinary Bill</td>
+        <td>—</td>
+        <td class="rs-c">6 months</td>
+        <td>—</td>
+        <td class="slc-c">4 months</td>
+      </tr>
+      <tr>
+        <td>Delay Money Bill</td>
+        <td>—</td>
+        <td class="rs-c">14 days max</td>
+        <td>—</td>
+        <td class="slc-c">14 days max</td>
+      </tr>
+      <tr>
+        <td>Govt. Accountability</td>
+        <td><span class="chip yes">✅ Yes</span></td>
+        <td><span class="chip no">❌ No</span></td>
+        <td><span class="chip yes">✅ Yes</span></td>
+        <td><span class="chip no">❌ No</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ 5. SPECIAL POWERS ══ -->
+<div class="sec">⑤ Special Powers — What Makes Each Unique</div>
+
+<div class="scard s1">
+  <svg viewBox="0 0 1300 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Inter',sans-serif;">
+    <!-- Center hub -->
+    <rect x="490" y="100" width="320" height="80" rx="14" fill="#1a1510" filter="drop-shadow(0 4px 14px rgba(0,0,0,0.25))"/>
+    <text x="650" y="133" text-anchor="middle" font-size="15" font-weight="800" fill="#f5e8c0">Special Powers</text>
+    <text x="650" y="152" text-anchor="middle" font-size="9.5" fill="rgba(245,232,192,0.5)" font-family="DM Mono,monospace">UNIQUE TO EACH HOUSE · PRELIMS FAVOURITE</text>
+    <text x="650" y="170" text-anchor="middle" font-size="16" fill="#f5d78a">★ ★ ★</text>
+
+    <!-- RS unique powers (top-left) -->
+    <rect x="20" y="16" width="270" height="120" rx="12" fill="rgba(10,96,112,0.07)" stroke="#0a6070" stroke-width="1.5"/>
+    <text x="155" y="43" text-anchor="middle" font-size="12" font-weight="800" fill="#0a6070">🏛️ Rajya Sabha Exclusives</text>
+    <text x="155" y="62" text-anchor="middle" font-size="10.5" fill="#0a6070">📜 Article 249</text>
+    <text x="155" y="77" text-anchor="middle" font-size="9.5" fill="rgba(10,96,112,0.8)">Parliament can legislate on State List</text>
+    <text x="155" y="96" text-anchor="middle" font-size="10.5" fill="#0a6070">📜 Article 312</text>
+    <text x="155" y="111" text-anchor="middle" font-size="9.5" fill="rgba(10,96,112,0.8)">Create All India Services</text>
+    <text x="155" y="128" text-anchor="middle" font-size="9.5" fill="rgba(10,96,112,0.8)">Approve Emergency (LS dissolved)</text>
+    <path d="M290,80 C380,80 420,130 490,140" stroke="#0a6070" stroke-width="1.8" stroke-dasharray="5 3" fill="none" opacity="0.5" marker-end="url(#tea)"/>
+
+    <!-- LS unique powers (bottom-left) -->
+    <rect x="20" y="158" width="270" height="102" rx="12" fill="rgba(26,58,138,0.07)" stroke="#1a3a8a" stroke-width="1.5"/>
+    <text x="155" y="183" text-anchor="middle" font-size="12" font-weight="800" fill="#1a3a8a">⚡ Lok Sabha Exclusives</text>
+    <text x="155" y="202" text-anchor="middle" font-size="10.5" fill="#1a3a8a">💰 Financial Supremacy</text>
+    <text x="155" y="219" text-anchor="middle" font-size="9.5" fill="rgba(26,58,138,0.8)">Controls Council of Ministers</text>
+    <text x="155" y="236" text-anchor="middle" font-size="9.5" fill="rgba(26,58,138,0.8)">No-Confidence → removes Govt.</text>
+    <text x="155" y="253" text-anchor="middle" font-size="9.5" fill="rgba(26,58,138,0.8)">Money Bills exclusive origin</text>
+    <path d="M290,210 C380,210 420,165 490,155" stroke="#1a3a8a" stroke-width="1.8" stroke-dasharray="5 3" fill="none" opacity="0.5" marker-end="url(#blu)"/>
+
+    <!-- SLA unique powers (top-right) -->
+    <rect x="1010" y="16" width="270" height="112" rx="12" fill="rgba(26,106,58,0.07)" stroke="#1a6a3a" stroke-width="1.5"/>
+    <text x="1145" y="43" text-anchor="middle" font-size="12" font-weight="800" fill="#1a6a3a">⚡ State Assembly</text>
+    <text x="1145" y="62" text-anchor="middle" font-size="10.5" fill="#1a6a3a">🏛️ Controls State Govt.</text>
+    <text x="1145" y="79" text-anchor="middle" font-size="9.5" fill="rgba(26,106,58,0.8)">Dominates all state law-making</text>
+    <text x="1145" y="96" text-anchor="middle" font-size="9.5" fill="rgba(26,106,58,0.8)">Elects members to Rajya Sabha</text>
+    <text x="1145" y="113" text-anchor="middle" font-size="9.5" fill="rgba(26,106,58,0.8)">Creates / Abolishes SLC (Art.169)</text>
+    <path d="M1010,70 C930,70 890,130 810,140" stroke="#1a6a3a" stroke-width="1.8" stroke-dasharray="5 3" fill="none" opacity="0.5" marker-end="url(#grn)"/>
+
+    <!-- SLC unique powers (bottom-right) -->
+    <rect x="1010" y="156" width="270" height="104" rx="12" fill="rgba(90,26,138,0.07)" stroke="#5a1a8a" stroke-width="1.5"/>
+    <text x="1145" y="181" text-anchor="middle" font-size="12" font-weight="800" fill="#5a1a8a">🏛️ State Council</text>
+    <text x="1145" y="201" text-anchor="middle" font-size="11" fill="#b01a1a" font-weight="700">⚠️ No Special Powers</text>
+    <text x="1145" y="220" text-anchor="middle" font-size="9.5" fill="rgba(90,26,138,0.8)">Revising chamber only</text>
+    <text x="1145" y="237" text-anchor="middle" font-size="9.5" fill="rgba(90,26,138,0.8)">No constitutional special role</text>
+    <text x="1145" y="254" text-anchor="middle" font-size="9.5" fill="rgba(90,26,138,0.8)">Delays Ordinary Bill 4 months</text>
+    <path d="M1010,210 C930,210 890,165 810,155" stroke="#5a1a8a" stroke-width="1.8" stroke-dasharray="5 3" fill="none" opacity="0.5" marker-end="url(#pur)"/>
+
+    <!-- Key abolition note -->
+    <rect x="470" y="220" width="360" height="50" rx="10" fill="rgba(184,124,16,0.09)" stroke="rgba(184,124,16,0.3)" stroke-width="1.5"/>
+    <text x="650" y="241" text-anchor="middle" font-size="11" font-weight="800" fill="#b87c10">⚠️ RS vs SLC — Permanency Key Trap</text>
+    <text x="650" y="259" text-anchor="middle" font-size="10" fill="#b87c10">RS: Cannot be abolished | SLC: Can be abolished (Art.169)</text>
+  </svg>
+</div>
+
+<!-- ══ 6. PERMANENCY ══ -->
+<div class="sec">⑥ Tenure, Permanency & Dissolution</div>
+
+<div class="g2">
+  <div class="pc rs">
+    <div class="hh">
+      <div class="hh-icon rs">♾️</div>
+      <div>
+        <div class="hh-label">Permanent Houses (Upper)</div>
+        <div class="hh-name">Cannot Dissolve</div>
+      </div>
+    </div>
+    <div class="vlist">
+      <div class="vi" style="border-left:3px solid var(--rs);">
+        <div class="vt" style="color:var(--rs)">Rajya Sabha — 6 Year Term</div>
+        <div class="vs">1/3 members retire every 2 years · Cannot be abolished — ever</div>
+      </div>
+      <div class="vi" style="border-left:3px solid var(--slc);">
+        <div class="vt" style="color:var(--slc)">State Council (SLC) — 6 Year Term</div>
+        <div class="vs">Permanent in operation · BUT can be abolished via Art. 169</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:10px 12px;border-radius:9px;background:rgba(176,26,26,0.06);border:1.5px dashed var(--red);">
+      <span style="font-size:11px;font-weight:700;color:var(--red);">★ Critical Trap: RS cannot be abolished. SLC can be abolished.</span>
+    </div>
+  </div>
+
+  <div class="pc ls">
+    <div class="hh">
+      <div class="hh-icon ls">⏳</div>
+      <div>
+        <div class="hh-label">Dissoluble Houses (Lower)</div>
+        <div class="hh-name">Can be Dissolved</div>
+      </div>
+    </div>
+    <div class="vlist">
+      <div class="vi" style="border-left:3px solid var(--ls);">
+        <div class="vt" style="color:var(--ls)">Lok Sabha — 5 Year Term</div>
+        <div class="vs">President can dissolve on PM's advice · Not permanent</div>
+      </div>
+      <div class="vi" style="border-left:3px solid var(--sla);">
+        <div class="vt" style="color:var(--sla)">State Assembly (SLA) — 5 Year Term</div>
+        <div class="vs">Governor can dissolve · Also under Art. 356 (President's Rule)</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:10px 12px;border-radius:9px;background:rgba(26,106,58,0.06);border:1.5px dashed var(--sla);">
+      <span style="font-size:11px;font-weight:700;color:var(--sla);">Government survives only while holding Lower House majority.</span>
+    </div>
+  </div>
+</div>
+
+<!-- Permanency spectrum -->
+<div class="scard s4" style="margin-bottom:20px;">
+  <svg viewBox="0 0 1300 100" xmlns="http://www.w3.org/2000/svg" style="font-family:'Inter',sans-serif;">
+    <text x="648" y="20" text-anchor="middle" font-size="9" font-family="DM Mono,monospace" fill="rgba(120,100,60,0.6)" letter-spacing="3">PERMANENCY SPECTRUM — LEAST TO MOST</text>
+    <line x1="80" y1="58" x2="1220" y2="58" stroke="#e0d8c8" stroke-width="2"/>
+
+    <circle cx="210" cy="58" r="20" fill="#b01a1a" opacity="0.85"/>
+    <text x="210" y="63" text-anchor="middle" font-size="11" font-weight="800" fill="white">LS</text>
+    <text x="210" y="83" text-anchor="middle" font-size="9" fill="#b01a1a" font-family="DM Mono,monospace">Dissolves · 5yr</text>
+    <text x="210" y="96" text-anchor="middle" font-size="8" fill="rgba(176,26,26,0.5)" font-family="DM Mono,monospace">Not permanent</text>
+
+    <circle cx="490" cy="58" r="20" fill="#b01a1a" opacity="0.7"/>
+    <text x="490" y="63" text-anchor="middle" font-size="10" font-weight="800" fill="white">SLA</text>
+    <text x="490" y="83" text-anchor="middle" font-size="9" fill="#b01a1a" font-family="DM Mono,monospace">Dissolves · 5yr</text>
+    <text x="490" y="96" text-anchor="middle" font-size="8" fill="rgba(176,26,26,0.5)" font-family="DM Mono,monospace">Not permanent</text>
+
+    <circle cx="820" cy="58" r="22" fill="#5a1a8a" opacity="0.85"/>
+    <text x="820" y="63" text-anchor="middle" font-size="10" font-weight="800" fill="white">SLC</text>
+    <text x="820" y="83" text-anchor="middle" font-size="9" fill="#5a1a8a" font-family="DM Mono,monospace">Permanent*</text>
+    <text x="820" y="96" text-anchor="middle" font-size="8" fill="rgba(90,26,138,0.5)" font-family="DM Mono,monospace">Abolishable Art.169</text>
+
+    <circle cx="1130" cy="58" r="26" fill="#0a6070"/>
+    <text x="1130" y="63" text-anchor="middle" font-size="11" font-weight="800" fill="white">RS</text>
+    <text x="1130" y="83" text-anchor="middle" font-size="9.5" fill="#0a6070" font-weight="700" font-family="DM Mono,monospace">PERMANENT</text>
+    <text x="1130" y="96" text-anchor="middle" font-size="8" fill="rgba(10,96,112,0.55)" font-family="DM Mono,monospace">Cannot abolish — ever</text>
+
+    <text x="80" y="63" text-anchor="start" font-size="8.5" fill="rgba(176,26,26,0.45)" font-family="DM Mono,monospace">LEAST</text>
+    <text x="1220" y="63" text-anchor="end" font-size="8.5" fill="rgba(10,96,112,0.45)" font-family="DM Mono,monospace">MOST</text>
+  </svg>
+</div>
+
+<!-- ══ 7. LEGISLATIVE PROCESS ══ -->
+<div class="sec">⑦ Legislative Process — Ordinary vs Money Bills</div>
+
+<div class="g2">
+  <div class="pc dark" style="background:rgba(26,20,10,0.03);">
+    <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">Ordinary Bill — Both Houses Equal</div>
+    <h3 style="font-size:15px;font-weight:800;margin-bottom:12px;">📄 Ordinary Bills</h3>
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <div class="fn" style="border-color:var(--ls);background:var(--ls-lt);color:var(--ls);padding:9px 12px;border-radius:9px;display:block;">Introduced in <strong>either</strong> house (LS or RS / SLA or SLC)</div>
+      <div style="text-align:center;color:var(--muted);">↓</div>
+      <div class="fn" style="border-color:var(--rs);background:var(--rs-lt);color:var(--rs);padding:9px 12px;border-radius:9px;display:block;">Passed by originating house</div>
+      <div style="text-align:center;color:var(--muted);">↓</div>
+      <div class="fn" style="border-color:var(--amber);background:#fff3cc;color:var(--amber);padding:9px 12px;border-radius:9px;display:block;">Other house delays: RS = 6 months · SLC = 4 months</div>
+      <div style="text-align:center;color:var(--muted);">↓</div>
+      <div class="fn" style="border-color:var(--sla);background:var(--sla-lt);color:var(--sla);padding:9px 12px;border-radius:9px;display:block;">Joint Sitting possible at Union (LS+RS) · No joint sitting at State level</div>
+    </div>
+    <div style="margin-top:10px;padding:8px 12px;background:rgba(212,106,16,0.07);border-radius:8px;border:1px dashed var(--amber);">
+      <span style="font-size:10px;font-weight:700;color:var(--amber);">★ No Joint Sitting mechanism exists at State Legislature level</span>
+    </div>
+  </div>
+
+  <div class="pc gold">
+    <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">Money Bill — Lower House Dominates</div>
+    <h3 style="font-size:15px;font-weight:800;margin-bottom:12px;">💰 Money Bills</h3>
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <div class="fn" style="border-color:var(--ls);background:var(--ls-lt);color:var(--ls);padding:9px 12px;border-radius:9px;display:block;">⚡ Introduced <strong>ONLY</strong> in Lower House (LS at Union · SLA at State)</div>
+      <div style="text-align:center;color:var(--muted);">↓</div>
+      <div class="fn" style="border-color:var(--ls);background:var(--ls-lt);color:var(--ls);padding:9px 12px;border-radius:9px;display:block;">Passed by Lower House and certified by Speaker</div>
+      <div style="text-align:center;color:var(--muted);">↓</div>
+      <div class="fn" style="border-color:var(--slc);background:var(--slc-lt);color:var(--slc);padding:9px 12px;border-radius:9px;display:block;">Upper house can only <strong>recommend</strong> · 14 days maximum</div>
+      <div style="text-align:center;color:var(--muted);">↓</div>
+      <div class="fn" style="border-color:var(--sla);background:var(--sla-lt);color:var(--sla);padding:9px 12px;border-radius:9px;display:block;">After 14 days → deemed passed regardless of Upper House</div>
+    </div>
+    <div style="margin-top:10px;padding:8px 12px;background:rgba(176,26,26,0.06);border-radius:8px;border:1px dashed var(--red);">
+      <span style="font-size:10px;font-weight:700;color:var(--red);">★ Speaker certifies Money Bill — Upper House has zero veto power</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 8. PRELIMS TRAPS ══ -->
+<div class="sec">⑧ Prelims Traps — High-Yield Watch Out!</div>
+
+<div class="pc red">
+  <h3 style="font-size:16px;font-weight:800;margin-bottom:14px;">🎯 Common Exam Traps & Correct Answers</h3>
+  <div class="trap-grid">
+    <div class="trap">
+      <div class="trap-icon">⚠️</div>
+      <div><div class="trap-text">RS = LS in financial matters?</div><div class="trap-sub">❌ FALSE — LS has full supremacy. RS can only recommend on Money Bills, max 14 day delay.</div></div>
+    </div>
+    <div class="trap">
+      <div class="trap-icon">⚠️</div>
+      <div><div class="trap-text">SLC is as powerful as SLA?</div><div class="trap-sub">❌ FALSE — SLC is significantly weaker. Cannot vote on budget, cannot initiate no-confidence, no special powers.</div></div>
+    </div>
+    <div class="trap">
+      <div class="trap-icon">⚠️</div>
+      <div><div class="trap-text">RS can be abolished like SLC?</div><div class="trap-sub">❌ FALSE — RS cannot be abolished under any provision. SLC can be abolished via Art. 169.</div></div>
+    </div>
+    <div class="trap">
+      <div class="trap-icon">⚠️</div>
+      <div><div class="trap-text">SLC can delay a Money Bill by 4 months?</div><div class="trap-sub">❌ FALSE — Money Bill delay = 14 days only. 4 months is the Ordinary Bill delay power.</div></div>
+    </div>
+    <div class="trap">
+      <div class="trap-icon">⚠️</div>
+      <div><div class="trap-text">No-confidence in RS removes the government?</div><div class="trap-sub">❌ FALSE — No-confidence motion only in Lower Houses (LS / SLA). Govt. is answerable only to lower house.</div></div>
+    </div>
+    <div class="trap">
+      <div class="trap-icon">⚠️</div>
+      <div><div class="trap-text">SLC existence is constitutionally guaranteed?</div><div class="trap-sub">❌ FALSE — SLC needs SLA + Parliament approval to exist. Fully dependent on the State Assembly.</div></div>
+    </div>
+    <div class="trap">
+      <div class="trap-icon">✅</div>
+      <div><div class="trap-text">RS can authorize Parliament to legislate on State List?</div><div class="trap-sub">✅ TRUE — Only RS via Art. 249. This is Rajya Sabha's exclusive special power at the federal level.</div></div>
+    </div>
+    <div class="trap">
+      <div class="trap-icon">✅</div>
+      <div><div class="trap-text">SLC has teacher & graduate representation?</div><div class="trap-sub">✅ TRUE — SLC's unique feature vs RS. No other legislative house has special group representation like this.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 9. KEYSTONE ══ -->
+<div class="sec">⑨ The Big Picture — Core Connecting Idea</div>
+
+<div class="keystone">
+  <div style="font-size:34px;">🏛️</div>
+  <div style="flex:1;">
+    <div class="ks-title">Lower = Direct = Financial Control = Government Survival</div>
+    <div class="ks-body">
+      LS &amp; SLA are directly elected → they hold the government's fate → they control finances exclusively via Money Bills.<br>
+      RS &amp; SLC are revising chambers → delay and refine → limited financial role → zero power to remove governments.<br>
+      <strong style="color:#f5d78a;">RS is uniquely powerful at the federal level</strong> (Art. 249, 312) but financially subordinate to LS.<br>
+      <strong style="color:#f5d78a;">SLC is the weakest house</strong> — its very existence depends on the State Assembly's will.
+    </div>
+    <div style="margin-top:10px;">
+      <span class="kpill">⚡ LS = Most Powerful</span>
+      <span class="kpill">🏛️ RS = Federal Guardian</span>
+      <span class="kpill">🌿 SLA = State Dominant</span>
+      <span class="kpill">⚠️ SLC = Weakest</span>
+      <span class="kpill">💰 Money Bill = Lower Only</span>
+      <span class="kpill">📜 Art.169 = SLC Abolished</span>
+      <span class="kpill">♾️ RS = Cannot Abolish</span>
+      <span class="kpill">14 days = Money Bill Delay</span>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
