@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disaster Management Authorities — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=JetBrains+Mono:wght@400;500;700&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0f1923;--paper:#f6f4ef;--cream:#fffdf8;
+  --red:#c0392b;--red-lt:#fdecea;
+  --orange:#d35400;--orange-lt:#fef0e6;
+  --blue:#1a4a8a;--blue-lt:#e8eef8;
+  --gold:#9a6f10;--gold-lt:#fdf4e0;
+  --green:#1a6040;--green-lt:#e6f5ee;
+  --teal:#0a5868;--teal-lt:#e3f2f6;
+  --purple:#5a1a7a;--purple-lt:#f0e8f8;
+  --muted:#7a6a56;--border:#ddd4be;
+  --card:#fffdf6;--card2:#f2ede2;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;
+  background-image:radial-gradient(ellipse 800px 500px at 10% 15%,rgba(192,57,43,0.05) 0%,transparent 55%),
+  radial-gradient(ellipse 700px 600px at 90% 80%,rgba(26,74,138,0.04) 0%,transparent 55%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1380px;margin:0 auto;padding:0 22px 90px;}
+
+/* HEADER */
+.header{text-align:center;padding:40px 16px 16px;}
+.header-sup{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:8px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(24px,4.5vw,46px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--red);}
+.header-sub{margin-top:7px;font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:80px;height:4px;background:linear-gradient(90deg,var(--red),var(--orange),var(--blue));margin:12px auto 0;border-radius:4px;}
+
+/* SECTION LABELS */
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:28px 0 12px;display:flex;align-items:center;gap:10px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:580px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:16px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.pc:hover{box-shadow:0 6px 24px rgba(0,0,0,0.08);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.pc.red::before{background:linear-gradient(90deg,#c0392b,#e74c3c);}
+.pc.orange::before{background:linear-gradient(90deg,#d35400,#e67e22);}
+.pc.blue::before{background:linear-gradient(90deg,#1a4a8a,#2980b9);}
+.pc.green::before{background:linear-gradient(90deg,#1a6040,#27ae60);}
+.pc.gold::before{background:linear-gradient(90deg,#9a6f10,#f39c12);}
+.pc.teal::before{background:linear-gradient(90deg,#0a5868,#16a085);}
+.pc.purple::before{background:linear-gradient(90deg,#5a1a7a,#8e44ad);}
+.pc-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:6px;line-height:1.3;}
+
+/* MAP CARD */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;position:relative;margin-bottom:22px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,#c0392b,#e67e22,#f1c40f);}
+.map-card.mc2::before{background:linear-gradient(90deg,#1a4a8a,#5a1a7a,#0a5868);}
+.map-card.mc3::before{background:linear-gradient(90deg,#1a6040,#0a5868,#1a4a8a);}
+.map-card.mc4::before{background:linear-gradient(90deg,#9a6f10,#c0392b,#5a1a7a);}
+.map-card svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 8px;border-radius:20px;font-size:9px;font-weight:700;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.red{background:var(--red-lt);color:var(--red);}
+.pill.blue{background:var(--blue-lt);color:var(--blue);}
+.pill.green{background:var(--green-lt);color:var(--green);}
+.pill.gold{background:var(--gold-lt);color:var(--gold);}
+.pill.orange{background:var(--orange-lt);color:var(--orange);}
+.pill.teal{background:var(--teal-lt);color:var(--teal);}
+.pill.purple{background:var(--purple-lt);color:var(--purple);}
+
+/* CHIPS */
+.chip{display:inline-block;padding:3px 8px;border-radius:6px;font-size:9px;font-weight:700;font-family:'JetBrains Mono',monospace;margin:2px;border:1.5px solid;}
+.chip.ok{background:rgba(26,96,64,0.07);border-color:rgba(26,96,64,0.2);color:var(--green);}
+.chip.warn{background:rgba(192,57,43,0.07);border-color:rgba(192,57,43,0.2);color:var(--red);}
+.chip.neu{background:rgba(26,74,138,0.07);border-color:rgba(26,74,138,0.2);color:var(--blue);}
+
+/* STAT BOX */
+.stat-row{display:flex;gap:8px;margin:8px 0;}
+.stat-box{flex:1;padding:10px;border-radius:9px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;line-height:1;}
+.stat-label{font-size:8px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:2px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:5px;}
+.vitem{padding:8px 10px;border-radius:8px;background:var(--card2);border:1px solid var(--border);font-size:10px;}
+.vitem .vt{font-weight:800;margin-bottom:1px;}
+.vitem .vs{font-size:8px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* IMPACT CHAIN */
+.impact-chain{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:5px 0;margin:6px 0;}
+.ic-node{padding:6px 10px;border-radius:7px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:14px;color:var(--muted);flex:0 0 auto;margin:0 4px;}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f0e8d0;border-radius:16px;padding:22px 26px;margin:18px 0;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.keystone-icon{font-size:34px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:19px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.kpill{padding:4px 11px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'JetBrains Mono',monospace;display:inline-block;margin:3px;}
+
+/* PHASE ROW */
+.phase-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:12px 0;}
+@media(max-width:700px){.phase-row{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:460px){.phase-row{grid-template-columns:1fr 1fr;}}
+.phase-box{padding:12px 10px;border-radius:10px;border:2px solid;text-align:center;}
+.phase-year{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;}
+.phase-title{font-size:10px;font-weight:800;margin:3px 0;}
+.phase-sub{font-size:8px;font-family:'JetBrains Mono',monospace;color:var(--muted);}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:10px;}
+.ctable th{background:var(--ink);color:#f0e8d0;padding:8px 10px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1px;}
+.ctable td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(192,57,43,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--orange);}
+
+/* CALLOUT */
+.callout{padding:10px 12px;border-radius:9px;border-left:3px solid;margin:7px 0;}
+.callout.red{background:var(--red-lt);border-color:var(--red);}
+.callout.blue{background:var(--blue-lt);border-color:var(--blue);}
+.callout.green{background:var(--green-lt);border-color:var(--green);}
+.callout-title{font-size:10px;font-weight:800;margin-bottom:3px;}
+.callout-body{font-size:9px;color:var(--muted);line-height:1.5;font-family:'JetBrains Mono',monospace;}
+
+/* TRAP BOX */
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px;}
+.trap-item{display:flex;align-items:flex-start;gap:6px;padding:7px 9px;border-radius:7px;background:var(--card2);border:1px solid var(--border);font-size:9px;font-family:'JetBrains Mono',monospace;}
+.trap-item .ti{flex:0 0 auto;font-size:13px;}
+
+/* BADGE */
+.badge{display:inline-block;padding:2px 8px;border-radius:5px;font-size:8px;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.badge.red{background:var(--red-lt);color:var(--red);}
+.badge.blue{background:var(--blue-lt);color:var(--blue);}
+.badge.green{background:var(--green-lt);color:var(--green);}
+.badge.orange{background:var(--orange-lt);color:var(--orange);}
+
+/* feat */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px;}
+.feat{padding:9px 10px;border-radius:8px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:14px;margin-bottom:3px;}
+.feat .ft{font-size:10px;font-weight:800;}
+.feat .fs{font-size:8px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:1px;}
+
+/* DIVIDER */
+.div-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:8px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Polity · Disaster Management · UPSC Prelims</div>
+  <h1>Disaster Management Authorities — <em>Mind Map</em></h1>
+  <div class="header-sub">DM Act 2005 → NDMA → SDMA → DDMA → Governance Chain</div>
+</div>
+
+<!-- ══ SECTION 1: MASTER FLOW ══ -->
+<div class="sec-label">Master Flow — The Connected Story</div>
+
+<div class="map-card mc1">
+  <svg id="svgMaster" viewBox="0 0 1340 100" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 2: BACKGROUND TIMELINE ══ -->
+<div class="sec-label">① Background Timeline — How We Got Here</div>
+
+<div class="map-card mc2">
+  <svg id="svgTimeline" viewBox="0 0 1340 130" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 3: THREE-LEVEL HIERARCHY ══ -->
+<div class="sec-label">② Three-Level Authority Structure</div>
+
+<div class="map-card mc3">
+  <svg id="svgHierarchy" viewBox="0 0 1340 340" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 4: AUTHORITY DETAIL PANELS ══ -->
+<div class="sec-label">③ Authority Detail Cards</div>
+
+<div class="g3">
+  <!-- NDMA -->
+  <div class="pc red">
+    <div class="pc-label">Level 1 · National</div>
+    <h3>🌍 NDMA</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--red);">9</div><div class="stat-sub">Max Members</div><div class="stat-label">INCL. CHAIR & VC</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--blue);">PM</div><div class="stat-sub">Chairperson</div><div class="stat-label">EX-OFFICIO</div></div>
+    </div>
+    <div class="callout red">
+      <div class="callout-title">💰 Salary Source</div>
+      <div class="callout-body">Consolidated Fund of India (CFI)</div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">🗺️ Approves National DM Plan</div><div class="vs">Top-level policy document</div></div>
+      <div class="vitem"><div class="vt">📋 Issues Guidelines to SDMAs</div><div class="vs">Cascades down the chain</div></div>
+      <div class="vitem"><div class="vt">💊 Sets Minimum Relief Standards</div><div class="vs">Baseline for all states</div></div>
+      <div class="vitem"><div class="vt">🌐 International Disaster Relief</div><div class="vs">Cross-border coordination</div></div>
+      <div class="vitem"><div class="vt">💸 Recommends Mitigation Funds</div><div class="vs">NDRF & SDRF channelling</div></div>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:3px;">
+      <span class="pill red">Prevention</span>
+      <span class="pill red">Preparedness</span>
+      <span class="pill red">Resilience</span>
+    </div>
+  </div>
+
+  <!-- SDMA -->
+  <div class="pc blue">
+    <div class="pc-label">Level 2 · State</div>
+    <h3>🏛️ SDMA</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--blue);">CM</div><div class="stat-sub">Chairperson</div><div class="stat-label">EX-OFFICIO</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--orange);">CM</div><div class="stat-sub">Nominates Members</div><div class="stat-label">APPOINTMENT</div></div>
+    </div>
+    <div class="callout blue">
+      <div class="callout-title">💰 Salary Source</div>
+      <div class="callout-body">Consolidated Fund of State (CFS)</div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">🔄 Implements NDMA Guidelines</div><div class="vs">At state level</div></div>
+      <div class="vitem"><div class="vt">📄 Prepares State Disaster Plan</div><div class="vs">Aligned with national plan</div></div>
+      <div class="vitem"><div class="vt">📡 Coordinates with Districts</div><div class="vs">Bridges national & local</div></div>
+      <div class="vitem"><div class="vt">💰 Manages SDRF</div><div class="vs">State Disaster Response Fund</div></div>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:3px;">
+      <span class="pill blue">Bridge</span>
+      <span class="pill blue">State-Level Response</span>
+    </div>
+  </div>
+
+  <!-- DDMA -->
+  <div class="pc green">
+    <div class="pc-label">Level 3 · District</div>
+    <h3>🏢 DDMA</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--green);">7</div><div class="stat-sub">Max Members</div><div class="stat-label">INCL. DM/DY.CM</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--teal);">DM</div><div class="stat-sub">Chairperson</div><div class="stat-label">COLLECTOR</div></div>
+    </div>
+    <div class="callout green">
+      <div class="callout-title">💰 Salary Source</div>
+      <div class="callout-body">Consolidated Fund of State (CFS)</div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">🗺️ District Disaster Plan</div><div class="vs">Ground-level planning</div></div>
+      <div class="vitem"><div class="vt">⚠️ Identify Vulnerable Areas</div><div class="vs">Flood zones, earthquake belts</div></div>
+      <div class="vitem"><div class="vt">🏥 Designate Relief Centres</div><div class="vs">Buildings for evacuation</div></div>
+      <div class="vitem"><div class="vt">📊 Monitor Implementation</div><div class="vs">Tracks DM plan on ground</div></div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="pill green">SP</span>
+      <span class="pill green">CEO</span>
+      <span class="pill green">Chief Medical Officer</span>
+      <span class="pill green">District Officers</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 5: QUICK COMPARISON TABLE ══ -->
+<div class="sec-label">④ Side-by-Side Comparison</div>
+
+<div class="pc gold" style="margin-bottom:18px;padding:0;overflow:hidden;">
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>PARAMETER</th>
+        <th>🌍 NDMA (National)</th>
+        <th>🏛️ SDMA (State)</th>
+        <th>🏢 DDMA (District)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Head</td><td>Prime Minister (ex-officio)</td><td>Chief Minister (ex-officio)</td><td>District Magistrate / Collector</td></tr>
+      <tr><td>Max Members</td><td>9 (incl. Chair + VC)</td><td>As per state law</td><td>7 (incl. DM & CEO)</td></tr>
+      <tr><td>Appointment</td><td>Nominated by PM</td><td>Nominated by CM</td><td>By State Government</td></tr>
+      <tr><td>Salary Charged On</td><td>CFI (Consolidated Fund of India)</td><td>CFS (Consolidated Fund of State)</td><td>CFS</td></tr>
+      <tr><td>Key Function</td><td>Policy & guidelines</td><td>State-level coordination</td><td>Ground execution</td></tr>
+      <tr><td>Nodal Ministry</td><td colspan="3" style="text-align:center;color:var(--red);font-weight:800;">Ministry of Home Affairs (MHA)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ SECTION 6: POLICY CHAIN FLOW ══ -->
+<div class="sec-label">⑤ Policy → Coordination → Execution Chain</div>
+
+<div class="map-card mc4" style="margin-bottom:18px;">
+  <svg id="svgChain" viewBox="0 0 1340 120" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc red">
+    <div class="pc-label">Before Disaster</div>
+    <h3>📋 NDMA — Policy Phase</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🗺️ Makes National DM Policy</div><div class="vs">Proactive planning</div></div>
+      <div class="vitem"><div class="vt">💡 Issues Mitigation Guidelines</div><div class="vs">To all SDMAs</div></div>
+      <div class="vitem"><div class="vt">📏 Sets Relief Standards</div><div class="vs">Minimum benchmarks</div></div>
+    </div>
+    <div class="impact-chain" style="margin-top:8px;">
+      <div class="ic-node" style="border-color:var(--red);background:var(--red-lt);color:var(--red);font-size:9px;">Policy</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--orange);background:var(--orange-lt);color:var(--orange);font-size:9px;">Guideline</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--blue);background:var(--blue-lt);color:var(--blue);font-size:9px;">SDMA</div>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">During Disaster</div>
+    <h3>📡 SDMA — Coordination Phase</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🔄 Activates State Response</div><div class="vs">Deploys resources</div></div>
+      <div class="vitem"><div class="vt">📞 Links NDMA ↔ DDMA</div><div class="vs">Two-way communication</div></div>
+      <div class="vitem"><div class="vt">💰 Releases SDRF Funds</div><div class="vs">To district units</div></div>
+    </div>
+    <div class="impact-chain" style="margin-top:8px;">
+      <div class="ic-node" style="border-color:var(--blue);background:var(--blue-lt);color:var(--blue);font-size:9px;">Coordinate</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--teal);background:var(--teal-lt);color:var(--teal);font-size:9px;">Resources</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:var(--green-lt);color:var(--green);font-size:9px;">DDMA</div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">On Ground</div>
+    <h3>🚨 DDMA — Execution Phase</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🚁 Rescue & Relief Ops</div><div class="vs">SP + CMO + DM coordinate</div></div>
+      <div class="vitem"><div class="vt">🏕️ Open Relief Centres</div><div class="vs">Pre-designated buildings</div></div>
+      <div class="vitem"><div class="vt">📊 Report Up the Chain</div><div class="vs">To SDMA continuously</div></div>
+    </div>
+    <div class="impact-chain" style="margin-top:8px;">
+      <div class="ic-node" style="border-color:var(--green);background:var(--green-lt);color:var(--green);font-size:9px;">Execute</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--teal);background:var(--teal-lt);color:var(--teal);font-size:9px;">Report</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--blue);background:var(--blue-lt);color:var(--blue);font-size:9px;">Feedback</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 7: PRELIMS TRAPS ══ -->
+<div class="sec-label">⑥ Key Prelims Traps — Never Get These Wrong</div>
+
+<div class="pc red" style="margin-bottom:18px;">
+  <div class="pc-label">Prelims Focus — High-Probability Facts</div>
+  <h3>🎯 Exam-Critical Points</h3>
+  <div class="trap-grid">
+    <div class="trap-item"><span class="ti">✅</span><span>DM Act enacted in <strong>2005</strong></span></div>
+    <div class="trap-item"><span class="ti">✅</span><span>Nodal Ministry → <strong>MHA</strong></span></div>
+    <div class="trap-item"><span class="ti">✅</span><span>NDMA headed by <strong>PM</strong> (ex-officio)</span></div>
+    <div class="trap-item"><span class="ti">✅</span><span>SDMA headed by <strong>CM</strong> (ex-officio)</span></div>
+    <div class="trap-item"><span class="ti">✅</span><span>DDMA headed by <strong>DM/Collector</strong></span></div>
+    <div class="trap-item"><span class="ti">✅</span><span>NDMA salary → <strong>CFI</strong></span></div>
+    <div class="trap-item"><span class="ti">✅</span><span>SDMA/DDMA salary → <strong>CFS</strong></span></div>
+    <div class="trap-item"><span class="ti">✅</span><span>NDMA sets <strong>minimum standards</strong> of relief</span></div>
+    <div class="trap-item"><span class="ti">✅</span><span>NDMA members — up to <strong>9</strong></span></div>
+    <div class="trap-item"><span class="ti">✅</span><span>DDMA members — up to <strong>7</strong></span></div>
+    <div class="trap-item"><span class="ti">✅</span><span>NDMA constituted in <strong>2005-06</strong></span></div>
+    <div class="trap-item"><span class="ti">✅</span><span>Tsunami (<strong>2004</strong>) triggered urgent reform</span></div>
+  </div>
+</div>
+
+<!-- ══ SECTION 8: BIGGER GOVERNANCE LINK ══ -->
+<div class="sec-label">⑦ Bigger Governance Link — Crisis to Authority Chain</div>
+
+<div class="map-card mc2" style="margin-bottom:18px;">
+  <svg id="svgGov" viewBox="0 0 1340 120" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- ══ KEYSTONE ══ -->
+<div class="keystone">
+  <div class="keystone-icon">🌪️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">India built a <strong style="color:#f5d78a;">3-tier constitutional framework</strong> for disaster governance under the DM Act 2005. NDMA makes policy → SDMA coordinates → DDMA executes. The challenge: making this chain truly effective, with timely communication, adequate funds (NDRF/SDRF), and trained manpower at every level.</div>
+    <div style="margin-top:10px;">
+      <span class="kpill">🌍 National → State → District</span>
+      <span class="kpill">📜 DM Act 2005</span>
+      <span class="kpill">🏛️ MHA Nodal</span>
+      <span class="kpill">💸 CFI vs CFS</span>
+      <span class="kpill">⚡ Policy→Execution</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7)-(sub?4:0)-(emoji?9:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=17;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10.5','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8','font-family':'JetBrains Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.35)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const d=`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`;
+  svg.appendChild(se('path',{d,stroke:color||'#aaa','stroke-width':w||1.8,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.65'}));
+}
+
+function straightEdge(svg,x1,y1,x2,y2,color,dashed,w){
+  svg.appendChild(se('line',{x1,y1,x2,y2,stroke:color||'#aaa','stroke-width':w||1.8,'stroke-dasharray':dashed?'5 4':'none',opacity:'0.65'}));
+}
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgMaster');
+  const bg=se('rect',{x:0,y:0,width:1340,height:100,fill:'rgba(248,244,239,0.4)'});svg.appendChild(bg);
+  const steps=[
+    {x:80, label:'Historical\nNeed', sub:'1999–2004', fill:'#8a3a10', emoji:'📖'},
+    {x:240, label:'DM Act\n2005', sub:'MHA Nodal', fill:'#c0392b', emoji:'📜'},
+    {x:405, label:'NDMA\nNational', sub:'PM chairs', fill:'#9a1a2a', emoji:'🌍'},
+    {x:560, label:'SDMA\nState', sub:'CM chairs', fill:'#1a4a8a', emoji:'🏛️'},
+    {x:715, label:'DDMA\nDistrict', sub:'DM chairs', fill:'#1a6040', emoji:'🏢'},
+    {x:880, label:'Policy →\nCoordination', sub:'Chain works', fill:'#5a1a7a', emoji:'🔗'},
+    {x:1040, label:'Prevention &\nPreparedness', sub:'Proactive', fill:'#0a5868', emoji:'🛡️'},
+    {x:1220, label:'Resilient\nIndia', sub:'Goal', fill:'#9a6f10', emoji:'🌟'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1) edge(svg,s.x+72,50,steps[i+1].x-72,50,'#b87c1055',false,2);
+  });
+  steps.forEach(s=>node(svg,s.x,50,138,60,s.fill,s.label.split('\n'),s.sub,s.emoji));
+  const t=se('text',{x:670,y:14,'text-anchor':'middle','font-size':'8','font-family':'JetBrains Mono,monospace','letter-spacing':'3',fill:'rgba(120,100,60,0.4)'});
+  t.textContent='DISASTER MANAGEMENT AUTHORITY CHAIN — END TO END';svg.appendChild(t);
+})();
+
+// ─── TIMELINE ───
+(function(){
+  const svg=document.getElementById('svgTimeline');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:130,fill:'rgba(248,244,239,0.4)'}));
+  
+  // timeline spine
+  svg.appendChild(se('line',{x1:60,y1:65,x2:1280,y2:65,stroke:'#c0392b','stroke-width':'2.5',opacity:'0.3'}));
+
+  const events=[
+    {x:100, year:'1999', label:'High Powered\nCommittee', color:'#9a6f10', emoji:'📋'},
+    {x:290, year:'2001', label:'National Comm.\nGujaratQuake', color:'#c0392b', emoji:'🌐'},
+    {x:500, year:'2004', label:'Indian Ocean\nTsunami', color:'#b01a1a', emoji:'🌊'},
+    {x:720, year:'2005', label:'DM Act\nEnacted', color:'#1a4a8a', emoji:'📜'},
+    {x:940, year:'2005-06', label:'NDMA\nConstituted', color:'#1a6040', emoji:'🌍'},
+    {x:1160, year:'Now', label:'3-Tier System\nOperational', color:'#5a1a7a', emoji:'✅'},
+  ];
+
+  events.forEach((ev,i)=>{
+    const above=i%2===0;
+    const nodeY=above?35:95;
+    const lineY1=above?57:73;
+    const lineY2=nodeY+(above?12:-12);
+    svg.appendChild(se('circle',{cx:ev.x,cy:65,r:7,fill:ev.color,stroke:'#fff','stroke-width':'2'}));
+    svg.appendChild(se('line',{x1:ev.x,y1:lineY1,x2:ev.x,y2:lineY2,stroke:ev.color,'stroke-width':'1.5',opacity:'0.5'}));
+    node(svg,ev.x,nodeY,160,40,ev.color,ev.label.split('\n'),ev.year,ev.emoji);
+  });
+})();
+
+// ─── HIERARCHY (3-level tree, balanced) ───
+(function(){
+  const svg=document.getElementById('svgHierarchy');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:340,fill:'rgba(248,244,239,0.4)'}));
+
+  const rootX=670, rootY=42;
+  node(svg,rootX,rootY,260,54,'#0f1923',['Disaster Management Act 2005'],'Ministry of Home Affairs (MHA)','⚖️');
+
+  // Row 2: 3 authorities
+  const auth=[
+    {x:200,y:155,fill:'#c0392b',label:['NDMA'],sub:'National Level',emoji:'🌍'},
+    {x:670,y:155,fill:'#1a4a8a',label:['SDMA'],sub:'State Level',emoji:'🏛️'},
+    {x:1140,y:155,fill:'#1a6040',label:['DDMA'],sub:'District Level',emoji:'🏢'},
+  ];
+  auth.forEach(a=>{
+    const p=se('path',{d:`M${rootX},${rootY+27} C${rootX},${(rootY+27+a.y-27)/2} ${a.x},${(rootY+27+a.y-27)/2} ${a.x},${a.y-27}`,
+      stroke:'rgba(120,100,60,0.35)','stroke-width':'2',fill:'none','stroke-dasharray':'6 3'});
+    svg.appendChild(p);
+    node(svg,a.x,a.y,170,54,a.fill,a.label,a.sub,a.emoji);
+  });
+
+  // Row 3: Details for each authority (2 nodes each)
+  const ndmaDetails=[
+    {x:80,y:265,fill:'#9a1a2a',label:['PM chairs'],sub:'Ex-officio',emoji:'👤'},
+    {x:265,y:265,fill:'#b01a30',label:['Up to 9'],sub:'Members (incl.Chair)',emoji:'👥'},
+    {x:455,y:265,fill:'#8a1010',label:['Salary→CFI'],sub:'Consolidated Fund',emoji:'💰'},
+  ];
+  const sdmaDetails=[
+    {x:570,y:265,fill:'#0a3a7a',label:['CM chairs'],sub:'Ex-officio',emoji:'👤'},
+    {x:770,y:265,fill:'#1a3080',label:['CM nominates'],sub:'Members',emoji:'👥'},
+    {x:955,y:265,fill:'#0a2060',label:['Salary→CFS'],sub:'State Fund',emoji:'💰'},
+  ];
+  const ddmaDetails=[
+    {x:1060,y:265,fill:'#0a5030',label:['DM/Collector'],sub:'Chairperson',emoji:'👤'},
+    {x:1220,y:265,fill:'#135030',label:['Up to 7'],sub:'SP, CEO, CMO',emoji:'👥'},
+    {x:1300,y:310,fill:'#0a3a20',label:['Salary→CFS'],sub:'State Fund',emoji:'💰'},
+  ];
+
+  // draw NDMA detail lines
+  const ndmaParent={x:200,y:155};
+  ndmaDetails.forEach(d=>{
+    const p=se('path',{d:`M${ndmaParent.x},${ndmaParent.y+27} C${ndmaParent.x},${(ndmaParent.y+27+d.y-22)/2} ${d.x},${(ndmaParent.y+27+d.y-22)/2} ${d.x},${d.y-22}`,
+      stroke:'rgba(192,57,43,0.3)','stroke-width':'1.5',fill:'none','stroke-dasharray':'4 3'});
+    svg.appendChild(p);
+    node(svg,d.x,d.y,152,42,d.fill,d.label,d.sub,d.emoji);
+  });
+
+  const sdmaParent={x:670,y:155};
+  sdmaDetails.forEach(d=>{
+    const p=se('path',{d:`M${sdmaParent.x},${sdmaParent.y+27} C${sdmaParent.x},${(sdmaParent.y+27+d.y-22)/2} ${d.x},${(sdmaParent.y+27+d.y-22)/2} ${d.x},${d.y-22}`,
+      stroke:'rgba(26,74,138,0.3)','stroke-width':'1.5',fill:'none','stroke-dasharray':'4 3'});
+    svg.appendChild(p);
+    node(svg,d.x,d.y,160,42,d.fill,d.label,d.sub,d.emoji);
+  });
+
+  const ddmaParent={x:1140,y:155};
+  [[1060,'rgba(26,96,64,0.3)'],[1220,'rgba(26,96,64,0.3)']].forEach(([dx,clr],i)=>{
+    const dd=ddmaDetails[i];
+    const p=se('path',{d:`M${ddmaParent.x},${ddmaParent.y+27} C${ddmaParent.x},${(ddmaParent.y+27+dd.y-22)/2} ${dx},${(ddmaParent.y+27+dd.y-22)/2} ${dx},${dd.y-22}`,
+      stroke:clr,'stroke-width':'1.5',fill:'none','stroke-dasharray':'4 3'});
+    svg.appendChild(p);
+    node(svg,dd.x,dd.y,152,42,dd.fill,dd.label,dd.sub,dd.emoji);
+  });
+})();
+
+// ─── POLICY CHAIN ───
+(function(){
+  const svg=document.getElementById('svgChain');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:120,fill:'rgba(248,244,239,0.4)'}));
+
+  const steps=[
+    {x:95,label:['⚠️ Disaster'],sub:'Trigger event',fill:'#b01a1a'},
+    {x:270,label:['NDMA'],sub:'Makes Policy',fill:'#c0392b'},
+    {x:445,label:['Guidelines'],sub:'Issued to SDMAs',fill:'#d35400'},
+    {x:620,label:['SDMA'],sub:'Coordinates',fill:'#1a4a8a'},
+    {x:795,label:['Resources'],sub:'To Districts',fill:'#0a5868'},
+    {x:970,label:['DDMA'],sub:'Executes',fill:'#1a6040'},
+    {x:1145,label:['Relief &'],sub:'Response',fill:'#2a8040'},
+    {x:1280,label:['Recovery'],sub:'Mitigation',fill:'#9a6f10'},
+  ];
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      svg.appendChild(se('path',{
+        d:`M${s.x+72},60 L${steps[i+1].x-68},60`,
+        stroke:'rgba(120,100,60,0.3)','stroke-width':'2',fill:'none',
+        'marker-end':'url(#arr)'
+      }));
+    }
+  });
+
+  // arrow marker
+  let defs=svg.querySelector('defs');
+  if(!defs){defs=se('defs',{});svg.insertBefore(defs,svg.firstChild);}
+  const m=se('marker',{id:'arr',markerWidth:'6',markerHeight:'6',refX:'5',refY:'3',orient:'auto'});
+  m.appendChild(se('path',{d:'M0,0 L0,6 L6,3 z',fill:'rgba(120,100,60,0.5)'}));
+  defs.appendChild(m);
+
+  steps.forEach(s=>node(svg,s.x,60,132,56,s.fill,s.label,s.sub));
+})();
+
+// ─── GOVERNANCE LINK ───
+(function(){
+  const svg=document.getElementById('svgGov');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:120,fill:'rgba(248,244,239,0.4)'}));
+
+  const links=[
+    {x:130,fill:'#5a1a7a',emoji:'🔍',label:['Corruption'],sub:'CVC / CBI'},
+    {x:340,fill:'#c0392b',emoji:'💥',label:['Terrorism'],sub:'NIA'},
+    {x:550,fill:'#1a4a8a',emoji:'💰',label:['Financial Crime'],sub:'ED / SFIO'},
+    {x:760,fill:'#0a5868',emoji:'🌊',label:['Disaster'],sub:'NDMA–SDMA–DDMA'},
+    {x:990,fill:'#1a6040',emoji:'🏛️',label:['Rule of Law'],sub:'Constitutional Bodies'},
+    {x:1200,fill:'#9a6f10',emoji:'⚖️',label:['Each Crisis'],sub:'Structured Authority'},
+  ];
+
+  links.forEach((n,i)=>{
+    if(i<links.length-1) edge(svg,n.x+82,60,links[i+1].x-82,60,'#b87c1040',false,1.8);
+  });
+  links.forEach(n=>node(svg,n.x,60,155,60,n.fill,n.label,n.sub,n.emoji));
+
+  const t=se('text',{x:670,y:112,'text-anchor':'middle','font-size':'8','font-family':'JetBrains Mono,monospace','letter-spacing':'2',fill:'rgba(120,100,60,0.4)'});
+  t.textContent='EVERY CRISIS HAS A STRUCTURED AUTHORITY CHAIN IN INDIA';svg.appendChild(t);
+})();
+</script>
+</body>
+</html>

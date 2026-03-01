@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NHRC & SHRC — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#12100e;--paper:#f8f5ef;--gold:#b87c10;--gold-lt:#f5d78a;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf5;--card2:#f2ede0;--sky:#1a5878;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 900px 500px at 15% 10%, rgba(184,124,16,0.06) 0%, transparent 60%),
+  radial-gradient(ellipse 700px 700px at 85% 90%, rgba(26,58,138,0.05) 0%, transparent 60%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:44px 16px 20px;position:relative;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,50px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--red);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--red),var(--gold),var(--blue));margin:14px auto 0;border-radius:4px;}
+
+/* SEC LABELS */
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g2x1{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(184,124,16,0.1);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.dark::before{background:var(--ink);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* MAP CARDS */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:28px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc1::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--blue));}
+.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.mc5::before{background:linear-gradient(90deg,var(--sky),var(--green));}
+.map-card svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,96,112,0.12);color:var(--teal);}
+.pill.red{background:rgba(176,26,26,0.12);color:var(--red);}
+.pill.sky{background:rgba(26,88,120,0.12);color:var(--sky);}
+
+/* STAT BOXES */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* CHIPS */
+.ps-chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.prob{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.ps-chip.sol{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.ps-chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+.ps-chip.blue{background:rgba(26,58,138,0.07);border-color:rgba(26,58,138,0.2);color:var(--blue);}
+
+/* FEAT */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* FLOW */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.flow-node{padding:6px 12px;border-radius:8px;font-size:11px;font-weight:700;border:1.5px solid;}
+.flow-arr{font-size:18px;color:var(--muted);}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;letter-spacing:0.4px;}
+
+/* IMPACT CHAIN */
+.impact-chain{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:6px 0;margin:8px 0;}
+.ic-node{padding:7px 12px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:14px;color:var(--muted);flex:0 0 auto;margin:0 4px;}
+
+/* PHASE ROW */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;}
+.phase-title{font-size:12px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'DM Mono',monospace;margin-bottom:8px;}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;background:rgba(176,26,26,0.06);border:1.5px solid rgba(176,26,26,0.2);margin:8px 0;}
+.callout-title{font-size:11px;font-weight:800;color:var(--red);margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* TRAP GRID */
+.trap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:10px;}
+.trap-item{padding:10px 14px;border-radius:10px;background:rgba(176,26,26,0.05);border:1.5px solid rgba(176,26,26,0.15);font-size:11px;}
+.trap-icon{font-size:14px;margin-right:5px;}
+
+/* CHAIN BOXES */
+.chain-row{display:flex;flex-wrap:wrap;gap:0;margin:12px 0;align-items:stretch;}
+.chain-box{flex:1;min-width:140px;padding:14px 12px;border-radius:0;border:1.5px solid var(--border);text-align:center;position:relative;background:var(--card2);}
+.chain-box:first-child{border-radius:12px 0 0 12px;}
+.chain-box:last-child{border-radius:0 12px 12px 0;}
+.chain-box::after{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--muted);z-index:2;}
+.chain-box:last-child::after{display:none;}
+.chain-icon{font-size:20px;margin-bottom:4px;}
+.chain-label{font-size:11px;font-weight:800;}
+.chain-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:2px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Polity · Human Rights · UPSC Prelims</div>
+  <h1>NHRC &amp; SHRC — <em>Mind Map</em></h1>
+  <div class="header-sub">Protection of Human Rights Act, 1993 → National + State Architecture</div>
+</div>
+
+<!-- MASTER FLOW -->
+<div class="sec-label">Master Flow — Big Picture</div>
+<div class="map-card mc1">
+  <svg id="svgMaster" viewBox="0 0 1340 120" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- LEGAL FOUNDATION -->
+<div class="sec-label">① Legal Foundation</div>
+<div class="phase-row">
+  <div class="phase-box" style="border-color:var(--red);background:rgba(176,26,26,0.04);">
+    <div class="phase-num" style="color:var(--red);">1993</div>
+    <div class="phase-title">Protection of Human Rights Act</div>
+    <div class="phase-sub" style="color:var(--muted);">Parent Legislation</div>
+    <div style="font-size:10px;margin-top:8px;line-height:1.8;color:var(--muted);">
+      Creates both NHRC &amp; SHRC<br>
+      Establishes Human Rights Courts<br>
+      Defines mandate &amp; powers
+    </div>
+    <span class="pill red" style="margin-top:8px;">Constitutional Backing</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--blue);background:rgba(26,58,138,0.04);">
+    <div class="phase-num" style="color:var(--blue);">NHRC</div>
+    <div class="phase-title">National Level 🇮🇳</div>
+    <div class="phase-sub" style="color:var(--muted);">New Delhi</div>
+    <div style="font-size:10px;margin-top:8px;line-height:1.8;color:var(--muted);">
+      Retired CJI as Chairperson<br>
+      5 Members + Ex-Officio<br>
+      Reports to Parliament
+    </div>
+    <span class="pill blue" style="margin-top:8px;">Central Body</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--teal);background:rgba(10,96,112,0.04);">
+    <div class="phase-num" style="color:var(--teal);">SHRC</div>
+    <div class="phase-title">State Level 🏛️</div>
+    <div class="phase-sub" style="color:var(--muted);">Each State Capital</div>
+    <div style="font-size:10px;margin-top:8px;line-height:1.8;color:var(--muted);">
+      Retired HC CJ as Chair<br>
+      2 Members<br>
+      Reports to State Legislature
+    </div>
+    <span class="pill teal" style="margin-top:8px;">State Body</span>
+  </div>
+</div>
+
+<!-- NHRC STRUCTURE -->
+<div class="sec-label">② NHRC — Full Structure</div>
+<div class="map-card mc2">
+  <svg id="svgNHRC" viewBox="0 0 1340 340" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- NHRC PANELS -->
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-label">NHRC — Composition</div>
+    <h3>👨‍⚖️ Who Sits on NHRC</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">🔶 Chairperson</div>
+        <div class="vs">Retired CJI or Retired SC Judge</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Members (5 total)</div>
+        <div class="vs">1 Serving/Retired SC Judge · 1 Serving/Retired HC CJ · 3 HR Experts (1 woman mandatory)</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Ex-Officio (7 Chairpersons)</div>
+        <div class="vs">NCBC · NCW · NCSC · NCST · NCPCR · NC for Minorities · CC for PwDs</div>
+      </div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="pill blue">Total: 5+7 Members</span>
+      <span class="pill amber">1 Woman Mandatory</span>
+    </div>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-label">NHRC — Appointment</div>
+    <h3>🏛️ Selection Committee</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">PM — Chair of Committee</div><div class="vs">Leads the selection process</div></div>
+      <div class="vitem"><div class="vt">Speaker (Lok Sabha)</div><div class="vs">Lower house representative</div></div>
+      <div class="vitem"><div class="vt">Deputy Chairman (Rajya Sabha)</div><div class="vs">Upper house representative</div></div>
+      <div class="vitem"><div class="vt">LoP — LS &amp; RS</div><div class="vs">Both opposition leaders included</div></div>
+      <div class="vitem"><div class="vt">Union Home Minister</div><div class="vs">Consultation with CJI for judicial members</div></div>
+    </div>
+    <div style="margin-top:8px;padding:8px 12px;background:rgba(90,26,138,0.07);border-radius:8px;border:1px dashed var(--purple);font-size:10px;font-weight:700;color:var(--purple);">
+      👑 Appointed by President on committee recommendation
+    </div>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-label">NHRC — Term &amp; Salary</div>
+    <h3>⏱️ Tenure Rules</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--red);">3</div>
+        <div class="stat-sub">Years Term</div>
+        <div class="stat-label">OR 70 YRS AGE</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">70</div>
+        <div class="stat-sub">Age Limit</div>
+        <div class="stat-label">WHICHEVER EARLIER</div>
+      </div>
+    </div>
+    <div class="callout" style="background:rgba(176,26,26,0.06);border-color:rgba(176,26,26,0.2);">
+      <div class="callout-title">💰 Salary Rules</div>
+      <div class="callout-body">Set by Central Govt · Cannot be varied to disadvantage after appointment</div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="ps-chip prob">❌ No re-appointment after term</span>
+    </div>
+  </div>
+</div>
+
+<!-- NHRC FUNCTIONS & POWERS -->
+<div class="g2" style="margin-bottom:20px;">
+  <div class="pc teal">
+    <div class="pc-label">NHRC — Functions</div>
+    <h3>⚙️ What NHRC Does</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">🔍</div><div class="ft">Inquiry</div><div class="fs">Suo motu or on petition</div></div>
+      <div class="feat"><div class="fi">🏥</div><div class="ft">Jail Visits</div><div class="fs">Detention centres inspected</div></div>
+      <div class="feat"><div class="fi">📋</div><div class="ft">Review Safeguards</div><div class="fs">Existing HR protections</div></div>
+      <div class="feat"><div class="fi">📚</div><div class="ft">Awareness</div><div class="fs">Promote HR education</div></div>
+      <div class="feat"><div class="fi">📊</div><div class="ft">Annual Report</div><div class="fs">To Central Govt → Parliament</div></div>
+      <div class="feat"><div class="fi">🤝</div><div class="ft">NGO Support</div><div class="fs">Collaborate with civil society</div></div>
+    </div>
+  </div>
+
+  <div class="pc sky">
+    <div class="pc-label">NHRC — Powers</div>
+    <h3>⚖️ What NHRC Can Do</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">⚖️ Civil Court Powers</div><div class="vs">Summon witnesses, examine evidence, issue orders</div></div>
+      <div class="vitem"><div class="vt">🕵️ Own Investigation Staff</div><div class="vs">Maintains independent investigative apparatus</div></div>
+      <div class="vitem"><div class="vt">🏛️ Utilize Govt Agencies</div><div class="vs">Can direct CBI, state police to assist</div></div>
+      <div class="vitem"><div class="vt">💰 Recommend Compensation</div><div class="vs">To victims of human rights violations</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;background:rgba(176,26,26,0.06);border-radius:8px;border:1px dashed var(--red);font-size:10px;font-weight:700;color:var(--red);">
+      ⚠️ RECOMMENDATORY ONLY — No binding enforcement power
+    </div>
+  </div>
+</div>
+
+<!-- SHRC STRUCTURE -->
+<div class="sec-label">③ SHRC — Full Structure</div>
+<div class="map-card mc3">
+  <svg id="svgSHRC" viewBox="0 0 1340 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc teal">
+    <div class="pc-label">SHRC — Composition</div>
+    <h3>👨‍⚖️ Who Sits on SHRC</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">🔶 Chairperson</div>
+        <div class="vs">Retired CJ or Retired Judge of High Court</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Member 1</div>
+        <div class="vs">Serving/Retired HC Judge or District Judge (7 yrs exp.)</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Member 2</div>
+        <div class="vs">Expert in Human Rights</div>
+      </div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="pill teal">Total: 3 Members</span>
+      <span class="pill amber">Smaller than NHRC</span>
+    </div>
+  </div>
+
+  <div class="pc green">
+    <div class="pc-label">SHRC — Appointment</div>
+    <h3>🏛️ Governor's Committee</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">CM — Chair of Committee</div><div class="vs">State counterpart of PM's role</div></div>
+      <div class="vitem"><div class="vt">Speaker (State Legislative Assembly)</div><div class="vs">Lower house representative</div></div>
+      <div class="vitem"><div class="vt">Chairman (SLC)</div><div class="vs">If State Legislative Council exists</div></div>
+      <div class="vitem"><div class="vt">LoP — SLA &amp; SLC</div><div class="vs">Both opposition leaders included</div></div>
+      <div class="vitem"><div class="vt">State Home Minister</div><div class="vs">Consultation with HC Chief Justice</div></div>
+    </div>
+    <div style="margin-top:8px;padding:8px 12px;background:rgba(26,106,58,0.07);border-radius:8px;border:1px dashed var(--green);font-size:10px;font-weight:700;color:var(--green);">
+      👑 Appointed by Governor on committee recommendation
+    </div>
+  </div>
+
+  <div class="pc gold">
+    <div class="pc-label">SHRC — Reports</div>
+    <h3>📋 Accountability Chain</h3>
+    <div class="impact-chain" style="flex-direction:column;align-items:flex-start;gap:6px;">
+      <div class="ic-node" style="border-color:var(--teal);background:rgba(10,96,112,0.08);color:var(--teal);">SHRC Inquiry</div>
+      <div class="ic-arr" style="transform:rotate(90deg);">→</div>
+      <div class="ic-node" style="border-color:var(--gold);background:rgba(184,124,16,0.08);color:var(--gold);">Report to State Govt</div>
+      <div class="ic-arr" style="transform:rotate(90deg);">→</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.08);color:var(--blue);">Laid Before State Legislature</div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="ps-chip neu">Term: 3 yrs or 70 yrs age</span>
+    </div>
+    <div class="callout" style="margin-top:8px;">
+      <div class="callout-title" style="color:var(--amber);">🔑 Key Difference from NHRC</div>
+      <div class="callout-body">NHRC → Parliament · SHRC → State Legislature<br>NHRC → President appoints · SHRC → Governor appoints</div>
+    </div>
+  </div>
+</div>
+
+<!-- NHRC vs SHRC COMPARISON -->
+<div class="sec-label">④ NHRC vs SHRC — Side-by-Side</div>
+<div class="map-card mc4">
+  <svg id="svgCompare" viewBox="0 0 1340 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="pc dark" style="margin-bottom:20px;background:rgba(18,16,14,0.03);border-color:rgba(18,16,14,0.15);">
+  <h3 style="font-family:'Playfair Display',serif;font-size:15px;margin-bottom:12px;">📊 Quick Comparison Table</h3>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th style="color:#64b8ff;">NHRC</th>
+        <th style="color:#64e8a0;">SHRC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Act</td><td>Protection of Human Rights Act, 1993</td><td>Protection of Human Rights Act, 1993</td></tr>
+      <tr><td>Chairperson</td><td style="color:var(--blue);font-weight:800;">Retired CJI or SC Judge</td><td style="color:var(--teal);font-weight:800;">Retired HC CJ or HC Judge</td></tr>
+      <tr><td>Members</td><td>5 + 7 Ex-officio</td><td>2 Members only</td></tr>
+      <tr><td>Appointed by</td><td style="color:var(--blue);">President</td><td style="color:var(--green);">Governor</td></tr>
+      <tr><td>Selection Committee Chair</td><td>Prime Minister</td><td>Chief Minister</td></tr>
+      <tr><td>Term</td><td>3 years or 70 years</td><td>3 years or 70 years</td></tr>
+      <tr><td>Reports to</td><td style="color:var(--blue);">Central Govt → Parliament</td><td style="color:var(--green);">State Govt → State Legislature</td></tr>
+      <tr><td>Removal by</td><td>President</td><td>President</td></tr>
+      <tr><td>Powers</td><td>Civil court powers</td><td>Civil court powers (similar)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- REMOVAL -->
+<div class="sec-label">⑤ Removal — President Decides</div>
+<div class="map-card mc1" style="margin-bottom:18px;">
+  <svg id="svgRemoval" viewBox="0 0 1340 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2" style="margin-bottom:20px;">
+  <div class="pc red">
+    <div class="pc-label">Grounds for Removal</div>
+    <h3>⚖️ Removal Grounds (Both NHRC &amp; SHRC)</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">💸 Adjudged Insolvent</div><div class="vs">Declared bankrupt by court</div></div>
+      <div class="vitem"><div class="vt">💼 Paid Employment During Tenure</div><div class="vs">Outside the commission role</div></div>
+      <div class="vitem"><div class="vt">🧠 Unsound Mind</div><div class="vs">Declared by competent court</div></div>
+      <div class="vitem"><div class="vt">⚖️ Convicted of Offence</div><div class="vs">Criminal conviction during tenure</div></div>
+      <div class="vitem"><div class="vt">🔍 Misbehaviour / Incapacity</div><div class="vs">⚠️ SC Inquiry Required before removal</div></div>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Important Note</div>
+    <h3>🔑 Removal Key Point</h3>
+    <div style="padding:16px;border-radius:12px;background:rgba(212,106,16,0.07);border:1.5px solid rgba(212,106,16,0.2);margin-bottom:10px;text-align:center;">
+      <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:800;color:var(--amber);">PRESIDENT</div>
+      <div style="font-size:11px;font-family:'DM Mono',monospace;color:var(--muted);">REMOVES BOTH NHRC &amp; SHRC MEMBERS</div>
+    </div>
+    <div class="callout" style="background:rgba(212,106,16,0.06);border-color:rgba(212,106,16,0.2);">
+      <div class="callout-title" style="color:var(--amber);">⚠️ SC Inquiry = Safeguard</div>
+      <div class="callout-body">For misbehaviour/incapacity cases, Supreme Court must conduct inquiry first — ensures independence of commission members</div>
+    </div>
+  </div>
+</div>
+
+<!-- LIMITATIONS -->
+<div class="sec-label">⑥ Limitations — The Weak Points</div>
+<div class="map-card mc3" style="margin-bottom:18px;">
+  <svg id="svgLimits" viewBox="0 0 1340 140" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g4" style="margin-bottom:20px;">
+  <div class="pc red">
+    <div class="pc-label">Time Limit</div>
+    <h3>⏱️ 1-Year Rule</h3>
+    <div style="text-align:center;padding:12px;border-radius:10px;background:rgba(176,26,26,0.07);">
+      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:800;color:var(--red);">1 Year</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">MAXIMUM DELAY</div>
+    </div>
+    <div style="font-size:11px;margin-top:10px;line-height:1.6;">Cannot inquire into matters that occurred more than <strong>1 year before</strong> the complaint.</div>
+    <span class="ps-chip prob" style="margin-top:8px;">❌ Time-barred cases lost</span>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">No Binding Power</div>
+    <h3>📝 Advisory Only</h3>
+    <div style="text-align:center;padding:12px;border-radius:10px;background:rgba(212,106,16,0.07);">
+      <div style="font-size:28px;">📋</div>
+      <div style="font-size:11px;font-weight:800;margin-top:4px;">Recommendatory</div>
+    </div>
+    <div style="font-size:11px;margin-top:10px;line-height:1.6;">Recommendations NOT binding on govt. Govt may or may not act on them.</div>
+    <span class="ps-chip prob" style="margin-top:8px;">❌ No enforcement</span>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">No Punitive Power</div>
+    <h3>⛓️ Cannot Punish</h3>
+    <div style="text-align:center;padding:12px;border-radius:10px;background:rgba(90,26,138,0.07);">
+      <div style="font-size:28px;">🚫</div>
+      <div style="font-size:11px;font-weight:800;margin-top:4px;">No Penalty Power</div>
+    </div>
+    <div style="font-size:11px;margin-top:10px;line-height:1.6;">Cannot directly punish violators. Can only recommend action to appropriate authorities.</div>
+    <span class="ps-chip prob" style="margin-top:8px;">❌ Toothless on violators</span>
+  </div>
+  <div class="pc sky">
+    <div class="pc-label">Armed Forces</div>
+    <h3>🪖 Limited Role</h3>
+    <div style="text-align:center;padding:12px;border-radius:10px;background:rgba(26,88,120,0.07);">
+      <div style="font-size:28px;">⚠️</div>
+      <div style="font-size:11px;font-weight:800;margin-top:4px;">Restricted Scope</div>
+    </div>
+    <div style="font-size:11px;margin-top:10px;line-height:1.6;">Armed forces complaints → Limited role. Can only make recommendations, not demand inquiry reports.</div>
+    <span class="ps-chip prob" style="margin-top:8px;">❌ Military shield</span>
+  </div>
+</div>
+
+<!-- HUMAN RIGHTS COURTS -->
+<div class="sec-label">⑦ Human Rights Courts</div>
+<div class="pc green" style="margin-bottom:20px;">
+  <div class="pc-label">Human Rights Courts — Under 1993 Act</div>
+  <h3>🏛️ District-Level Courts for HR Cases</h3>
+  <div class="g3" style="margin-bottom:0;margin-top:10px;">
+    <div style="padding:14px;border-radius:12px;background:rgba(26,106,58,0.07);border:1.5px solid rgba(26,106,58,0.2);text-align:center;">
+      <div style="font-size:24px;margin-bottom:6px;">📍</div>
+      <div style="font-size:13px;font-weight:800;color:var(--green);">Each District</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:4px;">One HR court per district in India</div>
+    </div>
+    <div style="padding:14px;border-radius:12px;background:rgba(26,58,138,0.07);border:1.5px solid rgba(26,58,138,0.2);text-align:center;">
+      <div style="font-size:24px;margin-bottom:6px;">🏛️</div>
+      <div style="font-size:13px;font-weight:800;color:var(--blue);">State Govt Sets Up</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:4px;">With approval of HC Chief Justice</div>
+    </div>
+    <div style="padding:14px;border-radius:12px;background:rgba(212,106,16,0.07);border:1.5px solid rgba(212,106,16,0.2);text-align:center;">
+      <div style="font-size:24px;margin-bottom:6px;">⚖️</div>
+      <div style="font-size:13px;font-weight:800;color:var(--amber);">Public Prosecutor</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:4px;">Minimum 7 years legal practice required</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRELIMS TRAPS -->
+<div class="sec-label">⑧ High-Probability Prelims Traps</div>
+<div class="pc red" style="margin-bottom:20px;">
+  <div class="pc-label">UPSC Exam — Watch Out</div>
+  <h3>🔥 Common Traps &amp; Exam Points</h3>
+  <div class="trap-grid">
+    <div class="trap-item"><span class="trap-icon">✅</span><strong>Act Year → 1993</strong> (not 1992 or 1995)</div>
+    <div class="trap-item"><span class="trap-icon">✅</span><strong>NHRC Chair</strong> → Retired CJI (not serving CJI)</div>
+    <div class="trap-item"><span class="trap-icon">✅</span><strong>SHRC Chair</strong> → Retired HC CJ/Judge (not CJI)</div>
+    <div class="trap-item"><span class="trap-icon">✅</span><strong>Term</strong> → 3 yrs or 70 yrs (whichever earlier)</div>
+    <div class="trap-item"><span class="trap-icon">✅</span><strong>Civil Court Powers</strong> → Yes, both NHRC &amp; SHRC</div>
+    <div class="trap-item"><span class="trap-icon">✅</span><strong>Recommendatory</strong> → NOT binding on govt</div>
+    <div class="trap-item"><span class="trap-icon">✅</span><strong>1-Year Limit</strong> → Cannot investigate after 1 year</div>
+    <div class="trap-item"><span class="trap-icon">✅</span><strong>Removal</strong> → By President (both NHRC &amp; SHRC)</div>
+    <div class="trap-item"><span class="trap-icon">✅</span><strong>Ex-Officio</strong> → 7 Chairpersons (NHRC only)</div>
+    <div class="trap-item"><span class="trap-icon">✅</span><strong>1 Woman Mandatory</strong> → Among 3 HR expert members</div>
+    <div class="trap-item"><span class="trap-icon">✅</span><strong>SC Inquiry Needed</strong> → For misbehaviour removal</div>
+    <div class="trap-item"><span class="trap-icon">✅</span><strong>Armed Forces</strong> → Limited/restricted NHRC role</div>
+  </div>
+</div>
+
+<!-- ACCOUNTABILITY CHAIN -->
+<div class="sec-label">⑨ Accountability Chain — Final Link</div>
+<div class="map-card mc4">
+  <svg id="svgChain" viewBox="0 0 1340 140" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+<div class="g4" style="margin-bottom:20px;">
+  <div class="pc red">
+    <div class="pc-label">Corruption</div>
+    <h3>🔎 CVC / CBI</h3>
+    <div style="font-size:11px;color:var(--muted);line-height:1.6;">Financial &amp; official misconduct by public servants</div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">Rights Violation</div>
+    <h3>⚖️ NHRC / SHRC</h3>
+    <div style="font-size:11px;color:var(--muted);line-height:1.6;">Human rights violations — physical, civil, political</div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">Transparency Denied</div>
+    <h3>📂 CIC / SIC</h3>
+    <div style="font-size:11px;color:var(--muted);line-height:1.6;">Right to Information denied or withheld</div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Discrimination</div>
+    <h3>🤝 NCSC / NCST / NCW</h3>
+    <div style="font-size:11px;color:var(--muted);line-height:1.6;">Caste, tribal, gender discrimination &amp; atrocities</div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">⚖️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">India created a <strong style="color:#f5d78a;">two-tier watchdog architecture</strong> — NHRC at national + SHRC at state — under the 1993 Act. Both share the same DNA: civil court powers, recommendatory nature, identical terms. The key difference lies in <strong style="color:#f5d78a;">who appoints (President vs Governor)</strong> and <strong style="color:#f5d78a;">who they report to (Parliament vs State Legislature)</strong>.</div>
+    <div class="keystone-pills">
+      <span class="kpill">⚖️ 1993 Act</span>
+      <span class="kpill">👑 President vs Governor</span>
+      <span class="kpill">📋 Recommendatory Only</span>
+      <span class="kpill">⏱️ 3 yrs / 70 yrs</span>
+      <span class="kpill">🚫 1-Year Bar</span>
+      <span class="kpill">🏛️ SC Inquiry for Removal</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const mx=(x1+x2)/2;
+  const p=se('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':w||1.8,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.65'});
+  svg.appendChild(p);
+}
+
+function vEdge(svg,x1,y1,x2,y2,color,dashed){
+  const my=(y1+y2)/2;
+  const p=se('path',{d:`M${x1},${y1} C${x1},${my} ${x2},${my} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':'1.8',fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.6'});
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,rx,textCol){
+  textCol=textCol||'#fff'; rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.09)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.5'}));
+  let ty=y-((lines.length)*7)-(sub?5:0)-(emoji?8:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=17;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10.5','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.4)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+// ── MASTER FLOW ──
+(function(){
+  const svg=document.getElementById('svgMaster');
+  const steps=[
+    {x:80, label:['1993 Act'], sub:'Legal foundation', fill:'#b01a1a', emoji:'📜'},
+    {x:250, label:['NHRC'], sub:'National body', fill:'#1a3a8a', emoji:'🇮🇳'},
+    {x:420, label:['SHRC'], sub:'State body', fill:'#0a6070', emoji:'🏛️'},
+    {x:600, label:['Inquiry','Powers'], sub:'Civil court powers', fill:'#5a1a8a', emoji:'⚖️'},
+    {x:780, label:['Report to Govt'], sub:'Recommendations', fill:'#b87c10', emoji:'📋'},
+    {x:960, label:['Limitations'], sub:'1yr · No binding power', fill:'#d46a10', emoji:'⚠️'},
+    {x:1140, label:['HR Courts'], sub:'Each district', fill:'#1a6a3a', emoji:'🏛️'},
+    {x:1290, label:['Watchdog','System'], sub:'Protecting rights', fill:'#1a5878', emoji:'🛡️'},
+  ];
+  const bg=se('rect',{x:0,y:0,width:1340,height:120,fill:'rgba(250,245,238,0.4)'});
+  svg.appendChild(bg);
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1) edge(svg,s.x+68,60,steps[i+1].x-68,60,'#b87c10',false,2);
+  });
+  steps.forEach(s=>node(svg,s.x,60,128,72,s.fill,s.label,s.sub,s.emoji));
+  const t=se('text',{x:670,y:14,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace','letter-spacing':'3','fill':'rgba(120,100,60,0.4)'});
+  t.textContent='MASTER FLOW: ACT → NHRC/SHRC → POWERS → LIMITATIONS → HR COURTS → WATCHDOG SYSTEM';
+  svg.appendChild(t);
+})();
+
+// ── NHRC STRUCTURE (radial mind map) ──
+(function(){
+  const svg=document.getElementById('svgNHRC');
+  svg.setAttribute('viewBox','0 0 1340 340');
+  const bg=se('rect',{x:0,y:0,width:1340,height:340,fill:'rgba(250,245,238,0.4)'});
+  svg.appendChild(bg);
+
+  // Central node
+  const cx=670, cy=165;
+  node(svg,cx,cy,200,64,'#1a3a8a',['NHRC'],'National Human Rights Commission','🏛️');
+
+  // Left branch — Composition
+  const compNodes=[
+    {x:210,y:50, fill:'#b01a1a', label:['Chairperson'], sub:'Retired CJI/SC Judge', emoji:'👑'},
+    {x:80,y:140, fill:'#1a3a8a', label:['SC Judge'], sub:'Serving/Retired', emoji:'⚖️'},
+    {x:210,y:200, fill:'#1a3a8a', label:['HC CJ Member'], sub:'Serving/Retired', emoji:'⚖️'},
+    {x:80,y:270, fill:'#5a1a8a', label:['3 HR Experts'], sub:'1 woman mandatory', emoji:'👥'},
+    {x:290,y:300, fill:'#0a6070', label:['7 Ex-Officio'], sub:'NCBC·NCW·NCSC·NCST+', emoji:'🔗'},
+  ];
+  const compRoot={x:370,y:165};
+  edge(svg,cx-100,cy,compRoot.x,compRoot.y,'#1a3a8a44',false,2);
+  node(svg,compRoot.x,compRoot.y,130,48,'#1a3a8a',['Composition'],'Who sits on NHRC','👥');
+  compNodes.forEach(n=>{
+    const fromX=compRoot.x-(compRoot.x-n.x>0?60:0);
+    vEdge(svg,compRoot.x,compRoot.y+24,n.x,n.y-24,'#1a3a8a33',true);
+    node(svg,n.x,n.y,158,46,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  // Right branch — Powers & Functions
+  const funcRoot={x:970,y:165};
+  edge(svg,cx+100,cy,funcRoot.x,funcRoot.y,'#1a6a3a44',false,2);
+  node(svg,funcRoot.x,funcRoot.y,130,48,'#1a6a3a',['Powers &','Functions'],'What NHRC does','⚙️');
+  const funcNodes=[
+    {x:1130,y:50, fill:'#1a6a3a', label:['Inquire Violations'], sub:'Suo motu or petition', emoji:'🔍'},
+    {x:1260,y:140, fill:'#0a6070', label:['Visit Jails'], sub:'Detention centres', emoji:'🏥'},
+    {x:1130,y:210, fill:'#1a5878', label:['Civil Court','Powers'], sub:'Summon, examine', emoji:'⚖️'},
+    {x:1260,y:290, fill:'#5a1a8a', label:['Review Safeguards'], sub:'Existing HR laws', emoji:'📋'},
+    {x:1050,y:300, fill:'#b87c10', label:['Annual Report'], sub:'To Parliament', emoji:'📊'},
+  ];
+  funcNodes.forEach(n=>{
+    vEdge(svg,funcRoot.x,funcRoot.y+24,n.x,n.y-24,'#1a6a3a33',true);
+    node(svg,n.x,n.y,150,46,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  // Bottom — Appointment
+  const apptRoot={x:670,y:280};
+  edge(svg,cx,cy+32,apptRoot.x,apptRoot.y-24,'#b87c1044',false,2);
+  node(svg,apptRoot.x,apptRoot.y,200,48,'#b87c10',['Appointment'],'By President on committee rec.','👑');
+
+  const apptNodes=[
+    {x:440,y:330, fill:'#d46a10', label:['PM — Chair'], sub:'Heads selection'},
+    {x:610,y:330, fill:'#b87c10', label:['Speaker LS'], sub:'Lower house'},
+    {x:780,y:330, fill:'#b87c10', label:['Dy. Chair RS'], sub:'Upper house'},
+    {x:950,y:330, fill:'#7a4010', label:['LoP LS & RS'], sub:'Opposition'},
+  ];
+  apptNodes.forEach(n=>{
+    edge(svg,apptRoot.x,apptRoot.y+24,n.x,n.y-22,'#b87c1033',true,1.5);
+    node(svg,n.x,n.y,150,42,n.fill,n.label,n.sub,null);
+  });
+
+  const t=se('text',{x:670,y:20,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'2.5','fill':'rgba(26,58,138,0.4)'});
+  t.textContent='NHRC FULL STRUCTURE — COMPOSITION · APPOINTMENT · POWERS';
+  svg.appendChild(t);
+})();
+
+// ── SHRC STRUCTURE ──
+(function(){
+  const svg=document.getElementById('svgSHRC');
+  svg.setAttribute('viewBox','0 0 1340 280');
+  const bg=se('rect',{x:0,y:0,width:1340,height:280,fill:'rgba(248,250,248,0.4)'});
+  svg.appendChild(bg);
+
+  const cx=670, cy=130;
+  node(svg,cx,cy,200,60,'#0a6070',['SHRC'],'State Human Rights Commission','🏛️');
+
+  // Left — Composition
+  edge(svg,cx-100,cy,380,cy,'#0a607044',false,2);
+  node(svg,380,cy,130,48,'#0a6070',['Composition'],'Who sits on SHRC','👥');
+  const compN=[
+    {x:190,y:60, fill:'#b01a1a', label:['Chairperson'], sub:'Retired HC CJ/Judge', emoji:'👑'},
+    {x:190,y:140, fill:'#1a5878', label:['Member 1'], sub:'HC/District Judge 7yr', emoji:'⚖️'},
+    {x:190,y:215, fill:'#5a1a8a', label:['Member 2'], sub:'HR Expert', emoji:'👤'},
+  ];
+  compN.forEach(n=>{
+    vEdge(svg,380,cx+24,n.x,n.y-22,'#0a607033',true);
+    node(svg,n.x,n.y,158,42,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  // Right — Appointment
+  edge(svg,cx+100,cy,960,cy,'#1a6a3a44',false,2);
+  node(svg,960,cy,130,48,'#1a6a3a',['Appointment'],"By Governor on committee",'👑');
+  const apptN=[
+    {x:1140,y:60, fill:'#1a6a3a', label:['CM — Chair'], sub:'Heads committee', emoji:'🏛️'},
+    {x:1270,y:130, fill:'#0a6070', label:['Speaker SLA'], sub:'Lower house', emoji:'🗳️'},
+    {x:1140,y:195, fill:'#5a1a8a', label:['LoP SLA & SLC'], sub:'Both oppositions', emoji:'⚖️'},
+    {x:1000,y:230, fill:'#d46a10', label:['State Home Min.'], sub:'+ HC CJ consult', emoji:'🔒'},
+  ];
+  apptN.forEach(n=>{
+    vEdge(svg,960,cy+24,n.x,n.y-22,'#1a6a3a33',true);
+    node(svg,n.x,n.y,148,42,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  // Bottom — Reports
+  edge(svg,cx,cy+30,cx,235,'#b87c1044',false,2);
+  node(svg,cx,235,280,46,'#b87c10',['Reports to State Govt → State Legislature'],'Accountability chain','📋');
+
+  const t=se('text',{x:670,y:16,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'2.5','fill':'rgba(10,96,112,0.4)'});
+  t.textContent='SHRC FULL STRUCTURE — COMPOSITION · APPOINTMENT · REPORTING';
+  svg.appendChild(t);
+})();
+
+// ── COMPARE CHART ──
+(function(){
+  const svg=document.getElementById('svgCompare');
+  svg.setAttribute('viewBox','0 0 1340 210');
+  const bg=se('rect',{x:0,y:0,width:1340,height:210,fill:'rgba(250,245,238,0.4)'});
+  svg.appendChild(bg);
+
+  // Left: NHRC column
+  const params=['Chairperson','Members','Appointed by','Selection Chair','Reports to'];
+  const nhrcVals=['Retired CJI','5 + 7 Ex-Officio','President','Prime Minister','Parliament'];
+  const shrcVals=['Retired HC CJ','2 Members','Governor','Chief Minister','State Legislature'];
+  const cols=[{x:200,fill:'#1a3a8a',label:'NHRC 🇮🇳',vals:nhrcVals},{x:1100,fill:'#0a6070',label:'SHRC 🏛️',vals:shrcVals}];
+  const labelX=800, vStep=32, startY=38;
+
+  // center labels
+  params.forEach((p,i)=>{
+    const t=se('text',{x:labelX,y:startY+i*vStep+8,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10','font-weight':'800','font-family':'DM Mono,monospace',fill:'#7a6a50'});
+    t.textContent=p;svg.appendChild(t);
+    // divider
+    svg.appendChild(se('line',{x1:220,y1:startY+i*vStep-6,x2:1120,y2:startY+i*vStep-6,stroke:'rgba(200,180,140,0.25)','stroke-width':'1'}));
+  });
+
+  cols.forEach(col=>{
+    // header
+    const h=se('text',{x:col.x,y:18,'text-anchor':'middle','font-size':'11','font-weight':'800','font-family':'Nunito,sans-serif',fill:col.fill});
+    h.textContent=col.label; svg.appendChild(h);
+    col.vals.forEach((v,i)=>{
+      const r=se('rect',{x:col.x-158,y:startY+i*vStep-10,width:316,height:26,rx:'6',fill:`${col.fill}12`});
+      svg.appendChild(r);
+      const t=se('text',{x:col.x,y:startY+i*vStep+6,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10.5','font-weight':'700','font-family':'Nunito,sans-serif',fill:col.fill});
+      t.textContent=v; svg.appendChild(t);
+    });
+  });
+
+  // VS badge — centered between NHRC (x=200) and SHRC (x=1100), vertically mid-table
+  const vsX=650, vsY=startY+(params.length/2)*vStep;
+  svg.appendChild(se('circle',{cx:vsX,cy:vsY,r:'26',fill:'#12100e',stroke:'rgba(255,255,255,0.15)','stroke-width':'2'}));
+  const vsT=se('text',{x:vsX,y:vsY,'text-anchor':'middle','dominant-baseline':'middle','font-size':'13','font-weight':'800','font-family':'Nunito,sans-serif',fill:'#f5e8c0'});
+  vsT.textContent='VS'; svg.appendChild(vsT);
+
+  const t=se('text',{x:670,y:188,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace','letter-spacing':'2','fill':'rgba(120,100,60,0.4)'});
+  t.textContent='SAME TERM · SAME POWERS · SAME REMOVAL (BY PRESIDENT) — KEY DIFFERENCES ABOVE';
+  svg.appendChild(t);
+})();
+
+// ── REMOVAL FLOW ──
+(function(){
+  const svg=document.getElementById('svgRemoval');
+  svg.setAttribute('viewBox','0 0 1340 160');
+  const bg=se('rect',{x:0,y:0,width:1340,height:160,fill:'rgba(255,248,248,0.4)'});
+  svg.appendChild(bg);
+
+  const grounds=[
+    {x:90,  fill:'#b01a1a', label:['Insolvent'],       sub:'Adjudged by court', emoji:'💸'},
+    {x:280, fill:'#b01a1a', label:['Paid Employment'],  sub:'During tenure', emoji:'💼'},
+    {x:470, fill:'#b01a1a', label:['Unsound Mind'],     sub:'Court declared', emoji:'🧠'},
+    {x:660, fill:'#b01a1a', label:['Convicted'],        sub:'Criminal offence', emoji:'⚖️'},
+    {x:870, fill:'#d46a10', label:['Misbehaviour'],     sub:'SC inquiry needed ⚠️', emoji:'🔍'},
+  ];
+  const outcome={x:1150, fill:'#12100e', label:['PRESIDENT','Removes'], sub:'Both NHRC & SHRC', emoji:'👑'};
+
+  grounds.forEach((n,i)=>{
+    if(i<grounds.length-1) edge(svg,n.x+72,80,grounds[i+1].x-72,80,'#b01a1a33',true,1.5);
+    edge(svg,n.x+72,80,outcome.x-80,80,'#b01a1a22',true,1.2);
+    node(svg,n.x,80,138,62,n.fill,n.label,n.sub,n.emoji);
+  });
+  node(svg,outcome.x,80,168,72,outcome.fill,outcome.label,outcome.sub,outcome.emoji);
+
+  const t=se('text',{x:620,y:14,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'2.5','fill':'rgba(176,26,26,0.5)'});
+  t.textContent='REMOVAL GROUNDS → PRESIDENT DECIDES (BOTH NHRC & SHRC)';
+  svg.appendChild(t);
+})();
+
+// ── LIMITATIONS MAP ──
+(function(){
+  const svg=document.getElementById('svgLimits');
+  svg.setAttribute('viewBox','0 0 1340 140');
+  const bg=se('rect',{x:0,y:0,width:1340,height:140,fill:'rgba(255,250,245,0.4)'});
+  svg.appendChild(bg);
+
+  node(svg,670,70,160,54,'#b01a1a',['LIMITATIONS'],'Weak points of NHRC/SHRC','⚠️');
+
+  const limits=[
+    {x:120,  fill:'#b01a1a', label:['1-Year Bar'], sub:'No inquiry after 1 yr', emoji:'⏱️'},
+    {x:330,  fill:'#d46a10', label:['Recommendatory'], sub:'Not binding on govt', emoji:'📋'},
+    {x:510,  fill:'#5a1a8a', label:['No Punitive Power'], sub:'Cannot punish directly', emoji:'🚫'},
+    {x:840,  fill:'#1a5878', label:['Armed Forces'], sub:'Limited role only', emoji:'🪖'},
+    {x:1040, fill:'#7a4010', label:['State Dependence'], sub:'Relies on state for action', emoji:'🏛️'},
+    {x:1230, fill:'#0a3050', label:['No Suo Motu'], sub:'After 1-year limit', emoji:'⛔'},
+  ];
+
+  limits.forEach(n=>{
+    const dir=n.x<670?1:-1;
+    edge(svg,670+(dir>0?-80:80),70,n.x+(dir>0?68:-68),70,'#b01a1a33',true,1.5);
+    node(svg,n.x,70,162,54,n.fill,n.label,n.sub,n.emoji);
+  });
+})();
+
+// ── CHAIN ──
+(function(){
+  const svg=document.getElementById('svgChain');
+  svg.setAttribute('viewBox','0 0 1340 140');
+  const bg=se('rect',{x:0,y:0,width:1340,height:140,fill:'rgba(248,250,248,0.4)'});
+  svg.appendChild(bg);
+
+  const boxes=[
+    {x:140,  fill:'#b01a1a', label:['Corruption?'], sub:'→ CVC / CBI', emoji:'🔎'},
+    {x:380,  fill:'#1a3a8a', label:['Rights Violated?'], sub:'→ NHRC / SHRC', emoji:'⚖️'},
+    {x:620,  fill:'#b87c10', label:['Info Denied?'], sub:'→ CIC / SIC', emoji:'📂'},
+    {x:860,  fill:'#5a1a8a', label:['Discrimination?'], sub:'→ NCSC/NCST/NCW', emoji:'🤝'},
+    {x:1100, fill:'#1a6a3a', label:['Environment?'], sub:'→ NGT / CPCB', emoji:'🌿'},
+  ];
+  boxes.forEach((b,i)=>{
+    if(i<boxes.length-1) edge(svg,b.x+82,70,boxes[i+1].x-82,70,'#b87c1055',false,2);
+    node(svg,b.x,70,154,62,b.fill,b.label,b.sub,b.emoji);
+  });
+  const t=se('text',{x:670,y:126,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace','letter-spacing':'2','fill':'rgba(26,106,58,0.45)'});
+  t.textContent='EACH INSTITUTION GUARDS A DIFFERENT PILLAR OF DEMOCRACY';
+  svg.appendChild(t);
+})();
+</script>
+</body>
+</html>

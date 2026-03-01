@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connected Governance — UPSC Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#12100e;--paper:#f8f5ef;--gold:#b87c10;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf5;--card2:#f2ede0;--sky:#1a5878;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse 900px 500px at 15% 10%,rgba(184,124,16,0.06) 0%,transparent 60%),
+             radial-gradient(ellipse 700px 700px at 85% 90%,rgba(26,58,138,0.05) 0%,transparent 60%);
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1420px;margin:0 auto;padding:0 20px 100px;}
+
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,46px);line-height:1.1;}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:14px auto 0;border-radius:4px;}
+
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:30px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;}
+@media(max-width:900px){.g3{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr;}}
+
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.amber::before{background:var(--amber);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:10px;line-height:1.3;}
+
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:20px;position:relative;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--sky),var(--blue));}
+.map-card svg{display:block;width:100%;}
+
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vitem{padding:8px 11px;border-radius:8px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:1px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+.chip{display:inline-block;padding:3px 9px;border-radius:7px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.chip.ok{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.25);color:var(--green);}
+.chip.warn{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.25);color:var(--red);}
+.chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.25);color:var(--gold);}
+
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,96,112,0.12);color:var(--teal);}
+
+.stat-row{display:flex;gap:8px;margin:10px 0;}
+.stat-box{flex:1;padding:10px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:2px;}
+
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:800;color:var(--amber);}
+
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0;}
+.trap-item{padding:10px 12px;border-radius:9px;background:rgba(176,26,26,0.05);border:1.5px solid rgba(176,26,26,0.2);font-size:11px;font-weight:700;color:var(--red);}
+
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:flex-start;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:6px;}
+.keystone-sub{font-size:12px;color:#c8b880;line-height:1.7;}
+.kpills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'DM Mono',monospace;}
+
+.jury-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:12px 0;}
+@media(max-width:700px){.jury-grid{grid-template-columns:1fr 1fr;}}
+.jury-box{padding:14px 10px;border-radius:11px;border:2px solid;text-align:center;background:var(--card2);}
+.jury-emoji{font-size:22px;display:block;margin-bottom:6px;}
+.jury-title{font-size:11px;font-weight:800;}
+.jury-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:2px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Polity · UPSC Prelims · Connected Governance</div>
+  <h1>&#127963;&#65039; Connected <em>Governance</em> Story</h1>
+  <div class="header-sub">Policy &#8594; Internal Security &#8594; Consumer Protection &#8594; Revenue Enforcement</div>
+</div>
+
+<!-- MASTER FLOW -->
+<div class="sec-label">Master Flow &#8212; How All 6 Bodies Connect</div>
+<div class="map-card mc1">
+<svg viewBox="0 0 1380 120" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;font-family:Nunito,sans-serif;">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#b87c10" opacity="0.7"/>
+    </marker>
+  </defs>
+  <rect width="1380" height="120" fill="rgba(250,245,238,0.5)"/>
+
+  <!-- arrows between nodes -->
+  <line x1="196" y1="60" x2="208" y2="60" stroke="#b87c10" stroke-width="2" opacity="0.5" marker-end="url(#arr)"/>
+  <line x1="398" y1="60" x2="410" y2="60" stroke="#b87c10" stroke-width="2" opacity="0.5" marker-end="url(#arr)"/>
+  <line x1="600" y1="60" x2="612" y2="60" stroke="#b87c10" stroke-width="2" opacity="0.5" marker-end="url(#arr)"/>
+  <line x1="802" y1="60" x2="814" y2="60" stroke="#b87c10" stroke-width="2" opacity="0.5" marker-end="url(#arr)"/>
+  <line x1="1004" y1="60" x2="1016" y2="60" stroke="#b87c10" stroke-width="2" opacity="0.5" marker-end="url(#arr)"/>
+  <line x1="1206" y1="60" x2="1218" y2="60" stroke="#b87c10" stroke-width="2" opacity="0.5" marker-end="url(#arr)"/>
+
+  <!-- Node 1 -->
+  <rect x="6" y="20" width="190" height="80" rx="10" fill="#1a3a8a"/>
+  <text x="101" y="48" text-anchor="middle" font-size="18" fill="white">&#129504;</text>
+  <text x="101" y="66" text-anchor="middle" font-size="12" font-weight="800" fill="white">NITI Aayog</text>
+  <text x="101" y="82" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="DM Mono,monospace">Policy Formation</text>
+
+  <!-- Node 2 -->
+  <rect x="210" y="20" width="188" height="80" rx="10" fill="#1a6a3a"/>
+  <text x="304" y="48" text-anchor="middle" font-size="18" fill="white">&#128110;</text>
+  <text x="304" y="66" text-anchor="middle" font-size="12" font-weight="800" fill="white">Home Guards</text>
+  <text x="304" y="82" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="DM Mono,monospace">Internal Security</text>
+
+  <!-- Node 3 -->
+  <rect x="412" y="20" width="188" height="80" rx="10" fill="#b01a1a"/>
+  <text x="506" y="48" text-anchor="middle" font-size="18" fill="white">&#128679;</text>
+  <text x="506" y="66" text-anchor="middle" font-size="12" font-weight="800" fill="white">Border Wing HG</text>
+  <text x="506" y="82" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="DM Mono,monospace">Border Security</text>
+
+  <!-- Node 4 -->
+  <rect x="614" y="20" width="188" height="80" rx="10" fill="#d46a10"/>
+  <text x="708" y="48" text-anchor="middle" font-size="18" fill="white">&#128722;</text>
+  <text x="708" y="66" text-anchor="middle" font-size="12" font-weight="800" fill="white">Consumer Courts</text>
+  <text x="708" y="82" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="DM Mono,monospace">Citizen Protection</text>
+
+  <!-- Node 5 -->
+  <rect x="816" y="20" width="188" height="80" rx="10" fill="#7a1a1a"/>
+  <text x="910" y="48" text-anchor="middle" font-size="18" fill="white">&#128269;</text>
+  <text x="910" y="66" text-anchor="middle" font-size="12" font-weight="800" fill="white">ED / DRI</text>
+  <text x="910" y="82" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="DM Mono,monospace">Revenue Enforcement</text>
+
+  <!-- Node 6 -->
+  <rect x="1018" y="20" width="188" height="80" rx="10" fill="#5a1a8a"/>
+  <text x="1112" y="48" text-anchor="middle" font-size="18" fill="white">&#128202;</text>
+  <text x="1112" y="66" text-anchor="middle" font-size="12" font-weight="800" fill="white">Ministry Mapping</text>
+  <text x="1112" y="82" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="DM Mono,monospace">Institutional Links</text>
+
+  <!-- Node 7 -->
+  <rect x="1220" y="20" width="152" height="80" rx="10" fill="#0a6070"/>
+  <text x="1296" y="48" text-anchor="middle" font-size="18" fill="white">&#128026;</text>
+  <text x="1296" y="66" text-anchor="middle" font-size="12" font-weight="800" fill="white">Gandhi Prize</text>
+  <text x="1296" y="82" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="DM Mono,monospace">Recognition</text>
+
+  <text x="690" y="112" text-anchor="middle" font-size="8.5" font-family="DM Mono,monospace" fill="rgba(120,100,60,0.45)" letter-spacing="2">POLICY &#8594; SECURITY &#8594; RIGHTS &#8594; ENFORCEMENT &#8594; MAPPING &#8594; RECOGNITION</text>
+</svg>
+</div>
+
+<!-- 1. NITI AAYOG -->
+<div class="sec-label">&#9312; &#129504; NITI Aayog &#8212; Policy Brain of Government</div>
+
+<div class="map-card mc2">
+<svg viewBox="0 0 1380 290" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;font-family:Nunito,sans-serif;">
+  <rect width="1380" height="290" fill="rgba(250,248,242,0.5)"/>
+
+  <!-- Centre -->
+  <rect x="540" y="100" width="300" height="76" rx="12" fill="#1a3a8a"/>
+  <text x="690" y="126" text-anchor="middle" font-size="16" fill="white">&#129504; NITI Aayog</text>
+  <text x="690" y="146" text-anchor="middle" font-size="11" font-weight="700" fill="rgba(255,255,255,0.8)">Extra-Constitutional Body</text>
+  <text x="690" y="164" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="DM Mono,monospace">Cabinet Resolution, Jan 2015</text>
+
+  <!-- LEFT connectors -->
+  <path d="M540,128 C440,128 370,62 290,62" stroke="#b87c10" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.7"/>
+  <path d="M540,138 C430,138 370,138 290,138" stroke="#2a5acc" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.7"/>
+  <path d="M540,148 C440,148 370,218 290,218" stroke="#0a6070" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.7"/>
+
+  <!-- Left nodes -->
+  <rect x="100" y="36" width="190" height="52" rx="9" fill="#b87c10"/>
+  <text x="195" y="57" text-anchor="middle" font-size="13" fill="white">&#128081; Prime Minister</text>
+  <text x="195" y="74" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Chairperson of NITI</text>
+
+  <rect x="100" y="112" width="190" height="52" rx="9" fill="#2a5acc"/>
+  <text x="195" y="133" text-anchor="middle" font-size="13" fill="white">&#127894; Vice-Chairperson</text>
+  <text x="195" y="150" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Appointed by PM · Cabinet rank</text>
+
+  <rect x="100" y="192" width="190" height="52" rx="9" fill="#0a6070"/>
+  <text x="195" y="213" text-anchor="middle" font-size="13" fill="white">&#127970; CEO</text>
+  <text x="195" y="230" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Appointed by PM · Secretary rank</text>
+
+  <!-- RIGHT connectors -->
+  <path d="M840,128 C940,128 1010,62 1090,62" stroke="#1a6a3a" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.7"/>
+  <path d="M840,138 C940,138 1010,138 1090,138" stroke="#5a1a8a" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.7"/>
+  <path d="M840,148 C940,148 1010,218 1090,218" stroke="#d46a10" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.7"/>
+
+  <!-- Right nodes -->
+  <rect x="1090" y="36" width="200" height="52" rx="9" fill="#1a6a3a"/>
+  <text x="1190" y="57" text-anchor="middle" font-size="13" fill="white">&#128203; Policy Design</text>
+  <text x="1190" y="74" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Framework &amp; Advice</text>
+
+  <rect x="1090" y="112" width="200" height="52" rx="9" fill="#5a1a8a"/>
+  <text x="1190" y="133" text-anchor="middle" font-size="13" fill="white">&#129309; Cooperative Federalism</text>
+  <text x="1190" y="150" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">CMs in Governing Council</text>
+
+  <rect x="1090" y="192" width="200" height="52" rx="9" fill="#d46a10"/>
+  <text x="1190" y="213" text-anchor="middle" font-size="13" fill="white">&#127919; SDG / ADP / CWMI</text>
+  <text x="1190" y="230" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Flagship Programmes</text>
+
+  <!-- Bottom row -->
+  <path d="M620,176 C500,176 430,256 370,262" stroke="#3a2a8a" stroke-width="1.5" fill="none" stroke-dasharray="4 3" opacity="0.6"/>
+  <rect x="275" y="255" width="190" height="26" rx="7" fill="#3a2a8a"/>
+  <text x="370" y="272" text-anchor="middle" font-size="11" font-weight="800" fill="white">Governing Council (CMs + LGs)</text>
+
+  <path d="M690,176 C690,220 690,240 690,252" stroke="#4a1a6a" stroke-width="1.5" fill="none" stroke-dasharray="4 3" opacity="0.6"/>
+  <rect x="595" y="252" width="190" height="26" rx="7" fill="#4a1a6a"/>
+  <text x="690" y="269" text-anchor="middle" font-size="11" font-weight="800" fill="white">Full &amp; Part-time Members</text>
+
+  <path d="M760,176 C880,176 950,256 1010,262" stroke="#1a4a6a" stroke-width="1.5" fill="none" stroke-dasharray="4 3" opacity="0.6"/>
+  <rect x="915" y="255" width="190" height="26" rx="7" fill="#1a4a6a"/>
+  <text x="1010" y="272" text-anchor="middle" font-size="11" font-weight="800" fill="white">Bottom-up Planning</text>
+
+  <text x="690" y="16" text-anchor="middle" font-size="9" font-family="DM Mono,monospace" fill="rgba(26,58,138,0.4)" letter-spacing="2">STRUCTURE (LEFT)  ·  NITI IDENTITY (CENTRE)  ·  FUNCTIONS (RIGHT)</text>
+</svg>
+</div>
+
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-label">Identity</div>
+    <h3>&#128203; What Is NITI Aayog?</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Extra-Constitutional Body</div><div class="vs">Not mentioned in Constitution</div></div>
+      <div class="vitem"><div class="vt">Replaced Planning Commission</div><div class="vs">January 2015 via Cabinet resolution</div></div>
+      <div class="vitem"><div class="vt">Think Tank Role</div><div class="vs">Policy design, NOT fund allocation</div></div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="chip warn">&#10060; NOT Constitutional</span>
+      <span class="chip ok">&#10003; Cabinet Resolution</span>
+    </div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">Key Initiatives</div>
+    <h3>&#128640; Flagship Programmes</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">15-Year Vision Document</div><div class="vs">Long-term national goals</div></div>
+      <div class="vitem"><div class="vt">7-Year Strategy</div><div class="vs">Medium-term policy roadmap</div></div>
+      <div class="vitem"><div class="vt">SDG India Index</div><div class="vs">Tracks sustainable development goals</div></div>
+      <div class="vitem"><div class="vt">Aspirational Districts Programme</div><div class="vs">Transform backward districts</div></div>
+      <div class="vitem"><div class="vt">Composite Water Mgmt. Index</div><div class="vs">Water governance ranking</div></div>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Key Distinction</div>
+    <h3>&#9878;&#65039; NITI vs Planning Commission</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">No Fund Allocation Power</div><div class="vs">Unlike old Planning Commission</div></div>
+      <div class="vitem"><div class="vt">States Have Equal Voice</div><div class="vs">Cooperative, not directive federalism</div></div>
+      <div class="vitem"><div class="vt">Monitoring and Evaluation</div><div class="vs">Tracks scheme performance</div></div>
+      <div class="vitem"><div class="vt">Knowledge and Innovation Hub</div><div class="vs">Research, data, best practices</div></div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="pill teal">PM = Chairperson</span>
+      <span class="pill teal">CEO appointed by PM</span>
+    </div>
+  </div>
+</div>
+
+<!-- 2. HOME GUARDS -->
+<div class="sec-label">&#9313; &#128110; Home Guards and Border Wing Home Guards</div>
+
+<div class="map-card mc3">
+<svg viewBox="0 0 1380 250" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;font-family:Nunito,sans-serif;">
+  <rect width="1380" height="250" fill="rgba(250,248,242,0.5)"/>
+
+  <!-- Warning banner -->
+  <rect x="490" y="10" width="400" height="34" rx="8" fill="rgba(176,26,26,0.1)" stroke="rgba(176,26,26,0.3)" stroke-width="1.5"/>
+  <text x="690" y="24" text-anchor="middle" font-size="10" font-weight="800" fill="#b01a1a">&#9888;&#65039; NOT Central Armed Police Forces</text>
+  <text x="690" y="38" text-anchor="middle" font-size="9" fill="#b01a1a" font-family="DM Mono,monospace">Voluntary Auxiliary Forces only</text>
+
+  <!-- Home Guards root -->
+  <rect x="100" y="60" width="240" height="68" rx="12" fill="#1a6a3a"/>
+  <text x="220" y="83" text-anchor="middle" font-size="15" fill="white">&#128737;&#65039; Home Guards</text>
+  <text x="220" y="103" text-anchor="middle" font-size="10" font-weight="700" fill="rgba(255,255,255,0.8)">Raised by State Govts</text>
+  <text x="220" y="118" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Formed 1946 · Voluntary</text>
+
+  <!-- HG children -->
+  <path d="M150,128 C150,165 90,170 80,180" stroke="#1a6a3a" stroke-width="1.6" fill="none" stroke-dasharray="4 3" opacity="0.7"/>
+  <rect x="14" y="178" width="132" height="44" rx="8" fill="#2a7a4a"/>
+  <text x="80" y="196" text-anchor="middle" font-size="11" font-weight="800" fill="white">Assist Police</text>
+  <text x="80" y="210" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Law enforcement</text>
+
+  <path d="M220,128 C220,165 220,168 220,176" stroke="#1a6a3a" stroke-width="1.6" fill="none" stroke-dasharray="4 3" opacity="0.7"/>
+  <rect x="148" y="176" width="144" height="44" rx="8" fill="#1a6a3a"/>
+  <text x="220" y="194" text-anchor="middle" font-size="11" font-weight="800" fill="white">Disaster Response</text>
+  <text x="220" y="208" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Relief &amp; rescue</text>
+
+  <path d="M290,128 C290,165 370,168 380,176" stroke="#1a6a3a" stroke-width="1.6" fill="none" stroke-dasharray="4 3" opacity="0.7"/>
+  <rect x="318" y="176" width="144" height="44" rx="8" fill="#0a5a2a"/>
+  <text x="390" y="194" text-anchor="middle" font-size="11" font-weight="800" fill="white">Communal Harmony</text>
+  <text x="390" y="208" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Peace maintenance</text>
+
+  <!-- VS divider -->
+  <line x1="530" y1="55" x2="530" y2="240" stroke="rgba(184,124,16,0.25)" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <rect x="630" y="80" width="120" height="48" rx="10" fill="#b87c10"/>
+  <text x="690" y="101" text-anchor="middle" font-size="12" font-weight="800" fill="white">HG  vs  BWHG</text>
+  <text x="690" y="118" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="DM Mono,monospace">Key Difference</text>
+  <line x1="850" y1="55" x2="850" y2="240" stroke="rgba(184,124,16,0.25)" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+  <!-- BWHG root -->
+  <rect x="1040" y="60" width="240" height="68" rx="12" fill="#b01a1a"/>
+  <text x="1160" y="83" text-anchor="middle" font-size="15" fill="white">&#128679; Border Wing HG</text>
+  <text x="1160" y="103" text-anchor="middle" font-size="10" font-weight="700" fill="rgba(255,255,255,0.8)">Under Ministry of Home Affairs</text>
+  <text x="1160" y="118" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Border states only</text>
+
+  <!-- BWHG children -->
+  <path d="M1090,128 C1090,165 1010,168 1000,176" stroke="#b01a1a" stroke-width="1.6" fill="none" stroke-dasharray="4 3" opacity="0.7"/>
+  <rect x="920" y="176" width="144" height="44" rx="8" fill="#8a1010"/>
+  <text x="992" y="194" text-anchor="middle" font-size="11" font-weight="800" fill="white">Prevent Infiltration</text>
+  <text x="992" y="208" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Anti-smuggling</text>
+
+  <path d="M1160,128 C1160,165 1160,168 1160,176" stroke="#b01a1a" stroke-width="1.6" fill="none" stroke-dasharray="4 3" opacity="0.7"/>
+  <rect x="1088" y="176" width="144" height="44" rx="8" fill="#b01a1a"/>
+  <text x="1160" y="194" text-anchor="middle" font-size="11" font-weight="800" fill="white">Assist BSF</text>
+  <text x="1160" y="208" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">NOT replace BSF</text>
+
+  <path d="M1230,128 C1230,165 1310,168 1310,176" stroke="#b01a1a" stroke-width="1.6" fill="none" stroke-dasharray="4 3" opacity="0.7"/>
+  <rect x="1244" y="176" width="132" height="44" rx="8" fill="#7a0a0a"/>
+  <text x="1310" y="194" text-anchor="middle" font-size="11" font-weight="800" fill="white">Border States</text>
+  <text x="1310" y="208" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Frontier regions</text>
+</svg>
+</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">Home Guards</div>
+    <h3>&#128737;&#65039; Auxiliary Police Force</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--amber)">1946</div><div class="stat-label">FORMED</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--blue)">State</div><div class="stat-label">RAISED BY</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--green)">Vol.</div><div class="stat-label">VOLUNTARY</div></div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">Assist Police</div><div class="vs">Support law enforcement during emergencies</div></div>
+      <div class="vitem"><div class="vt">Disaster Response</div><div class="vs">Relief and rescue operations</div></div>
+      <div class="vitem"><div class="vt">Communal Harmony</div><div class="vs">Maintain peace during tensions</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip warn">&#10060; NOT a Central Armed Police Force</span></div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">Border Wing Home Guards (BWHG)</div>
+    <h3>&#128679; Border Security Support</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Raised in Border States</div><div class="vs">Specific to frontier regions only</div></div>
+      <div class="vitem"><div class="vt">Assist BSF Operations</div><div class="vs">Support, do NOT replace BSF</div></div>
+      <div class="vitem"><div class="vt">Prevent Infiltration</div><div class="vs">Anti-smuggling and anti-infiltration</div></div>
+      <div class="vitem"><div class="vt">Under Ministry of Home Affairs</div><div class="vs">Central oversight, state deployment</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip ok">&#10003; Assists BSF (not replaces)</span></div>
+  </div>
+</div>
+
+<!-- 3. CONSUMER PROTECTION -->
+<div class="sec-label">&#9314; &#128722; Consumer Protection Act 2019 &#8212; 3-Tier Redressal</div>
+
+<div class="map-card mc4">
+<svg viewBox="0 0 1380 265" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;font-family:Nunito,sans-serif;">
+  <rect width="1380" height="265" fill="rgba(250,248,242,0.5)"/>
+
+  <!-- Root -->
+  <rect x="390" y="10" width="600" height="56" rx="12" fill="#12100e"/>
+  <text x="690" y="33" text-anchor="middle" font-size="14" font-weight="800" fill="white">&#9878;&#65039; Consumer Protection Act, 2019</text>
+  <text x="690" y="54" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">3-TIER QUASI-JUDICIAL REDRESSAL SYSTEM</text>
+
+  <!-- Fan lines -->
+  <path d="M560,66 C560,92 240,92 240,102" stroke="#1a6a3a" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M690,66 C690,88 690,90 690,102" stroke="#d46a10" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M820,66 C820,92 1140,92 1140,102" stroke="#1a3a8a" stroke-width="2" fill="none" opacity="0.6"/>
+
+  <!-- Tier 1 -->
+  <rect x="80" y="102" width="320" height="82" rx="12" fill="#1a6a3a"/>
+  <text x="240" y="126" text-anchor="middle" font-size="14" fill="white">&#127968; District Commission</text>
+  <text x="240" y="148" text-anchor="middle" font-size="18" font-weight="800" fill="#a0ffb0">Up to Rs.50 Lakh</text>
+  <text x="240" y="168" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">2021 Revised Rules · Entry point</text>
+
+  <!-- Tier 2 -->
+  <rect x="530" y="102" width="320" height="82" rx="12" fill="#d46a10"/>
+  <text x="690" y="126" text-anchor="middle" font-size="14" fill="white">&#127963;&#65039; State Commission</text>
+  <text x="690" y="148" text-anchor="middle" font-size="15" font-weight="800" fill="#ffe0b0">Rs.50L &#8211; Rs.2 Crore</text>
+  <text x="690" y="168" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Appellate from District Commission</text>
+
+  <!-- Tier 3 -->
+  <rect x="980" y="102" width="320" height="82" rx="12" fill="#1a3a8a"/>
+  <text x="1140" y="126" text-anchor="middle" font-size="14" fill="white">&#9878;&#65039; National Commission</text>
+  <text x="1140" y="148" text-anchor="middle" font-size="18" font-weight="800" fill="#b0c8ff">Above Rs.2 Crore</text>
+  <text x="1140" y="168" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Supervises State Comms · 4yr tenure</text>
+
+  <!-- Appeal chain -->
+  <text x="690" y="210" text-anchor="middle" font-size="10" font-weight="800" fill="#7a6a50">APPEAL CHAIN:</text>
+
+  <rect x="40" y="220" width="140" height="30" rx="7" fill="#2a8a4a"/>
+  <text x="110" y="240" text-anchor="middle" font-size="10" font-weight="800" fill="white">District Court</text>
+
+  <text x="215" y="240" text-anchor="middle" font-size="16" fill="#b87c10">&#8594;</text>
+
+  <rect x="250" y="220" width="152" height="30" rx="7" fill="#d46a10"/>
+  <text x="326" y="240" text-anchor="middle" font-size="10" font-weight="800" fill="white">State Commission</text>
+
+  <text x="428" y="240" text-anchor="middle" font-size="16" fill="#b87c10">&#8594;</text>
+
+  <rect x="452" y="220" width="170" height="30" rx="7" fill="#1a3a8a"/>
+  <text x="537" y="240" text-anchor="middle" font-size="10" font-weight="800" fill="white">National Commission</text>
+
+  <text x="646" y="240" text-anchor="middle" font-size="16" fill="#b87c10">&#8594;</text>
+
+  <rect x="664" y="220" width="200" height="30" rx="7" fill="#5a1a8a"/>
+  <text x="764" y="240" text-anchor="middle" font-size="10" font-weight="800" fill="white">Supreme Court (Final Appeal)</text>
+
+  <rect x="900" y="220" width="440" height="30" rx="7" fill="rgba(26,58,138,0.08)" stroke="rgba(26,58,138,0.3)" stroke-width="1.5"/>
+  <text x="1120" y="240" text-anchor="middle" font-size="10" font-weight="700" fill="#1a3a8a">National Commission SUPERVISES State Commissions</text>
+</svg>
+</div>
+
+<div class="g3">
+  <div class="pc green">
+    <div class="pc-label">Tier 1 — District</div>
+    <h3>&#127968; District Commission</h3>
+    <div style="text-align:center;padding:14px;background:rgba(26,106,58,0.07);border-radius:10px;border:1.5px solid rgba(26,106,58,0.2);margin-bottom:10px;">
+      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:800;color:var(--green);">Rs.50 Lakh</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">JURISDICTION LIMIT (2021 RULES)</div>
+    </div>
+    <div class="vitem"><div class="vt">District level courts</div><div class="vs">Entry point for consumer disputes</div></div>
+    <div style="margin-top:6px;"><span class="chip ok">Up to Rs.50 Lakh</span></div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Tier 2 — State</div>
+    <h3>&#127963;&#65039; State Commission</h3>
+    <div style="text-align:center;padding:14px;background:rgba(212,106,16,0.07);border-radius:10px;border:1.5px solid rgba(212,106,16,0.2);margin-bottom:10px;">
+      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:800;color:var(--amber);">Rs.2 Crore</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">UPPER JURISDICTION LIMIT</div>
+    </div>
+    <div class="vitem"><div class="vt">State level courts</div><div class="vs">Appellate from District Commission</div></div>
+    <div style="margin-top:6px;"><span class="chip neu">Rs.50L to Rs.2 Crore</span></div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">Tier 3 — National</div>
+    <h3>&#9878;&#65039; National Commission</h3>
+    <div style="text-align:center;padding:14px;background:rgba(26,58,138,0.07);border-radius:10px;border:1.5px solid rgba(26,58,138,0.2);margin-bottom:10px;">
+      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:800;color:var(--blue);">SC</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">APPEALS GO TO SUPREME COURT</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Above Rs.2 Crore disputes</div><div class="vs">Largest consumer cases</div></div>
+      <div class="vitem"><div class="vt">Supervises State Commissions</div><div class="vs">4-year tenure for members</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. ENFORCEMENT BODIES -->
+<div class="sec-label">&#9315; &#128176; Revenue and Enforcement Bodies</div>
+
+<div class="map-card mc5">
+<svg viewBox="0 0 1380 240" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;font-family:Nunito,sans-serif;">
+  <rect width="1380" height="240" fill="rgba(250,248,242,0.5)"/>
+
+  <!-- Centre root -->
+  <rect x="470" y="70" width="440" height="64" rx="12" fill="#12100e"/>
+  <text x="690" y="94" text-anchor="middle" font-size="14" font-weight="800" fill="white">&#128176; Revenue and Enforcement Bodies</text>
+  <text x="690" y="112" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.65)" font-family="DM Mono,monospace">Ministry of Finance / Department of Revenue</text>
+  <text x="690" y="127" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.45)" font-family="DM Mono,monospace">Finance Ministry Ecosystem</text>
+
+  <!-- ED -->
+  <path d="M470,95 C370,95 300,52 230,52" stroke="#b01a1a" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.7"/>
+  <rect x="36" y="28" width="194" height="48" rx="9" fill="#b01a1a"/>
+  <text x="133" y="47" text-anchor="middle" font-size="12" font-weight="800" fill="white">&#128269; Directorate of</text>
+  <text x="133" y="63" text-anchor="middle" font-size="12" font-weight="800" fill="white">Enforcement (ED)</text>
+
+  <path d="M100,76 C90,110 70,120 60,132" stroke="#b01a1a" stroke-width="1.4" fill="none" stroke-dasharray="3 2" opacity="0.6"/>
+  <rect x="4" y="130" width="148" height="36" rx="7" fill="#7a1010"/>
+  <text x="78" y="147" text-anchor="middle" font-size="10" font-weight="800" fill="white">FEMA and PMLA</text>
+  <text x="78" y="160" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Money Laundering</text>
+
+  <path d="M166,76 C180,110 210,120 220,132" stroke="#b01a1a" stroke-width="1.4" fill="none" stroke-dasharray="3 2" opacity="0.6"/>
+  <rect x="156" y="130" width="148" height="36" rx="7" fill="#8a1010"/>
+  <text x="230" y="147" text-anchor="middle" font-size="10" font-weight="800" fill="white">FEOA 2018</text>
+  <text x="230" y="160" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Fugitive Offenders</text>
+
+  <!-- DRI -->
+  <path d="M470,102 C420,102 400,52 370,52" stroke="#d46a10" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.7"/>
+  <rect x="256" y="16" width="200" height="70" rx="9" fill="#d46a10"/>
+  <text x="356" y="39" text-anchor="middle" font-size="12" font-weight="800" fill="white">&#128373;&#65039; Directorate of</text>
+  <text x="356" y="55" text-anchor="middle" font-size="12" font-weight="800" fill="white">Revenue Intelligence</text>
+  <text x="356" y="72" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Dept. of Revenue</text>
+
+  <path d="M356,86 C356,115 356,122 356,132" stroke="#d46a10" stroke-width="1.4" fill="none" stroke-dasharray="3 2" opacity="0.6"/>
+  <rect x="280" y="130" width="152" height="36" rx="7" fill="#a04010"/>
+  <text x="356" y="147" text-anchor="middle" font-size="10" font-weight="800" fill="white">Customs Act 1962</text>
+  <text x="356" y="160" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Anti-Smuggling Intel.</text>
+
+  <!-- DGSM -->
+  <path d="M910,102 C960,102 980,52 1010,52" stroke="#0a6070" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.7"/>
+  <rect x="924" y="16" width="200" height="70" rx="9" fill="#0a6070"/>
+  <text x="1024" y="39" text-anchor="middle" font-size="12" font-weight="800" fill="white">&#128187; DGSM</text>
+  <text x="1024" y="55" text-anchor="middle" font-size="12" font-weight="800" fill="white">Data and Systems</text>
+  <text x="1024" y="72" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Big Data Analytics</text>
+
+  <path d="M1024,86 C1024,115 1024,122 1024,132" stroke="#0a6070" stroke-width="1.4" fill="none" stroke-dasharray="3 2" opacity="0.6"/>
+  <rect x="950" y="130" width="148" height="36" rx="7" fill="#0a5060"/>
+  <text x="1024" y="147" text-anchor="middle" font-size="10" font-weight="800" fill="white">AI-Powered Intel.</text>
+  <text x="1024" y="160" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Supports ED / DRI / IT</text>
+
+  <!-- Customs -->
+  <path d="M910,95 C1010,95 1080,52 1150,52" stroke="#5a1a8a" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.7"/>
+  <rect x="1148" y="28" width="200" height="48" rx="9" fill="#5a1a8a"/>
+  <text x="1248" y="47" text-anchor="middle" font-size="12" font-weight="800" fill="white">&#127978; Customs Dept.</text>
+  <text x="1248" y="63" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)">Import / Export Control</text>
+
+  <path d="M1220,76 C1210,110 1190,120 1180,132" stroke="#5a1a8a" stroke-width="1.4" fill="none" stroke-dasharray="3 2" opacity="0.6"/>
+  <rect x="1116" y="130" width="148" height="36" rx="7" fill="#4a1070"/>
+  <text x="1190" y="147" text-anchor="middle" font-size="10" font-weight="800" fill="white">Tariff and Duty</text>
+  <text x="1190" y="160" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Dept. of Revenue</text>
+
+  <path d="M1276,76 C1290,110 1310,120 1320,132" stroke="#5a1a8a" stroke-width="1.4" fill="none" stroke-dasharray="3 2" opacity="0.6"/>
+  <rect x="1276" y="130" width="100" height="36" rx="7" fill="#3a0a60"/>
+  <text x="1326" y="147" text-anchor="middle" font-size="10" font-weight="800" fill="white">SEBI Links</text>
+  <text x="1326" y="160" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="DM Mono,monospace">Capital markets</text>
+
+  <text x="690" y="215" text-anchor="middle" font-size="8.5" font-family="DM Mono,monospace" fill="rgba(120,100,60,0.4)" letter-spacing="2">ED and DRI and DGSM and CUSTOMS &#8212; ALL UNDER MINISTRY OF FINANCE / DEPT. OF REVENUE</text>
+</svg>
+</div>
+
+<div class="g3">
+  <div class="pc red">
+    <div class="pc-label">Enforcement</div>
+    <h3>&#128269; Directorate of Enforcement (ED)</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Ministry of Finance</div><div class="vs">Under Department of Revenue</div></div>
+      <div class="vitem"><div class="vt">FEMA Enforcement</div><div class="vs">Foreign Exchange Management Act</div></div>
+      <div class="vitem"><div class="vt">PMLA</div><div class="vs">Prevention of Money Laundering Act</div></div>
+      <div class="vitem"><div class="vt">Fugitive Economic Offenders Act 2018</div><div class="vs">Against absconders from law</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip warn">Ministry of Finance</span></div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Intelligence</div>
+    <h3>&#128373;&#65039; Directorate of Revenue Intelligence (DRI)</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Department of Revenue</div><div class="vs">Under Finance Ministry</div></div>
+      <div class="vitem"><div class="vt">Customs Act 1962</div><div class="vs">Primary enforcement legislation</div></div>
+      <div class="vitem"><div class="vt">Anti-Smuggling Intelligence</div><div class="vs">Goods, narcotics, currency</div></div>
+      <div class="vitem"><div class="vt">Nationwide Network</div><div class="vs">International coordination too</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip warn">Dept. of Revenue (NOT MHA)</span></div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Tech Wing</div>
+    <h3>&#128187; DGSM &#8212; Data Analytics Wing</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Big Data and AI Analytics</div><div class="vs">AI-driven tax intelligence</div></div>
+      <div class="vitem"><div class="vt">Assists Tax Enforcement</div><div class="vs">Supports ED, DRI, Income Tax</div></div>
+      <div class="vitem"><div class="vt">IT Backbone</div><div class="vs">Systems management for revenue depts.</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip ok">Tech Backbone of Revenue</span></div>
+  </div>
+</div>
+
+<!-- 5. MINISTRY MAPPING -->
+<div class="sec-label">&#9316; &#128202; Ministry Mapping &#8212; UPSC Prelims Trap Table</div>
+
+<div class="pc gold" style="margin-bottom:20px;">
+  <div class="pc-label">Frequent UPSC Prelims Trap &#8212; Memorise This Column!</div>
+  <h3>&#128193; Organisation &#8594; Ministry Mapping</h3>
+  <table class="ctable">
+    <thead>
+      <tr><th>Organisation</th><th>Ministry / Department</th><th>Key Law / Role</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>National Automotive Board</td><td>Ministry of Heavy Industries</td><td>Auto sector policy</td></tr>
+      <tr><td>Coir Board</td><td>Ministry of MSME</td><td>Coconut fibre industry</td></tr>
+      <tr><td>Natl. Centre for Trade Information</td><td>Ministry of Commerce and Industry</td><td>Trade data and information</td></tr>
+      <tr><td>Directorate of Enforcement (ED)</td><td>Ministry of Finance</td><td>FEMA, PMLA, FEOA 2018</td></tr>
+      <tr><td>Directorate of Revenue Intelligence (DRI)</td><td>Dept. of Revenue (Finance Min.)</td><td>Customs Act 1962</td></tr>
+      <tr><td>Home Guards</td><td>State Governments</td><td>Voluntary auxiliary force</td></tr>
+      <tr><td>Border Wing Home Guards (BWHG)</td><td>Ministry of Home Affairs</td><td>BSF support, border security</td></tr>
+      <tr><td>NITI Aayog</td><td>Extra-Constitutional (Cabinet Resolution)</td><td>Policy Think Tank</td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top:10px;padding:10px 12px;background:rgba(212,106,16,0.08);border-radius:8px;border:1px dashed var(--amber);">
+    <span style="font-size:11px;font-weight:800;color:var(--amber);">&#128073; Ministry-body mapping is a frequent UPSC trap &#8212; memorise this table completely!</span>
+  </div>
+</div>
+
+<!-- 6. GANDHI PEACE PRIZE -->
+<div class="sec-label">&#9317; &#128026; Gandhi Peace Prize &#8212; Jury Composition</div>
+
+<div class="pc purple" style="margin-bottom:20px;">
+  <div class="pc-label">UPSC 2025 Factual Type Question</div>
+  <h3>&#127942; Gandhi Peace Prize Jury &#8212; 5 Members</h3>
+  <div class="jury-grid">
+    <div class="jury-box" style="border-color:var(--amber);">
+      <span class="jury-emoji">&#128081;</span>
+      <div class="jury-title">Prime Minister</div>
+      <div class="jury-sub">Chairperson of Jury</div>
+    </div>
+    <div class="jury-box" style="border-color:var(--blue);">
+      <span class="jury-emoji">&#9878;&#65039;</span>
+      <div class="jury-title">Chief Justice of India</div>
+      <div class="jury-sub">Judicial representation</div>
+    </div>
+    <div class="jury-box" style="border-color:var(--green);">
+      <span class="jury-emoji">&#128226;</span>
+      <div class="jury-title">Leader of Opposition</div>
+      <div class="jury-sub">Lok Sabha LoP</div>
+    </div>
+    <div class="jury-box" style="border-color:var(--teal);">
+      <span class="jury-emoji">&#127891;</span>
+      <div class="jury-title">Eminent Person 1</div>
+      <div class="jury-sub">Nominated by PM</div>
+    </div>
+    <div class="jury-box" style="border-color:var(--purple);">
+      <span class="jury-emoji">&#127891;</span>
+      <div class="jury-title">Eminent Person 2</div>
+      <div class="jury-sub">Nominated by PM</div>
+    </div>
+  </div>
+  <div style="margin-top:8px;padding:10px 12px;background:rgba(90,26,138,0.06);border-radius:8px;border:1.5px solid rgba(90,26,138,0.15);font-size:11px;color:var(--muted);line-height:1.7;">
+    &#127885; Awarded annually since <strong>1995</strong> &#183; Named after Mahatma Gandhi &#183; <strong>Rs.1 Crore + citation + plaque</strong> &#183; For social, economic and political transformation by non-violent means &#183; Open to individuals and institutions worldwide
+  </div>
+  <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:5px;">
+    <span class="pill purple">PM chairs jury</span>
+    <span class="pill blue">CJI is member</span>
+    <span class="pill green">LoP included</span>
+    <span class="pill amber">2 eminent nominees</span>
+    <span class="pill gold">Total = 5 members</span>
+  </div>
+</div>
+
+<!-- TRAPS -->
+<div class="sec-label">&#128293; High-Probability Prelims Traps &#8212; Must Remember</div>
+
+<div class="pc red" style="margin-bottom:20px;">
+  <div class="pc-label">UPSC Tested Points &#8212; Common Pitfalls</div>
+  <h3>&#9888;&#65039; 10 Most Common Examination Traps</h3>
+  <div class="trap-grid">
+    <div class="trap-item">&#10004; NITI Aayog is NOT constitutional</div>
+    <div class="trap-item">&#10004; Home Guards raised by States, not Centre</div>
+    <div class="trap-item">&#10004; BWHG assists BSF &#8212; does NOT replace it</div>
+    <div class="trap-item">&#10004; Consumer Act limits: Rs.50L and Rs.2 Cr</div>
+    <div class="trap-item">&#10004; ED under Ministry of Finance</div>
+    <div class="trap-item">&#10004; DRI under Dept. of Revenue (not MHA)</div>
+    <div class="trap-item">&#10004; National Commission appeals go to Supreme Court</div>
+    <div class="trap-item">&#10004; Gandhi Prize jury = exactly 5 members</div>
+    <div class="trap-item">&#10004; NITI replaced Planning Commission in 2015</div>
+    <div class="trap-item">&#10004; Ministry mapping: Coir Board = MSME!</div>
+  </div>
+</div>
+
+<!-- BIG PICTURE -->
+<div class="sec-label">&#129504; Big Picture &#8212; India's Complete Governance Architecture</div>
+
+<div class="map-card mc1">
+<svg viewBox="0 0 1380 170" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;font-family:Nunito,sans-serif;">
+  <rect width="1380" height="170" fill="rgba(250,248,242,0.4)"/>
+  <defs>
+    <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#b87c10" opacity="0.8"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="30" width="300" height="96" rx="12" fill="#1a3a8a"/>
+  <text x="166" y="64" text-anchor="middle" font-size="24" fill="white">&#129504;</text>
+  <text x="166" y="88" text-anchor="middle" font-size="13" font-weight="800" fill="white">NITI Aayog</text>
+  <text x="166" y="106" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="DM Mono,monospace">Policy Formation</text>
+
+  <line x1="318" y1="78" x2="352" y2="78" stroke="#b87c10" stroke-width="2.5" marker-end="url(#arr2)"/>
+
+  <rect x="354" y="30" width="300" height="96" rx="12" fill="#1a6a3a"/>
+  <text x="504" y="64" text-anchor="middle" font-size="24" fill="white">&#128110;</text>
+  <text x="504" y="88" text-anchor="middle" font-size="13" font-weight="800" fill="white">Home Guards / BWHG</text>
+  <text x="504" y="106" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="DM Mono,monospace">Internal Security</text>
+
+  <line x1="656" y1="78" x2="690" y2="78" stroke="#b87c10" stroke-width="2.5" marker-end="url(#arr2)"/>
+
+  <rect x="692" y="30" width="300" height="96" rx="12" fill="#d46a10"/>
+  <text x="842" y="64" text-anchor="middle" font-size="24" fill="white">&#128722;</text>
+  <text x="842" y="88" text-anchor="middle" font-size="13" font-weight="800" fill="white">Consumer Commissions</text>
+  <text x="842" y="106" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="DM Mono,monospace">Citizen Protection</text>
+
+  <line x1="994" y1="78" x2="1028" y2="78" stroke="#b87c10" stroke-width="2.5" marker-end="url(#arr2)"/>
+
+  <rect x="1030" y="30" width="334" height="96" rx="12" fill="#b01a1a"/>
+  <text x="1197" y="64" text-anchor="middle" font-size="24" fill="white">&#128269;</text>
+  <text x="1197" y="88" text-anchor="middle" font-size="13" font-weight="800" fill="white">ED / DRI / DGSM</text>
+  <text x="1197" y="106" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="DM Mono,monospace">Financial Enforcement</text>
+
+  <text x="166" y="148" text-anchor="middle" font-size="9" font-weight="800" fill="#1a3a8a" font-family="DM Mono,monospace">POLICY</text>
+  <text x="504" y="148" text-anchor="middle" font-size="9" font-weight="800" fill="#1a6a3a" font-family="DM Mono,monospace">SECURITY</text>
+  <text x="842" y="148" text-anchor="middle" font-size="9" font-weight="800" fill="#d46a10" font-family="DM Mono,monospace">RIGHTS</text>
+  <text x="1197" y="148" text-anchor="middle" font-size="9" font-weight="800" fill="#b01a1a" font-family="DM Mono,monospace">ENFORCEMENT</text>
+</svg>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">&#127988;</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Connected Governance Insight</div>
+    <div class="keystone-sub">
+      NITI Aayog designs policy &#8594; Home Guards maintain internal order &#8594; Consumer Commissions protect citizen rights &#8594; ED and DRI enforce financial law. Together they represent India's <strong style="color:#f5d78a;">complete governance architecture: Policy + Security + Rights + Enforcement.</strong> Each body has a precise ministry, a precise law, and a precise role &#8212; UPSC tests all three dimensions.
+    </div>
+    <div class="kpills">
+      <span class="kpill">&#129504; NITI = Policy</span>
+      <span class="kpill">&#128110; HG = Security</span>
+      <span class="kpill">&#128722; Courts = Rights</span>
+      <span class="kpill">&#128176; ED/DRI = Enforcement</span>
+      <span class="kpill">&#128026; Gandhi Prize = Recognition</span>
+      <span class="kpill">&#128202; Ministry Map = Trap Buster</span>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

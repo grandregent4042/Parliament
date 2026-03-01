@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiscal Federalism & Linguistic Minorities — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f0ece4;
+  --ink:#1a1410;
+  --paper:#faf8f3;
+  --card:#ffffff;
+  --card2:#f5f1e8;
+  --border:#ddd4be;
+  --muted:#8a7a60;
+
+  --fc:#1a4f8a;      /* Finance Commission – deep blue */
+  --fc-lt:#e8f0fa;
+  --gst:#2d7a3a;     /* GST Council – forest green */
+  --gst-lt:#e8f5ea;
+  --slm:#8a2d1a;     /* Special Officer – terracotta */
+  --slm-lt:#faeee8;
+  --cec:#5a1a8a;     /* CEC – violet */
+  --cec-lt:#f0e8fa;
+  --gold:#b87c10;
+  --gold-lt:#fdf3dc;
+  --amber:#d46a10;
+}
+
+body{
+  font-family:'Outfit',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* Paper texture overlay */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+
+.wrap{position:relative;z-index:1;max-width:1380px;margin:0 auto;padding:0 24px 120px;}
+
+/* ─── HEADER ─── */
+.header{text-align:center;padding:52px 20px 28px;position:relative;}
+.header-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,56px);font-weight:700;line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--fc);}
+.header-sub{margin-top:10px;font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:1px;}
+.header-rule{display:flex;align-items:center;gap:12px;max-width:600px;margin:18px auto 0;}
+.header-rule::before,.header-rule::after{content:'';flex:1;height:1.5px;background:linear-gradient(90deg,transparent,var(--border));}
+.header-rule span{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);letter-spacing:2px;text-transform:uppercase;}
+
+/* Memory chain strip */
+.memory-chain{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;margin:18px 0 36px;padding:14px 20px;background:var(--card);border:1.5px solid var(--border);border-radius:50px;max-width:700px;margin-left:auto;margin-right:auto;}
+.mc-node{padding:6px 16px;border-radius:30px;font-size:11px;font-weight:700;display:flex;align-items:center;gap:6px;}
+.mc-node.fc{background:var(--fc-lt);color:var(--fc);}
+.mc-node.gst{background:var(--gst-lt);color:var(--gst);}
+.mc-node.slm{background:var(--slm-lt);color:var(--slm);}
+.mc-arr{font-size:18px;color:var(--muted);padding:0 2px;}
+
+/* ─── SEC LABELS ─── */
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:36px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ─── GRIDS ─── */
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:22px;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:22px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}.g2x1{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g2x1{grid-template-columns:1fr;}}
+
+/* ─── PANEL CARDS ─── */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:20px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pc:hover{box-shadow:0 8px 32px rgba(0,0,0,0.09);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.fc::before{background:linear-gradient(90deg,var(--fc),#4a80cc);}
+.pc.gst::before{background:linear-gradient(90deg,var(--gst),#5aaa6a);}
+.pc.slm::before{background:linear-gradient(90deg,var(--slm),#c05a3a);}
+.pc.cec::before{background:linear-gradient(90deg,var(--cec),#8a4acc);}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.dark::before{background:var(--ink);}
+.pc-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.pc h3{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;line-height:1.3;}
+
+/* ─── MAP CARDS ─── */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:26px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc-fc::before{background:linear-gradient(90deg,var(--fc),#4a90e2,var(--gst));}
+.map-card.mc-gst::before{background:linear-gradient(90deg,var(--gst),#5aaa6a,var(--amber));}
+.map-card.mc-slm::before{background:linear-gradient(90deg,var(--slm),var(--amber),var(--gold));}
+.map-card.mc-cec::before{background:linear-gradient(90deg,var(--cec),#8a4acc,var(--fc));}
+.map-card.mc-trap::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--gst));}
+.map-card svg{display:block;width:100%;}
+
+/* ─── PILLS ─── */
+.pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:9.5px;font-weight:700;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.fc{background:var(--fc-lt);color:var(--fc);}
+.pill.gst{background:var(--gst-lt);color:var(--gst);}
+.pill.slm{background:var(--slm-lt);color:var(--slm);}
+.pill.cec{background:var(--cec-lt);color:var(--cec);}
+.pill.gold{background:var(--gold-lt);color:var(--amber);}
+.pill.red{background:#fde8e8;color:#a01a1a;}
+.pill.ok{background:#e8f5ea;color:#1a6a2a;}
+
+/* ─── STAT BOXES ─── */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px 10px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;line-height:1;}
+.stat-lbl{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:3px;line-height:1.3;}
+
+/* ─── VERTICAL LIST ─── */
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;line-height:1.5;}
+.vitem .vt{font-weight:700;font-size:11px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:2px;}
+
+/* ─── CHIPS ─── */
+.chip{display:inline-block;padding:4px 10px;border-radius:7px;font-size:10px;font-weight:700;font-family:'JetBrains Mono',monospace;margin:2px;border:1.5px solid;}
+.chip.ok{background:#e8f5ea;border-color:rgba(26,106,42,0.2);color:#1a6a2a;}
+.chip.warn{background:#fde8e8;border-color:rgba(160,26,26,0.2);color:#a01a1a;}
+.chip.neu{background:var(--gold-lt);border-color:rgba(184,124,16,0.2);color:var(--amber);}
+
+/* ─── CALLOUT ─── */
+.callout{padding:12px 14px;border-radius:10px;margin:8px 0;}
+.callout.fc{background:var(--fc-lt);border:1.5px solid rgba(26,79,138,0.2);}
+.callout.gst{background:var(--gst-lt);border:1.5px solid rgba(45,122,58,0.2);}
+.callout.slm{background:var(--slm-lt);border:1.5px solid rgba(138,45,26,0.2);}
+.callout.gold{background:var(--gold-lt);border:1.5px solid rgba(184,124,16,0.2);}
+.callout-title{font-size:10px;font-weight:800;margin-bottom:3px;}
+.callout-title.fc{color:var(--fc);}
+.callout-title.gst{color:var(--gst);}
+.callout-title.slm{color:var(--slm);}
+.callout-title.gold{color:var(--amber);}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.6;}
+
+/* ─── ARTICLE BADGE ─── */
+.art-badge{display:inline-flex;align-items:center;padding:5px 12px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;margin:4px 2px;border:2px solid;}
+.art-badge.fc{background:var(--fc-lt);border-color:var(--fc);color:var(--fc);}
+.art-badge.gst{background:var(--gst-lt);border-color:var(--gst);color:var(--gst);}
+.art-badge.slm{background:var(--slm-lt);border-color:var(--slm);color:var(--slm);}
+.art-badge.cec{background:var(--cec-lt);border-color:var(--cec);color:var(--cec);}
+
+/* ─── FEAT GRID ─── */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:15px;margin-bottom:3px;}
+.feat .ft{font-size:11px;font-weight:700;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:2px;}
+
+/* ─── PHASE ROW ─── */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:14px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:18px;border-radius:14px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;}
+.phase-title{font-size:13px;font-weight:700;margin:4px 0 2px;}
+.phase-sub{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:8px;}
+
+/* ─── KEYSTONE ─── */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:20px;padding:26px 32px;margin:22px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.keystone-icon{font-size:38px;flex:0 0 auto;}
+.keystone-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;margin-bottom:6px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.kpill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.12);font-size:10px;font-family:'JetBrains Mono',monospace;}
+
+/* ─── CRITERIA BAR CHART ─── */
+.criteria-bars{display:flex;flex-direction:column;gap:9px;margin:12px 0;}
+.cbar-row{display:flex;align-items:center;gap:10px;}
+.cbar-label{font-size:10px;font-weight:700;width:160px;flex:0 0 160px;font-family:'JetBrains Mono',monospace;text-align:right;}
+.cbar-track{flex:1;background:var(--card2);border-radius:6px;height:22px;overflow:hidden;border:1px solid var(--border);}
+.cbar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:8px;font-size:9px;font-weight:800;font-family:'JetBrains Mono',monospace;color:#fff;}
+.cbar-pct{font-size:11px;font-weight:800;width:38px;flex:0 0 38px;font-family:'JetBrains Mono',monospace;color:var(--fc);}
+
+/* ─── FLOW ROW ─── */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.fn{padding:6px 12px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;}
+.fn.fc{background:var(--fc-lt);border-color:var(--fc);color:var(--fc);}
+.fn.gst{background:var(--gst-lt);border-color:var(--gst);color:var(--gst);}
+.fn.slm{background:var(--slm-lt);border-color:var(--slm);color:var(--slm);}
+.farr{font-size:16px;color:var(--muted);}
+
+/* ─── VOTING DIAGRAM ─── */
+.vote-box{display:flex;gap:12px;margin:12px 0;flex-wrap:wrap;}
+.vote-item{flex:1;min-width:140px;padding:14px 12px;border-radius:11px;text-align:center;border:2px solid;}
+.vote-item.centre{background:var(--fc-lt);border-color:var(--fc);}
+.vote-item.states{background:var(--gst-lt);border-color:var(--gst);}
+.vote-num{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;}
+.vote-label{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:2px;}
+
+/* ─── TAG ─── */
+.tag{display:inline-block;padding:2px 8px;border-radius:5px;font-size:9px;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.tag.ok{background:#d4edda;color:#155724;}
+.tag.warn{background:#f8d7da;color:#721c24;}
+.tag.neu{background:var(--gold-lt);color:var(--amber);}
+
+/* ─── IMPACT CHAIN ─── */
+.impact-chain{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:5px 0;margin:8px 0;}
+.ic-node{padding:7px 13px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:13px;color:var(--muted);flex:0 0 auto;margin:0 3px;}
+
+.div-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:8px 0;}
+
+/* ─── ANIMATE ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.fade-up{animation:fadeUp 0.5s ease both;}
+.d1{animation-delay:0.05s;}.d2{animation-delay:0.1s;}.d3{animation-delay:0.15s;}.d4{animation-delay:0.2s;}.d5{animation-delay:0.25s;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ══ HEADER ══ -->
+<div class="header fade-up">
+  <div class="header-eyebrow">Indian Polity · Fiscal Federalism · UPSC Prelims</div>
+  <h1>Finance Commission, GST Council<br>&amp; <em>Linguistic Minorities</em></h1>
+  <div class="header-sub">Art. 280 · Art. 279A · Art. 350B — Money 💰 · Tax 🧾 · Culture 🗣️</div>
+  <div class="header-rule"><span>connected story</span></div>
+</div>
+
+<!-- Memory Chain -->
+<div class="memory-chain fade-up d2">
+  <div class="mc-node fc">💰 Finance Commission<br><span style="font-size:9px;opacity:0.7;">Art. 280 · Devolution</span></div>
+  <div class="mc-arr">→</div>
+  <div class="mc-node gst">🧾 GST Council<br><span style="font-size:9px;opacity:0.7;">Art. 279A · Tax Coord.</span></div>
+  <div class="mc-arr">→</div>
+  <div class="mc-node slm">🗣️ Special Officer<br><span style="font-size:9px;opacity:0.7;">Art. 350B · Culture</span></div>
+</div>
+
+<!-- ══ MASTER FLOW SVG ══ -->
+<div class="sec-label fade-up">Master Flow — Big Federal Picture</div>
+<div class="map-card mc-fc fade-up d2">
+  <svg id="svgMasterFlow" viewBox="0 0 1340 120" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 1: FINANCE COMMISSION ══ -->
+<div class="sec-label fade-up">① Finance Commission — Art. 280</div>
+
+<!-- FC Overview SVG Mind Map -->
+<div class="map-card mc-fc fade-up d1" style="margin-bottom:18px;">
+  <svg id="svgFC" viewBox="0 0 1340 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- FC Detail Cards -->
+<div class="g3 fade-up d2">
+  <!-- Structure -->
+  <div class="pc fc">
+    <div class="pc-label">Structure</div>
+    <h3>🏛️ Composition</h3>
+    <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+      <span class="art-badge fc">Art. 280</span>
+      <span class="art-badge fc">Part XII</span>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">👤 Chairman + 4 Members</div><div class="vs">Appointed by President</div></div>
+      <div class="vitem"><div class="vt">📅 Term: 5 Years</div><div class="vs">Constituted every 5 years · Eligible for reappointment</div></div>
+      <div class="vitem"><div class="vt">⚖️ Quasi-judicial body</div><div class="vs">Not a permanent constitutional body</div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <div class="callout fc">
+        <div class="callout-title fc">📌 Key Names</div>
+        <div class="callout-body">1st FC Chairman → K.C. Neogy<br>15th FC Chairman → N.K. Singh</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Qualifications -->
+  <div class="pc fc">
+    <div class="pc-label">Qualifications (Members)</div>
+    <h3>📋 Who Can Be a Member?</h3>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="fi">⚖️</div>
+        <div class="ft">HC Judge</div>
+        <div class="fs">Or qualified to be one</div>
+      </div>
+      <div class="feat">
+        <div class="fi">💹</div>
+        <div class="ft">Finance Expert</div>
+        <div class="fs">Finance & accounts mastery</div>
+      </div>
+      <div class="feat">
+        <div class="fi">🏛️</div>
+        <div class="ft">Admin Experience</div>
+        <div class="fs">Financial administration</div>
+      </div>
+      <div class="feat">
+        <div class="fi">📊</div>
+        <div class="ft">Economics Knowledge</div>
+        <div class="fs">Sound economics background</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;background:rgba(176,26,26,0.06);border-radius:8px;border:1px dashed rgba(160,26,26,0.3);font-size:10px;font-weight:700;color:#a01a1a;">
+      ⚠️ FC is Advisory Only — Recommendations not binding
+    </div>
+  </div>
+
+  <!-- Functions -->
+  <div class="pc fc">
+    <div class="pc-label">Functions (Very Important)</div>
+    <h3>⚙️ What It Does</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">💰 Vertical Devolution</div><div class="vs">Divides tax between Centre & States</div></div>
+      <div class="vitem"><div class="vt">⚖️ Horizontal Devolution</div><div class="vs">Distributes among States themselves</div></div>
+      <div class="vitem"><div class="vt">🎁 Grants-in-aid</div><div class="vs">Recommends grants from CFI</div></div>
+      <div class="vitem"><div class="vt">🏙️ Augment State CF</div><div class="vs">Based on State Finance Commission</div></div>
+      <div class="vitem"><div class="vt">📋 President's Reference</div><div class="vs">Advises on any financial matter</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 15th FC Criteria Bar Chart -->
+<div class="pc fc fade-up d3" style="margin-bottom:22px;">
+  <div class="pc-label">15th Finance Commission Criteria (UPSC 2023)</div>
+  <h3>📊 Devolution Formula Breakdown</h3>
+  <div class="criteria-bars">
+    <div class="cbar-row">
+      <div class="cbar-label">Income Distance</div>
+      <div class="cbar-track"><div class="cbar-fill" style="width:45%;background:linear-gradient(90deg,#1a4f8a,#4a80cc);">45%</div></div>
+      <div class="cbar-pct">45%</div>
+    </div>
+    <div class="cbar-row">
+      <div class="cbar-label">Population</div>
+      <div class="cbar-track"><div class="cbar-fill" style="width:15%;background:linear-gradient(90deg,#2d7a3a,#5aaa6a);">15%</div></div>
+      <div class="cbar-pct">15%</div>
+    </div>
+    <div class="cbar-row">
+      <div class="cbar-label">Area</div>
+      <div class="cbar-track"><div class="cbar-fill" style="width:15%;background:linear-gradient(90deg,#d46a10,#f0a040);">15%</div></div>
+      <div class="cbar-pct">15%</div>
+    </div>
+    <div class="cbar-row">
+      <div class="cbar-label">Demographic Performance</div>
+      <div class="cbar-track"><div class="cbar-fill" style="width:12.5%;background:linear-gradient(90deg,#5a1a8a,#8a4acc);">12.5%</div></div>
+      <div class="cbar-pct">12.5%</div>
+    </div>
+    <div class="cbar-row">
+      <div class="cbar-label">Forest &amp; Ecology</div>
+      <div class="cbar-track"><div class="cbar-fill" style="width:10%;background:linear-gradient(90deg,#1a6a3a,#3a9a5a);">10%</div></div>
+      <div class="cbar-pct">10%</div>
+    </div>
+    <div class="cbar-row">
+      <div class="cbar-label">Tax Effort</div>
+      <div class="cbar-track"><div class="cbar-fill" style="width:2.5%;background:linear-gradient(90deg,#8a2d1a,#c05a3a);min-width:32px;">2.5%</div></div>
+      <div class="cbar-pct">2.5%</div>
+    </div>
+  </div>
+  <div style="margin-top:8px;font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;text-align:center;">Total = 100% | 15th FC Period: 2021–2026</div>
+</div>
+
+<!-- ══ SECTION 2: GST COUNCIL ══ -->
+<div class="sec-label fade-up">② GST Council — Art. 279A</div>
+
+<div class="map-card mc-gst fade-up d1">
+  <svg id="svgGST" viewBox="0 0 1340 230" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2 fade-up d2">
+  <!-- Composition & Voting -->
+  <div class="pc gst">
+    <div class="pc-label">Composition & Decision-Making</div>
+    <h3>🧩 Who Sits & How They Vote</h3>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+      <span class="art-badge gst">Art. 279A</span>
+      <span class="art-badge gst">101st CAA 2016</span>
+    </div>
+    <div class="vlist" style="margin-bottom:12px;">
+      <div class="vitem"><div class="vt">🪑 Union Finance Minister</div><div class="vs">Chairperson of the Council</div></div>
+      <div class="vitem"><div class="vt">🏛️ Union MoS Finance</div><div class="vs">Member from Centre</div></div>
+      <div class="vitem"><div class="vt">🗺️ State Finance Ministers</div><div class="vs">One per state — all members</div></div>
+      <div class="vitem"><div class="vt">📋 CBIC Chairperson</div><div class="vs">Permanent invitee · Non-voting</div></div>
+    </div>
+
+    <div class="vote-box">
+      <div class="vote-item centre">
+        <div class="vote-num" style="color:var(--fc);">1/3</div>
+        <div class="vote-label">CENTRE<br>VOTE WEIGHT</div>
+      </div>
+      <div class="vote-item states">
+        <div class="vote-num" style="color:var(--gst);">2/3</div>
+        <div class="vote-label">STATES<br>VOTE WEIGHT</div>
+      </div>
+    </div>
+
+    <div class="callout gst" style="margin-top:8px;">
+      <div class="callout-title gst">📐 Quorum & Majority</div>
+      <div class="callout-body">Quorum → 50% of total members<br>Decision → ¾ majority of members present &amp; voting</div>
+    </div>
+  </div>
+
+  <!-- Functions -->
+  <div class="pc gst">
+    <div class="pc-label">Functions</div>
+    <h3>⚙️ What GST Council Does</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🧾 Recommend GST Taxes &amp; Cesses</div><div class="vs">Goods and services tax structure</div></div>
+      <div class="vitem"><div class="vt">🌊 Disaster Special Rates</div><div class="vs">Propose special rates during national disasters</div></div>
+      <div class="vitem"><div class="vt">⛰️ Special NE/Hilly States</div><div class="vs">Special provisions for North-East and hill states</div></div>
+      <div class="vitem"><div class="vt">🏢 GST Compensation</div><div class="vs">States compensated for revenue loss</div></div>
+    </div>
+
+    <div style="margin-top:12px;padding:12px;border-radius:11px;background:rgba(45,122,58,0.07);border:1.5px solid rgba(45,122,58,0.2);">
+      <div style="font-size:11px;font-weight:800;color:var(--gst);margin-bottom:4px;">🆚 FC vs GST Council</div>
+      <div class="div-line"></div>
+      <div style="font-size:10px;color:var(--muted);line-height:1.6;">
+        <span style="color:var(--fc);font-weight:700;">FC</span> → Advisory to President only<br>
+        <span style="color:var(--gst);font-weight:700;">GST Council</span> → Federal decision-making body, actual voting
+      </div>
+    </div>
+    <div class="callout gst" style="margin-top:8px;">
+      <div class="callout-title gst">📌 HQ: New Delhi</div>
+      <div class="callout-body">Created by 101st Constitutional Amendment Act, 2016</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 3: SPECIAL OFFICER LINGUISTIC MINORITIES ══ -->
+<div class="sec-label fade-up">③ Special Officer for Linguistic Minorities — Art. 350B</div>
+
+<div class="map-card mc-slm fade-up d1">
+  <svg id="svgSLM" viewBox="0 0 1340 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2x1 fade-up d2">
+  <div class="pc slm">
+    <div class="pc-label">Commissioner for Linguistic Minorities</div>
+    <h3>🗣️ Structure & Functions</h3>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+      <span class="art-badge slm">Art. 350B</span>
+      <span class="art-badge slm">Part XVII</span>
+      <span class="art-badge slm">7th CAA 1956</span>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">👤 Appointed by President</div><div class="vs">Title: Commissioner for Linguistic Minorities</div></div>
+      <div class="vitem"><div class="vt">📋 Safeguard Minority Rights</div><div class="vs">Ensures linguistic rights of minorities are protected</div></div>
+      <div class="vitem"><div class="vt">📝 Reports to President</div><div class="vs">Via Ministry of Minority Affairs</div></div>
+    </div>
+
+    <div style="margin-top:12px;">
+      <div class="callout slm">
+        <div class="callout-title slm">🏢 Offices</div>
+        <div class="callout-body">
+          <strong>HQ:</strong> New Delhi<br>
+          <strong>Regional:</strong> Belagavi · Chennai · Kolkata
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc slm">
+    <div class="pc-label">Key Facts</div>
+    <h3>📌 Remember</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">7th CAA → 1956</div><div class="vs">Created this office</div></div>
+      <div class="vitem"><div class="vt">Part XVII</div><div class="vs">Language chapter of Constitution</div></div>
+      <div class="vitem"><div class="vt">3 Regional Offices</div><div class="vs">Belagavi, Chennai, Kolkata</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 4: BIG FEDERAL PICTURE ══ -->
+<div class="sec-label fade-up">④ Big Federal Picture — All Three Together</div>
+
+<div class="map-card mc-fc fade-up d1">
+  <svg id="svgBigPic" viewBox="0 0 1340 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3 fade-up d2">
+  <div class="pc fc">
+    <div class="pc-label">Finance Commission</div>
+    <h3>💰 Fiscal Justice</h3>
+    <div class="impact-chain" style="flex-direction:column;align-items:flex-start;">
+      <div class="ic-node" style="border-color:var(--fc);background:var(--fc-lt);color:var(--fc);">Centre Collects Tax</div>
+      <div class="ic-arr" style="transform:rotate(90deg);">→</div>
+      <div class="ic-node" style="border-color:var(--fc);background:var(--fc-lt);color:var(--fc);">FC Recommends Split</div>
+      <div class="ic-arr" style="transform:rotate(90deg);">→</div>
+      <div class="ic-node" style="border-color:var(--fc);background:var(--fc-lt);color:var(--fc);">States Get Share (Vertical)</div>
+      <div class="ic-arr" style="transform:rotate(90deg);">→</div>
+      <div class="ic-node" style="border-color:var(--fc);background:var(--fc-lt);color:var(--fc);">Among States (Horizontal)</div>
+    </div>
+  </div>
+  <div class="pc gst">
+    <div class="pc-label">GST Council</div>
+    <h3>🧾 Tax Coordination</h3>
+    <div class="impact-chain" style="flex-direction:column;align-items:flex-start;">
+      <div class="ic-node" style="border-color:var(--gst);background:var(--gst-lt);color:var(--gst);">GST Council Meets</div>
+      <div class="ic-arr" style="transform:rotate(90deg);">→</div>
+      <div class="ic-node" style="border-color:var(--gst);background:var(--gst-lt);color:var(--gst);">¾ Majority Decision</div>
+      <div class="ic-arr" style="transform:rotate(90deg);">→</div>
+      <div class="ic-node" style="border-color:var(--gst);background:var(--gst-lt);color:var(--gst);">Tax Rate Harmonized</div>
+      <div class="ic-arr" style="transform:rotate(90deg);">→</div>
+      <div class="ic-node" style="border-color:var(--gst);background:var(--gst-lt);color:var(--gst);">One Nation One Tax</div>
+    </div>
+  </div>
+  <div class="pc slm">
+    <div class="pc-label">Special Officer</div>
+    <h3>🗣️ Cultural Protection</h3>
+    <div class="impact-chain" style="flex-direction:column;align-items:flex-start;">
+      <div class="ic-node" style="border-color:var(--slm);background:var(--slm-lt);color:var(--slm);">Minority Complaint Filed</div>
+      <div class="ic-arr" style="transform:rotate(90deg);">→</div>
+      <div class="ic-node" style="border-color:var(--slm);background:var(--slm-lt);color:var(--slm);">Commissioner Investigates</div>
+      <div class="ic-arr" style="transform:rotate(90deg);">→</div>
+      <div class="ic-node" style="border-color:var(--slm);background:var(--slm-lt);color:var(--slm);">Report to President</div>
+      <div class="ic-arr" style="transform:rotate(90deg);">→</div>
+      <div class="ic-node" style="border-color:var(--slm);background:var(--slm-lt);color:var(--slm);">Rights Protected</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 5: CEC REFORM ══ -->
+<div class="sec-label fade-up">⑤ CEC & EC Appointment Reform (2023)</div>
+
+<div class="map-card mc-cec fade-up d1">
+  <svg id="svgCEC" viewBox="0 0 1340 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2 fade-up d2" style="margin-bottom:22px;">
+  <div class="pc cec">
+    <div class="pc-label">Before & After Reform</div>
+    <h3>🗳️ Appointment Change</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;">
+      <div style="padding:12px;border-radius:9px;background:#fde8e8;border:1.5px solid rgba(160,26,26,0.2);">
+        <div style="font-size:11px;font-weight:800;color:#a01a1a;margin-bottom:6px;">❌ Earlier (Pre-2023)</div>
+        <div style="font-size:10px;color:var(--muted);line-height:1.6;">President appointed CEC/ECs on government advice alone — no formal process</div>
+      </div>
+      <div style="padding:12px;border-radius:9px;background:var(--cec-lt);border:1.5px solid rgba(90,26,138,0.2);">
+        <div style="font-size:11px;font-weight:800;color:var(--cec);margin-bottom:6px;">✅ Now (2023 Act)</div>
+        <div style="font-size:10px;color:var(--muted);line-height:1.6;">Selection Committee with PM + Union Minister + Leader of Opposition</div>
+      </div>
+    </div>
+    <div class="callout" style="background:var(--cec-lt);border:1.5px solid rgba(90,26,138,0.2);margin-top:10px;">
+      <div class="callout-title" style="color:var(--cec);">🔍 Search Committee</div>
+      <div class="callout-body">Headed by Cabinet Secretary · Shortlists candidates · Replaced Election Commission Act, 1991</div>
+    </div>
+  </div>
+
+  <div class="pc cec">
+    <div class="pc-label">Selection Committee Members</div>
+    <h3>👥 Who Selects?</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🏛️ Prime Minister</div><div class="vs">Chairperson of Selection Committee</div></div>
+      <div class="vitem"><div class="vt">🧾 Union Minister</div><div class="vs">Nominated cabinet minister</div></div>
+      <div class="vitem"><div class="vt">📢 Leader of Opposition</div><div class="vs">Lok Sabha LoP — ensures non-partisan process</div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <div class="flow">
+        <div class="fn" style="background:var(--cec-lt);border-color:var(--cec);color:var(--cec);">Search Committee</div>
+        <div class="farr">→</div>
+        <div class="fn" style="background:var(--cec-lt);border-color:var(--cec);color:var(--cec);">Selection Committee</div>
+        <div class="farr">→</div>
+        <div class="fn" style="background:var(--cec-lt);border-color:var(--cec);color:var(--cec);">President Appoints</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 6: PRELIMS TRAP POINTS ══ -->
+<div class="sec-label fade-up">⑥ Prelims Trap Points — Quick Hits</div>
+
+<div class="map-card mc-trap fade-up d1">
+  <svg id="svgTrap" viewBox="0 0 1340 150" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g4 fade-up d2">
+  <div class="pc gold">
+    <div class="pc-label">Article Numbers</div>
+    <h3>📜 Remember These</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Art. 280</div><div class="vs">Finance Commission</div></div>
+      <div class="vitem"><div class="vt">Art. 279A</div><div class="vs">GST Council</div></div>
+      <div class="vitem"><div class="vt">Art. 350B</div><div class="vs">Linguistic Minorities</div></div>
+    </div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">Amendment Numbers</div>
+    <h3>🔢 Key CAAs</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">101st CAA</div><div class="vs">GST Council (2016)</div></div>
+      <div class="vitem"><div class="vt">7th CAA</div><div class="vs">Linguistic Minorities (1956)</div></div>
+    </div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">GST Council Specifics</div>
+    <h3>🧾 Trap Points</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Quorum → 50%</div><div class="vs">Of total members present</div></div>
+      <div class="vitem"><div class="vt">Majority → 3/4</div><div class="vs">Of members present &amp; voting</div></div>
+      <div class="vitem"><div class="vt">Centre : States</div><div class="vs">1/3 : 2/3 vote weight</div></div>
+    </div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">Finance Commission</div>
+    <h3>💰 FC Traps</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">FC → Advisory</div><div class="vs">Not binding on government</div></div>
+      <div class="vitem"><div class="vt">Every 5 Years</div><div class="vs">Not permanent body</div></div>
+      <div class="vitem"><div class="vt">GST Council ≠ FC</div><div class="vs">GST = actual decision-maker</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PHASE / TIMELINE ══ -->
+<div class="sec-label fade-up">⑦ Constitutional Milestones Timeline</div>
+
+<div class="phase-row fade-up">
+  <div class="phase-box" style="border-color:var(--fc);background:rgba(26,79,138,0.04);">
+    <div class="phase-num" style="color:var(--fc);">1950</div>
+    <div class="phase-title">Finance Commission Born</div>
+    <div class="phase-sub">Article 280 · Part XII</div>
+    <div style="font-size:10px;line-height:1.6;color:var(--muted);">First FC under K.C. Neogy<br>Vertical + Horizontal devolution</div>
+    <span class="pill fc" style="margin-top:8px;">Constitutional Provision</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--slm);background:rgba(138,45,26,0.04);">
+    <div class="phase-num" style="color:var(--slm);">1956</div>
+    <div class="phase-title">Linguistic Office Created</div>
+    <div class="phase-sub">7th CAA · Art. 350B</div>
+    <div style="font-size:10px;line-height:1.6;color:var(--muted);">Commissioner for Linguistic<br>Minorities established</div>
+    <span class="pill slm" style="margin-top:8px;">Cultural Protection</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--gst);background:rgba(45,122,58,0.04);">
+    <div class="phase-num" style="color:var(--gst);">2016</div>
+    <div class="phase-title">GST Council Formed</div>
+    <div class="phase-sub">101st CAA · Art. 279A</div>
+    <div style="font-size:10px;line-height:1.6;color:var(--muted);">One Nation One Tax<br>Cooperative federalism</div>
+    <span class="pill gst" style="margin-top:8px;">Tax Federalism</span>
+  </div>
+</div>
+
+<!-- ══ KEYSTONE ══ -->
+<div class="keystone fade-up" style="margin-top:10px;">
+  <div class="keystone-icon">🏛️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Connecting Idea: Fiscal + Cultural Federalism</div>
+    <div class="keystone-sub">
+      India's federal architecture has three pillars working together:<br>
+      <strong style="color:#f5d78a;">Finance Commission</strong> ensures fiscal justice (money flows fairly) →
+      <strong style="color:#a0e8a0;">GST Council</strong> coordinates tax policy (one unified market) →
+      <strong style="color:#f5b0a0;">Special Officer</strong> protects linguistic rights (cultural diversity preserved).
+    </div>
+    <div class="kpill-row">
+      <span class="kpill">💰 Fiscal Justice</span>
+      <span class="kpill">🧾 Tax Coordination</span>
+      <span class="kpill">🗣️ Cultural Rights</span>
+      <span class="kpill">⚖️ Advisory vs. Binding</span>
+      <span class="kpill">🗳️ Cooperative Federalism</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+
+function se(tag,attrs){
+  const el=document.createElementNS(NS,tag);
+  for(const[k,v] of Object.entries(attrs)) el.setAttribute(k,v);
+  return el;
+}
+
+function curve(svg,x1,y1,x2,y2,color,dashed,w){
+  const mid=(x1+x2)/2;
+  const d=`M${x1},${y1} C${mid},${y1} ${mid},${y2} ${x2},${y2}`;
+  svg.appendChild(se('path',{d,stroke:color||'#aaa','stroke-width':w||1.8,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.65'}));
+}
+
+function curveV(svg,x1,y1,x2,y2,color,dashed){
+  const mid=(y1+y2)/2;
+  const d=`M${x1},${y1} C${x1},${mid} ${x2},${mid} ${x2},${y2}`;
+  svg.appendChild(se('path',{d,stroke:color||'#aaa','stroke-width':'1.8',fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.5'}));
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff'; rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  // shadow
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  // main rect
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.25)','stroke-width':'1.5'}));
+
+  let ty=y;
+  const totalH=(emoji?16:0)+(lines.length)*14+(sub?12:0);
+  ty=y-totalH/2+(emoji?8:0)+(lines.length*14)/2;
+
+  if(emoji){
+    const em=se('text',{x,y:y-totalH/2+8,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});
+    em.textContent=emoji; g.appendChild(em);
+    ty=y-totalH/2+22;
+  } else {
+    ty=y-(lines.length*14)/2-(sub?6:0);
+  }
+
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Outfit,sans-serif',fill:textCol});
+    t.textContent=l; g.appendChild(t);
+  });
+
+  if(sub){
+    const s=se('text',{x,y:ty+lines.length*15-1,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'JetBrains Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.4)'});
+    s.textContent=sub; g.appendChild(s);
+  }
+
+  svg.appendChild(g);
+}
+
+function label(svg,x,y,text,color,size,align){
+  const t=se('text',{x,y,'text-anchor':align||'middle','font-size':size||9,'font-family':'JetBrains Mono,monospace',fill:color||'rgba(120,100,60,0.5)','letter-spacing':'2'});
+  t.textContent=text; svg.appendChild(t);
+}
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgMasterFlow');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:120,fill:'rgba(250,248,243,0.6)'}));
+
+  const steps=[
+    {x:80,  label:'President\nConstitutes FC', sub:'Every 5 years', fill:'#1a4f8a', emoji:'🏛️'},
+    {x:240, label:'FC Recommends\nDevolution',  sub:'Vertical + Horizontal', fill:'#2a6faa', emoji:'💰'},
+    {x:420, label:'CFI Distributes\nto States',  sub:'Grants + Share', fill:'#2d7a3a', emoji:'🏦'},
+    {x:600, label:'GST Council\nSets Tax Rates', sub:'¾ Majority · 101st CAA', fill:'#3a8a4a', emoji:'🧾'},
+    {x:780, label:'Revenue\nCollected',           sub:'Centre + States', fill:'#d46a10', emoji:'💹'},
+    {x:960, label:'Special Officer\nProtects Rights', sub:'Art. 350B · Minorities', fill:'#8a2d1a', emoji:'🗣️'},
+    {x:1140,label:'CEC Appointed\nby Committee',  sub:'PM + LoP + Minister', fill:'#5a1a8a', emoji:'🗳️'},
+    {x:1290,label:'Federal\nHarmony',             sub:'Fiscal + Cultural', fill:'#1a1410', emoji:'🇮🇳'},
+  ];
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      curve(svg,s.x+68,60,steps[i+1].x-68,60,'#b87c10',false,2);
+    }
+  });
+  steps.forEach(s=>{
+    const lines=s.label.split('\n');
+    node(svg,s.x,60,130,65,s.fill,lines,s.sub,s.emoji);
+  });
+  label(svg,670,14,'MASTER FLOW: CONSTITUTIONAL BODIES OF FISCAL FEDERALISM & MINORITY PROTECTION','rgba(120,100,60,0.4)',8);
+})();
+
+// ─── FINANCE COMMISSION SVG ───
+(function(){
+  const svg=document.getElementById('svgFC');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:240,fill:'rgba(250,248,243,0.4)'}));
+
+  // Central node
+  node(svg,670,120,220,62,'#1a4f8a',['Finance Commission'],'Art. 280 · Part XII · Quasi-Judicial','💰');
+
+  const left=[
+    {x:130, y:50,  fill:'#1a4f8a', label:['Constituted','Every 5 Yrs'], sub:'By President', emoji:'📅'},
+    {x:130, y:130, fill:'#2a5a9a', label:['Chairman','+ 4 Members'], sub:'Appointed by President', emoji:'👤'},
+    {x:130, y:200, fill:'#3a6aaa', label:['Eligible for','Reappointment'], sub:'HC Judge qualified', emoji:'⚖️'},
+  ];
+  const right=[
+    {x:1210, y:50,  fill:'#0a3a70', label:['Vertical','Devolution'],   sub:'Centre → States', emoji:'⬇️'},
+    {x:1210, y:130, fill:'#1a4a80', label:['Horizontal','Devolution'], sub:'State to State', emoji:'↔️'},
+    {x:1210, y:200, fill:'#2a5a90', label:['Grants-in-aid','from CFI'], sub:'+ Augment State CF', emoji:'🎁'},
+  ];
+
+  const topNodes=[
+    {x:370, y:40,  fill:'#1a5878', label:['Advisory','to President'], sub:'Not binding', emoji:'📋'},
+    {x:560, y:35,  fill:'#1a4f8a', label:['15th FC Head:','N.K. Singh'],  sub:'2021–2026', emoji:'🏆'},
+    {x:780, y:35,  fill:'#1a4f8a', label:['1st FC Head:','K.C. Neogy'],  sub:'Historical', emoji:'📜'},
+    {x:970, y:40,  fill:'#1a3a70', label:['President','Reference'], sub:'Financial advice', emoji:'🤝'},
+  ];
+
+  left.forEach(n=>{
+    curve(svg,560,120,n.x+76,n.y,'#1a4f8a55',true,1.5);
+    node(svg,n.x,n.y,148,55,n.fill,n.label,n.sub,n.emoji);
+  });
+  right.forEach(n=>{
+    curve(svg,784,120,n.x-76,n.y,'#1a4f8a55',true,1.5);
+    node(svg,n.x,n.y,148,55,n.fill,n.label,n.sub,n.emoji);
+  });
+  topNodes.forEach(n=>{
+    curveV(svg,n.x,90,670,89,'#1a4f8a33',true);
+    node(svg,n.x,n.y,168,50,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  label(svg,670,228,'FINANCE COMMISSION: VERTICAL + HORIZONTAL TAX DEVOLUTION · ADVISORY BODY','rgba(26,79,138,0.35)',8);
+})();
+
+// ─── GST COUNCIL SVG ───
+(function(){
+  const svg=document.getElementById('svgGST');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:230,fill:'rgba(248,250,248,0.4)'}));
+
+  node(svg,670,115,230,62,'#2d7a3a',['GST Council'],'Art. 279A · 101st CAA 2016 · Federal Body','🧾');
+
+  const left=[
+    {x:130, y:45,  fill:'#2d7a3a', label:['Union Finance','Minister (Chair)'], sub:'Heads the Council', emoji:'🪑'},
+    {x:130, y:130, fill:'#3a8a4a', label:['Union MoS','Finance'], sub:'Centre member', emoji:'🏛️'},
+    {x:130, y:200, fill:'#4a9a5a', label:['CBIC Chair','(Non-voting)'], sub:'Permanent invitee', emoji:'📋'},
+  ];
+  const right=[
+    {x:1210, y:45,  fill:'#206030', label:['3/4 Majority','Required'], sub:'Of members present', emoji:'⚖️'},
+    {x:1210, y:130, fill:'#2d7a3a', label:['Centre: 1/3','States: 2/3'], sub:'Vote weight split', emoji:'🗳️'},
+    {x:1210, y:200, fill:'#3a8a4a', label:['Quorum','→ 50%'], sub:'Minimum attendance', emoji:'👥'},
+  ];
+  const top=[
+    {x:350, y:38,  fill:'#1a5878', label:['Recommend','GST Taxes'],    sub:'Goods & services', emoji:'🧾'},
+    {x:550, y:32,  fill:'#2d7a3a', label:['Disaster','Special Rates'], sub:'Crisis provisions', emoji:'🌊'},
+    {x:790, y:32,  fill:'#2d7a3a', label:['NE + Hilly','States Special'], sub:'Regional provisions', emoji:'⛰️'},
+    {x:990, y:38,  fill:'#1a5878', label:['State','Finance Ministers'], sub:'All 28+8 states', emoji:'🗺️'},
+  ];
+
+  left.forEach(n=>{ curve(svg,554,115,n.x+80,n.y,'#2d7a3a55',true,1.5); node(svg,n.x,n.y,155,55,n.fill,n.label,n.sub,n.emoji); });
+  right.forEach(n=>{ curve(svg,786,115,n.x-80,n.y,'#2d7a3a55',true,1.5); node(svg,n.x,n.y,155,55,n.fill,n.label,n.sub,n.emoji); });
+  top.forEach(n=>{ curveV(svg,n.x,88,670,84,'#2d7a3a33',true); node(svg,n.x,n.y,178,50,n.fill,n.label,n.sub,n.emoji); });
+
+  label(svg,670,220,'GST COUNCIL: FEDERAL DECISION-MAKING BODY (NOT MERELY ADVISORY) · HQ: NEW DELHI','rgba(45,122,58,0.35)',8);
+})();
+
+// ─── SPECIAL OFFICER SVG ───
+(function(){
+  const svg=document.getElementById('svgSLM');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:180,fill:'rgba(250,248,247,0.4)'}));
+
+  node(svg,670,90,230,60,'#8a2d1a',['Commissioner for','Linguistic Minorities'],'Art. 350B · Part XVII · 7th CAA 1956','🗣️');
+
+  const spokes=[
+    {x:130, y:45,  fill:'#8a2d1a', label:['Appointed','by President'],   sub:'Not by Parliament', emoji:'👤'},
+    {x:130, y:135, fill:'#a03a20', label:['Safeguard','Minority Rights'], sub:'Linguistic protection', emoji:'🛡️'},
+    {x:370, y:35,  fill:'#7a2010', label:['Report to','President'],       sub:'Via Min. Affairs', emoji:'📝'},
+    {x:970, y:35,  fill:'#7a2010', label:['7th CAA','1956'],              sub:'Created this office', emoji:'📜'},
+    {x:1210,y:45,  fill:'#8a2d1a', label:['HQ: New','Delhi'],            sub:'3 Regional offices', emoji:'🏢'},
+    {x:1210,y:135, fill:'#a03a20', label:['Regional: Belagavi','Chennai · Kolkata'], sub:'Field presence', emoji:'📍'},
+  ];
+
+  spokes.forEach(n=>{
+    const fx=n.x<670?554:786;
+    const fy=n.y<90?82:98;
+    curve(svg,fx,90,n.x+(n.x<670?80:-80),n.y,'#8a2d1a55',true,1.5);
+    node(svg,n.x,n.y,n.x>300&&n.x<1000?178:158,52,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  label(svg,670,170,'SPECIAL OFFICER: LINGUISTIC MINORITIES · PART XVII LANGUAGE PROVISIONS · REPORTS TO PRESIDENT','rgba(138,45,26,0.35)',8);
+})();
+
+// ─── BIG PICTURE SVG ───
+(function(){
+  const svg=document.getElementById('svgBigPic');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:200,fill:'rgba(250,248,243,0.4)'}));
+
+  node(svg,670,100,200,56,'#1a1410',['Big Federal','Picture'],'Fiscal Justice + Tax Coord + Culture','🏛️');
+
+  const items=[
+    {x:150,  y:60,  fill:'#1a4f8a', label:['Finance Commission'], sub:'Fiscal devolution · Art. 280', emoji:'💰'},
+    {x:150,  y:140, fill:'#2a5a9a', label:['Vertical Split'], sub:'Centre taxes → States', emoji:'⬇️'},
+    {x:420,  y:35,  fill:'#2d7a3a', label:['GST Council'], sub:'Tax harmonization · Art. 279A', emoji:'🧾'},
+    {x:920,  y:35,  fill:'#8a2d1a', label:['Special Officer'], sub:'Linguistic rights · Art. 350B', emoji:'🗣️'},
+    {x:1190, y:60,  fill:'#5a1a8a', label:['CEC Reform 2023'], sub:'Selection Committee', emoji:'🗳️'},
+    {x:1190, y:140, fill:'#3a0a6a', label:['Cooperative','Federalism'], sub:'All bodies working together', emoji:'🤝'},
+  ];
+
+  items.forEach(n=>{
+    const fx=n.x<670?568:772;
+    const fy=n.y<100?92:108;
+    curve(svg,fx,100,n.x+(n.x<670?76:-76),n.y,'rgba(184,124,16,0.4)',true,1.5);
+    const lines=n.label.split?[n.label]:n.label;
+    node(svg,n.x,n.y,n.x>300&&n.x<1000?188:158,n.label.includes?58:52,n.fill,Array.isArray(n.label)?n.label:[n.label],n.sub,n.emoji);
+  });
+
+  label(svg,670,192,'FISCAL JUSTICE 💰 → TAX COORDINATION 🧾 → CULTURAL PROTECTION 🗣️','rgba(26,20,16,0.4)',9);
+})();
+
+// ─── CEC SVG ───
+(function(){
+  const svg=document.getElementById('svgCEC');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:160,fill:'rgba(248,246,252,0.4)'}));
+
+  node(svg,670,80,240,58,'#5a1a8a',['CEC & EC Appointment','Reform 2023'],'Replaced Election Commission Act 1991','🗳️');
+
+  const items=[
+    {x:130,  y:45,  fill:'#5a1a8a', label:['PM: Selection','Committee Chair'],  sub:'PM leads process', emoji:'🏛️'},
+    {x:130,  y:125, fill:'#6a2a9a', label:['Union Minister'],                   sub:'Cabinet representative', emoji:'🧾'},
+    {x:370,  y:30,  fill:'#4a0a8a', label:['Leader of Opposition'],             sub:'Ensures non-partisan pick', emoji:'📢'},
+    {x:970,  y:30,  fill:'#4a0a8a', label:['Search Committee'],                 sub:'Headed by Cab. Secretary', emoji:'🔍'},
+    {x:1200, y:45,  fill:'#5a1a8a', label:['President','Makes Appointment'],    sub:'Based on recommendation', emoji:'🏅'},
+    {x:1200, y:125, fill:'#6a2a9a', label:['Replaces','EC Act 1991'],           sub:'Greater transparency', emoji:'📜'},
+  ];
+
+  items.forEach(n=>{
+    const fx=n.x<670?548:792;
+    curve(svg,fx,80,n.x+(n.x<670?80:-80),n.y,'#5a1a8a55',true,1.5);
+    const lines=Array.isArray(n.label)?n.label:[n.label];
+    node(svg,n.x,n.y,160,52,n.fill,lines,n.sub,n.emoji);
+  });
+
+  label(svg,670,152,'CEC REFORM 2023: SELECTION COMMITTEE WITH PM + UNION MINISTER + LEADER OF OPPOSITION','rgba(90,26,138,0.35)',8);
+})();
+
+// ─── TRAP POINTS SVG ───
+(function(){
+  const svg=document.getElementById('svgTrap');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:150,fill:'rgba(253,250,240,0.5)'}));
+
+  const traps=[
+    {x:100, fill:'#b87c10', label:['Art. 280'],            sub:'Finance Commission', emoji:'📜'},
+    {x:240, fill:'#b87c10', label:['Art. 279A'],           sub:'GST Council', emoji:'🧾'},
+    {x:380, fill:'#b87c10', label:['Art. 350B'],           sub:'Linguistic Minorities', emoji:'🗣️'},
+    {x:530, fill:'#1a4f8a', label:['101st CAA'],           sub:'GST (2016)', emoji:'📋'},
+    {x:670, fill:'#1a4f8a', label:['7th CAA'],             sub:'Linguistic (1956)', emoji:'📋'},
+    {x:810, fill:'#8a2d1a', label:['FC = Advisory'],       sub:'Not binding', emoji:'⚠️'},
+    {x:960, fill:'#2d7a3a', label:['GST = 3/4 Majority'],  sub:'Quorum 50%', emoji:'⚖️'},
+    {x:1120,fill:'#5a1a8a', label:['FC Every 5 Yrs'],      sub:'Not permanent body', emoji:'📅'},
+    {x:1270,fill:'#8a2d1a', label:['1:2 Vote Weight'],     sub:'Centre:States in GST', emoji:'🗳️'},
+  ];
+
+  traps.forEach(t=>{
+    node(svg,t.x,75,130,60,t.fill,t.label,t.sub,t.emoji);
+  });
+
+  // Connecting line
+  const line=se('line',{x1:40,y1:75,x2:1330,y2:75,stroke:'rgba(184,124,16,0.12)','stroke-width':'1.5','stroke-dasharray':'4 4'});
+  svg.insertBefore(line,svg.firstChild.nextSibling);
+
+  label(svg,670,136,'🔥 PRELIMS TRAP POINTS — HIGH YIELD FOR UPSC','rgba(184,124,16,0.55)',9);
+})();
+</script>
+</body>
+</html>

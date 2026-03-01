@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSPSC · AG · Advocate General — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0f0e0c; --paper:#f9f6f0; --paper2:#f0ead8; --border:#ddd0b0; --muted:#8a7a60;
+  --gold:#b07a08; --gold-lt:#fef3cc; --amber:#c85a00;
+  --indigo:#2a3a9a; --indigo-lt:#eaedfa; --blue:#1a50a0;
+  --teal:#096060; --teal-lt:#e0f5f5;
+  --green:#165828; --green-lt:#e2f5e8;
+  --red:#9a1515; --red-lt:#faeaea;
+  --purple:#5a159a; --purple-lt:#f2eafa;
+  --card:#fffdf5;
+}
+body{font-family:'Outfit',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+.wrap{max-width:1380px;margin:0 auto;padding:0 20px 100px;}
+
+.hdr{text-align:center;padding:44px 16px 20px;}
+.hdr-sup{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.hdr h1{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,46px);line-height:1.15;}
+.hdr h1 em{font-style:italic;color:var(--indigo);}
+.hdr-sub{margin-top:8px;font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:1px;}
+.hdr::after{content:'';display:block;width:100px;height:3px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--indigo));margin:14px auto 0;border-radius:4px;}
+
+.sec{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:36px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;}
+@media(max-width:900px){.g3{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.g2,.g3{grid-template-columns:1fr;}}
+
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.pc.c-indigo::before{background:var(--indigo);}
+.pc.c-blue::before{background:var(--blue);}
+.pc.c-teal::before{background:var(--teal);}
+.pc.c-green::before{background:var(--green);}
+.pc.c-red::before{background:var(--red);}
+.pc.c-gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.c-purple::before{background:var(--purple);}
+.pc.c-amber::before{background:var(--amber);}
+
+.pc-lbl{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:6px;line-height:1.3;}
+
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:18px;}
+.mc svg{display:block;width:100%;height:auto;}
+
+.vl{display:flex;flex-direction:column;gap:6px;}
+.vi{padding:8px 11px;border-radius:8px;background:var(--paper2);border:1px solid var(--border);font-size:11px;}
+.vi b{display:block;font-weight:700;margin-bottom:1px;}
+.vi span{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+.chip{display:inline-block;padding:3px 9px;border-radius:6px;font-size:9.5px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip.ok{background:var(--green-lt);border-color:rgba(22,88,40,0.25);color:var(--green);}
+.chip.bad{background:var(--red-lt);border-color:rgba(154,21,21,0.25);color:var(--red);}
+.chip.info{background:var(--indigo-lt);border-color:rgba(42,58,154,0.2);color:var(--indigo);}
+.chip.neu{background:var(--gold-lt);border-color:rgba(176,122,8,0.25);color:var(--gold);}
+.chip.teal{background:var(--teal-lt);border-color:rgba(9,96,96,0.2);color:var(--teal);}
+
+.sr{display:flex;gap:8px;margin:8px 0;}
+.sb{flex:1;padding:10px 6px;border-radius:9px;border:1.5px solid var(--border);text-align:center;background:var(--paper2);}
+.sb-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;line-height:1;}
+.sb-lbl{font-size:8.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:2px;}
+.sb-sub{font-size:10px;font-weight:700;margin-top:1px;}
+
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px;}
+.fi-box{padding:9px 10px;border-radius:8px;background:var(--paper2);border:1px solid var(--border);}
+.fi-i{font-size:15px;margin-bottom:3px;}
+.fi-t{font-size:10.5px;font-weight:700;}
+.fi-s{font-size:8.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:1px;}
+
+.ctbl{width:100%;border-collapse:collapse;font-size:11px;}
+.ctbl th{background:var(--ink);color:#fff;padding:9px 12px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:1px;}
+.ctbl td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctbl tr:last-child td{border-bottom:none;}
+.ctbl tr:nth-child(even) td{background:rgba(176,122,8,0.025);}
+.ctbl td:first-child{font-weight:700;color:var(--amber);width:22%;}
+.ctbl td:nth-child(2){color:var(--indigo);}
+.ctbl td:nth-child(3){color:var(--teal);}
+.tag{display:inline-block;padding:1px 6px;border-radius:4px;font-size:8.5px;font-weight:700;}
+.tag.s{background:#fde8b0;color:#7a4010;}
+.tag.d{background:#e8e0f8;color:#5a159a;}
+
+.tg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+@media(max-width:600px){.tg{grid-template-columns:1fr;}}
+.ti{padding:11px 13px;border-radius:10px;background:var(--red-lt);border:1.5px solid rgba(154,21,21,0.2);}
+.ti b{display:block;font-size:11px;font-weight:700;color:var(--red);margin-bottom:3px;}
+.ti p{font-size:10.5px;line-height:1.55;}
+
+.ks{background:var(--ink);color:#f5e8c0;border-radius:16px;padding:24px 28px;margin:20px 0;display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;}
+.ks-ico{font-size:36px;flex:0 0 auto;margin-top:2px;}
+.ks-title{font-family:'Playfair Display',serif;font-size:19px;font-style:italic;margin-bottom:6px;}
+.ks-body{font-size:11px;color:#c8b880;line-height:1.7;}
+.kp{padding:4px 11px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'JetBrains Mono',monospace;display:inline-block;margin:3px 2px;}
+
+.cal{padding:11px 13px;border-radius:9px;margin:8px 0;}
+.cal.indigo{background:var(--indigo-lt);border:1.5px solid rgba(42,58,154,0.2);}
+.cal.green{background:var(--green-lt);border:1.5px solid rgba(22,88,40,0.2);}
+.cal.teal{background:var(--teal-lt);border:1.5px solid rgba(9,96,96,0.2);}
+.cal b{display:block;font-size:10.5px;font-weight:700;margin-bottom:3px;}
+.cal p{font-size:10px;color:var(--muted);line-height:1.6;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-sup">Indian Polity · Constitutional Officers · UPSC Prelims</div>
+  <h1>JSPSC · AG · Advocate General<br><em>Mind Map</em></h1>
+  <div class="hdr-sub">Recruitment System + Legal Advice Chain · Union &amp; State Level</div>
+</div>
+
+<!-- MASTER FLOW -->
+<div class="sec">Master Flow — Constitutional Accountability Chain</div>
+<div class="mc" id="mc-master"></div>
+
+<!-- JSPSC -->
+<div class="sec">① JSPSC — Joint State Public Service Commission (Art. 315–323)</div>
+<div class="mc" id="mc-jspsc"></div>
+
+<div class="g3">
+  <div class="pc c-indigo">
+    <div class="pc-lbl">Art. 315–323 · Part XIV</div>
+    <h3>🏛️ Creation &amp; Nature</h3>
+    <div class="vl">
+      <div class="vi"><b>Created by Parliament</b><span>Only when 2+ State Legislatures formally request</span></div>
+      <div class="vi"><b>Constitutional Body</b><span>Under Art. 315 — established by Parliamentary law</span></div>
+      <div class="vi"><b>Historical Origin</b><span>Concept rooted in Govt. of India Act, 1935</span></div>
+    </div>
+  </div>
+  <div class="pc c-blue">
+    <div class="pc-lbl">Appointment &amp; Term</div>
+    <h3>👤 Who Appoints?</h3>
+    <div class="sr">
+      <div class="sb"><div class="sb-num" style="color:var(--indigo);">6</div><div class="sb-sub">Years</div><div class="sb-lbl">TENURE</div></div>
+      <div class="sb"><div class="sb-num" style="color:var(--blue);">62</div><div class="sb-sub">Age Limit</div><div class="sb-lbl">RETIREMENT</div></div>
+    </div>
+    <div class="vl" style="margin-top:8px;">
+      <div class="vi"><b>Chairman &amp; Members → Appointed by President</b><span>Service conditions also set by President</span></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip info">Same term rules as SPSC</span></div>
+  </div>
+  <div class="pc c-teal">
+    <div class="pc-lbl">Reporting &amp; PSC Recall</div>
+    <h3>📋 Reports &amp; Quick Recall</h3>
+    <div class="vl">
+      <div class="vi"><b>Annual Report → Concerned State Governors</b><span>Not to Parliament directly</span></div>
+    </div>
+    <div style="margin-top:12px;padding:12px;border-radius:10px;background:var(--teal-lt);border:1.5px solid rgba(9,96,96,0.2);">
+      <div style="font-size:10.5px;font-weight:700;color:var(--teal);margin-bottom:8px;">🔑 PSC Quick Recall</div>
+      <div class="vl">
+        <div class="vi" style="background:var(--indigo-lt);border-color:rgba(42,58,154,0.15);"><b style="color:var(--indigo);">UPSC</b><span>→ Union (All India) Services</span></div>
+        <div class="vi" style="background:var(--teal-lt);border-color:rgba(9,96,96,0.15);"><b style="color:var(--teal);">SPSC</b><span>→ One State only</span></div>
+        <div class="vi" style="background:var(--green-lt);border-color:rgba(22,88,40,0.15);"><b style="color:var(--green);">JSPSC</b><span>→ Two or More States</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AG -->
+<div class="sec">② Attorney General of India — Article 76</div>
+<div class="mc" id="mc-ag"></div>
+
+<div class="g2">
+  <div class="pc c-indigo">
+    <div class="pc-lbl">Article 76 · Highest Law Officer · Union</div>
+    <h3>⚖️ Appointment &amp; Qualifications</h3>
+    <div class="vl">
+      <div class="vi"><b>Appointed By → President of India</b><span>Must be qualified for Supreme Court Judge</span></div>
+    </div>
+    <div style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:var(--indigo);letter-spacing:1px;margin-bottom:7px;">QUALIFICATION — ANY ONE OF:</div>
+    <div class="fg">
+      <div class="fi-box"><div class="fi-i">⚖️</div><div class="fi-t">HC Judge</div><div class="fi-s">5 years experience</div></div>
+      <div class="fi-box"><div class="fi-i">👨‍💼</div><div class="fi-t">HC Advocate</div><div class="fi-s">10 years experience</div></div>
+      <div class="fi-box"><div class="fi-i">🎓</div><div class="fi-t">Eminent Jurist</div><div class="fi-s">Distinguished legal expert</div></div>
+      <div class="fi-box" style="background:var(--indigo-lt);border-color:rgba(42,58,154,0.2);"><div class="fi-i">🇮🇳</div><div class="fi-t">Citizen of India</div><div class="fi-s">Mandatory for all</div></div>
+    </div>
+  </div>
+  <div class="pc c-blue">
+    <div class="pc-lbl">Powers, Privileges &amp; Limitations</div>
+    <h3>⚡ Rights &amp; Restrictions</h3>
+    <div class="vl">
+      <div class="vi"><b>Chief Legal Advisor to Union Government</b><span>On all constitutional and legal matters</span></div>
+      <div class="vi"><b>Parliament → Can Speak, Cannot Vote</b><span>Participates in both Houses — MP Privileges apply</span></div>
+    </div>
+    <div style="margin-top:9px;">
+      <span class="chip ok">✅ Speak in Parliament</span>
+      <span class="chip bad">❌ No Vote</span>
+      <span class="chip bad">❌ Cannot Practice Against GOI</span>
+      <span class="chip bad">❌ Salary NOT on CFI ⚠️</span>
+    </div>
+    <div class="cal indigo" style="margin-top:10px;">
+      <b style="color:var(--indigo);">🕐 Tenure — Pleasure Doctrine</b>
+      <p>Serves at pleasure of President. No fixed term. No impeachment process. Only resignation or presidential removal.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ADVOCATE GENERAL -->
+<div class="sec">③ Advocate General — Article 165 · State Level</div>
+<div class="mc" id="mc-advgen"></div>
+
+<div class="g2">
+  <div class="pc c-teal">
+    <div class="pc-lbl">Article 165 · Highest Law Officer · State</div>
+    <h3>⚖️ Appointment &amp; Qualifications</h3>
+    <div class="vl">
+      <div class="vi"><b>Appointed By → Governor of the State</b><span>Must be qualified for High Court Judge</span></div>
+    </div>
+    <div style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:var(--teal);letter-spacing:1px;margin-bottom:7px;">QUALIFICATION — ANY ONE OF:</div>
+    <div class="fg">
+      <div class="fi-box"><div class="fi-i">⚖️</div><div class="fi-t">Judicial Service</div><div class="fi-s">10 years experience</div></div>
+      <div class="fi-box"><div class="fi-i">👨‍💼</div><div class="fi-t">HC Advocate</div><div class="fi-s">10 years experience</div></div>
+      <div class="fi-box" style="grid-column:span 2;background:var(--teal-lt);border-color:rgba(9,96,96,0.2);"><div class="fi-i">🇮🇳</div><div class="fi-t">Must Be Citizen of India</div><div class="fi-s">Mandatory — same as AG</div></div>
+    </div>
+  </div>
+  <div class="pc c-green">
+    <div class="pc-lbl">Powers, Privileges &amp; Limitations</div>
+    <h3>⚡ Rights &amp; Restrictions</h3>
+    <div class="vl">
+      <div class="vi"><b>Chief Legal Advisor to State Government</b><span>On all state-level legal matters</span></div>
+      <div class="vi"><b>Legislature → Can Speak, Cannot Vote</b><span>Enjoys privileges of MLA</span></div>
+    </div>
+    <div style="margin-top:9px;">
+      <span class="chip ok">✅ Speak in Legislature</span>
+      <span class="chip bad">❌ No Vote</span>
+      <span class="chip bad">❌ Cannot Practice Against State Govt.</span>
+      <span class="chip bad">❌ Salary NOT on CFS ⚠️</span>
+    </div>
+    <div class="cal green" style="margin-top:10px;">
+      <b style="color:var(--green);">🕐 Tenure — Pleasure Doctrine</b>
+      <p>Serves at pleasure of Governor. Mirror of AG at state level. No fixed term, no impeachment process.</p>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON -->
+<div class="sec">④ AG vs Advocate General — Full Comparison</div>
+<div class="mc" id="mc-compare"></div>
+
+<div style="background:var(--card);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:18px;">
+  <table class="ctbl">
+    <thead>
+      <tr><th>Aspect</th><th>⚖️ Attorney General (AG) — Union</th><th>⚖️ Advocate General — State</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Article</td><td>Art. 76</td><td>Art. 165</td></tr>
+      <tr><td>Appointed By</td><td>President of India</td><td>Governor of State</td></tr>
+      <tr><td>Qualification</td><td>SC Judge-level: HC Judge 5yr / HC Advocate 10yr / Eminent Jurist</td><td>HC Judge-level: Judicial service 10yr / HC Advocate 10yr</td></tr>
+      <tr><td>Tenure</td><td>Pleasure of President <span class="tag s">Pleasure Doctrine</span></td><td>Pleasure of Governor <span class="tag s">Pleasure Doctrine</span></td></tr>
+      <tr><td>Removal</td><td>No impeachment — resignation or pleasure <span class="tag s">Same</span></td><td>No impeachment — resignation or pleasure <span class="tag s">Same</span></td></tr>
+      <tr><td>Salary</td><td>NOT charged on CFI <span class="tag d">Trap ⚠️</span></td><td>NOT charged on CFS <span class="tag d">Trap ⚠️</span></td></tr>
+      <tr><td>Parliament / Legislature</td><td>Can speak, <b>cannot vote</b></td><td>Can speak, <b>cannot vote</b></td></tr>
+      <tr><td>Privileges</td><td>Privileges of MP</td><td>Privileges of MLA</td></tr>
+      <tr><td>Practice Restriction</td><td>Cannot practice against Govt. of India</td><td>Cannot practice against State Govt.</td></tr>
+      <tr><td>Executive Status</td><td>NOT a member of Cabinet / CoM</td><td>NOT part of State Council of Ministers</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- TRAPS -->
+<div class="sec">🔥 High Probability Prelims Traps</div>
+<div class="pc c-red">
+  <div class="pc-lbl">Exam Bombs — Most Commonly Confused Points</div>
+  <h3>⚠️ Do NOT Fall For These</h3>
+  <div class="tg">
+    <div class="ti"><b>AG &amp; Advocate General — Not Executive</b><p>Neither is a constitutional executive member. Not part of Cabinet or Council of Ministers.</p></div>
+    <div class="ti"><b>Voting Right</b><p>Both can <strong>speak</strong> in Parliament / Legislature but <strong>cannot vote</strong>. Classic MCQ distractor.</p></div>
+    <div class="ti"><b>Salary — NOT on CFI / CFS</b><p>AG's salary is <strong>NOT</strong> charged on Consolidated Fund of India. Advocate General NOT on Consolidated Fund of State.</p></div>
+    <div class="ti"><b>Tenure — Pleasure Doctrine</b><p>Both serve at pleasure of their appointing authority. <strong>No fixed term</strong> guaranteed to either.</p></div>
+    <div class="ti"><b>Removal — No Impeachment</b><p><strong>No impeachment</strong> process for AG or Advocate General. Simply resignation or removal by pleasure doctrine.</p></div>
+    <div class="ti"><b>JSPSC — Who Creates?</b><p>Created by <strong>Parliament</strong> only after State Legislatures request. NOT by Presidential order alone. NOT by states themselves.</p></div>
+  </div>
+</div>
+
+<!-- CONCEPT LINK -->
+<div class="sec">⑤ Complete Governance Chain</div>
+<div class="mc" id="mc-chain"></div>
+
+<div class="g3">
+  <div class="pc c-indigo">
+    <div class="pc-lbl">Recruitment Track · Art. 315–323</div>
+    <h3>👥 PSC Family</h3>
+    <div class="vl">
+      <div class="vi"><b>UPSC</b><span>All India + Central Services — Union</span></div>
+      <div class="vi"><b>SPSC</b><span>One State's services only</span></div>
+      <div class="vi"><b>JSPSC</b><span>Two or more States jointly — Art. 315</span></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip info">📜 Art. 315–323</span></div>
+  </div>
+  <div class="pc c-blue">
+    <div class="pc-lbl">Union Legal Track · Art. 76</div>
+    <h3>⚖️ Attorney General</h3>
+    <div class="vl">
+      <div class="vi"><b>Advises Union Government</b><span>All legal &amp; constitutional matters</span></div>
+      <div class="vi"><b>Represents India in Supreme Court</b><span>Appears in cases involving Union</span></div>
+      <div class="vi"><b>Appointed by President</b><span>Pleasure doctrine, no fixed term</span></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip info">⚖️ Art. 76</span></div>
+  </div>
+  <div class="pc c-teal">
+    <div class="pc-lbl">State Legal Track · Art. 165</div>
+    <h3>⚖️ Advocate General</h3>
+    <div class="vl">
+      <div class="vi"><b>Advises State Government</b><span>All legal &amp; constitutional matters</span></div>
+      <div class="vi"><b>Represents State in High Court</b><span>Appears in cases involving State</span></div>
+      <div class="vi"><b>Appointed by Governor</b><span>Pleasure doctrine, no fixed term</span></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip teal">⚖️ Art. 165</span></div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="ks">
+  <div class="ks-ico">⚖️</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Core Connecting Idea</div>
+    <div class="ks-body">India's constitutional machinery runs on two parallel tracks — <strong style="color:var(--gold-lt);">Recruitment</strong> (UPSC / SPSC / JSPSC) and <strong style="color:var(--gold-lt);">Legal Advice</strong> (AG / Advocate General). Both tracks mirror at Union and State levels. The pleasure doctrine governs both legal officers. No impeachment for either. JSPSC is uniquely created by Parliament only on states' request — a favourite exam concept.</div>
+    <div style="margin-top:12px;">
+      <span class="kp">👥 Recruitment Chain</span>
+      <span class="kp">⚖️ Legal Advice Chain</span>
+      <span class="kp">🏛️ Pleasure Doctrine</span>
+      <span class="kp">🇮🇳 Union–State Mirror</span>
+      <span class="kp">🔥 No Impeachment</span>
+      <span class="kp">📜 Art. 76 / 165 / 315</span>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const NS = 'http://www.w3.org/2000/svg';
+
+function mksvg(containerId, vw, vh) {
+  const c = document.getElementById(containerId);
+  const s = document.createElementNS(NS, 'svg');
+  s.setAttribute('viewBox', `0 0 ${vw} ${vh}`);
+  s.setAttribute('xmlns', NS);
+  s.style.cssText = 'display:block;width:100%;height:auto;';
+  c.appendChild(s);
+  return s;
+}
+
+function attr(e, a) {
+  for (const [k, v] of Object.entries(a)) e.setAttribute(k, v);
+  return e;
+}
+
+function mk(tag, a) {
+  return attr(document.createElementNS(NS, tag), a || {});
+}
+
+function curve(svg, x1, y1, x2, y2, col, dashed, sw) {
+  const mx = (x1 + x2) / 2;
+  svg.appendChild(mk('path', {
+    d: `M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke: col || '#bbb', 'stroke-width': sw || 1.8, fill: 'none',
+    'stroke-dasharray': dashed ? '5 4' : 'none', opacity: '0.7'
+  }));
+}
+
+// Draw a rectangle node with up to 3 lines: emoji (optional), title, subtitle (optional)
+function drawNode(svg, cx, cy, bw, bh, fill, titleText, subText, emojiChar) {
+  const rx = 9;
+  // drop shadow
+  svg.appendChild(mk('rect', {
+    x: cx - bw/2 + 2, y: cy - bh/2 + 3,
+    width: bw, height: bh, rx, ry: rx, fill: 'rgba(0,0,0,0.10)'
+  }));
+  // box
+  svg.appendChild(mk('rect', {
+    x: cx - bw/2, y: cy - bh/2,
+    width: bw, height: bh, rx, ry: rx,
+    fill: fill,
+    stroke: 'rgba(255,255,255,0.2)', 'stroke-width': '1.5'
+  }));
+
+  // Compute lines
+  const lines = [];
+  if (emojiChar) lines.push({ t: emojiChar, sz: 14, ff: 'Outfit,sans-serif', fw: '400', col: '#fff', gap: 17 });
+  lines.push({ t: titleText, sz: 10.5, ff: 'Outfit,sans-serif', fw: '700', col: '#fff', gap: 13 });
+  if (subText) lines.push({ t: subText, sz: 8, ff: 'JetBrains Mono,monospace', fw: '400', col: 'rgba(255,255,255,0.6)', gap: 11 });
+
+  // total height of all lines
+  const totalH = lines.reduce((a, l) => a + l.gap, 0) - lines[lines.length - 1].gap;
+  let ty = cy - totalH / 2;
+
+  lines.forEach(l => {
+    const t = mk('text', {
+      x: cx, y: ty,
+      'text-anchor': 'middle', 'dominant-baseline': 'middle',
+      'font-size': l.sz, 'font-weight': l.fw,
+      'font-family': l.ff, fill: l.col
+    });
+    t.textContent = l.t;
+    svg.appendChild(t);
+    ty += l.gap;
+  });
+}
+
+function lbl(svg, x, y, text, col, sz, mono) {
+  const t = mk('text', {
+    x, y, 'text-anchor': 'middle', 'font-size': sz || 8.5,
+    'letter-spacing': 2, fill: col || 'rgba(130,110,70,0.45)',
+    'font-family': mono ? 'JetBrains Mono,monospace' : 'Outfit,sans-serif',
+    'font-weight': '400'
+  });
+  t.textContent = text;
+  svg.appendChild(t);
+}
+
+// ── MASTER FLOW ──
+(function () {
+  const W = 1300, H = 108;
+  const svg = mksvg('mc-master', W, H);
+  svg.appendChild(mk('rect', { x: 0, y: 0, width: W, height: H, fill: 'rgba(249,246,240,0.6)' }));
+
+  const steps = [
+    { x: 82,  fill: '#0f0e0c', title: 'Governance Needs',   sub: 'Constitutional mandate',    e: '📜' },
+    { x: 245, fill: '#2a3a9a', title: 'Recruit Officers',   sub: 'UPSC / SPSC / JSPSC',       e: '👥' },
+    { x: 413, fill: '#1a50a0', title: 'JSPSC Created',      sub: 'Parliament + 2+ states',    e: '🤝' },
+    { x: 581, fill: '#096060', title: 'AG Advises',         sub: 'Union legal — Art. 76',     e: '⚖️' },
+    { x: 749, fill: '#165828', title: 'Adv. Gen. Advises',  sub: 'State legal — Art. 165',   e: '⚖️' },
+    { x: 917, fill: '#c85a00', title: 'Pleasure Doctrine',  sub: 'Both serve at pleasure',   e: '🕐' },
+    { x: 1085,fill: '#9a1515', title: 'No Impeachment',     sub: 'Resign or removed',        e: '⚠️' },
+    { x: 1243,fill: '#5a159a', title: 'Union–State Mirror', sub: 'Constitutional symmetry',  e: '🏛️' },
+  ];
+
+  steps.forEach((s, i) => {
+    if (i < steps.length - 1) curve(svg, s.x + 68, 52, steps[i+1].x - 68, 52, '#b07a0865', false, 2.2);
+  });
+  steps.forEach(s => drawNode(svg, s.x, 52, 132, 70, s.fill, s.title, s.sub, s.e));
+  lbl(svg, W/2, 97, 'MASTER FLOW: RECRUITMENT + LEGAL ADVICE CHAIN', null, 8, true);
+})();
+
+// ── JSPSC MIND MAP ──
+(function () {
+  const W = 1300, H = 290;
+  const svg = mksvg('mc-jspsc', W, H);
+  svg.appendChild(mk('rect', { x: 0, y: 0, width: W, height: H, fill: 'rgba(234,237,250,0.2)' }));
+
+  const cx = W/2, cy = 128;
+  drawNode(svg, cx, cy, 210, 62, '#2a3a9a', 'JSPSC · Art. 315–323', 'Joint State PSC', '🏛️');
+
+  const leftNodes = [
+    { x: 148, y: 55,  fill: '#1a50a0', t: 'Created By Parliament',  s: 'Not by state alone' },
+    { x: 148, y: 135, fill: '#2a3a9a', t: '2+ States Must Request', s: 'State Legislatures' },
+    { x: 148, y: 215, fill: '#0a4080', t: 'GOI Act 1935 Origin',    s: 'Historical concept' },
+  ];
+  const rightNodes = [
+    { x: 1152, y: 55,  fill: '#096060', t: 'Appointed By President', s: 'Chairman & Members' },
+    { x: 1152, y: 135, fill: '#165828', t: 'Term: 6yr or Age 62',    s: 'Same rules as SPSC' },
+    { x: 1152, y: 215, fill: '#5a159a', t: 'Reports to Governor',    s: 'Of respective states' },
+  ];
+
+  leftNodes.forEach(n => {
+    curve(svg, cx - 107, cy + (n.y < cy ? -16 : n.y > cy ? 16 : 0), n.x + 88, n.y, '#2a3a9a50', true, 1.6);
+    drawNode(svg, n.x, n.y, 172, 46, n.fill, n.t, n.s);
+  });
+  rightNodes.forEach(n => {
+    curve(svg, cx + 107, cy + (n.y < cy ? -16 : n.y > cy ? 16 : 0), n.x - 88, n.y, '#09606050', true, 1.6);
+    drawNode(svg, n.x, n.y, 172, 46, n.fill, n.t, n.s);
+  });
+
+  // bottom strip
+  const bot = [
+    { x: 390, fill: '#1a50a0', t: 'Constitutional Body', s: 'Under Art. 315' },
+    { x: 650, fill: '#c85a00', t: 'UPSC / SPSC / JSPSC Recall', s: 'Union / 1 state / 2+ states' },
+    { x: 910, fill: '#096060', t: 'Service Conditions', s: 'Set by President' },
+  ];
+  bot.forEach(b => {
+    curve(svg, cx, cy + 33, b.x, H - 52, '#b07a0845', true, 1.4);
+    drawNode(svg, b.x, H - 34, 230, 40, b.fill, b.t, b.s);
+  });
+})();
+
+// ── AG MIND MAP ──
+(function () {
+  const W = 1300, H = 280;
+  const svg = mksvg('mc-ag', W, H);
+  svg.appendChild(mk('rect', { x: 0, y: 0, width: W, height: H, fill: 'rgba(234,237,250,0.15)' }));
+
+  const cx = W/2, cy = 118;
+  drawNode(svg, cx, cy, 215, 62, '#1a3a8a', 'Attorney General · Art. 76', 'Highest Union Law Officer', '⚖️');
+
+  const nodes = [
+    { x: 143,  y: 48,  fill: '#2a3a9a', t: 'Appointed By President',     s: 'Art. 76' },
+    { x: 143,  y: 128, fill: '#1a50a0', t: 'Qualified: SC Judge Level',   s: 'HC Judge 5yr / Advocate 10yr' },
+    { x: 143,  y: 208, fill: '#0a4080', t: 'Eminent Jurist Option',       s: 'Distinguished expert also ok' },
+    { x: 1157, y: 48,  fill: '#9a1515', t: 'Pleasure Doctrine',           s: 'No fixed term — President' },
+    { x: 1157, y: 128, fill: '#165828', t: 'Speak, Cannot Vote in Parl.', s: 'MP Privileges apply' },
+    { x: 1157, y: 208, fill: '#5a159a', t: 'Salary NOT on CFI',           s: 'High-probability trap ⚠️' },
+  ];
+
+  nodes.forEach(n => {
+    const isL = n.x < cx;
+    curve(svg, isL ? cx - 110 : cx + 110, cy + (n.y < cy ? -12 : n.y > cy ? 12 : 0), n.x + (isL ? 86 : -86), n.y, '#1a3a8a50', true, 1.6);
+    drawNode(svg, n.x, n.y, 172, 46, n.fill, n.t, n.s);
+  });
+
+  curve(svg, cx, cy + 33, cx, H - 48, '#9a151550', true, 1.5);
+  drawNode(svg, cx, H - 30, 290, 40, '#9a1515', 'Cannot Practice Against Govt. of India', 'Key restriction — Union');
+})();
+
+// ── ADVOCATE GENERAL MIND MAP ──
+(function () {
+  const W = 1300, H = 278;
+  const svg = mksvg('mc-advgen', W, H);
+  svg.appendChild(mk('rect', { x: 0, y: 0, width: W, height: H, fill: 'rgba(224,245,240,0.2)' }));
+
+  const cx = W/2, cy = 115;
+  drawNode(svg, cx, cy, 215, 62, '#096060', 'Advocate General · Art. 165', 'Highest State Law Officer', '⚖️');
+
+  const nodes = [
+    { x: 143,  y: 48,  fill: '#096060', t: 'Appointed By Governor',        s: 'Art. 165' },
+    { x: 143,  y: 128, fill: '#165828', t: 'Qualified: HC Judge Level',     s: 'Judicial 10yr / Advocate 10yr' },
+    { x: 143,  y: 208, fill: '#006050', t: 'Must Be Citizen of India',      s: 'Mandatory requirement' },
+    { x: 1157, y: 48,  fill: '#9a1515', t: 'Pleasure Doctrine',             s: 'Governor\'s pleasure' },
+    { x: 1157, y: 128, fill: '#5a159a', t: 'Speak, Cannot Vote in Legis.',  s: 'MLA Privileges apply' },
+    { x: 1157, y: 208, fill: '#c85a00', t: 'Salary NOT on CFS',             s: 'High-probability trap ⚠️' },
+  ];
+
+  nodes.forEach(n => {
+    const isL = n.x < cx;
+    curve(svg, isL ? cx - 110 : cx + 110, cy + (n.y < cy ? -12 : n.y > cy ? 12 : 0), n.x + (isL ? 86 : -86), n.y, '#09606050', true, 1.6);
+    drawNode(svg, n.x, n.y, 172, 46, n.fill, n.t, n.s);
+  });
+
+  curve(svg, cx, cy + 33, cx, H - 46, '#9a151550', true, 1.5);
+  drawNode(svg, cx, H - 30, 290, 40, '#9a1515', 'Cannot Practice Against State Govt.', 'Key restriction — State');
+})();
+
+// ── COMPARISON VISUAL ──
+(function () {
+  const W = 1300, H = 230;
+  const svg = mksvg('mc-compare', W, H);
+  svg.appendChild(mk('rect', { x: 0, y: 0, width: W, height: H, fill: 'rgba(249,246,240,0.7)' }));
+
+  drawNode(svg, 160, 115, 248, 62, '#1a3a8a', 'Attorney General', 'Art. 76 · Union · President', '⚖️');
+  drawNode(svg, 1140, 115, 248, 62, '#096060', 'Advocate General', 'Art. 165 · State · Governor', '⚖️');
+
+  lbl(svg, 650, 18, 'SAME — HIGH TRAP ZONES', 'rgba(154,21,21,0.55)', 8.5, true);
+  lbl(svg, 650, 210, 'KEY DIFFERENCES', 'rgba(22,88,40,0.55)', 8.5, true);
+
+  // Central divider
+  svg.appendChild(mk('line', { x1: 650, y1: 30, x2: 650, y2: 200, stroke: 'rgba(200,180,140,0.25)', 'stroke-width': 1, 'stroke-dasharray': '5 4' }));
+
+  const sameNodes = [
+    { x: 450, y: 72,  fill: '#9a1515', t: 'No Vote in House',    s: 'Parliament / Legislature' },
+    { x: 650, y: 72,  fill: '#c85a00', t: 'Pleasure Doctrine',    s: 'No fixed term' },
+    { x: 850, y: 72,  fill: '#5a159a', t: 'No Impeachment',       s: 'Resign or remove only' },
+  ];
+  const diffNodes = [
+    { x: 450, y: 162, fill: '#2a3a9a', t: 'President vs Governor', s: 'Appointing authority' },
+    { x: 650, y: 162, fill: '#1a50a0', t: 'MP vs MLA Privileges',  s: 'Different houses' },
+    { x: 850, y: 162, fill: '#165828', t: 'CFI vs CFS',            s: 'Salary NOT charged on' },
+  ];
+
+  sameNodes.forEach(n => {
+    curve(svg, 286, 105, n.x - 88, n.y, '#9a151535', true, 1.3);
+    curve(svg, 1014, 105, n.x + 88, n.y, '#9a151535', true, 1.3);
+    drawNode(svg, n.x, n.y, 188, 42, n.fill, n.t, n.s);
+  });
+  diffNodes.forEach(n => {
+    curve(svg, 286, 125, n.x - 88, n.y, '#16582835', true, 1.3);
+    curve(svg, 1014, 125, n.x + 88, n.y, '#16582835', true, 1.3);
+    drawNode(svg, n.x, n.y, 188, 42, n.fill, n.t, n.s);
+  });
+})();
+
+// ── GOVERNANCE CHAIN ──
+(function () {
+  const W = 1300, H = 118;
+  const svg = mksvg('mc-chain', W, H);
+  svg.appendChild(mk('rect', { x: 0, y: 0, width: W, height: H, fill: 'rgba(249,246,240,0.6)' }));
+
+  // brackets
+  svg.appendChild(mk('rect', { x: 26, y: 10, width: 455, height: 5, rx: 3, fill: 'rgba(42,58,154,0.15)' }));
+  lbl(svg, 254, 8, 'RECRUITMENT TRACK', 'rgba(42,58,154,0.5)', 7.5, true);
+  svg.appendChild(mk('rect', { x: 838, y: 10, width: 300, height: 5, rx: 3, fill: 'rgba(9,96,96,0.15)' }));
+  lbl(svg, 988, 8, 'LEGAL ADVICE TRACK', 'rgba(9,96,96,0.5)', 7.5, true);
+
+  const steps = [
+    { x: 88,  fill: '#2a3a9a', t: 'UPSC',        s: 'Union Services', e: '🏛️' },
+    { x: 247, fill: '#1a50a0', t: 'SPSC',         s: 'One State',      e: '🏛️' },
+    { x: 408, fill: '#165828', t: 'JSPSC',        s: '2+ States',      e: '🤝' },
+    { x: 570, fill: '#0f0e0c', t: 'Officers',     s: 'Recruited',      e: '👥' },
+    { x: 730, fill: '#0f0e0c', t: 'Legal Advice', s: 'Required',       e: '⚖️' },
+    { x: 890, fill: '#096060', t: 'AG',           s: 'Union Art. 76',  e: '⚖️' },
+    { x: 1055,fill: '#165828', t: 'Adv. Gen.',    s: 'State Art. 165', e: '⚖️' },
+    { x: 1215,fill: '#5a159a', t: 'Governance',   s: 'Accountable',    e: '🏆' },
+  ];
+
+  steps.forEach((s, i) => {
+    if (i < steps.length - 1) curve(svg, s.x + 66, 60, steps[i+1].x - 66, 60, '#b07a0862', false, 2.2);
+  });
+  steps.forEach(s => drawNode(svg, s.x, 60, 128, 68, s.fill, s.t, s.s, s.e));
+})();
+</script>
+</body>
+</html>

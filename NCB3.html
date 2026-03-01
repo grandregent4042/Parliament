@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBI & NIA — Investigation Bodies Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#12100e;--paper:#f7f4ee;
+  --cbi:#1a3a8a;--cbi-lt:#e8eefa;--cbi-md:#2a5acc;
+  --nia:#8a1a1a;--nia-lt:#faeaea;--nia-md:#c03030;
+  --gold:#b87c10;--gold-lt:#fdf3dc;--amber:#d46a10;
+  --green:#1a6a3a;--green-lt:#e8f5ea;
+  --purple:#5a1a8a;--purple-lt:#f0e8fa;
+  --teal:#0a6070;--teal-lt:#e0f0f4;
+  --muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf7;--card2:#f2ede0;
+  --red:#b01a1a;--sky:#1a5878;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 800px 500px at 10% 10%,rgba(26,58,138,0.05) 0%,transparent 60%),
+  radial-gradient(ellipse 700px 700px at 90% 85%,rgba(138,26,26,0.05) 0%,transparent 60%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 24px 100px;}
+
+/* ── HEADER ── */
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,50px);line-height:1.1;}
+.header h1 .cbi{color:var(--cbi);}
+.header h1 .nia{color:var(--nia);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--cbi),var(--gold),var(--nia));margin:14px auto 0;border-radius:4px;}
+
+/* ── SECTION LABELS ── */
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}.g2x1{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g2x1{grid-template-columns:1fr;}}
+
+/* ── PANEL CARDS ── */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(0,0,0,0.08);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.cbi::before{background:linear-gradient(90deg,var(--cbi),var(--cbi-md));}
+.pc.nia::before{background:linear-gradient(90deg,var(--nia),var(--nia-md));}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.green::before{background:var(--green);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.dark::before{background:var(--ink);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* ── MAP CARDS ── */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:22px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc-cbi::before{background:linear-gradient(90deg,var(--cbi),#4a7add,var(--teal));}
+.map-card.mc-nia::before{background:linear-gradient(90deg,var(--nia),var(--amber),var(--gold));}
+.map-card.mc-both::before{background:linear-gradient(90deg,var(--cbi),var(--gold),var(--nia));}
+.map-card.mc-chain::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--cbi));}
+.map-card.mc-trap::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.map-card svg{display:block;width:100%;}
+
+/* ── PILLS ── */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.cbi{background:var(--cbi-lt);color:var(--cbi);}
+.pill.nia{background:var(--nia-lt);color:var(--nia);}
+.pill.gold{background:var(--gold-lt);color:var(--amber);}
+.pill.green{background:var(--green-lt);color:var(--green);}
+.pill.red{background:rgba(176,26,26,0.1);color:var(--red);}
+.pill.ok{background:rgba(26,106,58,0.1);color:var(--green);}
+
+/* ── CHIPS ── */
+.chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.chip.ok{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.chip.warn{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.chip.neu{background:var(--gold-lt);border-color:rgba(184,124,16,0.2);color:var(--amber);}
+.chip.cbi{background:var(--cbi-lt);border-color:rgba(26,58,138,0.25);color:var(--cbi);}
+.chip.nia{background:var(--nia-lt);border-color:rgba(138,26,26,0.25);color:var(--nia);}
+
+/* ── VLIST ── */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* ── STAT BOXES ── */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+
+/* ── FEAT GRID ── */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:15px;margin-bottom:3px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* ── PHASE ROW ── */
+.phase-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0;}
+@media(max-width:800px){.phase-row{grid-template-columns:1fr 1fr;}}
+@media(max-width:500px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:14px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;}
+.phase-title{font-size:11px;font-weight:800;margin:3px 0;}
+.phase-sub{font-size:8.5px;font-family:'DM Mono',monospace;color:var(--muted);}
+
+/* ── COMPARISON TABLE ── */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:9px 12px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--muted);}
+.ctable td:nth-child(2){color:var(--cbi);font-weight:600;}
+.ctable td:nth-child(3){color:var(--nia);font-weight:600;}
+
+/* ── KEYSTONE ── */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.kpill-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;}
+
+/* ── IMPACT CHAIN ── */
+.impact-chain{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:6px 0;margin:8px 0;}
+.ic-node{padding:7px 12px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:14px;color:var(--muted);flex:0 0 auto;margin:0 4px;}
+
+.div-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:10px 0;}
+
+/* ── CALLOUT ── */
+.callout{padding:12px 14px;border-radius:10px;margin:8px 0;}
+.callout.cbi{background:var(--cbi-lt);border:1.5px solid rgba(26,58,138,0.2);}
+.callout.nia{background:var(--nia-lt);border:1.5px solid rgba(138,26,26,0.2);}
+.callout.gold{background:var(--gold-lt);border:1.5px solid rgba(184,124,16,0.2);}
+.callout.green{background:var(--green-lt);border:1.5px solid rgba(26,106,58,0.2);}
+.callout-title{font-size:11px;font-weight:800;margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.55;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ══ HEADER ══ -->
+<div class="header">
+  <div class="header-sup">Indian Polity · Investigation Bodies · UPSC Prelims</div>
+  <h1><span class="cbi">CBI</span> &amp; <span class="nia">NIA</span> — Investigation Bodies</h1>
+  <div class="header-sub">Corruption &amp; Crime 🔎 → CBI &nbsp;|&nbsp; Terror &amp; Security 💣 → NIA</div>
+</div>
+
+<!-- ══ MEMORY CHAIN ══ -->
+<div style="display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;margin:14px 0 32px;padding:14px 20px;background:var(--card);border:1.5px solid var(--border);border-radius:50px;max-width:780px;margin-left:auto;margin-right:auto;">
+  <div style="padding:6px 16px;border-radius:30px;font-size:11px;font-weight:700;background:var(--cbi-lt);color:var(--cbi);display:flex;align-items:center;gap:6px;">🔎 CBI<span style="font-size:9px;opacity:0.7;margin-left:2px;">DSPE Act 1946</span></div>
+  <div style="font-size:18px;color:var(--muted);padding:0 8px;">←→</div>
+  <div style="padding:6px 16px;border-radius:30px;font-size:11px;font-weight:700;background:var(--gold-lt);color:var(--amber);display:flex;align-items:center;gap:6px;">⚖️ Corrupt → CVC → CBI → Lokpal</div>
+  <div style="font-size:18px;color:var(--muted);padding:0 8px;">|</div>
+  <div style="padding:6px 16px;border-radius:30px;font-size:11px;font-weight:700;background:var(--nia-lt);color:var(--nia);display:flex;align-items:center;gap:6px;">💣 NIA<span style="font-size:9px;opacity:0.7;margin-left:2px;">NIA Act 2008</span></div>
+</div>
+
+<!-- ══ MASTER FLOW ══ -->
+<div class="sec-label">Master Flow — India's Investigation Architecture</div>
+<div class="map-card mc-both">
+  <svg id="svgMaster" viewBox="0 0 1360 130" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 1: CBI ══ -->
+<div class="sec-label">① Central Bureau of Investigation (CBI)</div>
+
+<!-- CBI Mind Map SVG -->
+<div class="map-card mc-cbi">
+  <svg id="svgCBI" viewBox="0 0 1360 270" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- CBI Detail Cards -->
+<div class="g3">
+  <!-- Nature & Origin -->
+  <div class="pc cbi">
+    <div class="pc-label">Nature & Origin</div>
+    <h3>🏛️ What Is CBI?</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">📅 Established 1963</div><div class="vs">By Resolution of Ministry of Home Affairs</div></div>
+      <div class="vitem"><div class="vt">📋 Santhanam Committee</div><div class="vs">Recommended CBI (1962–64)</div></div>
+      <div class="vitem"><div class="vt">⚠️ Non-Constitutional</div><div class="vs">Not created by Constitution</div></div>
+      <div class="vitem"><div class="vt">⚠️ Non-Statutory</div><div class="vs">No own Act of Parliament</div></div>
+      <div class="vitem"><div class="vt">📜 Powers from DSPE Act</div><div class="vs">Delhi Special Police Establishment Act, 1946</div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="chip warn">Not a Statutory Body</span>
+      <span class="chip cbi">Under: Ministry of Personnel</span>
+    </div>
+  </div>
+
+  <!-- Director Appointment -->
+  <div class="pc cbi">
+    <div class="pc-label">Director Appointment</div>
+    <h3>👤 3-Member Committee</h3>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;">
+      <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:9px;background:rgba(26,58,138,0.07);border:1px solid rgba(26,58,138,0.15);">
+        <span style="font-size:18px;">🏛️</span>
+        <div><div style="font-size:11px;font-weight:800;">PM (Chair)</div><div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;">Prime Minister of India</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:9px;background:rgba(26,58,138,0.07);border:1px solid rgba(26,58,138,0.15);">
+        <span style="font-size:18px;">🗳️</span>
+        <div><div style="font-size:11px;font-weight:800;">Leader of Opposition (LS)</div><div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;">If no LoP → Largest opposition leader</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:9px;background:rgba(26,58,138,0.07);border:1px solid rgba(26,58,138,0.15);">
+        <span style="font-size:18px;">⚖️</span>
+        <div><div style="font-size:11px;font-weight:800;">CJI or SC Judge</div><div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;">Judicial representation</div></div>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--cbi);">2 Yrs</div><div class="stat-label">MINIMUM TENURE</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--amber);">5 Yrs</div><div class="stat-label">MAX (ANNUAL EXT.)</div></div>
+    </div>
+    <div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:4px;">Under CVC Act, 2003</div>
+  </div>
+
+  <!-- Functions -->
+  <div class="pc cbi">
+    <div class="pc-label">Functions</div>
+    <h3>⚙️ What CBI Investigates</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">💰</div><div class="ft">Corruption Cases</div><div class="fs">Public officials, bribery</div></div>
+      <div class="feat"><div class="fi">📉</div><div class="ft">Economic Offences</div><div class="fs">Fraud, financial crimes</div></div>
+      <div class="feat"><div class="fi">🚨</div><div class="ft">Organised Crime</div><div class="fs">Serious & complex cases</div></div>
+      <div class="feat"><div class="fi">🌐</div><div class="ft">Interpol (NCB)</div><div class="fs">India's Interpol gateway</div></div>
+    </div>
+    <div class="div-line"></div>
+    <div style="font-size:10px;font-weight:700;margin-bottom:6px;">Assists:</div>
+    <div style="display:flex;gap:5px;flex-wrap:wrap;">
+      <span class="chip neu">CVC</span>
+      <span class="chip neu">Lokpal</span>
+      <span class="chip neu">Lokayukta</span>
+      <span class="chip cbi">Interpol NCB</span>
+    </div>
+  </div>
+</div>
+
+<!-- CBI Consent + RTI -->
+<div class="g2">
+  <!-- State Consent -->
+  <div class="pc cbi">
+    <div class="pc-label">State Consent (Very Important) — Sec. 6, DSPE Act</div>
+    <h3>🗺️ Consent of States</h3>
+    <div class="map-card mc-cbi" style="margin-bottom:0;border-radius:10px;overflow:hidden;">
+      <svg id="svgConsent" viewBox="0 0 640 130" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+    </div>
+    <div style="margin-top:12px;padding:10px 12px;background:rgba(176,26,26,0.06);border-radius:8px;border:1px dashed rgba(138,26,26,0.3);font-size:10px;font-weight:700;color:var(--red);">
+      ⚠️ Some states withdraw general consent → Major federal tension
+    </div>
+    <div style="margin-top:8px;font-size:10px;color:var(--muted);line-height:1.6;">
+      <strong>Lokpal &amp; Lokayuktas Act 2013:</strong> Created Directorate of Prosecution · Appointed by Central Govt on CVC recommendation
+    </div>
+  </div>
+
+  <!-- RTI Position -->
+  <div class="pc cbi">
+    <div class="pc-label">RTI Position</div>
+    <h3>📋 CBI & RTI Act</h3>
+    <div style="padding:14px;border-radius:11px;background:rgba(26,58,138,0.06);border:1.5px solid rgba(26,58,138,0.2);margin-bottom:12px;text-align:center;">
+      <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:var(--cbi);">Second Schedule</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">RTI ACT, 2005 — CBI PLACED HERE</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🔒 Mostly Exempt</div><div class="vs">Cannot seek most CBI info under RTI</div></div>
+      <div class="vitem" style="background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);">
+        <div class="vt" style="color:var(--green);">✅ Exceptions: RTI Applies</div>
+        <div class="vs">Corruption cases + Human rights violations</div>
+      </div>
+    </div>
+    <div class="callout gold" style="margin-top:10px;">
+      <div class="callout-title" style="color:var(--amber);">🔥 Prelims Trap</div>
+      <div class="callout-body">CBI is NOT a statutory body — it derives powers from DSPE Act 1946, not its own Parliament Act</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 2: NIA ══ -->
+<div class="sec-label">② National Investigation Agency (NIA)</div>
+
+<!-- NIA Mind Map SVG -->
+<div class="map-card mc-nia">
+  <svg id="svgNIA" viewBox="0 0 1360 250" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- NIA Detail Cards -->
+<div class="g3">
+  <div class="pc nia">
+    <div class="pc-label">Origin & Structure</div>
+    <h3>💣 What Is NIA?</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">📜 Statutory Body</div><div class="vs">Created by NIA Act, 2008</div></div>
+      <div class="vitem"><div class="vt">📅 Founded: 2009</div><div class="vs">Post 26/11 Mumbai attacks</div></div>
+      <div class="vitem"><div class="vt">🏛️ Ministry of Home Affairs</div><div class="vs">Under MHA — national security focus</div></div>
+      <div class="vitem"><div class="vt">👤 Head: DG-level officer</div><div class="vs">Director-General of Police rank</div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="chip ok">✅ Statutory Body</span>
+      <span class="chip nia">Under: MHA</span>
+    </div>
+  </div>
+
+  <div class="pc nia">
+    <div class="pc-label">Jurisdiction</div>
+    <h3>🌐 What NIA Investigates</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">💣</div><div class="ft">Terrorism</div><div class="fs">All terror acts in India</div></div>
+      <div class="feat"><div class="fi">💸</div><div class="ft">Terror Funding</div><div class="fs">Hawala, financing networks</div></div>
+      <div class="feat"><div class="fi">💵</div><div class="ft">Fake Currency</div><div class="fs">FICN networks</div></div>
+      <div class="feat"><div class="fi">🚨</div><div class="ft">Human Trafficking</div><div class="fs">Cross-border crimes</div></div>
+      <div class="feat"><div class="fi">💻</div><div class="ft">Cyber Terrorism</div><div class="fs">Digital national security</div></div>
+      <div class="feat"><div class="fi">⚗️</div><div class="ft">WMD Offences</div><div class="fs">Mass destruction weapons</div></div>
+    </div>
+  </div>
+
+  <div class="pc nia">
+    <div class="pc-label">NIA Amendment Act 2019</div>
+    <h3>🆕 Extended Powers</h3>
+    <div class="vlist">
+      <div class="vitem" style="background:rgba(138,26,26,0.06);border-color:rgba(138,26,26,0.2);">
+        <div class="vt" style="color:var(--nia);">🌍 Extra-territorial Jurisdiction</div>
+        <div class="vs">Can investigate offences OUTSIDE India</div>
+      </div>
+      <div class="vitem"><div class="vt">🛡️ Against Indian Citizens</div><div class="vs">Anywhere in the world</div></div>
+      <div class="vitem"><div class="vt">⚖️ Special Courts</div><div class="vs">Designated for speedy NIA trials</div></div>
+      <div class="vitem"><div class="vt">🚫 No State Consent Needed</div><div class="vs">For scheduled offences — key difference</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip ok">✅ Statutory + No State Consent</span></div>
+  </div>
+</div>
+
+<!-- ══ SECTION 3: CBI vs NIA COMPARISON ══ -->
+<div class="sec-label">③ CBI vs NIA — Key Differences</div>
+
+<div class="map-card mc-both">
+  <svg id="svgCompare" viewBox="0 0 1360 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="pc dark" style="margin-bottom:20px;background:rgba(18,16,14,0.02);border-color:rgba(18,16,14,0.12);">
+  <div class="pc-label">Feature Comparison</div>
+  <h3 style="font-family:'Playfair Display',serif;font-size:16px;margin-bottom:14px;">⚖️ CBI vs NIA — Side by Side</h3>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>FEATURE</th>
+        <th>🔎 CBI</th>
+        <th>💣 NIA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Origin</td><td>Executive Resolution (1963)</td><td>Statutory Act — NIA Act 2008</td></tr>
+      <tr><td>Statutory Body?</td><td>❌ No (derives from DSPE Act)</td><td>✅ Yes (Parliament Act)</td></tr>
+      <tr><td>Focus</td><td>Corruption + Major crimes</td><td>Terror &amp; national security</td></tr>
+      <tr><td>State Consent</td><td>Required (Sec. 6, DSPE)</td><td>Not required (scheduled offences)</td></tr>
+      <tr><td>Nodal Ministry</td><td>Ministry of Personnel</td><td>Ministry of Home Affairs</td></tr>
+      <tr><td>Head</td><td>Director</td><td>Director-General (DG rank)</td></tr>
+      <tr><td>Interpol NCB?</td><td>✅ Yes — India's NCB</td><td>❌ No</td></tr>
+      <tr><td>RTI Exemption</td><td>2nd Schedule (mostly exempt)</td><td>No such RTI exemption</td></tr>
+      <tr><td>Extra-territorial?</td><td>❌ No</td><td>✅ Yes (2019 Amendment)</td></tr>
+      <tr><td>Special Courts</td><td>❌ No dedicated courts</td><td>✅ Designated Special Courts</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ SECTION 4: ACCOUNTABILITY CHAIN ══ -->
+<div class="sec-label">④ Complete Accountability Chain</div>
+
+<div class="map-card mc-chain">
+  <svg id="svgChain" viewBox="0 0 1360 190" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc cbi" style="border-color:rgba(26,58,138,0.3);">
+    <div class="pc-label">Corruption Chain</div>
+    <h3>🔎 CBI → Accountability Path</h3>
+    <div class="impact-chain">
+      <div class="ic-node" style="border-color:var(--gold);background:var(--gold-lt);color:var(--amber);">Corruption Found</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--teal);background:var(--teal-lt);color:var(--teal);">CVC Supervises</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--cbi);background:var(--cbi-lt);color:var(--cbi);">CBI Investigates</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--purple);background:var(--purple-lt);color:var(--purple);">Lokpal Oversees</div>
+    </div>
+    <div style="margin-top:10px;padding:10px 12px;background:var(--cbi-lt);border-radius:8px;font-size:10px;font-weight:700;color:var(--cbi);">
+      👤 Director: 3-member committee → Min 2 years tenure (CVC Act 2003)
+    </div>
+  </div>
+
+  <div class="pc nia" style="border-color:rgba(138,26,26,0.3);">
+    <div class="pc-label">Terror Chain</div>
+    <h3>💣 NIA → Accountability Path</h3>
+    <div class="impact-chain">
+      <div class="ic-node" style="border-color:var(--nia);background:var(--nia-lt);color:var(--nia);">Terror Act</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--nia-md);background:var(--nia-lt);color:var(--nia);">NIA Investigates</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--amber);background:var(--gold-lt);color:var(--amber);">Special Court</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:var(--green-lt);color:var(--green);">Speedy Trial</div>
+    </div>
+    <div style="margin-top:10px;padding:10px 12px;background:var(--nia-lt);border-radius:8px;font-size:10px;font-weight:700;color:var(--nia);">
+      🌍 2019: Extra-territorial jurisdiction — can investigate outside India
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 5: PRELIMS TRAPS ══ -->
+<div class="sec-label">⑤ High-Probability Prelims Traps</div>
+
+<div class="map-card mc-trap">
+  <svg id="svgTrap" viewBox="0 0 1360 130" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g4">
+  <div class="pc gold">
+    <div class="pc-label">CBI Basics</div>
+    <h3>🔎 CBI Traps</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">❌ NOT Statutory</div><div class="vs">No own Parliament Act</div></div>
+      <div class="vitem"><div class="vt">📜 DSPE Act 1946</div><div class="vs">Source of CBI's powers</div></div>
+      <div class="vitem"><div class="vt">🏛️ Ministry: Personnel</div><div class="vs">NOT Home Affairs</div></div>
+    </div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">CBI Director</div>
+    <h3>👤 Director Traps</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">3-Member Committee</div><div class="vs">PM + LoP + CJI</div></div>
+      <div class="vitem"><div class="vt">Min 2 Years Tenure</div><div class="vs">CVC Act, 2003</div></div>
+      <div class="vitem"><div class="vt">Max 5 Years</div><div class="vs">Annual extensions</div></div>
+    </div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">NIA Basics</div>
+    <h3>💣 NIA Traps</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">✅ IS Statutory</div><div class="vs">NIA Act, 2008</div></div>
+      <div class="vitem"><div class="vt">🚫 No State Consent</div><div class="vs">For scheduled offences</div></div>
+      <div class="vitem"><div class="vt">🏛️ Ministry: MHA</div><div class="vs">NOT Personnel</div></div>
+    </div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">RTI & Amendments</div>
+    <h3>📋 RTI Traps</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">CBI: 2nd Schedule</div><div class="vs">Mostly exempt from RTI</div></div>
+      <div class="vitem"><div class="vt">Exception: Corruption</div><div class="vs">Human rights violations too</div></div>
+      <div class="vitem"><div class="vt">NIA 2019: Global</div><div class="vs">Extra-territorial jurisdiction</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ KEYSTONE ══ -->
+<div class="keystone">
+  <div class="keystone-icon">⚖️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">India's investigation architecture has two tracks: <strong style="color:#f5d78a;">CBI (corruption + crime)</strong> works under Ministry of Personnel using DSPE Act 1946 — non-statutory, needs state consent. <strong style="color:#f5a0a0;">NIA (terror + security)</strong> is statutory under MHA, needs no state consent, and since 2019 operates even outside India. Together: <em>Vigilance + Investigation + Prosecution + Trial = Governance.</em></div>
+    <div class="kpill-row">
+      <span class="kpill">🔎 CBI = Non-Statutory</span>
+      <span class="kpill">💣 NIA = Statutory</span>
+      <span class="kpill">🗺️ State Consent Divide</span>
+      <span class="kpill">🌍 NIA: Extra-territorial</span>
+      <span class="kpill">📋 RTI: 2nd Schedule</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const p=se('path',{d:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':w||1.8,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.7'});
+  svg.appendChild(p);
+}
+function edgeV(svg,x1,y1,x2,y2,color,dashed){
+  const my=(y1+y2)/2;
+  const p=se('path',{d:`M${x1},${y1} C${x1},${my} ${x2},${my} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':'1.8',fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.5'});
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.1)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.22)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7.5)-(sub?5:0)-(emoji?10:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=18;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.4)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+function lbl(svg,x,y,text,color,sz,anchor){
+  const t=se('text',{x,y,'text-anchor':anchor||'middle','font-size':sz||9,'font-family':'DM Mono,monospace',fill:color||'rgba(120,100,60,0.5)','letter-spacing':'1.5'});
+  t.textContent=text;svg.appendChild(t);
+}
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgMaster');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:130,fill:'rgba(250,248,243,0.5)'}));
+
+  const steps=[
+    {x:80,  label:'Crime/Corruption\nDetected',    sub:'Starting point', fill:'#b87c10', emoji:'🚨'},
+    {x:245, label:'CVC\nSupervises',               sub:'Vigilance oversight', fill:'#0a6070', emoji:'👁️'},
+    {x:410, label:'CBI\nInvestigates',             sub:'DSPE Act 1946', fill:'#1a3a8a', emoji:'🔎'},
+    {x:575, label:'State Consent\nRequired?',      sub:'Sec. 6 DSPE Act', fill:'#5a1a8a', emoji:'🗺️'},
+    {x:740, label:'Lokpal/CVC\nOversight',         sub:'Accountability body', fill:'#d46a10', emoji:'⚖️'},
+    {x:905, label:'Terror/Security\nDetected',     sub:'Parallel track', fill:'#8a1a1a', emoji:'💣'},
+    {x:1070,label:'NIA\nInvestigates',             sub:'NIA Act 2008', fill:'#8a1a1a', emoji:'🔍'},
+    {x:1235,label:'Special Court\nTrial',          sub:'Speedy justice', fill:'#1a6a3a', emoji:'🏛️'},
+  ];
+
+  // Two tracks with divider
+  // Track 1: CBI (first 5 steps)
+  for(let i=0;i<4;i++){
+    edge(svg,steps[i].x+62,65,steps[i+1].x-62,65,'#1a3a8a',false,2);
+  }
+  // Track 2: NIA (last 3)
+  for(let i=5;i<7;i++){
+    edge(svg,steps[i].x+62,65,steps[i+1].x-62,65,'#8a1a1a',false,2);
+  }
+  // Separator arrow from track 1 to track 2
+  edge(svg,steps[4].x+62,65,steps[5].x-62,65,'#b87c10',true,1.5);
+
+  steps.forEach(s=>{
+    const lines=s.label.split('\n');
+    node(svg,s.x,65,120,65,s.fill,lines,s.sub,s.emoji);
+  });
+  lbl(svg,680,16,'MASTER FLOW: CORRUPTION → CBI TRACK | TERROR → NIA TRACK','rgba(120,100,60,0.45)',8);
+})();
+
+// ─── CBI MIND MAP ───
+(function(){
+  const svg=document.getElementById('svgCBI');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:270,fill:'rgba(248,250,255,0.4)'}));
+
+  node(svg,680,135,210,60,'#1a3a8a',['CBI','Central Bureau of Investigation'],'Non-Statutory · DSPE Act 1946','🔎');
+
+  const left=[
+    {x:160,y:55,  fill:'#1a3a8a', label:['Established','1963'], sub:'MHA Resolution', emoji:'📅'},
+    {x:160,y:135, fill:'#2a5acc', label:['Ministry of','Personnel'], sub:'Not Home Affairs', emoji:'🏛️'},
+    {x:160,y:215, fill:'#3a6adc', label:['DSPE Act','1946'], sub:'Source of power', emoji:'📜'},
+  ];
+  const right=[
+    {x:1200,y:55,  fill:'#0a6070', label:['Director','3-Member Cmte'], sub:'PM + LoP + CJI', emoji:'👤'},
+    {x:1200,y:135, fill:'#5a1a8a', label:['Interpol','NCB India'], sub:'National Central Bureau', emoji:'🌐'},
+    {x:1200,y:215, fill:'#b87c10', label:['RTI 2nd','Schedule'], sub:'Mostly exempt', emoji:'📋'},
+  ];
+  const top=[
+    {x:360,y:38,  fill:'#1a4a8a', label:['Corruption','Investigation'], sub:'Primary mandate', emoji:'💰'},
+    {x:560,y:32,  fill:'#2a5a9a', label:['CVC assists','Lokpal assists'], sub:'Assists these bodies', emoji:'🤝'},
+    {x:800,y:32,  fill:'#1a4a8a', label:['Santhanam','Committee 1962'], sub:'Recommended CBI', emoji:'📑'},
+    {x:1000,y:38, fill:'#2a5a9a', label:['2-yr Tenure','Min (CVC Act)'], sub:'Max 5 yrs w/ ext.', emoji:'📅'},
+  ];
+
+  left.forEach(n=>{ edge(svg,574,135,n.x+80,n.y,'#1a3a8a55',true,1.5); node(svg,n.x,n.y,155,52,n.fill,n.label,n.sub,n.emoji); });
+  right.forEach(n=>{ edge(svg,788,135,n.x-80,n.y,'#1a3a8a55',true,1.5); node(svg,n.x,n.y,155,52,n.fill,n.label,n.sub,n.emoji); });
+  top.forEach(n=>{ edgeV(svg,n.x,105,680,104,'#1a3a8a33',true); node(svg,n.x,n.y,168,50,n.fill,n.label,n.sub,n.emoji); });
+
+  lbl(svg,680,260,'CBI: NON-STATUTORY · DSPE ACT 1946 · MINISTRY OF PERSONNEL · NEEDS STATE CONSENT','rgba(26,58,138,0.35)',8);
+})();
+
+// ─── CONSENT MINI SVG ───
+(function(){
+  const svg=document.getElementById('svgConsent');
+  svg.appendChild(se('rect',{x:0,y:0,width:640,height:130,fill:'rgba(248,250,255,0.3)'}));
+
+  node(svg,320,65,160,50,'#1a3a8a',['State Consent','Sec. 6 DSPE'],'Two types','🗺️');
+
+  // General consent
+  node(svg,100,38,155,40,'#1a6a3a',['General Consent'],'Investigate freely','✅','#fff');
+  edge(svg,238,60,178,44,'#1a6a3a55',true,1.5);
+  const g1=se('text',{x:100,y:62,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace',fill:'rgba(26,106,58,0.7)'});g1.textContent='No fresh perm each time';svg.appendChild(g1);
+
+  // Specific consent
+  node(svg,100,96,155,40,'#b01a1a',['Specific Consent'],'Per-case permission','⚠️','#fff');
+  edge(svg,238,72,178,96,'#b01a1a55',true,1.5);
+  const g2=se('text',{x:100,y:120,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace',fill:'rgba(176,26,26,0.7)'});g2.textContent='State can withdraw general';svg.appendChild(g2);
+
+  // Some states withdrawal note
+  node(svg,520,65,145,44,'#5a1a8a',['Federal','Tension'],'States withdraw consent','⚡','#fff');
+  edge(svg,402,65,446,65,'#5a1a8a55',true,1.5);
+})();
+
+// ─── NIA MIND MAP ───
+(function(){
+  const svg=document.getElementById('svgNIA');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:250,fill:'rgba(255,248,248,0.4)'}));
+
+  node(svg,680,125,210,60,'#8a1a1a',['NIA','National Investigation Agency'],'Statutory · NIA Act 2008 · MHA','💣');
+
+  const left=[
+    {x:155,y:50,  fill:'#8a1a1a', label:['NIA Act 2008'], sub:'Parliament Act — Statutory', emoji:'📜'},
+    {x:155,y:130, fill:'#a03030', label:['Founded: 2009'], sub:'Post 26/11 attacks', emoji:'📅'},
+    {x:155,y:205, fill:'#b84040', label:['Ministry of','Home Affairs'], sub:'MHA — not Personnel', emoji:'🏛️'},
+  ];
+  const right=[
+    {x:1205,y:50,  fill:'#8a1a1a', label:['No State Consent','Required'], sub:'Scheduled offences', emoji:'🚫'},
+    {x:1205,y:130, fill:'#a03030', label:['2019: Extra-','territorial'], sub:'Outside India too', emoji:'🌍'},
+    {x:1205,y:205, fill:'#b84040', label:['Special Courts','Designated'], sub:'Speedy NIA trials', emoji:'⚖️'},
+  ];
+  const top=[
+    {x:350,y:35,  fill:'#8a1a1a', label:['Terrorism','Cases'], sub:'Primary mandate', emoji:'💣'},
+    {x:550,y:28,  fill:'#a03030', label:['Terror Funding','Fake Currency'], sub:'Financial crimes', emoji:'💸'},
+    {x:810,y:28,  fill:'#a03030', label:['Cyber Terror','Human Traffic'], sub:'Digital + crime', emoji:'💻'},
+    {x:1010,y:35, fill:'#8a1a1a', label:['DG-rank','Head Officer'], sub:'Director-General level', emoji:'👤'},
+  ];
+
+  left.forEach(n=>{ edge(svg,574,125,n.x+80,n.y,'#8a1a1a55',true,1.5); node(svg,n.x,n.y,158,50,n.fill,n.label,n.sub,n.emoji); });
+  right.forEach(n=>{ edge(svg,788,125,n.x-80,n.y,'#8a1a1a55',true,1.5); node(svg,n.x,n.y,158,50,n.fill,n.label,n.sub,n.emoji); });
+  top.forEach(n=>{ edgeV(svg,n.x,98,680,94,'#8a1a1a33',true); node(svg,n.x,n.y,172,48,n.fill,n.label,n.sub,n.emoji); });
+
+  lbl(svg,680,242,'NIA: STATUTORY · NIA ACT 2008 · MINISTRY HOME AFFAIRS · NO STATE CONSENT · EXTRA-TERRITORIAL 2019','rgba(138,26,26,0.35)',8);
+})();
+
+// ─── COMPARE SVG ───
+(function(){
+  const svg=document.getElementById('svgCompare');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:200,fill:'rgba(250,248,245,0.5)'}));
+
+  // Central divider
+  node(svg,680,100,180,54,'#12100e',['CBI vs NIA'],'Key Differences','⚖️');
+
+  const cbi_nodes=[
+    {x:130, y:44,  fill:'#1a3a8a', label:['Non-Statutory'], sub:'No own Act', emoji:'❌'},
+    {x:130, y:120, fill:'#2a5acc', label:['DSPE Act 1946'], sub:'Power source', emoji:'📜'},
+    {x:130, y:190, fill:'#3a6adc', label:['Ministry:Personnel'], sub:'Not MHA', emoji:'🏛️'},
+    {x:350, y:30,  fill:'#1a4a8a', label:['State Consent','Required'], sub:'Sec. 6 DSPE', emoji:'🗺️'},
+    {x:540, y:44,  fill:'#0a6070', label:['Interpol NCB'], sub:'India gateway', emoji:'🌐'},
+  ];
+  const nia_nodes=[
+    {x:1230,y:44,  fill:'#8a1a1a', label:['Statutory Body'], sub:'NIA Act 2008', emoji:'✅'},
+    {x:1230,y:120, fill:'#a03030', label:['NIA Act 2008'], sub:'Own Parliament Act', emoji:'📜'},
+    {x:1230,y:190, fill:'#b84040', label:['Ministry:MHA'], sub:'Home Affairs', emoji:'🏛️'},
+    {x:1010,y:30,  fill:'#8a1a1a', label:['No State Consent'], sub:'Scheduled offences', emoji:'🚫'},
+    {x:820, y:44,  fill:'#a03030', label:['Extra-territorial'], sub:'2019 Amendment', emoji:'🌍'},
+  ];
+
+  cbi_nodes.forEach(n=>{ edge(svg,588,100,n.x+(n.x<680?68:-68),n.y,'#1a3a8a44',true,1.4); node(svg,n.x,n.y,150,46,n.fill,n.label,n.sub,n.emoji); });
+  nia_nodes.forEach(n=>{ edge(svg,772,100,n.x+(n.x<680?68:-68),n.y,'#8a1a1a44',true,1.4); node(svg,n.x,n.y,150,46,n.fill,n.label,n.sub,n.emoji); });
+
+  // vertical sep
+  svg.appendChild(se('line',{x1:680,y1:10,x2:680,y2:192,stroke:'rgba(200,180,140,0.18)','stroke-width':'1.5','stroke-dasharray':'5 4'}));
+  lbl(svg,340,196,'CBI TRACK','rgba(26,58,138,0.4)',8);
+  lbl(svg,1020,196,'NIA TRACK','rgba(138,26,26,0.4)',8);
+})();
+
+// ─── ACCOUNTABILITY CHAIN SVG ───
+(function(){
+  const svg=document.getElementById('svgChain');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:190,fill:'rgba(248,252,248,0.4)'}));
+
+  // CBI Chain (top row)
+  const cbiChain=[
+    {x:80,  y:65,  fill:'#b87c10', label:['Corruption'],   sub:'Detected', emoji:'🚨'},
+    {x:250, y:65,  fill:'#0a6070', label:['CVC'],          sub:'Supervises', emoji:'👁️'},
+    {x:420, y:65,  fill:'#1a3a8a', label:['CBI'],          sub:'Investigates', emoji:'🔎'},
+    {x:590, y:65,  fill:'#5a1a8a', label:['Lokpal'],       sub:'Oversees', emoji:'⚖️'},
+    {x:730, y:65,  fill:'#1a6a3a', label:['Accountability'],'sub':'Justice delivered', emoji:'✅'},
+  ];
+
+  // NIA Chain (bottom row)
+  const niaChain=[
+    {x:80,  y:145, fill:'#8a1a1a', label:['Terror Act'],  sub:'Detected', emoji:'💣'},
+    {x:280, y:145, fill:'#a03030', label:['NIA'],         sub:'Investigates', emoji:'🔍'},
+    {x:480, y:145, fill:'#d46a10', label:['No State OK'], sub:'Investigate freely', emoji:'🚫'},
+    {x:680, y:145, fill:'#b84040', label:['Special Ct.'], sub:'Designated court', emoji:'🏛️'},
+    {x:880, y:145, fill:'#1a6a3a', label:['Speedy Trial'], sub:'2019: Global too', emoji:'⚡'},
+    {x:1080,y:145, fill:'#1a5878', label:['Global Reach'], sub:'Extra-territorial', emoji:'🌍'},
+  ];
+
+  for(let i=0;i<cbiChain.length-1;i++) edge(svg,cbiChain[i].x+55,65,cbiChain[i+1].x-55,65,'#1a3a8a',false,2);
+  for(let i=0;i<niaChain.length-1;i++) edge(svg,niaChain[i].x+55,145,niaChain[i+1].x-55,145,'#8a1a1a',false,2);
+
+  cbiChain.forEach(n=>node(svg,n.x,n.y,108,46,n.fill,[n.label],n.sub,n.emoji));
+  niaChain.forEach(n=>node(svg,n.x,n.y,108,46,n.fill,[n.label],n.sub,n.emoji));
+
+  svg.appendChild(se('line',{x1:20,y1:104,x2:1340,y2:104,stroke:'rgba(184,124,16,0.15)','stroke-width':'1.5','stroke-dasharray':'6 4'}));
+  lbl(svg,200,18,'CBI ACCOUNTABILITY CHAIN','rgba(26,58,138,0.4)',8);
+  lbl(svg,400,178,'NIA ACCOUNTABILITY CHAIN','rgba(138,26,26,0.4)',8);
+})();
+
+// ─── TRAPS SVG ───
+(function(){
+  const svg=document.getElementById('svgTrap');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:130,fill:'rgba(253,250,240,0.5)'}));
+
+  const traps=[
+    {x:90,  fill:'#1a3a8a', label:['CBI Non-Statutory'],  sub:'No own Parliament Act', emoji:'❌'},
+    {x:235, fill:'#1a3a8a', label:['DSPE Act 1946'],       sub:'CBI power source', emoji:'📜'},
+    {x:380, fill:'#8a1a1a', label:['NIA = Statutory'],     sub:'NIA Act 2008', emoji:'✅'},
+    {x:525, fill:'#0a6070', label:['CBI: State Consent'],  sub:'Required Sec.6 DSPE', emoji:'🗺️'},
+    {x:680, fill:'#8a1a1a', label:['NIA: No Consent'],     sub:'Scheduled offences', emoji:'🚫'},
+    {x:835, fill:'#b87c10', label:['Director: 3 Cmte'],    sub:'PM + LoP + CJI', emoji:'👤'},
+    {x:990, fill:'#5a1a8a', label:['Tenure: Min 2 Yrs'],   sub:'CVC Act 2003', emoji:'📅'},
+    {x:1140,fill:'#d46a10', label:['RTI: 2nd Sched.'],     sub:'Except corruption/HR', emoji:'📋'},
+    {x:1285,fill:'#8a1a1a', label:['NIA 2019 Global'],     sub:'Extra-territorial', emoji:'🌍'},
+  ];
+
+  traps.forEach(t=>node(svg,t.x,65,138,58,t.fill,[t.label],t.sub,t.emoji));
+
+  const line=se('line',{x1:30,y1:65,x2:1330,y2:65,stroke:'rgba(184,124,16,0.1)','stroke-width':'1.5','stroke-dasharray':'4 4'});
+  svg.insertBefore(line,svg.firstChild.nextSibling);
+  lbl(svg,680,120,'🔥 HIGH PROBABILITY PRELIMS TRAP POINTS — MEMORISE THESE','rgba(184,124,16,0.55)',8.5);
+})();
+</script>
+</body>
+</html>

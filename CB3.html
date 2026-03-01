@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NCSC, NCST & NCBC — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#12100e;--paper:#f8f5ef;--gold:#b87c10;--gold-lt:#f5d78a;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf5;--card2:#f2ede0;--sky:#1a5878;
+  --sc:#1a3a8a;--st:#1a6a3a;--obc:#b01a1a;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 900px 500px at 15% 10%,rgba(184,124,16,.06) 0%,transparent 60%),
+  radial-gradient(ellipse 700px 700px at 85% 90%,rgba(26,58,138,.05) 0%,transparent 60%);
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1420px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(24px,4.5vw,46px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--sc),var(--st),var(--obc));margin:14px auto 0;border-radius:4px;}
+
+/* SEC LABEL */
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:20px;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3{grid-template-columns:1fr 1fr;}.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g3,.g2,.g4{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(184,124,16,.1);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.sc::before{background:var(--sc);}
+.pc.st::before{background:var(--st);}
+.pc.obc::before{background:var(--obc);}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.dark-top::before{background:var(--ink);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* MAP CARD */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:22px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--sc),var(--purple),var(--st));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--sc),var(--sky));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--st),var(--teal));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--obc),var(--amber));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.map-card.mc6::before{background:linear-gradient(90deg,var(--purple),var(--ink));}
+.map-card svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.sc{background:rgba(26,58,138,.12);color:var(--sc);}
+.pill.st{background:rgba(26,106,58,.12);color:var(--st);}
+.pill.obc{background:rgba(176,26,26,.12);color:var(--obc);}
+.pill.gold{background:rgba(184,124,16,.12);color:var(--gold);}
+.pill.purple{background:rgba(90,26,138,.12);color:var(--purple);}
+.pill.amber{background:rgba(212,106,16,.12);color:var(--amber);}
+.pill.teal{background:rgba(10,96,112,.12);color:var(--teal);}
+.pill.ink{background:rgba(18,16,14,.1);color:var(--ink);}
+
+/* STAT ROW */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* CHIPS */
+.ps-chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.ok{background:rgba(26,106,58,.07);border-color:rgba(26,106,58,.2);color:var(--green);}
+.ps-chip.warn{background:rgba(176,26,26,.07);border-color:rgba(176,26,26,.2);color:var(--red);}
+.ps-chip.neu{background:rgba(184,124,16,.07);border-color:rgba(184,124,16,.2);color:var(--gold);}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* FEAT GRID */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;}
+.tag.ok{background:#d4edda;color:#155724;}
+.tag.na{background:#f8d7da;color:#721c24;}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,.1);font-size:11px;font-family:'DM Mono',monospace;letter-spacing:.4px;}
+
+/* IMPACT CHAIN */
+.impact-chain{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:6px 0;margin:8px 0;}
+.ic-node{padding:7px 12px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:14px;color:var(--muted);flex:0 0 auto;margin:0 4px;}
+
+/* PHASE ROW */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0 20px;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;}
+.phase-title{font-size:12px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'DM Mono',monospace;margin-bottom:8px;color:var(--muted);}
+
+/* TRAP GRID */
+.trap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:10px 0;}
+@media(max-width:640px){.trap-grid{grid-template-columns:1fr 1fr;}}
+.trap-item{padding:12px;border-radius:10px;background:rgba(176,26,26,.06);border:1.5px solid rgba(176,26,26,.2);text-align:center;}
+.trap-icon{font-size:18px;margin-bottom:4px;}
+.trap-text{font-size:10px;font-weight:800;color:var(--red);}
+.trap-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:2px;}
+
+/* BIG PICTURE */
+.bp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:14px 0;}
+@media(max-width:800px){.bp-grid{grid-template-columns:1fr 1fr;}}
+.bp-item{padding:14px;border-radius:12px;border:1.5px solid var(--border);text-align:center;background:var(--card);}
+.bp-icon{font-size:22px;margin-bottom:6px;}
+.bp-title{font-size:11px;font-weight:800;}
+.bp-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.bp-pill{display:inline-block;padding:2px 8px;border-radius:6px;font-size:9px;font-weight:700;margin-top:5px;font-family:'DM Mono',monospace;}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;margin:8px 0;}
+.callout-title{font-size:11px;font-weight:800;margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* ART BADGE */
+.art-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:8px;font-family:'DM Mono',monospace;font-size:11px;font-weight:700;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Polity · Special Provisions · Part XVI · UPSC Prelims</div>
+  <h1>NCSC, NCST & NCBC — <em>Constitutional Safeguard Bodies</em></h1>
+  <div class="header-sub">Article 338 · Article 338A · Article 338B → Protecting SCs · STs · OBCs</div>
+</div>
+
+<!-- SECTION 0: MASTER OVERVIEW -->
+<div class="sec-label">Master Overview — The Connected Story</div>
+
+<div class="map-card mc1">
+  <svg id="svgMaster" viewBox="0 0 1360 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- PART XVI INTRO -->
+<div class="g3" style="margin-bottom:22px;">
+  <div class="pc sc" style="grid-column:1/-1;">
+    <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+      <div style="flex:0 0 auto;padding:16px 24px;border-radius:12px;background:rgba(26,58,138,.07);border:1.5px solid rgba(26,58,138,.2);text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:800;color:var(--sc);">Part XVI</div>
+        <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">CONSTITUTION OF INDIA</div>
+        <div style="font-size:11px;font-weight:800;margin-top:4px;">Special Provisions<br>for Certain Classes</div>
+      </div>
+      <div style="flex:1;min-width:200px;">
+        <div style="font-size:13px;font-weight:800;margin-bottom:8px;">Three Constitutional Safeguard Bodies</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:120px;padding:10px;border-radius:9px;background:rgba(26,58,138,.07);border:1.5px solid rgba(26,58,138,.2);">
+            <div style="font-weight:800;color:var(--sc);font-size:12px;">🔵 NCSC</div>
+            <div style="font-size:10px;margin-top:2px;">Art. 338</div>
+            <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">Scheduled Castes</div>
+          </div>
+          <div style="flex:1;min-width:120px;padding:10px;border-radius:9px;background:rgba(26,106,58,.07);border:1.5px solid rgba(26,106,58,.2);">
+            <div style="font-weight:800;color:var(--st);font-size:12px;">🟢 NCST</div>
+            <div style="font-size:10px;margin-top:2px;">Art. 338A</div>
+            <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">Scheduled Tribes</div>
+          </div>
+          <div style="flex:1;min-width:120px;padding:10px;border-radius:9px;background:rgba(176,26,26,.07);border:1.5px solid rgba(176,26,26,.2);">
+            <div style="font-weight:800;color:var(--obc);font-size:12px;">🔴 NCBC</div>
+            <div style="font-size:10px;margin-top:2px;">Art. 338B</div>
+            <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">Other Backward Classes</div>
+          </div>
+        </div>
+      </div>
+      <div style="flex:0 0 auto;">
+        <div style="font-size:11px;font-weight:800;color:var(--gold);margin-bottom:6px;">🔗 Common Thread</div>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <span class="ps-chip ok">✅ Appointed by President</span>
+          <span class="ps-chip ok">✅ Expenses on CFI</span>
+          <span class="ps-chip ok">✅ Civil Court Powers</span>
+          <span class="ps-chip ok">✅ No Renewal / Extension</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 1: AMENDMENT FLOW -->
+<div class="sec-label">① Constitutional Amendment Journey</div>
+
+<div class="map-card mc5">
+  <svg id="svgAmend" viewBox="0 0 1360 150" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="phase-row">
+  <div class="phase-box" style="border-color:var(--muted);background:rgba(122,106,80,.04);">
+    <div class="phase-num" style="color:var(--muted);">Pre-65th</div>
+    <div class="phase-title">Special Officer</div>
+    <div class="phase-sub">Original Setup</div>
+    <div style="font-size:10px;color:var(--muted);line-height:1.6;">Single officer for both<br>SC & ST — no teeth</div>
+    <span class="pill ink" style="margin-top:6px;">Commissioner model</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--amber);background:rgba(212,106,16,.04);">
+    <div class="phase-num" style="color:var(--amber);">65th CAA</div>
+    <div class="phase-title">Multi-Member Body</div>
+    <div class="phase-sub">1990 Reform</div>
+    <div style="font-size:10px;color:var(--muted);line-height:1.6;">Single commission<br>for SC + ST combined</div>
+    <span class="pill amber" style="margin-top:6px;">Strengthened</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--sc);background:rgba(26,58,138,.04);">
+    <div class="phase-num" style="color:var(--sc);">89th CAA</div>
+    <div class="phase-title">SC & ST Split</div>
+    <div class="phase-sub">2003 — Started 2004</div>
+    <div style="font-size:10px;color:var(--muted);line-height:1.6;">NCSC (Art.338) +<br>NCST (Art.338A)</div>
+    <span class="pill sc" style="margin-top:6px;">Separated bodies</span>
+  </div>
+</div>
+
+<div style="margin-bottom:14px;padding:14px 18px;border-radius:12px;background:rgba(176,26,26,.06);border:1.5px solid rgba(176,26,26,.2);display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+  <div style="font-size:22px;">⚖️</div>
+  <div>
+    <div style="font-size:12px;font-weight:800;color:var(--obc);">102nd CAA, 2018 — NCBC Gets Constitutional Status</div>
+    <div style="font-size:10px;color:var(--muted);margin-top:3px;">Earlier: Statutory body since 1993 (post Mandal case) → Now: Constitutional under Article 338B</div>
+  </div>
+  <div style="margin-left:auto;display:flex;flex-direction:column;gap:3px;align-items:flex-end;">
+    <span class="ps-chip warn">1993 → Statutory</span>
+    <span class="ps-chip ok">2018 → Constitutional</span>
+  </div>
+</div>
+
+<!-- SECTION 2: NCSC -->
+<div class="sec-label">② National Commission for Scheduled Castes — Article 338</div>
+
+<div class="map-card mc2">
+  <svg id="svgNCSC" viewBox="0 0 1360 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc sc">
+    <div class="pc-label">Structure</div>
+    <h3>🏛️ Composition</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--sc);">1</div><div class="stat-sub">Chairperson</div><div class="stat-label">HEAD</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--sc);">1</div><div class="stat-sub">Vice Chair</div><div class="stat-label">DEPUTY</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--sc);">3</div><div class="stat-sub">Members</div><div class="stat-label">TOTAL 5</div></div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">🗓️ Term: 3 Years</div><div class="vs">Appointed by President · No renewal</div></div>
+      <div class="vitem"><div class="vt">💰 Expenses: Charged on CFI</div><div class="vs">Consolidated Fund of India</div></div>
+    </div>
+  </div>
+  <div class="pc sc">
+    <div class="pc-label">Powers</div>
+    <h3>⚖️ What It Can Do</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">🏛️</div><div class="ft">Civil Court Powers</div><div class="fs">In specific matters</div></div>
+      <div class="feat"><div class="fi">📋</div><div class="ft">Regulate Procedure</div><div class="fs">Own working rules</div></div>
+      <div class="feat"><div class="fi">📊</div><div class="ft">Reports to President</div><div class="fs">Annual + special reports</div></div>
+      <div class="feat"><div class="fi">🔍</div><div class="ft">Investigate Complaints</div><div class="fs">SC rights violations</div></div>
+    </div>
+  </div>
+  <div class="pc sc">
+    <div class="pc-label">Functions & History</div>
+    <h3>📋 Key Functions</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Safeguard SC Rights</div><div class="vs">Primary mandate — social justice</div></div>
+      <div class="vitem"><div class="vt">Monitor Safeguards</div><div class="vs">Under Constitution & other laws</div></div>
+      <div class="vitem" style="border-left:3px solid var(--obc);"><div class="vt">⚠️ Earlier: OBC Functions too</div><div class="vs">Looked after OBCs until 2018 (102nd CAA)</div></div>
+    </div>
+    <div class="callout" style="background:rgba(26,58,138,.06);border:1.5px solid rgba(26,58,138,.2);margin-top:8px;">
+      <div class="callout-title" style="color:var(--sc);">📜 Article 338 Journey</div>
+      <div class="callout-body">Special Officer → 65th CAA (multi-member SC+ST) → 89th CAA (separate NCSC) → Started 2004</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: NCST -->
+<div class="sec-label">③ National Commission for Scheduled Tribes — Article 338A</div>
+
+<div class="map-card mc3">
+  <svg id="svgNCST" viewBox="0 0 1360 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc st">
+    <div class="pc-label">Structure (Same as NCSC)</div>
+    <h3>🏛️ Composition</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--st);">1+1</div><div class="stat-sub">Chair + Vice</div><div class="stat-label">LEADERSHIP</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--st);">3</div><div class="stat-sub">Members</div><div class="stat-label">PANEL</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--st);">3 yrs</div><div class="stat-sub">Term</div><div class="stat-label">TENURE</div></div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="pill st">Appointed by President</span>
+      <span class="pill teal">Expenses on CFI</span>
+      <span class="pill st">Reports to President</span>
+    </div>
+    <div style="margin-top:10px;padding:10px 12px;border-radius:9px;background:rgba(176,26,26,.06);border:1.5px dashed rgba(176,26,26,.3);">
+      <div style="font-size:10px;font-weight:800;color:var(--obc);">⚠️ TRAP: Born from 89th CAA, 2003</div>
+      <div style="font-size:9px;color:var(--muted);margin-top:2px;">Separated from single SC+ST body → started 2004</div>
+    </div>
+  </div>
+  <div class="pc st">
+    <div class="pc-label">Special Functions — Only NCST Has These</div>
+    <h3>🌿 Tribal-Specific Mandate</h3>
+    <div class="vlist">
+      <div class="vitem" style="border-left:3px solid var(--st);"><div class="vt">📜 PESA Act, 1996</div><div class="vs">Panchayats (Extension to Scheduled Areas) — implement & monitor</div></div>
+      <div class="vitem"><div class="vt">🌾 Shifting Cultivation</div><div class="vs">Reduce jhum cultivation — alternative livelihood</div></div>
+      <div class="vitem"><div class="vt">🏞️ Land Alienation</div><div class="vs">Prevent tribal land being taken away</div></div>
+      <div class="vitem"><div class="vt">🏠 Rehabilitation</div><div class="vs">Improve displacement rehabilitation</div></div>
+      <div class="vitem"><div class="vt">🌳 Minor Forest Produce</div><div class="vs">Ownership rights over MFP for tribals</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: NCBC -->
+<div class="sec-label">④ National Commission for Backward Classes — Article 338B</div>
+
+<div class="map-card mc4">
+  <svg id="svgNCBC" viewBox="0 0 1360 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc obc">
+    <div class="pc-label">Background — UPSC Trap Zone</div>
+    <h3>📜 How It Got Here</h3>
+    <div class="vlist">
+      <div class="vitem" style="border-left:3px solid var(--gold);"><div class="vt">1992 — Mandal Case</div><div class="vs">Indra Sawhney case → Mandal Commission upheld</div></div>
+      <div class="vitem"><div class="vt">1993 — Statutory Body</div><div class="vs">NCBC created as statutory body only</div></div>
+      <div class="vitem" style="border-left:3px solid var(--obc);"><div class="vt">102nd CAA, 2018</div><div class="vs">Constitutional status → Article 338B inserted</div></div>
+    </div>
+    <div class="impact-chain" style="margin-top:10px;">
+      <div class="ic-node" style="border-color:var(--gold);background:rgba(184,124,16,.08);color:var(--gold);font-size:9px;">Mandal 1992</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,106,16,.08);color:var(--amber);font-size:9px;">Statutory 1993</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--obc);background:rgba(176,26,26,.08);color:var(--obc);font-size:9px;">Constitutional 2018</div>
+    </div>
+  </div>
+  <div class="pc obc">
+    <div class="pc-label">Structure</div>
+    <h3>🏛️ Larger Composition</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--obc);">1</div><div class="stat-sub">Chairperson</div><div class="stat-label">HEAD</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--obc);">1</div><div class="stat-sub">Vice Chair</div><div class="stat-label">DEPUTY</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--obc);">5</div><div class="stat-sub">Members</div><div class="stat-label">TOTAL 7</div></div>
+    </div>
+    <div style="margin-top:8px;padding:9px;border-radius:9px;background:rgba(176,26,26,.07);border:1.5px solid rgba(176,26,26,.2);">
+      <div style="font-size:10px;font-weight:800;color:var(--obc);">⚠️ Note: 5 members (vs 3 in NCSC/NCST)</div>
+      <div style="font-size:9px;color:var(--muted);margin-top:2px;">Term: 3 years (via 2018 Rules)</div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="pill obc">Appointed by President</span>
+      <span class="pill amber">Expenses on CFI</span>
+    </div>
+  </div>
+  <div class="pc obc">
+    <div class="pc-label">Functions</div>
+    <h3>📋 OBC Mandate</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Safeguard OBC Rights</div><div class="vs">Primary mandate — backward class welfare</div></div>
+      <div class="vitem"><div class="vt">Socio-Economic Advice</div><div class="vs">Participate & advise on development plans</div></div>
+      <div class="vitem"><div class="vt">Investigate Complaints</div><div class="vs">Rights violations of OBCs</div></div>
+      <div class="vitem"><div class="vt">Reports to President</div><div class="vs">Annual + special reports tabled in Parliament</div></div>
+    </div>
+    <div class="callout" style="background:rgba(176,26,26,.06);border:1.5px solid rgba(176,26,26,.2);margin-top:8px;">
+      <div class="callout-title" style="color:var(--obc);">⚠️ Earlier: NCSC handled OBCs</div>
+      <div class="callout-body">Before 102nd CAA 2018, NCSC also monitored OBC welfare. Now NCBC handles this separately.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: COMMON FEATURES TABLE -->
+<div class="sec-label">🔥 Common Features — Very Important for Prelims</div>
+
+<div class="map-card mc6">
+  <svg id="svgCommon" viewBox="0 0 1360 170" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="pc dark-top" style="margin-bottom:18px;background:rgba(18,16,14,.02);">
+  <div class="pc-label">Comparison Table — All Three Bodies</div>
+  <h3>📊 Feature Comparison Matrix</h3>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th style="color:#4a9fff;">🔵 NCSC (Art.338)</th>
+        <th style="color:#4adf8a;">🟢 NCST (Art.338A)</th>
+        <th style="color:#ff6b6b;">🔴 NCBC (Art.338B)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Appointed by</td><td><span class="tag ok">President</span></td><td><span class="tag ok">President</span></td><td><span class="tag ok">President</span></td></tr>
+      <tr><td>Removal</td><td><span class="tag ok">By President</span></td><td><span class="tag ok">By President</span></td><td><span class="tag ok">By President</span></td></tr>
+      <tr><td>Expenses</td><td><span class="tag ok">Charged on CFI</span></td><td><span class="tag ok">Charged on CFI</span></td><td><span class="tag ok">Charged on CFI</span></td></tr>
+      <tr><td>Civil Court Power</td><td><span class="tag ok">Yes</span></td><td><span class="tag ok">Yes</span></td><td><span class="tag ok">Yes</span></td></tr>
+      <tr><td>Regulate Procedure</td><td><span class="tag ok">Yes</span></td><td><span class="tag ok">Yes</span></td><td><span class="tag ok">Yes</span></td></tr>
+      <tr><td>Renewal</td><td><span class="tag na">Not Allowed</span></td><td><span class="tag na">Not Allowed</span></td><td><span class="tag na">Not Allowed</span></td></tr>
+      <tr><td>Future Employment</td><td><span class="tag na">Not Allowed</span></td><td><span class="tag na">Not Allowed</span></td><td><span class="tag na">Not Allowed</span></td></tr>
+      <tr><td>Tenure Extension</td><td><span class="tag na">Not Allowed</span></td><td><span class="tag na">Not Allowed</span></td><td><span class="tag na">Not Allowed</span></td></tr>
+      <tr><td>Constitutional Article</td><td>Art. 338</td><td>Art. 338A</td><td>Art. 338B</td></tr>
+      <tr><td>Creating Amendment</td><td>89th CAA 2003</td><td>89th CAA 2003</td><td>102nd CAA 2018</td></tr>
+      <tr><td>No. of Members</td><td>Chair+ViceChair+3</td><td>Chair+ViceChair+3</td><td>Chair+ViceChair+5 ⚠️</td></tr>
+      <tr><td>Term</td><td>3 Years</td><td>3 Years</td><td>3 Years (2018 Rules)</td></tr>
+      <tr><td>Previously</td><td>Single SC+ST Commission</td><td>Single SC+ST Commission</td><td>Statutory body (1993)</td></tr>
+      <tr><td>Special Function</td><td>Safeguard SC rights</td><td>PESA, Land, Forest rights</td><td>OBC welfare & advice</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 6: AMENDMENT MEMORY -->
+<div class="sec-label">🧠 Amendment Quick Memory</div>
+
+<div class="g3" style="margin-bottom:22px;">
+  <div class="pc gold">
+    <div class="pc-label">65th CAA · 1990</div>
+    <h3>⚙️ Multi-Member Body</h3>
+    <div style="padding:14px;border-radius:10px;background:rgba(184,124,16,.07);border:1.5px solid rgba(184,124,16,.2);text-align:center;margin-bottom:8px;">
+      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:800;color:var(--amber);">65th</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">CONSTITUTIONAL AMENDMENT 1990</div>
+    </div>
+    <div style="font-size:11px;color:var(--muted);line-height:1.6;">Single officer (Commissioner) → Multi-member constitutional body for <strong>SC + ST combined</strong></div>
+    <span class="ps-chip ok" style="margin-top:8px;">✅ Strengthened safeguards</span>
+  </div>
+  <div class="pc sc">
+    <div class="pc-label">89th CAA · 2003</div>
+    <h3>✂️ SC & ST Split</h3>
+    <div style="padding:14px;border-radius:10px;background:rgba(26,58,138,.07);border:1.5px solid rgba(26,58,138,.2);text-align:center;margin-bottom:8px;">
+      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:800;color:var(--sc);">89th</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">CONSTITUTIONAL AMENDMENT 2003</div>
+    </div>
+    <div style="font-size:11px;color:var(--muted);line-height:1.6;">One body → Two bodies: NCSC (Art.338) + NCST (Art.338A). Started functioning <strong>2004</strong></div>
+    <span class="ps-chip ok" style="margin-top:8px;">✅ Specialised commissions</span>
+  </div>
+  <div class="pc obc">
+    <div class="pc-label">102nd CAA · 2018</div>
+    <h3>📜 NCBC Constitutional</h3>
+    <div style="padding:14px;border-radius:10px;background:rgba(176,26,26,.07);border:1.5px solid rgba(176,26,26,.2);text-align:center;margin-bottom:8px;">
+      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:800;color:var(--obc);">102nd</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">CONSTITUTIONAL AMENDMENT 2018</div>
+    </div>
+    <div style="font-size:11px;color:var(--muted);line-height:1.6;">Statutory NCBC (1993) → Constitutional NCBC under <strong>Article 338B</strong>. Big leap forward for OBCs</div>
+    <span class="ps-chip ok" style="margin-top:8px;">✅ Constitutional status</span>
+  </div>
+</div>
+
+<!-- SECTION 7: UPSC TRAP AREAS -->
+<div class="sec-label">🎯 Likely UPSC Trap Areas</div>
+
+<div class="trap-grid" style="margin-bottom:22px;">
+  <div class="trap-item">
+    <div class="trap-icon">🔢</div>
+    <div class="trap-text">Article Numbers</div>
+    <div class="trap-sub">338 · 338A · 338B</div>
+  </div>
+  <div class="trap-item">
+    <div class="trap-icon">📜</div>
+    <div class="trap-text">Amendment Numbers</div>
+    <div class="trap-sub">65th · 89th · 102nd</div>
+  </div>
+  <div class="trap-item">
+    <div class="trap-icon">⚖️</div>
+    <div class="trap-text">NCBC was Statutory</div>
+    <div class="trap-sub">1993 → statutory; 2018 → constitutional</div>
+  </div>
+  <div class="trap-item">
+    <div class="trap-icon">🏛️</div>
+    <div class="trap-text">Civil Court Powers</div>
+    <div class="trap-sub">All three commissions have it</div>
+  </div>
+  <div class="trap-item">
+    <div class="trap-icon">💰</div>
+    <div class="trap-text">Charged on CFI</div>
+    <div class="trap-sub">Consolidated Fund of India</div>
+  </div>
+  <div class="trap-item">
+    <div class="trap-icon">🌿</div>
+    <div class="trap-text">NCST = PESA Functions</div>
+    <div class="trap-sub">Only NCST — not NCSC</div>
+  </div>
+  <div class="trap-item">
+    <div class="trap-icon">🗓️</div>
+    <div class="trap-text">3-Year Term</div>
+    <div class="trap-sub">No renewal / extension</div>
+  </div>
+  <div class="trap-item">
+    <div class="trap-icon">👥</div>
+    <div class="trap-text">NCBC = 5 Members</div>
+    <div class="trap-sub">NCSC & NCST = only 3 members</div>
+  </div>
+</div>
+
+<!-- SECTION 8: BIG PICTURE -->
+<div class="sec-label">🧩 Big Picture — India's Constitutional Safeguard Framework</div>
+
+<div class="bp-grid" style="margin-bottom:22px;">
+  <div class="bp-item" style="border-color:rgba(184,124,16,.3);background:rgba(184,124,16,.04);">
+    <div class="bp-icon">🗳️</div>
+    <div class="bp-title">Political Equality</div>
+    <div class="bp-sub">ELECTION COMMISSION</div>
+    <div class="bp-pill" style="background:rgba(184,124,16,.12);color:var(--gold);">Art. 324</div>
+  </div>
+  <div class="bp-item" style="border-color:rgba(26,106,58,.3);background:rgba(26,106,58,.04);">
+    <div class="bp-icon">💰</div>
+    <div class="bp-title">Financial Accountability</div>
+    <div class="bp-sub">CAG OF INDIA</div>
+    <div class="bp-pill" style="background:rgba(26,106,58,.12);color:var(--st);">Art. 148</div>
+  </div>
+  <div class="bp-item" style="border-color:rgba(26,58,138,.3);background:rgba(26,58,138,.04);">
+    <div class="bp-icon">👨‍💼</div>
+    <div class="bp-title">Recruitment Fairness</div>
+    <div class="bp-sub">UPSC</div>
+    <div class="bp-pill" style="background:rgba(26,58,138,.12);color:var(--sc);">Art. 315</div>
+  </div>
+  <div class="bp-item" style="border-color:rgba(90,26,138,.3);background:rgba(90,26,138,.04);">
+    <div class="bp-icon">⚖️</div>
+    <div class="bp-title">Legal Advice</div>
+    <div class="bp-sub">ATTORNEY GENERAL</div>
+    <div class="bp-pill" style="background:rgba(90,26,138,.12);color:var(--purple);">Art. 76</div>
+  </div>
+  <div class="bp-item" style="border-color:rgba(176,26,26,.4);background:rgba(176,26,26,.06);">
+    <div class="bp-icon">👥</div>
+    <div class="bp-title">Social Justice</div>
+    <div class="bp-sub">NCSC + NCST + NCBC</div>
+    <div class="bp-pill" style="background:rgba(176,26,26,.12);color:var(--obc);">Art. 338-338B</div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">⚖️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">India's Constitution created three specialised bodies — NCSC, NCST, NCBC — each rooted in Part XVI, all sharing the same <strong style="color:#f5d78a;">constitutional DNA</strong>: Presidential appointment, CFI-charged expenses, civil court powers, no renewal or future employment. The journey from a single Special Officer → multi-member body → split SC/ST → OBC constitutional status tracks India's evolving commitment to social justice.</div>
+    <div class="keystone-pills">
+      <span class="kpill">🔵 Art.338 NCSC</span>
+      <span class="kpill">🟢 Art.338A NCST</span>
+      <span class="kpill">🔴 Art.338B NCBC</span>
+      <span class="kpill">📜 89th + 102nd CAA</span>
+      <span class="kpill">⚖️ Social Justice Framework</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const p=se('path',{d:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':w||2,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.65'});
+  svg.appendChild(p);
+}
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.1)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.2)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7.5)-(sub?5:0)-(emoji?10:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'15',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=18;}
+  lines.forEach((l,i)=>{const t=se('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});t.textContent=l;g.appendChild(t);});
+  if(sub){const s=se('text',{x,y:ty+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.4)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+// ── MASTER FLOW ──
+(function(){
+  const svg=document.getElementById('svgMaster');
+  svg.setAttribute('viewBox','0 0 1360 200');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:200,fill:'rgba(250,245,238,0.4)'}));
+
+  const steps=[
+    {x:75,  fill:'#7a6a50', label:['Special Officer'],       sub:'Pre-65th CAA',         emoji:'👤'},
+    {x:240, fill:'#b87c10', label:['65th CAA 1990'],         sub:'Multi-member SC+ST',   emoji:'📜'},
+    {x:410, fill:'#1a3a8a', label:['89th CAA 2003'],         sub:'NCSC (Art.338)',        emoji:'🔵'},
+    {x:580, fill:'#1a6a3a', label:['NCST Created'],          sub:'Art.338A (2004)',       emoji:'🟢'},
+    {x:755, fill:'#b01a1a', label:['NCBC Statutory'],        sub:'1993 post-Mandal',      emoji:'⚖️'},
+    {x:930, fill:'#b01a1a', label:['102nd CAA 2018'],        sub:'NCBC Constitutional',   emoji:'📜'},
+    {x:1100,fill:'#5a1a8a', label:['Art.338B'],              sub:'OBC Constitutional body',emoji:'🔴'},
+    {x:1280,fill:'#12100e', label:['Social Justice','Complete'], sub:'All 3 bodies protected',emoji:'🇮🇳'},
+  ];
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const nextX=steps[i+1].x;
+      const conn=se('path',{d:`M${s.x+72},100 L${nextX-72},100`,stroke:'#b87c1060','stroke-width':'2',fill:'none'});
+      svg.appendChild(conn);
+    }
+  });
+  steps.forEach(s=>{
+    node(svg,s.x,100,135,75,s.fill,s.label,s.sub,s.emoji);
+  });
+
+  const t=se('text',{x:680,y:18,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'3','fill':'rgba(120,100,60,0.45)'});
+  t.textContent='EVOLUTION: SPECIAL OFFICER → MULTI-MEMBER BODY → THREE CONSTITUTIONAL COMMISSIONS';
+  svg.appendChild(t);
+})();
+
+// ── AMENDMENT FLOW ──
+(function(){
+  const svg=document.getElementById('svgAmend');
+  svg.setAttribute('viewBox','0 0 1360 150');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:150,fill:'rgba(250,245,238,0.4)'}));
+
+  const boxes=[
+    {x:120, fill:'#7a6a50', label:['Commissioner', 'Model'],    sub:'Pre-1990',          emoji:'👤'},
+    {x:340, fill:'#b87c10', label:['65th CAA','1990'],          sub:'SC+ST joint body',  emoji:'⚙️'},
+    {x:560, fill:'#1a3a8a', label:['NCSC','Art.338'],           sub:'89th CAA 2003',     emoji:'🔵'},
+    {x:750, fill:'#1a6a3a', label:['NCST','Art.338A'],          sub:'89th CAA 2003',     emoji:'🟢'},
+    {x:940, fill:'#7a4010', label:['NCBC Statutory'],           sub:'1993 (post-Mandal)',emoji:'📋'},
+    {x:1140,fill:'#b01a1a', label:['NCBC','Art.338B'],          sub:'102nd CAA 2018',    emoji:'🔴'},
+    {x:1300,fill:'#5a1a8a', label:['Complete'],                 sub:'All 3 secured',     emoji:'✅'},
+  ];
+
+  for(let i=0;i<boxes.length-1;i++){
+    const a=boxes[i],b=boxes[i+1];
+    edge(svg,a.x+68,75,b.x-68,75,'#b87c1060',false,2);
+  }
+  boxes.forEach(b=>{node(svg,b.x,75,128,65,b.fill,b.label,b.sub,b.emoji);});
+})();
+
+// ── NCSC MIND MAP ──
+(function(){
+  const svg=document.getElementById('svgNCSC');
+  svg.setAttribute('viewBox','0 0 1360 240');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:240,fill:'rgba(250,245,238,0.35)'}));
+
+  node(svg,680,120,220,68,'#1a3a8a',['National Commission','for Scheduled Castes'],'Article 338 · NCSC','🔵');
+
+  const left=[
+    {x:140,y:55,  fill:'#1a3a8a', label:['Chairperson +','Vice Chair + 3'],  sub:'Total 5 members',   emoji:'👥'},
+    {x:140,y:145, fill:'#1a5878', label:['3 Year Term'],                      sub:'Appointed by Prez', emoji:'🗓️'},
+    {x:140,y:205, fill:'#2a3080', label:['Expenses on CFI'],                  sub:'Consolidated Fund', emoji:'💰'},
+  ];
+  const right=[
+    {x:1220,y:55,  fill:'#1a6a3a', label:['Safeguard SC','Rights'],           sub:'Primary mandate',  emoji:'⚖️'},
+    {x:1220,y:135, fill:'#0a6070', label:['Civil Court','Powers'],             sub:'Investigate issues',emoji:'🏛️'},
+    {x:1220,y:215, fill:'#5a2080', label:['Earlier: OBCs too'],               sub:'Till 102nd CAA 2018',emoji:'⚠️'},
+  ];
+
+  left.forEach(n=>{edge(svg,590,120,n.x+76,n.y,'#1a3a8a55',true,1.8);node(svg,n.x,n.y,140,52,n.fill,n.label,n.sub,n.emoji);});
+  right.forEach(n=>{edge(svg,770,120,n.x-76,n.y,'#1a3a8a55',true,1.8);node(svg,n.x,n.y,140,52,n.fill,n.label,n.sub,n.emoji);});
+
+  // bottom nodes
+  const bots=[
+    {x:380,y:210,fill:'#283090',label:['Reports to President'],sub:'Annual + special reports',emoji:'📊'},
+    {x:680,y:210,fill:'#1a3a8a',label:['No Renewal/Extension'],sub:'One term only',emoji:'🚫'},
+    {x:980,y:210,fill:'#3a2080',label:['Regulate Procedure'],sub:'Own working rules',emoji:'📋'},
+  ];
+  bots.forEach(n=>{edge(svg,680,155,n.x,n.y-26,'#1a3a8a44',true,1.5);node(svg,n.x,n.y,200,48,n.fill,n.label,n.sub,n.emoji);});
+})();
+
+// ── NCST MIND MAP ──
+(function(){
+  const svg=document.getElementById('svgNCST');
+  svg.setAttribute('viewBox','0 0 1360 240');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:240,fill:'rgba(250,245,238,0.35)'}));
+
+  node(svg,680,110,220,68,'#1a6a3a',['National Commission','for Scheduled Tribes'],'Article 338A · NCST','🟢');
+
+  const left=[
+    {x:130,y:55,  fill:'#1a6a3a', label:['Chair + ViceChair','+ 3 Members'], sub:'Same as NCSC',      emoji:'👥'},
+    {x:130,y:145, fill:'#0a6070', label:['89th CAA 2003'],                    sub:'Started 2004',      emoji:'📜'},
+    {x:130,y:215, fill:'#006050', label:['Expenses on CFI'],                  sub:'President appoints',emoji:'💰'},
+  ];
+  const right=[
+    {x:1230,y:45,  fill:'#1a6a3a', label:['PESA Act 1996'],                  sub:'Implement & monitor',emoji:'🌿'},
+    {x:1230,y:115, fill:'#2a7040', label:['Prevent Land','Alienation'],       sub:'Tribal land rights', emoji:'🏞️'},
+    {x:1230,y:185, fill:'#006050', label:['Minor Forest','Produce Rights'],   sub:'Ownership for tribals',emoji:'🌳'},
+  ];
+  const bots=[
+    {x:380,y:215,fill:'#1a5a30',label:['Shifting Cultivation'],sub:'Reduce jhum practices',emoji:'🌾'},
+    {x:680,y:215,fill:'#0a6070',label:['Civil Court Powers'],sub:'Investigate ST issues',emoji:'⚖️'},
+    {x:980,y:215,fill:'#1a6a3a',label:['Rehabilitation'],sub:'Improve displacement rehab',emoji:'🏠'},
+  ];
+
+  left.forEach(n=>{edge(svg,590,110,n.x+76,n.y,'#1a6a3a55',true,1.8);node(svg,n.x,n.y,140,52,n.fill,n.label,n.sub,n.emoji);});
+  right.forEach(n=>{edge(svg,770,110,n.x-76,n.y,'#1a6a3a55',true,1.8);node(svg,n.x,n.y,140,52,n.fill,n.label,n.sub,n.emoji);});
+  bots.forEach(n=>{edge(svg,680,145,n.x,n.y-26,'#1a6a3a44',true,1.5);node(svg,n.x,n.y,200,48,n.fill,n.label,n.sub,n.emoji);});
+})();
+
+// ── NCBC MIND MAP ──
+(function(){
+  const svg=document.getElementById('svgNCBC');
+  svg.setAttribute('viewBox','0 0 1360 240');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:240,fill:'rgba(250,245,238,0.35)'}));
+
+  node(svg,680,110,220,68,'#b01a1a',['National Commission for','Backward Classes'],'Article 338B · NCBC · 102nd CAA 2018','🔴');
+
+  const left=[
+    {x:130,y:50,  fill:'#b01a1a', label:['Chair+ViceChair','+ 5 Members'],   sub:'7 total — more than NCSC',emoji:'👥'},
+    {x:130,y:140, fill:'#7a4010', label:['1993 Statutory'],                   sub:'Post Mandal Commission',  emoji:'📋'},
+    {x:130,y:215, fill:'#b01a1a', label:['2018 Constitutional'],              sub:'102nd CAA — Art.338B',    emoji:'📜'},
+  ];
+  const right=[
+    {x:1230,y:50,  fill:'#b01a1a', label:['Safeguard OBC','Rights'],          sub:'Primary mandate',          emoji:'⚖️'},
+    {x:1230,y:130, fill:'#7a4010', label:['Socio-Econ','Development Advice'], sub:'Advise & participate',      emoji:'📈'},
+    {x:1230,y:210, fill:'#8a2000', label:['Investigate','OBC Complaints'],    sub:'Rights violations',         emoji:'🔍'},
+  ];
+  const bots=[
+    {x:380,y:215,fill:'#9a2010',label:['Appointed by Prez'],sub:'No renewal / extension',emoji:'🏛️'},
+    {x:680,y:215,fill:'#b01a1a',label:['Expenses on CFI'],sub:'Consolidated Fund',emoji:'💰'},
+    {x:980,y:215,fill:'#7a1a1a',label:['Reports to President'],sub:'Annual + special reports',emoji:'📊'},
+  ];
+
+  left.forEach(n=>{edge(svg,590,110,n.x+76,n.y,'#b01a1a55',true,1.8);node(svg,n.x,n.y,140,52,n.fill,n.label,n.sub,n.emoji);});
+  right.forEach(n=>{edge(svg,770,110,n.x-76,n.y,'#b01a1a55',true,1.8);node(svg,n.x,n.y,140,52,n.fill,n.label,n.sub,n.emoji);});
+  bots.forEach(n=>{edge(svg,680,145,n.x,n.y-26,'#b01a1a44',true,1.5);node(svg,n.x,n.y,200,48,n.fill,n.label,n.sub,n.emoji);});
+})();
+
+// ── COMMON FEATURES SVG ──
+(function(){
+  const svg=document.getElementById('svgCommon');
+  svg.setAttribute('viewBox','0 0 1360 170');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:170,fill:'rgba(250,245,238,0.35)'}));
+
+  node(svg,680,85,200,58,'#12100e',['Common to All Three'],'"Constitutional DNA"','🧬');
+
+  const features=[
+    {x:100, y:45,  fill:'#1a3a8a', label:['Appointed'],    sub:'By President',       emoji:'👑'},
+    {x:280, y:45,  fill:'#1a6a3a', label:['Removal'],      sub:'By President',       emoji:'✂️'},
+    {x:460, y:35,  fill:'#b87c10', label:['Expenses'],     sub:'Charged on CFI',     emoji:'💰'},
+    {x:900, y:35,  fill:'#5a1a8a', label:['Civil Court'],  sub:'Powers apply',       emoji:'⚖️'},
+    {x:1080,y:45,  fill:'#0a6070', label:['Regulate'],     sub:'Own procedure',      emoji:'📋'},
+    {x:1260,y:45,  fill:'#7a4010', label:['3 Year Term'],  sub:'No renewal',         emoji:'🗓️'},
+    {x:100, y:140, fill:'#b01a1a', label:['No Renewal'],   sub:'Not allowed',        emoji:'🚫'},
+    {x:310, y:140, fill:'#4a0a6a', label:['No Extension'], sub:'Not allowed',        emoji:'⛔'},
+    {x:550, y:145, fill:'#1a4858', label:['No Future Empl.'],sub:'Post-retirement',  emoji:'🔒'},
+    {x:820, y:145, fill:'#1a3a8a', label:['Reports'],      sub:'To President',       emoji:'📄'},
+    {x:1050,y:140, fill:'#1a6a3a', label:['Investigate'],  sub:'Complaints',         emoji:'🔍'},
+    {x:1270,y:140, fill:'#b87c10', label:['Advise Govt.'], sub:'Policy & welfare',   emoji:'💡'},
+  ];
+
+  features.forEach(n=>{
+    const dist=Math.abs(n.x-680);
+    edge(svg,680+(n.x<680?-100:100),85,n.x+(n.x<680?60:-60),n.y,'#12100e33',true,1.5);
+    node(svg,n.x,n.y,110,44,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+})();
+</script>
+</body>
+</html>

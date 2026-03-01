@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Law Reform Mind Map — Indian Polity</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0f0d0a; --paper:#faf8f4; --cream:#f5f0e8;
+  --gold:#c49a22; --gold-lt:#f0d878; --gold-pale:#fdf6dc;
+  --amber:#d46010; --amber-lt:#f8e8d4;
+  --blue:#1a3d7c; --blue-lt:#dce6f5;
+  --green:#1a6040; --green-lt:#d8eedf;
+  --purple:#5c1a8a; --purple-lt:#ead8f8;
+  --teal:#0a5870; --teal-lt:#d4ecf4;
+  --red:#a81820; --red-lt:#fad8da;
+  --steel:#2a4a6a; --steel-lt:#dde8f4;
+  --border:#e2d8c2; --muted:#8a7a60;
+  --card:#ffffff; --shadow:0 2px 20px rgba(15,13,10,0.08);
+}
+body{font-family:'Outfit',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;}
+
+/* texture */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 1000px 500px at 10% 5%, rgba(196,154,34,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 700px 700px at 90% 95%, rgba(26,61,124,0.04) 0%, transparent 60%);
+}
+
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 28px 120px;}
+
+/* ══ HEADER ══ */
+.hdr{padding:52px 0 28px;text-align:center;position:relative;}
+.hdr-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.hdr h1{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,58px);font-weight:700;line-height:1.05;color:var(--ink);}
+.hdr h1 em{font-style:italic;color:var(--amber);}
+.hdr-tagline{margin-top:10px;font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--muted);letter-spacing:1.2px;}
+.hdr::after{content:'';display:block;width:100px;height:3px;background:linear-gradient(90deg,var(--gold),var(--amber),var(--blue));border-radius:4px;margin:18px auto 0;}
+
+/* ══ SECTION LABELS ══ */
+.sl{display:flex;align-items:center;gap:14px;margin:36px 0 16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;}
+.sl::before,.sl::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ══ STORY BANNER ══ */
+.story{background:var(--ink);color:#f0e8cc;border-radius:20px;padding:28px 36px;margin-bottom:8px;display:flex;gap:32px;align-items:center;flex-wrap:wrap;}
+.story-icon{font-size:42px;flex:0 0 auto;}
+.story-body{flex:1;}
+.story-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;margin-bottom:8px;color:var(--gold-lt);}
+.story-chain{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.sc-node{padding:6px 14px;border-radius:8px;font-size:11px;font-weight:600;font-family:'JetBrains Mono',monospace;}
+.sc-arr{font-size:18px;color:rgba(240,232,204,0.4);}
+
+/* ══ GRIDS ══ */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* ══ PANEL CARDS ══ */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:20px;position:relative;overflow:hidden;box-shadow:var(--shadow);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:16px 16px 0 0;}
+.pc.c-gold::before{background:linear-gradient(90deg,var(--gold),var(--amber));}
+.pc.c-blue::before{background:var(--blue);}
+.pc.c-green::before{background:var(--green);}
+.pc.c-purple::before{background:var(--purple);}
+.pc.c-teal::before{background:var(--teal);}
+.pc.c-red::before{background:var(--red);}
+.pc.c-steel::before{background:var(--steel);}
+.pc.c-amber::before{background:var(--amber);}
+.pc-eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;line-height:1.3;}
+
+/* ══ PILLS ══ */
+.pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'JetBrains Mono',monospace;letter-spacing:0.3px;}
+.p-gold{background:var(--gold-pale);color:var(--gold);}
+.p-blue{background:var(--blue-lt);color:var(--blue);}
+.p-green{background:var(--green-lt);color:var(--green);}
+.p-purple{background:var(--purple-lt);color:var(--purple);}
+.p-teal{background:var(--teal-lt);color:var(--teal);}
+.p-red{background:var(--red-lt);color:var(--red);}
+.p-amber{background:var(--amber-lt);color:var(--amber);}
+.p-steel{background:var(--steel-lt);color:var(--steel);}
+
+/* ══ VLIST ══ */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--cream);border:1px solid var(--border);font-size:11px;line-height:1.5;}
+.vitem .vt{font-weight:700;font-size:12px;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ══ STAT BOXES ══ */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--cream);}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;line-height:1;}
+.stat-lbl{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;font-weight:700;margin-top:2px;}
+
+/* ══ CHIP ══ */
+.chip{display:inline-block;padding:4px 10px;border-radius:7px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip-ok{background:rgba(26,96,64,0.07);border-color:rgba(26,96,64,0.2);color:var(--green);}
+.chip-trap{background:rgba(168,24,32,0.07);border-color:rgba(168,24,32,0.2);color:var(--red);}
+.chip-neu{background:rgba(196,154,34,0.07);border-color:rgba(196,154,34,0.25);color:var(--gold);}
+
+/* ══ CALLOUT ══ */
+.callout{padding:12px 14px;border-radius:9px;background:rgba(196,154,34,0.07);border:1.5px solid rgba(196,154,34,0.2);margin:8px 0;}
+.callout-title{font-size:11px;font-weight:700;color:var(--gold);margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.6;}
+
+/* ══ MAP CARD ══ */
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:22px;box-shadow:var(--shadow);}
+.mc::before{content:'';display:block;height:4px;}
+.mc.m1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.mc.m2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.mc.m3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.mc.m4::before{background:linear-gradient(90deg,var(--teal),var(--green),var(--blue));}
+.mc.m5::before{background:linear-gradient(90deg,var(--steel),var(--blue));}
+.mc svg{display:block;width:100%;}
+
+/* ══ TABLE ══ */
+.ct{width:100%;border-collapse:collapse;font-size:11px;}
+.ct th{background:var(--ink);color:#f0e8cc;padding:9px 12px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;}
+.ct th:first-child{border-radius:0 0 0 0;}
+.ct td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55;}
+.ct tr:last-child td{border-bottom:none;}
+.ct tr:nth-child(even) td{background:rgba(196,154,34,0.025);}
+.ct td:first-child{font-weight:700;color:var(--amber);font-size:12px;}
+
+/* ══ KEYSTONE ══ */
+.keystone{background:var(--ink);color:#f0e8cc;border-radius:20px;padding:28px 36px;margin:24px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.ks-icon{font-size:40px;flex:0 0 auto;}
+.ks-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;margin-bottom:6px;color:var(--gold-lt);}
+.ks-sub{font-size:11px;color:#c0b080;line-height:1.7;}
+.ks-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.kp{padding:5px 14px;border-radius:20px;font-size:10px;font-family:'JetBrains Mono',monospace;background:rgba(255,255,255,0.08);color:var(--gold-lt);letter-spacing:0.3px;}
+
+/* ══ TIMELINE ══ */
+.timeline{position:relative;padding-left:28px;margin:10px 0;}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--gold),var(--blue));}
+.tl-item{position:relative;margin-bottom:12px;}
+.tl-dot{position:absolute;left:-24px;top:4px;width:10px;height:10px;border-radius:50%;border:2px solid;background:var(--card);}
+.tl-body{padding:9px 12px;border-radius:9px;background:var(--cream);border:1px solid var(--border);font-size:11px;line-height:1.5;}
+.tl-title{font-weight:700;font-size:12px;margin-bottom:2px;}
+.tl-sub{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);}
+
+/* ══ FLOW CHAIN ══ */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:10px 0;}
+.fn{padding:6px 14px;border-radius:8px;font-size:11px;font-weight:700;border:1.5px solid;}
+.fa{font-size:18px;color:var(--muted);}
+
+/* ══ COMPARISON ROW ══ */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0;}
+.cmp-col{padding:12px;border-radius:10px;border:1.5px solid;}
+.cmp-col-head{font-size:11px;font-weight:800;margin-bottom:6px;font-family:'JetBrains Mono',monospace;}
+.cmp-item{font-size:11px;padding:3px 0;border-bottom:1px solid rgba(0,0,0,0.06);}
+.cmp-item:last-child{border-bottom:none;}
+
+/* ══ TRAP BOX ══ */
+.trap-box{background:rgba(168,24,32,0.05);border:1.5px solid rgba(168,24,32,0.2);border-radius:12px;padding:14px;margin:10px 0;}
+.trap-title{font-size:12px;font-weight:800;color:var(--red);margin-bottom:8px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;}
+
+/* ══ SVG helpers in JS ══ */
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ══ HEADER ══ -->
+<div class="hdr">
+  <div class="hdr-eyebrow">Indian Polity · Legal Bodies · UPSC Prelims</div>
+  <h1>Law Reform → Legal Profession<br>→ Market Regulation → <em>National Development</em></h1>
+  <div class="hdr-tagline">Law Commission · Bar Councils · CCI · TRAI · NIC · NDC — Connected Story</div>
+</div>
+
+<!-- ══ MASTER FLOW ══ -->
+<div class="sl">Master Flow — The Connected Story</div>
+<div class="mc m1">
+  <svg id="svgMaster" viewBox="0 0 1380 120" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ══ STORY BANNER ══ -->
+<div class="story">
+  <div class="story-icon">🏛️</div>
+  <div class="story-body">
+    <div class="story-title">One Logical Chain: How India Governs Law, Markets & Development</div>
+    <div class="story-chain">
+      <div class="sc-node" style="background:rgba(196,154,34,0.2);color:var(--gold-lt);border:1px solid rgba(196,154,34,0.3);">⚖️ Law Commission<br><span style="font-size:9px;opacity:0.7;">Reforms Laws</span></div>
+      <div class="sc-arr">→</div>
+      <div class="sc-node" style="background:rgba(26,61,124,0.3);color:#b0ccf8;border:1px solid rgba(26,61,124,0.4);">👨‍⚖️ Bar Councils<br><span style="font-size:9px;opacity:0.7;">Regulate Lawyers</span></div>
+      <div class="sc-arr">→</div>
+      <div class="sc-node" style="background:rgba(92,26,138,0.3);color:#d4b0f8;border:1px solid rgba(92,26,138,0.4);">📊 CCI + TRAI<br><span style="font-size:9px;opacity:0.7;">Regulate Markets</span></div>
+      <div class="sc-arr">→</div>
+      <div class="sc-node" style="background:rgba(26,96,64,0.3);color:#90d8b0;border:1px solid rgba(26,96,64,0.4);">🌐 NIC + NDC<br><span style="font-size:9px;opacity:0.7;">Social + Economic Planning</span></div>
+      <div class="sc-arr">→</div>
+      <div class="sc-node" style="background:rgba(212,96,16,0.25);color:#f8c080;border:1px solid rgba(212,96,16,0.4);">🚀 National Development<br><span style="font-size:9px;opacity:0.7;">Integrated Governance</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SECTION 1: LAW COMMISSION
+════════════════════════════════════════ -->
+<div class="sl">① Law Commission of India — Reform Think Tank</div>
+
+<div class="mc m1">
+  <svg id="svgLC" viewBox="0 0 1380 300" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <!-- Nature Card -->
+  <div class="pc c-gold">
+    <div class="pc-eyebrow">Nature & Status</div>
+    <h3>⚖️ What Is It?</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Non-Statutory Body</div><div class="vs">No act of Parliament</div></div>
+      <div class="vitem"><div class="vt">Central Govt. Constitutes It</div><div class="vs">Fixed tenure — usually 3 years</div></div>
+      <div class="vitem"><div class="vt">Advisory in Nature</div><div class="vs">Recommends, doesn't legislate</div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="pill p-gold">Advisory</span>
+      <span class="pill p-amber">Non-Statutory</span>
+      <span class="chip-trap chip">NOT Constitutional</span>
+    </div>
+  </div>
+
+  <!-- History -->
+  <div class="pc c-amber">
+    <div class="pc-eyebrow">Historical Timeline</div>
+    <h3>📅 From 1834 to Present</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--amber);"></div>
+        <div class="tl-body"><div class="tl-title">First Law Commission — 1834</div><div class="tl-sub">Charter Act, 1833 · Lord Macaulay</div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--blue);"></div>
+        <div class="tl-body"><div class="tl-title">Post-Independence — 1955</div><div class="tl-sub">M.C. Setalvad · First PM era commission</div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--green);"></div>
+        <div class="tl-body"><div class="tl-title">289+ Reports Submitted</div><div class="tl-sub">Ongoing, continuous reform work</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Structure + Functions -->
+  <div class="pc c-blue">
+    <div class="pc-eyebrow">Structure & Functions</div>
+    <h3>🔧 How It Works</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">289+</div>
+        <div class="stat-sub">Reports</div>
+        <div class="stat-lbl">SUBMITTED</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">3 yr</div>
+        <div class="stat-sub">Tenure</div>
+        <div class="stat-lbl">USUALLY</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">Head</div><div class="vs">Serving/Retired Judge or legal expert</div></div>
+      <div class="vitem"><div class="vt">Member-Secretary</div><div class="vs">Indian Legal Service officer</div></div>
+      <div class="vitem"><div class="vt">Reports go to</div><div class="vs">Ministry of Law & Justice → Parliament</div></div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="pill p-blue">Codify Laws</span>
+      <span class="pill p-blue">Repeal Outdated</span>
+      <span class="pill p-blue">Recommend Reform</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SECTION 2: BAR COUNCILS
+════════════════════════════════════════ -->
+<div class="sl">② Bar Councils — Advocates Act, 1961</div>
+
+<div class="mc m2">
+  <svg id="svgBC" viewBox="0 0 1380 260" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <!-- BCI -->
+  <div class="pc c-blue">
+    <div class="pc-eyebrow">National Body</div>
+    <h3>👨‍⚖️ Bar Council of India (BCI)</h3>
+    <div class="cmp">
+      <div class="cmp-col" style="border-color:rgba(26,61,124,0.3);background:var(--blue-lt);">
+        <div class="cmp-col-head" style="color:var(--blue);">📋 Composition</div>
+        <div class="cmp-item">Elected Members</div>
+        <div class="cmp-item">Ex-officio: Attorney General</div>
+        <div class="cmp-item">Ex-officio: Solicitor General</div>
+      </div>
+      <div class="cmp-col" style="border-color:rgba(26,96,64,0.3);background:var(--green-lt);">
+        <div class="cmp-col-head" style="color:var(--green);">⚙️ Functions</div>
+        <div class="cmp-item">Set professional standards</div>
+        <div class="cmp-item">Recognise law universities</div>
+        <div class="cmp-item">Promote legal education</div>
+        <div class="cmp-item">Provide legal aid</div>
+        <div class="cmp-item">Supervise State Bar Councils</div>
+      </div>
+    </div>
+    <div class="callout">
+      <div class="callout-title">⚠️ Prelims Trap</div>
+      <div class="callout-body">BCI = Statutory + Autonomous · Under Advocates Act, 1961 (not Ministry directly)</div>
+    </div>
+    <div>
+      <span class="pill p-blue">Statutory</span>
+      <span class="pill p-blue">Autonomous</span>
+      <span class="pill p-gold">Advocates Act 1961</span>
+    </div>
+  </div>
+
+  <!-- SBC -->
+  <div class="pc c-teal">
+    <div class="pc-eyebrow">State Level Bodies</div>
+    <h3>🏛️ State Bar Councils (SBC)</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Enroll Advocates</div><div class="vs">State-level practice permission</div></div>
+      <div class="vitem"><div class="vt">Misconduct Cases</div><div class="vs">Disciplinary proceedings</div></div>
+      <div class="vitem"><div class="vt">Promote Legal Welfare</div><div class="vs">Advocate welfare funds</div></div>
+      <div class="vitem"><div class="vt">Advocate-General</div><div class="vs">Ex-officio member of SBC</div></div>
+    </div>
+    <div style="margin-top:10px;padding:10px 12px;border-radius:9px;background:rgba(10,88,112,0.07);border:1.5px dashed rgba(10,88,112,0.3);">
+      <div style="font-size:11px;font-weight:700;color:var(--teal);">BCI vs SBC Hierarchy</div>
+      <div class="flow" style="margin-top:6px;">
+        <div class="fn" style="border-color:var(--blue);background:var(--blue-lt);color:var(--blue);">BCI (National)</div>
+        <div class="fa">→</div>
+        <div class="fn" style="border-color:var(--teal);background:var(--teal-lt);color:var(--teal);">SBC (State)</div>
+        <div class="fa">→</div>
+        <div class="fn" style="border-color:var(--green);background:var(--green-lt);color:var(--green);">Advocates</div>
+      </div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="pill p-teal">State Jurisdiction</span>
+      <span class="pill p-teal">Supervised by BCI</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SECTION 3: MARKET REGULATORS
+════════════════════════════════════════ -->
+<div class="sl">③ Market & Sector Regulators — CCI & TRAI</div>
+
+<div class="mc m3">
+  <svg id="svgMkt" viewBox="0 0 1380 240" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <!-- CCI -->
+  <div class="pc c-purple">
+    <div class="pc-eyebrow">Competition Law</div>
+    <h3>📊 Competition Commission of India (CCI)</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--purple);">2002</div>
+        <div class="stat-sub">Competition Act</div>
+        <div class="stat-lbl">ENABLING LAW</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">2009</div>
+        <div class="stat-sub">Became Operational</div>
+        <div class="stat-lbl">ACTIVATED</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">Promotes Fair Competition</div><div class="vs">Level playing field for all</div></div>
+      <div class="vitem"><div class="vt">Investigates Anti-Competitive Practices</div><div class="vs">Cartels, abuse of dominance</div></div>
+      <div class="vitem"><div class="vt">Conducts Market Studies</div><div class="vs">Proactive market analysis</div></div>
+      <div class="vitem"><div class="vt">Can Prohibit Mergers</div><div class="vs">Merger control jurisdiction</div></div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="pill p-purple">Statutory</span>
+      <span class="pill p-purple">Competition Act 2002</span>
+      <span class="chip chip-ok">NOT TRAI jurisdiction</span>
+    </div>
+  </div>
+
+  <!-- TRAI -->
+  <div class="pc c-steel">
+    <div class="pc-eyebrow">Telecom Regulation</div>
+    <h3>📡 TRAI — Telecom Regulatory Authority</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--steel);">1997</div>
+        <div class="stat-sub">TRAI Act</div>
+        <div class="stat-lbl">ESTABLISHED</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--teal);">Sector</div>
+        <div class="stat-sub">Specific</div>
+        <div class="stat-lbl">SCOPE</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">Regulates Telecom Sector</div><div class="vs">Licensing, tariffs, spectrum</div></div>
+      <div class="vitem"><div class="vt">Ensures Quality Standards</div><div class="vs">QoS benchmarks for operators</div></div>
+      <div class="vitem"><div class="vt">Protects Consumer Interest</div><div class="vs">Grievance redressal framework</div></div>
+      <div class="vitem"><div class="vt">Monitors Compliance</div><div class="vs">Checks operator adherence</div></div>
+    </div>
+    <div class="callout" style="background:rgba(42,74,106,0.06);border-color:rgba(42,74,106,0.2);">
+      <div class="callout-title" style="color:var(--steel);">⚠️ Key Distinction</div>
+      <div class="callout-body">TRAI = Telecom only. CCI = economy-wide competition. They do NOT overlap.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CCI vs TRAI Comparison Table -->
+<div class="mc m5" style="margin-bottom:20px;">
+  <div style="padding:20px;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:12px;">Quick Comparison</div>
+    <table class="ct">
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Competition Commission (CCI)</th>
+          <th>TRAI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Enabling Act</td><td>Competition Act, 2002</td><td>TRAI Act, 1997</td></tr>
+        <tr><td>Scope</td><td>Economy-wide (all sectors)</td><td>Telecom sector only</td></tr>
+        <tr><td>Focus</td><td>Anti-competitive behaviour</td><td>Tariffs, QoS, licensing</td></tr>
+        <tr><td>Jurisdiction</td><td>Mergers, cartels, abuse of dominance</td><td>Spectrum, consumer protection</td></tr>
+        <tr><td>Nature</td><td>Statutory / Quasi-judicial</td><td>Statutory / Regulatory</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SECTION 4: NIC & NDC
+════════════════════════════════════════ -->
+<div class="sl">④ NIC & NDC — Executive Bodies</div>
+
+<div class="mc m4">
+  <svg id="svgGov" viewBox="0 0 1380 220" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <!-- NIC -->
+  <div class="pc c-red">
+    <div class="pc-eyebrow">Social Cohesion</div>
+    <h3>🤝 National Integration Council (NIC)</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--red);">1961</div>
+        <div class="stat-sub">Established</div>
+        <div class="stat-lbl">YEAR FORMED</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--gold);">PM</div>
+        <div class="stat-sub">Chairs It</div>
+        <div class="stat-lbl">CHAIR</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">Focus: Communal Harmony</div><div class="vs">National integration agenda</div></div>
+      <div class="vitem"><div class="vt">Advises on Social Tensions</div><div class="vs">Meets during crises</div></div>
+      <div class="vitem"><div class="vt">Executive Body</div><div class="vs">Not constitutional, not statutory</div></div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="pill p-red">Executive</span>
+      <span class="pill p-red">PM Chaired</span>
+      <span class="chip chip-trap">Non-Statutory</span>
+    </div>
+  </div>
+
+  <!-- NDC -->
+  <div class="pc c-green">
+    <div class="pc-eyebrow">Economic Planning (Historical)</div>
+    <h3>📈 National Development Council (NDC)</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--green);">1952</div>
+        <div class="stat-sub">Established</div>
+        <div class="stat-lbl">YEAR FORMED</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">Defunct</div>
+        <div class="stat-sub">Post-NITI</div>
+        <div class="stat-lbl">CURRENT STATUS</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">Chaired by PM</div><div class="vs">Included CMs + Planning Commission</div></div>
+      <div class="vitem"><div class="vt">Approved Five-Year Plans</div><div class="vs">Apex planning body</div></div>
+      <div class="vitem"><div class="vt">Executive Body</div><div class="vs">Not constitutional or statutory</div></div>
+      <div class="vitem"><div class="vt">Now Largely Defunct</div><div class="vs">NITI Aayog replaced Planning Commission</div></div>
+    </div>
+    <div class="flow" style="margin-top:8px;">
+      <div class="fn" style="border-color:var(--green);background:var(--green-lt);color:var(--green);font-size:10px;">NDC (1952)</div>
+      <div class="fa">→</div>
+      <div class="fn" style="border-color:var(--gold);background:var(--gold-pale);color:var(--gold);font-size:10px;">Planning Comm.</div>
+      <div class="fa">→</div>
+      <div class="fn" style="border-color:var(--amber);background:var(--amber-lt);color:var(--amber);font-size:10px;">NITI Aayog (2015)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SECTION 5: PRELIMS TRAPS
+════════════════════════════════════════ -->
+<div class="sl">🔥 High-Probability Prelims Traps</div>
+
+<div class="mc m3" style="margin-bottom:20px;">
+  <div style="padding:20px;">
+    <table class="ct">
+      <thead>
+        <tr>
+          <th>Body</th>
+          <th>Statutory / Non-Statutory</th>
+          <th>Constitutional?</th>
+          <th>Enabling Law</th>
+          <th>Chair</th>
+          <th>Key Trap</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Law Commission</td>
+          <td><span class="chip chip-trap">Non-Statutory</span></td>
+          <td><span class="chip chip-trap">No</span></td>
+          <td>Constituted by Govt. order</td>
+          <td>Judge/Legal Expert</td>
+          <td>Advisory only; 289+ reports</td>
+        </tr>
+        <tr>
+          <td>Bar Council of India</td>
+          <td><span class="chip chip-ok">Statutory</span></td>
+          <td><span class="chip chip-trap">No</span></td>
+          <td>Advocates Act, 1961</td>
+          <td>Elected Chairman</td>
+          <td>Recognises law universities ✔</td>
+        </tr>
+        <tr>
+          <td>State Bar Councils</td>
+          <td><span class="chip chip-ok">Statutory</span></td>
+          <td><span class="chip chip-trap">No</span></td>
+          <td>Advocates Act, 1961</td>
+          <td>Elected Chairman</td>
+          <td>Advocate-General = ex-officio</td>
+        </tr>
+        <tr>
+          <td>CCI</td>
+          <td><span class="chip chip-ok">Statutory</span></td>
+          <td><span class="chip chip-trap">No</span></td>
+          <td>Competition Act, 2002</td>
+          <td>Chairperson</td>
+          <td>Economy-wide; NOT TRAI</td>
+        </tr>
+        <tr>
+          <td>TRAI</td>
+          <td><span class="chip chip-ok">Statutory</span></td>
+          <td><span class="chip chip-trap">No</span></td>
+          <td>TRAI Act, 1997</td>
+          <td>Chairman</td>
+          <td>Telecom only; not competition law</td>
+        </tr>
+        <tr>
+          <td>NIC</td>
+          <td><span class="chip chip-trap">Non-Statutory</span></td>
+          <td><span class="chip chip-trap">No</span></td>
+          <td>Executive Order, 1961</td>
+          <td>Prime Minister</td>
+          <td>Social integration; not NDC</td>
+        </tr>
+        <tr>
+          <td>NDC</td>
+          <td><span class="chip chip-trap">Non-Statutory</span></td>
+          <td><span class="chip chip-trap">No</span></td>
+          <td>Executive Order, 1952</td>
+          <td>Prime Minister</td>
+          <td>Now defunct; NITI Aayog replaced</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SECTION 6: TRAP QUICKFIRE
+════════════════════════════════════════ -->
+<div class="sl">⚡ Quickfire Trap Cards</div>
+
+<div class="g4">
+  <div class="pc c-red" style="padding:16px;">
+    <div class="pc-eyebrow">Trap #1</div>
+    <h3 style="font-size:14px;">⚖️ Law Commission</h3>
+    <div class="chip chip-trap" style="margin-bottom:6px;">Non-Statutory</div>
+    <div style="font-size:11px;color:var(--muted);line-height:1.5;">Not created by Parliament. Advisory only. First one was 1834 under Macaulay!</div>
+  </div>
+  <div class="pc c-blue" style="padding:16px;">
+    <div class="pc-eyebrow">Trap #2</div>
+    <h3 style="font-size:14px;">🏛️ BCI Recognises Universities</h3>
+    <div class="chip chip-ok" style="margin-bottom:6px;">BCI, not UGC</div>
+    <div style="font-size:11px;color:var(--muted);line-height:1.5;">Bar Council of India — not UGC — recognises law universities for legal education.</div>
+  </div>
+  <div class="pc c-purple" style="padding:16px;">
+    <div class="pc-eyebrow">Trap #3</div>
+    <h3 style="font-size:14px;">📊 CCI vs TRAI</h3>
+    <div class="chip chip-trap" style="margin-bottom:6px;">Different Domains</div>
+    <div style="font-size:11px;color:var(--muted);line-height:1.5;">TRAI ≠ competition law. CCI handles cartels. TRAI handles telecom tariffs & QoS.</div>
+  </div>
+  <div class="pc c-green" style="padding:16px;">
+    <div class="pc-eyebrow">Trap #4</div>
+    <h3 style="font-size:14px;">📈 NDC — Defunct</h3>
+    <div class="chip chip-trap" style="margin-bottom:6px;">Not Abolished, Just Inactive</div>
+    <div style="font-size:11px;color:var(--muted);line-height:1.5;">NDC was not officially abolished. NITI Aayog (2015) replaced Planning Commission, making NDC largely defunct.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     KEYSTONE
+════════════════════════════════════════ -->
+<div class="keystone">
+  <div class="ks-icon">🎯</div>
+  <div style="flex:1;">
+    <div class="ks-title">The UPSC Core Connecting Idea</div>
+    <div class="ks-sub">
+      India's governance architecture spans <strong style="color:var(--gold-lt);">Legal Reform</strong> (Law Commission) → <strong style="color:var(--gold-lt);">Legal Profession</strong> (BCI/SBC) → <strong style="color:var(--gold-lt);">Market Regulation</strong> (CCI/TRAI) → <strong style="color:var(--gold-lt);">Social & Economic Integration</strong> (NIC/NDC).<br>
+      Together they form the complete ecosystem: reform laws → enforce legal standards → ensure fair markets → plan national development.
+    </div>
+    <div class="ks-pills">
+      <span class="kp">⚖️ Non-Statutory ≠ Unconstitutional</span>
+      <span class="kp">📜 Advocates Act 1961</span>
+      <span class="kp">📊 Competition Act 2002</span>
+      <span class="kp">📡 TRAI Act 1997</span>
+      <span class="kp">🕰️ NDC 1952 → NITI 2015</span>
+      <span class="kp">🤝 NIC 1961 = Social</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function curve(svg,x1,y1,x2,y2,col,dash,w){
+  const mid=(x1+x2)/2;
+  svg.appendChild(el('path',{
+    d:`M${x1},${y1} C${mid},${y1} ${mid},${y2} ${x2},${y2}`,
+    stroke:col||'#aaa','stroke-width':w||1.8,fill:'none',
+    'stroke-dasharray':dash?'5 4':'none',opacity:'0.6'
+  }));
+}
+
+function line(svg,x1,y1,x2,y2,col,dash,w){
+  svg.appendChild(el('line',{x1,y1,x2,y2,stroke:col||'#aaa','stroke-width':w||1.8,
+    'stroke-dasharray':dash?'5 4':'none',opacity:'0.55'}));
+}
+
+function node(svg,x,y,W,H,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff'; rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  // drop shadow
+  g.appendChild(el('rect',{x:x-W/2+2,y:y-H/2+3,width:W,height:H,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  g.appendChild(el('rect',{x:x-W/2,y:y-H/2,width:W,height:H,rx,ry:rx,fill,
+    stroke:'rgba(255,255,255,0.25)','stroke-width':'1.5'}));
+  let ty=y - (lines.length-1)*8 - (sub?6:0) - (emoji?11:0);
+  if(emoji){
+    const em=el('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'15',fill:textCol});
+    em.textContent=emoji; g.appendChild(em); ty+=20;
+  }
+  lines.forEach((l,i)=>{
+    const t=el('text',{x,y:ty+i*16,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'11','font-weight':'700','font-family':'Outfit,sans-serif',fill:textCol});
+    t.textContent=l; g.appendChild(t);
+  });
+  if(sub){
+    const s=el('text',{x,y:ty+lines.length*16,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'8.5','font-family':'JetBrains Mono,monospace',
+      fill:textCol==='#fff'?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.4)'});
+    s.textContent=sub; g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+
+function badge(svg,x,y,w,h,fill,text,textCol){
+  textCol=textCol||'#fff';
+  svg.appendChild(el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx:5,ry:5,fill}));
+  const t=el('text',{x,y,'text-anchor':'middle','dominant-baseline':'middle',
+    'font-size':'8.5','font-weight':'700','font-family':'JetBrains Mono,monospace',fill:textCol});
+  t.textContent=text; svg.appendChild(t);
+}
+
+// ── MASTER FLOW ──
+(function(){
+  const svg=document.getElementById('svgMaster');
+  svg.setAttribute('viewBox','0 0 1380 120');
+  svg.appendChild(el('rect',{x:0,y:0,width:1380,height:120,fill:'rgba(250,248,244,0.6)'}));
+
+  const steps=[
+    {x:100, label:['Law Reform'], sub:'Think Tank', fill:'#c49a22', emoji:'⚖️'},
+    {x:290, label:['Law Commission'], sub:'289+ reports', fill:'#b87c10', emoji:'📋'},
+    {x:490, label:['Bar Councils'], sub:'Advocates Act 1961', fill:'#1a3d7c', emoji:'👨‍⚖️'},
+    {x:690, label:['CCI'], sub:'Competition Act 2002', fill:'#5c1a8a', emoji:'📊'},
+    {x:870, label:['TRAI'], sub:'TRAI Act 1997', fill:'#2a4a6a', emoji:'📡'},
+    {x:1060, label:['NIC'], sub:'Social integration 1961', fill:'#a81820', emoji:'🤝'},
+    {x:1230, label:['NDC'], sub:'Planning 1952→defunct', fill:'#1a6040', emoji:'📈'},
+    {x:1330, label:['National Dev.'], sub:'Integrated governance', fill:'#0a5870', emoji:'🚀'},
+  ];
+
+  for(let i=0;i<steps.length-1;i++){
+    const s=steps[i],n=steps[i+1];
+    line(svg,s.x+72,60,n.x-72,60,'#c49a2288',false,2);
+    // arrow
+    svg.appendChild(el('polygon',{
+      points:`${n.x-74},55 ${n.x-74},65 ${n.x-62},60`,
+      fill:'#c49a2266'}));
+  }
+  steps.forEach(s=>node(svg,s.x,60,130,62,s.fill,s.label,s.sub,s.emoji));
+
+  const t=el('text',{x:690,y:14,'text-anchor':'middle','font-size':'9','font-family':'JetBrains Mono,monospace','letter-spacing':'3',fill:'rgba(120,100,60,0.4)'});
+  t.textContent='CONNECTED GOVERNANCE FLOW: LEGAL REFORM → PROFESSION → MARKETS → DEVELOPMENT';
+  svg.appendChild(t);
+})();
+
+// ── LAW COMMISSION MIND MAP ──
+(function(){
+  const svg=document.getElementById('svgLC');
+  svg.setAttribute('viewBox','0 0 1380 300');
+  svg.appendChild(el('rect',{x:0,y:0,width:1380,height:300,fill:'rgba(253,246,220,0.3)'}));
+
+  // Central node
+  node(svg,690,150,200,64,'#c49a22',['Law Commission','of India'],'Non-Statutory · Advisory','⚖️');
+
+  // Left cluster: Nature
+  const left=[
+    {x:160, y:70,  fill:'#b87c10', label:['Non-Statutory'], sub:'No Parliament Act', emoji:'📌'},
+    {x:160, y:160, fill:'#8a6010', label:['Advisory Body'],  sub:'Recommends, not legislates', emoji:'💡'},
+    {x:160, y:245, fill:'#6a4a08', label:['3-Year Tenure'],  sub:'Fixed term by Govt.', emoji:'📅'},
+  ];
+  left.forEach(n=>{
+    curve(svg,588,150,n.x+80,n.y,'#c49a2260',true,1.6);
+    node(svg,n.x,n.y,150,48,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  // Top: History
+  const top=[
+    {x:440, y:38, fill:'#d46010', label:['First: 1834'],      sub:'Lord Macaulay', emoji:'📜'},
+    {x:690, y:38, fill:'#1a3d7c', label:['Post-Ind: 1955'],   sub:'M.C. Setalvad', emoji:'🇮🇳'},
+    {x:940, y:38, fill:'#1a6040', label:['289+ Reports'],     sub:'Total submitted', emoji:'📊'},
+  ];
+  top.forEach(n=>{
+    line(svg,n.x,150-32,n.x,n.y+24,n.fill+'88',true,1.5);
+    node(svg,n.x,n.y,155,48,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  // Right cluster: Functions
+  const right=[
+    {x:1200, y:70,  fill:'#1a3d7c', label:['Codify Laws'],     sub:'Consolidation work', emoji:'📋'},
+    {x:1200, y:155, fill:'#5c1a8a', label:['Repeal Outdated'], sub:'Remove obsolete laws', emoji:'🗑️'},
+    {x:1200, y:240, fill:'#0a5870', label:['Reports to MoLJ'], sub:'→ Parliament', emoji:'🏛️'},
+  ];
+  right.forEach(n=>{
+    curve(svg,792,150,n.x-80,n.y,'#1a3d7c55',true,1.6);
+    node(svg,n.x,n.y,160,48,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  // Bottom
+  const bot=[
+    {x:540, y:262, fill:'#4a8010', label:['Summon Witnesses'], sub:'Investigative powers', emoji:'🔍'},
+    {x:840, y:262, fill:'#6a1060', label:['Legal Reform Rec.'], sub:'Comprehensive reviews', emoji:'💼'},
+  ];
+  bot.forEach(n=>{
+    line(svg,n.x,218,n.x,n.y-24,n.fill+'88',true,1.5);
+    node(svg,n.x,n.y,168,48,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+})();
+
+// ── BAR COUNCILS MIND MAP ──
+(function(){
+  const svg=document.getElementById('svgBC');
+  svg.setAttribute('viewBox','0 0 1380 260');
+  svg.appendChild(el('rect',{x:0,y:0,width:1380,height:260,fill:'rgba(220,230,245,0.2)'}));
+
+  // Root
+  node(svg,690,130,200,60,'#0f1e3c',['Bar Councils','Advocates Act 1961'],'Regulating Legal Profession','👨‍⚖️');
+
+  // BCI tree (left side)
+  node(svg,280,130,180,58,'#1a3d7c',['Bar Council','of India (BCI)'],'National body','🏛️');
+  curve(svg,590,130,370,130,'#1a3d7c66',false,2);
+
+  const bciNodes=[
+    {x:80,  y:55,  fill:'#1a3d7c', label:['Statutory'],        sub:'Created by Parliament', emoji:'📜'},
+    {x:80,  y:130, fill:'#1a5870', label:['Attorney General'], sub:'Ex-officio member', emoji:'⚖️'},
+    {x:80,  y:205, fill:'#2a4a8a', label:['Recognise Law Uni'],sub:'Law college approval', emoji:'🎓'},
+    {x:280, y:50,  fill:'#0a4060', label:['Set Std.'],         sub:'Professional standards', emoji:'📋'},
+    {x:280, y:210, fill:'#0a5060', label:['Supervise SBC'],    sub:'Oversight of states', emoji:'🔍'},
+  ];
+  bciNodes.forEach(n=>{
+    const fromX=n.x>200?188:188;
+    curve(svg,188,130,n.x+(n.label[0].length>5?70:60),n.y,'#1a3d7c44',true,1.4);
+    node(svg,n.x,n.y,138,44,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  // SBC tree (right side)
+  node(svg,1100,130,180,58,'#0a5870',['State Bar Councils','(SBC)'],'State-level body','🏛️');
+  curve(svg,790,130,1010,130,'#0a587066',false,2);
+
+  const sbcNodes=[
+    {x:1300, y:55,  fill:'#0a5870', label:['Enroll Advocates'],  sub:'State practice rights', emoji:'📝'},
+    {x:1300, y:130, fill:'#0a6858', label:['Misconduct Cases'],  sub:'Disciplinary powers', emoji:'⚖️'},
+    {x:1300, y:205, fill:'#1a4870', label:['Advoc-Gen'],         sub:'Ex-officio member', emoji:'🏛️'},
+    {x:1100, y:48,  fill:'#0a4060', label:['Legal Welfare'],     sub:'Advocate welfare funds', emoji:'❤️'},
+    {x:1100, y:210, fill:'#0a6040', label:['Under BCI'],         sub:'Supervised by BCI', emoji:'🔗'},
+  ];
+  sbcNodes.forEach(n=>{
+    curve(svg,1192,130,n.x-(n.x>1200?60:0),n.y,'#0a587044',true,1.4);
+    node(svg,n.x,n.y,148,44,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  // vertical divider
+  svg.appendChild(el('line',{x1:690,y1:20,x2:690,y2:240,stroke:'rgba(180,160,120,0.2)','stroke-width':'1.5','stroke-dasharray':'6 4'}));
+  const lt=el('text',{x:340,y:250,'text-anchor':'middle','font-size':'8','font-family':'JetBrains Mono,monospace',fill:'rgba(26,61,124,0.4)','letter-spacing':'2'});
+  lt.textContent='BAR COUNCIL OF INDIA (NATIONAL)'; svg.appendChild(lt);
+  const rt=el('text',{x:1040,y:250,'text-anchor':'middle','font-size':'8','font-family':'JetBrains Mono,monospace',fill:'rgba(10,88,112,0.4)','letter-spacing':'2'});
+  rt.textContent='STATE BAR COUNCILS (STATE-LEVEL)'; svg.appendChild(rt);
+})();
+
+// ── MARKET REGULATORS MIND MAP ──
+(function(){
+  const svg=document.getElementById('svgMkt');
+  svg.setAttribute('viewBox','0 0 1380 240');
+  svg.appendChild(el('rect',{x:0,y:0,width:1380,height:240,fill:'rgba(234,216,248,0.12)'}));
+
+  // Central
+  node(svg,690,120,210,60,'#1a0030',['Market & Sector','Regulators'],'Fair Economy · Fair Telecom','📊');
+
+  // CCI left
+  node(svg,260,120,180,58,'#5c1a8a',['Competition','Commission (CCI)'],'Competition Act 2002','📊');
+  curve(svg,584,120,350,120,'#5c1a8a66',false,2);
+  const cciN=[
+    {x:60,  y:52,  fill:'#5c1a8a', label:['Competition Act 2002'], sub:'Enabling legislation', emoji:'📜'},
+    {x:60,  y:130, fill:'#6a2a9a', label:['Anti-Competitive'],     sub:'Cartels & dominance', emoji:'🚫'},
+    {x:60,  y:208, fill:'#4a0a7a', label:['Merger Control'],       sub:'Reviews mergers', emoji:'🔀'},
+    {x:260, y:45,  fill:'#3a0a6a', label:['Market Studies'],       sub:'Proactive analysis', emoji:'🔍'},
+    {x:260, y:195, fill:'#500a80', label:['Economy-Wide'],         sub:'All sectors', emoji:'🌐'},
+  ];
+  cciN.forEach(n=>{
+    curve(svg,168,120,n.x+(n.x>200?80:90),n.y,'#5c1a8a44',true,1.4);
+    node(svg,n.x,n.y,158,44,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  // TRAI right
+  node(svg,1120,120,180,58,'#2a4a6a',['TRAI'],'TRAI Act 1997','📡');
+  curve(svg,797,120,1030,120,'#2a4a6a66',false,2);
+  const traiN=[
+    {x:1320, y:52,  fill:'#2a4a6a', label:['TRAI Act 1997'],    sub:'Enabling legislation', emoji:'📜'},
+    {x:1320, y:130, fill:'#0a5870', label:['Tariffs & Licensing'],sub:'Operator regulation', emoji:'📋'},
+    {x:1320, y:208, fill:'#1a3a5a', label:['Consumer Interest'], sub:'QoS protection', emoji:'👥'},
+    {x:1120, y:45,  fill:'#0a4060', label:['Telecom Only'],      sub:'Sector-specific scope', emoji:'📡'},
+    {x:1120, y:195, fill:'#0a5060', label:['Compliance Monitor'],sub:'Checks adherence', emoji:'🔍'},
+  ];
+  traiN.forEach(n=>{
+    curve(svg,1212,120,n.x-(n.x>1200?60:0),n.y,'#2a4a6a44',true,1.4);
+    node(svg,n.x,n.y,158,44,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  svg.appendChild(el('line',{x1:690,y1:15,x2:690,y2:225,stroke:'rgba(180,160,120,0.15)','stroke-width':'1.5','stroke-dasharray':'6 4'}));
+  const lt=el('text',{x:360,y:232,'text-anchor':'middle','font-size':'8','font-family':'JetBrains Mono,monospace',fill:'rgba(92,26,138,0.4)','letter-spacing':'2'});
+  lt.textContent='CCI — ECONOMY-WIDE COMPETITION'; svg.appendChild(lt);
+  const rt=el('text',{x:1020,y:232,'text-anchor':'middle','font-size':'8','font-family':'JetBrains Mono,monospace',fill:'rgba(42,74,106,0.4)','letter-spacing':'2'});
+  rt.textContent='TRAI — TELECOM SECTOR ONLY'; svg.appendChild(rt);
+})();
+
+// ── NIC & NDC MIND MAP ──
+(function(){
+  const svg=document.getElementById('svgGov');
+  svg.setAttribute('viewBox','0 0 1380 220');
+  svg.appendChild(el('rect',{x:0,y:0,width:1380,height:220,fill:'rgba(216,238,223,0.15)'}));
+
+  // Central
+  node(svg,690,110,210,60,'#0a1a10',['NIC & NDC','Executive Bodies'],'Integration · Planning','🏛️');
+
+  // NIC left
+  node(svg,255,110,180,58,'#a81820',['National Integration','Council (NIC)'],'Communal Harmony · 1961','🤝');
+  curve(svg,584,110,344,110,'#a8182066',false,2);
+  const nicN=[
+    {x:58,  y:50,  fill:'#a81820', label:['Estd. 1961'],         sub:'PM chairs it', emoji:'📅'},
+    {x:58,  y:120, fill:'#c02030', label:['Communal Harmony'],   sub:'Core mandate', emoji:'☮️'},
+    {x:58,  y:190, fill:'#801018', label:['Non-Statutory'],      sub:'Executive order only', emoji:'📌'},
+    {x:255, y:45,  fill:'#901a22', label:['Meets During Crisis'],sub:'Ad-hoc meetings', emoji:'🚨'},
+    {x:255, y:175, fill:'#701020', label:['Advisory to Govt.'],  sub:'No binding power', emoji:'💬'},
+  ];
+  nicN.forEach(n=>{
+    curve(svg,163,110,n.x+(n.x>200?90:82),n.y,'#a8182044',true,1.4);
+    node(svg,n.x,n.y,160,44,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  // NDC right
+  node(svg,1125,110,180,58,'#1a6040',['National Development','Council (NDC)'],'Five-Year Plans · 1952','📈');
+  curve(svg,797,110,1035,110,'#1a604066',false,2);
+  const ndcN=[
+    {x:1322, y:50,  fill:'#1a6040', label:['Estd. 1952'],         sub:'PM + CMs + Planning Comm.', emoji:'📅'},
+    {x:1322, y:120, fill:'#2a7050', label:['Approved 5-Yr Plans'], sub:'Apex planning body', emoji:'📋'},
+    {x:1322, y:190, fill:'#104030', label:['Non-Statutory'],       sub:'Executive order', emoji:'📌'},
+    {x:1125, y:45,  fill:'#0a5030', label:['Now Defunct'],         sub:'NITI Aayog 2015', emoji:'⚠️'},
+    {x:1125, y:175, fill:'#1a5840', label:['NITI Replaced'],       sub:'Planning Comm. dissolved', emoji:'🔄'},
+  ];
+  ndcN.forEach(n=>{
+    curve(svg,1217,110,n.x-(n.x>1200?60:0),n.y,'#1a604044',true,1.4);
+    node(svg,n.x,n.y,162,44,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  svg.appendChild(el('line',{x1:690,y1:12,x2:690,y2:208,stroke:'rgba(180,160,120,0.15)','stroke-width':'1.5','stroke-dasharray':'6 4'}));
+  const lt=el('text',{x:340,y:212,'text-anchor':'middle','font-size':'8','font-family':'JetBrains Mono,monospace',fill:'rgba(168,24,32,0.4)','letter-spacing':'2'});
+  lt.textContent='NIC — SOCIAL INTEGRATION'; svg.appendChild(lt);
+  const rt=el('text',{x:1040,y:212,'text-anchor':'middle','font-size':'8','font-family':'JetBrains Mono,monospace',fill:'rgba(26,96,64,0.4)','letter-spacing':'2'});
+  rt.textContent='NDC — ECONOMIC PLANNING (DEFUNCT)'; svg.appendChild(rt);
+})();
+</script>
+</body>
+</html>

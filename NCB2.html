@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CVC, CIC & SIC — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#12100e;--paper:#f8f5ef;--gold:#b87c10;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf5;--card2:#f2ede0;--sky:#1a5878;
+  --cvc:#b01a1a;--cic:#1a3a8a;--sic:#1a6a3a;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 900px 500px at 15% 10%,rgba(176,26,26,.05) 0%,transparent 60%),
+  radial-gradient(ellipse 700px 700px at 85% 90%,rgba(26,58,138,.05) 0%,transparent 60%);
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1420px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(24px,4.5vw,46px);line-height:1.1;}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--cvc),var(--cic),var(--sic));margin:14px auto 0;border-radius:4px;}
+
+/* SEC LABEL */
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:20px;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3{grid-template-columns:1fr 1fr;}.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g3,.g2,.g4{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(184,124,16,.1);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.cvc::before{background:var(--cvc);}
+.pc.cic::before{background:var(--cic);}
+.pc.sic::before{background:var(--sic);}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.amber::before{background:var(--amber);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* MAP CARD */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:22px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--cvc),var(--amber),var(--gold));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--cvc),var(--purple));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--cic),var(--sky));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--sic),var(--teal));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--purple),var(--ink));}
+.map-card.mc6::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.map-card svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.cvc{background:rgba(176,26,26,.12);color:var(--cvc);}
+.pill.cic{background:rgba(26,58,138,.12);color:var(--cic);}
+.pill.sic{background:rgba(26,106,58,.12);color:var(--sic);}
+.pill.gold{background:rgba(184,124,16,.12);color:var(--gold);}
+.pill.purple{background:rgba(90,26,138,.12);color:var(--purple);}
+.pill.amber{background:rgba(212,106,16,.12);color:var(--amber);}
+.pill.teal{background:rgba(10,96,112,.12);color:var(--teal);}
+.pill.ink{background:rgba(18,16,14,.1);color:var(--ink);}
+
+/* CHIPS */
+.ps-chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.ok{background:rgba(26,106,58,.07);border-color:rgba(26,106,58,.2);color:var(--green);}
+.ps-chip.warn{background:rgba(176,26,26,.07);border-color:rgba(176,26,26,.2);color:var(--red);}
+.ps-chip.neu{background:rgba(184,124,16,.07);border-color:rgba(184,124,16,.2);color:var(--gold);}
+
+/* STAT */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* FEAT */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;}
+.tag.ok{background:#d4edda;color:#155724;}
+.tag.na{background:#f8d7da;color:#721c24;}
+.tag.neu{background:#fff3cd;color:#856404;}
+
+/* PHASE */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0 20px;}
+.phase-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;}
+.phase-title{font-size:12px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);}
+
+/* IMPACT */
+.impact-chain{display:flex;align-items:center;flex-wrap:wrap;padding:6px 0;margin:8px 0;gap:0;}
+.ic-node{padding:7px 12px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:14px;color:var(--muted);flex:0 0 auto;margin:0 4px;}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;margin:8px 0;}
+.callout-title{font-size:11px;font-weight:800;margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,.1);font-size:11px;font-family:'DM Mono',monospace;}
+
+/* TRAP */
+.trap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:10px 0;}
+@media(max-width:700px){.trap-grid{grid-template-columns:1fr 1fr;}}
+.trap-item{padding:12px;border-radius:10px;background:rgba(176,26,26,.06);border:1.5px solid rgba(176,26,26,.2);text-align:center;}
+.trap-icon{font-size:18px;margin-bottom:4px;}
+.trap-text{font-size:10px;font-weight:800;color:var(--red);}
+.trap-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:2px;}
+
+/* FLOW */
+.gov-flow{display:flex;align-items:stretch;gap:0;margin:14px 0;flex-wrap:wrap;}
+.gf-node{flex:1;min-width:160px;padding:14px;border-radius:0;border:1.5px solid var(--border);background:var(--card2);text-align:center;}
+.gf-node:first-child{border-radius:12px 0 0 12px;}
+.gf-node:last-child{border-radius:0 12px 12px 0;}
+.gf-arr{display:flex;align-items:center;color:var(--muted);font-size:20px;padding:0 4px;}
+.gf-icon{font-size:22px;margin-bottom:6px;}
+.gf-title{font-size:12px;font-weight:800;}
+.gf-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Polity · Good Governance · UPSC Prelims</div>
+  <h1>CVC, CIC & SIC — <em>Good Governance Triangle</em></h1>
+  <div class="header-sub">🔎 Corruption Control · 📄 Transparency · 🧾 Accountability</div>
+</div>
+
+<!-- SECTION 0: MASTER OVERVIEW -->
+<div class="sec-label">Master Overview — The Governance Triangle</div>
+
+<div class="map-card mc1">
+  <svg id="svgMaster" viewBox="0 0 1360 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- INTRO STRIP -->
+<div class="g3" style="margin-bottom:22px;">
+  <div class="pc cvc">
+    <div class="pc-label">Anti-Corruption Watchdog</div>
+    <h3>🛡️ Central Vigilance Commission</h3>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+      <span class="pill cvc">CVC Act, 2003</span>
+      <span class="pill amber">Statutory Body</span>
+      <span class="pill ink">Santhanam Committee</span>
+    </div>
+    <div style="font-size:11px;color:var(--muted);line-height:1.6;">Watches over corruption in central services. Supervises CBI in corruption cases. Protects whistleblowers.</div>
+  </div>
+  <div class="pc cic">
+    <div class="pc-label">Right to Information</div>
+    <h3>📄 Central Information Commission</h3>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+      <span class="pill cic">RTI Act, 2005</span>
+      <span class="pill amber">Statutory Body</span>
+      <span class="pill ink">Central Level</span>
+    </div>
+    <div style="font-size:11px;color:var(--muted);line-height:1.6;">Enforces right to information at central level. Hears complaints of RTI denial, delay, excess fees. Reports to Parliament.</div>
+  </div>
+  <div class="pc sic">
+    <div class="pc-label">State-level RTI Enforcement</div>
+    <h3>🧾 State Information Commission</h3>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+      <span class="pill sic">RTI Act, 2005</span>
+      <span class="pill amber">Statutory Body</span>
+      <span class="pill ink">State Level</span>
+    </div>
+    <div style="font-size:11px;color:var(--muted);line-height:1.6;">Same as CIC but for state government bodies. Appointed by Governor. Reports to State Legislature.</div>
+  </div>
+</div>
+
+<!-- GOVERNANCE FLOW -->
+<div class="gov-flow" style="margin-bottom:22px;">
+  <div class="gf-node" style="background:rgba(176,26,26,.06);border-color:rgba(176,26,26,.2);">
+    <div class="gf-icon">🔎</div>
+    <div class="gf-title" style="color:var(--cvc);">Corruption Happens</div>
+    <div class="gf-sub">CVC supervises CBI<br>Whistleblower protection</div>
+  </div>
+  <div class="gf-arr">→</div>
+  <div class="gf-node" style="background:rgba(26,58,138,.06);border-color:rgba(26,58,138,.2);">
+    <div class="gf-icon">📄</div>
+    <div class="gf-title" style="color:var(--cic);">Information Denied</div>
+    <div class="gf-sub">CIC / SIC intervene<br>RTI enforcement</div>
+  </div>
+  <div class="gf-arr">→</div>
+  <div class="gf-node" style="background:rgba(90,26,138,.06);border-color:rgba(90,26,138,.2);">
+    <div class="gf-icon">🧾</div>
+    <div class="gf-title" style="color:var(--purple);">Accountability Fails</div>
+    <div class="gf-sub">Parliament / Legislature<br>informed via reports</div>
+  </div>
+  <div class="gf-arr">→</div>
+  <div class="gf-node" style="background:rgba(26,106,58,.06);border-color:rgba(26,106,58,.2);">
+    <div class="gf-icon">✅</div>
+    <div class="gf-title" style="color:var(--sic);">Transparent Democracy</div>
+    <div class="gf-sub">Corruption control +<br>Information access</div>
+  </div>
+</div>
+
+<!-- SECTION 1: CVC -->
+<div class="sec-label">① Central Vigilance Commission — CVC Act, 2003</div>
+
+<div class="map-card mc2">
+  <svg id="svgCVC" viewBox="0 0 1360 290" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc cvc">
+    <div class="pc-label">Structure & Term</div>
+    <h3>🏛️ Composition</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--cvc);">1</div><div class="stat-sub">Chief Vigilance Commr.</div><div class="stat-label">HEAD</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--cvc);">≤2</div><div class="stat-sub">Vigilance Commissioners</div><div class="stat-label">MEMBERS</div></div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem" style="border-left:3px solid var(--cvc);"><div class="vt">⏱️ Term: 4 Years or Age 65</div><div class="vs">Whichever comes earlier — no reappointment</div></div>
+      <div class="vitem"><div class="vt">🗑️ Removal: By President</div><div class="vs">SC inquiry required for misconduct</div></div>
+    </div>
+  </div>
+  <div class="pc cvc">
+    <div class="pc-label">Appointment Committee</div>
+    <h3>👥 Who Appoints?</h3>
+    <div style="padding:12px;border-radius:10px;background:rgba(176,26,26,.06);border:1.5px solid rgba(176,26,26,.2);margin-bottom:10px;">
+      <div style="font-size:11px;font-weight:800;color:var(--cvc);margin-bottom:6px;">President appoints on recommendation of:</div>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">🏛️ Prime Minister</div><div class="vs">Heads the 3-member committee</div></div>
+        <div class="vitem"><div class="vt">🗣️ Leader of Opposition (LS)</div><div class="vs">Lok Sabha opposition leader</div></div>
+        <div class="vitem"><div class="vt">🏠 Union Home Minister</div><div class="vs">Third member</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="pc cvc">
+    <div class="pc-label">Functions & Powers</div>
+    <h3>⚙️ What CVC Does</h3>
+    <div class="vlist">
+      <div class="vitem" style="border-left:3px solid var(--cvc);"><div class="vt">Supervises CBI</div><div class="vs">In corruption-related cases only</div></div>
+      <div class="vitem"><div class="vt">Advises on Vigilance</div><div class="vs">Government vigilance matters</div></div>
+      <div class="vitem"><div class="vt">Whistleblower Protection</div><div class="vs">Receives complaints under WBPA 2014</div></div>
+      <div class="vitem"><div class="vt">Civil Court Powers</div><div class="vs">Covers AIS, Group A, PSUs, RBI, LIC</div></div>
+      <div class="vitem"><div class="vt">Penalty for False Complaints</div><div class="vs">Can impose on false whistleblowers</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: CIC -->
+<div class="sec-label">② Central Information Commission — RTI Act, 2005</div>
+
+<div class="map-card mc3">
+  <svg id="svgCIC" viewBox="0 0 1360 290" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc cic">
+    <div class="pc-label">Structure & Term</div>
+    <h3>🏛️ Composition</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--cic);">1</div><div class="stat-sub">Chief Info. Commissioner</div><div class="stat-label">HEAD</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--cic);">≤10</div><div class="stat-sub">Info. Commissioners</div><div class="stat-label">MEMBERS</div></div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem" style="border-left:3px solid var(--cic);"><div class="vt">⏱️ Term: As prescribed by Govt.</div><div class="vs">After 2019 amendment — Max age 65, no reappointment</div></div>
+      <div class="vitem"><div class="vt">Qualification: Eminent Public Person</div><div class="vs">Cannot be MP/MLA or hold office of profit</div></div>
+    </div>
+  </div>
+  <div class="pc cic">
+    <div class="pc-label">Appointment Committee</div>
+    <h3>👥 Who Appoints?</h3>
+    <div style="padding:12px;border-radius:10px;background:rgba(26,58,138,.06);border:1.5px solid rgba(26,58,138,.2);margin-bottom:10px;">
+      <div style="font-size:11px;font-weight:800;color:var(--cic);margin-bottom:6px;">President appoints on recommendation of:</div>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">🏛️ Prime Minister</div><div class="vs">Heads the committee</div></div>
+        <div class="vitem"><div class="vt">🗣️ Leader of Opposition (LS)</div><div class="vs">Lok Sabha opposition leader</div></div>
+        <div class="vitem"><div class="vt">🗂️ Union Cabinet Minister</div><div class="vs">Nominated by PM — third member</div></div>
+      </div>
+    </div>
+    <div style="padding:9px;border-radius:9px;background:rgba(176,26,26,.07);border:1.5px solid rgba(176,26,26,.2);">
+      <div style="font-size:10px;font-weight:800;color:var(--red);">⚠️ CVC vs CIC: Home Minister (CVC) vs Cabinet Minister nominated by PM (CIC)</div>
+    </div>
+  </div>
+  <div class="pc cic">
+    <div class="pc-label">Functions & Powers</div>
+    <h3>⚙️ What CIC Does</h3>
+    <div class="vlist">
+      <div class="vitem" style="border-left:3px solid var(--cic);"><div class="vt">Investigate RTI Complaints</div><div class="vs">Denial · Delay · Excess fees · False info</div></div>
+      <div class="vitem" style="border-left:3px solid var(--gold);"><div class="vt">💰 Penalty: Up to ₹25,000</div><div class="vs">Per RTI complaint — key prelims number</div></div>
+      <div class="vitem"><div class="vt">Civil Court Powers</div><div class="vs">Can summon, examine on oath</div></div>
+      <div class="vitem"><div class="vt">Reports to Parliament</div><div class="vs">Submits annual report via Central Govt.</div></div>
+    </div>
+    <div class="callout" style="background:rgba(26,58,138,.06);border:1.5px solid rgba(26,58,138,.2);margin-top:8px;">
+      <div class="callout-title" style="color:var(--cic);">🔑 Removal Grounds</div>
+      <div class="callout-body">Insolvency · Moral turpitude · Paid employment · Incapacity — By President</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: SIC -->
+<div class="sec-label">③ State Information Commission — RTI Act, 2005 (State Level)</div>
+
+<div class="map-card mc4">
+  <svg id="svgSIC" viewBox="0 0 1360 270" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc sic">
+    <div class="pc-label">Structure & Appointment</div>
+    <h3>🏛️ Composition</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--sic);">1</div><div class="stat-sub">State Chief Info. Commr.</div><div class="stat-label">HEAD</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--sic);">≤10</div><div class="stat-sub">State Info. Commissioners</div><div class="stat-label">MEMBERS</div></div>
+    </div>
+    <div style="margin-top:10px;padding:12px;border-radius:10px;background:rgba(26,106,58,.06);border:1.5px solid rgba(26,106,58,.2);">
+      <div style="font-size:11px;font-weight:800;color:var(--sic);margin-bottom:6px;">Governor appoints on recommendation of:</div>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">🏛️ Chief Minister</div><div class="vs">Heads state committee (vs PM for CIC)</div></div>
+        <div class="vitem"><div class="vt">🗣️ Leader of Opposition (SLA)</div><div class="vs">State Legislative Assembly</div></div>
+        <div class="vitem"><div class="vt">🗂️ State Cabinet Minister</div><div class="vs">Nominated by CM (vs PM for CIC)</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="pc sic">
+    <div class="pc-label">Functions & Term</div>
+    <h3>⚙️ What SIC Does</h3>
+    <div class="vlist">
+      <div class="vitem" style="border-left:3px solid var(--sic);"><div class="vt">Same RTI Enforcement — State Level</div><div class="vs">Mirror of CIC for state government bodies</div></div>
+      <div class="vitem"><div class="vt">Reports to State Legislature</div><div class="vs">Via State Government — not Parliament</div></div>
+      <div class="vitem"><div class="vt">Removal: By Governor</div><div class="vs">Same grounds as CIC (incl. moral turpitude)</div></div>
+      <div class="vitem" style="border-left:3px solid var(--gold);"><div class="vt">⏱️ Term: Rules + Max 65</div><div class="vs">After 2019 amendment — conditions by State Govt.</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px;border-radius:9px;background:rgba(26,106,58,.07);border:1.5px solid rgba(26,106,58,.2);">
+      <div style="font-size:10px;font-weight:800;color:var(--sic);">✅ Anjali Bhardwaj v. UoI (2019): SC ordered vacancies must be filled in advance</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: COMPARISON TABLE -->
+<div class="sec-label">⚖️ Full Comparison — CVC vs CIC vs SIC</div>
+
+<div class="map-card mc5">
+  <svg id="svgCompare" viewBox="0 0 1360 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="pc" style="border-color:var(--border);margin-bottom:20px;">
+  <div class="pc-label">Full Comparison Matrix</div>
+  <h3>📊 CVC vs CIC vs SIC — At A Glance</h3>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th style="color:#ff8a8a;">🛡️ CVC</th>
+        <th style="color:#6fa8ff;">📄 CIC</th>
+        <th style="color:#6fcf97;">🧾 SIC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Governing Law</td><td>CVC Act, 2003</td><td>RTI Act, 2005</td><td>RTI Act, 2005</td></tr>
+      <tr><td>Nature</td><td><span class="tag neu">Statutory</span></td><td><span class="tag neu">Statutory</span></td><td><span class="tag neu">Statutory</span></td></tr>
+      <tr><td>Appointed by</td><td>President</td><td>President</td><td>Governor</td></tr>
+      <tr><td>Committee Head</td><td>PM</td><td>PM</td><td>CM</td></tr>
+      <tr><td>3rd Member</td><td>Home Minister</td><td>Cabinet Min. (PM nominee)</td><td>Cabinet Min. (CM nominee)</td></tr>
+      <tr><td>Members</td><td>CVC + ≤2 Commissioners</td><td>CIC + ≤10 Commissioners</td><td>SCIC + ≤10 Commissioners</td></tr>
+      <tr><td>Term</td><td>4 yrs or 65 (earlier)</td><td>As prescribed (max 65)</td><td>As prescribed (max 65)</td></tr>
+      <tr><td>Reappointment</td><td><span class="tag na">Not Allowed</span></td><td><span class="tag na">Not Allowed</span></td><td><span class="tag na">Not Allowed</span></td></tr>
+      <tr><td>Removal by</td><td>President (SC inquiry)</td><td>President</td><td>Governor</td></tr>
+      <tr><td>Civil Court Powers</td><td><span class="tag ok">Yes</span></td><td><span class="tag ok">Yes</span></td><td><span class="tag ok">Yes</span></td></tr>
+      <tr><td>Supervises CBI</td><td><span class="tag ok">Yes ✅</span></td><td><span class="tag na">No</span></td><td><span class="tag na">No</span></td></tr>
+      <tr><td>Penalty Power</td><td>False complaints</td><td>₹25,000 per violation</td><td>₹25,000 per violation</td></tr>
+      <tr><td>Reports to</td><td>Central Govt. / President</td><td>Central Govt. → Parliament</td><td>State Govt. → Legislature</td></tr>
+      <tr><td>Recommended by</td><td>Santhanam Committee</td><td>RTI Act</td><td>RTI Act</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 5: APPOINTMENT COMPARISON -->
+<div class="sec-label">🔑 Appointment Committee — Side by Side</div>
+
+<div class="map-card mc6">
+  <svg id="svgAppt" viewBox="0 0 1360 210" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3" style="margin-bottom:22px;">
+  <div class="pc cvc">
+    <div class="pc-label">CVC Appointment</div>
+    <h3>🛡️ President appoints via:</h3>
+    <div class="vlist">
+      <div class="vitem" style="border-left:3px solid var(--cvc);"><div class="vt">1️⃣ Prime Minister</div><div class="vs">Committee head</div></div>
+      <div class="vitem"><div class="vt">2️⃣ Leader of Opposition (LS)</div><div class="vs">Lok Sabha opp. leader</div></div>
+      <div class="vitem" style="border-left:3px solid var(--red);"><div class="vt">3️⃣ Union Home Minister</div><div class="vs">⚠️ Key difference from CIC</div></div>
+    </div>
+  </div>
+  <div class="pc cic">
+    <div class="pc-label">CIC Appointment</div>
+    <h3>📄 President appoints via:</h3>
+    <div class="vlist">
+      <div class="vitem" style="border-left:3px solid var(--cic);"><div class="vt">1️⃣ Prime Minister</div><div class="vs">Committee head</div></div>
+      <div class="vitem"><div class="vt">2️⃣ Leader of Opposition (LS)</div><div class="vs">Lok Sabha opp. leader</div></div>
+      <div class="vitem" style="border-left:3px solid var(--red);"><div class="vt">3️⃣ Cabinet Minister (PM nominee)</div><div class="vs">⚠️ Key difference from CVC</div></div>
+    </div>
+  </div>
+  <div class="pc sic">
+    <div class="pc-label">SIC Appointment</div>
+    <h3>🧾 Governor appoints via:</h3>
+    <div class="vlist">
+      <div class="vitem" style="border-left:3px solid var(--sic);"><div class="vt">1️⃣ Chief Minister</div><div class="vs">State committee head</div></div>
+      <div class="vitem"><div class="vt">2️⃣ Leader of Opposition (SLA)</div><div class="vs">State Legislature opp. leader</div></div>
+      <div class="vitem"><div class="vt">3️⃣ Cabinet Minister (CM nominee)</div><div class="vs">State level mirror of CIC</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: PRELIMS TRAPS -->
+<div class="sec-label">🎯 High Probability Prelims Traps</div>
+
+<div class="trap-grid" style="margin-bottom:22px;">
+  <div class="trap-item">
+    <div class="trap-icon">🔎</div>
+    <div class="trap-text">CVC Supervises CBI</div>
+    <div class="trap-sub">Not CIC — CVC only</div>
+  </div>
+  <div class="trap-item">
+    <div class="trap-icon">📋</div>
+    <div class="trap-text">CVC = Statutory</div>
+    <div class="trap-sub">Not constitutional body</div>
+  </div>
+  <div class="trap-item">
+    <div class="trap-icon">💰</div>
+    <div class="trap-text">₹25,000 Penalty</div>
+    <div class="trap-sub">CIC/SIC — per RTI violation</div>
+  </div>
+  <div class="trap-item">
+    <div class="trap-icon">⏱️</div>
+    <div class="trap-text">CVC Term = 4 Years</div>
+    <div class="trap-sub">Or age 65, whichever earlier</div>
+  </div>
+  <div class="trap-item">
+    <div class="trap-icon">🏠</div>
+    <div class="trap-text">Home Min. → CVC only</div>
+    <div class="trap-sub">Cabinet Min. (PM) → CIC</div>
+  </div>
+  <div class="trap-item">
+    <div class="trap-icon">⚖️</div>
+    <div class="trap-text">Moral Turpitude</div>
+    <div class="trap-sub">Removal ground for CIC/SIC</div>
+  </div>
+  <div class="trap-item">
+    <div class="trap-icon">🌿</div>
+    <div class="trap-text">Whistleblower = CVC</div>
+    <div class="trap-sub">WBPA 2014 — CVC receives</div>
+  </div>
+  <div class="trap-item">
+    <div class="trap-icon">📜</div>
+    <div class="trap-text">2019 RTI Amendment</div>
+    <div class="trap-sub">Govt. now sets CIC/SIC term</div>
+  </div>
+</div>
+
+<!-- SECTION 7: SC CASE -->
+<div class="sec-label">⚖️ Supreme Court Case — RTI Landmark</div>
+
+<div class="pc" style="border-color:rgba(90,26,138,.3);background:rgba(90,26,138,.03);margin-bottom:22px;">
+  <div style="display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap;">
+    <div style="flex:0 0 auto;padding:16px 24px;border-radius:12px;background:rgba(90,26,138,.08);border:1.5px solid rgba(90,26,138,.2);text-align:center;">
+      <div style="font-size:22px;">⚖️</div>
+      <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:800;color:var(--purple);margin-top:6px;">Anjali Bhardwaj</div>
+      <div style="font-size:10px;font-family:'DM Mono',monospace;color:var(--muted);">v. Union of India</div>
+      <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:var(--purple);margin-top:4px;">2019</div>
+    </div>
+    <div style="flex:1;min-width:200px;">
+      <div style="font-size:13px;font-weight:800;color:var(--purple);margin-bottom:10px;">Supreme Court Held:</div>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">RTI is vital for democracy</div><div class="vs">Transparency is a fundamental right — cannot be diluted</div></div>
+        <div class="vitem"><div class="vt">Vacancies must be filled in advance</div><div class="vs">Information Commissions cannot remain headless — proactive filling required</div></div>
+        <div class="vitem"><div class="vt">Timely appointments mandatory</div><div class="vs">States and Centre must maintain functional commissions</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🛡️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">India's good governance triangle rests on three pillars: <strong style="color:#f5d78a;">CVC</strong> catches corruption, <strong style="color:#f5d78a;">CIC</strong> enforces transparency at centre, <strong style="color:#f5d78a;">SIC</strong> enforces it at states. All three are statutory (not constitutional), share civil court powers, and are appointed through committees involving PM/CM + Leader of Opposition. The key differentiator is the <em>3rd member</em> of each appointment committee.</div>
+    <div class="keystone-pills">
+      <span class="kpill">🛡️ CVC → Corruption</span>
+      <span class="kpill">📄 CIC → Central RTI</span>
+      <span class="kpill">🧾 SIC → State RTI</span>
+      <span class="kpill">💰 ₹25,000 Penalty</span>
+      <span class="kpill">🔎 CVC Supervises CBI</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const p=se('path',{d:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':w||2,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.65'});
+  svg.appendChild(p);
+}
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.setAttribute('style','overflow:visible');
+  // Calculate total content height to ensure box is tall enough
+  let contentH = (emoji?18:0) + lines.length*15 + (sub?14:0);
+  let boxH = Math.max(h, contentH + 14);
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-boxH/2+3,width:w,height:boxH,rx,ry:rx,fill:'rgba(0,0,0,0.1)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-boxH/2,width:w,height:boxH,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.2)','stroke-width':'1.5'}));
+  // Start rendering from top of box with padding
+  let ty = y - boxH/2 + 10;
+  if(emoji){
+    const em=se('text',{x,y:ty+8,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});
+    em.textContent=emoji;g.appendChild(em);ty+=20;
+  }
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*15+7,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  ty += lines.length*15 + 2;
+  if(sub){
+    // Sub-text rendered INSIDE box with high contrast background strip
+    const subCol = textCol==='#fff' ? 'rgba(255,255,255,0.9)' : 'rgba(18,16,14,0.75)';
+    const subBg = se('rect',{x:x-w/2,y:ty,width:w,height:14,rx:0,ry:0,fill:'rgba(0,0,0,0.18)'});
+    g.appendChild(subBg);
+    const s=se('text',{x,y:ty+7,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9','font-weight':'600','font-family':'DM Mono,monospace',fill:subCol});
+    s.textContent=sub;g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+
+// ── MASTER FLOW ──
+(function(){
+  const svg=document.getElementById('svgMaster');
+  svg.setAttribute('viewBox','0 0 1360 220');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:220,fill:'rgba(250,245,238,0.4)'}));
+
+  // Triangle visualization + flow
+  const steps=[
+    {x:90,  fill:'#7a6a50', label:['Santhanam','Committee'],    sub:'Recommended CVC',        emoji:'📋'},
+    {x:260, fill:'#b01a1a', label:['CVC Created','2003'],       sub:'Statutory Anti-Corruption',emoji:'🛡️'},
+    {x:450, fill:'#b87c10', label:['Supervises CBI'],           sub:'Corruption cases',       emoji:'🔎'},
+    {x:640, fill:'#5a1a8a', label:['Whistleblower','Protection'],sub:'WBPA 2014',             emoji:'🤫'},
+    {x:830, fill:'#1a3a8a', label:['RTI Act 2005'],             sub:'CIC + SIC created',      emoji:'📄'},
+    {x:1020,fill:'#1a3a8a', label:['CIC — Centre'],             sub:'₹25,000 penalty',        emoji:'🏛️'},
+    {x:1180,fill:'#1a6a3a', label:['SIC — State'],              sub:'Governor appoints',      emoji:'🏢'},
+    {x:1310,fill:'#12100e', label:['Transparent','Democracy'],  sub:'Governance Triangle',    emoji:'✅'},
+  ];
+
+  for(let i=0;i<steps.length-1;i++){
+    const a=steps[i],b=steps[i+1];
+    const conn=se('path',{d:`M${a.x+70},100 L${b.x-70},100`,stroke:'#b87c1060','stroke-width':'2',fill:'none'});
+    svg.appendChild(conn);
+  }
+  steps.forEach(s=>{node(svg,s.x,100,130,80,s.fill,s.label,s.sub,s.emoji);});
+
+  const t=se('text',{x:680,y:18,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'3','fill':'rgba(120,100,60,0.45)'});
+  t.textContent='CORRUPTION CONTROL → TRANSPARENCY → ACCOUNTABILITY → GOOD GOVERNANCE';
+  svg.appendChild(t);
+})();
+
+// ── CVC MIND MAP ──
+(function(){
+  const svg=document.getElementById('svgCVC');
+  svg.setAttribute('viewBox','0 0 1360 290');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:290,fill:'rgba(250,245,238,0.35)'}));
+
+  node(svg,680,130,220,72,'#b01a1a',['Central Vigilance','Commission'],'CVC Act, 2003 · Statutory Body','🛡️');
+
+  const left=[
+    {x:130,y:60,  fill:'#b01a1a', label:['CVC + ≤2','Commissioners'], sub:'Structure',           emoji:'👥'},
+    {x:130,y:148, fill:'#7a1010', label:['4 Yrs / 65','(Earlier)'],   sub:'No reappointment',   emoji:'⏱️'},
+    {x:130,y:236, fill:'#9a2010', label:['Prez Appoints'],            sub:'PM+LOP+Home Min.',   emoji:'🏛️'},
+  ];
+  const right=[
+    {x:1230,y:60,  fill:'#b01a1a', label:['Supervises CBI'],          sub:'Corruption cases',   emoji:'🔎'},
+    {x:1230,y:140, fill:'#5a1a8a', label:['Whistleblower','Shield'],  sub:'WBPA 2014',          emoji:'🤫'},
+    {x:1230,y:225, fill:'#0a6070', label:['Civil Court','Powers'],    sub:'AIS, Group A, PSUs', emoji:'⚖️'},
+  ];
+  const bots=[
+    {x:380,y:264,fill:'#8a1010',label:['Vigilance Advice'],sub:'Advises Govt. on matters',emoji:'📋'},
+    {x:680,y:264,fill:'#b01a1a',label:['SC Inquiry'],sub:'Removal misconduct only',emoji:'⚠️'},
+    {x:980,y:264,fill:'#6a1010',label:['False Complaints'],sub:'Can impose penalty',emoji:'🚫'},
+  ];
+
+  left.forEach(n=>{edge(svg,590,130,n.x+76,n.y,'#b01a1a55',true,1.8);node(svg,n.x,n.y,144,66,n.fill,n.label,n.sub,n.emoji);});
+  right.forEach(n=>{edge(svg,770,130,n.x-76,n.y,'#b01a1a55',true,1.8);node(svg,n.x,n.y,144,66,n.fill,n.label,n.sub,n.emoji);});
+  bots.forEach(n=>{edge(svg,680,170,n.x,n.y-34,'#b01a1a44',true,1.5);node(svg,n.x,n.y,204,62,n.fill,n.label,n.sub,n.emoji);});
+})();
+
+// ── CIC MIND MAP ──
+(function(){
+  const svg=document.getElementById('svgCIC');
+  svg.setAttribute('viewBox','0 0 1360 290');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:290,fill:'rgba(250,245,238,0.35)'}));
+
+  node(svg,680,130,220,72,'#1a3a8a',['Central Information','Commission'],'RTI Act, 2005 · Statutory Body','📄');
+
+  const left=[
+    {x:130,y:60,  fill:'#1a3a8a', label:['CIC + ≤10','Commissioners'],  sub:'Structure',               emoji:'👥'},
+    {x:130,y:148, fill:'#2a4a9a', label:['Max Age 65','(Post-2019)'],    sub:'Govt. prescribes term',   emoji:'⏱️'},
+    {x:130,y:236, fill:'#0a2a7a', label:['Prez Appoints'],              sub:'PM+LOP+Cabinet Min.',     emoji:'🏛️'},
+  ];
+  const right=[
+    {x:1230,y:60,  fill:'#1a3a8a', label:['RTI Complaints'],            sub:'Denial · Delay · Fees',   emoji:'📄'},
+    {x:1230,y:145, fill:'#b87c10', label:['₹25,000 Penalty'],           sub:'Per RTI violation',       emoji:'💰'},
+    {x:1230,y:228, fill:'#0a6070', label:['Civil Court','Powers'],      sub:'Summon, examine on oath', emoji:'⚖️'},
+  ];
+  const bots=[
+    {x:380,y:264,fill:'#2a3a8a',label:['Not MP/MLA'],sub:'Qualification — eminent person',emoji:'🚫'},
+    {x:680,y:264,fill:'#1a3a8a',label:['Reports to Parl.'],sub:'Via Central Govt.',emoji:'📊'},
+    {x:980,y:264,fill:'#3a2090',label:['Removal Grounds'],sub:'Insolvency, moral turpitude',emoji:'⚠️'},
+  ];
+
+  left.forEach(n=>{edge(svg,590,130,n.x+76,n.y,'#1a3a8a55',true,1.8);node(svg,n.x,n.y,144,66,n.fill,n.label,n.sub,n.emoji);});
+  right.forEach(n=>{edge(svg,770,130,n.x-76,n.y,'#1a3a8a55',true,1.8);node(svg,n.x,n.y,144,66,n.fill,n.label,n.sub,n.emoji);});
+  bots.forEach(n=>{edge(svg,680,170,n.x,n.y-34,'#1a3a8a44',true,1.5);node(svg,n.x,n.y,204,62,n.fill,n.label,n.sub,n.emoji);});
+})();
+
+// ── SIC MIND MAP ──
+(function(){
+  const svg=document.getElementById('svgSIC');
+  svg.setAttribute('viewBox','0 0 1360 270');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:270,fill:'rgba(250,245,238,0.35)'}));
+
+  node(svg,680,120,220,72,'#1a6a3a',['State Information','Commission'],'RTI Act, 2005 · State Level','🧾');
+
+  const left=[
+    {x:130,y:55,  fill:'#1a6a3a', label:['SCIC + ≤10','Commissioners'], sub:'Mirror of CIC at state',  emoji:'👥'},
+    {x:130,y:148, fill:'#0a5a2a', label:['Governor Appoints'],           sub:'CM+LOP(SLA)+Cabinet Min.',emoji:'🏛️'},
+    {x:130,y:228, fill:'#006040', label:['Max Age 65'],                  sub:'State rules post-2019',   emoji:'⏱️'},
+  ];
+  const right=[
+    {x:1230,y:55,  fill:'#1a6a3a', label:['State RTI','Enforcement'],   sub:'Same as CIC at state',   emoji:'📄'},
+    {x:1230,y:142, fill:'#1a5878', label:['Reports to','State Legis.'], sub:'Via State Govt.',        emoji:'📊'},
+    {x:1230,y:228, fill:'#5a1a8a', label:['Removal by','Governor'],     sub:'Same grounds as CIC',    emoji:'⚠️'},
+  ];
+  const bots=[
+    {x:480,y:252,fill:'#2a6a4a',label:['₹25,000 Penalty'],sub:'Per RTI violation (same as CIC)',emoji:'💰'},
+    {x:880,y:252,fill:'#1a6a3a',label:['Anjali Bhardwaj 2019'],sub:'Fill vacancies proactively',emoji:'⚖️'},
+  ];
+
+  left.forEach(n=>{edge(svg,590,120,n.x+76,n.y,'#1a6a3a55',true,1.8);node(svg,n.x,n.y,144,66,n.fill,n.label,n.sub,n.emoji);});
+  right.forEach(n=>{edge(svg,770,120,n.x-76,n.y,'#1a6a3a55',true,1.8);node(svg,n.x,n.y,144,66,n.fill,n.label,n.sub,n.emoji);});
+  bots.forEach(n=>{edge(svg,680,158,n.x,n.y-34,'#1a6a3a44',true,1.5);node(svg,n.x,n.y,204,62,n.fill,n.label,n.sub,n.emoji);});
+})();
+
+// ── COMPARE SVG: Side-by-side triangles ──
+(function(){
+  const svg=document.getElementById('svgCompare');
+  svg.setAttribute('viewBox','0 0 1360 160');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:160,fill:'rgba(250,245,238,0.35)'}));
+
+  // Three columns comparison
+  const cols=[
+    {x:230, fill:'#b01a1a', title:'🛡️ CVC', items:['CVC Act 2003','President Appoints','PM + LOP + Home Min.','4 yrs / Age 65','Supervises CBI ✅','Whistleblower Protection']},
+    {x:680, fill:'#1a3a8a', title:'📄 CIC', items:['RTI Act 2005','President Appoints','PM + LOP + Cab. Min.','Govt. sets / max 65','RTI Enforcement','₹25,000 Penalty']},
+    {x:1130,fill:'#1a6a3a', title:'🧾 SIC', items:['RTI Act 2005','Governor Appoints','CM + LOP + Cab. Min.','Govt. sets / max 65','State RTI Enforcement','Reports to State Legis.']},
+  ];
+
+  cols.forEach(col=>{
+    // header node
+    node(svg,col.x,30,200,42,col.fill,[col.title],'Key Features','',undefined,8);
+    // items as small text blocks
+    col.items.forEach((item,i)=>{
+      const y=72+i*14;
+      const bg=se('rect',{x:col.x-90,y:y-8,width:180,height:13,rx:3,ry:3,fill:i%2===0?'rgba(0,0,0,0.03)':'rgba(0,0,0,0)'});
+      svg.appendChild(bg);
+      const t=se('text',{x:col.x,y:y,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9.5','font-family':'Nunito,sans-serif','font-weight':i===0?'800':'600',fill:i===0?col.fill:'#3a3020'});
+      t.textContent=item;svg.appendChild(t);
+    });
+  });
+
+  // dividers
+  [455,905].forEach(x=>{
+    svg.appendChild(se('line',{x1:x,y1:20,x2:x,y2:150,stroke:'rgba(200,180,140,0.3)','stroke-width':'1','stroke-dasharray':'5 4'}));
+  });
+})();
+
+// ── APPOINTMENT SVG ──
+(function(){
+  const svg=document.getElementById('svgAppt');
+  svg.setAttribute('viewBox','0 0 1360 210');
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:210,fill:'rgba(250,245,238,0.35)'}));
+
+  // Three appointment trees
+  const trees=[
+    {rx:230, ry:40, fill:'#b01a1a', title:['CVC Appt.'], members:[
+      {fill:'#7a1010',label:['PM'],sub:'Committee head',emoji:'👑',y:135},
+      {fill:'#9a2010',label:['LOP (LS)'],sub:'Opposition',emoji:'🗣️',y:135},
+      {fill:'#b01a1a',label:['Home Min.'],sub:'⚠️ Key diff.',emoji:'🏠',y:135},
+    ]},
+    {rx:680, ry:40, fill:'#1a3a8a', title:['CIC Appt.'], members:[
+      {fill:'#0a2070',label:['PM'],sub:'Committee head',emoji:'👑',y:135},
+      {fill:'#1a3a8a',label:['LOP (LS)'],sub:'Opposition',emoji:'🗣️',y:135},
+      {fill:'#2a4a9a',label:['Cab. Min.'],sub:'⚠️ PM nominee',emoji:'🗂️',y:135},
+    ]},
+    {rx:1130, ry:40, fill:'#1a6a3a', title:['SIC Appt.'], members:[
+      {fill:'#0a5020',label:['CM'],sub:'State head',emoji:'🏛️',y:135},
+      {fill:'#1a6a3a',label:['LOP (SLA)'],sub:'State opp.',emoji:'🗣️',y:135},
+      {fill:'#006040',label:['Cab. Min.'],sub:'CM nominee',emoji:'🗂️',y:135},
+    ]},
+  ];
+
+  trees.forEach(tree=>{
+    node(svg,tree.rx,tree.ry,170,50,tree.fill,tree.title,'President/Governor Appoints','',undefined,8);
+    const spacing=140;
+    const startX=tree.rx-spacing;
+    tree.members.forEach((m,i)=>{
+      const mx=startX+i*spacing;
+      edge(svg,tree.rx,tree.ry+25,mx,m.y-34,tree.fill+'55',true,1.5);
+      node(svg,mx,m.y,128,62,m.fill,m.label,m.sub,m.emoji);
+    });
+  });
+
+  // dividers
+  [455,905].forEach(x=>{
+    svg.appendChild(se('line',{x1:x,y1:10,x2:x,y2:205,stroke:'rgba(200,180,140,0.2)','stroke-width':'1','stroke-dasharray':'5 4'}));
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lokpal and Lokayukta Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0f0e0c; --paper:#f9f6f0; --p2:#f0ead8; --border:#ddd0b0; --muted:#8a7a60;
+  --gold:#b07a08; --gold-lt:#fef3cc; --amber:#c85a00;
+  --indigo:#2a3a9a; --indigo-lt:#eaedfa;
+  --teal:#096060; --teal-lt:#e0f5f5;
+  --green:#165828; --green-lt:#e2f5e8;
+  --red:#9a1515; --red-lt:#faeaea;
+  --purple:#5a159a; --purple-lt:#f2eafa;
+  --blue:#1a50a0; --blue-lt:#e8f0fc;
+  --sky:#1a5878;
+  --card:#fffdf5;
+}
+body{font-family:'Outfit',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;
+  background-image:radial-gradient(ellipse 900px 500px at 12% 8%,rgba(176,122,8,0.07) 0%,transparent 60%),
+  radial-gradient(ellipse 700px 700px at 88% 92%,rgba(154,21,21,0.05) 0%,transparent 60%);}
+.wrap{max-width:1400px;margin:0 auto;padding:0 22px 100px;}
+
+.hdr{text-align:center;padding:46px 16px 22px;}
+.hdr-sup{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.hdr h1{font-family:'Playfair Display',serif;font-size:clamp(26px,4.5vw,50px);line-height:1.12;}
+.hdr h1 em{font-style:italic;color:var(--red);}
+.hdr-sub{margin-top:8px;font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:1px;}
+.hdr::after{content:'';display:block;width:100px;height:3px;background:linear-gradient(90deg,var(--amber),var(--red),var(--purple));margin:14px auto 0;border-radius:4px;}
+
+.sec{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:36px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:18px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:18px;}
+@media(max-width:1000px){.g5{grid-template-columns:1fr 1fr 1fr;}.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:700px){.g2,.g3,.g4,.g5{grid-template-columns:1fr;}}
+
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pc:hover{box-shadow:0 6px 24px rgba(0,0,0,0.09);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.pc.cr::before{background:var(--red);}
+.pc.cg::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.cp::before{background:var(--purple);}
+.pc.ci::before{background:var(--indigo);}
+.pc.ct::before{background:var(--teal);}
+.pc.cn::before{background:var(--green);}
+.pc.cb::before{background:var(--blue);}
+.pc.cs::before{background:var(--sky);}
+.pc.ca::before{background:var(--amber);}
+.pc-lbl{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:9px;display:flex;align-items:center;gap:6px;line-height:1.3;}
+
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:18px;position:relative;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;}
+.mc.mr::before{background:linear-gradient(90deg,var(--red),var(--amber));}
+.mc.mg::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.mc.mp::before{background:linear-gradient(90deg,var(--purple),var(--indigo));}
+.mc.mt::before{background:linear-gradient(90deg,var(--teal),var(--green));}
+.mc.mb::before{background:linear-gradient(90deg,var(--blue),var(--sky));}
+.mc svg{display:block;width:100%;height:auto;}
+
+.vl{display:flex;flex-direction:column;gap:6px;}
+.vi{padding:8px 11px;border-radius:8px;background:var(--p2);border:1px solid var(--border);font-size:11px;}
+.vi b{display:block;font-weight:700;margin-bottom:1px;}
+.vi span{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+.chip{display:inline-block;padding:3px 9px;border-radius:6px;font-size:9.5px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip.ok{background:var(--green-lt);border-color:rgba(22,88,40,.25);color:var(--green);}
+.chip.bad{background:var(--red-lt);border-color:rgba(154,21,21,.25);color:var(--red);}
+.chip.info{background:var(--indigo-lt);border-color:rgba(42,58,154,.2);color:var(--indigo);}
+.chip.gold{background:var(--gold-lt);border-color:rgba(176,122,8,.25);color:var(--gold);}
+.chip.pu{background:var(--purple-lt);border-color:rgba(90,21,154,.2);color:var(--purple);}
+.chip.red{background:var(--red-lt);border-color:rgba(154,21,21,.2);color:var(--red);}
+.chip.tl{background:var(--teal-lt);border-color:rgba(9,96,96,.2);color:var(--teal);}
+
+.sr{display:flex;gap:8px;margin:8px 0;}
+.sb{flex:1;padding:10px 5px;border-radius:9px;border:1.5px solid var(--border);text-align:center;background:var(--p2);}
+.sbn{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;line-height:1;}
+.sbs{font-size:10px;font-weight:700;margin-top:2px;}
+.sbl{font-size:8.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:2px;}
+
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px;}
+.fi{padding:9px 10px;border-radius:8px;background:var(--p2);border:1px solid var(--border);}
+.fii{font-size:15px;margin-bottom:3px;}
+.fit{font-size:10.5px;font-weight:700;}
+.fis{font-size:8.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:1px;}
+
+.tg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px;}
+@media(max-width:700px){.tg{grid-template-columns:1fr 1fr;}}
+.ti{padding:11px 13px;border-radius:10px;background:var(--red-lt);border:1.5px solid rgba(154,21,21,.2);}
+.ti b{display:block;font-size:10.5px;font-weight:700;color:var(--red);margin-bottom:3px;}
+.ti p{font-size:10.5px;line-height:1.55;}
+
+.ctbl{width:100%;border-collapse:collapse;font-size:11px;}
+.ctbl th{background:var(--ink);color:#fff;padding:9px 12px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:1px;}
+.ctbl td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctbl tr:last-child td{border-bottom:none;}
+.ctbl tr:nth-child(even) td{background:rgba(176,122,8,.025);}
+.ctbl td:first-child{font-weight:700;color:var(--amber);width:22%;}
+.tag{display:inline-block;padding:1px 6px;border-radius:4px;font-size:8.5px;font-weight:700;}
+.tag.r{background:var(--red-lt);color:var(--red);}
+.tag.g{background:var(--green-lt);color:var(--green);}
+
+.ks{background:var(--ink);color:#f5e8c0;border-radius:16px;padding:24px 28px;margin:20px 0;display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;}
+.ks-ico{font-size:38px;flex:0 0 auto;margin-top:2px;}
+.ks-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:6px;}
+.ks-body{font-size:11px;color:#c8b880;line-height:1.7;}
+.kp{padding:4px 11px;border-radius:20px;background:rgba(255,255,255,.1);font-size:10px;font-family:'JetBrains Mono',monospace;display:inline-block;margin:3px 2px;}
+
+.cal{padding:11px 13px;border-radius:9px;margin:8px 0;}
+.cal.gold{background:var(--gold-lt);border:1.5px solid rgba(176,122,8,.22);}
+.cal.red{background:var(--red-lt);border:1.5px solid rgba(154,21,21,.2);}
+.cal.pu{background:var(--purple-lt);border:1.5px solid rgba(90,21,154,.2);}
+.cal.tl{background:var(--teal-lt);border:1.5px solid rgba(9,96,96,.2);}
+.cal.gn{background:var(--green-lt);border:1.5px solid rgba(22,88,40,.2);}
+.cal b{display:block;font-size:10.5px;font-weight:700;margin-bottom:3px;}
+.cal p{font-size:10px;color:var(--muted);line-height:1.6;}
+
+.ph-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0 18px;}
+@media(max-width:700px){.ph-row{grid-template-columns:1fr;}}
+.ph{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.ph-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;}
+.ph-title{font-size:12px;font-weight:800;margin:4px 0;}
+.ph-sub{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:8px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hdr">
+  <div class="hdr-sup">Indian Polity · Anti-Corruption Institutions · UPSC Prelims</div>
+  <h1>Lokpal &amp; Lokayukta — <em>Mind Map</em></h1>
+  <div class="hdr-sub">Statutory Watchdog · Structure · Jurisdiction · Governance Chain</div>
+</div>
+
+<div class="sec">Master Flow — From Corruption to Accountability</div>
+<div class="mc mr" id="mc-master"></div>
+
+<div class="sec">① Nature &amp; Origins — What is Lokpal?</div>
+<div class="mc mg" id="mc-origin"></div>
+
+<div class="g3">
+  <div class="pc cg">
+    <div class="pc-lbl">Nature — Extra-Constitutional</div>
+    <h3>📜 Statutory, NOT Constitutional</h3>
+    <div class="vl">
+      <div class="vi"><b>NOT in the Constitution</b><span>Extra-constitutional — created by statute</span></div>
+      <div class="vi"><b>Lokpal &amp; Lokayuktas Act, 2013</b><span>Parliamentary law — NOT constitutional amendment</span></div>
+      <div class="vi"><b>Ombudsman Concept</b><span>Idea from Sweden 1809 — adopted 200 years later</span></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip red">⚠️ Statutory NOT Constitutional</span></div>
+  </div>
+  <div class="pc ca">
+    <div class="pc-lbl">Historical Timeline</div>
+    <h3>📅 How It Came to Be</h3>
+    <div class="vl">
+      <div class="vi"><b>1st ARC (1966–70) — Recommended</b><span>Administrative Reforms Commission suggested Lokpal</span></div>
+      <div class="vi"><b>1971 — First Lokayukta</b><span>Maharashtra — state level came first</span></div>
+      <div class="vi"><b>2011 — Anna Hazare Movement</b><span>Jan Lokpal Bill public pressure</span></div>
+      <div class="vi"><b>2013 — Act Passed</b><span>Lokpal &amp; Lokayuktas Act finally enacted</span></div>
+    </div>
+  </div>
+  <div class="pc cp">
+    <div class="pc-lbl">Two-Level System</div>
+    <h3>🏛️ Lokpal vs Lokayukta</h3>
+    <div class="fi" style="margin-bottom:8px;background:var(--indigo-lt);border-color:rgba(42,58,154,.2);">
+      <div class="fii">🛡️</div>
+      <div class="fit" style="color:var(--indigo);">Lokpal → Union Level</div>
+      <div class="fis">Centre-level anti-corruption watchdog</div>
+    </div>
+    <div class="fi" style="background:var(--purple-lt);border-color:rgba(90,21,154,.2);">
+      <div class="fii">🏛️</div>
+      <div class="fit" style="color:var(--purple);">Lokayukta → State Level</div>
+      <div class="fis">Each state has own Lokayukta law</div>
+    </div>
+    <div class="cal pu" style="margin-top:8px;">
+      <b style="color:var(--purple);">First Lokayukta: Maharashtra 1971</b>
+      <p>States adopted before Centre did at national level.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sec">② Structure &amp; Composition</div>
+<div class="mc mp" id="mc-structure"></div>
+
+<div class="g2">
+  <div class="pc cp">
+    <div class="pc-lbl">Multi-Member Body Composition</div>
+    <h3>👥 Members at a Glance</h3>
+    <div class="sr">
+      <div class="sb"><div class="sbn" style="color:var(--purple);">1</div><div class="sbs">Chairperson</div><div class="sbl">HEAD</div></div>
+      <div class="sb"><div class="sbn" style="color:var(--indigo);">8</div><div class="sbs">Max Members</div><div class="sbl">UPPER LIMIT</div></div>
+      <div class="sb"><div class="sbn" style="color:var(--red);">50%</div><div class="sbs">Judicial</div><div class="sbl">MANDATORY</div></div>
+      <div class="sb"><div class="sbn" style="color:var(--green);">45</div><div class="sbs">Min Age</div><div class="sbl">YEARS</div></div>
+    </div>
+    <div class="vl" style="margin-top:8px;">
+      <div class="vi"><b>50% must be SC/ST/OBC/Minorities/Women</b><span>Reservation in composition itself — key trap</span></div>
+      <div class="vi"><b>Judicial Members → SC Judge or HC Chief Justice</b><span>Current or Former</span></div>
+      <div class="vi"><b>Non-Judicial Members → 25+ years experience</b><span>Anti-corruption / public administration / law</span></div>
+    </div>
+  </div>
+  <div class="pc ci">
+    <div class="pc-lbl">Appointment, Term &amp; Selection</div>
+    <h3>👑 Appointment Process</h3>
+    <div class="vl">
+      <div class="vi"><b>Lokpal → Appointed by President</b><span>On recommendation of Selection Committee</span></div>
+      <div class="vi"><b>Lokayukta → Appointed by Governor</b><span>State-level equivalent</span></div>
+    </div>
+    <div style="margin-top:10px;padding:11px;border-radius:10px;background:var(--indigo-lt);border:1.5px solid rgba(42,58,154,.2);">
+      <div style="font-size:10.5px;font-weight:700;color:var(--indigo);margin-bottom:7px;">🔑 Selection Committee (5 Members)</div>
+      <div class="vl">
+        <div class="vi" style="background:#fff;"><b>Prime Minister</b><span>Heads the committee</span></div>
+        <div class="vi" style="background:#fff;"><b>Speaker of Lok Sabha</b><span>Lower house representative</span></div>
+        <div class="vi" style="background:#fff;"><b>Leader of Opposition (Lok Sabha)</b><span>Opposition voice</span></div>
+        <div class="vi" style="background:#fff;"><b>CJI or Nominee</b><span>Chief Justice of India</span></div>
+        <div class="vi" style="background:#fff;"><b>Eminent Jurist</b><span>Recommended by above four</span></div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:9px;">
+      <div class="sb" style="flex:1;"><div class="sbn" style="color:var(--amber);font-size:18px;">5 yr</div><div class="sbs">OR Age 70</div><div class="sbl">TERM</div></div>
+      <div class="sb" style="flex:1;"><div style="font-size:11px;font-weight:700;margin-top:4px;">Removed By</div><div class="sbn" style="color:var(--red);font-size:16px;margin-top:3px;">President</div><div class="sbl">SC INQUIRY</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">③ Wings of Lokpal — Operational Structure</div>
+<div class="mc mt" id="mc-wings"></div>
+
+<div class="g3">
+  <div class="pc ct">
+    <div class="pc-lbl">Wing 1 — Investigation</div>
+    <h3>🔍 Inquiry Wing</h3>
+    <div class="vl">
+      <div class="vi"><b>Receives &amp; examines complaints</b><span>Primary investigative arm</span></div>
+      <div class="vi"><b>Report within 60 Days</b><span>High-frequency prelims fact — memorize</span></div>
+      <div class="vi"><b>Powers of Civil Court</b><span>Summon witnesses, demand documents</span></div>
+    </div>
+    <div style="margin-top:10px;padding:10px;border-radius:9px;background:var(--teal-lt);border:1.5px solid rgba(9,96,96,.2);text-align:center;">
+      <div style="font-family:'Playfair Display',serif;font-size:30px;font-weight:800;color:var(--teal);">60</div>
+      <div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);">DAYS — REPORT DEADLINE ⚠️</div>
+    </div>
+  </div>
+  <div class="pc cn">
+    <div class="pc-lbl">Wing 2 — Prosecution</div>
+    <h3>⚖️ Prosecution Wing</h3>
+    <div class="vl">
+      <div class="vi"><b>Headed by Director of Prosecution</b><span>Leads court-level cases</span></div>
+      <div class="vi"><b>Files in Special Courts</b><span>Designated corruption courts</span></div>
+      <div class="vi"><b>Works with &amp; supervises CBI</b><span>In referred cases only</span></div>
+    </div>
+    <div class="cal gn" style="margin-top:9px;">
+      <b style="color:var(--green);">🕵️ CBI Supervision</b>
+      <p>Lokpal supervises CBI investigations where Lokpal has referred the case. Important power.</p>
+    </div>
+  </div>
+  <div class="pc cb">
+    <div class="pc-lbl">Wing 3 — Selection Aid</div>
+    <h3>🔎 Search Committee</h3>
+    <div class="vl">
+      <div class="vi"><b>Assists the Selection Committee</b><span>Recommends names for Lokpal members</span></div>
+      <div class="vi"><b>50% from Marginalized Groups</b><span>SC/ST/OBC/Minorities/Women in Search Committee too</span></div>
+      <div class="vi"><b>Ensures diverse representation</b><span>Throughout appointment process</span></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip tl">50% Marginalised</span></div>
+  </div>
+</div>
+
+<div class="sec">④ Jurisdiction — Who is Covered?</div>
+<div class="mc mr" id="mc-jurisdiction"></div>
+
+<div class="g2">
+  <div class="pc cr">
+    <div class="pc-lbl">Persons Under Jurisdiction</div>
+    <h3>🎯 Lokpal Covers:</h3>
+    <div class="vl">
+      <div class="vi"><b>Prime Minister</b><span>With conditions — certain matters excluded</span></div>
+      <div class="vi"><b>Union Ministers &amp; MPs</b><span>Lok Sabha + Rajya Sabha both</span></div>
+      <div class="vi"><b>Group A, B, C, D Officers</b><span>All central government employees</span></div>
+      <div class="vi"><b>Govt-funded Institutions</b><span>Receiving ₹10 Lakh+ foreign contributions</span></div>
+      <div class="vi"><b>Central Public Corporations</b><span>Under Government control</span></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip ok">✅ Powers of Civil Court</span></div>
+  </div>
+  <div class="pc ca">
+    <div class="pc-lbl">Powers &amp; PM Exclusions</div>
+    <h3>⚡ Special Powers</h3>
+    <div class="fg">
+      <div class="fi"><div class="fii">🏛️</div><div class="fit">Civil Court Powers</div><div class="fis">Summon, examine, seize</div></div>
+      <div class="fi"><div class="fii">🔍</div><div class="fit">Supervise CBI</div><div class="fis">In referred matters</div></div>
+      <div class="fi"><div class="fii">💰</div><div class="fit">Attach Assets</div><div class="fis">Freeze corrupt property</div></div>
+      <div class="fi"><div class="fii">📋</div><div class="fit">Special Courts</div><div class="fis">Designated tribunals</div></div>
+    </div>
+    <div style="margin-top:10px;padding:10px;border-radius:9px;background:var(--red-lt);border:1.5px solid rgba(154,21,21,.2);">
+      <div style="font-size:10.5px;font-weight:700;color:var(--red);margin-bottom:5px;">⚠️ PM Cannot Be Investigated For:</div>
+      <div style="font-size:10px;color:var(--ink);line-height:1.7;">• National Security &amp; Defence<br>• International Relations<br>• Atomic Energy &amp; Space<br>• Public Order matters</div>
+    </div>
+    <div class="cal gold" style="margin-top:9px;">
+      <b style="color:var(--gold);">🌍 Inspired from Sweden — 1809</b>
+      <p>World's first ombudsman. India adapted the concept over 200 years later in 2013.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sec">⑤ Lokpal vs Lokayukta — Comparison</div>
+<div class="mc mp" id="mc-compare"></div>
+
+<div style="background:var(--card);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:18px;">
+  <table class="ctbl">
+    <thead>
+      <tr><th>Aspect</th><th>🛡️ Lokpal — Union</th><th>🏛️ Lokayukta — State</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Level</td><td>Central / Union</td><td>State</td></tr>
+      <tr><td>Created By</td><td>Lokpal &amp; Lokayuktas Act, 2013</td><td>Respective State Laws</td></tr>
+      <tr><td>Appointed By</td><td>President of India</td><td>Governor of State</td></tr>
+      <tr><td>Structure</td><td>1 Chairperson + up to 8 Members</td><td>Varies by state</td></tr>
+      <tr><td>Judicial Members</td><td>Minimum 50% <span class="tag r">Trap ⚠️</span></td><td>Varies by state</td></tr>
+      <tr><td>Reserved %</td><td>50% SC/ST/OBC/Min./Women <span class="tag r">Trap ⚠️</span></td><td>Varies by state</td></tr>
+      <tr><td>Term</td><td>5 years OR Age 70 (whichever earlier)</td><td>Varies — usually similar</td></tr>
+      <tr><td>First Instance</td><td>Act 2013; operational from 2019</td><td>Maharashtra 1971 <span class="tag g">First Ever</span></td></tr>
+      <tr><td>CBI Supervision</td><td>Yes — in referred cases</td><td>No direct CBI link</td></tr>
+      <tr><td>PM / CM Covered</td><td>PM covered with conditions</td><td>CM covered at state level</td></tr>
+      <tr><td>Nature</td><td>Statutory (NOT constitutional)</td><td>Statutory (state law)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="sec">🔥 High Probability Prelims Traps</div>
+<div class="pc cr" style="margin-bottom:18px;">
+  <div class="pc-lbl">Exam Bombs — Get Every Single One Right</div>
+  <h3>⚠️ High-Frequency Mistake Zones</h3>
+  <div class="tg">
+    <div class="ti"><b>Statutory, NOT Constitutional</b><p>Lokpal is NOT in the Constitution. Created by law. Biggest trap in exams.</p></div>
+    <div class="ti"><b>Multi-Member Body</b><p>NOT single-member. 1 Chairperson + up to 8 Members. Total = max 9 persons.</p></div>
+    <div class="ti"><b>50% Must Be Judicial</b><p>Half of all members must be judicial (SC judge / HC Chief Justice). Mandatory minimum.</p></div>
+    <div class="ti"><b>50% Reserved Categories</b><p>SC/ST/OBC/Minorities/Women must form at least 50% of members.</p></div>
+    <div class="ti"><b>Minimum Age = 45 Years</b><p>Not 35, not 50, not 40. Exactly 45 years minimum for any member.</p></div>
+    <div class="ti"><b>Term = 5 Years or Age 70</b><p>Whichever is earlier. No reappointment after the term ends.</p></div>
+    <div class="ti"><b>PM IS Under Lokpal</b><p>PM is covered — but national security, defence, atomic energy excluded.</p></div>
+    <div class="ti"><b>Inquiry Wing = 60 Days</b><p>Inquiry Wing must submit report within 60 days. Very specific fact.</p></div>
+    <div class="ti"><b>Civil Court Powers</b><p>Lokpal has powers of a civil court — summon witnesses, demand documents, seize.</p></div>
+  </div>
+</div>
+
+<div class="sec">⑥ The Complete Governance Accountability Chain</div>
+<div class="mc mb" id="mc-chain"></div>
+
+<div class="g5">
+  <div class="pc ci">
+    <div class="pc-lbl">Electoral Integrity</div>
+    <h3>🗳️ ECI</h3>
+    <div class="vl">
+      <div class="vi"><b>Election Commission</b><span>Free &amp; fair elections</span></div>
+      <div class="vi"><b>Art. 324</b><span>Constitutional body</span></div>
+    </div>
+    <div style="margin-top:6px;"><span class="chip info">Constitutional</span></div>
+  </div>
+  <div class="pc ct">
+    <div class="pc-lbl">Financial Audit</div>
+    <h3>💰 CAG</h3>
+    <div class="vl">
+      <div class="vi"><b>Comptroller &amp; AG</b><span>Audits all public funds</span></div>
+      <div class="vi"><b>Art. 148</b><span>Constitutional body</span></div>
+    </div>
+    <div style="margin-top:6px;"><span class="chip tl">Constitutional</span></div>
+  </div>
+  <div class="pc cb">
+    <div class="pc-lbl">Fair Recruitment</div>
+    <h3>👨‍💼 UPSC</h3>
+    <div class="vl">
+      <div class="vi"><b>Union PSC</b><span>Merit-based hiring</span></div>
+      <div class="vi"><b>Art. 315</b><span>Constitutional body</span></div>
+    </div>
+    <div style="margin-top:6px;"><span class="chip info">Constitutional</span></div>
+  </div>
+  <div class="pc cn">
+    <div class="pc-lbl">Legal Advice</div>
+    <h3>⚖️ AG</h3>
+    <div class="vl">
+      <div class="vi"><b>Attorney General</b><span>Union chief law officer</span></div>
+      <div class="vi"><b>Art. 76</b><span>Constitutional basis</span></div>
+    </div>
+    <div style="margin-top:6px;"><span class="chip ok">Constitutional</span></div>
+  </div>
+  <div class="pc cr">
+    <div class="pc-lbl">Anti-Corruption</div>
+    <h3>🛡️ Lokpal</h3>
+    <div class="vl">
+      <div class="vi"><b>Anti-Corruption Watchdog</b><span>Investigates &amp; prosecutes</span></div>
+      <div class="vi"><b>Act 2013</b><span>Statutory — NOT constitutional</span></div>
+    </div>
+    <div style="margin-top:6px;"><span class="chip red">Statutory Only</span></div>
+  </div>
+</div>
+
+<div class="ph-row">
+  <div class="ph" style="border-color:var(--gold);background:rgba(176,122,8,.04);">
+    <div class="ph-num" style="color:var(--gold);">1809</div>
+    <div class="ph-title">Sweden Ombudsman</div>
+    <div class="ph-sub">Global Inspiration</div>
+    <div style="font-size:10px;color:var(--muted);margin-top:6px;line-height:1.7;">World's first watchdog concept<br>Anti-corruption ombudsman model</div>
+  </div>
+  <div class="ph" style="border-color:var(--amber);background:rgba(200,90,0,.04);">
+    <div class="ph-num" style="color:var(--amber);">1971</div>
+    <div class="ph-title">First Lokayukta</div>
+    <div class="ph-sub">Maharashtra — State Level First</div>
+    <div style="font-size:10px;color:var(--muted);margin-top:6px;line-height:1.7;">States adopted the model before Centre<br>1st ARC recommended in 1966–70</div>
+  </div>
+  <div class="ph" style="border-color:var(--red);background:rgba(154,21,21,.04);">
+    <div class="ph-num" style="color:var(--red);">2013</div>
+    <div class="ph-title">Lokpal Act Passed</div>
+    <div class="ph-sub">Centre — After Anna Movement</div>
+    <div style="font-size:10px;color:var(--muted);margin-top:6px;line-height:1.7;">Jan Lokpal Bill pressure → Lokpal Act<br>Became operational from 2019</div>
+  </div>
+</div>
+
+<div class="ks">
+  <div class="ks-ico">🛡️</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Core Connecting Idea</div>
+    <div class="ks-body">Democracy needs five pillars of accountability: <strong style="color:var(--gold-lt);">Elections (ECI) + Finance (CAG) + Recruitment (UPSC) + Legal Advice (AG) + Anti-Corruption (Lokpal).</strong><br>Lokpal is the last and newest pillar — a <strong style="color:var(--gold-lt);">statutory</strong>, multi-member, quasi-judicial body with civil court powers. It watches over the executive — including the Prime Minister himself — but is <strong style="color:var(--gold-lt);">NOT in the Constitution</strong>. Statutory but powerful.</div>
+    <div style="margin-top:12px;">
+      <span class="kp">🛡️ Statutory NOT Constitutional</span>
+      <span class="kp">👥 Multi-Member: 1+8</span>
+      <span class="kp">⏱️ 5 Yrs or Age 70</span>
+      <span class="kp">🔍 60 Days Inquiry</span>
+      <span class="kp">🌍 Sweden 1809</span>
+      <span class="kp">🎯 PM is Covered</span>
+      <span class="kp">⚖️ Civil Court Powers</span>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+const NS = 'http://www.w3.org/2000/svg';
+function mksvg(id, vw, vh) {
+  const c = document.getElementById(id);
+  const s = document.createElementNS(NS, 'svg');
+  s.setAttribute('viewBox', `0 0 ${vw} ${vh}`);
+  s.style.cssText = 'display:block;width:100%;height:auto;';
+  c.appendChild(s);
+  return s;
+}
+function mk(tag, a) {
+  const e = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(a || {})) e.setAttribute(k, v);
+  return e;
+}
+function curve(svg, x1, y1, x2, y2, col, dashed, sw) {
+  const mx = (x1+x2)/2;
+  svg.appendChild(mk('path', {
+    d: `M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke: col || '#bbb', 'stroke-width': sw || 1.8, fill: 'none',
+    'stroke-dasharray': dashed ? '5 4' : 'none', opacity: '0.72'
+  }));
+}
+function drawNode(svg, cx, cy, bw, bh, fill, title, sub, emoji) {
+  const rx = 10;
+  svg.appendChild(mk('rect', {x:cx-bw/2+2, y:cy-bh/2+3, width:bw, height:bh, rx, ry:rx, fill:'rgba(0,0,0,0.1)'}));
+  svg.appendChild(mk('rect', {x:cx-bw/2, y:cy-bh/2, width:bw, height:bh, rx, ry:rx, fill, stroke:'rgba(255,255,255,0.2)', 'stroke-width':'1.5'}));
+  const parts = [];
+  if (emoji) parts.push({t:emoji, sz:13, ff:'Outfit,sans-serif', fw:'400', col:'#fff', gap:16});
+  parts.push({t:title, sz:10.5, ff:'Outfit,sans-serif', fw:'700', col:'#fff', gap:13});
+  if (sub) parts.push({t:sub, sz:7.5, ff:'JetBrains Mono,monospace', fw:'400', col:'rgba(255,255,255,0.58)', gap:11});
+  const totalH = parts.reduce((a,p) => a+p.gap, 0) - parts[parts.length-1].gap;
+  let ty = cy - totalH/2;
+  parts.forEach(p => {
+    const t = mk('text', {x:cx, y:ty, 'text-anchor':'middle', 'dominant-baseline':'middle', 'font-size':p.sz, 'font-weight':p.fw, 'font-family':p.ff, fill:p.col});
+    t.textContent = p.t; svg.appendChild(t); ty += p.gap;
+  });
+}
+function lbl(svg, x, y, text, col, sz) {
+  const t = mk('text', {x, y, 'text-anchor':'middle', 'font-size':sz||8, 'letter-spacing':2, fill:col||'rgba(130,110,70,0.45)', 'font-family':'JetBrains Mono,monospace'});
+  t.textContent = text; svg.appendChild(t);
+}
+
+// MASTER FLOW
+(function(){
+  const W=1340, H=106;
+  const svg = mksvg('mc-master', W, H);
+  svg.appendChild(mk('rect',{x:0,y:0,width:W,height:H,fill:'rgba(249,246,240,0.6)'}));
+  const steps=[
+    {x:80,  fill:'#0f0e0c', t:'Corruption',       s:'The core problem',     e:'⚠️'},
+    {x:240, fill:'#b07a08', t:'Sweden 1809',       s:'Ombudsman concept',    e:'🌍'},
+    {x:400, fill:'#c85a00', t:'1st ARC 1966',      s:'Recommended Lokpal',   e:'📋'},
+    {x:560, fill:'#5a159a', t:'Maharashtra 1971',  s:'First Lokayukta',      e:'🏛️'},
+    {x:730, fill:'#9a1515', t:'Anna Movement 2011',s:'Jan Lokpal demand',    e:'✊'},
+    {x:900, fill:'#1a50a0', t:'Act Passed 2013',   s:'Statutory law enacted', e:'📜'},
+    {x:1070,fill:'#096060', t:'Structure',          s:'1 Chair + 8 Members', e:'👥'},
+    {x:1250,fill:'#165828', t:'Accountability',    s:'PM to Group D',        e:'🛡️'},
+  ];
+  steps.forEach((s,i)=>{if(i<steps.length-1)curve(svg,s.x+67,52,steps[i+1].x-67,52,'#b07a0862',false,2.2);});
+  steps.forEach(s=>drawNode(svg,s.x,52,130,72,s.fill,s.t,s.s,s.e));
+  lbl(svg,W/2,97,'MASTER FLOW: PROBLEM → CONCEPT → HISTORY → ACT → STRUCTURE → JURISDICTION');
+})();
+
+// ORIGIN MIND MAP
+(function(){
+  const W=1340, H=248;
+  const svg = mksvg('mc-origin', W, H);
+  svg.appendChild(mk('rect',{x:0,y:0,width:W,height:H,fill:'rgba(254,243,204,0.18)'}));
+  const cx=W/2, cy=116;
+  drawNode(svg,cx,cy,218,62,'#b07a08','Lokpal — What &amp; Why','Statutory Anti-Corruption Body','🛡️');
+  const left=[
+    {x:138,y:48, fill:'#c85a00', t:'Extra-Constitutional', s:'NOT in Constitution'},
+    {x:138,y:124,fill:'#b07a08', t:'Sweden 1809 Origin',   s:'Ombudsman concept'},
+    {x:138,y:200,fill:'#7a4010', t:'1st ARC Recommended', s:'Commission 1966–70'},
+  ];
+  const right=[
+    {x:1202,y:48, fill:'#5a159a', t:'Maharashtra 1971',   s:'First Lokayukta in India'},
+    {x:1202,y:124,fill:'#9a1515', t:'Anna Movement 2011', s:'Jan Lokpal Bill pressure'},
+    {x:1202,y:200,fill:'#1a50a0', t:'Lokpal Act 2013',    s:'Statutory body created'},
+  ];
+  left.forEach(n=>{
+    curve(svg,cx-112,cy+(n.y<cy?-14:n.y>cy?14:0),n.x+88,n.y,'#b07a0850',true,1.6);
+    drawNode(svg,n.x,n.y,172,46,n.fill,n.t,n.s);
+  });
+  right.forEach(n=>{
+    curve(svg,cx+112,cy+(n.y<cy?-14:n.y>cy?14:0),n.x-88,n.y,'#5a159a50',true,1.6);
+    drawNode(svg,n.x,n.y,172,46,n.fill,n.t,n.s);
+  });
+})();
+
+// STRUCTURE MIND MAP
+(function(){
+  const W=1340, H=286;
+  const svg = mksvg('mc-structure', W, H);
+  svg.appendChild(mk('rect',{x:0,y:0,width:W,height:H,fill:'rgba(242,234,250,0.18)'}));
+  const cx=W/2, cy=110;
+  drawNode(svg,cx,cy,218,62,'#5a159a','Composition &amp; Appointment','Multi-Member — 1 Chair + Max 8','👥');
+  const left=[
+    {x:138,y:46, fill:'#5a159a', t:'50% Judicial Members',    s:'SC Judge / HC Chief Justice'},
+    {x:138,y:122,fill:'#2a3a9a', t:'50% Reserved Categories', s:'SC/ST/OBC/Women/Minorities'},
+    {x:138,y:198,fill:'#7a1560', t:'Min Age: 45 Years',       s:'All members — mandatory'},
+  ];
+  const right=[
+    {x:1202,y:46, fill:'#9a1515', t:'Appointed by President',  s:'On SC recommendation'},
+    {x:1202,y:122,fill:'#096060', t:'Term: 5yr or Age 70',     s:'Whichever is earlier'},
+    {x:1202,y:198,fill:'#165828', t:'Removed by President',    s:'After SC inquiry'},
+  ];
+  left.forEach(n=>{
+    curve(svg,cx-112,cy+(n.y<cy?-14:n.y>cy?14:0),n.x+88,n.y,'#5a159a50',true,1.6);
+    drawNode(svg,n.x,n.y,172,46,n.fill,n.t,n.s);
+  });
+  right.forEach(n=>{
+    curve(svg,cx+112,cy+(n.y<cy?-14:n.y>cy?14:0),n.x-88,n.y,'#9a151550',true,1.6);
+    drawNode(svg,n.x,n.y,172,46,n.fill,n.t,n.s);
+  });
+  // Selection committee bottom
+  const sc=[
+    {x:230,  fill:'#2a3a9a', t:'Prime Minister',       s:'Heads committee'},
+    {x:430,  fill:'#1a50a0', t:'Speaker, Lok Sabha',   s:'Lower house'},
+    {x:630,  fill:'#096060', t:'Leader of Opposition', s:'In Lok Sabha'},
+    {x:830,  fill:'#165828', t:'CJI or Nominee',       s:'Chief Justice'},
+    {x:1030, fill:'#5a159a', t:'Eminent Jurist',       s:'Rec. by others'},
+  ];
+  sc.forEach(n=>{
+    curve(svg,cx,cy+33,n.x,H-52,'#2a3a9a38',true,1.3);
+    drawNode(svg,n.x,H-34,186,40,n.fill,n.t,n.s);
+  });
+  lbl(svg,cx,H-3,'SELECTION COMMITTEE — 5 MEMBERS','rgba(42,58,154,0.45)',8);
+})();
+
+// WINGS MIND MAP
+(function(){
+  const W=1340, H=218;
+  const svg = mksvg('mc-wings', W, H);
+  svg.appendChild(mk('rect',{x:0,y:0,width:W,height:H,fill:'rgba(224,245,240,0.18)'}));
+  const cx=W/2, cy=86;
+  drawNode(svg,cx,cy,215,60,'#096060','Three Wings of Lokpal','Investigation · Prosecution · Selection','⚙️');
+  const wings=[
+    {x:205,  fill:'#096060', t:'Inquiry Wing',       s:'60 days · Civil Court powers',   e:'🔍'},
+    {x:670,  fill:'#165828', t:'Prosecution Wing',   s:'Director of Prosecution · CBI',   e:'⚖️'},
+    {x:1135, fill:'#1a50a0', t:'Search Committee',   s:'50% marginalised groups',          e:'🔎'},
+  ];
+  wings.forEach(w=>{
+    const fromX = w.x < cx-20 ? cx-110 : w.x > cx+20 ? cx+110 : cx;
+    const fromY = Math.abs(w.x-cx) < 20 ? cy+32 : cy;
+    const toX = w.x + (w.x < cx-20 ? 98 : w.x > cx+20 ? -98 : 0);
+    curve(svg,fromX,fromY,toX,w.y||cy+80,'#09606055',true,1.8);
+    drawNode(svg,w.x,w.y||cy+80,192,52,w.fill,w.t,w.s,w.e);
+  });
+  const details=[
+    {x:205,  y:182, fill:'#096060', t:'60 Days Deadline',     s:'Report to Lokpal Bench'},
+    {x:670,  y:182, fill:'#165828', t:'Files in Spl. Courts', s:'Designated corruption courts'},
+    {x:1135, y:182, fill:'#1a50a0', t:'Selects Members',       s:'For Lokpal composition'},
+  ];
+  wings.forEach((w,i)=>{
+    const wy = w.y || cy+80;
+    curve(svg,w.x,wy+27,details[i].x,details[i].y-22,'#09606032',true,1.2);
+    drawNode(svg,details[i].x,details[i].y,190,38,details[i].fill,details[i].t,details[i].s);
+  });
+})();
+
+// JURISDICTION MIND MAP
+(function(){
+  const W=1340, H=248;
+  const svg = mksvg('mc-jurisdiction', W, H);
+  svg.appendChild(mk('rect',{x:0,y:0,width:W,height:H,fill:'rgba(250,234,234,0.18)'}));
+  const cx=W/2, cy=100;
+  drawNode(svg,cx,cy,215,62,'#9a1515','Jurisdiction','Who Does Lokpal Cover?','🎯');
+  const nodes=[
+    {x:122, y:42,  fill:'#9a1515', t:'Prime Minister',       s:'With conditions — exceptions'},
+    {x:122, y:118, fill:'#c85a00', t:'Union Ministers',      s:'All cabinet ministers'},
+    {x:122, y:194, fill:'#7a4010', t:'MPs (Both Houses)',    s:'Lok Sabha + Rajya Sabha'},
+    {x:1218,y:42,  fill:'#2a3a9a', t:'Group A–D Officers',  s:'All central govt employees'},
+    {x:1218,y:118, fill:'#096060', t:'Govt-Funded Bodies',  s:'₹10L+ foreign donations'},
+    {x:1218,y:194, fill:'#165828', t:'Central Corporations',s:'Under Govt. control'},
+  ];
+  nodes.forEach(n=>{
+    const isL=n.x<cx;
+    curve(svg,isL?cx-110:cx+110,cy+(n.y<cy?-12:n.y>cy?12:0),n.x+(isL?87:-87),n.y,'#9a151548',true,1.6);
+    drawNode(svg,n.x,n.y,168,46,n.fill,n.t,n.s);
+  });
+  // PM exclusion banner
+  svg.appendChild(mk('rect',{x:cx-185,y:cy+78,width:370,height:46,rx:9,ry:9,fill:'rgba(154,21,21,0.1)',stroke:'rgba(154,21,21,0.28)','stroke-width':1.5}));
+  const et=mk('text',{x:cx,y:cy+95,'text-anchor':'middle','dominant-baseline':'middle','font-size':9.5,'font-weight':'700','font-family':'Outfit,sans-serif',fill:'#9a1515'});
+  et.textContent='⚠️ PM Excluded For: National Security · Atomic Energy · Space · Int\'l Relations'; svg.appendChild(et);
+  const et2=mk('text',{x:cx,y:cy+112,'text-anchor':'middle','dominant-baseline':'middle','font-size':7.5,'font-family':'JetBrains Mono,monospace',fill:'rgba(154,21,21,0.6)'});
+  et2.textContent='These specific matters are outside Lokpal jurisdiction even for Prime Minister'; svg.appendChild(et2);
+})();
+
+// COMPARE VISUAL
+(function(){
+  const W=1340, H=196;
+  const svg = mksvg('mc-compare', W, H);
+  svg.appendChild(mk('rect',{x:0,y:0,width:W,height:H,fill:'rgba(242,234,250,0.15)'}));
+  drawNode(svg,175,98,244,62,'#5a159a','Lokpal','Union · President · Act 2013','🛡️');
+  drawNode(svg,1165,98,244,62,'#9a1515','Lokayukta','State · Governor · State Law','🏛️');
+  lbl(svg,670,16,'SIMILARITIES (PRELIMS TRAPS)','rgba(90,21,154,0.55)',8.5);
+  lbl(svg,670,188,'KEY DIFFERENCES','rgba(22,88,40,0.5)',8.5);
+  svg.appendChild(mk('line',{x1:670,y1:26,x2:670,y2:178,stroke:'rgba(200,180,140,0.25)','stroke-width':1,'stroke-dasharray':'5 4'}));
+  const same=[
+    {x:450,y:76,  fill:'#9a1515', t:'Anti-Corruption Goal',   s:'Same mandate'},
+    {x:670,y:76,  fill:'#c85a00', t:'Civil Court Powers',     s:'Both have these'},
+    {x:890,y:76,  fill:'#5a159a', t:'Statutory Bodies',       s:'NOT constitutional'},
+  ];
+  const diff=[
+    {x:450,y:152, fill:'#2a3a9a', t:'President vs Governor',  s:'Appointing authority'},
+    {x:670,y:152, fill:'#1a50a0', t:'Centre vs State Level',  s:'Jurisdiction level'},
+    {x:890,y:152, fill:'#165828', t:'CBI Supervision',        s:'Only Lokpal has this'},
+  ];
+  same.forEach(n=>{
+    curve(svg,300,88,n.x-92,n.y,'#9a151533',true,1.3);
+    curve(svg,1042,88,n.x+92,n.y,'#9a151533',true,1.3);
+    drawNode(svg,n.x,n.y,196,42,n.fill,n.t,n.s);
+  });
+  diff.forEach(n=>{
+    curve(svg,300,108,n.x-92,n.y,'#16582833',true,1.3);
+    curve(svg,1042,108,n.x+92,n.y,'#16582833',true,1.3);
+    drawNode(svg,n.x,n.y,196,42,n.fill,n.t,n.s);
+  });
+})();
+
+// GOVERNANCE CHAIN
+(function(){
+  const W=1340, H=116;
+  const svg = mksvg('mc-chain', W, H);
+  svg.appendChild(mk('rect',{x:0,y:0,width:W,height:H,fill:'rgba(249,246,240,0.6)'}));
+  const steps=[
+    {x:88,  fill:'#2a3a9a', t:'ECI',      s:'Elections · Art.324',    e:'🗳️'},
+    {x:255, fill:'#096060', t:'CAG',      s:'Finance · Art.148',      e:'💰'},
+    {x:422, fill:'#1a50a0', t:'UPSC',     s:'Recruitment · Art.315',  e:'👨‍💼'},
+    {x:590, fill:'#165828', t:'AG',       s:'Legal · Art.76',         e:'⚖️'},
+    {x:758, fill:'#5a159a', t:'CVC',      s:'Vigilance · Statutory',  e:'🔍'},
+    {x:926, fill:'#c85a00', t:'CBI',      s:'Investigation body',     e:'🕵️'},
+    {x:1094,fill:'#9a1515', t:'Lokpal',   s:'Anti-Corr. · 2013',     e:'🛡️'},
+    {x:1255,fill:'#0f0e0c', t:'Democracy',s:'Full accountability',    e:'🏆'},
+  ];
+  steps.forEach((s,i)=>{if(i<steps.length-1)curve(svg,s.x+65,56,steps[i+1].x-65,56,'#b07a0862',false,2.2);});
+  steps.forEach(s=>drawNode(svg,s.x,56,128,72,s.fill,s.t,s.s,s.e));
+  lbl(svg,W/2,106,'FULL GOVERNANCE ACCOUNTABILITY CHAIN: ELECTIONS + FINANCE + RECRUITMENT + LEGAL + ANTI-CORRUPTION');
+})();
+</script>
+</body>
+</html>

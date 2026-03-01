@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Constitutional Bodies — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#12100e;--paper:#f8f5ef;--gold:#b87c10;--gold-lt:#f5d78a;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf5;--card2:#f2ede0;--sky:#1a5878;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 900px 500px at 15% 10%, rgba(184,124,16,0.06) 0%, transparent 60%),
+  radial-gradient(ellipse 700px 700px at 85% 90%, rgba(26,58,138,0.05) 0%, transparent 60%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 24px 100px;}
+
+/* ── HEADER ── */
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,50px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:14px auto 0;border-radius:4px;}
+
+/* ── SEC LABEL ── */
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* ── PANEL CARDS ── */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(184,124,16,0.1);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.dark::before{background:var(--ink);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* ── MAP CARDS ── */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:28px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--sky),var(--green));}
+.map-card svg{display:block;width:100%;}
+
+/* ── PILLS ── */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,96,112,0.12);color:var(--teal);}
+.pill.red{background:rgba(176,26,26,0.12);color:var(--red);}
+.pill.sky{background:rgba(26,88,120,0.12);color:var(--sky);}
+
+/* ── STAT BOX ── */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* ── CHIP ── */
+.ps-chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.prob{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.ps-chip.sol{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.ps-chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+.ps-chip.inf{background:rgba(26,88,120,0.07);border-color:rgba(26,88,120,0.2);color:var(--sky);}
+.ps-chip.warn{background:rgba(212,106,16,0.07);border-color:rgba(212,106,16,0.2);color:var(--amber);}
+
+/* ── VLIST ── */
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vitem{padding:8px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* ── FEAT GRID ── */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px;}
+.feat{padding:9px 11px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:15px;margin-bottom:3px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* ── TABLE ── */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;}
+.tag.ok{background:#d4edda;color:#155724;}
+.tag.na{background:#f8d7da;color:#721c24;}
+.tag.warn{background:#fff3cd;color:#856404;}
+
+/* ── KEYSTONE ── */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;}
+
+/* ── IMPACT CHAIN ── */
+.impact-chain{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:6px 0;margin:8px 0;}
+.ic-node{padding:7px 12px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:14px;color:var(--muted);flex:0 0 auto;margin:0 4px;}
+
+/* ── CALLOUT ── */
+.callout{padding:10px 12px;border-radius:10px;background:rgba(176,26,26,0.06);border:1.5px solid rgba(176,26,26,0.2);margin:6px 0;}
+.callout.warn{background:rgba(212,106,16,0.06);border-color:rgba(212,106,16,0.2);}
+.callout.good{background:rgba(26,106,58,0.06);border-color:rgba(26,106,58,0.2);}
+.callout-title{font-size:11px;font-weight:800;color:var(--red);margin-bottom:3px;}
+.callout.warn .callout-title{color:var(--amber);}
+.callout.good .callout-title{color:var(--green);}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* ── PHASE ROW ── */
+.phase-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:14px 0;}
+@media(max-width:900px){.phase-row{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr 1fr;}}
+.phase-box{padding:14px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;}
+.phase-title{font-size:11px;font-weight:800;margin:4px 0 2px;}
+.phase-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);}
+
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.trap-item{padding:10px 12px;border-radius:9px;background:rgba(176,26,26,0.05);border:1.5px solid rgba(176,26,26,0.15);font-size:10px;font-weight:700;color:var(--red);}
+.trap-item span{display:block;font-size:9px;font-weight:400;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ══════ HEADER ══════ -->
+<div class="header">
+  <div class="header-sup">Indian Polity · Constitutional Bodies · UPSC Prelims</div>
+  <h1>Constitutional Bodies — <em>Mind Map</em></h1>
+  <div class="header-sub">Types of Bodies → CAG → ECI → UPSC → SPSC → Trap Points → Memory Trick</div>
+</div>
+
+<!-- ══════ SECTION 0: TYPES OF BODIES ══════ -->
+<div class="sec-label">① Types of Bodies in India — The Foundation</div>
+
+<div class="map-card mc1">
+  <svg id="svgTypes" viewBox="0 0 1360 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-label">Constitutional Body</div>
+    <h3>📜 Created by Constitution</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Powers directly from Constitution</div><div class="vs">Cannot be abolished by ordinary law</div></div>
+      <div class="vitem"><div class="vt">Examples: ECI, CAG, UPSC, SPSC</div><div class="vs">Highest form of legal protection</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="ps-chip inf">🏛️ Today's Focus</span></div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Statutory Body</div>
+    <h3>📋 Created by Parliament Act</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Powers from the enabling Act</div><div class="vs">Can be changed by Parliament</div></div>
+      <div class="vitem"><div class="vt">Examples: RBI, SEBI, NHRC</div><div class="vs">Statutory protection only</div></div>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Executive / Quasi-Judicial</div>
+    <h3>⚡ Executive & Courts</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">Exec.</div>
+        <div class="stat-sub">NITI Aayog</div>
+        <div class="stat-label">Advisory only</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--purple);">Q-J</div>
+        <div class="stat-sub">CAT, Consumer Courts</div>
+        <div class="stat-label">Limited judicial power</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 1: MASTER FLOW ══════ -->
+<div class="sec-label">② Master Flow — The Four Constitutional Pillars</div>
+
+<div class="map-card mc2">
+  <svg id="svgFlow" viewBox="0 0 1360 140" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- ══════ SECTION 2: CAG ══════ -->
+<div class="sec-label">③ CAG — Comptroller &amp; Auditor General of India</div>
+
+<div class="map-card mc3">
+  <svg id="svgCAG" viewBox="0 0 1360 580" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc gold">
+    <div class="pc-label">Articles 148–151 · Part V</div>
+    <h3>🧾 Key Facts</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--amber);">1</div><div class="stat-sub">Member</div><div class="stat-label">SINGLE BODY</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--blue);">6 yr</div><div class="stat-sub">or 65 yrs</div><div class="stat-label">TERM</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--green);">SC=</div><div class="stat-sub">Judge Salary</div><div class="stat-label">REMUNERATION</div></div>
+    </div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vitem"><div class="vt">Appointed by President</div><div class="vs">Gazette notification</div></div>
+      <div class="vitem"><div class="vt">Expenses → Charged on CFI</div><div class="vs">Not voted by Parliament</div></div>
+      <div class="vitem"><div class="vt">No reappointment after term</div><div class="vs">One-term security</div></div>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Core Functions</div>
+    <h3>🔍 What CAG Audits</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">💰</div><div class="ft">CFI (Union)</div><div class="fs">Consolidated Fund of India</div></div>
+      <div class="feat"><div class="fi">🏦</div><div class="ft">Contingency Fund</div><div class="fs">Emergency expenditure</div></div>
+      <div class="feat"><div class="fi">📒</div><div class="ft">Public Accounts</div><div class="fs">Union + States</div></div>
+      <div class="feat"><div class="fi">📊</div><div class="ft">Guides PAC</div><div class="fs">Public Accounts Committee</div></div>
+    </div>
+    <div class="callout warn" style="margin-top:10px;">
+      <div class="callout-title">📨 Reports to President → Laid before Parliament</div>
+      <div class="callout-body">Audit reports tabled in both Houses; PAC examines them</div>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">Limitations + Removal</div>
+    <h3>⚠️ Limits &amp; Safeguards</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">❌ Cannot audit Secret Service</div><div class="vs">National security expenditure exempt</div></div>
+      <div class="vitem"><div class="vt">❌ Cannot control CFI withdrawals</div><div class="vs">Only audits, doesn't control spending</div></div>
+      <div class="vitem"><div class="vt">🔒 Removal = SC Judge</div><div class="vs">Special majority + both Houses address</div></div>
+    </div>
+    <div class="callout" style="margin-top:10px;">
+      <div class="callout-title">⚡ 1976 Change</div>
+      <div class="callout-body">Accounting role separated → CGA (Controller General of Accounts) now handles Union accounts. CAG only audits.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 3: ECI ══════ -->
+<div class="sec-label">④ ECI — Election Commission of India</div>
+
+<div class="map-card mc4">
+  <svg id="svgECI" viewBox="0 0 1360 570" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">Article 324 · Part XV</div>
+    <h3>🗳️ Structure &amp; Appointment</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--blue);">CEC</div><div class="stat-sub">+ Other ECs</div><div class="stat-label">MULTI-MEMBER NOW</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--amber);">6 yr</div><div class="stat-sub">or 65 yrs</div><div class="stat-label">TERM</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--green);">SC=</div><div class="stat-sub">Judge Salary</div><div class="stat-label">PAY SCALE</div></div>
+    </div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vitem"><div class="vt">Appointed by President</div><div class="vs">Number of ECs decided by President</div></div>
+      <div class="vitem"><div class="vt">Expenses → Charged on CFI</div><div class="vs">Not voted — independence secured</div></div>
+    </div>
+    <div class="callout" style="margin-top:10px;background:rgba(26,58,138,0.06);border-color:rgba(26,58,138,0.2);">
+      <div class="callout-title" style="color:var(--blue);">🔑 Removal Distinction</div>
+      <div class="callout-body">CEC → Like SC Judge (special majority)<br>Other ECs → On recommendation of CEC only</div>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Powers &amp; Functions</div>
+    <h3>⚡ What ECI Controls</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">🇮🇳</div><div class="ft">Conducts Elections</div><div class="fs">President, VP, Parliament</div></div>
+      <div class="feat"><div class="fi">🏛️</div><div class="ft">State Legislature</div><div class="fs">All state assembly polls</div></div>
+      <div class="feat"><div class="fi">🎖️</div><div class="ft">Recognises Parties</div><div class="fs">National & State status</div></div>
+      <div class="feat"><div class="fi">⚖️</div><div class="ft">Party Split Disputes</div><div class="fs">Settles merger/split cases</div></div>
+      <div class="feat"><div class="fi">🚫</div><div class="ft">Can Cancel Polls</div><div class="fs">Booth capturing, malpractice</div></div>
+      <div class="feat"><div class="fi">📋</div><div class="ft">Model Code</div><div class="fs">Election conduct norms</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 4: UPSC ══════ -->
+<div class="sec-label">⑤ UPSC — Union Public Service Commission</div>
+
+<div class="map-card mc5">
+  <svg id="svgUPSC" viewBox="0 0 1360 620" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc teal">
+    <div class="pc-label">Articles 315–323 · Part XIV</div>
+    <h3>🎓 Structure</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--teal);">50%</div><div class="stat-sub">Need 10-yr govt service</div><div class="stat-label">EXPERIENCE RULE</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--amber);">6 yr</div><div class="stat-sub">or 65 yrs</div><div class="stat-label">TERM</div></div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">Chairman + Members</div><div class="vs">Number decided by President</div></div>
+      <div class="vitem"><div class="vt">No reappointment</div><div class="vs">Member CAN become Chairman</div></div>
+      <div class="vitem"><div class="vt">Expenses → Charged on CFI</div><div class="vs">Not voted</div></div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Core Functions</div>
+    <h3>📝 What UPSC Does</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Conducts Civil Service Exams</div><div class="vs">IAS, IPS, IFS — Group A & B</div></div>
+      <div class="vitem"><div class="vt">Advises on Recruitment</div><div class="vs">Promotion, seniority, transfers</div></div>
+      <div class="vitem"><div class="vt">Disciplinary Matters</div><div class="vs">Advises on dismissal, reduction</div></div>
+      <div class="vitem"><div class="vt">Reports to President</div><div class="vs">Annual report → Parliament</div></div>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">Limitations &amp; Removal</div>
+    <h3>⚠️ UPSC Boundaries</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">❌ No role in Group C & D</div><div class="vs">State-level bodies handle these</div></div>
+      <div class="vitem"><div class="vt">❌ No temporary posts > 1 yr</div><div class="vs">Permanent posts only in scope</div></div>
+      <div class="vitem"><div class="vt">🔒 Removal by President</div><div class="vs">SC inquiry required in misbehaviour</div></div>
+    </div>
+    <div class="callout good" style="margin-top:8px;">
+      <div class="callout-title">✅ Advisory body — not binding on govt</div>
+      <div class="callout-body">Government can override UPSC recommendations but must record reasons</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 5: SPSC ══════ -->
+<div class="sec-label">⑥ SPSC — State Public Service Commission</div>
+
+<div class="g2">
+  <div class="pc sky">
+    <div class="pc-label">Same Articles: 315–323</div>
+    <h3>🏛️ SPSC Key Differences from UPSC</h3>
+    <table class="ctable" style="margin-top:8px;">
+      <tr><th>Aspect</th><th>UPSC</th><th>SPSC</th></tr>
+      <tr><td>Appointed by</td><td>President</td><td><span class="tag warn">Governor</span></td></tr>
+      <tr><td>Age Limit</td><td>65 years</td><td><span class="tag na">62 years ⚠️</span></td></tr>
+      <tr><td>Expenses</td><td>Charged on CFI</td><td><span class="tag warn">State Consol. Fund</span></td></tr>
+      <tr><td>Reports to</td><td>President → Parliament</td><td><span class="tag warn">Governor → State Legislature</span></td></tr>
+      <tr><td>Removal</td><td>By President</td><td><span class="tag warn">By President only</span></td></tr>
+    </table>
+    <div class="callout" style="margin-top:10px;background:rgba(26,88,120,0.06);border-color:rgba(26,88,120,0.2);">
+      <div class="callout-title" style="color:var(--sky);">🔑 Even though SPSC is a State body → Removal is by President (not Governor)</div>
+      <div class="callout-body">This ensures independence from state political interference</div>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">UPSC vs SPSC at a Glance</div>
+    <h3>📊 Side-by-Side</h3>
+    <div class="impact-chain" style="flex-direction:column;gap:10px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="ps-chip inf" style="width:80px;text-align:center;">UPSC</span>
+        <span style="font-size:11px;font-weight:700;">→ Prez appoints · 65 yrs · CFI · Prez removes</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="ps-chip warn" style="width:80px;text-align:center;">SPSC</span>
+        <span style="font-size:11px;font-weight:700;">→ Gov appoints · <span style="color:var(--red);">62 yrs</span> · State Fund · <span style="color:var(--red);">Prez</span> removes</span>
+      </div>
+    </div>
+    <div class="feat-grid" style="margin-top:12px;">
+      <div class="feat"><div class="fi">📋</div><div class="ft">Same functions</div><div class="fs">At state level only</div></div>
+      <div class="feat"><div class="fi">🔗</div><div class="ft">Joint SPSC possible</div><div class="fs">For 2+ states together</div></div>
+      <div class="feat"><div class="fi">🏛️</div><div class="ft">State Legislature</div><div class="fs">Annual report tabled here</div></div>
+      <div class="feat"><div class="fi">⚖️</div><div class="ft">Advisory only</div><div class="fs">Not binding on state govt</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 6: COMPARISON TABLE ══════ -->
+<div class="sec-label">⑦ Rapid Revision — All Four Compared</div>
+
+<div class="pc dark" style="background:rgba(18,16,14,0.03);border-color:rgba(18,16,14,0.15);margin-bottom:20px;">
+  <h3 style="font-family:'Playfair Display',serif;font-size:15px;margin-bottom:12px;">📊 Quick Comparison Table</h3>
+  <table class="ctable">
+    <tr>
+      <th>Feature</th>
+      <th>CAG 🧾</th>
+      <th>ECI 🗳️</th>
+      <th>UPSC 🎓</th>
+      <th>SPSC 🏛️</th>
+    </tr>
+    <tr>
+      <td>Article</td>
+      <td>148–151</td>
+      <td>324</td>
+      <td>315–323</td>
+      <td>315–323</td>
+    </tr>
+    <tr>
+      <td>Appointed by</td>
+      <td>President</td>
+      <td>President</td>
+      <td>President</td>
+      <td><span class="tag warn">Governor</span></td>
+    </tr>
+    <tr>
+      <td>Term</td>
+      <td>6 yr / 65 yrs</td>
+      <td>6 yr / 65 yrs</td>
+      <td>6 yr / 65 yrs</td>
+      <td><span class="tag na">6 yr / 62 yrs ⚠️</span></td>
+    </tr>
+    <tr>
+      <td>Salary</td>
+      <td>= SC Judge</td>
+      <td>= SC Judge</td>
+      <td>= SC Judge</td>
+      <td>= HC Judge</td>
+    </tr>
+    <tr>
+      <td>Expenses</td>
+      <td><span class="tag ok">CFI (Charged)</span></td>
+      <td><span class="tag ok">CFI (Charged)</span></td>
+      <td><span class="tag ok">CFI (Charged)</span></td>
+      <td><span class="tag warn">State Fund (Charged)</span></td>
+    </tr>
+    <tr>
+      <td>Reports to</td>
+      <td>President → Parliament</td>
+      <td>— (autonomous)</td>
+      <td>President → Parliament</td>
+      <td>Governor → State Legislature</td>
+    </tr>
+    <tr>
+      <td>Removal</td>
+      <td>Like SC Judge</td>
+      <td>CEC: Like SC Judge<br><span class="tag na">Other EC: On CEC rec.</span></td>
+      <td>By President (SC inquiry)</td>
+      <td>By President only</td>
+    </tr>
+    <tr>
+      <td>Reappointment</td>
+      <td><span class="tag na">❌ No</span></td>
+      <td><span class="tag na">❌ No (CEC)</span></td>
+      <td>Member→Chairman: <span class="tag ok">✅</span></td>
+      <td><span class="tag na">❌ No</span></td>
+    </tr>
+  </table>
+</div>
+
+<!-- ══════ SECTION 7: PRELIMS TRAP POINTS ══════ -->
+<div class="sec-label">⑧ 🔥 Prelims Trap Points — Don't Get Fooled!</div>
+
+<div class="pc red" style="margin-bottom:20px;">
+  <h3 style="font-family:'Playfair Display',serif;margin-bottom:12px;">⚡ Common Traps in Prelims</h3>
+  <div class="trap-grid">
+    <div class="trap-item">🔴 CAG removal = Like SC Judge<span>Special majority + address by both Houses</span></div>
+    <div class="trap-item">🔴 CEC removal = Like SC Judge<span>Same as CAG — high protection</span></div>
+    <div class="trap-item">🔴 Other ECs ≠ Like SC Judge<span>Only on recommendation of CEC — different standard!</span></div>
+    <div class="trap-item">🔴 SPSC age = 62 years (NOT 65)<span>Most common exam mistake — UPSC is 65, SPSC is 62</span></div>
+    <div class="trap-item">🔴 All 4 expenses are CHARGED not voted<span>Charged on CFI/State Fund — NOT subject to vote</span></div>
+    <div class="trap-item">🔴 50% UPSC members need 10-yr govt service<span>Half must have worked in government</span></div>
+    <div class="trap-item">🔴 SPSC removal by President NOT Governor<span>Even though Governor appoints SPSC</span></div>
+    <div class="trap-item">🔴 1976: CAG lost accounting role<span>CGA now handles accounts — CAG only audits</span></div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 8: MEMORY TRICK ══════ -->
+<div class="sec-label">⑨ 🧠 Memory Machine — Quick Link Trick</div>
+
+<div class="map-card mc1" style="margin-bottom:20px;">
+  <svg id="svgMemory" viewBox="0 0 1360 190" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc gold">
+    <div class="pc-label">Step 1: The Machine Metaphor</div>
+    <h3>⚙️ Democracy as a Machine</h3>
+    <div class="impact-chain" style="flex-direction:column;gap:8px;">
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,106,16,0.08);color:var(--amber);">🧾 CAG → Checks MONEY</div>
+      <div class="ic-arr" style="transform:rotate(90deg);">→</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.08);color:var(--blue);">🗳️ ECI → Conducts ELECTIONS</div>
+      <div class="ic-arr" style="transform:rotate(90deg);">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.08);color:var(--green);">🎓 UPSC/SPSC → Recruits OFFICERS</div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Step 2: The Triad</div>
+    <h3>✅ Money · Elections · Recruitment</h3>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px;">
+      <div style="padding:10px 14px;border-radius:10px;background:rgba(212,106,16,0.08);border:1.5px solid rgba(212,106,16,0.2);font-size:12px;font-weight:800;color:var(--amber);">💰 Money audited → accountability</div>
+      <div style="padding:10px 14px;border-radius:10px;background:rgba(26,58,138,0.08);border:1.5px solid rgba(26,58,138,0.2);font-size:12px;font-weight:800;color:var(--blue);">🗳️ Elections held → democracy works</div>
+      <div style="padding:10px 14px;border-radius:10px;background:rgba(26,106,58,0.08);border:1.5px solid rgba(26,106,58,0.2);font-size:12px;font-weight:800;color:var(--green);">🎓 Officers recruited → state functions</div>
+    </div>
+  </div>
+  <div class="pc sky">
+    <div class="pc-label">Step 3: The Mnemonic</div>
+    <h3>🧠 C.E.U.S. — Your Anchor</h3>
+    <div style="text-align:center;padding:16px;background:rgba(26,88,120,0.07);border-radius:12px;margin-bottom:10px;">
+      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:800;color:var(--sky);">C · E · U · S</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:4px;">CAG — ECI — UPSC — SPSC</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">C = CAG = Cash watchdog</div></div>
+      <div class="vitem"><div class="vt">E = ECI = Elections</div></div>
+      <div class="vitem"><div class="vt">U = UPSC = Union recruitment</div></div>
+      <div class="vitem"><div class="vt">S = SPSC = State recruitment</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ KEYSTONE ══════ -->
+<div class="keystone">
+  <div class="keystone-icon">🏛️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">India's Constitution creates <strong style="color:#f5d78a;">independent watchdogs</strong> to ensure accountability, fair elections, and merit-based governance — insulated by <strong style="color:#f5d78a;">charged expenses, fixed terms, and SC-judge-level removal protections</strong>. <br>Constitutional status = Parliament cannot easily abolish or weaken them. That's the design intent.</div>
+    <div class="keystone-pills">
+      <span class="kpill">🧾 CAG = Financial Audit</span>
+      <span class="kpill">🗳️ ECI = Electoral Democracy</span>
+      <span class="kpill">🎓 UPSC = Merit Recruitment</span>
+      <span class="kpill">⚡ Charged = Independent</span>
+      <span class="kpill">🔒 Special Majority = Protected</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const p=se('path',{d:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':w||2,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.7'});
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.1)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.2)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7.5)-(sub?5:0)-(emoji?10:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'16',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=20;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.4)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+// ─── TYPES OF BODIES — clean top-down tree ───
+(function(){
+  const svg=document.getElementById('svgTypes');
+  // Increase viewBox height
+  svg.setAttribute('viewBox','0 0 1360 220');
+  const bg=se('rect',{x:0,y:0,width:1360,height:220,fill:'rgba(250,245,238,0.4)'});
+  svg.appendChild(bg);
+
+  // Root node at top centre
+  node(svg,680,44,240,52,'#1a1208',['Types of Bodies in India'],'Legal Classification · 5 Categories','🏛️');
+
+  // 5 child nodes evenly spread below, well clear of root
+  const bodies=[
+    {x:137,  fill:'#1a3a8a', label:'Constitutional',    sub:'ECI · CAG · UPSC · SC/HC', emoji:'📜'},
+    {x:363,  fill:'#0a6070', label:'Statutory',         sub:'RBI · SEBI · NHRC',        emoji:'📋'},
+    {x:589,  fill:'#d46a10', label:'Executive',         sub:'NITI Aayog',               emoji:'⚡'},
+    {x:815,  fill:'#1a6a3a', label:'Judicial',          sub:'SC · High Courts',         emoji:'⚖️'},
+    {x:1041, fill:'#5a1a8a', label:'Quasi-Judicial',    sub:'CAT · Consumer Courts',    emoji:'🔨'},
+    {x:1240, fill:'#7a4010', label:'Non-Constitutional',sub:'Wide category',            emoji:'📁'},
+  ];
+
+  const rootBottom = 44+26; // root centre y + half height
+  const childY = 155;
+
+  bodies.forEach(n=>{
+    // straight line from root bottom to child top
+    const p=se('line',{x1:680,y1:rootBottom,x2:n.x,y2:childY-28,stroke:'#b87c1055','stroke-width':'1.5','stroke-dasharray':'5 3'});
+    svg.appendChild(p);
+    node(svg,n.x,childY,192,52,n.fill,[n.label],n.sub,n.emoji);
+  });
+
+  // "TODAY'S FOCUS" badge on constitutional node
+  const badge=se('rect',{x:137-96,y:childY+28,width:192,height:18,rx:5,ry:5,fill:'rgba(184,124,16,0.15)',stroke:'#b87c10','stroke-width':'1.2','stroke-dasharray':'4 2'});
+  svg.appendChild(badge);
+  const bt=se('text',{x:137,y:childY+38,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'#b87c10','font-weight':'700','letter-spacing':'1.5'});
+  bt.textContent="⭐ TODAY'S FOCUS"; svg.appendChild(bt);
+
+  // "Powers from Act" label on Statutory
+  const pt=se('text',{x:363,y:childY+38,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'#0a6070','font-weight':'700'});
+  pt.textContent="Powers from Act"; svg.appendChild(pt);
+})();
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgFlow');
+  svg.setAttribute('viewBox','0 0 1360 140');
+  const bg=se('rect',{x:0,y:0,width:1360,height:140,fill:'rgba(250,245,238,0.4)'});
+  svg.appendChild(bg);
+
+  // 6 equally-spaced nodes, node width=180, gap=46
+  // positions: 90, 316, 542, 768, 994, 1220  (spacing=226, width=180, gap=46)
+  const steps=[
+    {x:90,   fill:'#12100e', label:['Constitutional','Bodies (4)'], sub:'Our Focus Today', emoji:'🏛️'},
+    {x:316,  fill:'#b87c10', label:['CAG'],                         sub:'Art. 148–151',    emoji:'🧾'},
+    {x:542,  fill:'#1a3a8a', label:['ECI'],                         sub:'Art. 324',        emoji:'🗳️'},
+    {x:768,  fill:'#1a6a3a', label:['UPSC'],                        sub:'Art. 315–323',    emoji:'🎓'},
+    {x:994,  fill:'#1a5878', label:['SPSC'],                        sub:'Art. 315–323',    emoji:'🏛️'},
+    {x:1270, fill:'#5a1a8a', label:['Constitutional','Accountability'],sub:'Protected by law',emoji:'⚖️'},
+  ];
+
+  for(let i=0;i<steps.length-1;i++){
+    // arrow from right edge of i to left edge of i+1
+    const x1=steps[i].x+90, x2=steps[i+1].x-90;
+    svg.appendChild(se('line',{x1,y1:70,x2,y2:70,stroke:'#b87c1066','stroke-width':'2','marker-end':'url(#arr)'}));
+  }
+  // arrowhead marker
+  const defs=se('defs',{});
+  const marker=se('marker',{id:'arr',markerWidth:'8',markerHeight:'8',refX:'6',refY:'3',orient:'auto'});
+  marker.appendChild(se('path',{d:'M0,0 L0,6 L8,3 z',fill:'#b87c10'}));
+  defs.appendChild(marker);svg.insertBefore(defs,svg.firstChild);
+
+  steps.forEach(s=>{
+    node(svg,s.x,70,175,66,s.fill,s.label,s.sub,s.emoji);
+  });
+
+  const t=se('text',{x:680,y:16,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'3','fill':'rgba(120,100,60,0.4)'});
+  t.textContent='MASTER FLOW: 4 CONSTITUTIONAL BODIES → THEIR PURPOSE → ACCOUNTABILITY';
+  svg.appendChild(t);
+})();
+
+// ─── HELPER: draw a curved branch line ───
+function branch(svg,x1,y1,x2,y2,color){
+  const mx=(x1+x2)/2;
+  svg.appendChild(se('path',{
+    d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:color,'stroke-width':'1.8',fill:'none',
+    'stroke-dasharray':'5 3',opacity:'0.7'
+  }));
+}
+function solidLine(svg,x1,y1,x2,y2,color){
+  svg.appendChild(se('line',{x1,y1,x2,y2,stroke:color,'stroke-width':'2',opacity:'0.8'}));
+}
+
+// ─── CAG MIND MAP ───
+// Zone layout (Y centres):
+//   STRUCTURE zone  : leaves at y=60, 110, 160        cat midpoint=110
+//   FUNCTIONS zone  : leaves at y=240, 290, 340        cat midpoint=290
+//   LIMITS zone     : leaves at y=430, 480, 530        cat midpoint=480
+//   Total height    : 580
+(function(){
+  const svg=document.getElementById('svgCAG');
+  const H=580;
+  svg.setAttribute('viewBox',`0 0 1360 ${H}`);
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:H,fill:'rgba(250,245,238,0.3)'}));
+
+  // Column X positions
+  const C0=115, C1=355, C2=640, C3=920, C4=1190;
+  const NW=210, LW=210, CW=170, ChW=185;
+
+  // Root — vertically centred
+  const RY=H/2;
+  node(svg,C0,RY,NW,86,'#7a4010',['CAG','Financial','Watchdog'],'Art. 148–151 · Part V','🧾');
+
+  // ── STRUCTURE zone: cat y=110, leaves y=60,110,160 ──
+  const catSY=110;
+  node(svg,C1,catSY,CW,44,'#d46a10',['🔷 Structure'],'Composition & Appointment');
+  branch(svg,C0+NW/2,RY,C1-CW/2,catSY,'#d46a10');
+
+  const sLeaves=[
+    {y:55,  fill:'#b87c10', t:'Single Member Body',        s:'Not a commission/board'},
+    {y:110, fill:'#d46a10', t:'Appointed by President',    s:'Gazette notification'},
+    {y:165, fill:'#7a5010', t:'6 yrs / 65 yrs (earlier)',  s:'No reappointment · SC Judge salary'},
+  ];
+  sLeaves.forEach(n=>{
+    branch(svg,C1+CW/2,catSY,C2-LW/2,n.y,'#d46a1066');
+    node(svg,C2,n.y,LW,42,n.fill,[n.t],n.s);
+  });
+
+  // ── FUNCTIONS zone: cat y=290, leaves y=240,290,340 ──
+  const catFY=290;
+  node(svg,C1,catFY,CW,44,'#1a6a3a',['📋 Functions'],'What CAG does');
+  branch(svg,C0+NW/2,RY,C1-CW/2,catFY,'#1a6a3a');
+
+  const fLeaves=[
+    {y:235, fill:'#1a6a3a', t:'Audits CFI',          s:'Consolidated Fund of India'},
+    {y:290, fill:'#0a6070', t:'Audits State Accounts',s:'State + UT accounts'},
+    {y:345, fill:'#1a3a8a', t:'Guides PAC',           s:'Public Accounts Committee'},
+  ];
+  fLeaves.forEach(n=>{
+    branch(svg,C1+CW/2,catFY,C2-LW/2,n.y,'#1a6a3a55');
+    node(svg,C2,n.y,LW,42,n.fill,[n.t],n.s);
+  });
+  // Report chain — only from "Audits CFI" row across
+  solidLine(svg,C2+LW/2,290,C3-ChW/2,290,'#5a1a8a88');
+  node(svg,C3,290,ChW,42,'#5a1a8a',['Reports to President'],'Annual audit reports');
+  solidLine(svg,C3+ChW/2,290,C4-ChW/2,290,'#1a3a8a88');
+  node(svg,C4,290,ChW,42,'#1a3a8a',['Laid before Parliament'],'Both Houses · PAC reviews');
+
+  // ── LIMITS zone: cat y=480, leaves y=430,480,530 ──
+  const catLY=480;
+  node(svg,C1,catLY,CW,44,'#b01a1a',['⚠️ Limits'],'Cannot do + Removal');
+  branch(svg,C0+NW/2,RY,C1-CW/2,catLY,'#b01a1a');
+
+  const lLeaves=[
+    {y:425, fill:'#b01a1a', t:'❌ No Secret Service audit',      s:'National security exempt'},
+    {y:480, fill:'#7a3010', t:'❌ No CFI withdrawal control',     s:'Only audits, never controls'},
+    {y:535, fill:'#2a6030', t:'⚡ 1976: CGA created',            s:'Accounting separated from CAG'},
+  ];
+  lLeaves.forEach(n=>{
+    branch(svg,C1+CW/2,catLY,C2-LW/2,n.y,'#b01a1a55');
+    node(svg,C2,n.y,LW,42,n.fill,[n.t],n.s);
+  });
+  // Removal side-note at same zone level
+  solidLine(svg,C1+CW/2,catLY,C3-ChW/2-30,catLY,'#b01a1a88');
+  node(svg,C3+30,catLY,ChW+70,42,'#7a0a0a',['Removal = Like SC Judge'],'Special majority + address by both Houses');
+})();
+
+// ─── ECI MIND MAP ───
+// Zone layout:
+//   STRUCTURE zone: leaves at y=55, 110, 165           cat mid=110
+//   POWERS zone   : leaves at y=265, 315, 365, 415     cat mid=340
+//   REMOVAL zone  : leaves at y=510, 510 (side by side) cat mid=510
+//   Total height  : 570
+(function(){
+  const svg=document.getElementById('svgECI');
+  const H=570;
+  svg.setAttribute('viewBox',`0 0 1360 ${H}`);
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:H,fill:'rgba(250,245,238,0.3)'}));
+
+  const C0=115, C1=355, C2=630, C3=950, C4=1200;
+  const NW=200, CW=170, LW=230;
+
+  const RY=H/2;
+  node(svg,C0,RY,NW,86,'#1a3a8a',['ECI','Election','Commission'],'Art. 324 · Part XV','🗳️');
+
+  // ── STRUCTURE zone ──
+  const catSY=110;
+  node(svg,C1,catSY,CW,44,'#1a3a8a',['🔷 Structure'],'Composition & Terms');
+  branch(svg,C0+NW/2,RY,C1-CW/2,catSY,'#1a3a8a');
+
+  [{y:55,  fill:'#1a3a8a', t:'CEC + Other ECs',            s:'Multi-member · President decides count'},
+   {y:110, fill:'#2a4aaa', t:'Appointed by President',      s:'Prez decides number of ECs'},
+   {y:165, fill:'#0a3070', t:'6 yrs / 65 yrs (earlier)',   s:'Salary = SC Judge · Expenses on CFI'},
+  ].forEach(n=>{
+    branch(svg,C1+CW/2,catSY,C2-LW/2,n.y,'#1a3a8a55');
+    node(svg,C2,n.y,LW,42,n.fill,[n.t],n.s);
+  });
+
+  // ── POWERS zone ──
+  const catPY=340;
+  node(svg,C1,catPY,CW,44,'#1a6a3a',['⚡ Powers'],'What ECI can do');
+  branch(svg,C0+NW/2,RY,C1-CW/2,catPY,'#1a6a3a');
+
+  [{y:270, fill:'#1a6a3a', t:'Conducts Elections',     s:'President · VP · Parliament · State'},
+   {y:318, fill:'#0a6070', t:'Recognises Parties',     s:'National & State party status'},
+   {y:366, fill:'#5a1a8a', t:'Settles Split Disputes', s:'Party mergers & splits'},
+   {y:414, fill:'#b87c10', t:'Can Cancel Polls',       s:'Booth capture, malpractice'},
+  ].forEach(n=>{
+    branch(svg,C1+CW/2,catPY,C2-LW/2,n.y,'#1a6a3a55');
+    node(svg,C2,n.y,LW,42,n.fill,[n.t],n.s);
+  });
+
+  // ── REMOVAL zone — two side-by-side nodes, well below powers ──
+  const catRY=510;
+  node(svg,C1,catRY,CW,44,'#b01a1a',['🔒 Removal'],'Safeguards & Protection');
+  branch(svg,C0+NW/2,RY,C1-CW/2,catRY,'#b01a1a');
+
+  // CEC Removal
+  solidLine(svg,C1+CW/2,catRY,C3-185,catRY,'#b01a1a88');
+  node(svg,C3,catRY,360,44,'#b01a1a',['CEC Removal = SC Judge'],'Special majority · Both Houses address');
+  // Other EC Removal — to the right
+  solidLine(svg,C3+180,catRY,C4-155,catRY,'#d46a1088');
+  node(svg,C4+55,catRY,300,44,'#d46a10',['Other EC Removal'],'Only on CEC recommendation ⚠️');
+
+  // Model Code — below removal, left-aligned
+  branch(svg,C1+CW/2,catRY,C2-LW/2,545,'#1a5878');
+  node(svg,C2,545,LW,38,'#1a5878',['Model Code of Conduct'],'Election norms enforced by ECI');
+})();
+
+// ─── UPSC MIND MAP ───
+// Zone layout:
+//   STRUCTURE zone: leaves at y=55, 110, 165           cat mid=110
+//   FUNCTIONS zone: leaves at y=270, 320, 370           cat mid=320
+//   LIMITS zone   : leaves at y=470, 520, 570           cat mid=520
+//   Total height  : 620
+(function(){
+  const svg=document.getElementById('svgUPSC');
+  const H=620;
+  svg.setAttribute('viewBox',`0 0 1360 ${H}`);
+  svg.appendChild(se('rect',{x:0,y:0,width:1360,height:H,fill:'rgba(250,245,238,0.3)'}));
+
+  const C0=115, C1=355, C2=630, C3=930, C4=1200;
+  const NW=200, CW=174, LW=225, ChW=200;
+
+  const RY=H/2;
+  node(svg,C0,RY,NW,86,'#0a6070',['UPSC','Recruitment','Body'],'Art. 315–323 · Part XIV','🎓');
+
+  // ── STRUCTURE zone ──
+  const catSY=110;
+  node(svg,C1,catSY,CW,44,'#0a6070',['🔷 Structure'],'Composition & Eligibility');
+  branch(svg,C0+NW/2,RY,C1-CW/2,catSY,'#0a6070');
+
+  [{y:55,  fill:'#0a6070', t:'Chairman + Members',          s:'Number decided by President'},
+   {y:110, fill:'#006080', t:'50% need 10-yr Govt Service', s:'Experience rule — key prelims fact'},
+   {y:165, fill:'#004060', t:'6 yrs / 65 yrs (earlier)',    s:'No reappointment · Expenses on CFI'},
+  ].forEach(n=>{
+    branch(svg,C1+CW/2,catSY,C2-LW/2,n.y,'#0a607055');
+    node(svg,C2,n.y,LW,42,n.fill,[n.t],n.s);
+  });
+
+  // ── FUNCTIONS zone ──
+  const catFY=320;
+  node(svg,C1,catFY,CW,44,'#1a6a3a',['📝 Functions'],'Role & Reporting');
+  branch(svg,C0+NW/2,RY,C1-CW/2,catFY,'#1a6a3a');
+
+  [{y:265, fill:'#1a6a3a', t:'Conducts Civil Service Exams',s:'IAS · IPS · IFS · Group A & B'},
+   {y:318, fill:'#1a3a8a', t:'Advises on Recruitment',      s:'Promotion · Seniority · Transfers'},
+   {y:371, fill:'#5a1a8a', t:'Disciplinary Matters',        s:'Advises on dismissal & reduction'},
+  ].forEach(n=>{
+    branch(svg,C1+CW/2,catFY,C2-LW/2,n.y,'#1a6a3a55');
+    node(svg,C2,n.y,LW,42,n.fill,[n.t],n.s);
+  });
+  // Reporting chain from function row
+  solidLine(svg,C2+LW/2,318,C3-ChW/2,318,'#b87c1088');
+  node(svg,C3,318,ChW,42,'#b87c10',['Reports to President'],'Annual report → Parliament');
+
+  // ── LIMITS zone ──
+  const catLY=520;
+  node(svg,C1,catLY,CW,44,'#b01a1a',['⚠️ Limits'],'Exclusions & Removal');
+  branch(svg,C0+NW/2,RY,C1-CW/2,catLY,'#b01a1a');
+
+  [{y:465, fill:'#b01a1a', t:'❌ No Group C & D',       s:'State & subordinate bodies handle these'},
+   {y:518, fill:'#7a3010', t:'❌ No Temporary >1 yr',   s:'Permanent posts only in scope'},
+   {y:571, fill:'#2a6030', t:'Advisory — not binding',  s:'Govt can override · must record reason'},
+  ].forEach(n=>{
+    branch(svg,C1+CW/2,catLY,C2-LW/2,n.y,'#b01a1a55');
+    node(svg,C2,n.y,LW,42,n.fill,[n.t],n.s);
+  });
+  // Removal side-note
+  solidLine(svg,C1+CW/2,catLY,C3-ChW/2-10,catLY,'#b01a1a88');
+  node(svg,C3+10,catLY,ChW+60,42,'#7a0a0a',['Removal by President'],'SC inquiry required in misbehaviour cases');
+})();
+
+// ─── MEMORY TRICK — clean horizontal flow ───
+(function(){
+  const svg=document.getElementById('svgMemory');
+  svg.setAttribute('viewBox','0 0 1360 190');
+  const bg=se('rect',{x:0,y:0,width:1360,height:190,fill:'rgba(250,245,238,0.4)'});
+  svg.appendChild(bg);
+
+  // Root
+  node(svg,130,95,200,62,'#12100e',['Democracy','Machine'],'3 constitutional pillars','⚙️');
+
+  // 3 bodies
+  const bodies=[
+    {x:400, y:42,  fill:'#b87c10', label:'🧾 CAG',       sub:'Financial Watchdog'},
+    {x:400, y:95,  fill:'#1a3a8a', label:'🗳️ ECI',       sub:'Electoral Democracy'},
+    {x:400, y:148, fill:'#0a6070', label:'🎓 UPSC/SPSC', sub:'Merit Recruitment'},
+  ];
+  bodies.forEach(n=>{
+    svg.appendChild(se('path',{d:`M${130+100},${95} C${265},${95} ${265},${n.y} ${n.x-95},${n.y}`,
+      stroke:n.fill+'66','stroke-width':'2',fill:'none'}));
+    node(svg,n.x,n.y,182,44,n.fill,[n.label],n.sub);
+  });
+
+  // what each does
+  const does=[
+    {x:670, y:42,  fill:'#d46a10', label:'Checks Money ✔️',    sub:'Financial accountability'},
+    {x:670, y:95,  fill:'#1a5878', label:'Conducts Elections ✔️',sub:'Democratic mandate'},
+    {x:670, y:148, fill:'#1a6a3a', label:'Recruits Officers ✔️',sub:'Merit-based governance'},
+  ];
+  does.forEach((n,i)=>{
+    svg.appendChild(se('line',{x1:400+91,y1:bodies[i].y,x2:n.x-91,y2:n.y,stroke:n.fill+'66','stroke-width':'2'}));
+    node(svg,n.x,n.y,178,44,n.fill,[n.label],n.sub);
+  });
+
+  // Converge to single outcome
+  const endX=1000, endY=95;
+  does.forEach((n)=>{
+    svg.appendChild(se('path',{d:`M${670+89},${n.y} C${840},${n.y} ${840},${endY} ${endX-115},${endY}`,
+      stroke:'#5a1a8a66','stroke-width':'1.5',fill:'none'}));
+  });
+  node(svg,endX,endY,220,62,'#5a1a8a',['Constitutional','Accountability'],'The end goal of 74th Amdt','✅');
+
+  // Mnemonic badge
+  const mx=1270,my=95;
+  svg.appendChild(se('line',{x1:endX+110,y1:endY,x2:mx-90,y2:my,stroke:'#b87c1066','stroke-width':'2'}));
+  node(svg,mx,my,170,62,'#b87c10',['C · E · U · S'],'CAG · ECI · UPSC · SPSC','🧠');
+
+  const t=se('text',{x:680,y:182,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace','letter-spacing':'2','fill':'rgba(120,100,60,0.4)'});
+  t.textContent='MEMORY: C-E-U-S → MONEY ✔ · ELECTIONS ✔ · RECRUITMENT ✔ → CONSTITUTIONAL ACCOUNTABILITY';
+  svg.appendChild(t);
+})();
+</script>
+</body>
+</html>

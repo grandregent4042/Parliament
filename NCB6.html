@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NCW, NCPCR & NCM — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#12100e;--paper:#f8f6ff;--gold:#b87c10;--gold-lt:#f5d78a;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#6a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0e8;
+  --card:#fffdf5;--card2:#f5f0fc;--sky:#1a5878;
+  --rose:#8a1a5a;--indigo:#3a1a8a;--violet:#5a0a7a;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 900px 500px at 15% 10%,rgba(106,26,138,0.05) 0%,transparent 60%),
+  radial-gradient(ellipse 700px 700px at 85% 90%,rgba(26,58,138,0.04) 0%,transparent 60%);
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--purple);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,52px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--purple);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--rose),var(--purple),var(--blue));margin:14px auto 0;border-radius:4px;}
+
+/* SEC LABEL */
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--purple);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(106,26,138,0.1);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.rose::before{background:var(--rose);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.green::before{background:var(--green);}
+.pc.amber::before{background:var(--amber);}
+.pc.teal::before{background:var(--teal);}
+.pc.gold::before{background:var(--gold);}
+.pc.red::before{background:var(--red);}
+.pc.indigo::before{background:var(--indigo);}
+.pc.violet::before{background:var(--violet);}
+.pc.sky::before{background:var(--sky);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* MAP CARDS */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:28px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--rose),var(--purple),var(--blue));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--rose),var(--amber));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--blue),var(--teal),var(--green));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--purple),var(--indigo));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.map-card svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.rose{background:rgba(138,26,90,0.12);color:var(--rose);}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.purple{background:rgba(106,26,138,0.12);color:var(--purple);}
+.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}
+.pill.teal{background:rgba(10,96,112,0.12);color:var(--teal);}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.red{background:rgba(176,26,26,0.12);color:var(--red);}
+.pill.indigo{background:rgba(58,26,138,0.12);color:var(--indigo);}
+
+/* STAT BOXES */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* CHIPS */
+.ps-chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.ok{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.ps-chip.warn{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.ps-chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+.ps-chip.info{background:rgba(26,58,138,0.07);border-color:rgba(26,58,138,0.2);color:var(--blue);}
+.ps-chip.rose{background:rgba(138,26,90,0.07);border-color:rgba(138,26,90,0.2);color:var(--rose);}
+.ps-chip.purple{background:rgba(106,26,138,0.07);border-color:rgba(106,26,138,0.2);color:var(--purple);}
+
+/* FEAT GRID */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(106,26,138,0.03);}
+.ctable td:first-child{font-weight:700;}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;background:rgba(26,58,138,0.06);border:1.5px solid rgba(26,58,138,0.2);margin:8px 0;}
+.callout-title{font-size:11px;font-weight:800;color:var(--blue);margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* IMPACT CHAIN */
+.impact-chain{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:6px 0;margin:8px 0;}
+.ic-node{padding:7px 12px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:14px;color:var(--muted);flex:0 0 auto;margin:0 4px;}
+
+/* TRAP BOX */
+.trap-box{background:rgba(176,26,26,0.06);border:2px solid rgba(176,26,26,0.2);border-radius:14px;padding:16px;margin-bottom:18px;}
+.trap-box h3{font-family:'Playfair Display',serif;font-size:16px;color:var(--red);margin-bottom:10px;}
+
+/* CHAIN BOX */
+.chain-box{background:rgba(26,106,58,0.05);border:2px solid rgba(26,106,58,0.15);border-radius:14px;padding:16px;margin-bottom:18px;}
+
+/* BADGE */
+.badge{padding:3px 9px;border-radius:6px;font-size:9px;font-weight:700;font-family:'DM Mono',monospace;display:inline-block;margin:2px;}
+.badge.rose{background:rgba(138,26,90,0.15);color:var(--rose);}
+.badge.blue{background:rgba(26,58,138,0.15);color:var(--blue);}
+.badge.purple{background:rgba(106,26,138,0.15);color:var(--purple);}
+.badge.green{background:rgba(26,106,58,0.15);color:var(--green);}
+.badge.amber{background:rgba(212,106,16,0.15);color:var(--amber);}
+.badge.teal{background:rgba(10,96,112,0.15);color:var(--teal);}
+.badge.red{background:rgba(176,26,26,0.15);color:var(--red);}
+.badge.gold{background:rgba(184,124,16,0.15);color:var(--gold);}
+
+/* TIMELINE */
+.timeline{display:flex;gap:0;margin:14px 0;}
+.tl-item{flex:1;position:relative;padding:0 8px;}
+.tl-item:not(:last-child)::after{content:'';position:absolute;top:20px;right:0;width:100%;height:2px;background:linear-gradient(90deg,var(--border),var(--purple),var(--border));}
+.tl-dot{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;margin:0 auto 8px;border:2px solid;}
+.tl-year{font-family:'Playfair Display',serif;font-size:15px;font-weight:800;text-align:center;}
+.tl-label{font-size:10px;text-align:center;font-weight:700;margin-top:2px;}
+.tl-sub{font-size:8px;font-family:'DM Mono',monospace;color:var(--muted);text-align:center;margin-top:2px;}
+@media(max-width:640px){.timeline{flex-direction:column;}.tl-item::after{display:none;}}
+
+/* DIVIDER */
+.div-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:10px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Polity · Social Justice Bodies · UPSC Prelims</div>
+  <h1>NCW · NCPCR · NCM — <em>Mind Map</em></h1>
+  <div class="header-sub">Statutory Rights-Protection Bodies · Women · Children · Minorities</div>
+</div>
+
+<!-- SECTION 0: MASTER FLOW -->
+<div class="sec-label">Master Flow — The Connected Story</div>
+
+<div class="map-card mc1">
+  <svg id="svgMaster" viewBox="0 0 1360 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- TIMELINE -->
+<div class="sec-label">① Legislative Timeline — When Each Body Was Born</div>
+
+<div class="pc purple" style="margin-bottom:20px;">
+  <div class="pc-label">Acts of Parliament</div>
+  <h3>📜 Three Acts · Three Decades</h3>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot" style="background:rgba(138,26,90,0.1);border-color:var(--rose);color:var(--rose);">👩</div>
+      <div class="tl-year" style="color:var(--rose);">1974</div>
+      <div class="tl-label" style="color:var(--rose);">Committee Recommendation</div>
+      <div class="tl-sub">Status of Women Report → NCW recommended</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:rgba(138,26,90,0.1);border-color:var(--rose);color:var(--rose);">⚖️</div>
+      <div class="tl-year" style="color:var(--rose);">1990</div>
+      <div class="tl-label" style="color:var(--rose);">NCW Act Passed</div>
+      <div class="tl-sub">National Commission for Women Act</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:rgba(106,26,138,0.1);border-color:var(--purple);color:var(--purple);">🕌</div>
+      <div class="tl-year" style="color:var(--purple);">1992</div>
+      <div class="tl-label" style="color:var(--purple);">NCM Act Passed</div>
+      <div class="tl-sub">National Commission for Minorities Act</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:rgba(106,26,138,0.1);border-color:var(--purple);color:var(--purple);">🔯</div>
+      <div class="tl-year" style="color:var(--purple);">1993</div>
+      <div class="tl-label" style="color:var(--purple);">Zoroastrians Added</div>
+      <div class="tl-sub">NCM notified minority</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:rgba(26,58,138,0.1);border-color:var(--blue);color:var(--blue);">👶</div>
+      <div class="tl-year" style="color:var(--blue);">2005</div>
+      <div class="tl-label" style="color:var(--blue);">NCPCR Act Passed</div>
+      <div class="tl-sub">Child Rights Protection Act</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:rgba(26,58,138,0.1);border-color:var(--blue);color:var(--blue);">🏛️</div>
+      <div class="tl-year" style="color:var(--blue);">2007</div>
+      <div class="tl-label" style="color:var(--blue);">NCPCR Established</div>
+      <div class="tl-sub">Commission becomes operational</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:rgba(184,124,16,0.1);border-color:var(--gold);color:var(--gold);">🙏</div>
+      <div class="tl-year" style="color:var(--gold);">2014</div>
+      <div class="tl-label" style="color:var(--gold);">Jains Added</div>
+      <div class="tl-sub">6th NCM notified minority</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: THREE BODIES OVERVIEW -->
+<div class="sec-label">② Three Bodies — Structural Overview</div>
+
+<div class="map-card mc2">
+  <svg id="svgThree" viewBox="0 0 1360 300" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- SECTION 3: NCW DEEP DIVE -->
+<div class="sec-label">③ National Commission for Women (NCW) — Deep Dive</div>
+
+<div class="g3">
+  <!-- Structure -->
+  <div class="pc rose">
+    <div class="pc-label">Structure · 1990 Act</div>
+    <h3>👩‍⚖️ NCW Composition</h3>
+    <div style="display:flex;align-items:center;gap:10px;padding:12px;background:rgba(138,26,90,0.06);border-radius:10px;border:1.5px solid rgba(138,26,90,0.15);margin-bottom:10px;">
+      <span style="font-size:28px;">👩</span>
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:var(--rose);">1 Chair + 6</div>
+        <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">CHAIRPERSON + MEMBERS</div>
+      </div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Chairperson</div><div class="vs">Nominated by Central Govt</div></div>
+      <div class="vitem"><div class="vt">5 Members</div><div class="vs">Experts in law, welfare, employment · At least 1 SC/ST</div></div>
+      <div class="vitem"><div class="vt">Member Secretary</div><div class="vs">Administration expert</div></div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="badge amber">Term: 3 Years</span>
+      <span class="badge rose">Nodal: MoWCD</span>
+    </div>
+  </div>
+
+  <!-- Functions -->
+  <div class="pc rose">
+    <div class="pc-label">Functions</div>
+    <h3>⚙️ What NCW Does</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">📋</div><div class="ft">Reviews Legal Safeguards</div><div class="fs">For women across India</div></div>
+      <div class="feat"><div class="fi">🏛️</div><div class="ft">Policy Advice</div><div class="fs">Govt must consult NCW</div></div>
+      <div class="feat"><div class="fi">📩</div><div class="ft">Handles Complaints</div><div class="fs">Rape, harassment, DV</div></div>
+      <div class="feat"><div class="fi">🔍</div><div class="ft">Inspects Jails</div><div class="fs">Women institutions</div></div>
+      <div class="feat"><div class="fi">💼</div><div class="ft">Funds Litigation</div><div class="fs">Large women-related cases</div></div>
+      <div class="feat"><div class="fi">📊</div><div class="ft">Annual Reports</div><div class="fs">To Parliament</div></div>
+    </div>
+  </div>
+
+  <!-- Powers + Special -->
+  <div class="pc rose">
+    <div class="pc-label">Powers & Special Initiative</div>
+    <h3>⚡ NCW Powers</h3>
+    <div class="vlist" style="margin-bottom:10px;">
+      <div class="vitem"><div class="vt">Civil Court Powers</div><div class="vs">Can summon, demand documents</div></div>
+      <div class="vitem"><div class="vt">Policy Consultation</div><div class="vs">Mandatory govt consultation</div></div>
+    </div>
+    <div style="padding:14px;background:rgba(138,26,90,0.07);border-radius:10px;border:1.5px dashed rgba(138,26,90,0.25);">
+      <div style="font-size:11px;font-weight:800;color:var(--rose);margin-bottom:6px;">⚖️ Parivarik Mahila Lok Adalat</div>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">Family Dispute Resolution</div><div class="vs">Speedy & low-cost justice</div></div>
+        <div class="vitem"><div class="vt">Alternative Dispute Mechanism</div><div class="vs">No lengthy court proceedings</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: NCPCR DEEP DIVE -->
+<div class="sec-label">④ National Commission for Protection of Child Rights (NCPCR) — Deep Dive</div>
+
+<div class="map-card mc3">
+  <svg id="svgNcpcr" viewBox="0 0 1360 260" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-label">Structure · 2005 Act · Est. 2007</div>
+    <h3>👶 NCPCR Composition</h3>
+    <div style="display:flex;align-items:center;gap:10px;padding:12px;background:rgba(26,58,138,0.06);border-radius:10px;border:1.5px solid rgba(26,58,138,0.15);margin-bottom:10px;">
+      <span style="font-size:28px;">🛡️</span>
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:var(--blue);">1 Chair + 6</div>
+        <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">CHAIRPERSON + MEMBERS</div>
+      </div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Chairperson</div><div class="vs">Eminent child welfare expert</div></div>
+      <div class="vitem"><div class="vt">6 Members</div><div class="vs">At least 2 women</div></div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="badge blue">Term: 3 Years</span>
+      <span class="badge indigo">Chair Max: 65 yrs</span>
+      <span class="badge blue">Members Max: 60 yrs</span>
+      <span class="badge blue">Max 2 Terms</span>
+      <span class="badge blue">Nodal: MoWCD</span>
+    </div>
+    <div class="callout" style="margin-top:10px;background:rgba(26,58,138,0.06);border-color:rgba(26,58,138,0.2);">
+      <div class="callout-title" style="color:var(--blue);">🌐 Based On</div>
+      <div class="callout-body">UN Convention on the Rights of the Child</div>
+    </div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">Functions</div>
+    <h3>⚙️ What NCPCR Does</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">📋</div><div class="ft">Reviews Safeguards</div><div class="fs">Child rights across laws</div></div>
+      <div class="feat"><div class="fi">🔍</div><div class="ft">Inquires Violations</div><div class="fs">Child rights complaints</div></div>
+      <div class="feat"><div class="fi">📢</div><div class="ft">Awareness</div><div class="fs">Promotes child rights</div></div>
+      <div class="feat"><div class="fi">🏠</div><div class="ft">Inspects Homes</div><div class="fs">Juvenile institutions</div></div>
+    </div>
+    <div style="margin-top:10px;padding:10px;background:rgba(26,58,138,0.06);border-radius:9px;border:1px dashed rgba(26,58,138,0.2);">
+      <div style="font-size:10px;font-weight:800;color:var(--blue);margin-bottom:4px;">📁 Works Under These Acts</div>
+      <span class="badge blue">RTE Act 2009</span>
+      <span class="badge indigo">POCSO Act 2012</span>
+      <span class="badge blue">JJ Act 2015</span>
+    </div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">Children's Courts</div>
+    <h3>⚖️ Special Courts for Children</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Established Under</div><div class="vs">Commissions for Protection of Child Rights Act, 2005</div></div>
+      <div class="vitem"><div class="vt">Set Up By</div><div class="vs">State Government</div></div>
+      <div class="vitem"><div class="vt">Approval From</div><div class="vs">Chief Justice of High Court</div></div>
+      <div class="vitem"><div class="vt">Special Prosecutor</div><div class="vs">Special Public Prosecutor appointed</div></div>
+    </div>
+    <div style="margin-top:10px;padding:10px;border-radius:9px;background:rgba(26,106,58,0.06);border:1.5px solid rgba(26,106,58,0.15);">
+      <div style="font-size:10px;font-weight:800;color:var(--green);">💡 Fast-Track Justice for Children</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;">Speedy resolution of child rights violations</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: NCM DEEP DIVE -->
+<div class="sec-label">⑤ National Commission for Minorities (NCM) — Deep Dive</div>
+
+<div class="g3">
+  <div class="pc purple">
+    <div class="pc-label">Structure · 1992 Act</div>
+    <h3>🕌 NCM Composition</h3>
+    <div style="display:flex;align-items:center;gap:10px;padding:12px;background:rgba(106,26,138,0.06);border-radius:10px;border:1.5px solid rgba(106,26,138,0.15);margin-bottom:10px;">
+      <span style="font-size:28px;">⚖️</span>
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:var(--purple);">1+1+5</div>
+        <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">CHAIR + VICE-CHAIR + 5 MEMBERS</div>
+      </div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Chairperson</div><div class="vs">From minority communities</div></div>
+      <div class="vitem"><div class="vt">Vice-Chairperson</div><div class="vs">From minority communities</div></div>
+      <div class="vitem"><div class="vt">5 Members</div><div class="vs">From minority communities</div></div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="badge purple">Term: 3 Years</span>
+      <span class="badge purple">Nodal: MoMA</span>
+    </div>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-label">Recognized Minorities</div>
+    <h3>🌙 6 Notified Communities</h3>
+    <div style="font-size:10px;color:var(--red);font-weight:700;padding:8px 10px;background:rgba(176,26,26,0.06);border-radius:8px;border:1px dashed var(--red);margin-bottom:10px;">⚠️ Act does NOT define minority — Central Govt notifies</div>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">🌙</div><div class="ft">Muslims</div><div class="fs">Original 1993</div></div>
+      <div class="feat"><div class="fi">✝️</div><div class="ft">Christians</div><div class="fs">Original 1993</div></div>
+      <div class="feat"><div class="fi">☬</div><div class="ft">Sikhs</div><div class="fs">Original 1993</div></div>
+      <div class="feat"><div class="fi">☸️</div><div class="ft">Buddhists</div><div class="fs">Original 1993</div></div>
+      <div class="feat"><div class="fi">🔥</div><div class="ft">Zoroastrians</div><div class="fs">Added 1993</div></div>
+      <div class="feat"><div class="fi">🙏</div><div class="ft">Jains</div><div class="fs">Added 2014 ⭐</div></div>
+    </div>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-label">Functions & Powers</div>
+    <h3>⚙️ What NCM Does</h3>
+    <div class="vlist" style="margin-bottom:10px;">
+      <div class="vitem"><div class="vt">Evaluate Development</div><div class="vs">Progress of minority communities</div></div>
+      <div class="vitem"><div class="vt">Monitor Safeguards</div><div class="vs">Constitutional protections</div></div>
+      <div class="vitem"><div class="vt">Address Complaints</div><div class="vs">Specific minority issues</div></div>
+      <div class="vitem"><div class="vt">Conduct Studies</div><div class="vs">Research on minority welfare</div></div>
+    </div>
+    <div style="padding:10px;background:rgba(106,26,138,0.06);border-radius:9px;border:1px dashed rgba(106,26,138,0.2);">
+      <div style="font-size:10px;font-weight:800;color:var(--purple);margin-bottom:4px;">📊 Reporting Chain</div>
+      <div class="impact-chain" style="flex-wrap:wrap;">
+        <div class="ic-node" style="border-color:var(--purple);background:rgba(106,26,138,0.07);color:var(--purple);font-size:9px;">NCM Report</div>
+        <div class="ic-arr">→</div>
+        <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.07);color:var(--blue);font-size:9px;">Central Govt</div>
+        <div class="ic-arr">→</div>
+        <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.07);color:var(--green);font-size:9px;">Parliament</div>
+      </div>
+      <div style="font-size:10px;font-weight:800;color:var(--purple);margin:6px 0 4px;">⚡ Civil Court Powers</div>
+      <span class="badge purple">Summon Witnesses</span>
+      <span class="badge purple">Examine Evidence</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: COMPARISON TABLE -->
+<div class="sec-label">⑥ Side-by-Side Comparison — The Complete Picture</div>
+
+<div class="map-card mc4" style="margin-bottom:20px;">
+  <svg id="svgCompare" viewBox="0 0 1360 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="pc indigo" style="margin-bottom:20px;">
+  <div class="pc-label">Quick Reference Table</div>
+  <h3>📊 All Three — At a Glance</h3>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th>👩 NCW</th>
+        <th>👶 NCPCR</th>
+        <th>🕌 NCM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Act</td>
+        <td style="color:var(--rose);">NCW Act, 1990</td>
+        <td style="color:var(--blue);">CPCR Act, 2005</td>
+        <td style="color:var(--purple);">NCM Act, 1992</td>
+      </tr>
+      <tr>
+        <td>Operational Since</td>
+        <td>1992</td>
+        <td>2007</td>
+        <td>1993</td>
+      </tr>
+      <tr>
+        <td>Composition</td>
+        <td>Chair + 5M + 1SecM</td>
+        <td>Chair + 6M (≥2 women)</td>
+        <td>Chair + VC + 5M</td>
+      </tr>
+      <tr>
+        <td>Term</td>
+        <td><span style="color:var(--rose);font-weight:800;">3 Years</span></td>
+        <td><span style="color:var(--blue);font-weight:800;">3 Years</span></td>
+        <td><span style="color:var(--purple);font-weight:800;">3 Years</span></td>
+      </tr>
+      <tr>
+        <td>Nodal Ministry</td>
+        <td>MoWCD</td>
+        <td>MoWCD</td>
+        <td>Ministry of Minority Affairs</td>
+      </tr>
+      <tr>
+        <td>Appointed By</td>
+        <td>Central Govt</td>
+        <td>Central Govt</td>
+        <td>Central Govt</td>
+      </tr>
+      <tr>
+        <td>Civil Court Powers</td>
+        <td>✅ Yes</td>
+        <td>✅ Yes</td>
+        <td>✅ Yes</td>
+      </tr>
+      <tr>
+        <td>Special Feature</td>
+        <td>Parivarik Lok Adalat</td>
+        <td>Children's Courts</td>
+        <td>Minorities Notified by Centre</td>
+      </tr>
+      <tr>
+        <td>Inspired By</td>
+        <td>Status of Women Report 1974</td>
+        <td>UN Convention on Child Rights</td>
+        <td>Constitutional Art. 29–30</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 7: SOCIAL JUSTICE NETWORK -->
+<div class="sec-label">⑦ Social Justice Watchdog Network — Big Picture</div>
+
+<div class="map-card mc1" style="margin-bottom:20px;">
+  <svg id="svgNetwork" viewBox="0 0 1360 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- SECTION 8: PRELIMS TRAPS -->
+<div class="sec-label">⑧ High-Probability Prelims Traps 🎯</div>
+
+<div class="trap-box">
+  <h3>🔥 Common Exam Traps — Don't Fall!</h3>
+  <div class="g3">
+    <div>
+      <div style="font-size:10px;font-weight:800;color:var(--red);margin-bottom:6px;">⚠️ STATUTORY STATUS</div>
+      <div class="vlist">
+        <div class="vitem" style="border-color:rgba(176,26,26,0.2);"><div class="vt">All Three = Statutory Bodies</div><div class="vs">Created by Acts of Parliament — NOT constitutional</div></div>
+        <div class="vitem" style="border-color:rgba(176,26,26,0.2);"><div class="vt">NOT Constitutional Bodies</div><div class="vs">NHRC, NCSC, NCST — also statutory, not constitutional</div></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:10px;font-weight:800;color:var(--red);margin-bottom:6px;">⚠️ YEAR TRAPS</div>
+      <div class="vlist">
+        <div class="vitem" style="border-color:rgba(176,26,26,0.2);"><div class="vt">NCW Act: 1990 ≠ 1992</div><div class="vs">Act was 1990; NCM Act was 1992</div></div>
+        <div class="vitem" style="border-color:rgba(176,26,26,0.2);"><div class="vt">NCPCR Act: 2005 ≠ 2007</div><div class="vs">Act was 2005; established/operational from 2007</div></div>
+        <div class="vitem" style="border-color:rgba(176,26,26,0.2);"><div class="vt">Jains Added: 2014</div><div class="vs">Latest addition — trap to forget this one</div></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:10px;font-weight:800;color:var(--red);margin-bottom:6px;">⚠️ STRUCTURAL TRAPS</div>
+      <div class="vlist">
+        <div class="vitem" style="border-color:rgba(176,26,26,0.2);"><div class="vt">NCM: Also has Vice-Chairperson</div><div class="vs">NCW and NCPCR do NOT have a Vice-Chair</div></div>
+        <div class="vitem" style="border-color:rgba(176,26,26,0.2);"><div class="vt">NCPCR: ≥2 women among 6 members</div><div class="vs">Not any fixed SC/ST requirement</div></div>
+        <div class="vitem" style="border-color:rgba(176,26,26,0.2);"><div class="vt">NCM: Act doesn't define minority</div><div class="vs">Central Govt notifies — key trap!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:12px;">
+    <div style="font-size:10px;font-weight:800;color:var(--green);margin-bottom:6px;">✅ QUICK RECALL CHECKLIST</div>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="ps-chip ok">✅ All 3 = Statutory</span>
+      <span class="ps-chip ok">✅ NCW Act: 1990</span>
+      <span class="ps-chip ok">✅ NCM Act: 1992</span>
+      <span class="ps-chip ok">✅ NCPCR Act: 2005, Est: 2007</span>
+      <span class="ps-chip ok">✅ Term = 3 years (all three)</span>
+      <span class="ps-chip ok">✅ All = Civil Court Powers</span>
+      <span class="ps-chip ok">✅ NCPCR → RTE + POCSO + JJ Act</span>
+      <span class="ps-chip ok">✅ Children's Courts under 2005 Act</span>
+      <span class="ps-chip ok">✅ NCM minorities → notified by Centre</span>
+      <span class="ps-chip ok">✅ Jains added 2014</span>
+      <span class="ps-chip ok">✅ Zoroastrians 1993</span>
+      <span class="ps-chip ok">✅ NCW → Parivarik Mahila Lok Adalat</span>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">⚖️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Big Social Justice Chain</div>
+    <div class="keystone-sub">
+      <strong style="color:#f5d78a;">Issue → Right Body → Right Law</strong><br>
+      Women's Rights → NCW (1990) &nbsp;|&nbsp; Child Rights → NCPCR (2005) &nbsp;|&nbsp; Minority Rights → NCM (1992)<br>
+      SC/ST → NCSC/NCST &nbsp;|&nbsp; OBC → NCBC &nbsp;|&nbsp; Human Rights → NHRC<br>
+      Together: India's Social Justice Watchdog Network — All Statutory, All with Civil Court Powers
+    </div>
+    <div class="keystone-pills">
+      <span class="kpill">👩 NCW 1990</span>
+      <span class="kpill">👶 NCPCR 2005</span>
+      <span class="kpill">🕌 NCM 1992</span>
+      <span class="kpill">⚖️ All Statutory</span>
+      <span class="kpill">📋 3-Year Terms</span>
+      <span class="kpill">🏛️ Civil Court Powers</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const p=se('path',{d:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':w||2,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.7'});
+  svg.appendChild(p);
+}
+function edgeStraight(svg,x1,y1,x2,y2,color,dashed,w){
+  const p=se('line',{x1,y1,x2,y2,stroke:color||'#aaa','stroke-width':w||2,'stroke-dasharray':dashed?'5 4':'none',opacity:'0.7'});
+  svg.appendChild(p);
+}
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.1)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.25)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7.5)-(sub?4:0)-(emoji?10:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'15',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=19;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*14.5,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*14.5,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.4)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgMaster');
+  const steps=[
+    {x:100, label:['Vulnerable','Groups'], sub:'Who needs protection?', fill:'#12100e', emoji:'🏛️'},
+    {x:275, label:['Women','Rights'], sub:'NCW Act 1990', fill:'#8a1a5a', emoji:'👩'},
+    {x:450, label:['Child','Rights'], sub:'NCPCR Act 2005', fill:'#1a3a8a', emoji:'👶'},
+    {x:625, label:['Minority','Rights'], sub:'NCM Act 1992', fill:'#6a1a8a', emoji:'🕌'},
+    {x:820, label:['All = Statutory','Bodies'], sub:'Created by Parliament', fill:'#0a6070', emoji:'📜'},
+    {x:1010, label:['Civil Court','Powers'], sub:'All three bodies', fill:'#1a6a3a', emoji:'⚡'},
+    {x:1185, label:['3-Year','Terms'], sub:'Uniform across all', fill:'#b87c10', emoji:'⏳'},
+    {x:1320, label:['Social Justice','Network'], sub:'Complete watchdog system', fill:'#3a1a8a', emoji:'⚖️'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      edge(svg,s.x+82,80,steps[i+1].x-82,80,'#6a1a8a',false,2);
+    }
+  });
+  steps.forEach(s=>{
+    node(svg,s.x,80,155,70,s.fill,s.label,s.sub,s.emoji);
+  });
+  const t=se('text',{x:680,y:20,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'3','fill':'rgba(106,26,138,0.4)'});
+  t.textContent='MASTER FLOW: VULNERABLE GROUP → STATUTORY BODY → CIVIL COURT POWERS → SOCIAL JUSTICE';
+  svg.appendChild(t);
+})();
+
+// ─── THREE BODIES OVERVIEW ───
+(function(){
+  const svg=document.getElementById('svgThree');
+  svg.setAttribute('viewBox','0 0 1360 300');
+
+  // Central node
+  node(svg,680,50,280,56,'#12100e',['Rights Protection Bodies','Statutory — All Three'],'Created by Acts of Parliament','⚖️');
+
+  // Three main branches
+  const bodies=[
+    {x:200, y:170, fill:'#8a1a5a', label:['NCW'], sub:'National Commission for Women', emoji:'👩'},
+    {x:680, y:170, fill:'#1a3a8a', label:['NCPCR'], sub:'Commission for Child Rights', emoji:'👶'},
+    {x:1160, y:170, fill:'#6a1a8a', label:['NCM'], sub:'National Commission Minorities', emoji:'🕌'},
+  ];
+
+  bodies.forEach(b=>{
+    edge(svg,680,78,b.x,b.y-34,'rgba(106,26,138,0.3)',true,2);
+    node(svg,b.x,b.y,240,58,b.fill,b.label,b.sub,b.emoji);
+  });
+
+  // Sub-nodes for each body
+  const ncwSubs=[
+    {dx:-140, y:248, fill:'#a02a6a', l:'Act 1990', s:'NCW Act'},
+    {dx:0, y:248, fill:'#8a1a5a', l:'Chair+5M+SecM', s:'Structure'},
+    {dx:140, y:248, fill:'#6a0a4a', l:'3 Yrs · MoWCD', s:'Term & Ministry'},
+  ];
+  const ncpcrSubs=[
+    {dx:-140, y:248, fill:'#2a4aaa', l:'Act 2005 · Est.2007', s:'NCPCR Act'},
+    {dx:0, y:248, fill:'#1a3a8a', l:'Chair+6M (≥2W)', s:'Structure'},
+    {dx:140, y:248, fill:'#0a2a7a', l:'3 Yrs · MoWCD', s:'Term & Ministry'},
+  ];
+  const ncmSubs=[
+    {dx:-140, y:248, fill:'#7a2a9a', l:'Act 1992', s:'NCM Act'},
+    {dx:0, y:248, fill:'#6a1a8a', l:'Chair+VC+5M', s:'Structure'},
+    {dx:140, y:248, fill:'#5a0a7a', l:'3 Yrs · MoMA', s:'Term & Ministry'},
+  ];
+
+  [[200,ncwSubs],[680,ncpcrSubs],[1160,ncmSubs]].forEach(([bx,subs])=>{
+    subs.forEach(s=>{
+      const cx=bx+s.dx, cy=s.y;
+      edge(svg,bx,s.y-30,cx,cy-22,'rgba(150,150,150,0.3)',true,1.5);
+      node(svg,cx,cy,128,42,s.fill,[s.l],s.s);
+    });
+  });
+})();
+
+// ─── NCPCR DIAGRAM ───
+(function(){
+  const svg=document.getElementById('svgNcpcr');
+  svg.setAttribute('viewBox','0 0 1360 260');
+
+  node(svg,680,50,320,52,'#1a3a8a',['NCPCR — Legal Framework'],'Three Acts it Works Under','👶');
+
+  // Three acts
+  const acts=[
+    {x:200, y:150, fill:'#1a5878', label:['RTE Act','2009'], sub:'Right to Education', emoji:'📚'},
+    {x:680, y:150, fill:'#2a4aaa', label:['POCSO Act','2012'], sub:'Protection of Children', emoji:'🛡️'},
+    {x:1160, y:150, fill:'#1a3060', label:['JJ Act','2015'], sub:'Juvenile Justice', emoji:'⚖️'},
+  ];
+
+  acts.forEach(a=>{
+    edge(svg,680,76,a.x,a.y-34,'rgba(26,58,138,0.3)',true,2);
+    node(svg,a.x,a.y,230,58,a.fill,a.label,a.sub,a.emoji);
+  });
+
+  // Children's Courts chain
+  node(svg,680,220,340,40,'#0a6070',["Children's Courts — Under 2005 Act"],'State Govt → HC CJ Approval → Special Prosecutor','🏛️');
+  edge(svg,680,178,680,200,'#0a6070',false,2);
+
+  const t=se('text',{x:680,y:258,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:'rgba(26,58,138,0.4)','letter-spacing':'2'});
+  t.textContent='NCPCR WORKS UNDER ALL THREE ACTS · CHILDREN\'S COURTS UNDER 2005 ACT';
+  svg.appendChild(t);
+})();
+
+// ─── COMPARISON DIAGRAM ───
+(function(){
+  const svg=document.getElementById('svgCompare');
+  svg.setAttribute('viewBox','0 0 1360 200');
+
+  // Three columns — act, structure, term
+  const cols=[
+    {x:230, fill:'#8a1a5a', title:'👩 NCW', details:['Act: 1990','Chair + 5M + Sec','Term: 3 Yrs','MoWCD','Parivarik Lok Adalat']},
+    {x:680, fill:'#1a3a8a', title:'👶 NCPCR', details:['Act: 2005 · Est: 2007','Chair + 6M (≥2 Women)','Term: 3 Yrs · Max 2','MoWCD','Children\'s Courts']},
+    {x:1130, fill:'#6a1a8a', title:'🕌 NCM', details:['Act: 1992','Chair + VC + 5M','Term: 3 Yrs','Min. of Minority Affairs','6 Notified Minorities']},
+  ];
+
+  cols.forEach(c=>{
+    const g=document.createElementNS(NS,'g');
+    // Header
+    g.appendChild(se('rect',{x:c.x-210,y:8,width:420,height:36,rx:10,ry:10,fill:c.fill}));
+    const ht=se('text',{x:c.x,y:26,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14','font-weight':'800','font-family':'Playfair Display,serif',fill:'#fff'});
+    ht.textContent=c.title;g.appendChild(ht);
+
+    // Detail pills row
+    c.details.forEach((d,i)=>{
+      const px=c.x-190+i*98, py=64;
+      g.appendChild(se('rect',{x:px,y:py,width:86,height:28,rx:7,ry:7,fill:`${c.fill}15`,stroke:c.fill,'stroke-width':'1.2','stroke-opacity':'0.4'}));
+      const dt=se('text',{x:px+43,y:py+14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-weight':'700','font-family':'Nunito,sans-serif',fill:c.fill});
+      dt.textContent=d;g.appendChild(dt);
+    });
+
+    // Common feature bar
+    g.appendChild(se('rect',{x:c.x-210,y:108,width:420,height:28,rx:8,ry:8,fill:`${c.fill}12`,stroke:c.fill,'stroke-width':'1.2','stroke-opacity':'0.3'}));
+    const ct=se('text',{x:c.x,y:122,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9','font-weight':'700','font-family':'DM Mono,monospace',fill:c.fill});
+    ct.textContent='✅ Civil Court Powers · Summoning · Documents';g.appendChild(ct);
+
+    svg.appendChild(g);
+  });
+
+  // Common label bottom
+  const bt=se('text',{x:680,y:160,'text-anchor':'middle','font-size':'10','font-weight':'800','font-family':'Nunito,sans-serif',fill:'var(--ink)'});
+  bt.textContent='All Appointed by Central Government · All Statutory · All report to Parliament';
+  svg.appendChild(bt);
+
+  // Shared banner
+  svg.appendChild(se('rect',{x:80,y:170,width:1200,height:26,rx:8,ry:8,fill:'rgba(106,26,138,0.08)',stroke:'rgba(106,26,138,0.2)','stroke-width':'1.5'}));
+  const st=se('text',{x:680,y:183,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9.5','font-weight':'800','font-family':'DM Mono,monospace',fill:'#6a1a8a'});
+  st.textContent='COMMON: STATUTORY · 3-YEAR TERM · CIVIL COURT POWERS · CENTRAL GOVT APPOINTMENT';
+  svg.appendChild(st);
+})();
+
+// ─── SOCIAL JUSTICE NETWORK ───
+(function(){
+  const svg=document.getElementById('svgNetwork');
+  svg.setAttribute('viewBox','0 0 1360 280');
+
+  // Central hub
+  node(svg,680,140,220,58,'#12100e',['Social Justice','Watchdog Network'],'India\'s Rights Protection System','⚖️');
+
+  const bodies=[
+    {x:120,  y:60,  fill:'#8a1a5a', label:['NCW'], sub:'Women · 1990', emoji:'👩'},
+    {x:120,  y:160, fill:'#1a3a8a', label:['NCPCR'], sub:'Children · 2005', emoji:'👶'},
+    {x:120,  y:248, fill:'#6a1a8a', label:['NCM'], sub:'Minorities · 1992', emoji:'🕌'},
+    {x:1240, y:60,  fill:'#1a6a3a', label:['NCSC/NCST'], sub:'SC & ST Rights', emoji:'🏛️'},
+    {x:1240, y:160, fill:'#d46a10', label:['NCBC'], sub:'OBC Rights', emoji:'🏘️'},
+    {x:1240, y:248, fill:'#0a6070', label:['NHRC'], sub:'Human Rights', emoji:'🌏'},
+  ];
+
+  bodies.forEach(b=>{
+    const fromX=b.x<680?590:770;
+    edge(svg,fromX,140,b.x+(b.x<680?90:-90),b.y,'rgba(100,100,100,0.25)',true,1.8);
+    node(svg,b.x,b.y,180,48,b.fill,b.label,b.sub,b.emoji);
+  });
+
+  // Labels
+  const ll=se('text',{x:120,y:280,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:'rgba(138,26,90,0.5)','letter-spacing':'1.5'});
+  ll.textContent='TOPIC-BASED COMMISSIONS';svg.appendChild(ll);
+  const rl=se('text',{x:1240,y:280,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:'rgba(26,106,58,0.5)','letter-spacing':'1.5'});
+  rl.textContent='GROUP-BASED COMMISSIONS';svg.appendChild(rl);
+
+  // Central label at top
+  const tl=se('text',{x:680,y:22,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace',fill:'rgba(18,16,14,0.4)','letter-spacing':'3'});
+  tl.textContent='COMPLETE SOCIAL JUSTICE ARCHITECTURE — ALL STATUTORY BODIES';
+  svg.appendChild(tl);
+
+  // Issue → Body quick map box
+  const chains=[
+    {x:380, color:'#8a1a5a', label:'Women Issue → NCW'},
+    {x:580, color:'#1a3a8a', label:'Child Issue → NCPCR'},
+    {x:780, color:'#6a1a8a', label:'Minority Issue → NCM'},
+    {x:980, color:'#1a6a3a', label:'SC/ST Issue → NCSC'},
+  ];
+  chains.forEach(c=>{
+    svg.appendChild(se('rect',{x:c.x-85,y:252,width:170,height:24,rx:7,ry:7,fill:`${c.color}15`,stroke:c.color,'stroke-width':'1.3','stroke-opacity':'0.4'}));
+    const ct=se('text',{x:c.x,y:264,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9','font-weight':'700','font-family':'DM Mono,monospace',fill:c.color});
+    ct.textContent=c.label;svg.appendChild(ct);
+  });
+})();
+</script>
+</body>
+</html>
